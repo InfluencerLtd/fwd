@@ -24,6 +24,7 @@ import {
   listAllLibraryItems,
 } from "@/lib/store/library";
 import { isKnownKind } from "@/lib/library-kinds";
+import { saveMerchItem, setClaimStatus } from "@/lib/store/merch";
 
 function matches(given: string, expected: string): boolean {
   const a = Buffer.from(given);
@@ -231,4 +232,53 @@ export async function saveLibraryEntry(formData: FormData): Promise<void> {
 
   revalidatePath("/admin/library");
   revalidatePath("/clubhouse/library");
+}
+
+/* ========================================================================== */
+/* Merch                                                                      */
+/* ========================================================================== */
+
+export async function saveMerchEntry(formData: FormData): Promise<void> {
+  if (!(await isAdmin())) return;
+
+  const text = (key: string) => String(formData.get(key) ?? "").trim();
+  const slug = text("slug");
+  if (!slug || !text("title")) return;
+
+  // Sizes are typed as one line, "S, M, L, XL", because that is how a person
+  // thinks about them. Empty means the item has no sizes and members are not
+  // asked.
+  const sizes = text("sizes")
+    .split(",")
+    .map((size) => size.trim())
+    .filter(Boolean);
+
+  const limitText = text("claim_limit");
+  const limit = limitText ? Number(limitText) : null;
+
+  await saveMerchItem({
+    id: text("id") || undefined,
+    slug,
+    title: text("title"),
+    description: text("description"),
+    sizes,
+    claim_limit: Number.isFinite(limit) && limit !== null && limit > 0 ? limit : null,
+    is_open: formData.get("is_open") === "on",
+    is_published: formData.get("is_published") === "on",
+  });
+
+  revalidatePath("/admin/merch");
+  revalidatePath("/clubhouse/merch");
+}
+
+export async function updateClaimStatus(formData: FormData): Promise<void> {
+  if (!(await isAdmin())) return;
+
+  const claimId = String(formData.get("claimId") ?? "");
+  const itemId = String(formData.get("itemId") ?? "");
+  const status = String(formData.get("status") ?? "");
+  if (status !== "requested" && status !== "sent" && status !== "cancelled") return;
+
+  await setClaimStatus(claimId, status);
+  revalidatePath(`/admin/merch/${itemId}`);
 }

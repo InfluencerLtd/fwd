@@ -40,6 +40,7 @@ export default async function AdminLayout({
     { href: "/admin/members", label: "Members" },
     { href: "/admin/events", label: "Events" },
     { href: "/admin/library", label: "Library" },
+    { href: "/admin/merch", label: "Merch" },
     { href: "/admin/introductions", label: "Introductions" },
   ] as const;
 
