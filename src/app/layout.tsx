@@ -1,12 +1,26 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { BRAND } from "@/lib/brand";
+import { CONTACT } from "@/lib/brand";
+import { META } from "@/content/site";
 import { fontVariables, chosenPairing } from "@/lib/fonts";
 import { THEME_INIT_SCRIPT } from "@/lib/theme";
 
 export const metadata: Metadata = {
-  title: `${BRAND.markShort}`,
-  description: `${BRAND.markLong}. A private members' club.`,
+  // Needed so the link preview image gets a full web address rather than a
+  // relative one. Set NEXT_PUBLIC_SITE_URL once the domain exists.
+  metadataBase: new URL(CONTACT.siteUrl),
+  title: META.title,
+  description: META.description,
+  openGraph: {
+    title: META.title,
+    description: META.description,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: META.title,
+    description: META.description,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
