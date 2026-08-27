@@ -203,8 +203,7 @@ export const APPLY = {
   open: {
     heading: "apply",
     /** DRAFT. */
-    intro:
-      "Membership is by application. Tell us who you are and why you want to be in the room. Every application is read.",
+    intro: "Memberships are by application only.",
     submit: "send application",
     submitting: "sending",
     success:
