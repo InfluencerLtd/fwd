@@ -13,12 +13,15 @@ worth saying so.
 
 | Phase | What it is | Status |
 | --- | --- | --- |
-| Foundations | Colours, texture, typefaces, light and dark mode | **Built, waiting on decisions** |
-| Phase 1 | The public site and the application form | Not started |
+| Foundations | Colours, texture, typefaces, light and dark mode | **Done and signed off** |
+| Phase 1a | The pre-launch holding page | **Built, needs the database connected** |
+| Phase 1b | The full public site and the application form | In progress |
 | Phase 2 | The Clubhouse, the member area | Not started |
 | Phase 3 | Merch, research library, other club material | Not started |
 
-**Right now there is one thing to look at: the design review page.** See below.
+**Right now there are two things to look at:** the holding page at
+`http://localhost:3000`, and the design review page at
+`http://localhost:3000/review`.
 
 ---
 
@@ -58,12 +61,17 @@ src/
                   layout.tsx      the wrapper every page sits inside
                   globals.css     >>> ALL THE COLOURS LIVE HERE <<<
   components/   Reusable pieces used on more than one page.
+  content/      site.ts         >>> ALL THE WORDS LIVE HERE <<<
   lib/          Settings and small helpers. No visual design in here.
                   brand.ts        >>> ALL THE NAMES LIVE HERE <<<
+                  site-config.ts  >>> ALL THE SWITCHES LIVE HERE <<<
                   fonts.ts        the typeface options
                   theme.ts        light and dark mode
-                  contrast.ts     the accessibility maths
-                  read-tokens.ts  lets the review page read the real colours
+                  contrast.ts     the accessibility math
+                  supabase.ts     the database connection
+                  store/          saving things to the database
+
+supabase/       migrations/     the database setup, to run once in Supabase
 
 public/         Images and files served exactly as they are.
 .env.example    A template for passwords and keys. Copy it, never edit it.
@@ -71,6 +79,16 @@ public/         Images and files served exactly as they are.
 
 Files ending `.tsx` are pages and visual pieces. Files ending `.ts` are settings
 and logic. Files ending `.css` are styling.
+
+---
+
+## How to change the words on the site
+
+Open **`src/content/site.ts`**. Every word the public reads is in that one file.
+Change the text between the quote marks, save, and the site updates. You never
+need to touch anything that controls the layout.
+
+Anything marked `DRAFT` in that file is my wording, not approved wording.
 
 ---
 
@@ -128,6 +146,45 @@ more textured. The `/review` page shows three strengths side by side.
 
 ---
 
+## How to change what the public sees
+
+Open **`src/lib/site-config.ts`**. Everything in that file is a switch.
+
+### Holding page, or the full site
+
+`SITE_MODE` is either `"holding"` or `"live"`.
+
+- `"holding"` shows the pre-launch page: the wordmark, one line, and an email
+  capture. This is what should be at the address from the moment the domain is
+  registered.
+- `"live"` shows the full public site.
+
+The holding page is **not deleted** when the site launches. Switch this word
+back to `"holding"` at any time and it returns exactly as it was.
+
+### Letting the team see the real site early
+
+While the holding page is up, the team can still preview the real site. Set a
+password as `EARLY_ACCESS_PASSWORD` in `.env.local`, then go to
+`/early-access` and enter it. That browser then sees the real site while
+everyone else still sees the holding page. It lasts a month.
+
+If no password is set, the early access page does not exist at all, so there is
+no default password anywhere for somebody to guess.
+
+### The draft copy marker
+
+`COPY_APPROVED` is currently `false`, so a small **"draft copy, not approved"**
+tag sits in the bottom corner of every page. That is deliberate: none of the
+wording has been signed off yet. Set it to `true` once the words are agreed and
+the tag disappears.
+
+## How to open or close applications
+
+`APPLICATIONS_OPEN` in the same file. `true` shows the application form, `false`
+shows a waitlist sign-up with different wording instead. The switch exists and
+works; the form it controls is the next thing being built.
+
 ## How to add an event
 
 **Not built yet.** Events are part of Phase 2, The Clubhouse. When it exists
@@ -137,12 +194,6 @@ how to use it.
 ## How to add a member
 
 **Not built yet.** Also Phase 2.
-
-## How to open or close applications
-
-**Not built yet.** Part of Phase 1. There will be a single switch the club team
-can flip: open shows the application form, closed shows a waitlist sign-up with
-different wording instead.
 
 ---
 
