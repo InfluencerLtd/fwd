@@ -18,7 +18,8 @@ worth saying so.
 | Phase 1b | The full public site, the application form, the emails | **Built** |
 | | All of Phase 1 needs Supabase, HubSpot and email connected | **Blocked on accounts** |
 | Phase 2 | The Clubhouse, the member area | **Built, needs the database connected** |
-| Phase 3 | Merch, research library, other club material | Not started |
+| Phase 3a | The members' library: research, white papers, recaps, briefings | **Built, needs the database connected** |
+| Phase 3b | Merch | Not started, waiting on Bespokely |
 
 **Right now there are three things to look at:**
 
@@ -234,6 +235,24 @@ failing quietly.
 
 The shared password is temporary. Proper per-person sign in arrives with The
 Clubhouse in Phase 2 and replaces it.
+
+## How to add something to the library
+
+Go to **`/admin/library`**. Fill in the form, attach a file if there is one, and
+tick "Show to members" when it is ready.
+
+Files go into a private store. Members never get a permanent web address for a
+file: the site hands each of them a personal link that stops working after a few
+minutes, so nothing can be forwarded outside the club.
+
+### How to add a new type of content
+
+Open **`src/lib/library-kinds.ts`** and add one line. That is the whole job.
+
+The new type immediately appears in the admin form, in the library filters and
+on the reading page. There is no database change and no new screen to build.
+That was designed in on purpose, because the brief asked that adding a type
+later must not mean rebuilding.
 
 ## Meeting of Minds requests
 

@@ -25,7 +25,12 @@ you do not know, that is a fault in this document.
    people all appear with an orange EXAMPLE tag so nobody can mistake them for
    members. Delete them later with:
    `delete from public.members where is_dummy;`
-6. Go to **Project Settings**, then **API keys**. You need two values:
+6. Open **Storage** in the left-hand menu and create a bucket called exactly
+   `library`. **Leave "Public bucket" switched OFF.** This is where research and
+   white papers are kept. A private bucket means files have no web address of
+   their own: the site hands each member a personal link that stops working
+   after a few minutes, so a file cannot be forwarded outside the club.
+7. Go to **Project Settings**, then **API keys**. You need two values:
    - the **Project URL**
    - the **service_role** key, which is secret
 
