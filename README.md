@@ -24,10 +24,18 @@ worth saying so.
 
 | Page | Address | What it is |
 | --- | --- | --- |
-| The holding page | `/` | What the public sees before launch |
-| The full site | `/` behind early access, see below | The real thing |
-| Design review | `/review` | Palette, contrast, grain, typefaces |
-| Email review | `/review/emails` | The three emails, exactly as they arrive |
+| The full site | http://localhost:3000 | The real thing |
+| Design review | http://localhost:3000/review | Palette, contrast, grain, typefaces |
+| Email review | http://localhost:3000/review/emails | The three emails, exactly as they arrive |
+| Applications | http://localhost:3000/admin | Read, accept and decline |
+
+`.env.local` on this computer is set to show you the **full site** at
+`http://localhost:3000`. The real website will still show the holding page,
+because that setting only applies here.
+
+**To see the holding page instead:** open `.env.local`, delete the line that
+says `NEXT_PUBLIC_SITE_MODE="live"`, save, and stop and restart `npm run dev`.
+Put the line back to return to the full site.
 
 ---
 
@@ -163,15 +171,22 @@ Open **`src/lib/site-config.ts`**. Everything in that file is a switch.
 
 ### Holding page, or the full site
 
-`SITE_MODE` is either `"holding"` or `"live"`.
+`DEFAULT_SITE_MODE` is either `"holding"` or `"live"`.
 
 - `"holding"` shows the pre-launch page: the wordmark, one line, and an email
   capture. This is what should be at the address from the moment the domain is
   registered.
-- `"live"` shows the full public site.
+- `"live"` shows the full public site. Change it to this on launch day.
 
 The holding page is **not deleted** when the site launches. Switch this word
 back to `"holding"` at any time and it returns exactly as it was.
+
+There is also a way to look at the full site without changing that line, which
+is what your computer is set up to do right now. Putting
+`NEXT_PUBLIC_SITE_MODE="live"` in `.env.local` shows you the full site while
+everyone else still sees the holding page. Once the site is online, the same
+setting lets a preview address show the full site while the real address stays
+on the holding page, with nothing to remember to undo.
 
 ### Letting the team see the real site early
 

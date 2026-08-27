@@ -6,6 +6,8 @@
  * just change the word or the true/false and save.
  */
 
+type SiteMode = "holding" | "live";
+
 /**
  * WHAT THE PUBLIC SEES AT THE ADDRESS.
  *
@@ -14,10 +16,29 @@
  *               domain is registered.
  *   "live"    - the full public site.
  *
- * The holding page is never deleted when the site launches. Switch this back to
+ * The holding page is never deleted when the site launches. Switch back to
  * "holding" at any point and it returns exactly as it was.
+ *
+ * This is the setting the real website uses. Leave it as "holding" until
+ * launch day.
  */
-export const SITE_MODE: "holding" | "live" = "holding";
+const DEFAULT_SITE_MODE: SiteMode = "holding";
+
+/**
+ * A way to look at the full site without changing the line above.
+ *
+ * Put NEXT_PUBLIC_SITE_MODE="live" in `.env.local` and the site on your own
+ * computer shows the full page, while the real website carries on showing the
+ * holding page. Delete that line to go back.
+ *
+ * This is also how it will work once the site is online: the real address can
+ * be showing the holding page while a preview address shows the full site, with
+ * no code change and nothing to remember to undo.
+ */
+const OVERRIDE = process.env.NEXT_PUBLIC_SITE_MODE;
+
+export const SITE_MODE: SiteMode =
+  OVERRIDE === "live" || OVERRIDE === "holding" ? OVERRIDE : DEFAULT_SITE_MODE;
 
 /**
  * WHETHER APPLICATIONS ARE OPEN.
