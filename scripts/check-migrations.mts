@@ -49,13 +49,13 @@ try {
   report(false, "seed-examples.sql", error instanceof Error ? error.message : String(error));
 }
 
-for (const table of ["members", "content_items"]) {
+for (const table of ["members", "content_items", "merch_items"]) {
   const stray = await db.query<{ n: number }>(
     `select count(*)::int as n from public.${table} where not is_dummy`,
   );
   report(
     stray.rows[0].n === 0,
-    `no example ${table.replace("_", " ")} row is left looking real`,
+    `no example ${table.replaceAll("_", " ")} row is left looking real`,
     stray.rows[0].n === 0 ? "" : `${stray.rows[0].n} row(s) not flagged as examples`,
   );
 }
@@ -136,6 +136,35 @@ await expectFailure(
   `insert into public.rsvps (event_id, member_id, response)
    values ('bbbbbbbb-0000-0000-0000-000000000001',
            'aaaaaaaa-0000-0000-0000-000000000001', 'not_going')`,
+);
+
+await db.exec(`
+  insert into public.merch_items (id, slug, title)
+  values ('cccccccc-0000-0000-0000-000000000001', 'an-item', 'An item');
+  insert into public.merch_claims (item_id, member_id, recipient, address_1)
+  values ('cccccccc-0000-0000-0000-000000000001',
+          'aaaaaaaa-0000-0000-0000-000000000001', 'A Person', '1 A Street');
+`);
+await expectFailure(
+  "one member cannot claim the same item twice",
+  `insert into public.merch_claims (item_id, member_id, recipient, address_1)
+   values ('cccccccc-0000-0000-0000-000000000001',
+           'aaaaaaaa-0000-0000-0000-000000000001', 'A Person', '1 A Street')`,
+);
+
+// The instruction is that merch has no payment, no checkout and no pricing.
+// This makes that structural rather than a thing somebody has to remember.
+const priceColumns = await db.query<{ table_name: string; column_name: string }>(
+  `select table_name, column_name from information_schema.columns
+   where table_schema = 'public'
+     and (column_name ilike '%price%' or column_name ilike '%cost%'
+          or column_name ilike '%amount%' or column_name ilike '%payment%')`,
+);
+console.log("\nNothing in the database has a price on it:");
+report(
+  priceColumns.rows.length === 0,
+  "no price, cost, amount or payment column anywhere",
+  priceColumns.rows.map((r) => `${r.table_name}.${r.column_name}`).join(", "),
 );
 
 console.log(

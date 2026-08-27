@@ -101,3 +101,27 @@ values
    'Example category',
    now(), true, true)
 on conflict (slug) do nothing;
+
+-- ---------------------------------------------------------------------------
+-- Two example merch items, so the claim flow can be walked through. Both are
+-- flagged as examples and carry an orange EXAMPLE tag wherever they appear.
+--
+-- Delete them with:  delete from public.merch_items where is_dummy;
+--
+-- Note there is no price on either, and there is no price column to put one in.
+-- Members claim these. There is no payment step anywhere in the club.
+-- ---------------------------------------------------------------------------
+
+insert into public.merch_items
+  (slug, title, description, sizes, claim_limit, is_open, is_published, is_dummy)
+values
+  ('example-sweatshirt',
+   'Example sweatshirt',
+   'An example item, not a real one. It has sizes and a limit, so the size picker and the "all claimed" behaviour can both be seen.',
+   '{"S","M","L","XL"}', 20, true, true, true),
+
+  ('example-tote',
+   'Example tote',
+   'An example item with no sizes, so members are not asked for one, and no limit.',
+   '{}', null, true, true, true)
+on conflict (slug) do nothing;
