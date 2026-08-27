@@ -7,8 +7,11 @@
  * the visitor's browser, which is why it is safe for it to touch the database.
  */
 
-import { HOLDING } from "@/content/site";
-import type { SignupState } from "@/lib/form-state";
+import { HOLDING, APPLY } from "@/content/site";
+import type { SignupState, ApplicationState } from "@/lib/form-state";
+import { MEMBER_GROUPS, type MemberGroupId } from "@/lib/brand";
+import { APPLICATIONS_OPEN } from "@/lib/site-config";
+import { submitApplication } from "@/lib/store/applications";
 import { recordSignup, type SignupSource } from "@/lib/store/signups";
 import { looksLikeEmail, normalizeEmail } from "@/lib/validate";
 
@@ -45,4 +48,85 @@ export async function signUpForUpdates(
 
   console.error("[fwd.] Sign-up failed to save:", result.reason);
   return { status: "error", message: HOLDING.error };
+}
+
+/* ========================================================================== */
+/* Membership applications                                                    */
+/* ========================================================================== */
+
+export async function submitMembershipApplication(
+  _previous: ApplicationState,
+  formData: FormData,
+): Promise<ApplicationState> {
+  // If applications are closed, the form on the page is a waitlist sign-up, so
+  // nothing should be reaching this action. Refusing here as well means the
+  // switch cannot be worked around by anyone posting to it directly.
+  if (!APPLICATIONS_OPEN) {
+    return {
+      status: "error",
+      message: APPLY.closed.intro,
+      fieldErrors: {},
+    };
+  }
+
+  const text = (key: string) => String(formData.get(key) ?? "").trim();
+
+  const name = text("name");
+  const email = normalizeEmail(formData.get("email"));
+  const role = text("role");
+  const company = text("company");
+  const group = text("group");
+  const market = text("market");
+  const link = text("link");
+  const reason = text("reason");
+  const consented = formData.get("consent") === "on";
+
+  const fieldErrors: Record<string, string> = {};
+
+  if (!name) fieldErrors.name = APPLY.required;
+  if (!email) fieldErrors.email = APPLY.required;
+  else if (!looksLikeEmail(email)) fieldErrors.email = HOLDING.invalidEmail;
+  if (!role) fieldErrors.role = APPLY.required;
+  if (!company) fieldErrors.company = APPLY.required;
+  if (!market) fieldErrors.market = APPLY.required;
+  if (!reason) fieldErrors.reason = APPLY.required;
+
+  const validGroup = MEMBER_GROUPS.some((g) => g.id === group);
+  if (!validGroup) fieldErrors.group = APPLY.required;
+
+  if (!consented) fieldErrors.consent = HOLDING.consentRequired;
+
+  if (Object.keys(fieldErrors).length > 0) {
+    return {
+      status: "error",
+      message: "Please check the fields marked below.",
+      fieldErrors,
+    };
+  }
+
+  const result = await submitApplication({
+    name,
+    email,
+    role,
+    company,
+    group: group as MemberGroupId,
+    market,
+    link: link || null,
+    reason,
+  });
+
+  if (result.status === "saved") {
+    return { status: "success", message: APPLY.open.success };
+  }
+
+  if (result.status === "not-configured") {
+    console.error(
+      "[fwd.] An application was turned away because Supabase is not configured. " +
+        "Set NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY.",
+    );
+    return { status: "error", message: HOLDING.notReady, fieldErrors: {} };
+  }
+
+  console.error("[fwd.] Application failed to save:", result.reason);
+  return { status: "error", message: APPLY.error, fieldErrors: {} };
 }
