@@ -21,14 +21,16 @@ export function Hero() {
         labelPosition="left-6 top-6"
         className="flex min-h-[92vh] flex-col"
       >
-        <div className="relative z-2 mx-auto flex w-full max-w-5xl flex-1 flex-col justify-end px-6 pb-14 pt-28">
-          <Wordmark size="hero" heading />
+        {/* Centred over the photograph, following the approved artwork, rather
+            than sitting in the bottom left corner. */}
+        <div className="relative z-2 mx-auto flex w-full max-w-4xl flex-1 flex-col items-center justify-center px-6 pb-20 pt-28 text-center">
+          <Wordmark size="hero" heading align="center" />
 
-          <p className="mt-12 max-w-xl font-body text-lg leading-relaxed text-photo-ink/85 sm:text-xl">
+          <p className="mt-14 max-w-xl font-body text-lg leading-relaxed text-photo-ink/85 sm:text-xl">
             {HERO.line}
           </p>
 
-          <div className="mt-10 flex flex-wrap items-center gap-4">
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <ButtonLink href="#apply" variant="onDark" size="lg">
               {APPLICATIONS_OPEN ? HERO.cta : HERO.ctaWaitlist}
             </ButtonLink>
@@ -40,7 +42,7 @@ export function Hero() {
           {/* The quiet way in for existing members. Deliberately a text link
               rather than a third button, and part of this block rather than a
               bar sitting on top of the photograph. */}
-          <p className="mt-8 font-body text-sm text-photo-ink/60">
+          <p className="mt-9 font-body text-sm text-photo-ink/60">
             <Link
               href="/clubhouse"
               className="fwd-underline text-photo-ink/75 hover:text-photo-ink"
@@ -51,7 +53,7 @@ export function Hero() {
 
           <p
             aria-hidden="true"
-            className="fwd-cue mt-12 font-body text-[11px] tracking-[0.2em] text-photo-ink/40"
+            className="fwd-cue absolute bottom-8 left-1/2 -translate-x-1/2 font-body text-[11px] tracking-[0.2em] text-photo-ink/40"
           >
             scroll
           </p>
