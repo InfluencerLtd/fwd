@@ -25,7 +25,7 @@ export function HoldingPage() {
         className="flex min-h-screen flex-1 flex-col justify-end"
       >
         <div className="relative z-1 mx-auto flex w-full max-w-5xl flex-col px-6 pb-20 pt-40">
-          <Wordmark size="hero" />
+          <Wordmark size="hero" heading />
 
           <p className="mt-12 max-w-xl font-body text-lg leading-relaxed text-photo-ink/85 sm:text-xl">
             {HOLDING.line}

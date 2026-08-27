@@ -14,14 +14,20 @@ worth saying so.
 | Phase | What it is | Status |
 | --- | --- | --- |
 | Foundations | Colours, texture, typefaces, light and dark mode | **Done and signed off** |
-| Phase 1a | The pre-launch holding page | **Built, needs the database connected** |
-| Phase 1b | The full public site and the application form | In progress |
+| Phase 1a | The pre-launch holding page | **Built** |
+| Phase 1b | The full public site, the application form, the emails | **Built** |
+| | All of Phase 1 needs Supabase, HubSpot and email connected | **Blocked on accounts** |
 | Phase 2 | The Clubhouse, the member area | Not started |
 | Phase 3 | Merch, research library, other club material | Not started |
 
-**Right now there are two things to look at:** the holding page at
-`http://localhost:3000`, and the design review page at
-`http://localhost:3000/review`.
+**Right now there are three things to look at:**
+
+| Page | Address | What it is |
+| --- | --- | --- |
+| The holding page | `/` | What the public sees before launch |
+| The full site | `/` behind early access, see below | The real thing |
+| Design review | `/review` | Palette, contrast, grain, typefaces |
+| Email review | `/review/emails` | The three emails, exactly as they arrive |
 
 ---
 
@@ -62,6 +68,8 @@ src/
                   globals.css     >>> ALL THE COLOURS LIVE HERE <<<
   components/   Reusable pieces used on more than one page.
   content/      site.ts         >>> ALL THE WORDS LIVE HERE <<<
+                emails.ts       >>> ALL THE EMAILS LIVE HERE <<<
+                legal.ts        the privacy and cookie pages
   lib/          Settings and small helpers. No visual design in here.
                   brand.ts        >>> ALL THE NAMES LIVE HERE <<<
                   site-config.ts  >>> ALL THE SWITCHES LIVE HERE <<<
@@ -69,6 +77,9 @@ src/
                   theme.ts        light and dark mode
                   contrast.ts     the accessibility math
                   supabase.ts     the database connection
+                  hubspot.ts      pushing applicants to HubSpot
+                  email.ts        building and sending emails
+                  tokens.ts       makes unsubscribe links unforgeable
                   store/          saving things to the database
 
 supabase/       migrations/     the database setup, to run once in Supabase
@@ -185,6 +196,28 @@ the tag disappears.
 shows a waitlist sign-up with different wording instead. The switch exists and
 works; the form it controls is the next thing being built.
 
+## How to read and decide applications
+
+Go to **`/admin`** and enter the admin password, which is `ADMIN_PASSWORD` in
+`.env.local`. You will see every application waiting on a decision, with what
+the person wrote.
+
+- **Accept** records the decision and sends the welcome email with their sign-in
+  link.
+- **Decline** records the decision and sends the polite one.
+
+If something is not connected yet, the page says so at the top rather than
+failing quietly.
+
+The shared password is temporary. Proper per-person sign in arrives with The
+Clubhouse in Phase 2 and replaces it.
+
+## How to change what the emails say
+
+Open **`src/content/emails.ts`**. All three emails are in there. The bits in
+{curly braces} are filled in automatically. You can see exactly how they will
+look at **`/review/emails`**, which sends nothing.
+
 ## How to add an event
 
 **Not built yet.** Events are part of Phase 2, The Clubhouse. When it exists
@@ -194,6 +227,24 @@ how to use it.
 ## How to add a member
 
 **Not built yet.** Also Phase 2.
+
+---
+
+## What HubSpot needs set up
+
+Applications are pushed to HubSpot as contacts. Alongside the standard fields
+it writes three custom contact properties, which have to exist in the HubSpot
+account first or HubSpot rejects the whole record:
+
+| Property name | Type | What it holds |
+| --- | --- | --- |
+| `fwd_member_group` | Single-line text | Brand, creator, platform or industry |
+| `fwd_market` | Single-line text | Where the applicant is based |
+| `fwd_profile_link` | Single-line text | Their LinkedIn or social profile |
+
+If HubSpot is down or misconfigured, the application is still saved here, the
+failure is recorded against it, and the admin page shows which records have not
+made it across yet. No application is ever lost because HubSpot had a problem.
 
 ---
 
