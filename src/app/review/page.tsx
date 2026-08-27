@@ -373,10 +373,11 @@ export default async function ReviewPage() {
               text. 3 to 1 is the minimum for large headings. Higher is better.
             </p>
             <p className="mt-3">
-              The row to look at is the last one in the light table. The pale ice
-              blue on the off-white ground measures far below the minimum, which
-              is why the rule exists: that blue only ever appears on dark grounds
-              or over dark photography.
+              There are two blues and they are not interchangeable. The pale ice
+              blue from the wordmark works only on dark grounds. The brand dark
+              blue works only on light ones. The last row of the light table is
+              the pale blue put where it does not belong, so you can see what
+              the rule is protecting against.
             </p>
           </>
         }
@@ -430,9 +431,10 @@ export default async function ReviewPage() {
                 className="mt-2 text-sm"
                 style={{ color: light["ink-muted"] }}
               >
-                Deep blue on off-white, measured at{" "}
-                {assess(light["accent"], light["surface"]).display}:1. Same
-                family, same feeling, legible.
+                The brand dark blue on off-white, measured at{" "}
+                {assess(light["accent"], light["surface"]).display}:1. This is
+                the blue from the influencer brand guidelines, and it is what
+                every link and button on a light ground uses.
               </p>
             </div>
           </div>

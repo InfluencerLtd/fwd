@@ -144,8 +144,11 @@ export const PAIRINGS: Pairing[] = [
 ];
 
 /**
- * CHANGE THIS ONE LETTER once a pairing is chosen ("a", "b" or "c").
- * The whole site picks it up. Until then it is set to "a" as a working default.
+ * SIGNED OFF: Option A, Instrument Serif + Instrument Sans.
+ *
+ * Change this one letter ("a", "b" or "c") and the whole site follows. The
+ * other two are kept rather than deleted so they can still be compared on
+ * /review if the decision is ever reopened.
  */
 export const CHOSEN_PAIRING: PairingId = "a";
 

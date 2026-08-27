@@ -21,7 +21,13 @@
   --fwd-surface-raised: #ffffff; /* cards and panels that sit above the page */
   --fwd-ink: #0e1116; /* body and heading text */
   --fwd-ink-muted: #5a6472; /* secondary text, captions, labels */
-  --fwd-accent: #1e3a5f; /* deep blue - links and buttons on LIGHT grounds */
+  /* Brand dark blue, from the influencer brand guidelines.
+     Print equivalents, recorded here so they do not get lost:
+       Pantone 2132 C   CMYK C88 M73 Y0 K0
+     Note: the guidelines card also prints "R8 G87 B195", which is #0857c3 and
+     does not match the hex on the same card. The hex is what screens use, so
+     #004ad5 is what is set here. Worth correcting in the guidelines. */
+  --fwd-accent: #004ad5; /* links and buttons on LIGHT grounds only */
   --fwd-accent-on-dark: #b1e3fc; /* pale ice blue - ONLY ever on dark grounds */
   --fwd-border: #e3e0da; /* hairlines and dividers */
 }
@@ -42,16 +48,26 @@
 /* @tokens:end */
 
 /* ---------------------------------------------------------------------------
-   THE PALE BLUE RULE - this is absolute.
+   THE TWO BLUES, AND WHERE EACH ONE IS ALLOWED.
 
-   #b1e3fc on near-black  = 13.96:1  passes comfortably
-   #b1e3fc on off-white   =  1.27:1  fails badly, close to invisible
-   #1e3a5f on off-white   = 10.64:1  passes comfortably
+   There are two blues and they are not interchangeable. Each one is legible on
+   exactly one kind of ground and close to useless on the other.
 
-   So `--fwd-accent-on-dark` is only ever used on a dark ground or over dark
-   photography. It must never be used for body text, links, form labels,
-   buttons or any small type on a light background. The /review page measures
-   these ratios live so the rule can be checked rather than trusted.
+   Pale ice blue #b1e3fc, from the wordmark:
+     on near-black #0b100c  = 13.96:1  excellent
+     on off-white  #f7f6f3  =  1.27:1  fails badly, close to invisible
+
+   Brand dark blue #004ad5, from the influencer brand guidelines:
+     on off-white  #f7f6f3  =  6.61:1  passes comfortably
+     on near-black #0b100c  =  2.69:1  fails
+
+   So: `--fwd-accent-on-dark` is only ever used on a dark ground or over dark
+   photography, never for text on a light background. And the brand dark blue
+   is only ever used on a light ground, which is why `--fwd-accent` switches to
+   the pale blue in dark mode rather than carrying the dark blue across.
+
+   The /review page measures all of this live, so the rule can be checked
+   rather than trusted.
    --------------------------------------------------------------------------- */
 
 /* The hero photograph stays dark in BOTH light and dark mode. That is how the
@@ -62,8 +78,8 @@
   --fwd-photo-ink: #f2f0ec;
 }
 
-/* Grain strength. Adjust this one number to make the texture stronger or
-   weaker across the whole site. */
+/* Grain strength. Signed off at 0.035, the middle of the three options shown
+   on /review. Adjust this one number to change the texture across the site. */
 :root {
   --fwd-grain-opacity: 0.035;
 }
