@@ -68,3 +68,10 @@ export type ProfileState =
   | { status: "error"; message: string };
 
 export const initialProfileState: ProfileState = { status: "idle" };
+
+export type ClaimState =
+  | { status: "idle" }
+  | { status: "success" }
+  | { status: "error"; message: string };
+
+export const initialClaimState: ClaimState = { status: "idle" };

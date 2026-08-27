@@ -9,6 +9,7 @@ export function ClubhouseNav() {
     { href: "/clubhouse/directory", label: NAV.directory },
     { href: "/clubhouse/events", label: NAV.events },
     { href: "/clubhouse/library", label: NAV.library },
+    { href: "/clubhouse/merch", label: NAV.merch },
     { href: "/clubhouse/newsletter", label: NAV.newsletter },
     { href: "/clubhouse/profile", label: NAV.profile },
   ] as const;

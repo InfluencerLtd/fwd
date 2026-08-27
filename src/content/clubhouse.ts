@@ -46,6 +46,7 @@ export const NAV = {
   directory: "Members",
   events: "Events",
   library: "Library",
+  merch: "Merch",
   newsletter: "Newsletter",
   profile: "Your profile",
   signOut: "Sign out",
@@ -163,4 +164,45 @@ export const LIBRARY = {
   downloadNote:
     "Download links are personal to you and stop working after a few minutes. Come back here for a fresh one.",
   back: "The library",
+} as const;
+
+export const MERCH = {
+  heading: "merch",
+  /**
+   * DRAFT. The wording matters here: members CLAIM things, they do not buy
+   * them. There is no price anywhere and nothing should read like a shop.
+   */
+  intro: "Club pieces, made in small runs. Yours to claim, not to buy.",
+  none: "Nothing to claim at the moment. There will be.",
+  closed: "Claims are closed on this one.",
+  allGone: "All claimed.",
+  claim: "Claim this",
+  claiming: "Sending",
+  update: "Update your details",
+  cancel: "I no longer want this",
+  claimed: "Claimed. We will be in touch when it ships.",
+  claimedStatusSent: "This is on its way to you.",
+  back: "All merch",
+
+  sizeLabel: "Size",
+  sizePick: "Choose a size",
+  recipientLabel: "Name for the parcel",
+  address1Label: "Address",
+  address2Label: "Address, second line",
+  cityLabel: "City",
+  postcodeLabel: "Postcode or ZIP",
+  countryLabel: "Country",
+  noteLabel: "Anything we should know",
+  noteHint: "Delivery instructions, or a different address for a few weeks.",
+
+  optional: "optional",
+  required: "Please fill this in.",
+  sizeRequired: "Please choose a size.",
+  error: "Something went wrong at our end. Please try again in a moment.",
+  /** Shown when the limit was reached while they were filling the form in. */
+  gone: "These have all been claimed. Sorry, that one moved quickly.",
+
+  /** Said plainly, because we are asking for somebody's home address. */
+  addressNote:
+    "We only use this to send you this one thing. It is not added to your profile and it is not shared with anyone outside the club team and whoever posts it.",
 } as const;
