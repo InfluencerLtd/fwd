@@ -67,3 +67,168 @@ export const META = {
   description:
     "A private members' club for senior people across brands, creators, platforms and the wider industry. By influencer.",
 } as const;
+
+/* ===========================================================================
+   THE FULL PUBLIC SITE
+   ---------------------------------------------------------------------------
+   The sections run in this order down the page:
+     hero, about, membership, meeting of minds, why, apply, footer.
+   =========================================================================== */
+
+export const HERO = {
+  /** DRAFT. One line, under the wordmark. */
+  line: "An ongoing community for the people building what comes next across brands, creators, platforms and the wider industry.",
+  /** DRAFT. One call to action, kept restrained on purpose. */
+  cta: "Apply for membership",
+  ctaWaitlist: "Join the waitlist",
+} as const;
+
+export const ABOUT = {
+  heading: "what the club is",
+  /** DRAFT. */
+  body: [
+    "Forward is a community, not a series of events. It runs all year, in person and online, and it spans brands, creators, platforms and the wider industry.",
+    "There is no permanent space, and that is deliberate. The club lives through the rooms it puts together, the conversations it starts and the introductions it makes.",
+    "Members are global. Membership is by application.",
+  ],
+} as const;
+
+export const MEMBERSHIP = {
+  heading: "what membership includes",
+  /** DRAFT. */
+  intro: "Some of it is access. Most of it is people.",
+  /**
+   * These open to reveal the detail, so the section stays scannable but the
+   * substance is there for anyone who wants it.
+   */
+  cards: [
+    {
+      id: "meeting-of-minds",
+      /** DRAFT. */
+      title: "Meeting of Minds",
+      summary: "Introductions made properly.",
+      detail:
+        "The signature benefit. When two members should know each other, the introduction comes with context and a clear reason for it, to both people. Never a name passed along, never a cold forward. You can request an introduction to any member, and the club team makes it.",
+    },
+    {
+      id: "seats",
+      title: "A seat in the room",
+      summary: "Dinners, roundtables and gatherings, on a chosen guest list.",
+      detail:
+        "Small rooms and conversations that do not happen at a conference. Some are hosted with platforms, some are ours. The guest list is the product, so it is put together carefully every time.",
+    },
+    {
+      id: "clubhouse",
+      title: "The Clubhouse",
+      summary: "The members-only area, online and always open.",
+      detail:
+        "Where members find each other, see what is coming up, reserve a place and keep their own profile current. Signed in, and members only.",
+    },
+    {
+      id: "network",
+      title: "The member network",
+      summary: "Who else is in the room, and how to reach them.",
+      detail:
+        "A directory of members with their role, company, market and focus, searchable so you can find the right person rather than the nearest one.",
+    },
+    {
+      id: "profile",
+      title: "Your member profile",
+      summary: "How the rest of the club finds you.",
+      detail:
+        "Your own page in the directory. You decide what it says, and you can change it whenever you like.",
+    },
+    {
+      id: "newsletter",
+      title: "The quarterly newsletter",
+      summary: "[NEWSLETTER NAME], from Jenny. Four times a year, members only.",
+      detail:
+        "What is actually changing in the industry, from someone whose read on it is worth having. Written for members, not for an audience.",
+    },
+    {
+      id: "events",
+      title: "Events and RSVP",
+      summary: "What is coming up, and a place if you want one.",
+      detail:
+        "Invitations arrive by email and link straight to the event, which you can look at without signing in. Signing in is only needed to reserve or change your place.",
+    },
+    {
+      id: "perks",
+      title: "Member perks",
+      /**
+       * PLACEHOLDER. I do not know what these are and will not invent them.
+       * Needed: what the perks actually are, and who provides them.
+       */
+      summary: "[MEMBER PERKS: I need the detail for this card]",
+      detail:
+        "[PLACEHOLDER. This card needs real content: what the perks are, who provides them, and whether they vary by market. Nothing invented here on purpose.]",
+    },
+  ],
+} as const;
+
+export const MEETING_OF_MINDS = {
+  heading: "meeting of minds",
+  /** DRAFT. */
+  standfirst: "The introduction is the point.",
+  body: [
+    "Most networks hand you a list and leave the rest to you. This one works the other way around.",
+    "When two members should know each other, we say why, to both of them, with enough context that the first conversation starts somewhere useful.",
+    "You can ask for an introduction to any member. The request comes to the club team, never to them.",
+  ],
+} as const;
+
+export const WHY = {
+  heading: "why it exists",
+  /** DRAFT. Outward facing. About the room, never about the business case. */
+  body: [
+    "This industry moves faster than the people running it can compare notes. Brands, creators and platforms each see a different part of the same picture, and they rarely get to put it together in one place.",
+    "Forward exists to make that room, regularly, off the record, with nobody selling anything.",
+    "What members get from it is straightforward: a shorter route to the person who has already worked out the thing you are working on.",
+  ],
+} as const;
+
+export const APPLY = {
+  open: {
+    heading: "apply",
+    /** DRAFT. */
+    intro:
+      "Membership is by application. Tell us who you are and why you want to be in the room. Every application is read.",
+    submit: "Send application",
+    submitting: "Sending",
+    success:
+      "Thank you. Your application is with us and we will be in touch.",
+  },
+  closed: {
+    heading: "join the waitlist",
+    /** DRAFT. */
+    intro:
+      "Applications are closed at the moment. Leave your details and we will let you know when they open again.",
+    submit: "Join the waitlist",
+    submitting: "Sending",
+    success: "Thank you. You are on the list and we will be in touch.",
+  },
+  fields: {
+    name: "Full name",
+    role: "Role",
+    company: "Company",
+    group: "Which best describes you",
+    market: "Market",
+    marketHint: "Where you are based.",
+    link: "LinkedIn or social profile",
+    reason: "Why do you want to be part of it",
+    reasonHint: "A few lines is plenty.",
+  },
+  /** Shown when a required field is empty. */
+  required: "Please fill this in.",
+  error: "Something went wrong at our end. Please try again in a moment.",
+  consent:
+    "I am happy to receive occasional email about the club. You can unsubscribe at any time.",
+} as const;
+
+export const NAV = {
+  /** DRAFT. */
+  about: "The club",
+  membership: "Membership",
+  apply: "Apply",
+  skipToContent: "Skip to content",
+} as const;

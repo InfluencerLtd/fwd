@@ -19,3 +19,15 @@ export const initialSignupState: SignupState = { status: "idle" };
 export type EarlyAccessState = { error: string | null };
 
 export const initialEarlyAccessState: EarlyAccessState = { error: null };
+
+export type ApplicationState =
+  | { status: "idle" }
+  | { status: "success"; message: string }
+  | {
+      status: "error";
+      message: string;
+      /** Which specific fields were wrong, so each one can be flagged in place. */
+      fieldErrors: Record<string, string>;
+    };
+
+export const initialApplicationState: ApplicationState = { status: "idle" };
