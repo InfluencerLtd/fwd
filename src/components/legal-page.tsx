@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CONTACT } from "@/lib/brand";
+import { FOOTER } from "@/content/site";
 import { SiteFooter } from "@/components/site-footer";
 import { DraftCopyMarker } from "@/components/draft-copy-marker";
 
@@ -19,7 +20,7 @@ export function LegalPage({
             href="/"
             className="fwd-underline font-body text-sm text-accent"
           >
-            Back
+            {FOOTER.back}
           </Link>
           <h1 className="mt-8 text-4xl sm:text-5xl">{heading}</h1>
           <div className="mt-8 space-y-5">

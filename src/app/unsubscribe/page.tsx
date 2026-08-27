@@ -3,6 +3,7 @@ import Link from "next/link";
 import { readToken } from "@/lib/tokens";
 import { unsubscribeEmail } from "@/lib/store/unsubscribe";
 import { CONTACT } from "@/lib/brand";
+import { FOOTER } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Unsubscribe",
@@ -42,7 +43,7 @@ export default async function UnsubscribePage({
           href="/"
           className="mt-8 inline-block font-body text-sm text-accent underline underline-offset-4"
         >
-          Back
+          {FOOTER.back}
         </Link>
       </div>
     </main>

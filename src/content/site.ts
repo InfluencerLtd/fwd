@@ -26,8 +26,8 @@ export const HOLDING = {
 
   emailLabel: "Email address",
   emailPlaceholder: "you@company.com",
-  submit: "Keep me posted",
-  submitting: "Just a moment",
+  submit: "keep me posted",
+  submitting: "just a moment",
 
   /** DRAFT. Shown after a successful sign-up. */
   success: "Thank you. We will be in touch.",
@@ -53,10 +53,12 @@ export const HOLDING = {
 } as const;
 
 export const FOOTER = {
+  /** The way back to the home page from privacy and cookies. */
+  back: "back",
   /** DRAFT. */
-  privacy: "Privacy",
-  cookies: "Cookies",
-  signIn: "Member sign in",
+  privacy: "privacy",
+  cookies: "cookies",
+  signIn: "member sign in",
 } as const;
 
 /** Used for the browser tab, search results, and link previews in email, WhatsApp and Slack. */
@@ -79,15 +81,15 @@ export const HERO = {
   /** DRAFT. One line, under the wordmark. */
   line: "An ongoing community for the people building what comes next across brands, creators, platforms and the wider industry.",
   /** DRAFT. One call to action, kept restrained on purpose. */
-  cta: "Apply for membership",
-  ctaWaitlist: "Join the waitlist",
+  cta: "apply for membership",
+  ctaWaitlist: "join the waitlist",
   /** DRAFT. The second button, which scrolls down to what the club is. */
   secondaryCta: "learn more",
   /**
    * The quiet way in for people who are already members. Deliberately not a
    * button: applying is the point of this page, signing in is a convenience.
    */
-  memberSignIn: "Already a member? Sign in",
+  memberSignIn: "already a member? sign in",
 } as const;
 
 export const ABOUT = {
@@ -200,8 +202,8 @@ export const APPLY = {
     /** DRAFT. */
     intro:
       "Membership is by application. Tell us who you are and why you want to be in the room. Every application is read.",
-    submit: "Send application",
-    submitting: "Sending",
+    submit: "send application",
+    submitting: "sending",
     success:
       "Thank you. Your application is with us and we will be in touch.",
   },
@@ -210,8 +212,8 @@ export const APPLY = {
     /** DRAFT. */
     intro:
       "Applications are closed at the moment. Leave your details and we will let you know when they open again.",
-    submit: "Join the waitlist",
-    submitting: "Sending",
+    submit: "join the waitlist",
+    submitting: "sending",
     success: "Thank you. You are on the list and we will be in touch.",
   },
   fields: {
@@ -237,7 +239,7 @@ export const NAV = {
    * The first thing a keyboard or screen reader user reaches, letting them jump
    * past the hero into the page.
    */
-  skipToContent: "Skip to content",
+  skipToContent: "skip to content",
 } as const;
 
 /* ===========================================================================

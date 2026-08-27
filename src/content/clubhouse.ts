@@ -15,8 +15,8 @@ export const SIGN_IN = {
   intro: `${BRAND.memberArea} is for members. Enter the address the club has for you and we will send you a six digit code. There is no password to remember.`,
 
   emailLabel: "Email address",
-  emailSubmit: "Send me a code",
-  sending: "Sending",
+  emailSubmit: "send me a code",
+  sending: "sending",
 
   codeHeading: "check your email",
   /**
@@ -29,11 +29,11 @@ export const SIGN_IN = {
   codeIntro:
     "If that address belongs to a member, a six digit code is on its way. It works once and expires in ten minutes.",
   codeLabel: "Six digit code",
-  codeSubmit: "Sign in",
-  checking: "Checking",
-  resend: "Use a different address",
+  codeSubmit: "sign in",
+  checking: "checking",
+  resend: "use a different address",
   /** Somebody who is not a member needs a way out of here. */
-  notAMember: "Not a member? Read about the club",
+  notAMember: "not a member? read about the club",
 
   /** Deliberately the same for a wrong code and a code that never existed. */
   wrongCode: "That code is not right, or it has expired. Check the email, or ask for a new code.",
@@ -45,15 +45,15 @@ export const SIGN_IN = {
 
 export const NAV = {
   /** The way back out to the public site, so no page is a dead end. */
-  publicSite: "The fwd. site",
-  home: "Clubhouse",
-  directory: "Members",
-  events: "Events",
-  library: "Library",
-  merch: "Merch",
-  newsletter: "Newsletter",
-  profile: "Your profile",
-  signOut: "Sign out",
+  publicSite: "the fwd. site",
+  home: "clubhouse",
+  directory: "members",
+  events: "events",
+  library: "library",
+  merch: "merch",
+  newsletter: "newsletter",
+  profile: "your profile",
+  signOut: "sign out",
 } as const;
 
 export const HOME = {
@@ -88,7 +88,7 @@ export const INTRO = {
     "Tell us why you would like to meet {name} and we will make the introduction properly, with context, to both of you. This comes to the club team. It does not email them.",
   reasonLabel: "Why would you like to meet?",
   reasonHint: "A sentence or two is plenty. The more specific, the better the introduction.",
-  submit: "Ask for an introduction",
+  submit: "ask for an introduction",
   sending: "Sending",
   success: "Thank you. That is with the club team and we will be in touch before we introduce you.",
   required: "Please tell us why, so the introduction means something.",
@@ -103,17 +103,17 @@ export const EVENTS = {
   noUpcoming: "Nothing in the calendar just yet.",
   noPast: "Nothing yet.",
   provisional: "Provisional",
-  rsvpGoing: "I am coming",
-  rsvpNotGoing: "I cannot make it",
-  rsvpSaving: "Saving",
+  rsvpGoing: "coming",
+  rsvpNotGoing: "cannot make it",
+  rsvpSaving: "saving",
   youAreGoing: "You are coming to this.",
   youAreNotGoing: "You have said you cannot make this one.",
-  changeRsvp: "Change your answer",
+  changeRsvp: "change your answer",
   attendingHeading: "who is coming",
   /** Shown to somebody looking at an invitation without being signed in. */
-  signInToRsvp: "Sign in to reserve your place",
+  signInToRsvp: "sign in to reserve your place",
   invitationNote: "You have been invited to this. Sign in to let us know if you are coming.",
-  backToEvents: "All events",
+  backToEvents: "all events",
 } as const;
 
 export const PROFILE = {
@@ -131,8 +131,8 @@ export const PROFILE = {
   photoHint: "Photo uploads are not built yet. For now the club team can add one for you.",
   newsletterLabel: "Send me the quarterly newsletter",
   introsLabel: "Other members can ask to be introduced to me",
-  save: "Save changes",
-  saving: "Saving",
+  save: "save changes",
+  saving: "saving",
   saved: "Saved.",
   error: "Something went wrong at our end. Your changes were not saved.",
   required: "Please fill this in.",
@@ -143,7 +143,7 @@ export const NEWSLETTER = {
   /** DRAFT. */
   intro: `${BENEFITS.newsletterName}, from Jenny. Four times a year, members only. What is actually changing in the industry.`,
   empty: "The first issue has not gone out yet. It will appear here when it does.",
-  readMore: "Read",
+  readMore: "read",
 } as const;
 
 export const LIBRARY = {
@@ -161,13 +161,13 @@ export const LIBRARY = {
   none: "There is nothing in the library yet. It will fill up as the club produces things.",
   countOne: "1 item",
   countMany: "{n} items",
-  download: "Download",
+  download: "download",
   downloadUnavailable:
     "This file is not available to download at the moment. Please let the club team know.",
   /** Explains why the link is short-lived, so nobody thinks it is broken. */
   downloadNote:
     "Download links are personal to you and stop working after a few minutes. Come back here for a fresh one.",
-  back: "The library",
+  back: "the library",
 } as const;
 
 export const MERCH = {
@@ -180,13 +180,13 @@ export const MERCH = {
   none: "Nothing to claim at the moment. There will be.",
   closed: "Claims are closed on this one.",
   allGone: "All claimed.",
-  claim: "Claim this",
-  claiming: "Sending",
-  update: "Update your details",
-  cancel: "I no longer want this",
+  claim: "claim this",
+  claiming: "sending",
+  update: "update your details",
+  cancel: "cancel my claim",
   claimed: "Claimed. We will be in touch when it ships.",
   claimedStatusSent: "This is on its way to you.",
-  back: "All merch",
+  back: "all merch",
 
   sizeLabel: "Size",
   sizePick: "Choose a size",
