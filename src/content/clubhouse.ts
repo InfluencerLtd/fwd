@@ -7,12 +7,13 @@
  * marked DRAFT is my wording rather than approved wording.
  */
 
-import { BRAND, BENEFITS } from "@/lib/brand";
+import { BENEFITS } from "@/lib/brand";
 
 export const SIGN_IN = {
   heading: "sign in",
   /** DRAFT. */
-  intro: `${BRAND.memberArea} is for members. Enter the address the club has for you and we will send you a six digit code. There is no password to remember.`,
+  intro:
+    "Members only. Enter your email and we'll send you a six-digit code. No password required.",
 
   emailLabel: "email address",
   emailSubmit: "send me a code",
