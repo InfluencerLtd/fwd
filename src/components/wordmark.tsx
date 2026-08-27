@@ -52,8 +52,14 @@ export function Wordmark({
         >
           {BRAND.markShort}
         </Mark>
+        {/* The same pale ice blue as the mark. The brief asks that the
+            signature always reads quieter, and here that is carried by size and
+            by the italic rather than by colour: the mark is six to nine times
+            larger beside it. All three places this appears are dark grounds,
+            where the pale blue measures 13.42:1. It must never be used on a
+            light one. */}
         <span
-          className={`font-display italic leading-none text-photo-ink/70 ${signatureClass}`}
+          className={`font-display italic leading-none text-accent-on-dark ${signatureClass}`}
         >
           {BRAND.endorsement}
         </span>
