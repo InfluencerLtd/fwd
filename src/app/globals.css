@@ -125,6 +125,14 @@ h1, h2, h3, h4 {
   border-radius: 2px;
 }
 
+/* Put `fwd-on-dark` on anything sitting over the permanently-dark photo ground.
+   The brand dark blue measures only 2.69:1 there, so the focus ring has to
+   switch to the pale ice blue or keyboard users lose track of where they are. */
+.fwd-on-dark
+  :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline-color: var(--fwd-accent-on-dark);
+}
+
 /* ===========================================================================
    Grain
    ---------------------------------------------------------------------------
