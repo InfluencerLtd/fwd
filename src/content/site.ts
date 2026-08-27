@@ -82,7 +82,7 @@ export const HERO = {
   cta: "Apply for membership",
   ctaWaitlist: "Join the waitlist",
   /** DRAFT. The second button, which scrolls down to what the club is. */
-  secondaryCta: "Learn more",
+  secondaryCta: "learn more",
   /**
    * The quiet way in for people who are already members. Deliberately not a
    * button: applying is the point of this page, signing in is a convenience.
