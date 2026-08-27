@@ -1,3 +1,4 @@
+import { requireAdmin } from "@/lib/auth/admin-guard";
 import type { Metadata } from "next";
 import { listIntroRequests } from "@/lib/store/admin";
 import { handleIntroRequest } from "@/app/admin/actions";
@@ -13,6 +14,8 @@ export const metadata: Metadata = { title: "Introductions" };
  * is the entire point of the benefit.
  */
 export default async function AdminIntroductionsPage() {
+  await requireAdmin();
+
   const requests = await listIntroRequests();
 
   return (

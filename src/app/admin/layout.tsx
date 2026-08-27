@@ -3,46 +3,43 @@ import Link from "next/link";
 import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import { ADMIN_ENABLED, ADMIN_COOKIE } from "@/lib/site-config";
-import { AdminSignInForm } from "./sign-in-form";
 
 export const metadata: Metadata = {
   robots: { index: false, follow: false, nocache: true },
 };
 
 /**
- * The gate on the whole admin area.
+ * The frame around the admin. It draws the navigation, and nothing more.
  *
- * Putting it in the layout rather than in each page means a page added later
- * cannot accidentally be left unprotected. Every page under /admin is behind
- * this, without having to remember anything.
+ * >>> THIS IS NOT THE GATE. <<<
  *
- * The actions those pages call check the cookie again for themselves, because a
- * server action can be called directly and does not go through this layout.
+ * A layout cannot be the gate. A layout and the page inside it render at the
+ * same time, so a layout that draws a password form instead of the page does
+ * not stop that page running: it still queries the database and its output is
+ * still sent in the response. That was a real hole here, and it is why the gate
+ * is `requireAdmin()` at the top of every admin page instead, which redirects
+ * and so stops the page rendering at all.
+ *
+ * The actions those pages call check the cookie again for themselves too,
+ * because a server action is its own address and does not go through any of
+ * this.
  */
 export default async function AdminLayout({
   children,
 }: LayoutProps<"/admin">) {
   if (!ADMIN_ENABLED) notFound();
 
+  // The navigation is only drawn once somebody is signed in. This is NOT the
+  // gate: see the comment above, and requireAdmin in every page.
   const jar = await cookies();
-  if (jar.get(ADMIN_COOKIE)?.value !== "granted") {
-    return (
-      <main className="flex flex-1 items-center justify-center px-6 py-24">
-        <div className="w-full max-w-sm">
-          <h1 className="text-3xl">admin</h1>
-          <p className="mt-3 font-body text-sm text-ink-muted">
-            For the club team.
-          </p>
-          <AdminSignInForm />
-        </div>
-      </main>
-    );
-  }
+  const signedIn = jar.get(ADMIN_COOKIE)?.value === "granted";
+  if (!signedIn) return <>{children}</>;
 
   const tabs = [
     { href: "/admin", label: "Applications" },
     { href: "/admin/members", label: "Members" },
     { href: "/admin/events", label: "Events" },
+    { href: "/admin/library", label: "Library" },
     { href: "/admin/introductions", label: "Introductions" },
   ] as const;
 

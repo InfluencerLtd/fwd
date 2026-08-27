@@ -1,3 +1,4 @@
+import { requireAdmin } from "@/lib/auth/admin-guard";
 import type { Metadata } from "next";
 import { listAllMembers } from "@/lib/store/admin";
 import { createMember, changeMemberStatus } from "@/app/admin/actions";
@@ -9,6 +10,8 @@ const field =
   "fwd-field w-full border border-border bg-surface-raised px-4 py-2.5 font-body text-[15px] text-ink";
 
 export default async function AdminMembersPage() {
+  await requireAdmin();
+
   const members = await listAllMembers();
 
   return (

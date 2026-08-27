@@ -1,3 +1,4 @@
+import { requireAdmin } from "@/lib/auth/admin-guard";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { listAllEvents } from "@/lib/store/admin";
@@ -10,6 +11,8 @@ const field =
   "fwd-field w-full border border-border bg-surface-raised px-4 py-2.5 font-body text-[15px] text-ink";
 
 export default async function AdminEventsPage() {
+  await requireAdmin();
+
   const events = await listAllEvents();
 
   return (

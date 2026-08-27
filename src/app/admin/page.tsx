@@ -1,3 +1,4 @@
+import { requireAdmin } from "@/lib/auth/admin-guard";
 import type { Metadata } from "next";
 import { findPendingApplications } from "@/lib/store/decisions";
 import { isHubspotConfigured } from "@/lib/hubspot";
@@ -15,6 +16,8 @@ export const metadata: Metadata = { title: "Applications" };
  * be read in advance at /review/emails.
  */
 export default async function AdminPage() {
+  await requireAdmin();
+
   const pending = await findPendingApplications();
 
   return (

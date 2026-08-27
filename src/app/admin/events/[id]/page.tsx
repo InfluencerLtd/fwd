@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { requireAdmin } from "@/lib/auth/admin-guard";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { listAllEvents, getEventAttendance } from "@/lib/store/admin";
@@ -11,6 +12,7 @@ export const metadata: Metadata = { title: "Invitations" };
 export default async function AdminEventPage({
   params,
 }: PageProps<"/admin/events/[id]">) {
+  await requireAdmin();
   const { id } = await params;
 
   const events = await listAllEvents();
