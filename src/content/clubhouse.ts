@@ -45,6 +45,7 @@ export const NAV = {
   home: "Clubhouse",
   directory: "Members",
   events: "Events",
+  library: "Library",
   newsletter: "Newsletter",
   profile: "Your profile",
   signOut: "Sign out",
@@ -138,4 +139,28 @@ export const NEWSLETTER = {
   intro: `${BENEFITS.newsletterName}, from Jenny. Four times a year, members only. What is actually changing in the industry.`,
   empty: "The first issue has not gone out yet. It will appear here when it does.",
   readMore: "Read",
+} as const;
+
+export const LIBRARY = {
+  heading: "the library",
+  /** DRAFT. */
+  intro:
+    "Research, white papers, event recaps and briefings. Members only, and yours to use.",
+  searchLabel: "Search the library",
+  searchPlaceholder: "Search",
+  kindLabel: "Type",
+  categoryLabel: "Category",
+  allKinds: "Everything",
+  allCategories: "Every category",
+  empty: "Nothing matches that. Try fewer words.",
+  none: "There is nothing in the library yet. It will fill up as the club produces things.",
+  countOne: "1 item",
+  countMany: "{n} items",
+  download: "Download",
+  downloadUnavailable:
+    "This file is not available to download at the moment. Please let the club team know.",
+  /** Explains why the link is short-lived, so nobody thinks it is broken. */
+  downloadNote:
+    "Download links are personal to you and stop working after a few minutes. Come back here for a fresh one.",
+  back: "The library",
 } as const;

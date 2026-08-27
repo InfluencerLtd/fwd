@@ -17,6 +17,13 @@ import { MEMBER_GROUPS, type MemberGroupId } from "@/lib/brand";
 import { invitationUrl } from "@/lib/invitations";
 import { sendEmail } from "@/lib/email";
 import { EMAILS } from "@/content/emails";
+import {
+  saveLibraryItem,
+  uploadLibraryFile,
+  attachFile,
+  listAllLibraryItems,
+} from "@/lib/store/library";
+import { isKnownKind } from "@/lib/library-kinds";
 
 function matches(given: string, expected: string): boolean {
   const a = Buffer.from(given);
@@ -174,4 +181,54 @@ export async function handleIntroRequest(formData: FormData): Promise<void> {
   if (!(await isAdmin())) return;
   await markIntroHandled(String(formData.get("id") ?? ""));
   revalidatePath("/admin/introductions");
+}
+
+/* ========================================================================== */
+/* The library                                                                */
+/* ========================================================================== */
+
+export async function saveLibraryEntry(formData: FormData): Promise<void> {
+  if (!(await isAdmin())) return;
+
+  const text = (key: string) => String(formData.get(key) ?? "").trim();
+
+  const slug = text("slug");
+  const kind = text("kind");
+  if (!slug || !text("title")) return;
+  // An unrecognised kind would still work, but it is almost always a typo, so
+  // it is refused here rather than quietly stored.
+  if (!isKnownKind(kind)) return;
+
+  const saved = await saveLibraryItem({
+    id: text("id") || undefined,
+    kind,
+    slug,
+    title: text("title"),
+    summary: text("summary"),
+    body: text("body"),
+    category: text("category"),
+    is_published: formData.get("is_published") === "on",
+  });
+
+  if (!saved.ok) {
+    console.error("[fwd.] Could not save a library item:", saved.reason);
+    return;
+  }
+
+  // The file is optional, and a failed upload must not lose the item itself,
+  // which has already been saved above.
+  const file = formData.get("file");
+  if (file instanceof File && file.size > 0) {
+    const uploaded = await uploadLibraryFile(slug, file);
+    if (!uploaded.ok || !uploaded.path) {
+      console.error("[fwd.] Could not upload a library file:", uploaded.reason);
+    } else {
+      const items = await listAllLibraryItems();
+      const item = items?.find((i) => i.slug === slug);
+      if (item) await attachFile(item.id, uploaded.path, file.name, file.size);
+    }
+  }
+
+  revalidatePath("/admin/library");
+  revalidatePath("/clubhouse/library");
 }
