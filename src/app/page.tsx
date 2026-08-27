@@ -5,6 +5,7 @@ import {
   EARLY_ACCESS_COOKIE,
 } from "@/lib/site-config";
 import { HoldingPage } from "@/components/holding-page";
+import { PublicSite } from "@/components/public-site";
 
 /**
  * The home page decides what a visitor sees:
@@ -29,19 +30,5 @@ export default async function Home() {
     }
   }
 
-  return <PublicSitePlaceholder />;
-}
-
-/**
- * TEMPORARY. Replaced by the full public site, which is the next thing to be
- * built. Kept deliberately plain so nobody mistakes it for a design.
- */
-function PublicSitePlaceholder() {
-  return (
-    <main className="flex flex-1 items-center justify-center px-6 py-24">
-      <p className="font-body text-sm text-ink-muted">
-        The full public site is not built yet. This is where it will appear.
-      </p>
-    </main>
-  );
+  return <PublicSite />;
 }

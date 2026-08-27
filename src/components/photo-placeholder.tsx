@@ -11,10 +11,16 @@
 export function PhotoPlaceholder({
   label,
   className = "",
+  /**
+   * Where the label sits. The hero moves it down on small screens so it does
+   * not collide with the header sitting on top of the same photograph.
+   */
+  labelPosition = "left-6 top-6",
   children,
 }: {
   label: string;
   className?: string;
+  labelPosition?: string;
   children?: React.ReactNode;
 }) {
   return (
@@ -22,7 +28,9 @@ export function PhotoPlaceholder({
       className={`fwd-grain relative overflow-hidden bg-photo-ground ${className}`}
       style={{ "--fwd-grain-opacity": 0.05 } as React.CSSProperties}
     >
-      <p className="absolute left-6 top-6 z-1 font-body text-[11px] tracking-[0.18em] text-photo-ink/45">
+      <p
+        className={`absolute z-1 max-w-[70%] font-body text-[11px] tracking-[0.18em] text-photo-ink/45 ${labelPosition}`}
+      >
         {label}
       </p>
       {children}
