@@ -17,6 +17,8 @@
 
 import { getServiceClient } from "@/lib/supabase";
 import { upsertHubspotContact } from "@/lib/hubspot";
+import { sendEmail } from "@/lib/email";
+import { EMAILS } from "@/content/emails";
 import type { MemberGroupId } from "@/lib/brand";
 
 export type ApplicationInput = {
@@ -66,9 +68,14 @@ export async function submitApplication(
 
   if (error) return { status: "failed", reason: error.message };
 
-  // --- Step 2. HubSpot, which is allowed to fail. --------------------------
-  // Deliberately not awaited in a way that could fail the whole submission.
-  await pushToHubspot(data.id, input);
+  // --- Step 2 and 3. Both allowed to fail. ---------------------------------
+  // Neither of these can turn a saved application into a failed one. They are
+  // run together rather than one after the other so a slow HubSpot does not
+  // hold up the acknowledgement email.
+  await Promise.allSettled([
+    pushToHubspot(data.id, input),
+    acknowledge(input),
+  ]);
 
   return { status: "saved" };
 }
@@ -152,4 +159,30 @@ export async function findApplicationsAwaitingHubspot(limit = 50) {
     .limit(limit);
 
   return data ?? [];
+}
+
+/**
+ * Tells the applicant we have their application. Failing to send this is not a
+ * reason to fail the application, so the outcome is logged and nothing else.
+ */
+async function acknowledge(input: ApplicationInput): Promise<void> {
+  const sent = await sendEmail(EMAILS.received, {
+    name: input.name,
+    email: input.email,
+  });
+  if (sent.sent) return;
+
+  if (!sent.configured) {
+    console.warn(
+      "[fwd.] No email service connected, so",
+      input.email,
+      "was not sent an acknowledgement. Their application is still saved.",
+    );
+  } else {
+    console.error(
+      "[fwd.] Acknowledgement email failed for",
+      input.email,
+      sent.reason,
+    );
+  }
 }
