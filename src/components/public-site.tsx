@@ -42,10 +42,17 @@ export function PublicSite() {
       <Hero />
 
       <main id="main">
-        {/* ---- What the club is, with photography alongside --------------- */}
-        <Section id="about" heading={ABOUT.heading}>
-          <div className="mt-10 grid items-start gap-10 lg:grid-cols-[1fr_0.85fr]">
-            <Prose lines={ABOUT.body} className="mt-0" />
+        {/* ---- What the club is, with photography alongside ---------------
+             The heading sits INSIDE the left column rather than above the whole
+             section, so the words and the pictures can be centred against each
+             other. With the heading above the grid, centring the paragraphs
+             would have left it stranded at the top on its own. */}
+        <Section id="about">
+          <div className="grid items-center gap-10 lg:grid-cols-[1fr_0.85fr]">
+            <div>
+              <h2 className="fwd-reveal text-4xl sm:text-5xl">{ABOUT.heading}</h2>
+              <Prose lines={ABOUT.body} />
+            </div>
 
             <div className="fwd-reveal grid grid-cols-2 gap-4">
               <div className="fwd-zoom col-span-2 overflow-hidden rounded-2xl">
