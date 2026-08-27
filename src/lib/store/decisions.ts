@@ -32,7 +32,7 @@ export async function decideApplication(
 
   const { data: application, error: readError } = await supabase
     .from("applications")
-    .select("id, name, email, status")
+    .select("id, name, email, role, company, group_type, market, link, status")
     .eq("id", applicationId)
     .single();
 
@@ -50,6 +50,35 @@ export async function decideApplication(
     .eq("id", applicationId);
 
   if (writeError) return { status: "failed", reason: writeError.message };
+
+  // Accepting has to create the member record, or the welcome email sends
+  // somebody to a sign-in screen that will not let them in.
+  if (decision === "accepted") {
+    const { error: memberError } = await supabase.from("members").upsert(
+      {
+        email: application.email,
+        name: application.name,
+        role: application.role ?? "",
+        company: application.company ?? "",
+        market: application.market ?? "",
+        group_type: application.group_type,
+        link: application.link,
+        application_id: application.id,
+        status: "active",
+      },
+      { onConflict: "email" },
+    );
+
+    if (memberError) {
+      // Better to stop than to send somebody a welcome they cannot act on.
+      console.error(
+        "[fwd.] Could not create a member record for",
+        application.email,
+        memberError.message,
+      );
+      return { status: "failed", reason: memberError.message };
+    }
+  }
 
   const template = decision === "accepted" ? EMAILS.accepted : EMAILS.declined;
   const sent = await sendEmail(template, {

@@ -1,18 +1,11 @@
 import type { Metadata } from "next";
-import { cookies } from "next/headers";
-import { notFound } from "next/navigation";
-import { ADMIN_ENABLED, ADMIN_COOKIE } from "@/lib/site-config";
 import { findPendingApplications } from "@/lib/store/decisions";
 import { isHubspotConfigured } from "@/lib/hubspot";
 import { isEmailConfigured } from "@/lib/email";
-import { AdminSignInForm } from "./sign-in-form";
 import { decide } from "./actions";
 import { MEMBER_GROUPS } from "@/lib/brand";
 
-export const metadata: Metadata = {
-  title: "Admin",
-  robots: { index: false, follow: false },
-};
+export const metadata: Metadata = { title: "Applications" };
 
 /**
  * The club team's view of applications waiting on a decision.
@@ -22,23 +15,6 @@ export const metadata: Metadata = {
  * be read in advance at /review/emails.
  */
 export default async function AdminPage() {
-  if (!ADMIN_ENABLED) notFound();
-
-  const jar = await cookies();
-  if (jar.get(ADMIN_COOKIE)?.value !== "granted") {
-    return (
-      <main className="flex flex-1 items-center justify-center px-6 py-24">
-        <div className="w-full max-w-sm">
-          <h1 className="text-3xl">admin</h1>
-          <p className="mt-3 font-body text-sm text-ink-muted">
-            For the club team.
-          </p>
-          <AdminSignInForm />
-        </div>
-      </main>
-    );
-  }
-
   const pending = await findPendingApplications();
 
   return (

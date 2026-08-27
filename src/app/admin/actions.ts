@@ -6,6 +6,17 @@ import { timingSafeEqual } from "node:crypto";
 import { ADMIN_COOKIE } from "@/lib/site-config";
 import { decideApplication, type Decision } from "@/lib/store/decisions";
 import type { AdminState } from "@/lib/form-state";
+import {
+  addMember,
+  setMemberStatus,
+  saveEvent,
+  recordInvitation,
+  markIntroHandled,
+} from "@/lib/store/admin";
+import { MEMBER_GROUPS, type MemberGroupId } from "@/lib/brand";
+import { invitationUrl } from "@/lib/invitations";
+import { sendEmail } from "@/lib/email";
+import { EMAILS } from "@/content/emails";
 
 function matches(given: string, expected: string): boolean {
   const a = Buffer.from(given);
@@ -51,4 +62,116 @@ export async function decide(formData: FormData): Promise<void> {
 
   await decideApplication(id, decision, "admin");
   revalidatePath("/admin");
+}
+
+/* ========================================================================== */
+/* Members, events, invitations and introductions                             */
+/* ========================================================================== */
+
+/**
+ * Every action below re-checks the admin cookie for itself.
+ *
+ * The layout gate protects the PAGES. A server action is a web address of its
+ * own and can be called without ever loading a page, so it has to check too.
+ */
+async function isAdmin(): Promise<boolean> {
+  const jar = await cookies();
+  return jar.get(ADMIN_COOKIE)?.value === "granted";
+}
+
+export async function createMember(formData: FormData): Promise<void> {
+  if (!(await isAdmin())) return;
+
+  const text = (key: string) => String(formData.get(key) ?? "").trim();
+  const group = text("group");
+  if (!MEMBER_GROUPS.some((g) => g.id === group)) return;
+
+  await addMember({
+    name: text("name"),
+    email: text("email"),
+    role: text("role"),
+    company: text("company"),
+    market: text("market"),
+    group: group as MemberGroupId,
+  });
+  revalidatePath("/admin/members");
+}
+
+export async function changeMemberStatus(formData: FormData): Promise<void> {
+  if (!(await isAdmin())) return;
+
+  const id = String(formData.get("id") ?? "");
+  const status = String(formData.get("status") ?? "");
+  if (status !== "active" && status !== "paused" && status !== "removed") return;
+
+  await setMemberStatus(id, status);
+  revalidatePath("/admin/members");
+}
+
+export async function createOrUpdateEvent(formData: FormData): Promise<void> {
+  if (!(await isAdmin())) return;
+
+  const text = (key: string) => String(formData.get(key) ?? "").trim();
+  const starts = text("starts_at");
+  if (!text("slug") || !text("title") || !starts) return;
+
+  await saveEvent({
+    id: text("id") || undefined,
+    slug: text("slug"),
+    title: text("title"),
+    city: text("city"),
+    format: text("format") || "dinner",
+    description: text("description"),
+    starts_at: new Date(starts).toISOString(),
+    ends_at: text("ends_at") ? new Date(text("ends_at")).toISOString() : null,
+    is_confirmed: formData.get("is_confirmed") === "on",
+    is_published: formData.get("is_published") === "on",
+  });
+  revalidatePath("/admin/events");
+}
+
+/**
+ * Sends one invitation.
+ *
+ * The link in the email is signed and tied to both the event and the person, so
+ * they can open the invitation without signing in, and their link is not a
+ * general key to the event.
+ */
+export async function sendInvitation(formData: FormData): Promise<void> {
+  if (!(await isAdmin())) return;
+
+  const eventId = String(formData.get("eventId") ?? "");
+  const memberId = String(formData.get("memberId") ?? "");
+  const slug = String(formData.get("slug") ?? "");
+  const title = String(formData.get("title") ?? "");
+  const name = String(formData.get("name") ?? "");
+  const email = String(formData.get("email") ?? "");
+  if (!eventId || !memberId) return;
+
+  const url = invitationUrl(slug, eventId, memberId);
+
+  const sent = await sendEmail(
+    {
+      subject: EMAILS.invitation.subject.replace("{event}", title),
+      body: EMAILS.invitation.body.map((line) =>
+        line.replace("{event}", title).replace("{name}", name),
+      ),
+      action: { label: EMAILS.invitation.action.label, url },
+    },
+    { name, email },
+  );
+
+  if (!sent.sent) {
+    console.error("[fwd.] Invitation email failed for", email, sent.reason);
+    return;
+  }
+
+  await recordInvitation(eventId, memberId);
+  revalidatePath(`/admin/events/${eventId}`);
+}
+
+export async function handleIntroRequest(formData: FormData): Promise<void> {
+  if (!(await isAdmin())) return;
+  await markIntroHandled(String(formData.get("id") ?? ""));
+  revalidatePath("/admin/introductions");
 }

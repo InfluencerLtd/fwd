@@ -52,6 +52,32 @@ export const EMAILS = {
     ],
   },
 
+  /**
+   * An invitation to one event.
+   *
+   * The link goes to that event's own page and can be opened WITHOUT signing
+   * in. Signing in is only needed to reserve a place. {event} is the event name.
+   */
+  invitation: {
+    subject: "You are invited: {event}",
+    body: [
+      "Hello {name},",
+      "You are invited to {event}.",
+      "Have a look at the details below. You do not need to sign in to read it. If you would like to come, sign in when you get there and let us know.",
+    ],
+    action: { label: "See the invitation", url: "{signInUrl}" },
+  },
+
+  /** The six-digit code for signing in to The Clubhouse. */
+  signIn: {
+    subject: "Your fwd. sign-in code",
+    body: [
+      "Hello {name},",
+      "Your code is {code}",
+      "It works once and expires in ten minutes. If you did not ask to sign in, you can ignore this and nothing will happen.",
+    ],
+  },
+
   /** Sent as soon as an application is received. */
   received: {
     subject: "We have your fwd. application",
