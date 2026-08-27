@@ -47,10 +47,10 @@ export const CONTACT = {
 
 /** The four groups the membership spans. Order is deliberate. */
 export const MEMBER_GROUPS = [
-  { id: "brand", label: "Brands" },
-  { id: "creator", label: "Creators" },
-  { id: "platform", label: "Platforms" },
-  { id: "industry", label: "Industry" },
+  { id: "brand", label: "brands" },
+  { id: "creator", label: "creators" },
+  { id: "platform", label: "platforms" },
+  { id: "industry", label: "industry" },
 ] as const;
 
 export type MemberGroupId = (typeof MEMBER_GROUPS)[number]["id"];

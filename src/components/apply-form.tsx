@@ -83,7 +83,7 @@ export function ApplyForm() {
           />
         </Field>
 
-        <Field id={ids.email} name="email" label="Email address" error={errors.email}>
+        <Field id={ids.email} name="email" label={APPLY.fields.email} error={errors.email}>
           <input
             id={ids.email}
             name="email"
@@ -143,7 +143,7 @@ export function ApplyForm() {
             className={fieldClass("group")}
           >
             <option value="" disabled>
-              Choose one
+              choose one
             </option>
             {MEMBER_GROUPS.map((group) => (
               <option key={group.id} value={group.id}>

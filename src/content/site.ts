@@ -24,7 +24,7 @@ export const HOLDING = {
   /** DRAFT. The prompt above the email field. */
   capturePrompt: "Be the first to hear when applications open.",
 
-  emailLabel: "Email address",
+  emailLabel: "email address",
   emailPlaceholder: "you@company.com",
   submit: "keep me posted",
   submitting: "just a moment",
@@ -217,14 +217,15 @@ export const APPLY = {
     success: "Thank you. You are on the list and we will be in touch.",
   },
   fields: {
-    name: "Full name",
-    role: "Role",
-    company: "Company",
-    group: "Which best describes you",
-    market: "Market",
+    name: "full name",
+    email: "email address",
+    role: "role",
+    company: "company",
+    group: "which best describes you",
+    market: "market",
     marketHint: "Where you are based.",
     link: "LinkedIn or social profile",
-    reason: "Why do you want to be part of it",
+    reason: "why do you want to be part of it",
     reasonHint: "A few lines is plenty.",
   },
   /** Shown when a required field is empty. */

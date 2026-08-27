@@ -61,7 +61,7 @@ export function ProfileForm({ member }: { member: Member }) {
       </div>
 
       <fieldset className="mt-9">
-        <legend className={label}>Contact preferences</legend>
+        <legend className={label}>{PROFILE.contactPreferences}</legend>
 
         <div className="mt-4 flex items-start gap-3">
           <input

@@ -5,11 +5,11 @@ import { EVENTS } from "@/content/clubhouse";
 import type { PublicEventView } from "@/lib/invitations";
 
 const FORMAT_LABEL: Record<string, string> = {
-  dinner: "Dinner",
-  drinks: "Drinks",
-  roundtable: "Roundtable",
-  webinar: "Webinar",
-  conference: "Conference",
+  dinner: "dinner",
+  drinks: "drinks",
+  roundtable: "roundtable",
+  webinar: "webinar",
+  conference: "conference",
 };
 
 export function formatDate(iso: string, end?: string | null): string {
@@ -35,15 +35,15 @@ export function EventFacts({ event }: { event: PublicEventView }) {
   return (
     <dl className="mt-8 grid gap-5 font-body text-[15px] sm:grid-cols-3">
       <div>
-        <dt className="text-ink-muted">Date</dt>
+        <dt className="text-ink-muted">{EVENTS.dateLabel}</dt>
         <dd className="mt-1 text-ink">{formatDate(event.starts_at, event.ends_at)}</dd>
       </div>
       <div>
-        <dt className="text-ink-muted">City</dt>
+        <dt className="text-ink-muted">{EVENTS.cityLabel}</dt>
         <dd className="mt-1 text-ink">{event.city}</dd>
       </div>
       <div>
-        <dt className="text-ink-muted">Format</dt>
+        <dt className="text-ink-muted">{EVENTS.formatLabel}</dt>
         <dd className="mt-1 text-ink">
           {FORMAT_LABEL[event.format] ?? event.format}
         </dd>
