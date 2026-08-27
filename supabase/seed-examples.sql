@@ -73,3 +73,31 @@ values
    '[DESCRIPTION NEEDED. Not confirmed yet, and the date below is a placeholder.]',
    '2026-12-10T18:30:00Z', null, false, true)
 on conflict (slug) do nothing;
+
+-- ---------------------------------------------------------------------------
+-- Two example library items, so the library can be looked at before the club
+-- has published anything. Both are flagged as examples and carry an orange
+-- EXAMPLE tag wherever they appear.
+--
+-- Delete them with:  delete from public.content_items where is_dummy;
+-- ---------------------------------------------------------------------------
+
+insert into public.content_items
+  (kind, slug, title, summary, body, category, published_at, is_published, is_dummy)
+values
+  ('research',
+   'example-research-item',
+   'Example research item',
+   'This is an example, not a real piece of research. It is here so the library has something in it before the club has published anything.',
+   'This is where a written piece would appear. Research and white papers are usually a file to download instead, which is added from the admin.',
+   'Example category',
+   now(), true, true),
+
+  ('recap',
+   'example-event-recap',
+   'Example event recap',
+   'This is an example, not a real recap. Recaps are written to be read here rather than downloaded.',
+   E'A recap would go here.\n\nParagraphs are separated by a blank line, and they are shown the way they are typed.',
+   'Example category',
+   now(), true, true)
+on conflict (slug) do nothing;

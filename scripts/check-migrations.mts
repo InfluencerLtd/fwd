@@ -49,14 +49,16 @@ try {
   report(false, "seed-examples.sql", error instanceof Error ? error.message : String(error));
 }
 
-const dummies = await db.query<{ n: number }>(
-  `select count(*)::int as n from public.members where not is_dummy`,
-);
-report(
-  dummies.rows[0].n === 0,
-  "no example member is left looking like a real one",
-  dummies.rows[0].n === 0 ? "" : `${dummies.rows[0].n} member(s) not flagged as examples`,
-);
+for (const table of ["members", "content_items"]) {
+  const stray = await db.query<{ n: number }>(
+    `select count(*)::int as n from public.${table} where not is_dummy`,
+  );
+  report(
+    stray.rows[0].n === 0,
+    `no example ${table.replace("_", " ")} row is left looking real`,
+    stray.rows[0].n === 0 ? "" : `${stray.rows[0].n} row(s) not flagged as examples`,
+  );
+}
 
 console.log("\nEvery table has row level security switched on:");
 const tables = await db.query<{ tablename: string; rowsecurity: boolean }>(
