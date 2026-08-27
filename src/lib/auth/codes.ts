@@ -18,6 +18,22 @@
  * 3. ATTEMPTS AND REQUESTS ARE BOTH LIMITED. Six digits is a million
  *    possibilities, which is plenty when only five guesses are allowed, and
  *    nothing at all if unlimited guesses are allowed.
+ *
+ * THE OWNER ADDRESS
+ *
+ * One address, set as OWNER_EMAIL in the environment, can always get in. If it
+ * has no member record, or somebody removed it by accident, the record is
+ * created or put back the moment a code is asked for.
+ *
+ * It is worth being precise about what that does and does not do. It guarantees
+ * the address is always a member. It does NOT skip the code: the owner still
+ * receives six digits and still has to type them. There is no address anywhere
+ * in this system that can sign in without proving it can read the inbox, and
+ * there should never be one, because a member directory of senior people at
+ * client companies is exactly the thing worth breaking into.
+ *
+ * The address lives in the environment rather than in this file, so it can be
+ * changed, and so the codebase does not name a specific person as privileged.
  */
 
 import { createHmac, randomInt, timingSafeEqual } from "node:crypto";
@@ -31,6 +47,12 @@ const CODE_MINUTES = 10;
 const MAX_ATTEMPTS = 5;
 /** Codes one address can ask for in an hour. */
 const MAX_CODES_PER_HOUR = 5;
+
+/** True only for the one address set as OWNER_EMAIL in the environment. */
+function isOwner(email: string): boolean {
+  const owner = process.env.OWNER_EMAIL?.trim().toLowerCase();
+  return Boolean(owner) && owner === email.trim().toLowerCase();
+}
 
 function hashCode(email: string, code: string): string {
   const secret = process.env.LINK_SECRET;
@@ -64,12 +86,35 @@ export async function requestSignInCode(
 
   const email = rawEmail.trim().toLowerCase();
 
-  const { data: member } = await supabase
+  let { data: member } = await supabase
     .from("members")
     .select("id, name")
     .eq("email", email)
     .eq("status", "active")
     .single();
+
+  // The owner is always a member. If the record is missing or was paused or
+  // removed, it is restored here rather than locking the owner out of their own
+  // site. They still have to type the code like everybody else.
+  if (!member && isOwner(email)) {
+    const { data: restored, error } = await supabase
+      .from("members")
+      .upsert(
+        {
+          email,
+          name: process.env.OWNER_NAME || "Owner",
+          group_type: "industry",
+          status: "active",
+        },
+        { onConflict: "email" },
+      )
+      .select("id, name")
+      .single();
+
+    if (error) return { status: "failed", reason: error.message };
+    member = restored;
+    console.warn("[fwd.] Restored the owner's member record for", email);
+  }
 
   // No member, no code. The caller still shows the same message.
   if (!member) return { status: "not-a-member" };
@@ -100,6 +145,17 @@ export async function requestSignInCode(
   );
 
   if (!sent.sent) {
+    // On your own computer, with no email service connected, the code is
+    // printed in the terminal instead so you can still sign in and look
+    // around. NODE_ENV is set by the build, not by a file, so this branch
+    // cannot exist in a real deployment.
+    if (process.env.NODE_ENV !== "production") {
+      console.warn(
+        `\n[fwd.] No email service connected, so here is the sign-in code for ${email}:\n\n        ${code}\n\n       It works once and expires in ten minutes.\n`,
+      );
+      return { status: "sent" };
+    }
+
     // The code exists but never reached them, which is useless. Say so.
     console.error("[fwd.] Sign-in code could not be emailed:", sent.reason);
     return { status: "failed", reason: sent.reason };

@@ -58,7 +58,12 @@ export function createToken(
 }
 
 export type TokenCheck =
-  | { valid: true; subject: string }
+  | {
+      valid: true;
+      subject: string;
+      /** Unix seconds. Used to decide when a session is worth renewing. */
+      expiresAt: number;
+    }
   | { valid: false; reason: "malformed" | "bad-signature" | "expired" };
 
 export function readToken(purpose: string, token: string): TokenCheck {
@@ -94,5 +99,5 @@ export function readToken(purpose: string, token: string): TokenCheck {
     return { valid: false, reason: "expired" };
   }
 
-  return { valid: true, subject };
+  return { valid: true, subject, expiresAt: expires };
 }

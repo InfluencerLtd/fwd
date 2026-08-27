@@ -19,8 +19,23 @@ import { getServiceClient } from "@/lib/supabase";
 import type { MemberGroupId } from "@/lib/brand";
 
 export const SESSION_COOKIE = "fwd-session";
-const SESSION_PURPOSE = "session";
-const SESSION_DAYS = 90;
+export const SESSION_PURPOSE = "session";
+
+/**
+ * How long a session lasts, and how it stays alive.
+ *
+ * A session is good for 90 days, and it is ROLLING: every day a member uses the
+ * site, the 90 days starts again, so somebody who visits regularly never gets
+ * signed out. The renewal happens in src/proxy.ts.
+ *
+ * The 90 days still matters, because it is what expires a session nobody is
+ * using. A laptop left in a taxi stops being a way in three months later rather
+ * than never, which is the point of having a number at all.
+ */
+export const SESSION_DAYS = 90;
+
+/** Renew at most once a day, rather than writing a cookie on every request. */
+export const SESSION_RENEW_AFTER_DAYS = 1;
 
 export type Member = {
   id: string;

@@ -91,7 +91,27 @@ HUBSPOT_ACCESS_TOKEN="the token"
 
 ---
 
-## 4. Two secrets of your own
+## 4. Your own always-on access
+
+```
+OWNER_EMAIL="sophie.sh@influencer.com"
+OWNER_NAME="Sophie Sherwood"
+```
+
+That address always has access to The House. If its member record is ever
+missing, paused or removed, it is put back automatically the next time a
+sign-in code is asked for, so you cannot be locked out of your own site.
+
+It does not skip the six-digit code. You still get the code and still type it.
+Nothing in this system can sign in without proving it can read the inbox, and
+nothing should be added that can: the member directory holds the names,
+employers and contact details of senior people at client companies.
+
+Once you sign in, you stay signed in. A session lasts 90 days and renews every
+time you use the site, so as long as you visit now and then you will not see
+the sign-in screen again.
+
+## 5. Two secrets of your own
 
 ```
 LINK_SECRET="a long random string"
@@ -110,7 +130,7 @@ link already sent stops working.** Set it once and leave it.
 
 ---
 
-## 5. Vercel, to put it online
+## 6. Vercel, to put it online
 
 This is what turns the site into a link you can send to anyone.
 

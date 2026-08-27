@@ -52,5 +52,35 @@ console.log("\nExpiry:");
 const expired = createToken("invite", `${eventA}|${member}`, -60);
 check("an expired link is refused", readToken("invite", expired).valid, false);
 
+
+console.log("\nSession renewal, the rule the proxy follows:");
+{
+  const SESSION_DAYS = 90;
+  const full = SESSION_DAYS * 86400;
+  const member = "44444444-4444-4444-4444-444444444444";
+
+  // A session issued moments ago should NOT be rewritten on every request.
+  const fresh = createToken("session", member, full);
+  const freshCheck = readToken("session", fresh);
+  const freshLeft = freshCheck.valid ? freshCheck.expiresAt - Math.floor(Date.now() / 1000) : 0;
+  check("a brand new session is left alone", freshLeft > full - 86400, true);
+
+  // One that has been running a while should be renewed.
+  const older = createToken("session", member, full - 5 * 86400);
+  const olderCheck = readToken("session", older);
+  const olderLeft = olderCheck.valid ? olderCheck.expiresAt - Math.floor(Date.now() / 1000) : 0;
+  check("a session five days old is renewed", olderLeft > full - 86400, false);
+
+  // And a tampered one must never be renewed, or the proxy would hand out a
+  // valid session to somebody who did not have one.
+  check("a tampered session is refused", readToken("session", fresh.replace(/.$/, "x")).valid, false);
+  check("an expired session is refused", readToken("session", createToken("session", member, -60)).valid, false);
+  check(
+    "a token for another purpose is not a session",
+    readToken("session", createToken("invite", member, 3600)).valid,
+    false,
+  );
+}
+
 console.log(failures === 0 ? "\nAll checks passed.\n" : `\n${failures} check(s) FAILED.\n`);
 process.exit(failures === 0 ? 0 : 1);
