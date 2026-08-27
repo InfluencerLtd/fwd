@@ -88,7 +88,7 @@ export default async function AdminLibraryPage() {
 
             <button
               type="submit"
-              className="fwd-btn bg-accent px-6 py-2.5 text-[15px] text-white hover:bg-ink sm:justify-self-start"
+              className="fwd-btn border border-photo-ground/60 bg-accent-on-dark px-6 py-2.5 text-[15px] text-photo-ground hover:border-photo-ground hover:bg-photo-ground hover:text-accent-on-dark sm:justify-self-start"
             >
               Save
             </button>

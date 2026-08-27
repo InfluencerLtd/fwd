@@ -29,7 +29,7 @@ export function AdminSignInForm() {
       <button
         type="submit"
         disabled={pending}
-        className="fwd-btn mt-4 w-full bg-accent px-6 py-3 font-body text-base text-white hover:bg-ink disabled:opacity-60"
+        className="fwd-btn mt-4 w-full border border-photo-ground/60 bg-accent-on-dark px-6 py-3 font-body text-base text-photo-ground hover:border-photo-ground hover:bg-photo-ground hover:text-accent-on-dark disabled:opacity-60"
       >
         {pending ? "Checking" : "Sign in"}
       </button>

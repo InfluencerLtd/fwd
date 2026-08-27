@@ -52,7 +52,7 @@ export default async function AdminMerchPage() {
               <input type="checkbox" name="is_published" className="h-5 w-5 accent-[var(--fwd-accent)]" />
               Show to members
             </label>
-            <button type="submit" className="fwd-btn bg-accent px-6 py-2.5 text-[15px] text-white hover:bg-ink sm:col-span-2 sm:justify-self-start">
+            <button type="submit" className="fwd-btn border border-photo-ground/60 bg-accent-on-dark px-6 py-2.5 text-[15px] text-photo-ground hover:border-photo-ground hover:bg-photo-ground hover:text-accent-on-dark sm:col-span-2 sm:justify-self-start">
               Save
             </button>
           </form>

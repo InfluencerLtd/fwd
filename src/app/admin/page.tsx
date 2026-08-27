@@ -85,7 +85,7 @@ export default async function AdminPage() {
                     <input type="hidden" name="decision" value="accepted" />
                     <button
                       type="submit"
-                      className="fwd-btn bg-accent px-5 py-2.5 text-sm text-white hover:bg-ink"
+                      className="fwd-btn border border-photo-ground/60 bg-accent-on-dark px-5 py-2.5 text-sm text-photo-ground hover:border-photo-ground hover:bg-photo-ground hover:text-accent-on-dark"
                     >
                       Accept and send welcome
                     </button>
