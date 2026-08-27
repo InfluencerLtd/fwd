@@ -429,3 +429,57 @@ textarea.fwd-field {
 .fwd-underline:focus-visible {
   background-size: 100% 1px;
 }
+
+/* ===========================================================================
+   The panel the application form opens in
+   ---------------------------------------------------------------------------
+   Built on the browser's own <dialog>, which is worth saying because it means
+   the awkward parts are handled for us and handled properly: focus is trapped
+   inside while it is open, Escape closes it, the page behind cannot be scrolled
+   or tabbed into, and screen readers announce it as a dialog. A div pretending
+   to be a dialog gets none of that without a lot of code.
+   =========================================================================== */
+
+.fwd-dialog {
+  /* Tailwind's reset zeroes the margin on every element, including the one the
+     browser uses to centre a dialog. Without this it sits against the top. */
+  margin: auto;
+  width: min(46rem, calc(100vw - 2rem));
+  max-height: min(46rem, calc(100dvh - 2rem));
+  padding: 0;
+  border: 1px solid var(--fwd-border);
+  border-radius: 1.5rem;
+  background: var(--fwd-surface);
+  color: var(--fwd-ink);
+  overflow: hidden;
+}
+
+.fwd-dialog::backdrop {
+  background: color-mix(in oklab, var(--fwd-photo-ground) 72%, transparent);
+  backdrop-filter: blur(3px);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .fwd-dialog[open] {
+    animation: fwd-dialog-in 320ms cubic-bezier(0.2, 0, 0, 1) both;
+  }
+  .fwd-dialog[open]::backdrop {
+    animation: fwd-fade-in 320ms ease both;
+  }
+}
+
+@keyframes fwd-dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fwd-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

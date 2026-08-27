@@ -219,17 +219,61 @@ export const APPLY = {
     submitting: "sending",
     success: "Thank you. You are on the list and we will be in touch.",
   },
+  /** The button on the page. The form itself lives behind it, in a panel. */
+  cta: "apply for membership",
+
+  /**
+   * Applying starts by saying which of the two you are, because the questions
+   * worth asking a creator are not the questions worth asking somebody at a
+   * brand. There are two forms behind this, not one form with a dropdown.
+   */
+  choose: {
+    heading: "first, which are you?",
+    creator: {
+      label: "a creator",
+      hint: "You make the work, whatever the platform.",
+    },
+    brand: {
+      label: "a brand, a platform, or industry",
+      hint: "You work at a company in or around the creator economy.",
+    },
+  },
+  back: "back",
+  close: "close",
+
+  /**
+   * The fields, per path.
+   *
+   * Both paths write to the same three columns underneath. A creator's answers
+   * go into the same `role` and `company` fields a brand's do, with labels that
+   * make sense for them, rather than adding columns that would sit empty for
+   * half of every application.
+   */
   fields: {
-    name: "full name",
-    email: "email address",
-    role: "role",
-    company: "company",
-    group: "which best describes you",
-    market: "market",
-    marketHint: "Where you are based.",
-    link: "LinkedIn or social profile",
-    reason: "why do you want to be part of it",
-    reasonHint: "A few lines is plenty.",
+    shared: {
+      name: "full name",
+      email: "email address",
+      market: "market",
+      marketHint: "Where you are based.",
+      link: "LinkedIn or social profile",
+      reason: "why do you want to be part of it",
+      reasonHint: "A few lines is plenty.",
+    },
+    creator: {
+      heading: "apply, as a creator",
+      role: "what you make",
+      roleHint: "The kind of work, in a few words.",
+      company: "where people find you",
+      companyHint: "Your main handle or channel.",
+      linkLabel: "your biggest platform",
+    },
+    brand: {
+      heading: "apply",
+      role: "role",
+      company: "company",
+      group: "which best describes your company",
+      linkLabel: "LinkedIn or social profile",
+    },
   },
   /** Shown when a required field is empty. */
   required: "Please fill this in.",

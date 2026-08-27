@@ -4,7 +4,7 @@ import { Section, Prose } from "@/components/section";
 import { MembershipCards } from "@/components/membership-cards";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { PhotoBand } from "@/components/photo-band";
-import { ApplyForm } from "@/components/apply-form";
+import { ApplyDialog } from "@/components/apply-dialog";
 import { SignupForm } from "@/components/signup-form";
 import { SiteFooter } from "@/components/site-footer";
 import {
@@ -167,7 +167,7 @@ export function PublicSite() {
             </p>
 
             {APPLICATIONS_OPEN ? (
-              <ApplyForm />
+              <ApplyDialog />
             ) : (
               <div className="fwd-reveal mt-10 max-w-xl">
                 <SignupForm source="waitlist" tone="light" />

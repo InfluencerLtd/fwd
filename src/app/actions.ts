@@ -91,6 +91,10 @@ export async function submitMembershipApplication(
   if (!market) fieldErrors.market = APPLY.required;
   if (!reason) fieldErrors.reason = APPLY.required;
 
+  // There are two forms. The creator one fixes the group in a hidden field, the
+  // other offers the remaining three. Both are checked here rather than
+  // trusted, so a group cannot be posted that the form would never have
+  // offered: no creator application can arrive claiming to be a platform.
   const validGroup = MEMBER_GROUPS.some((g) => g.id === group);
   if (!validGroup) fieldErrors.group = APPLY.required;
 

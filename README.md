@@ -225,6 +225,28 @@ The record is in the content files. Anything marked `DRAFT` in
 wording that has not been agreed. Searching those three files for `DRAFT` shows
 everything still waiting on a decision.
 
+## The two application forms
+
+The apply section on the page is a heading, a line and one button. The form
+opens in a panel over the page, so a long form is not sitting there for the many
+more people who read the page than fill it in.
+
+Applying starts by asking which of two you are, because the questions worth
+asking a creator are not the ones worth asking somebody at a brand:
+
+| | Creator | Brand, platform or industry |
+| --- | --- | --- |
+| Instead of role | what you make | role |
+| Instead of company | where people find you | company |
+| Group | fixed as creator | chosen from brands, platforms, industry |
+
+Both write to the same columns underneath, so the admin and HubSpot see one
+consistent list. A creator's answers go into the same role and company fields,
+with labels that make sense for them, rather than adding columns that would sit
+empty for half of every application.
+
+All of the wording is in `APPLY` in `src/content/site.ts`.
+
 ## How to open or close applications
 
 `APPLICATIONS_OPEN` in the same file. `true` shows the application form, `false`
