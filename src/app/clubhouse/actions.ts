@@ -18,7 +18,7 @@ export async function signOut(): Promise<void> {
  *
  * Note what this does NOT do. Whether or not the address belongs to a member,
  * it returns the same thing and shows the same screen. Anything else would turn
- * this form into a way of finding out who is in the club.
+ * this form into a way of finding out who is a member.
  */
 export async function requestCode(
   _previous: SignInState,

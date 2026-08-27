@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 /**
- * Lets the club team look at the real site while the holding page is up.
+ * Lets the fwd. team look at the real site while the holding page is up.
  *
  * The password is set as EARLY_ACCESS_PASSWORD in the environment, never in a
  * file. If it is not set, this page does not exist at all, so there is no
@@ -23,7 +23,7 @@ export default function EarlyAccessPage() {
       <div className="w-full max-w-sm">
         <h1 className="text-3xl">early access</h1>
         <p className="mt-3 font-body text-sm leading-relaxed text-ink-muted">
-          For the club team. This shows the real site while the holding page is
+          For the fwd. team. This shows the real site while the holding page is
           up for everyone else.
         </p>
         <EarlyAccessForm />

@@ -7,9 +7,9 @@
  * bits in {curly braces} are filled in automatically:
  *
  *   {name}         the person's first name
- *   {signInUrl}    the link into The Clubhouse
- *   {clubEmail}    the club's email address
- *   {memberArea}   "The Clubhouse"
+ *   {signInUrl}    the link into The House
+ *   {contactEmail} the fwd. email address
+ *   {memberArea}   "The House"
  *   {unsubscribe}  the unsubscribe link
  *
  * House rules: American English, and no em dashes.
@@ -33,7 +33,7 @@ export const EMAILS = {
     subject: "Welcome to fwd.",
     body: [
       "Hello {name},",
-      "Your application has been accepted. Welcome to the club.",
+      "Your application has been accepted. Welcome in.",
       "{memberArea} is where everything happens between events. Sign in with the link below, add a line or two to your profile so other members know what you are working on, and have a look at what is coming up.",
       "Invitations will come by email from here on. If you ever want an introduction to another member, ask us and we will make it properly.",
       "We are glad you are in.",
@@ -68,7 +68,7 @@ export const EMAILS = {
     action: { label: "See the invitation", url: "{signInUrl}" },
   },
 
-  /** The six-digit code for signing in to The Clubhouse. */
+  /** The six-digit code for signing in to The House. */
   signIn: {
     subject: "Your fwd. sign-in code",
     body: [
@@ -91,6 +91,6 @@ export const EMAILS = {
 
 export const EMAIL_FOOTER = {
   /** Appears at the bottom of every email. The unsubscribe link is required. */
-  lines: ["fwd., by influencer", "{clubEmail}"],
-  unsubscribeLabel: "Unsubscribe from club email",
+  lines: ["fwd., by influencer", "{contactEmail}"],
+  unsubscribeLabel: "Unsubscribe from fwd. email",
 } as const;

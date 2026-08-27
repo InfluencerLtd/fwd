@@ -11,7 +11,7 @@
  * the real thing.
  *
  * WHAT IS NEEDED: the approved privacy policy and cookie notice from whoever
- * handles this at influencer, adapted to name the club and to cover the data
+ * handles this at influencer, adapted to name fwd. and to cover the data
  * this site actually collects, which is:
  *
  *   Holding page and waitlist: email address, consent, and the date given.
@@ -27,7 +27,7 @@
 export const PRIVACY = {
   heading: "privacy",
   holdingText: [
-    "Our full privacy policy is being prepared and will be published here before the club opens.",
+    "Our full privacy policy is being prepared and will be published here before fwd. opens.",
     "In the meantime, if you want to know what we hold about you, or you want it removed, write to us at the address below and we will deal with it.",
   ],
 } as const;
@@ -35,7 +35,7 @@ export const PRIVACY = {
 export const COOKIES = {
   heading: "cookies",
   holdingText: [
-    "Our full cookie notice is being prepared and will be published here before the club opens.",
-    "This site does not currently use any advertising or analytics cookies. The only cookie it sets is one that remembers the club team's early access preview, and your browser remembers your choice of light or dark mode on your own device.",
+    "Our full cookie notice is being prepared and will be published here before fwd. opens.",
+    "This site does not currently use any advertising or analytics cookies. The only cookie it sets is one that remembers the fwd. team's early access preview, and your browser remembers your choice of light or dark mode on your own device.",
   ],
 } as const;

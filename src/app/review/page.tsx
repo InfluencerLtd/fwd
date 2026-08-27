@@ -285,7 +285,7 @@ function PairingSample({ pairing }: { pairing: Pairing }) {
           >
             An ongoing community across brands, creators, platforms and the wider
             industry. It runs in person and online, all year. There is no
-            permanent space, and that is deliberate. The club is the people in it.
+            permanent space, and that is deliberate. It is the people in it.
           </p>
         </div>
         <div style={{ fontFamily: pairing.bodyFamily }}>

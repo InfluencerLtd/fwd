@@ -14,7 +14,7 @@ import { SIGN_IN } from "@/content/clubhouse";
  * on that event rather than on a generic home screen.
  *
  * It is passed through safeNextPath first, so it can only ever be a path inside
- * The Clubhouse.
+ * The House.
  */
 export default async function SignInPage({
   searchParams,

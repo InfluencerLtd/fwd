@@ -19,7 +19,7 @@ import { EVENTS } from "@/content/clubhouse";
 /**
  * One event.
  *
- * This is the only page in The Clubhouse that can be seen without signing in,
+ * This is the only page in The House that can be seen without signing in,
  * and the rules are worth stating in full because they are easy to get wrong:
  *
  *   1. A SIGNED IN MEMBER sees everything: the event, whether they are coming,

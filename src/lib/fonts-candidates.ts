@@ -82,7 +82,7 @@ export const PAIRINGS: Pairing[] = [
     name: "Instrument Serif + Instrument Sans",
     chosen: true,
     character:
-      "Modern and quietly confident. The serif has real contrast between thick and thin strokes without being showy, and the sans is by the same designers so the two sit together naturally. Closest to how a contemporary members' club looks now.",
+      "Modern and quietly confident. The serif has real contrast between thick and thin strokes without being showy, and the sans is by the same designers so the two sit together naturally. Closest to how a contemporary members' space looks now.",
     tradeoff:
       "Instrument Serif comes in one weight only, so headings cannot be made bolder or lighter. In practice that suits a restrained design, but it is a real constraint.",
     displayFamily: "var(--font-instrument-serif)",

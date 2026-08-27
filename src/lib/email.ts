@@ -43,7 +43,7 @@ function fill(text: string, to: EmailRecipient): string {
   return text
     .replaceAll("{name}", firstName(to.name))
     .replaceAll("{signInUrl}", `${CONTACT.siteUrl}/clubhouse`)
-    .replaceAll("{clubEmail}", CONTACT.email)
+    .replaceAll("{contactEmail}", CONTACT.email)
     .replaceAll("{memberArea}", BRAND.memberArea)
     .replaceAll("{unsubscribe}", unsubscribeUrl(to.email));
 }

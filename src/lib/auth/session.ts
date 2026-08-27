@@ -58,7 +58,7 @@ export async function endSession(): Promise<void> {
  * The member currently signed in, or null.
  *
  * This checks the member is still active on every request rather than trusting
- * the cookie, so removing somebody from the club takes effect immediately
+ * the cookie, so removing somebody's membership takes effect immediately
  * instead of whenever their session happens to expire.
  */
 export async function getCurrentMember(): Promise<Member | null> {

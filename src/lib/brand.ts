@@ -1,7 +1,7 @@
 /**
  * brand.ts
  * ---------------------------------------------------------------------------
- * Every appearance of the club's name, the endorsement line and the member
+ * Every appearance of the name, the endorsement line and the member
  * area name is read from this file. Nothing is typed by hand anywhere else.
  *
  * If a name changes, change it here once and it changes across the whole site.
@@ -13,7 +13,10 @@
  *   - `by influencer` is a signature, not a logo. It always sits apart from the
  *     mark in the layout and is always visually quieter. Never join the two into
  *     a single phrase in a sentence.
- *   - The member area is `The Clubhouse`. Never "portal", never "dashboard".
+ *   - The member area is `The House`. Never "portal", never "dashboard".
+ *   - The word "club" is not used anywhere a visitor or member can read.
+ *     Where a name works, use the mark. Where a common noun is needed, the
+ *     copy says "the room", which is already its central image.
  */
 
 export const BRAND = {
@@ -24,7 +27,7 @@ export const BRAND = {
   /** Endorsement signature. Set in italic serif, always quieter than the mark. */
   endorsement: "by influencer",
   /** The gated member area. */
-  memberArea: "The Clubhouse",
+  memberArea: "The House",
 } as const;
 
 export const BENEFITS = {
@@ -40,7 +43,7 @@ export const BENEFITS = {
  */
 export const CONTACT = {
   domain: "[DOMAIN NOT YET REGISTERED]",
-  email: "[CLUB EMAIL NOT YET REGISTERED]",
+  email: "[EMAIL NOT YET REGISTERED]",
   /** Used for absolute URLs in social share images. Update at launch. */
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
 } as const;

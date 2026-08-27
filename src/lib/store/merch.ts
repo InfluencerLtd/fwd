@@ -231,7 +231,7 @@ export type ClaimWithMember = MerchClaim & {
 };
 
 /**
- * The order list for the club team.
+ * The order list for the fwd. team.
  *
  * ADMIN ONLY. This returns delivery addresses. It must never be called from
  * anything a member can reach.

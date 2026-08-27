@@ -1,7 +1,7 @@
 /**
  * site-config.ts
  * ---------------------------------------------------------------------------
- * The switches the club team flips. All of them are in this one file.
+ * The switches the fwd. team flips. All of them are in this one file.
  * Changing one of these changes how the site behaves. No code knowledge needed,
  * just change the word or the true/false and save.
  */
@@ -61,12 +61,12 @@ export const EARLY_ACCESS_ENABLED = Boolean(process.env.EARLY_ACCESS_PASSWORD);
 export const EARLY_ACCESS_COOKIE = "fwd-early-access";
 
 /**
- * The admin area, where the club team reads applications and accepts or
+ * The admin area, where the fwd. team reads applications and accepts or
  * declines them.
  *
  * Phase 1 protects it with a shared password, set as ADMIN_PASSWORD in the
  * environment. That is deliberately simple and deliberately temporary: proper
- * per-person sign in arrives with The Clubhouse in Phase 2, and this gate is
+ * per-person sign in arrives with The House in Phase 2, and this gate is
  * replaced by it. If no password is set, the admin area does not exist.
  */
 export const ADMIN_ENABLED = Boolean(process.env.ADMIN_PASSWORD);

@@ -78,7 +78,7 @@ async function handle(token?: string) {
   if (result.status === "done") {
     return {
       heading: "done",
-      message: `${check.subject} has been removed. You will not get club email from us again.`,
+      message: `${check.subject} has been removed. You will not hear from fwd. again.`,
       showContact: false,
     };
   }

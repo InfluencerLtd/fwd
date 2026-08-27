@@ -18,7 +18,7 @@ export default async function AdminSignInPage() {
       <div className="w-full max-w-sm">
         <h1 className="text-3xl">admin</h1>
         <p className="mt-3 font-body text-sm text-ink-muted">
-          For the club team.
+          For the fwd. team.
         </p>
         <AdminSignInForm />
         <p className="mt-8 border-t border-border pt-6 font-body text-sm">

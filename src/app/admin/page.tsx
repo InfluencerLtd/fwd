@@ -9,7 +9,7 @@ import { MEMBER_GROUPS } from "@/lib/brand";
 export const metadata: Metadata = { title: "Applications" };
 
 /**
- * The club team's view of applications waiting on a decision.
+ * The fwd. team's view of applications waiting on a decision.
  *
  * Functional rather than beautiful, on purpose. Accepting sends the welcome
  * email with the sign-in link. Declining sends the polite one. Both emails can

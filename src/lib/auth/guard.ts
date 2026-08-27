@@ -1,9 +1,9 @@
 /**
  * guard.ts  (server only)
  * ---------------------------------------------------------------------------
- * The one way a Clubhouse page asks "who is this, and are they allowed in".
+ * The one way a House page asks "who is this, and are they allowed in".
  *
- * Every page inside The Clubhouse calls `requireMember` at the top, with one
+ * Every page inside The House calls `requireMember` at the top, with one
  * deliberate exception: the single event page, which has to be viewable by an
  * invited person who is not signed in. That page handles its own rules and says
  * so in its own comments.

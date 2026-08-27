@@ -7,7 +7,7 @@ import { BENEFITS } from "@/lib/brand";
 export const metadata: Metadata = { title: "Introductions" };
 
 /**
- * Meeting of Minds requests waiting on the club team.
+ * Meeting of Minds requests waiting on the fwd. team.
  *
  * These never reach the other member on their own. A person reads the reason,
  * decides whether the introduction is a good one, and makes it properly. That

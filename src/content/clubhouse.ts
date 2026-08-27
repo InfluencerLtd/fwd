@@ -24,7 +24,7 @@ export const SIGN_IN = {
    * DRAFT. Shown whether or not the address belongs to a member.
    *
    * This wording is load bearing. Telling somebody "that address is not a
-   * member" would turn this form into a way of working out who is in the club,
+   * member" would turn this form into a way of working out who is a member,
    * which is the one thing the directory exists to protect.
    */
   codeIntro:
@@ -47,7 +47,6 @@ export const SIGN_IN = {
 export const NAV = {
   /** The way back out to the public site, so no page is a dead end. */
   publicSite: "the fwd. site",
-  home: "clubhouse",
   directory: "members",
   events: "events",
   library: "library",
@@ -70,7 +69,7 @@ export const HOME = {
 export const DIRECTORY = {
   heading: "members",
   /** DRAFT. */
-  intro: "Everyone in the club. Search it, or filter it, and ask for an introduction to anyone.",
+  intro: "Everyone in the room. Search it, or filter it, and ask for an introduction to anyone.",
   searchLabel: "search by name, role or company",
   searchPlaceholder: "search",
   groupLabel: "group",
@@ -86,12 +85,12 @@ export const INTRO = {
   heading: BENEFITS.signature,
   /** DRAFT. */
   intro:
-    "Tell us why you would like to meet {name} and we will make the introduction properly, with context, to both of you. This comes to the club team. It does not email them.",
+    "Tell us why you would like to meet {name} and we will make the introduction properly, with context, to both of you. This comes to the fwd. team. It does not email them.",
   reasonLabel: "why would you like to meet?",
   reasonHint: "A sentence or two is plenty. The more specific, the better the introduction.",
   submit: "ask for an introduction",
   sending: "Sending",
-  success: "Thank you. That is with the club team and we will be in touch before we introduce you.",
+  success: "Thank you. That is with the fwd. team and we will be in touch before we introduce you.",
   required: "Please tell us why, so the introduction means something.",
   optedOut: "This member is not taking introductions at the moment.",
   error: "Something went wrong at our end. Please try again in a moment.",
@@ -132,7 +131,7 @@ export const PROFILE = {
   bioHint: "A line or two on what you are working on. This is what makes an introduction useful.",
   linkLabel: "LinkedIn or social profile",
   photoLabel: "photo",
-  photoHint: "Photo uploads are not built yet. For now the club team can add one for you.",
+  photoHint: "Photo uploads are not built yet. For now the fwd. team can add one for you.",
   newsletterLabel: "send me the quarterly newsletter",
   introsLabel: "other members can ask to be introduced to me",
   contactPreferences: "contact preferences",
@@ -163,12 +162,12 @@ export const LIBRARY = {
   allKinds: "everything",
   allCategories: "every category",
   empty: "Nothing matches that. Try fewer words.",
-  none: "There is nothing in the library yet. It will fill up as the club produces things.",
+  none: "There is nothing in the library yet. It will fill up as fwd. produces things.",
   countOne: "1 item",
   countMany: "{n} items",
   download: "download",
   downloadUnavailable:
-    "This file is not available to download at the moment. Please let the club team know.",
+    "This file is not available to download at the moment. Please let the fwd. team know.",
   /** Explains why the link is short-lived, so nobody thinks it is broken. */
   downloadNote:
     "Download links are personal to you and stop working after a few minutes. Come back here for a fresh one.",
@@ -181,7 +180,7 @@ export const MERCH = {
    * DRAFT. The wording matters here: members CLAIM things, they do not buy
    * them. There is no price anywhere and nothing should read like a shop.
    */
-  intro: "Club pieces, made in small runs. Yours to claim, not to buy.",
+  intro: "fwd. pieces, made in small runs. Yours to claim, not to buy.",
   none: "Nothing to claim at the moment. There will be.",
   closed: "Claims are closed on this one.",
   allGone: "All claimed.",
@@ -213,5 +212,5 @@ export const MERCH = {
 
   /** Said plainly, because we are asking for somebody's home address. */
   addressNote:
-    "We only use this to send you this one thing. It is not added to your profile and it is not shared with anyone outside the club team and whoever posts it.",
+    "We only use this to send you this one thing. It is not added to your profile and it is not shared with anyone outside the fwd. team and whoever posts it.",
 } as const;

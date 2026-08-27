@@ -21,7 +21,7 @@ export function Wordmark({
   size?: "hero" | "footer";
   /**
    * Makes the mark the page's main heading. Every page needs exactly one, and
-   * the name of the club is the right thing for it to be.
+   * the name of the thing is the right thing for it to be.
    */
   heading?: boolean;
   align?: "left" | "center";

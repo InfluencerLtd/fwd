@@ -5,7 +5,7 @@ import { FOOTER } from "@/content/site";
 /**
  * A quiet line at the bottom of the member area.
  *
- * It exists so The Clubhouse is not a room with no door. Signing out was the
+ * It exists so The House is not a room with no door. Signing out was the
  * only way back to the public site, which is a strange thing to have to do just
  * to read the club's own page.
  */

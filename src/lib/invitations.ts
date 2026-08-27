@@ -10,7 +10,7 @@
  *     date, city, format, description, imagery. Signing in is not a gate on
  *     looking at it.
  *   - Signing in is only needed to RSVP, to change an RSVP, or to reach any
- *     other part of The Clubhouse.
+ *     other part of The House.
  *   - Somebody signed out who clicks through and then signs in must land back
  *     on the event they clicked, not on a generic home screen.
  *   - The link must not be publicly guessable.
@@ -103,7 +103,7 @@ export function publicEventView(event: {
 /**
  * Where to send somebody after they sign in.
  *
- * Only ever a path inside this site, and only inside The Clubhouse. Without
+ * Only ever a path inside this site, and only inside The House. Without
  * this check, a link like /clubhouse/sign-in?next=https://somewhere-else would
  * bounce a member straight out to another site immediately after they signed
  * in, which is a well-known way of stealing people.

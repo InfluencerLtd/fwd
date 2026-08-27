@@ -43,7 +43,7 @@ export function PublicSite() {
       <FloatingThemeToggle watch="hero" />
 
       <main id="main">
-        {/* ---- What the club is, with photography alongside ---------------
+        {/* ---- What fwd. is, with photography alongside ------------------
              The heading sits INSIDE the left column rather than above the whole
              section, so the words and the pictures can be centred against each
              other. With the heading above the grid, centring the paragraphs

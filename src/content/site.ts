@@ -22,7 +22,7 @@
 
 export const HOLDING = {
   /** DRAFT. The one line under the wordmark. */
-  line: "A private members' club for senior people across brands, creators, platforms and the wider industry.",
+  line: "An invitation-only community for senior people across brands, creators, platforms and the wider industry.",
 
   /** DRAFT. The prompt above the email field. */
   capturePrompt: "Be the first to hear when applications open.",
@@ -50,7 +50,7 @@ export const HOLDING = {
 
   /** The consent line next to the checkbox. Required, and must stay honest. */
   consent:
-    "I am happy to receive occasional email about the club. You can unsubscribe at any time.",
+    "I am happy to receive occasional email about fwd. You can unsubscribe at any time.",
 
   consentRequired: "Please tick the box so we know we can email you.",
 } as const;
@@ -70,7 +70,7 @@ export const META = {
   title: "fwd.",
   /** DRAFT. Keep under about 155 characters or search engines cut it off. */
   description:
-    "A private members' club for senior people across brands, creators, platforms and the wider industry. By influencer.",
+    "An invitation-only community for senior people across brands, creators, platforms and the wider industry. By influencer.",
 } as const;
 
 /* ===========================================================================
@@ -86,7 +86,7 @@ export const HERO = {
   /** DRAFT. One call to action, kept restrained on purpose. */
   cta: "apply for membership",
   ctaWaitlist: "join the waitlist",
-  /** DRAFT. The second button, which scrolls down to what the club is. */
+  /** DRAFT. The second button, which scrolls down to what fwd. is. */
   secondaryCta: "learn more",
   /**
    * The quiet way in for people who are already members. Deliberately not a
@@ -96,11 +96,11 @@ export const HERO = {
 } as const;
 
 export const ABOUT = {
-  heading: "what the club is",
+  heading: "what fwd. is",
   /** DRAFT. */
   body: [
-    "Forward is a community, not a series of events. It runs all year, in person and online, and it spans brands, creators, platforms and the wider industry.",
-    "There is no permanent space, and that is deliberate. The club lives through the rooms it puts together, the conversations it starts and the introductions it makes.",
+    "fwd. is a community, not a series of events. It runs all year, in person and online, and it spans brands, creators, platforms and the wider industry.",
+    "There is no permanent space, and that is deliberate. It lives through the rooms it puts together, the conversations it starts and the introductions it makes.",
     "Members are global. Membership is by application.",
   ],
 } as const;
@@ -120,7 +120,7 @@ export const MEMBERSHIP = {
       title: "Meeting of Minds",
       summary: "Introductions made properly.",
       detail:
-        "The signature benefit. When two members should know each other, the introduction comes with context and a clear reason for it, to both people. Never a name passed along, never a cold forward. You can request an introduction to any member, and the club team makes it.",
+        "The signature benefit. When two members should know each other, the introduction comes with context and a clear reason for it, to both people. Never a name passed along, never a cold forward. You can request an introduction to any member, and the fwd. team makes it.",
     },
     {
       id: "seats",
@@ -130,8 +130,8 @@ export const MEMBERSHIP = {
         "Small rooms and conversations that do not happen at a conference. Some are hosted with platforms, some are ours. The guest list is the product, so it is put together carefully every time.",
     },
     {
-      id: "clubhouse",
-      title: "The Clubhouse",
+      id: "the-house",
+      title: "The House",
       summary: "The members-only area, online and always open.",
       detail:
         "Where members find each other, see what is coming up, reserve a place and keep their own profile current. Signed in, and members only.",
@@ -146,7 +146,7 @@ export const MEMBERSHIP = {
     {
       id: "profile",
       title: "Your member profile",
-      summary: "How the rest of the club finds you.",
+      summary: "How the rest of the room finds you.",
       detail:
         "Your own page in the directory. You decide what it says, and you can change it whenever you like.",
     },
@@ -185,7 +185,7 @@ export const MEETING_OF_MINDS = {
   body: [
     "Most networks hand you a list and leave the rest to you. This one works the other way around.",
     "When two members should know each other, we say why, to both of them, with enough context that the first conversation starts somewhere useful.",
-    "You can ask for an introduction to any member. The request comes to the club team, never to them.",
+    "You can ask for an introduction to any member. The request comes to the fwd. team, never to them.",
   ],
 } as const;
 
@@ -235,7 +235,7 @@ export const APPLY = {
   required: "Please fill this in.",
   error: "Something went wrong at our end. Please try again in a moment.",
   consent:
-    "I am happy to receive occasional email about the club. You can unsubscribe at any time.",
+    "I am happy to receive occasional email about fwd. You can unsubscribe at any time.",
 } as const;
 
 export const NAV = {

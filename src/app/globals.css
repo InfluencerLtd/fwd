@@ -128,7 +128,7 @@ body {
 /* Headings are set lowercase throughout. No all-caps anywhere.
    Note this is enforced here rather than left to whoever writes the copy, so a
    heading typed in Title Case still comes out right. Names that must keep their
-   capitals, such as Meeting of Minds and The Clubhouse, are not marked up as
+   capitals, such as Meeting of Minds and The House, are not marked up as
    headings for exactly this reason. */
 h1, h2, h3, h4 {
   font-family: var(--fwd-font-display), ui-serif, Georgia, serif;

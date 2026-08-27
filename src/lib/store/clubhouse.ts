@@ -27,7 +27,7 @@ export type DirectoryMember = {
   is_dummy: boolean;
 };
 
-export type ClubEvent = {
+export type FwdEvent = {
   id: string;
   slug: string;
   title: string;
@@ -84,8 +84,8 @@ export async function getMember(id: string): Promise<DirectoryMember | null> {
 /* ========================================================================== */
 
 export async function listEvents(): Promise<{
-  upcoming: ClubEvent[];
-  past: ClubEvent[];
+  upcoming: FwdEvent[];
+  past: FwdEvent[];
 } | null> {
   const supabase = getServiceClient();
   if (!supabase) return null;
@@ -96,7 +96,7 @@ export async function listEvents(): Promise<{
     .eq("is_published", true)
     .order("starts_at", { ascending: true });
 
-  const events = (data as ClubEvent[]) ?? [];
+  const events = (data as FwdEvent[]) ?? [];
   const now = Date.now();
   return {
     upcoming: events.filter((e) => new Date(e.ends_at ?? e.starts_at).getTime() >= now),
@@ -106,7 +106,7 @@ export async function listEvents(): Promise<{
   };
 }
 
-export async function getEventBySlug(slug: string): Promise<ClubEvent | null> {
+export async function getEventBySlug(slug: string): Promise<FwdEvent | null> {
   const supabase = getServiceClient();
   if (!supabase) return null;
 
@@ -117,7 +117,7 @@ export async function getEventBySlug(slug: string): Promise<ClubEvent | null> {
     .eq("is_published", true)
     .single();
 
-  return (data as ClubEvent) ?? null;
+  return (data as FwdEvent) ?? null;
 }
 
 /**
@@ -132,7 +132,7 @@ export async function getEventBySlug(slug: string): Promise<ClubEvent | null> {
 export async function getEventForInvitation(
   eventId: string,
   slug: string,
-): Promise<ClubEvent | null> {
+): Promise<FwdEvent | null> {
   const event = await getEventBySlug(slug);
   if (!event) return null;
   // The token names the event. If the address names a different one, refuse.

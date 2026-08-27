@@ -12,7 +12,7 @@
  * 2. THE ANSWER IS ALWAYS THE SAME. Whether or not the address belongs to a
  *    member, the person is told the same thing: if that address is a member's,
  *    a code is on its way. Saying "no such member" would turn this form into a
- *    way of finding out who is in the club, which is exactly the thing the
+ *    way of finding out who is a member, which is exactly the thing the
  *    directory is meant to protect.
  *
  * 3. ATTEMPTS AND REQUESTS ARE BOTH LIMITED. Six digits is a million

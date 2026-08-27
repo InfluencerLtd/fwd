@@ -6,7 +6,7 @@ import { FOOTER } from "@/content/site";
 
 /**
  * The footer. Carries the lockup, the way to get in touch, and the way for an
- * existing member to sign in to The Clubhouse.
+ * existing member to sign in to The House.
  *
  * It sits on the dark photo ground so the lockup appears the same way it does
  * in the hero, with the pale blue where it belongs.

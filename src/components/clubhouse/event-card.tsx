@@ -2,9 +2,9 @@ import Link from "next/link";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { formatDate } from "@/components/clubhouse/event-detail";
 import { EVENTS } from "@/content/clubhouse";
-import type { ClubEvent } from "@/lib/store/clubhouse";
+import type { FwdEvent } from "@/lib/store/clubhouse";
 
-export function EventCard({ event }: { event: ClubEvent }) {
+export function EventCard({ event }: { event: FwdEvent }) {
   return (
     <Link
       href={`/clubhouse/events/${event.slug}`}

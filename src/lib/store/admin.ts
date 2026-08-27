@@ -1,7 +1,7 @@
 /**
  * admin.ts  (server only)
  * ---------------------------------------------------------------------------
- * What the club team can read and change.
+ * What the fwd. team can read and change.
  *
  * Every function here assumes the caller has already checked that an admin is
  * signed in. That check lives in one place, `requireAdmin` in the admin pages,
@@ -10,7 +10,7 @@
 
 import { getServiceClient } from "@/lib/supabase";
 import type { MemberGroupId } from "@/lib/brand";
-import type { ClubEvent } from "@/lib/store/clubhouse";
+import type { FwdEvent } from "@/lib/store/clubhouse";
 
 export type AdminMember = {
   id: string;
@@ -81,7 +81,7 @@ export async function setMemberStatus(
 
 /* ---- Events -------------------------------------------------------------- */
 
-export async function listAllEvents(): Promise<ClubEvent[] | null> {
+export async function listAllEvents(): Promise<FwdEvent[] | null> {
   const supabase = getServiceClient();
   if (!supabase) return null;
 
@@ -92,7 +92,7 @@ export async function listAllEvents(): Promise<ClubEvent[] | null> {
     )
     .order("starts_at", { ascending: false });
 
-  return (data as ClubEvent[]) ?? [];
+  return (data as FwdEvent[]) ?? [];
 }
 
 export async function saveEvent(input: {

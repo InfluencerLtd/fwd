@@ -15,7 +15,7 @@
  *
  * Redirecting from inside the PAGE stops the page rendering at all, which is
  * the only thing that actually prevents its data being fetched and sent. This
- * is the same shape as `requireMember` in The Clubhouse, which was always right
+ * is the same shape as `requireMember` in The House, which was always right
  * for the same reason.
  */
 

@@ -30,8 +30,8 @@ export function MembershipCards() {
             <span className="min-w-0">
               {/* Deliberately NOT forced lowercase. Section headings are set
                   lowercase as part of the identity, but these are names:
-                  Meeting of Minds and The Clubhouse are proper nouns, and
-                  "the clubhouse" reads as a room rather than as the thing it
+                  Meeting of Minds and The House are proper nouns, and
+                  "the house" reads as a building rather than as the thing it
                   is called. Capitalisation follows src/content/site.ts. */}
               <span className="block font-display text-2xl text-ink">
                 {card.title}
