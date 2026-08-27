@@ -17,7 +17,7 @@ worth saying so.
 | Phase 1a | The pre-launch holding page | **Built** |
 | Phase 1b | The full public site, the application form, the emails | **Built** |
 | | All of Phase 1 needs Supabase, HubSpot and email connected | **Blocked on accounts** |
-| Phase 2 | The Clubhouse, the member area | Not started |
+| Phase 2 | The Clubhouse, the member area | **Built, needs the database connected** |
 | Phase 3 | Merch, research library, other club material | Not started |
 
 **Right now there are three things to look at:**
@@ -235,6 +235,13 @@ failing quietly.
 The shared password is temporary. Proper per-person sign in arrives with The
 Clubhouse in Phase 2 and replaces it.
 
+## Meeting of Minds requests
+
+When a member asks to be introduced to another member, it comes to
+**`/admin/introductions`** and nowhere else. It does not email the other person,
+and they are not told a request was made. Somebody reads the reason and decides
+whether it is a good introduction. That is the whole point of the benefit.
+
 ## How to change what the emails say
 
 Open **`src/content/emails.ts`**. All three emails are in there. The bits in
@@ -252,13 +259,39 @@ a brief for whoever shoots or sources them, so it can be handed over as it is.
 
 ## How to add an event
 
-**Not built yet.** Events are part of Phase 2, The Clubhouse. When it exists
-there will be an admin screen for the club team, and this section will explain
-how to use it.
+Go to **`/admin/events`**, fill in the form, and press Add event.
+
+- The **short name** becomes the web address, so keep it lowercase with dashes.
+- **Show to members** off means nobody sees it. Leave it off while you are still
+  writing the description.
+- **Confirmed** off means members see it marked "Provisional" instead of as a
+  firm date. Use it for things in the calendar that are not settled.
+
+Then open that event and you will see every member, who has been invited, and
+who has said they are coming.
+
+## How to invite people to an event
+
+Open the event from `/admin/events` and press **Send invitation** next to
+anybody you want there.
+
+What they get is an email with a link to that event. They can read the whole
+invitation **without signing in**. Signing in is only needed to say whether they
+are coming, and when they do sign in they land back on that same event rather
+than on a general home screen.
+
+Each link is tied to one person and one event, so it is not a key that can be
+passed around, and it shows nothing except that one event. It does not show the
+member list or who else is coming.
 
 ## How to add a member
 
-**Not built yet.** Also Phase 2.
+Go to **`/admin/members`**. Accepting an application already creates the member
+automatically, so this form is only for anybody who did not come through the
+application form.
+
+Setting somebody to **Paused** or **Removed** stops them signing in, and takes
+effect immediately rather than whenever their session happens to run out.
 
 ---
 
@@ -302,3 +335,5 @@ need to be set up before Phase 1 can be finished.
 | `npm run dev` | Runs the site on your own computer so you can look at it. |
 | `npm run build` | Checks the whole site compiles. Run before publishing. |
 | `npm run lint` | Checks the code for mistakes. |
+| `npm run check:db` | Runs the database setup files against a real database to make sure they work. Needs no account. |
+| `npm run check:links` | Checks that invitation and unsubscribe links cannot be forged or edited. |
