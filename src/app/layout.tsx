@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { CONTACT } from "@/lib/brand";
 import { META } from "@/content/site";
-import { fontVariables, chosenPairing } from "@/lib/fonts";
+import { fontVariables, rootFontStyle } from "@/lib/fonts";
 import { THEME_INIT_SCRIPT } from "@/lib/theme";
 
 export const metadata: Metadata = {
@@ -28,7 +28,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       className={`${fontVariables} h-full`}
-      style={chosenPairing.style}
+      style={rootFontStyle}
       suppressHydrationWarning
     >
       <head>

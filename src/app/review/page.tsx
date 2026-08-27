@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import { readTokenSets, type TokenSet } from "@/lib/read-tokens";
 import { assess } from "@/lib/contrast";
 import { BRAND } from "@/lib/brand";
-import { PAIRINGS, type Pairing } from "@/lib/fonts";
+import {
+  PAIRINGS,
+  candidateFontVariables,
+  type Pairing,
+} from "@/lib/fonts-candidates";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 export const metadata: Metadata = {
@@ -228,6 +232,7 @@ function PairingSample({ pairing }: { pairing: Pairing }) {
       <header className="font-body">
         <h3 className="font-body text-xs uppercase tracking-[0.18em] text-ink-muted">
           Option {pairing.id.toUpperCase()}
+          {pairing.chosen ? " · chosen" : null}
         </h3>
         <p className="mt-1 text-lg text-ink">{pairing.name}</p>
       </header>
@@ -299,7 +304,7 @@ export default async function ReviewPage() {
   const { light, dark, names } = await readTokenSets();
 
   return (
-    <main className="font-body">
+    <main className={`${candidateFontVariables} font-body`}>
       <header className="mx-auto flex max-w-5xl items-start justify-between gap-6 px-6 pb-12 pt-16">
         <div>
           <p className="text-xs tracking-[0.2em] text-ink-muted">
