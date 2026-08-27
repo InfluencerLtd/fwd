@@ -31,3 +31,6 @@ export type ApplicationState =
     };
 
 export const initialApplicationState: ApplicationState = { status: "idle" };
+
+export type AdminState = { error: string | null };
+export const initialAdminState: AdminState = { error: null };

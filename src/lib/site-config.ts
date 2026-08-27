@@ -47,3 +47,15 @@ export const COPY_APPROVED = false;
  */
 export const EARLY_ACCESS_ENABLED = Boolean(process.env.EARLY_ACCESS_PASSWORD);
 export const EARLY_ACCESS_COOKIE = "fwd-early-access";
+
+/**
+ * The admin area, where the club team reads applications and accepts or
+ * declines them.
+ *
+ * Phase 1 protects it with a shared password, set as ADMIN_PASSWORD in the
+ * environment. That is deliberately simple and deliberately temporary: proper
+ * per-person sign in arrives with The Clubhouse in Phase 2, and this gate is
+ * replaced by it. If no password is set, the admin area does not exist.
+ */
+export const ADMIN_ENABLED = Boolean(process.env.ADMIN_PASSWORD);
+export const ADMIN_COOKIE = "fwd-admin";

@@ -1,0 +1,41 @@
+"use client";
+
+import { useActionState, useId } from "react";
+import { signInToAdmin } from "./actions";
+import { initialAdminState } from "@/lib/form-state";
+
+export function AdminSignInForm() {
+  const [state, formAction, pending] = useActionState(
+    signInToAdmin,
+    initialAdminState,
+  );
+  const passwordId = useId();
+
+  return (
+    <form action={formAction} className="mt-8 font-body">
+      <label htmlFor={passwordId} className="block text-sm text-ink-muted">
+        Password
+      </label>
+      <input
+        id={passwordId}
+        name="password"
+        type="password"
+        autoComplete="current-password"
+        required
+        disabled={pending}
+        aria-invalid={state.error ? true : undefined}
+        className="mt-2 w-full rounded-sm border border-border bg-surface-raised px-4 py-3 text-base text-ink disabled:opacity-60"
+      />
+      <button
+        type="submit"
+        disabled={pending}
+        className="mt-4 w-full rounded-sm bg-accent px-6 py-3 text-base text-surface-raised disabled:opacity-60"
+      >
+        {pending ? "Checking" : "Sign in"}
+      </button>
+      <p role="status" aria-live="polite" className="mt-3 min-h-5 text-sm text-ink">
+        {state.error ?? ""}
+      </p>
+    </form>
+  );
+}
