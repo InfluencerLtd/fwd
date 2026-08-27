@@ -5,6 +5,7 @@ import { signUpForUpdates } from "@/app/actions";
 import { initialSignupState } from "@/lib/form-state";
 import { HOLDING } from "@/content/site";
 import type { SignupSource } from "@/lib/store/signups";
+import { Button } from "@/components/button";
 
 /**
  * The email capture. Used on the holding page now, and by the waitlist later,
@@ -31,9 +32,6 @@ export function SignupForm({
     input: isDark
       ? "border-photo-ink/30 text-photo-ink placeholder:text-photo-ink/35"
       : "border-border bg-surface-raised text-ink placeholder:text-ink-muted/60",
-    button: isDark
-      ? "bg-accent-on-dark text-photo-ground"
-      : "bg-accent text-surface-raised",
     consent: isDark ? "text-photo-ink/70" : "text-ink-muted",
     message: isDark ? "text-accent-on-dark" : "text-ink",
     success: isDark ? "text-photo-ink" : "text-ink",
@@ -82,15 +80,17 @@ export function SignupForm({
           placeholder={HOLDING.emailPlaceholder}
           aria-describedby={state.status === "error" ? messageId : undefined}
           aria-invalid={state.status === "error" || undefined}
-          className={`w-full max-w-sm rounded-sm border bg-transparent px-4 py-3 text-base disabled:opacity-60 ${c.input}`}
+          className={`fwd-field w-full max-w-sm border bg-transparent px-5 py-3 text-base transition-colors duration-300 disabled:opacity-60 ${c.input}`}
         />
-        <button
+        <Button
           type="submit"
+          size="lg"
+          variant={isDark ? "onDark" : "primary"}
           disabled={pending}
-          className={`shrink-0 rounded-sm px-6 py-3 text-base transition-opacity duration-300 hover:opacity-85 disabled:opacity-60 ${c.button}`}
+          className="shrink-0 disabled:opacity-60"
         >
           {pending ? HOLDING.submitting : HOLDING.submit}
-        </button>
+        </Button>
       </div>
 
       <div className="mt-4 flex max-w-md items-start gap-3">

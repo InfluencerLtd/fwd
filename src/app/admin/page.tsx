@@ -61,7 +61,7 @@ export default async function AdminPage() {
             {pending.map((application) => (
               <li
                 key={application.id}
-                className="rounded-sm border border-border bg-surface-raised p-6"
+                className="rounded-2xl border border-border bg-surface-raised p-6"
               >
                 <div className="flex flex-wrap items-baseline justify-between gap-3">
                   <p className="text-lg text-ink">
@@ -106,7 +106,7 @@ export default async function AdminPage() {
                     <input type="hidden" name="decision" value="accepted" />
                     <button
                       type="submit"
-                      className="rounded-sm bg-accent px-5 py-2.5 text-sm text-surface-raised"
+                      className="fwd-btn bg-accent px-5 py-2.5 text-sm text-white hover:bg-ink"
                     >
                       Accept and send welcome
                     </button>
@@ -116,7 +116,7 @@ export default async function AdminPage() {
                     <input type="hidden" name="decision" value="declined" />
                     <button
                       type="submit"
-                      className="rounded-sm border border-border px-5 py-2.5 text-sm text-ink"
+                      className="fwd-btn border border-border px-5 py-2.5 text-sm text-ink hover:border-ink"
                     >
                       Decline
                     </button>
@@ -162,7 +162,7 @@ function Warnings({
   if (problems.length === 0) return null;
 
   return (
-    <ul className="mt-8 space-y-2 rounded-sm border border-border bg-surface-raised p-5">
+    <ul className="mt-8 space-y-2 rounded-2xl border border-border bg-surface-raised p-5">
       {problems.map((problem) => (
         <li key={problem} className="text-[14px] leading-relaxed text-ink">
           {problem}

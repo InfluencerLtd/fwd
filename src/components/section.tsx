@@ -26,11 +26,17 @@ export function Section({
 }
 
 /** A paragraph set at a comfortable reading measure. */
-export function Prose({ lines }: { lines: readonly string[] }) {
+export function Prose({
+  lines,
+  className = "mt-8",
+}: {
+  lines: readonly string[];
+  className?: string;
+}) {
   return (
-    <div className="fwd-reveal mt-8 max-w-2xl space-y-5">
+    <div className={`fwd-reveal max-w-2xl space-y-5 ${className}`}>
       {lines.map((line) => (
-        <p key={line} className="font-body text-lg leading-relaxed text-ink-muted">
+        <p key={line} className="font-body text-[17px] leading-relaxed text-ink-muted">
           {line}
         </p>
       ))}

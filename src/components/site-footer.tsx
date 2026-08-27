@@ -26,19 +26,19 @@ export function SiteFooter() {
             >
               <Link
                 href="/clubhouse"
-                className="-my-1.5 py-1.5 text-accent-on-dark underline-offset-4 hover:underline"
+                className="fwd-underline -my-1.5 py-1.5 text-accent-on-dark"
               >
                 {FOOTER.signIn}
               </Link>
               <Link
                 href="/privacy"
-                className="-my-1.5 py-1.5 text-photo-ink/70 underline-offset-4 hover:underline"
+                className="fwd-underline -my-1.5 py-1.5 text-photo-ink/70"
               >
                 {FOOTER.privacy}
               </Link>
               <Link
                 href="/cookies"
-                className="-my-1.5 py-1.5 text-photo-ink/70 underline-offset-4 hover:underline"
+                className="fwd-underline -my-1.5 py-1.5 text-photo-ink/70"
               >
                 {FOOTER.cookies}
               </Link>

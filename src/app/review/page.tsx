@@ -92,11 +92,15 @@ type Pair = { fg: string; bg: string; note?: string; forbidden?: boolean };
 
 const LIGHT_PAIRS: Pair[] = [
   { fg: "ink", bg: "surface", note: "Body text on the page" },
+  { fg: "ink", bg: "surface-warm", note: "Body text on a sand band" },
   { fg: "ink", bg: "surface-raised", note: "Body text on a card" },
   { fg: "ink-muted", bg: "surface", note: "Captions and labels" },
+  { fg: "ink-muted", bg: "surface-warm", note: "Captions on a sand band" },
   { fg: "ink-muted", bg: "surface-raised", note: "Captions on a card" },
   { fg: "accent", bg: "surface", note: "Links and buttons" },
-  { fg: "accent", bg: "surface-raised", note: "Links on a card" },
+  { fg: "accent", bg: "surface-warm", note: "Buttons on a sand band" },
+  { fg: "ember", bg: "surface", note: "The warm accent on the page" },
+  { fg: "ember", bg: "surface-warm", note: "The warm accent on sand" },
   {
     fg: "accent-on-dark",
     bg: "surface",
@@ -107,10 +111,13 @@ const LIGHT_PAIRS: Pair[] = [
 
 const DARK_PAIRS: Pair[] = [
   { fg: "ink", bg: "surface", note: "Body text on the page" },
+  { fg: "ink", bg: "surface-warm", note: "Body text on a warm band" },
   { fg: "ink", bg: "surface-raised", note: "Body text on a card" },
   { fg: "ink-muted", bg: "surface", note: "Captions and labels" },
+  { fg: "ink-muted", bg: "surface-warm", note: "Captions on a warm band" },
   { fg: "ink-muted", bg: "surface-raised", note: "Captions on a card" },
   { fg: "accent", bg: "surface", note: "Links and buttons" },
+  { fg: "ember", bg: "surface", note: "The warm accent on the page" },
   { fg: "accent-on-dark", bg: "surface", note: "The pale blue on a dark ground" },
 ];
 
@@ -336,15 +343,19 @@ export default async function ReviewPage() {
         intro={
           <>
             <p>
-              Seven colours, named by their job rather than by what they look
+              Nine colours, named by their job rather than by what they look
               like. A component never says &ldquo;use pale blue&rdquo;, it says
               &ldquo;use the accent&rdquo;, and the mode decides what that means.
               That is why both modes stay consistent instead of one being an
               upside-down version of the other.
             </p>
             <p className="mt-3">
-              Warmth comes from photography, not from the interface. There is no
-              second brand colour anywhere in here on purpose.
+              Two of these are new since the first pass: a warm sand ground for
+              the bands that break up the page, and an ember accent taken from
+              candlelight. They were added to answer &ldquo;too dark and
+              boring&rdquo;. The brief originally said warmth should come from
+              photography alone, so this is a deliberate departure and worth
+              confirming rather than assuming.
             </p>
           </>
         }

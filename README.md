@@ -141,11 +141,13 @@ The colours are named after their **job**, not after what they look like:
 | Name | What it is for |
 | --- | --- |
 | `surface` | The page background |
+| `surface-warm` | The warm sand bands that break up the page |
 | `surface-raised` | Cards and panels sitting on top of the page |
 | `ink` | Text you read |
 | `ink-muted` | Captions, labels, secondary text |
 | `accent` | Links and buttons |
 | `accent-on-dark` | The pale ice blue. **Dark grounds only.** |
+| `ember` | The warm candlelight accent. Small moments only. |
 | `border` | Hairlines and dividers |
 
 ### The one rule that must not be broken
@@ -157,6 +159,12 @@ only ever used on dark grounds or over dark photography, which is what
 
 The `/review` page measures this live, so you can check it rather than take my
 word for it.
+
+### How to change the shape of the buttons
+
+All the buttons are lozenge shaped. That is set in one place, the `.fwd-btn`
+rule in `globals.css`, so it cannot drift from one page to the next. Change
+`border-radius` there and every button on the site changes together.
 
 ### How to change the grain
 
@@ -232,6 +240,15 @@ Clubhouse in Phase 2 and replaces it.
 Open **`src/content/emails.ts`**. All three emails are in there. The bits in
 {curly braces} are filled in automatically. You can see exactly how they will
 look at **`/review/emails`**, which sends nothing.
+
+## Where the photographs go
+
+There are fourteen photographs on the public site and none of them exist yet.
+Every one is a warm labelled placeholder, and the label says what the shot
+should be.
+
+The full list is in **`src/content/site.ts`**, under `IMAGERY`. It is written as
+a brief for whoever shoots or sources them, so it can be handed over as it is.
 
 ## How to add an event
 

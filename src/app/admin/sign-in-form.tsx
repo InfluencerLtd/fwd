@@ -24,12 +24,12 @@ export function AdminSignInForm() {
         required
         disabled={pending}
         aria-invalid={state.error ? true : undefined}
-        className="mt-2 w-full rounded-sm border border-border bg-surface-raised px-4 py-3 text-base text-ink disabled:opacity-60"
+        className="fwd-field mt-2 w-full border border-border bg-surface-raised px-5 py-3 text-base text-ink disabled:opacity-60"
       />
       <button
         type="submit"
         disabled={pending}
-        className="mt-4 w-full rounded-sm bg-accent px-6 py-3 text-base text-surface-raised disabled:opacity-60"
+        className="fwd-btn mt-4 w-full bg-accent px-6 py-3 font-body text-base text-white hover:bg-ink disabled:opacity-60"
       >
         {pending ? "Checking" : "Sign in"}
       </button>

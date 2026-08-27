@@ -232,3 +232,44 @@ export const NAV = {
   apply: "Apply",
   skipToContent: "Skip to content",
 } as const;
+
+/* ===========================================================================
+   THE PHOTOGRAPHY BRIEF
+   ---------------------------------------------------------------------------
+   Every photograph the site needs, and what each one should be. This doubles as
+   the brief for whoever shoots or sources them, so it is written for a person
+   rather than for the code.
+
+   The direction throughout: warm, low light, shallow depth of field, close
+   crops. Hands, glasses, gestures, rooms. Faces optional. Never bright, evenly
+   lit conference or corporate photography.
+
+   Until a real image exists, each of these renders as a warm labelled
+   placeholder so it is obvious what is missing.
+   =========================================================================== */
+
+export const IMAGERY = {
+  hero: "The approved hero shot. Warm, dimly lit, close-cropped, people in frame",
+  aboutWide: "Hands and glasses across a table. Candlelight, close crop",
+  aboutTall: "A room mid-conversation. Low light, shallow focus, faces optional",
+  aboutDetail: "A small detail. A place card, a glass, a hand on the table",
+  meetingOfMinds: "Two people in conversation, close, warm, slightly obscured",
+  statement: "A wide room at night. Amber light, figures out of focus",
+  why: "Detail shot. A gesture mid-sentence, or a table after dinner",
+  /** The band that drifts sideways. Eight in total, all portrait or square. */
+  band: [
+    "Dinner table from above, candlelight",
+    "A guest laughing, close crop, out of focus",
+    "Hands passing something across a table",
+    "A room filling up, shot from the doorway",
+    "Glasses catching the light",
+    "Two people talking, shot from behind",
+    "A quiet corner of the room",
+    "Someone speaking, lit from one side",
+  ],
+} as const;
+
+export const STATEMENT = {
+  /** DRAFT. The pull quote on the dark band. Not a testimonial, our own words. */
+  line: "The room is the product. Everything else follows from who is in it.",
+} as const;

@@ -18,6 +18,7 @@
   color-scheme: light;
 
   --fwd-surface: #f7f6f3; /* warm off-white - the page ground */
+  --fwd-surface-warm: #efe7dc; /* warm sand - bands that break up the page */
   --fwd-surface-raised: #ffffff; /* cards and panels that sit above the page */
   --fwd-ink: #0e1116; /* body and heading text */
   --fwd-ink-muted: #5a6472; /* secondary text, captions, labels */
@@ -29,6 +30,7 @@
      #004ad5 is what is set here. Worth correcting in the guidelines. */
   --fwd-accent: #004ad5; /* links and buttons on LIGHT grounds only */
   --fwd-accent-on-dark: #b1e3fc; /* pale ice blue - ONLY ever on dark grounds */
+  --fwd-ember: #a8442a; /* candlelight - small accents only, never large areas */
   --fwd-border: #e3e0da; /* hairlines and dividers */
 }
 /* @tokens:end */
@@ -37,13 +39,19 @@
 .dark {
   color-scheme: dark;
 
-  --fwd-surface: #0b100c; /* near-black */
-  --fwd-surface-raised: #141a16;
+  /* These darks are warmer than the first draft. The old near-black was
+     slightly green, and once there was a lot of it on screen it read as
+     cold and flat. Same darkness, warmer temperature, so it sits with
+     candlelight photography rather than against it. */
+  --fwd-surface: #14110e;
+  --fwd-surface-warm: #221c18;
+  --fwd-surface-raised: #1f1a16;
   --fwd-ink: #f2f0ec;
-  --fwd-ink-muted: #9aa39c;
+  --fwd-ink-muted: #a89f95;
   --fwd-accent: #b1e3fc; /* on a dark ground the pale blue IS the accent */
   --fwd-accent-on-dark: #b1e3fc;
-  --fwd-border: #252b27;
+  --fwd-ember: #e8a87c;
+  --fwd-border: #2b241f;
 }
 /* @tokens:end */
 
@@ -74,8 +82,9 @@
    identity works. These two tokens do not change between modes. */
 :root,
 .dark {
-  --fwd-photo-ground: #0b100c;
+  --fwd-photo-ground: #171310; /* warm near-black, the ground behind photography */
   --fwd-photo-ink: #f2f0ec;
+  --fwd-photo-warm: #2f2419; /* the warm end of a placeholder gradient */
 }
 
 /* Grain strength. Signed off at 0.035, the middle of the three options shown
@@ -86,14 +95,17 @@
 
 @theme inline {
   --color-surface: var(--fwd-surface);
+  --color-surface-warm: var(--fwd-surface-warm);
   --color-surface-raised: var(--fwd-surface-raised);
   --color-ink: var(--fwd-ink);
   --color-ink-muted: var(--fwd-ink-muted);
   --color-accent: var(--fwd-accent);
   --color-accent-on-dark: var(--fwd-accent-on-dark);
+  --color-ember: var(--fwd-ember);
   --color-border: var(--fwd-border);
   --color-photo-ground: var(--fwd-photo-ground);
   --color-photo-ink: var(--fwd-photo-ink);
+  --color-photo-warm: var(--fwd-photo-warm);
 
   --font-display: var(--fwd-font-display);
   --font-body: var(--fwd-font-body);
@@ -210,7 +222,8 @@ h1, h2, h3, h4 {
     .fwd-reveal {
       animation: fwd-reveal-in linear both;
       animation-timeline: view();
-      animation-range: entry 8% cover 26%;
+      animation-range: entry calc(8% + var(--fwd-reveal-shift, 0%)) cover
+        calc(26% + var(--fwd-reveal-shift, 0%));
     }
   }
 }
@@ -239,4 +252,178 @@ h1, h2, h3, h4 {
 }
 .fwd-card[open] .fwd-card-detail {
   animation: fwd-reveal-in 420ms cubic-bezier(0.2, 0, 0, 1) both;
+}
+
+/* ===========================================================================
+   Imagery
+   ---------------------------------------------------------------------------
+   Every photograph on the site is still a placeholder. Rather than a flat black
+   rectangle, a placeholder is a warm gradient with grain over it, so a page
+   full of them still reads as warm and lit rather than as a page full of holes.
+   It stays clearly labelled, so nobody mistakes one for a finished image.
+   =========================================================================== */
+
+.fwd-photo {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background-color: var(--fwd-photo-ground);
+  background-image:
+    radial-gradient(
+      120% 90% at 22% 82%,
+      color-mix(in oklab, var(--fwd-photo-warm) 92%, #b4703a) 0%,
+      transparent 62%
+    ),
+    radial-gradient(
+      80% 70% at 82% 18%,
+      color-mix(in oklab, var(--fwd-photo-warm) 65%, #000) 0%,
+      transparent 70%
+    );
+}
+
+/* A slow drift, so a page of placeholders is not perfectly static. */
+@media (prefers-reduced-motion: no-preference) {
+  .fwd-photo::before {
+    content: "";
+    position: absolute;
+    inset: -12%;
+    z-index: -1;
+    background: radial-gradient(
+      42% 42% at 30% 70%,
+      color-mix(in oklab, #c8813f 34%, transparent) 0%,
+      transparent 72%
+    );
+    animation: fwd-drift 26s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes fwd-drift {
+  from {
+    transform: translate3d(-3%, 2%, 0) scale(1.05);
+  }
+  to {
+    transform: translate3d(4%, -3%, 0) scale(1.16);
+  }
+}
+
+/* Photographs lift very slightly under the cursor. Nothing jumps. */
+.fwd-zoom .fwd-zoom-inner {
+  transition: transform 900ms cubic-bezier(0.2, 0, 0, 1);
+  will-change: transform;
+}
+.fwd-zoom:hover .fwd-zoom-inner,
+.fwd-zoom:focus-within .fwd-zoom-inner {
+  transform: scale(1.045);
+}
+
+/* ===========================================================================
+   The scrolling band of photographs
+   ---------------------------------------------------------------------------
+   A slow, continuous drift sideways. It pauses when the cursor is over it, and
+   for anyone who has asked their computer to reduce motion it does not move at
+   all and can simply be scrolled by hand instead.
+   =========================================================================== */
+
+.fwd-marquee {
+  overflow: hidden;
+}
+.fwd-marquee-track {
+  display: flex;
+  width: max-content;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .fwd-marquee-track {
+    animation: fwd-marquee 78s linear infinite;
+  }
+  .fwd-marquee:hover .fwd-marquee-track,
+  .fwd-marquee:focus-within .fwd-marquee-track {
+    animation-play-state: paused;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fwd-marquee {
+    overflow-x: auto;
+  }
+}
+
+@keyframes fwd-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    /* Exactly half, because the row is rendered twice end to end. */
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* ===========================================================================
+   Buttons
+   ---------------------------------------------------------------------------
+   Lozenge shaped throughout. The shape is set here rather than on each button,
+   so it cannot drift out of step from one page to the next.
+   =========================================================================== */
+
+.fwd-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  white-space: nowrap;
+  transition:
+    background-color 420ms cubic-bezier(0.2, 0, 0, 1),
+    color 420ms cubic-bezier(0.2, 0, 0, 1),
+    border-color 420ms cubic-bezier(0.2, 0, 0, 1),
+    transform 420ms cubic-bezier(0.2, 0, 0, 1);
+}
+.fwd-btn:hover {
+  transform: translateY(-1px);
+}
+.fwd-btn:active {
+  transform: translateY(0);
+}
+
+/* Inputs pick up the same shape so the forms match the buttons. */
+.fwd-field {
+  border-radius: 9999px;
+}
+textarea.fwd-field {
+  border-radius: 1.25rem;
+}
+
+/* ===========================================================================
+   The scroll cue at the bottom of the hero
+   =========================================================================== */
+
+@keyframes fwd-cue {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translateY(6px);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .fwd-cue {
+    animation: fwd-cue 2.8s ease-in-out infinite;
+  }
+}
+
+/* A quiet underline that draws itself in, used on text links. */
+.fwd-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  transition: background-size 420ms cubic-bezier(0.2, 0, 0, 1);
+  padding-bottom: 2px;
+}
+.fwd-underline:hover,
+.fwd-underline:focus-visible {
+  background-size: 100% 1px;
 }

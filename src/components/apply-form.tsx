@@ -5,6 +5,7 @@ import { submitMembershipApplication } from "@/app/actions";
 import { initialApplicationState } from "@/lib/form-state";
 import { APPLY } from "@/content/site";
 import { MEMBER_GROUPS } from "@/lib/brand";
+import { Button } from "@/components/button";
 
 /**
  * The membership application.
@@ -50,8 +51,8 @@ export function ApplyForm() {
   }
 
   const fieldClass = (key: string) =>
-    `mt-2 w-full rounded-sm border bg-surface-raised px-4 py-3 font-body text-base text-ink disabled:opacity-60 ${
-      errors[key] ? "border-ink" : "border-border"
+    `fwd-field mt-2 w-full border bg-surface-raised px-5 py-3 font-body text-base text-ink transition-colors duration-300 disabled:opacity-60 ${
+      errors[key] ? "border-ink" : "border-border hover:border-ink/30"
     }`;
 
   return (
@@ -62,7 +63,7 @@ export function ApplyForm() {
         <p
           id={ids.summary}
           role="alert"
-          className="mb-8 rounded-sm border border-ink/20 bg-surface-raised px-4 py-3 text-sm text-ink"
+          className="mb-8 rounded-2xl border border-ink/20 bg-surface-raised px-5 py-3 text-sm text-ink"
         >
           {state.message}
         </p>
@@ -236,13 +237,14 @@ export function ApplyForm() {
         </div>
       </div>
 
-      <button
+      <Button
         type="submit"
+        size="lg"
         disabled={pending}
-        className="mt-10 rounded-sm bg-accent px-8 py-3 text-base text-surface-raised transition-opacity duration-300 hover:opacity-85 disabled:opacity-60"
+        className="mt-10 disabled:opacity-60"
       >
         {pending ? APPLY.open.submitting : APPLY.open.submit}
-      </button>
+      </Button>
     </form>
   );
 }

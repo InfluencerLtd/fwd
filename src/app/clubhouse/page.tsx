@@ -26,7 +26,7 @@ export default function ClubhousePage() {
         </p>
         <Link
           href="/"
-          className="mt-8 inline-block font-body text-sm text-accent underline underline-offset-4"
+          className="fwd-underline mt-8 inline-block font-body text-sm text-accent"
         >
           Back
         </Link>

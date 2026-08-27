@@ -17,7 +17,7 @@ export function LegalPage({
         <div className="mx-auto max-w-2xl">
           <Link
             href="/"
-            className="font-body text-sm text-accent underline-offset-4 hover:underline"
+            className="fwd-underline font-body text-sm text-accent"
           >
             Back
           </Link>
