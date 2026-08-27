@@ -33,7 +33,7 @@ export const SIGN_IN = {
   checking: "checking",
   resend: "use a different address",
   /** Somebody who is not a member needs a way out of here. */
-  notAMember: "not a member? read about the club",
+  notAMember: "not a member yet? find out more here",
 
   /** Deliberately the same for a wrong code and a code that never existed. */
   wrongCode: "That code is not right, or it has expired. Check the email, or ask for a new code.",
