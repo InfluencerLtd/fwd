@@ -1,26 +1,155 @@
 @import "tailwindcss";
 
+/* ===========================================================================
+   fwd. design tokens
+   ---------------------------------------------------------------------------
+   THIS IS THE ONLY PLACE COLOURS ARE DEFINED.
+   Components never contain a raw colour value. They use token names such as
+   `bg-surface`, `text-ink`, `border-border`. Change a value here and it changes
+   everywhere, in one edit.
+
+   Light is the default. Dark is applied by putting the class `dark` on <html>.
+   =========================================================================== */
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* @tokens:light  (do not remove this marker - the /review page reads it) */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+
+  --fwd-surface: #f7f6f3; /* warm off-white - the page ground */
+  --fwd-surface-raised: #ffffff; /* cards and panels that sit above the page */
+  --fwd-ink: #0e1116; /* body and heading text */
+  --fwd-ink-muted: #5a6472; /* secondary text, captions, labels */
+  --fwd-accent: #1e3a5f; /* deep blue - links and buttons on LIGHT grounds */
+  --fwd-accent-on-dark: #b1e3fc; /* pale ice blue - ONLY ever on dark grounds */
+  --fwd-border: #e3e0da; /* hairlines and dividers */
+}
+/* @tokens:end */
+
+/* @tokens:dark */
+.dark {
+  color-scheme: dark;
+
+  --fwd-surface: #0b100c; /* near-black */
+  --fwd-surface-raised: #141a16;
+  --fwd-ink: #f2f0ec;
+  --fwd-ink-muted: #9aa39c;
+  --fwd-accent: #b1e3fc; /* on a dark ground the pale blue IS the accent */
+  --fwd-accent-on-dark: #b1e3fc;
+  --fwd-border: #252b27;
+}
+/* @tokens:end */
+
+/* ---------------------------------------------------------------------------
+   THE PALE BLUE RULE - this is absolute.
+
+   #b1e3fc on near-black  = 13.96:1  passes comfortably
+   #b1e3fc on off-white   =  1.27:1  fails badly, close to invisible
+   #1e3a5f on off-white   = 10.64:1  passes comfortably
+
+   So `--fwd-accent-on-dark` is only ever used on a dark ground or over dark
+   photography. It must never be used for body text, links, form labels,
+   buttons or any small type on a light background. The /review page measures
+   these ratios live so the rule can be checked rather than trusted.
+   --------------------------------------------------------------------------- */
+
+/* The hero photograph stays dark in BOTH light and dark mode. That is how the
+   identity works. These two tokens do not change between modes. */
+:root,
+.dark {
+  --fwd-photo-ground: #0b100c;
+  --fwd-photo-ink: #f2f0ec;
+}
+
+/* Grain strength. Adjust this one number to make the texture stronger or
+   weaker across the whole site. */
+:root {
+  --fwd-grain-opacity: 0.035;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-surface: var(--fwd-surface);
+  --color-surface-raised: var(--fwd-surface-raised);
+  --color-ink: var(--fwd-ink);
+  --color-ink-muted: var(--fwd-ink-muted);
+  --color-accent: var(--fwd-accent);
+  --color-accent-on-dark: var(--fwd-accent-on-dark);
+  --color-border: var(--fwd-border);
+  --color-photo-ground: var(--fwd-photo-ground);
+  --color-photo-ink: var(--fwd-photo-ink);
+
+  --font-display: var(--fwd-font-display);
+  --font-body: var(--fwd-font-body);
+  --font-endorsement: var(--fwd-font-endorsement);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* ===========================================================================
+   Base
+   =========================================================================== */
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--fwd-surface);
+  color: var(--fwd-ink);
+  font-family: var(--fwd-font-body), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Headings are set lowercase throughout. No all-caps anywhere. */
+h1, h2, h3, h4 {
+  font-family: var(--fwd-font-display), ui-serif, Georgia, serif;
+  text-transform: lowercase;
+  font-weight: 400;
+}
+
+/* Visible, on-brand focus ring for keyboard users. */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--fwd-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ===========================================================================
+   Grain
+   ---------------------------------------------------------------------------
+   A single overlay layer of monochrome noise. It should be felt, not seen.
+   Put `fwd-grain` on any element that needs texture where there is no photo.
+   =========================================================================== */
+
+.fwd-grain {
+  position: relative;
+  isolation: isolate;
+}
+
+.fwd-grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: var(--fwd-grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px 180px;
+  /* On a light ground the speckle has to darken the page to be seen at all. */
+  mix-blend-mode: multiply;
+}
+
+/* On a dark ground the opposite is true: the speckle has to lighten it, and it
+   needs a little more of it to read as the same amount of texture. */
+.dark .fwd-grain::after {
+  opacity: calc(var(--fwd-grain-opacity) * 1.5);
+  mix-blend-mode: screen;
+}
+
+/* ===========================================================================
+   Motion - slow and restrained. Nothing bouncy, nothing sliding in sideways.
+   =========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
