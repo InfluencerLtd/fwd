@@ -1,35 +1,58 @@
-import type { Metadata } from "next";
 import Link from "next/link";
+import { requireMember } from "@/lib/auth/guard";
+import { listEvents } from "@/lib/store/clubhouse";
+import { EventCard } from "@/components/clubhouse/event-card";
+import { NotConnected } from "@/components/clubhouse/not-connected";
+import { HOME } from "@/content/clubhouse";
 import { BRAND } from "@/lib/brand";
 
-export const metadata: Metadata = {
-  title: BRAND.memberArea,
-  // Nothing in the member area is ever to be indexed by a search engine. This
-  // is set here so it applies before the real Clubhouse is built, rather than
-  // being remembered later.
-  robots: { index: false, follow: false },
-};
+export default async function ClubhouseHome() {
+  const member = await requireMember("/clubhouse");
+  const events = await listEvents();
+  const next = events?.upcoming.slice(0, 2) ?? [];
 
-/**
- * Placeholder for The Clubhouse, which is Phase 2.
- *
- * It exists now so the "Member sign in" link in the footer goes somewhere
- * honest rather than to a missing page.
- */
-export default function ClubhousePage() {
   return (
-    <main className="flex flex-1 items-center justify-center px-6 py-24">
-      <div className="max-w-md text-center">
-        <h1 className="text-4xl">{BRAND.memberArea}</h1>
-        <p className="mt-6 font-body text-lg leading-relaxed text-ink-muted">
-          Member sign in is not open yet. Members will be sent a link when it is.
+    <main className="flex-1 px-6 py-16">
+      <div className="mx-auto max-w-5xl">
+        <p className="font-body text-xs tracking-[0.2em] text-ember">
+          {BRAND.memberArea}
         </p>
-        <Link
-          href="/"
-          className="fwd-underline mt-8 inline-block font-body text-sm text-accent"
-        >
-          Back
-        </Link>
+        <h1 className="mt-4 text-4xl sm:text-5xl">
+          {HOME.greeting.replace("{name}", member.name.split(" ")[0])}
+        </h1>
+        <p className="mt-5 font-body text-[17px] text-ink-muted">{HOME.intro}</p>
+
+        {events === null ? (
+          <NotConnected />
+        ) : (
+          <section className="mt-14">
+            <h2 className="text-2xl">{HOME.upcomingHeading}</h2>
+            {next.length === 0 ? (
+              <p className="mt-5 font-body text-[15px] text-ink-muted">
+                {HOME.noEvents}
+              </p>
+            ) : (
+              <div className="mt-6 grid gap-5 sm:grid-cols-2">
+                {next.map((event) => (
+                  <EventCard key={event.id} event={event} />
+                ))}
+              </div>
+            )}
+          </section>
+        )}
+
+        <section className="mt-16 rounded-2xl border border-border bg-surface-warm p-8">
+          <h2 className="text-2xl">{HOME.directoryTeaser}</h2>
+          <p className="mt-3 font-body text-[15px] text-ink-muted">
+            {HOME.directoryLine}
+          </p>
+          <Link
+            href="/clubhouse/directory"
+            className="fwd-underline mt-5 inline-block font-body text-[15px] text-accent"
+          >
+            {HOME.directoryTeaser}
+          </Link>
+        </section>
       </div>
     </main>
   );

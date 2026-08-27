@@ -34,3 +34,37 @@ export const initialApplicationState: ApplicationState = { status: "idle" };
 
 export type AdminState = { error: string | null };
 export const initialAdminState: AdminState = { error: null };
+
+export type SignInState = {
+  step: "email" | "code";
+  email: string;
+  /** Where to send them once they are in. Always checked before use. */
+  next: string;
+  error: string | null;
+};
+
+export const initialSignInState: SignInState = {
+  step: "email",
+  email: "",
+  next: "/clubhouse",
+  error: null,
+};
+
+export type RsvpState = {
+  response: "going" | "not_going" | null;
+  error: string | null;
+};
+
+export type IntroState =
+  | { status: "idle" }
+  | { status: "success" }
+  | { status: "error"; message: string };
+
+export const initialIntroState: IntroState = { status: "idle" };
+
+export type ProfileState =
+  | { status: "idle" }
+  | { status: "success" }
+  | { status: "error"; message: string };
+
+export const initialProfileState: ProfileState = { status: "idle" };
