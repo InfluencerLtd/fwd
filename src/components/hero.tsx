@@ -2,7 +2,7 @@ import Link from "next/link";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { Wordmark } from "@/components/wordmark";
 import { ButtonLink } from "@/components/button";
-import { HERO, NAV, IMAGERY } from "@/content/site";
+import { HERO, IMAGERY } from "@/content/site";
 import { APPLICATIONS_OPEN } from "@/lib/site-config";
 
 /**
@@ -33,7 +33,7 @@ export function Hero() {
               {APPLICATIONS_OPEN ? HERO.cta : HERO.ctaWaitlist}
             </ButtonLink>
             <ButtonLink href="#about" variant="outlineOnDark" size="lg">
-              {NAV.about}
+              {HERO.secondaryCta}
             </ButtonLink>
           </div>
 

@@ -81,6 +81,8 @@ export const HERO = {
   /** DRAFT. One call to action, kept restrained on purpose. */
   cta: "Apply for membership",
   ctaWaitlist: "Join the waitlist",
+  /** DRAFT. The second button, which scrolls down to what the club is. */
+  secondaryCta: "Learn more",
   /**
    * The quiet way in for people who are already members. Deliberately not a
    * button: applying is the point of this page, signing in is a convenience.
@@ -231,10 +233,10 @@ export const APPLY = {
 } as const;
 
 export const NAV = {
-  /** DRAFT. */
-  about: "The club",
-  membership: "Membership",
-  apply: "Apply",
+  /**
+   * The first thing a keyboard or screen reader user reaches, letting them jump
+   * past the hero into the page.
+   */
   skipToContent: "Skip to content",
 } as const;
 
