@@ -32,6 +32,8 @@ export const SIGN_IN = {
   codeSubmit: "Sign in",
   checking: "Checking",
   resend: "Use a different address",
+  /** Somebody who is not a member needs a way out of here. */
+  notAMember: "Not a member? Read about the club",
 
   /** Deliberately the same for a wrong code and a code that never existed. */
   wrongCode: "That code is not right, or it has expired. Check the email, or ask for a new code.",
@@ -42,6 +44,8 @@ export const SIGN_IN = {
 } as const;
 
 export const NAV = {
+  /** The way back out to the public site, so no page is a dead end. */
+  publicSite: "The fwd. site",
   home: "Clubhouse",
   directory: "Members",
   events: "Events",

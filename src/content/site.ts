@@ -81,6 +81,11 @@ export const HERO = {
   /** DRAFT. One call to action, kept restrained on purpose. */
   cta: "Apply for membership",
   ctaWaitlist: "Join the waitlist",
+  /**
+   * The quiet way in for people who are already members. Deliberately not a
+   * button: applying is the point of this page, signing in is a convenience.
+   */
+  memberSignIn: "Already a member? Sign in",
 } as const;
 
 export const ABOUT = {

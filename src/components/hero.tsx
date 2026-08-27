@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { Wordmark } from "@/components/wordmark";
 import { ButtonLink } from "@/components/button";
@@ -36,9 +37,21 @@ export function Hero() {
             </ButtonLink>
           </div>
 
+          {/* The quiet way in for existing members. Deliberately a text link
+              rather than a third button, and part of this block rather than a
+              bar sitting on top of the photograph. */}
+          <p className="mt-8 font-body text-sm text-photo-ink/60">
+            <Link
+              href="/clubhouse"
+              className="fwd-underline text-photo-ink/75 hover:text-photo-ink"
+            >
+              {HERO.memberSignIn}
+            </Link>
+          </p>
+
           <p
             aria-hidden="true"
-            className="fwd-cue mt-14 font-body text-[11px] tracking-[0.2em] text-photo-ink/40"
+            className="fwd-cue mt-12 font-body text-[11px] tracking-[0.2em] text-photo-ink/40"
           >
             scroll
           </p>

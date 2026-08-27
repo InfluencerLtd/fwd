@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { redirect, notFound } from "next/navigation";
 import { cookies } from "next/headers";
 import { ADMIN_ENABLED, ADMIN_COOKIE } from "@/lib/site-config";
@@ -20,6 +21,11 @@ export default async function AdminSignInPage() {
           For the club team.
         </p>
         <AdminSignInForm />
+        <p className="mt-8 border-t border-border pt-6 font-body text-sm">
+          <Link href="/" className="fwd-underline text-accent">
+            Back to the fwd. site
+          </Link>
+        </p>
       </div>
     </main>
   );

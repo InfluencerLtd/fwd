@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getCurrentMember } from "@/lib/auth/session";
 import { ClubhouseNav } from "@/components/clubhouse/nav";
+import { ClubhouseFooter } from "@/components/clubhouse/footer";
 
 /**
  * The wrapper around every page in the member area.
@@ -27,6 +28,9 @@ export default async function ClubhouseLayout({
     <div className="flex min-h-full flex-1 flex-col">
       {member ? <ClubhouseNav /> : null}
       {children}
+      {/* Only for signed-in members. Somebody looking at an invitation without
+          signing in still gets that one event and no route into the club. */}
+      {member ? <ClubhouseFooter /> : null}
     </div>
   );
 }

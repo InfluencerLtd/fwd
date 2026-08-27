@@ -2,7 +2,8 @@ import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { Wordmark } from "@/components/wordmark";
 import { SignupForm } from "@/components/signup-form";
 import { DraftCopyMarker } from "@/components/draft-copy-marker";
-import { HOLDING } from "@/content/site";
+import Link from "next/link";
+import { HOLDING, FOOTER } from "@/content/site";
 import { CONTACT } from "@/lib/brand";
 
 /**
@@ -38,8 +39,16 @@ export function HoldingPage() {
             <SignupForm source="holding" />
           </div>
 
-          <footer className="mt-16 pb-6 font-body text-[13px] text-photo-ink/45">
-            {CONTACT.email}
+          {/* Members exist before the full site launches, so the holding page
+              cannot be the only thing at the address with no way in for them. */}
+          <footer className="mt-16 flex flex-wrap items-center gap-x-6 gap-y-2 pb-6 font-body text-[13px] text-photo-ink/45">
+            <span>{CONTACT.email}</span>
+            <Link
+              href="/clubhouse"
+              className="fwd-underline text-photo-ink/70 hover:text-photo-ink"
+            >
+              {FOOTER.signIn}
+            </Link>
           </footer>
         </div>
       </PhotoPlaceholder>
