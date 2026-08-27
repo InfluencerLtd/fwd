@@ -338,14 +338,27 @@ Open **`src/content/emails.ts`**. All three emails are in there. The bits in
 {curly braces} are filled in automatically. You can see exactly how they will
 look at **`/review/emails`**, which sends nothing.
 
-## Where the photographs go
+## How to add a photograph
 
-There are fourteen photographs on the public site and none of them exist yet.
-Every one is a warm labelled placeholder, and the label says what the shot
-should be.
+**Save the file into `public/photography/` with the right name.** That is the
+whole job. No code to change, nothing to uncomment. Refresh and it is there.
 
-The full list is in **`src/content/site.ts`**, under `IMAGERY`. It is written as
-a brief for whoever shoots or sources them, so it can be handed over as it is.
+The names are listed in `public/photography/README.md`, next to a description of
+what each shot should be. The hero is called `hero`, so `hero.jpg` dropped into
+that folder becomes the picture behind the wordmark.
+
+`.jpg`, `.png`, `.webp` and `.avif` all work. Save them large, at least 2000px
+on the long edge: the site makes the smaller versions itself and will not send a
+huge picture to a phone.
+
+Until a file is there, that spot keeps its warm placeholder with a label saying
+what is missing, so nothing ever looks broken and it stays obvious which
+photographs are still needed.
+
+Anything with words over it gets a dark wash automatically. That is not a mood
+choice: the pale blue only works on a dark ground, and a photograph with a
+bright patch in it would swallow the wordmark without it. The strength is one
+number, `bg-photo-ground/55` in `src/components/photo-placeholder.tsx`.
 
 ## How to add an event
 

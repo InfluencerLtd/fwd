@@ -22,6 +22,8 @@ export function PhotoBand() {
           <div key={`${description}-${index}`} className="fwd-zoom shrink-0">
             <PhotoPlaceholder
               label={description}
+              name={`band-${(index % IMAGERY.band.length) + 1}`}
+              sizes="(min-width: 1024px) 19vw, 46vw"
               ratio="portrait"
               showLabel={index < IMAGERY.band.length}
               className="fwd-zoom-inner w-[46vw] sm:w-[30vw] lg:w-[19vw]"

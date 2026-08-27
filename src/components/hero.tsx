@@ -17,6 +17,9 @@ export function Hero() {
     <div id="hero" className="fwd-on-dark">
       <PhotoPlaceholder
         label={IMAGERY.hero}
+        name="hero"
+        priority
+        sizes="100vw"
         ratio="fill"
         /* The hero is the first thing anybody sees, so it does not carry the
            "photograph goes here" caption that the smaller placeholders do. The

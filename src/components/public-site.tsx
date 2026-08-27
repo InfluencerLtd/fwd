@@ -59,6 +59,8 @@ export function PublicSite() {
               <div className="fwd-zoom col-span-2 overflow-hidden rounded-2xl">
                 <PhotoPlaceholder
                   label={IMAGERY.aboutWide}
+                  name="about-wide"
+                  sizes="(min-width: 1024px) 40vw, 100vw"
                   ratio="landscape"
                   className="fwd-zoom-inner"
                 />
@@ -66,6 +68,8 @@ export function PublicSite() {
               <div className="fwd-zoom overflow-hidden rounded-2xl">
                 <PhotoPlaceholder
                   label={IMAGERY.aboutTall}
+                  name="about-tall"
+                  sizes="(min-width: 1024px) 20vw, 50vw"
                   ratio="square"
                   className="fwd-zoom-inner"
                 />
@@ -73,6 +77,8 @@ export function PublicSite() {
               <div className="fwd-zoom overflow-hidden rounded-2xl">
                 <PhotoPlaceholder
                   label={IMAGERY.aboutDetail}
+                  name="about-detail"
+                  sizes="(min-width: 1024px) 20vw, 50vw"
                   ratio="square"
                   className="fwd-zoom-inner"
                 />
@@ -91,6 +97,8 @@ export function PublicSite() {
               <div className="fwd-zoom fwd-reveal order-2 overflow-hidden rounded-2xl lg:order-1">
                 <PhotoPlaceholder
                   label={IMAGERY.meetingOfMinds}
+                  name="meeting-of-minds"
+                  sizes="(min-width: 1024px) 50vw, 100vw"
                   ratio="square"
                   className="fwd-zoom-inner"
                 />
@@ -133,6 +141,8 @@ export function PublicSite() {
         <div className="fwd-on-dark">
           <PhotoPlaceholder
             label={IMAGERY.statement}
+            name="statement"
+            sizes="100vw"
             ratio="fill"
             showLabel={false}
             className="flex min-h-[62vh] items-center"
@@ -151,6 +161,8 @@ export function PublicSite() {
             <div className="fwd-zoom fwd-reveal overflow-hidden rounded-2xl">
               <PhotoPlaceholder
                 label={IMAGERY.why}
+                name="why"
+                sizes="(min-width: 1024px) 40vw, 100vw"
                 ratio="landscape"
                 className="fwd-zoom-inner"
               />
