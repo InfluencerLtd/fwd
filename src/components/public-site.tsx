@@ -133,8 +133,8 @@ export function PublicSite() {
           <PhotoPlaceholder
             label={IMAGERY.statement}
             ratio="fill"
+            showLabel={false}
             className="flex min-h-[62vh] items-center"
-            labelPosition="left-6 top-6"
           >
             <div className="relative z-2 mx-auto w-full max-w-4xl px-6 py-24">
               <p className="fwd-reveal max-w-3xl font-display text-3xl leading-tight text-accent-on-dark sm:text-4xl lg:text-5xl">

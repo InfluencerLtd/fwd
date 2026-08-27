@@ -240,6 +240,7 @@ export function ApplyForm() {
       <Button
         type="submit"
         size="lg"
+        variant="soft"
         disabled={pending}
         className="mt-10 disabled:opacity-60"
       >

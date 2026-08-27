@@ -11,7 +11,7 @@ import Link from "next/link";
  * and the pale ice blue is unreadable on a light one.
  */
 
-type Variant = "primary" | "onDark" | "outlineOnDark" | "quiet";
+type Variant = "primary" | "onDark" | "outlineOnDark" | "quiet" | "soft";
 type Size = "md" | "lg";
 
 const VARIANTS: Record<Variant, string> = {
@@ -24,6 +24,19 @@ const VARIANTS: Record<Variant, string> = {
     "border border-accent-on-dark text-accent-on-dark hover:bg-accent-on-dark hover:text-photo-ground",
   /** Outlined, for light grounds. */
   quiet: "border border-ink/20 text-ink hover:border-ink hover:bg-ink hover:text-surface",
+  /**
+   * The pale ice blue, filled, with dark text, on a LIGHT ground.
+   *
+   * The border is not decoration. The pale blue measures 1.12:1 against the
+   * warm sand and 1.27:1 against the off-white page, so without an edge the
+   * button has no visible shape at all and reads as dark text floating on the
+   * page. The border is the near-black at 60%, which measures 4.61:1 against
+   * the sand and clears the 3:1 minimum a control's outline has to meet.
+   *
+   * The label itself is fine either way: near-black on the pale blue is
+   * 13.74:1.
+   */
+  soft: "border border-ink/60 bg-accent-on-dark text-ink hover:bg-ink hover:text-accent-on-dark hover:border-ink",
 };
 
 const SIZES: Record<Size, string> = {
