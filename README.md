@@ -149,6 +149,14 @@ The colours are named after their **job**, not after what they look like:
 | `accent` | Links and buttons |
 | `accent-on-dark` | The pale ice blue. **Dark grounds only.** |
 | `ember` | The warm candlelight accent. Small moments only. |
+
+**Dark is what a visitor sees first.** There is a switch to light: it appears in
+the top corner once you scroll past the hero photograph, and again in the
+footer. Whichever somebody picks is remembered on their own computer.
+
+This reverses the original brief, which said light was the default. Both modes
+are fully designed and both meet the contrast standard, so nothing is lost
+either way.
 | `border` | Hairlines and dividers |
 
 ### The one rule that must not be broken

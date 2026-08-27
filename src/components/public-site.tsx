@@ -1,4 +1,5 @@
 import { Hero } from "@/components/hero";
+import { FloatingThemeToggle } from "@/components/floating-theme-toggle";
 import { Section, Prose } from "@/components/section";
 import { MembershipCards } from "@/components/membership-cards";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
@@ -40,6 +41,7 @@ export function PublicSite() {
       </a>
 
       <Hero />
+      <FloatingThemeToggle watch="hero" />
 
       <main id="main">
         {/* ---- What the club is, with photography alongside ---------------

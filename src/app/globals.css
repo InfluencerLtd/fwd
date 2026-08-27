@@ -8,7 +8,9 @@
    `bg-surface`, `text-ink`, `border-border`. Change a value here and it changes
    everywhere, in one edit.
 
-   Light is the default. Dark is applied by putting the class `dark` on <html>.
+   DARK is the default. The page is served with the class `dark` already on
+   <html>, and it is removed again only for a visitor who has chosen light.
+   That way dark is what arrives even with JavaScript switched off.
    =========================================================================== */
 
 @custom-variant dark (&:where(.dark, .dark *));

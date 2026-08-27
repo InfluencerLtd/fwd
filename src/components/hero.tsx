@@ -14,7 +14,7 @@ import { APPLICATIONS_OPEN } from "@/lib/site-config";
  */
 export function Hero() {
   return (
-    <div className="fwd-on-dark">
+    <div id="hero" className="fwd-on-dark">
       <PhotoPlaceholder
         label={IMAGERY.hero}
         ratio="fill"
