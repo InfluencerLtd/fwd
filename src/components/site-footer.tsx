@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Wordmark } from "@/components/wordmark";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { CONTACT, BRAND } from "@/lib/brand";
 import { FOOTER } from "@/content/site";
 
@@ -18,7 +19,12 @@ export function SiteFooter() {
           <Wordmark size="footer" />
 
           <div className="mt-12 flex flex-col gap-6 border-t border-photo-ink/15 pt-8 font-body text-sm sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-photo-ink/50">{CONTACT.email}</p>
+            <div className="flex items-center gap-5">
+              {/* The light and dark switch lives here rather than on the hero,
+                  so nothing sits on top of the photograph. */}
+              <ThemeToggle className="border-photo-ink/25 text-photo-ink/70 hover:text-photo-ink" />
+              <p className="text-photo-ink/50">{CONTACT.email}</p>
+            </div>
 
             <nav
               aria-label="Footer"
