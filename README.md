@@ -19,7 +19,7 @@ worth saying so.
 | | All of Phase 1 needs Supabase, HubSpot and email connected | **Blocked on accounts** |
 | Phase 2 | The Clubhouse, the member area | **Built, needs the database connected** |
 | Phase 3a | The members' library: research, white papers, recaps, briefings | **Built, needs the database connected** |
-| Phase 3b | Merch | Not started, waiting on Bespokely |
+| Phase 3b | Merch | **Built on stated assumptions, needs Bespokely confirmed** |
 
 **Right now there are three things to look at:**
 
@@ -253,6 +253,44 @@ The new type immediately appears in the admin form, in the library filters and
 on the reading page. There is no database change and no new screen to build.
 That was designed in on purpose, because the brief asked that adding a type
 later must not mean rebuilding.
+
+## How to add merch
+
+Go to **`/admin/merch`**.
+
+- **Sizes** are typed on one line, like `S, M, L, XL`. Leave it empty and
+  members are not asked for a size at all.
+- **How many there are** can be left empty for no limit. When the limit is
+  reached the item shows as all claimed and nobody else can take one.
+- **Open for claims** off leaves the item visible but says claims are closed.
+- **Show to members** off means nobody sees it.
+
+There is no price field, and there is no price column in the database to put one
+in. Members claim these. There is no payment step anywhere in the club.
+
+### The order list
+
+Open an item from `/admin/merch` and you get everyone who claimed it, their
+size, and where to send it. **Download the order list** gives you a spreadsheet
+ready to hand to whoever is posting them.
+
+That file contains home addresses. Treat it the way you would treat the
+addresses themselves.
+
+### What I assumed, because Bespokely was not settled
+
+These were guesses. Each is easy to change, and worth checking:
+
+1. An item can have sizes or not. A tote has none, a sweatshirt does.
+2. One member can claim a given item once. Claiming again edits their details
+   rather than adding a second one.
+3. The limit is soft. It stops new claims. It does not reserve anything,
+   because without knowing how Bespokely handles orders there is nothing real to
+   reserve against.
+4. Delivery addresses are kept against the claim, not against the member, so we
+   are not holding somebody's home address permanently for no reason.
+5. Nothing is tied to an event yet. The database can do it, and the screens do
+   not use it, because the customised-per-event approach was not decided.
 
 ## Meeting of Minds requests
 
