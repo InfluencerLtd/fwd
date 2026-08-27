@@ -25,9 +25,9 @@ function getSnapshot(): Theme {
   return document.documentElement.classList.contains("dark") ? "dark" : "light";
 }
 
-/** On the server there is no document, and dark is the default. */
+/** On the server there is no document, and light is the default. */
 function getServerSnapshot(): Theme {
-  return "dark";
+  return "light";
 }
 
 export function ThemeToggle({ className = "" }: { className?: string }) {

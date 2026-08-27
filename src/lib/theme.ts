@@ -2,18 +2,17 @@
  * theme.ts - shared constants for light/dark mode.
  *
  * How it works, in plain language:
- *   - DARK is the default. A first-time visitor sees the dark page.
+ *   - LIGHT is the default. A first-time visitor sees the warm off-white page.
  *   - The moment they use the switch, their choice is remembered in their own
  *     browser and it wins from then on.
  *
- * Note this is a deliberate reversal of the original brief, which said light was
- * the default and that a visitor's computer setting should be taken as a hint on
- * first load. Dark is now the club's default look for everybody, so the computer
- * setting is no longer read: taking it as a hint would mean half of visitors saw
- * one thing and half the other, which is not a house style.
+ * The visitor's own computer setting is deliberately NOT read. The brief
+ * suggested taking it as a hint on first load, but that would mean roughly half
+ * of visitors landed on the dark version, which is the opposite of having a
+ * default. Adding it back is one line, here, if that is wanted.
  *
  * Both modes are fully designed and both meet the contrast standard, so nobody
- * is worse off, and anyone who prefers light is one click away from it.
+ * is worse off either way, and the other one is always one click away.
  */
 
 export const THEME_STORAGE_KEY = "fwd-theme";
@@ -27,15 +26,15 @@ export type Theme = "light" | "dark";
 export const THEME_INIT_SCRIPT = `
 (function () {
   try {
-    /* The page is SERVED with the dark class already on it, so dark is what
-       arrives even if this script never runs or JavaScript is switched off.
-       All this does is take it off again for somebody who chose light. */
+    /* The page is served light, so light is what arrives even if this script
+       never runs or JavaScript is switched off. All this does is switch it to
+       dark for somebody who chose dark. */
     var saved = localStorage.getItem('${THEME_STORAGE_KEY}');
-    var theme = saved === 'light' ? 'light' : 'dark';
-    if (theme === 'light') document.documentElement.classList.remove('dark');
+    var theme = saved === 'dark' ? 'dark' : 'light';
+    if (theme === 'dark') document.documentElement.classList.add('dark');
     document.documentElement.dataset.theme = theme;
   } catch (e) {
-    /* Private browsing can block storage. The dark default is already applied. */
+    /* Private browsing can block storage. The light default is already applied. */
   }
 })();
 `.trim();

@@ -27,10 +27,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      // Dark is the default, so it ships on the page rather than being added
-      // by a script. That way it is what arrives even with JavaScript off, and
-      // there is nothing to flash.
-      className={`dark ${fontVariables} h-full`}
+      className={`${fontVariables} h-full`}
       style={rootFontStyle}
       suppressHydrationWarning
     >

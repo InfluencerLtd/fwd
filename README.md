@@ -150,13 +150,13 @@ The colours are named after their **job**, not after what they look like:
 | `accent-on-dark` | The pale ice blue. **Dark grounds only.** |
 | `ember` | The warm candlelight accent. Small moments only. |
 
-**Dark is what a visitor sees first.** There is a switch to light: it appears in
+**Light is what a visitor sees first.** There is a switch to dark: it appears in
 the top corner once you scroll past the hero photograph, and again in the
 footer. Whichever somebody picks is remembered on their own computer.
 
-This reverses the original brief, which said light was the default. Both modes
-are fully designed and both meet the contrast standard, so nothing is lost
-either way.
+The visitor's own computer setting is not read. If it were, roughly half of
+people would land on the dark version, which is the opposite of having a
+default. It is one line to add back, in `src/lib/theme.ts`.
 | `border` | Hairlines and dividers |
 
 ### The one rule that must not be broken

@@ -59,7 +59,7 @@ function ModePanel({
       <div className="fwd-grain h-full rounded-sm border border-border bg-surface p-6">
         <div className="relative z-1">
           <p className="font-body text-[11px] uppercase tracking-[0.18em] text-ink-muted">
-            {mode === "light" ? "Light" : "Dark, the default"}
+            {mode === "light" ? "Light, the default" : "Dark"}
           </p>
           <div className="mt-5">{children}</div>
         </div>
