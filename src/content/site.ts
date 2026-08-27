@@ -12,9 +12,12 @@
  *
  * >>> EVERYTHING MARKED "DRAFT" BELOW IS MY WORDING, NOT APPROVED WORDING. <<<
  * The brief is explicit that taglines are not to be invented, so treat these as
- * a starting point to react to rather than as finished copy. While
- * COPY_APPROVED is false in src/lib/site-config.ts, a small marker sits in the
- * corner of the page so nobody mistakes this for signed-off text.
+ * a starting point to react to rather than as finished copy.
+ *
+ * There used to be a marker in the corner of every page saying so. It has been
+ * taken off, so nothing on the site itself now shows which words are settled
+ * and which are not. These DRAFT notes are the only record. Search for "DRAFT"
+ * across this folder to see everything still waiting on a decision.
  */
 
 export const HOLDING = {

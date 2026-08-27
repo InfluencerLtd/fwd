@@ -2,7 +2,6 @@ import Link from "next/link";
 import { CONTACT } from "@/lib/brand";
 import { FOOTER } from "@/content/site";
 import { SiteFooter } from "@/components/site-footer";
-import { DraftCopyMarker } from "@/components/draft-copy-marker";
 
 /** Shared layout for the privacy and cookie pages. */
 export function LegalPage({
@@ -39,7 +38,6 @@ export function LegalPage({
         </div>
       </main>
       <SiteFooter />
-      <DraftCopyMarker />
     </>
   );
 }

@@ -7,7 +7,6 @@ import { PhotoBand } from "@/components/photo-band";
 import { ApplyForm } from "@/components/apply-form";
 import { SignupForm } from "@/components/signup-form";
 import { SiteFooter } from "@/components/site-footer";
-import { DraftCopyMarker } from "@/components/draft-copy-marker";
 import {
   ABOUT,
   MEMBERSHIP,
@@ -179,7 +178,6 @@ export function PublicSite() {
       </main>
 
       <SiteFooter />
-      <DraftCopyMarker />
     </>
   );
 }

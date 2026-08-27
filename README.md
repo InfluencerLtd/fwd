@@ -215,12 +215,15 @@ everyone else still sees the holding page. It lasts a month.
 If no password is set, the early access page does not exist at all, so there is
 no default password anywhere for somebody to guess.
 
-### The draft copy marker
+### Which words are still drafts
 
-`COPY_APPROVED` is currently `false`, so a small **"draft copy, not approved"**
-tag sits in the bottom corner of every page. That is deliberate: none of the
-wording has been signed off yet. Set it to `true` once the words are agreed and
-the tag disappears.
+Nothing on the site shows this any more. There used to be a small "draft copy,
+not approved" tag in the corner of every page; it has been taken off.
+
+The record is in the content files. Anything marked `DRAFT` in
+`src/content/site.ts`, `src/content/clubhouse.ts` and `src/content/emails.ts` is
+wording that has not been agreed. Searching those three files for `DRAFT` shows
+everything still waiting on a decision.
 
 ## How to open or close applications
 

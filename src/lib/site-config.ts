@@ -52,15 +52,6 @@ export const SITE_MODE: SiteMode =
 export const APPLICATIONS_OPEN = true;
 
 /**
- * WHETHER THE COPY HAS BEEN SIGNED OFF.
- *
- * While this is false, a small "draft copy" marker sits in the corner of every
- * page, so nobody can mistake unapproved wording for finished wording. Set it
- * to true once the words have been agreed, and the marker disappears.
- */
-export const COPY_APPROVED = false;
-
-/**
  * The password for the early access route, used by the team to preview the
  * real site while the holding page is up. Set EARLY_ACCESS_PASSWORD in the
  * environment. If it is not set, early access is switched off entirely rather

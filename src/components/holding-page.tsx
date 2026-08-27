@@ -1,7 +1,6 @@
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { Wordmark } from "@/components/wordmark";
 import { SignupForm } from "@/components/signup-form";
-import { DraftCopyMarker } from "@/components/draft-copy-marker";
 import Link from "next/link";
 import { HOLDING, FOOTER } from "@/content/site";
 import { CONTACT } from "@/lib/brand";
@@ -53,7 +52,6 @@ export function HoldingPage() {
         </div>
       </PhotoPlaceholder>
 
-      <DraftCopyMarker />
     </main>
   );
 }
