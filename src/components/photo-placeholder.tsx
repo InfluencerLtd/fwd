@@ -102,7 +102,7 @@ export function PhotoPlaceholder({
         />
       ) : showLabel ? (
         <p
-          className={`absolute z-2 max-w-[75%] font-body text-[10px] leading-relaxed tracking-[0.16em] text-photo-ink/45 ${labelPosition}`}
+          className={`absolute z-2 max-w-[75%] font-body text-[10px] leading-relaxed tracking-[0.16em] text-photo-ink/60 ${labelPosition}`}
         >
           {label}
         </p>

@@ -59,7 +59,7 @@ export function Hero() {
 
           <p
             aria-hidden="true"
-            className="fwd-cue absolute bottom-8 left-1/2 -translate-x-1/2 font-body text-[11px] tracking-[0.2em] text-photo-ink/40"
+            className="fwd-cue absolute bottom-8 left-1/2 -translate-x-1/2 font-body text-[11px] tracking-[0.2em] text-photo-ink/70"
           >
             scroll
           </p>

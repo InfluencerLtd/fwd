@@ -30,7 +30,7 @@ export function SignupForm({
   const c = {
     label: isDark ? "text-photo-ink/70" : "text-ink-muted",
     input: isDark
-      ? "border-photo-ink/30 text-photo-ink placeholder:text-photo-ink/35"
+      ? "border-photo-ink/30 text-photo-ink placeholder:text-photo-ink/55"
       : "border-border bg-surface-raised text-ink placeholder:text-ink-muted/60",
     consent: isDark ? "text-photo-ink/70" : "text-ink-muted",
     message: isDark ? "text-accent-on-dark" : "text-ink",

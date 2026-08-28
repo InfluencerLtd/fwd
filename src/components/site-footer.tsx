@@ -23,7 +23,7 @@ export function SiteFooter() {
               {/* The light and dark switch lives here rather than on the hero,
                   so nothing sits on top of the photograph. */}
               <ThemeToggle className="border-photo-ink/25 text-photo-ink/70 hover:text-photo-ink" />
-              <p className="text-photo-ink/50">{CONTACT.email}</p>
+              <p className="text-photo-ink/60">{CONTACT.email}</p>
             </div>
 
             <nav
@@ -51,7 +51,7 @@ export function SiteFooter() {
             </nav>
           </div>
 
-          <p className="mt-10 font-body text-xs text-photo-ink/35">
+          <p className="mt-10 font-body text-xs text-photo-ink/60">
             {BRAND.markLong}. {BRAND.endorsement}.
           </p>
         </div>

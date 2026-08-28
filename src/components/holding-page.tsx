@@ -40,7 +40,7 @@ export function HoldingPage() {
 
           {/* Members exist before the full site launches, so the holding page
               cannot be the only thing at the address with no way in for them. */}
-          <footer className="mt-16 flex flex-wrap items-center gap-x-6 gap-y-2 pb-6 font-body text-[13px] text-photo-ink/45">
+          <footer className="mt-16 flex flex-wrap items-center gap-x-6 gap-y-2 pb-6 font-body text-[13px] text-photo-ink/60">
             <span>{CONTACT.email}</span>
             <Link
               href="/clubhouse"
