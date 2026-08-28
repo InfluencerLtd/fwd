@@ -2,8 +2,8 @@ import Link from "next/link";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { Wordmark } from "@/components/wordmark";
 import { ButtonLink } from "@/components/button";
+import { ApplyButton } from "@/components/apply-dialog";
 import { HERO, IMAGERY } from "@/content/site";
-import { APPLICATIONS_OPEN } from "@/lib/site-config";
 
 /**
  * The hero.
@@ -37,10 +37,8 @@ export function Hero() {
           </p>
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <ButtonLink href="#apply" variant="onDark" size="lg">
-              {APPLICATIONS_OPEN ? HERO.cta : HERO.ctaWaitlist}
-            </ButtonLink>
-            <ButtonLink href="#about" variant="outlineOnDark" size="lg">
+            <ApplyButton variant="onDark" />
+            <ButtonLink href="#membership" variant="outlineOnDark" size="lg">
               {HERO.secondaryCta}
             </ButtonLink>
           </div>

@@ -1,25 +1,51 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { ApplyForm, type ApplyPath } from "@/components/apply-form";
+import { SignupForm } from "@/components/signup-form";
 import { Button } from "@/components/button";
 import { APPLY } from "@/content/site";
+import { APPLICATIONS_OPEN } from "@/lib/site-config";
 
 /**
- * The application, behind a button.
+ * The application, behind a button, opened from anywhere on the page.
  *
- * The section on the page is now a heading, a line and one button. Everything
- * else opens in a panel, so a long form is not sitting on the page for the many
- * more people who will read it than fill it in.
+ * The ask is made three times as you scroll: under the hero, after the
+ * membership cards, and after Meeting of Minds. There is still only ONE panel
+ * in the page, opened by all three. Rendering a dialog per button would put
+ * three copies of the form in the document, three sets of duplicated field ids,
+ * and three things for a screen reader to trip over.
  *
  * It is the browser's own <dialog>, opened with showModal(), which is what
  * gives it a focus trap, Escape to close, an inert page behind it and the right
  * announcement to a screen reader. None of that is hand-rolled here.
- *
- * Applying starts by saying which of the two you are, because the questions
- * worth asking a creator are not the ones worth asking somebody at a brand.
  */
-export function ApplyDialog() {
+
+const ApplyContext = createContext<(() => void) | null>(null);
+
+/** The button. Use it as many times as the page needs. */
+export function ApplyButton({
+  variant = "primary",
+  className = "",
+}: {
+  variant?: "primary" | "onDark" | "outlineOnDark" | "quiet";
+  className?: string;
+}) {
+  const open = useContext(ApplyContext);
+  return (
+    <Button type="button" size="lg" variant={variant} className={className} onClick={() => open?.()}>
+      {APPLICATIONS_OPEN ? APPLY.cta : APPLY.closed.heading}
+    </Button>
+  );
+}
+
+export function ApplyProvider({ children }: { children: React.ReactNode }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const [path, setPath] = useState<ApplyPath | null>(null);
   const [open, setOpen] = useState(false);
@@ -29,13 +55,12 @@ export function ApplyDialog() {
     setOpen(true);
     dialog.current?.showModal();
   }
-
   function hide() {
     dialog.current?.close();
   }
 
   // Escape and the backdrop close it without going through our button, so the
-  // state has to follow what the element actually did rather than assume.
+  // state follows what the element actually did rather than assuming.
   useEffect(() => {
     const el = dialog.current;
     if (!el) return;
@@ -44,18 +69,22 @@ export function ApplyDialog() {
     return () => el.removeEventListener("close", onClose);
   }, []);
 
+  const heading = !APPLICATIONS_OPEN
+    ? APPLY.closed.heading
+    : path === "creator"
+      ? APPLY.fields.creator.heading
+      : path === "brand"
+        ? APPLY.fields.brand.heading
+        : APPLY.choose.heading;
+
   return (
-    <>
-      <Button type="button" size="lg" onClick={show} className="mt-10">
-        {APPLY.cta}
-      </Button>
+    <ApplyContext.Provider value={show}>
+      {children}
 
       <dialog
         ref={dialog}
         className="fwd-dialog"
-        aria-label={APPLY.open.heading}
-        // Clicking the backdrop is a click on the dialog itself, since the
-        // content sits in a child. Anything inside stops it.
+        aria-label={heading}
         onClick={(event) => {
           if (event.target === dialog.current) hide();
         }}
@@ -72,13 +101,7 @@ export function ApplyDialog() {
                   {APPLY.back}
                 </button>
               ) : null}
-              <h2 className="mt-1 text-2xl">
-                {path === "creator"
-                  ? APPLY.fields.creator.heading
-                  : path === "brand"
-                    ? APPLY.fields.brand.heading
-                    : APPLY.choose.heading}
-              </h2>
+              <h2 className="mt-1 text-2xl">{heading}</h2>
             </div>
 
             <button
@@ -92,7 +115,18 @@ export function ApplyDialog() {
           </div>
 
           <div className="overflow-y-auto px-7 py-7">
-            {open && path === null ? (
+            {/* With applications closed there is nothing to choose between:
+                the panel is a waitlist sign-up and says so. */}
+            {open && !APPLICATIONS_OPEN ? (
+              <>
+                <p className="mb-7 font-body text-[15px] leading-relaxed text-ink-muted">
+                  {APPLY.closed.intro}
+                </p>
+                <SignupForm source="waitlist" tone="light" />
+              </>
+            ) : null}
+
+            {open && APPLICATIONS_OPEN && path === null ? (
               <div className="grid gap-4 sm:grid-cols-2">
                 {(
                   [
@@ -117,14 +151,14 @@ export function ApplyDialog() {
               </div>
             ) : null}
 
-            {open && path ? (
-              // Keyed on the path, so switching between the two starts a clean
-              // form rather than carrying the other one's state across.
+            {open && APPLICATIONS_OPEN && path ? (
+              // Keyed on the path, so switching starts a clean form rather than
+              // carrying the other one's state across.
               <ApplyForm key={path} path={path} onDone={hide} />
             ) : null}
           </div>
         </div>
       </dialog>
-    </>
+    </ApplyContext.Provider>
   );
 }

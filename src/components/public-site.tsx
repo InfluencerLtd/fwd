@@ -1,37 +1,32 @@
 import { Hero } from "@/components/hero";
-import { FloatingThemeToggle } from "@/components/floating-theme-toggle";
-import { Section, Prose } from "@/components/section";
+import { Section } from "@/components/section";
 import { MembershipCards } from "@/components/membership-cards";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { PhotoBand } from "@/components/photo-band";
-import { ApplyDialog } from "@/components/apply-dialog";
-import { SignupForm } from "@/components/signup-form";
+import { ApplyProvider, ApplyButton } from "@/components/apply-dialog";
+import { FloatingThemeToggle } from "@/components/floating-theme-toggle";
 import { SiteFooter } from "@/components/site-footer";
-import {
-  ABOUT,
-  MEMBERSHIP,
-  MEETING_OF_MINDS,
-  STATEMENT,
-  WHY,
-  APPLY,
-  NAV,
-  IMAGERY,
-} from "@/content/site";
-import { APPLICATIONS_OPEN } from "@/lib/site-config";
+import { MEMBERSHIP, MEETING_OF_MINDS, NAV, IMAGERY } from "@/content/site";
 
 /**
- * The full public site: one page, scrolling.
+ * The public site: one page, scrolling.
  *
- * The rhythm alternates warm light grounds with photography, so no single
- * stretch is all text or all dark. Meeting of Minds now sits on the warm sand
- * ground beside a photograph rather than in a black box, which is what was
- * making the middle of the page feel heavy.
+ *   1  the hero            the picture, what this is, and the ask
+ *   2  what membership     what it unlocks, then the ask again
+ *      unlocks
+ *   3  the photo band      untouched
+ *   4  Meeting of Minds    the one thing nobody else does, then the ask again
+ *   5  the footer
+ *
+ * The ask appears three times and the panel it opens is the same one each time.
+ * Everything the brief asked to be on this page is still here: what the club is
+ * now opens section two rather than standing alone, and why it exists frames
+ * Meeting of Minds rather than being a section of its own. Fewer, longer
+ * sections, each ending in something to do.
  */
 export function PublicSite() {
-  const apply = APPLICATIONS_OPEN ? APPLY.open : APPLY.closed;
-
   return (
-    <>
+    <ApplyProvider>
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-surface-raised focus:px-5 focus:py-2 focus:font-body focus:text-sm focus:text-ink"
@@ -39,58 +34,41 @@ export function PublicSite() {
         {NAV.skipToContent}
       </a>
 
+      {/* ---- 1. The hero ------------------------------------------------ */}
       <Hero />
       <FloatingThemeToggle watch="hero" />
 
       <main id="main">
-        {/* ---- What fwd. is, with photography alongside ------------------
-             The heading sits INSIDE the left column rather than above the whole
-             section, so the words and the pictures can be centred against each
-             other. With the heading above the grid, centring the paragraphs
-             would have left it stranded at the top on its own. */}
-        <Section id="about">
-          <div className="grid items-center gap-10 lg:grid-cols-[1fr_0.85fr]">
-            <div>
-              <h2 className="fwd-reveal text-4xl sm:text-5xl">{ABOUT.heading}</h2>
-              <Prose lines={ABOUT.body} />
-            </div>
+        {/* ---- 2. What membership unlocks ------------------------------- */}
+        <Section id="membership" heading={MEMBERSHIP.heading}>
+          <div className="fwd-reveal mt-8 max-w-2xl space-y-5">
+            {MEMBERSHIP.lead.map((line) => (
+              <p
+                key={line}
+                className="font-body text-[17px] leading-relaxed text-ink-muted"
+              >
+                {line}
+              </p>
+            ))}
+          </div>
 
-            <div className="fwd-reveal grid grid-cols-2 gap-4">
-              <div className="fwd-zoom col-span-2 overflow-hidden rounded-2xl">
-                <PhotoPlaceholder
-                  label={IMAGERY.aboutWide}
-                  name="about-wide"
-                  sizes="(min-width: 1024px) 40vw, 100vw"
-                  ratio="landscape"
-                  className="fwd-zoom-inner"
-                />
-              </div>
-              <div className="fwd-zoom overflow-hidden rounded-2xl">
-                <PhotoPlaceholder
-                  label={IMAGERY.aboutTall}
-                  name="about-tall"
-                  sizes="(min-width: 1024px) 20vw, 50vw"
-                  ratio="square"
-                  className="fwd-zoom-inner"
-                />
-              </div>
-              <div className="fwd-zoom overflow-hidden rounded-2xl">
-                <PhotoPlaceholder
-                  label={IMAGERY.aboutDetail}
-                  name="about-detail"
-                  sizes="(min-width: 1024px) 20vw, 50vw"
-                  ratio="square"
-                  className="fwd-zoom-inner"
-                />
-              </div>
-            </div>
+          <p className="fwd-reveal mt-10 font-display text-2xl text-ink sm:text-3xl">
+            {MEMBERSHIP.intro}
+          </p>
+
+          <MembershipCards />
+
+          <div className="fwd-reveal mt-14">
+            <ApplyButton />
           </div>
         </Section>
 
-        {/* ---- The band of photographs that drifts sideways --------------- */}
+        {/* ---- 3. The band of photographs. Left exactly as it was. ------- */}
         <PhotoBand />
 
-        {/* ---- Meeting of Minds, on warm sand rather than in a black box -- */}
+        {/* ---- 4. Meeting of Minds --------------------------------------
+             Where Soho House puts the festival: the one thing that is theirs
+             and nobody else's. For fwd. that is the introductions. */}
         <div className="bg-surface-warm">
           <Section id="meeting-of-minds">
             <div className="grid items-center gap-12 lg:grid-cols-2">
@@ -106,7 +84,7 @@ export function PublicSite() {
 
               <div className="order-1 lg:order-2">
                 <p className="fwd-reveal font-body text-xs tracking-[0.2em] text-ember">
-                  the signature benefit
+                  {MEETING_OF_MINDS.eyebrow}
                 </p>
                 <h2 className="fwd-reveal mt-5 text-4xl sm:text-5xl">
                   {MEETING_OF_MINDS.heading}
@@ -124,72 +102,18 @@ export function PublicSite() {
                     </p>
                   ))}
                 </div>
+
+                <div className="fwd-reveal mt-10">
+                  <ApplyButton />
+                </div>
               </div>
             </div>
-          </Section>
-        </div>
-
-        {/* ---- Membership ------------------------------------------------- */}
-        <Section id="membership" heading={MEMBERSHIP.heading}>
-          <p className="fwd-reveal mt-6 max-w-2xl font-body text-lg leading-relaxed text-ink-muted">
-            {MEMBERSHIP.intro}
-          </p>
-          <MembershipCards />
-        </Section>
-
-        {/* ---- A statement over a photograph ------------------------------ */}
-        <div className="fwd-on-dark">
-          <PhotoPlaceholder
-            label={IMAGERY.statement}
-            name="statement"
-            sizes="100vw"
-            ratio="fill"
-            showLabel={false}
-            className="flex min-h-[62vh] items-center"
-          >
-            <div className="relative z-2 mx-auto w-full max-w-4xl px-6 py-24">
-              <p className="fwd-reveal max-w-3xl font-display text-3xl leading-tight text-accent-on-dark sm:text-4xl lg:text-5xl">
-                {STATEMENT.line}
-              </p>
-            </div>
-          </PhotoPlaceholder>
-        </div>
-
-        {/* ---- Why it exists ---------------------------------------------- */}
-        <Section id="why" heading={WHY.heading}>
-          <div className="mt-10 grid items-start gap-12 lg:grid-cols-[0.85fr_1fr]">
-            <div className="fwd-zoom fwd-reveal overflow-hidden rounded-2xl">
-              <PhotoPlaceholder
-                label={IMAGERY.why}
-                name="why"
-                sizes="(min-width: 1024px) 40vw, 100vw"
-                ratio="landscape"
-                className="fwd-zoom-inner"
-              />
-            </div>
-            <Prose lines={WHY.body} className="mt-0" />
-          </div>
-        </Section>
-
-        {/* ---- Apply, on the warm ground ---------------------------------- */}
-        <div className="bg-surface-warm">
-          <Section id="apply" heading={apply.heading}>
-            <p className="fwd-reveal mt-6 max-w-2xl font-body text-lg leading-relaxed text-ink-muted">
-              {apply.intro}
-            </p>
-
-            {APPLICATIONS_OPEN ? (
-              <ApplyDialog />
-            ) : (
-              <div className="fwd-reveal mt-10 max-w-xl">
-                <SignupForm source="waitlist" tone="light" />
-              </div>
-            )}
           </Section>
         </div>
       </main>
 
+      {/* ---- 5. The footer --------------------------------------------- */}
       <SiteFooter />
-    </>
+    </ApplyProvider>
   );
 }

@@ -106,9 +106,17 @@ export const ABOUT = {
 } as const;
 
 export const MEMBERSHIP = {
-  heading: "what membership includes",
+  heading: "what membership unlocks",
   /** DRAFT. */
   intro: "Some of it is access. Most of it is people.",
+  /**
+   * DRAFT. The short "what this actually is" lead, which used to be a section
+   * of its own. It sits above the cards now.
+   */
+  lead: [
+    "fwd. is a community, not a series of events. It runs all year, in person and online, across brands, creators, platforms and the wider industry.",
+    "There is no permanent space, and that is deliberate. Members are global, and membership is by application.",
+  ],
   /**
    * These open to reveal the detail, so the section stays scannable but the
    * substance is there for anyone who wants it.
@@ -180,6 +188,7 @@ export const MEMBERSHIP = {
 
 export const MEETING_OF_MINDS = {
   heading: "meeting of minds",
+  eyebrow: "the signature benefit",
   /** DRAFT. */
   standfirst: "The introduction is the point.",
   body: [
