@@ -78,6 +78,10 @@ export const FOOTER = {
   privacy: "privacy",
   cookies: "cookies",
   signIn: "member sign in",
+  /** Above the short list of places the footer can take you. */
+  navHeading: "site",
+  /** Above the address. */
+  contactHeading: "get in touch",
 } as const;
 
 /** Used for the browser tab, search results, and link previews in email, WhatsApp and Slack. */
