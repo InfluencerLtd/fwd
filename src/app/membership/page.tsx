@@ -138,9 +138,6 @@ export default function MembershipPage() {
             <h2 className="fwd-reveal text-4xl sm:text-5xl">
               {MEMBERSHIP_PAGE.member.heading}
             </h2>
-            <p className="fwd-reveal mt-6 max-w-2xl font-body text-[17px] leading-relaxed text-ink-muted">
-              {MEMBERSHIP_PAGE.member.lead}
-            </p>
             <div className="fwd-reveal mt-9">
               {/* NAV.signIn, not the footer's shorter label. A button this
                   size, on its own at the end of the page, can say where it

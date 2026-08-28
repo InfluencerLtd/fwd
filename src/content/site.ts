@@ -442,7 +442,6 @@ export const MEMBERSHIP_PAGE = {
    */
   member: {
     heading: "already a member?",
-    lead: "The House is the members-only side of the site: the directory, what is coming up, your own profile and the newsletter archive. Sign in with your email address and a six-digit code. There is no password.",
   },
 
   ready: {
