@@ -29,6 +29,7 @@ export default function MembershipPage() {
         <PhotoPlaceholder
           label="A room mid-conversation. Low light, faces optional"
           name="membership"
+          showLabel={false}
           sizes="100vw"
           ratio="fill"
           className="flex min-h-[52vh] flex-col justify-end"
