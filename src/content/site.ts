@@ -83,11 +83,11 @@ export const META = {
 export const HERO = {
   /** DRAFT. One line, under the wordmark. */
   line: "An ongoing community for the people building what comes next across brands, creators, platforms and the wider industry.",
-  /** DRAFT. One call to action, kept restrained on purpose. */
-  cta: "apply for membership",
-  ctaWaitlist: "join the waitlist",
-  /** DRAFT. The second button, which scrolls down to what fwd. is. */
-  secondaryCta: "learn more",
+  /**
+   * The hero has ONE button and its label lives in APPLY.cta, because the same
+   * button appears three times down the page and they must not drift apart.
+   * cta, ctaWaitlist and secondaryCta used to live here and nothing read them.
+   */
   /**
    * The quiet way in for people who are already members. Deliberately not a
    * button: applying is the point of this page, signing in is a convenience.
