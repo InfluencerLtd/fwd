@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Wordmark } from "@/components/wordmark";
-import { NAV, FOOTER } from "@/content/site";
+import { NAV } from "@/content/site";
 
 /**
  * The three-line menu.
@@ -42,12 +42,13 @@ export function SiteMenu() {
     dialog.current?.close();
   }
 
+  // Where you can go. Privacy and cookies are not here: they are legal pages
+  // rather than places, they live in the footer, and a menu this short reads
+  // better without them.
   const links = [
     { href: "/", label: NAV.home },
     { href: "/membership", label: NAV.membership },
     { href: "/clubhouse", label: NAV.signIn },
-    { href: "/privacy", label: FOOTER.privacy },
-    { href: "/cookies", label: FOOTER.cookies },
   ] as const;
 
   return (
