@@ -20,8 +20,8 @@ you do not know, that is a fault in this document.
    it, paste it into the SQL editor, and press Run.** It should say "Success.
    No rows returned".
 
-   That one file is the six numbered files in `supabase/migrations` joined
-   together, so this is one paste rather than six. Postgres runs a paste as a
+   That one file is the numbered files in `supabase/migrations` joined
+   together, so this is one paste rather than seven. Postgres runs a paste as a
    single transaction, so if any part of it fails nothing is applied at all and
    you can fix the problem and paste again. Running it twice is safe.
 5. Optional but useful: do the same with `supabase/seed-examples.sql`. That adds

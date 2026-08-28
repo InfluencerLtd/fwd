@@ -126,6 +126,63 @@ report(
   policies.rows.map((p) => `${p.tablename}.${p.policyname}`).join(", "),
 );
 
+/*
+ * THE CHECK THAT WAS MISSING.
+ *
+ * The app never inserts. It upserts, so that applying twice updates the first
+ * application rather than failing. Postgres only accepts a conflict target
+ * that matches a real unique index on exactly those columns, and an index on
+ * lower(email) does not match a conflict target of (email).
+ *
+ * Every migration passed for weeks with that mismatch in place, because
+ * running the SQL and running the app's actual write are different things.
+ * This closes that gap: for every upsert in src/lib/store, the same conflict
+ * target is tried here.
+ */
+console.log("\nEvery upsert the app makes has an index to conflict on:");
+{
+  const UPSERTS: Array<{ table: string; target: string; row: string }> = [
+    { table: "signups", target: "email", row: `('a@example.com', 'holding')`.replace(/^/, "") },
+    { table: "applications", target: "email", row: "" },
+    { table: "members", target: "email", row: "" },
+    { table: "rsvps", target: "event_id, member_id", row: "" },
+    { table: "invitations", target: "event_id, member_id", row: "" },
+    { table: "merch_claims", target: "item_id, member_id", row: "" },
+  ];
+
+  for (const { table, target } of UPSERTS) {
+    // Asking Postgres directly whether a unique index exists whose columns are
+    // exactly the conflict target. Cheaper and clearer than building a valid
+    // row for every table just to watch the insert fail.
+    const wanted = target.split(",").map((c) => c.trim());
+    const found = await db.query<{ cols: string }>(
+      `select string_agg(a.attname, ',' order by k.ord) as cols
+         from pg_index i
+         join pg_class c on c.oid = i.indrelid
+         join lateral unnest(i.indkey) with ordinality as k(attnum, ord) on true
+         join pg_attribute a on a.attrelid = c.oid and a.attnum = k.attnum
+        where c.relname = $1 and i.indisunique
+        group by i.indexrelid`,
+      [table],
+    );
+    const matches = found.rows.some(
+      (r) =>
+        r.cols &&
+        r.cols.split(",").length === wanted.length &&
+        wanted.every((w) => r.cols.split(",").includes(w)),
+    );
+    report(
+      matches,
+      `${table}: on conflict (${target})`,
+      matches
+        ? ""
+        : `No unique index on exactly (${target}). Indexes present: ${
+            found.rows.map((r) => r.cols).filter(Boolean).join(" | ") || "none"
+          }. An index on an expression such as lower(email) does not count, and the upsert fails at runtime with 42P10.`,
+    );
+  }
+}
+
 console.log("\nThe constraints behave:");
 async function expectFailure(label: string, sql: string) {
   try {
