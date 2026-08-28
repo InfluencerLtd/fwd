@@ -85,18 +85,31 @@ if (!url || !serviceKey) {
   process.exit(1);
 }
 
-// The service_role key is a JWT with its role in the payload. Pasting the anon
-// key here instead is the single most common mistake, and it fails later in a
-// way that looks like a permissions problem rather than a wrong key.
-function roleOf(jwt: string): string | null {
+/**
+ * Works out whether the key given is the privileged one or the public one.
+ *
+ * Pasting the public key here is the single most common mistake, and it fails
+ * later in a way that looks like a permissions problem rather than a wrong key,
+ * so it is worth naming outright.
+ *
+ * Supabase has two generations of keys and a project may show either:
+ *
+ *   new    sb_secret_...        privileged   sb_publishable_...   public
+ *   old    a JWT, role in it    service_role  a JWT, role in it   anon
+ */
+function keyKind(key: string): "secret" | "public" | "unknown" {
+  if (key.startsWith("sb_secret_")) return "secret";
+  if (key.startsWith("sb_publishable_")) return "public";
   try {
     const payload = JSON.parse(
-      Buffer.from(jwt.split(".")[1], "base64").toString("utf8"),
+      Buffer.from(key.split(".")[1], "base64").toString("utf8"),
     );
-    return typeof payload.role === "string" ? payload.role : null;
+    if (payload.role === "service_role") return "secret";
+    if (payload.role === "anon") return "public";
   } catch {
-    return null;
+    // Not a JWT either. Fall through.
   }
+  return "unknown";
 }
 
 const db = createClient(url, serviceKey, {
@@ -123,31 +136,44 @@ console.log("\nSupabase\n");
 
 console.log("The keys:");
 {
-  const role = roleOf(serviceKey);
-  if (role === "service_role") {
-    pass("the key is a service_role key");
-  } else if (role === "anon") {
-    fail(
-      "SUPABASE_SERVICE_ROLE_KEY is the anon key, not the service_role key",
-      "In Supabase: Project Settings, API keys. Copy the one labelled service_role, not anon.",
+  const kind = keyKind(serviceKey);
+  if (kind === "secret") {
+    pass(
+      "the key is the privileged one",
+      serviceKey.startsWith("sb_secret_") ? "sb_secret_…" : "service_role",
     );
-  } else if (role) {
+  } else if (kind === "public") {
     fail(
-      `the key says its role is "${role}", which is neither anon nor service_role`,
-      "Copy the service_role key from Project Settings, API keys.",
+      "SUPABASE_SERVICE_ROLE_KEY holds the PUBLIC key, not the secret one",
+      "In Supabase: Settings, API Keys. Take the row under Secret keys, not the one under Publishable key. You may need to press the eye icon to reveal it.",
     );
   } else {
-    // Supabase's newer publishable/secret keys are not JWTs, so an unreadable
-    // payload is not by itself wrong.
     warn(
-      "could not read the key's role",
-      "Not a JWT, so this is probably one of the newer secret keys. The checks below still tell you whether it works.",
+      "could not tell what kind of key this is",
+      "It is neither sb_secret_… nor a readable JWT. The checks below still tell you whether it works.",
     );
   }
 
   try {
-    const host = new URL(url).host;
-    pass("the project URL parses", host);
+    const parsed = new URL(url);
+    // Host first. A dashboard address has a path too, and being told to strip
+    // the path off the wrong host would send you round in a circle.
+    if (parsed.host.includes("supabase.com")) {
+      const ref = parsed.pathname.split("/").filter(Boolean).pop();
+      fail(
+        "that is the dashboard address, not the project URL",
+        ref && ref !== "project"
+          ? `The project URL ends in .supabase.co, not .supabase.com. Yours is almost certainly "https://${ref}.supabase.co".`
+          : 'The project URL ends in .supabase.co, not .supabase.com. It is in Settings, Data API.',
+      );
+    } else if (parsed.pathname !== "/" && parsed.pathname !== "") {
+      fail(
+        "the project URL has a path on the end",
+        `Use just "${parsed.origin}".`,
+      );
+    } else {
+      pass("the project URL parses", parsed.host);
+    }
   } catch {
     fail(
       "NEXT_PUBLIC_SUPABASE_URL is not a URL",
@@ -251,8 +277,8 @@ console.log("\nWhat the public can reach:");
 
   if (!anonKey) {
     warn(
-      "the anon key is not set, so this could not be tested from the outside",
-      'Optional: add NEXT_PUBLIC_SUPABASE_ANON_KEY="the anon key" to .env.local and run this again. Nothing on the site needs it; it is only used to prove the members table is unreachable.',
+      "the public key is not set, so this could not be tested from the outside",
+      'Optional but worth doing once: add NEXT_PUBLIC_SUPABASE_ANON_KEY="the publishable key" to .env.local and run this again. Nothing on the site needs it. It is only used here to prove, from the outside, that the member directory cannot be read by anybody who finds the address.',
     );
   } else {
     const pub = createClient(url, anonKey, {

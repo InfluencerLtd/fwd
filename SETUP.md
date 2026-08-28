@@ -35,9 +35,20 @@ you do not know, that is a fault in this document.
    white papers are kept. A private bucket means files have no web address of
    their own: the site hands each member a personal link that stops working
    after a few minutes, so a file cannot be forwarded outside the club.
-7. Go to **Project Settings**, then **API keys**. You need two values:
-   - the **Project URL**
-   - the **service_role** key, which is secret
+7. You need two values, and they are on two different pages.
+
+   **The Project URL.** Look at your browser's address bar. It reads
+   `supabase.com/dashboard/project/SOMETHING`. That last part is your project's
+   reference, and the Project URL is `https://SOMETHING.supabase.co`. (It is
+   also written out under **Settings**, then **Data API**.) Note the `.co`:
+   `supabase.com` is the dashboard, `supabase.co` is your project.
+
+   **The secret key.** Go to **Settings**, then **API Keys**. That page has two
+   groups. You want the row under **Secret keys**, not the one under
+   **Publishable key**. Press the eye icon to reveal it.
+
+   Older projects show this page differently, as `anon` and `service_role`
+   keys. In that case take **service_role**. Either generation works.
 
 Then open the file `.env.local` in this project and add:
 
