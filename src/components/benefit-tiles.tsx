@@ -1,24 +1,22 @@
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
-import { IMAGERY, MEMBERSHIP } from "@/content/site";
+import { IMAGERY, MEMBERSHIP, MEMBERSHIP_PAGE } from "@/content/site";
 
 /**
  * The whole offer as pictures, in two rows that drift sideways.
- *
- * This replaced a single line of scrolling text, which was standing in for
- * exactly this until it was clear the page wanted it. A membership is a set of
- * rooms and nights and people, and a list of words is the least persuasive way
- * to say so.
  *
  * The two rows drift in opposite directions. One row moving alone reads as a
  * component that is loading. Two moving against each other reads as a surface
  * with things on it, and the eye settles rather than following one tile.
  *
- * The captions are the card summaries, so the tiles cannot drift out of step
- * with the list underneath, and there is one place to change a benefit.
+ * The captions are the card summaries, so there is one place to change a
+ * benefit.
  *
- * aria-hidden, because every caption here appears again a screen further down
- * with its detail attached. A screen reader would otherwise hear all eight
- * benefits twice, and the version below is the useful one.
+ * THIS IS NOW THE ONLY PLACE THE BENEFITS APPEAR ON THE PAGE. They used to be
+ * written out again a screen below, which is why the whole block was hidden
+ * from screen readers. That written out version has gone, so hiding this would
+ * mean the benefits existed for sighted visitors only. It is a labelled list
+ * now, and the only thing hidden is the second copy of each row, which exists
+ * to make the loop close and would otherwise be read out twice.
  */
 
 /**
@@ -51,10 +49,13 @@ function Row({
 
   return (
     <div className={`fwd-marquee ${reverse ? "fwd-marquee-reverse" : ""}`}>
-      <div className="fwd-marquee-track gap-2">
+      <ul className="fwd-marquee-track gap-2">
         {row.map((card, index) => (
-          <div
+          <li
             key={`${card.id}-${index}`}
+            // The duplicate half. Same eight benefits again, so it is hidden
+            // rather than read out a second time.
+            aria-hidden={index >= cards.length || undefined}
             className={`shrink-0 ${TILE_HEIGHT} ${WIDTHS[index % WIDTHS.length]}`}
           >
             <PhotoPlaceholder
@@ -74,9 +75,9 @@ function Row({
                 {card.summary}
               </p>
             </PhotoPlaceholder>
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 }
@@ -88,9 +89,12 @@ export function BenefitTiles() {
   return (
     // Air above and below. Butted straight up against the dark top, the rows
     // read as part of it rather than as the first thing on the page.
-    <div aria-hidden="true" className="space-y-2 overflow-hidden py-16 sm:py-20">
+    <section
+      aria-label={MEMBERSHIP_PAGE.benefitsLabel}
+      className="space-y-2 overflow-hidden py-16 sm:py-20"
+    >
       <Row cards={cards.slice(0, half)} reverse={false} />
       <Row cards={cards.slice(half)} reverse />
-    </div>
+    </section>
   );
 }

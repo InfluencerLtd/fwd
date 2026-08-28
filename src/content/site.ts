@@ -150,8 +150,17 @@ export const MEMBERSHIP = {
   intro: "Some of it is access. Most of it is people.",
 
   /**
-   * These open to reveal the detail, so the section stays scannable but the
-   * substance is there for anyone who wants it.
+   * The eight things membership gets you.
+   *
+   * ONLY `id` AND `summary` ARE ON THE SITE at the moment. They are the caption
+   * and the photograph on each tile at the top of the membership page.
+   *
+   * `title` and `detail` are not shown anywhere. They were the written out
+   * version underneath the tiles, which has been taken off the page. They are
+   * kept because they are the only written record of what each benefit
+   * actually is, and because the tiles say almost nothing on their own. If
+   * they are never going back on the page, delete them rather than leaving
+   * copy here that nobody will ever read.
    */
   cards: [
     {
@@ -442,18 +451,20 @@ export const MEMBERSHIP_PAGE = {
   /** DRAFT. The standfirst under the heading. */
   intro: "by application only.",
   /**
+   * Not printed anywhere. It names the row of benefit tiles for a screen
+   * reader, which otherwise meets eight sentences with nothing saying what
+   * they are a list of. It used to be a visible heading over a written out
+   * version of the same list.
+   */
+  benefitsLabel: "what membership gets you",
+
+  /**
    * What search engines and link previews show. Kept separate from the
    * standfirst above, which is now too short to describe the page to somebody
    * who has not seen it.
    */
   description:
     "Membership of fwd. is by application. What it gets you, what we will ask, and how to apply.",
-
-  benefits: {
-    heading: "what it gets you",
-    /** DRAFT. Shorter than the home page, because you are further down the path. */
-    lead: "Some of it is access. Most of it is people.",
-  },
 
   /**
    * The way in for somebody who already belongs here. It is the last thing on

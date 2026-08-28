@@ -3,7 +3,6 @@ import Link from "next/link";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { Wordmark } from "@/components/wordmark";
 import { BenefitTiles } from "@/components/benefit-tiles";
-import { MembershipCards } from "@/components/membership-cards";
 import { ApplyDialog } from "@/components/apply-dialog";
 import { SignupForm } from "@/components/signup-form";
 import { SiteFooter } from "@/components/site-footer";
@@ -76,19 +75,6 @@ export default function MembershipPage() {
       <main id="main">
         {/* ---- 2. The whole offer at a glance ---------------------------- */}
         <BenefitTiles />
-
-        {/* ---- 3. The same offer, explained ------------------------------ */}
-        <section className="px-6 py-24 sm:py-28">
-          <div className="mx-auto max-w-4xl">
-            <h2 className="fwd-reveal text-4xl sm:text-5xl">
-              {MEMBERSHIP_PAGE.benefits.heading}
-            </h2>
-            <p className="fwd-reveal mt-6 max-w-2xl font-body text-[17px] leading-relaxed text-ink-muted">
-              {MEMBERSHIP_PAGE.benefits.lead}
-            </p>
-            <MembershipCards />
-          </div>
-        </section>
 
         {/* ---- 4. Ready to apply ----------------------------------------- */}
         <div className="bg-surface-warm">
