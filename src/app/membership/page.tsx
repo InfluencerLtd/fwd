@@ -7,7 +7,7 @@ import { ApplyDialog } from "@/components/apply-dialog";
 import { SignupForm } from "@/components/signup-form";
 import { SiteFooter } from "@/components/site-footer";
 import { ButtonLink } from "@/components/button";
-import { APPLY, MEMBERSHIP_PAGE, META, NAV } from "@/content/site";
+import { APPLY, MEMBERSHIP_PAGE, META } from "@/content/site";
 import { APPLICATIONS_OPEN } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -108,19 +108,17 @@ export default function MembershipPage() {
         {/* ---- 3. The whole offer at a glance ---------------------------- */}
         <BenefitTiles />
 
-        {/* ---- 5. The door for anybody who is already in ------------------ */}
+        {/* ---- 4. The ask again, after the pictures ----------------------- */}
         <section className="px-6 py-24 sm:py-28">
-          <div className="mx-auto max-w-4xl">
+          <div className="mx-auto max-w-4xl text-center">
             <h2 className="fwd-reveal text-4xl sm:text-5xl">
-              {MEMBERSHIP_PAGE.member.heading}
+              {MEMBERSHIP_PAGE.closing.heading}
             </h2>
+            {/* The same dialog the header opens, not a second form. Somebody
+                persuaded by the pictures should not have to scroll back up to
+                act on it. */}
             <div className="fwd-reveal mt-9">
-              {/* NAV.signIn, not the footer's shorter label. A button this
-                  size, on its own at the end of the page, can say where it
-                  goes. */}
-              <ButtonLink href="/clubhouse" variant="quiet" size="lg">
-                {NAV.signIn}
-              </ButtonLink>
+              <ApplyDialog label={APPLY.cta} />
             </div>
           </div>
         </section>

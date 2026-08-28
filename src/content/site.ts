@@ -465,12 +465,13 @@ export const MEMBERSHIP_PAGE = {
     "Membership of fwd. is by application. What it gets you, what we will ask, and how to apply.",
 
   /**
-   * The way in for somebody who already belongs here. It is the last thing on
-   * the page, after the ask, because anybody who is already a member is not
-   * reading the rest of it.
+   * The last thing on the page. The ask again, after the pictures, so anybody
+   * persuaded by them has a button in front of them rather than a scroll back
+   * up to the header. It used to be a door for existing members, which the
+   * log in button in the header now covers.
    */
-  member: {
-    heading: "already a member?",
+  closing: {
+    heading: "ready to apply?",
   },
 
   /**
