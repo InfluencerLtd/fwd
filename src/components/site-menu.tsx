@@ -78,11 +78,11 @@ export function SiteMenu() {
           if (event.target === dialog.current) hide();
         }}
       >
-        <div className="flex flex-col p-7">
+        <div className="flex flex-col p-5">
           <div className="flex items-start justify-between gap-6">
             <Link href="/" onClick={hide} aria-label={NAV.home}>
-              <span className="fwd-on-dark inline-block rounded-xl bg-photo-ground px-4 py-3">
-                <Wordmark size="footer" />
+              <span className="fwd-on-dark inline-block rounded-lg bg-photo-ground px-3 py-2">
+                <Wordmark size="small" />
               </span>
             </Link>
 
@@ -90,20 +90,20 @@ export function SiteMenu() {
               type="button"
               onClick={hide}
               aria-label={NAV.menuClose}
-              className="-mr-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-border font-body text-lg leading-none text-ink-muted transition-colors duration-300 hover:border-ink/30 hover:text-ink"
+              className="-mr-1 -mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border font-body text-base leading-none text-ink-muted transition-colors duration-300 hover:border-ink/30 hover:text-ink"
             >
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
 
-          <nav aria-label={NAV.menu} className="mt-9">
-            <ul className="space-y-1">
+          <nav aria-label={NAV.menu} className="mt-6">
+            <ul className="space-y-0.5">
               {links.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
                     onClick={hide}
-                    className="block rounded-xl px-3 py-3 font-display text-3xl text-ink transition-colors duration-300 hover:bg-surface-warm"
+                    className="block rounded-lg px-3 py-2.5 font-display text-xl text-ink transition-colors duration-300 hover:bg-surface-warm"
                   >
                     {link.label}
                   </Link>
@@ -112,9 +112,9 @@ export function SiteMenu() {
             </ul>
           </nav>
 
-          <div className="mt-9 flex items-center gap-4 border-t border-border pt-6">
+          <div className="mt-6 flex items-center gap-3 border-t border-border pt-4">
             <ThemeToggle />
-            <span className="font-body text-[13px] text-ink-muted">
+            <span className="font-body text-[12px] text-ink-muted">
               {NAV.appearance}
             </span>
           </div>

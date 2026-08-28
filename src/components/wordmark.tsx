@@ -23,7 +23,7 @@ export function Wordmark({
   heading = false,
   align = "left",
 }: {
-  size?: "hero" | "footer";
+  size?: "hero" | "footer" | "small";
   /**
    * Makes the mark the page's main heading. Every page needs exactly one, and
    * the name of the thing is the right thing for it to be.
@@ -35,10 +35,11 @@ export function Wordmark({
     size === "hero"
       ? "text-7xl sm:text-8xl lg:text-9xl"
       : "text-3xl";
-  const signatureClass = size === "hero" ? "text-lg sm:text-xl" : "text-xs";
+  const signatureClass =
+    size === "hero" ? "text-lg sm:text-xl" : size === "footer" ? "text-xs" : "text-[10px]";
   // Enough of a gap to read as a signature beside the mark rather than as part
   // of the word, and no more.
-  const gapClass = size === "hero" ? "gap-2.5 sm:gap-3" : "gap-1.5";
+  const gapClass = size === "hero" ? "gap-2.5 sm:gap-3" : size === "footer" ? "gap-1.5" : "gap-1";
 
   const Mark = heading ? "h1" : "span";
 
