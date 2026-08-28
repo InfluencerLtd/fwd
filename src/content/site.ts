@@ -360,8 +360,15 @@ export const STATEMENT = {
 export const MEMBERSHIP_PAGE = {
   /** DRAFT. */
   heading: "membership",
-  intro:
-    "Membership is by application, and every application is read by a person. Here is what it gets you, and what we will ask.",
+  /** DRAFT. The standfirst under the heading. */
+  intro: "by application only.",
+  /**
+   * What search engines and link previews show. Kept separate from the
+   * standfirst above, which is now too short to describe the page to somebody
+   * who has not seen it.
+   */
+  description:
+    "Membership of fwd. is by application. What it gets you, what we will ask, and how to apply.",
 
   benefits: {
     heading: "what it gets you",

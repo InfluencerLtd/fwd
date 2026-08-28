@@ -11,7 +11,7 @@ import { APPLICATIONS_OPEN } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: `membership · ${META.title}`,
-  description: MEMBERSHIP_PAGE.intro,
+  description: MEMBERSHIP_PAGE.description,
 };
 
 /**
