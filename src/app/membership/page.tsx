@@ -81,7 +81,7 @@ export default function MembershipPage() {
         {/* ---- 2. Ready to apply ----------------------------------------- */}
         <div className="bg-surface-warm">
           <section id="apply" className="px-6 py-24 sm:py-28">
-            <div className="mx-auto max-w-4xl">
+            <div className="mx-auto max-w-4xl text-center">
               <h2 className="fwd-reveal text-4xl sm:text-5xl">
                 {APPLICATIONS_OPEN
                   ? MEMBERSHIP_PAGE.ready.heading
@@ -89,21 +89,17 @@ export default function MembershipPage() {
               </h2>
 
               {APPLICATIONS_OPEN ? (
-                <>
-                  {/* How long this will take comes before what it will ask
-                      for. Somebody deciding whether to start wants the size of
-                      the job first, and the list second. */}
-                  <p className="fwd-reveal mt-6 max-w-2xl font-body text-[17px] leading-relaxed text-ink-muted">
-                    {MEMBERSHIP_PAGE.ready.note}
-                  </p>
-
-                </>
+                <p className="fwd-reveal mx-auto mt-6 max-w-2xl font-body text-[17px] leading-relaxed text-ink-muted">
+                  {MEMBERSHIP_PAGE.ready.note}
+                </p>
               ) : (
-                <div className="fwd-reveal mt-8 max-w-xl">
+                <div className="fwd-reveal mx-auto mt-8 max-w-xl">
                   <p className="font-body text-[17px] leading-relaxed text-ink-muted">
                     {MEMBERSHIP_PAGE.closed.intro}
                   </p>
-                  <div className="mt-8">
+                  {/* Back to the left. A centred heading is a heading; centred
+                      field labels and error messages are just hard to read. */}
+                  <div className="mt-8 text-left">
                     <SignupForm source="waitlist" tone="light" />
                   </div>
                 </div>
