@@ -1,9 +1,7 @@
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { Wordmark } from "@/components/wordmark";
 import { SignupForm } from "@/components/signup-form";
-import Link from "next/link";
-import { HOLDING, FOOTER, IMAGERY } from "@/content/site";
-import { CONTACT } from "@/lib/brand";
+import { HOLDING, IMAGERY } from "@/content/site";
 
 /**
  * The pre-launch holding page.
@@ -50,17 +48,17 @@ export function HoldingPage() {
             <SignupForm source="holding" />
           </div>
 
-          {/* Members exist before the full site launches, so the holding page
-              cannot be the only thing at the address with no way in for them. */}
-          <footer className="mt-16 flex flex-wrap items-center gap-x-6 gap-y-2 pb-6 font-body text-[13px] text-photo-ink/60">
-            <span>{CONTACT.email}</span>
-            <Link
-              href="/clubhouse"
-              className="fwd-underline text-photo-ink/70 hover:text-photo-ink"
-            >
-              {FOOTER.signIn}
-            </Link>
-          </footer>
+          {/* NOTHING BELOW THE FORM.
+              This used to carry the address and a sign in link for members who
+              exist before the full site opens. Both are gone: the page is the
+              wordmark, one line and one thing to do, and a footer of small grey
+              links was the only thing on it that was not that.
+
+              The consequence, written down so it is a decision rather than an
+              oversight: while the holding page is up there is no way in to The
+              House from the address, and no way to reach us except the form.
+              Members sign in at /clubhouse, which still works, but they have to
+              be told the address. */}
         </div>
       </PhotoPlaceholder>
 
