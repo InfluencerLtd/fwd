@@ -355,14 +355,17 @@ Until a file is there, that spot keeps its warm placeholder with a label saying
 what is missing, so nothing ever looks broken and it stays obvious which
 photographs are still needed.
 
-Anything with words over it gets a dark wash automatically. That is not a mood
-choice. Measured against the real hero photograph, the wordmark scores 1.27:1
-with no wash, which means it disappears into the pale satin dress. It needs 3:1.
-The wash is set to 50%, which gives 3.82:1, and anything below 45% fails.
+Anything with words over it gets a light dark wash automatically, so the words
+stay readable over the brightest part of a picture.
 
-The strength is one number, `bg-photo-ground/50` in
-`src/components/photo-placeholder.tsx`. If you lighten it, check the wordmark
-still reads over the brightest part of the picture.
+It is set to 25%. The hero photograph arrives already darkened from the artwork
+and clears the standard with no wash at all, so this is margin rather than
+necessity, and it is kept low on purpose: more than that and an already dark
+picture turns to mud.
+
+**If you ever swap in a brighter photograph, this needs checking again.** The
+number is `bg-photo-ground/25` in `src/components/photo-placeholder.tsx`, and
+the measurements behind it are written next to it.
 
 ## How to add an event
 

@@ -55,19 +55,28 @@ export function PhotoPlaceholder({
   /**
    * A dark wash over the photograph.
    *
-   * This is not a mood choice, it is what keeps the words legible, and the real
-   * hero photograph proves the point. Measured against every pixel in it:
+   * This is not a mood choice, it is what keeps the words legible. The pale ice
+   * blue only works on a dark ground, and a photograph with a bright patch in
+   * it, a shirt or a window or a skin tone, would swallow the wordmark wherever
+   * it crossed one.
    *
-   *   no wash   1.27:1   the wordmark disappears into the pale satin dress
-   *   40%       2.97:1   still fails
-   *   45%       3.36:1   the floor
-   *   50%       3.82:1   what is set
-   *   55%       4.36:1
+   * Measured against every pixel of the real hero photograph, which arrives
+   * already darkened from the artwork:
    *
-   * Large text needs 3:1. Those figures are the worst pixel in the whole frame,
-   * so there is more headroom than they suggest: the wordmark only crosses the
-   * middle of it. Anything below 45% and the mark starts to vanish wherever the
-   * picture is brightest.
+   *             wordmark   body text
+   *   no wash    4.49:1     5.43:1
+   *   20%        5.71:1     6.90:1
+   *   25%        6.07:1     7.34:1   what is set
+   *   50%        8.22:1     9.93:1   muddied the picture for nothing
+   *
+   * The wordmark is large text and needs 3:1. The line beneath it is normal
+   * size and needs 4.5:1. This photograph clears both with no wash at all, so
+   * 25% is margin rather than necessity, and it is kept low deliberately: more
+   * than that and an already dark picture turns to mud.
+   *
+   * IF A BRIGHTER PHOTOGRAPH IS EVER USED HERE, THIS NUMBER HAS TO BE CHECKED
+   * AGAIN. The same measurement on the version Canva served, which was not
+   * pre-darkened, needed 45% before the wordmark cleared 3:1.
    *
    * Defaults to on wherever there is something on top of the picture.
    */
@@ -101,7 +110,7 @@ export function PhotoPlaceholder({
       {src && wash ? (
         <div
           aria-hidden="true"
-          className="absolute inset-0 z-1 bg-photo-ground/50"
+          className="absolute inset-0 z-1 bg-photo-ground/25"
         />
       ) : null}
       {children}
