@@ -18,13 +18,15 @@ export const metadata: Metadata = {
 /**
  * Where every "apply for membership" button on the home page leads.
  *
- * The shape follows the order somebody actually reads in: what this is and the
- * ask, the whole offer at a glance, the offer explained, what we will need from
- * you, the form, and finally the door for anybody who is already a member.
+ * The shape: what this is, the ask, the offer, and the door for anybody who is
+ * already a member.
  *
- * The ask appears twice, once at the top for anybody who arrived already
- * decided, and once at the bottom in full. The form is on the page rather than
- * behind another click, because somebody who has read this far has said yes.
+ * THE ASK COMES BEFORE THE OFFER, which is the wrong way round for a page that
+ * has to persuade and the right way round for this one. Nobody arrives here
+ * cold: every route in is a button on the home page that already said "apply
+ * for membership". They have decided. The form is one press away from where
+ * they land, and the pictures are underneath for anybody who wants to look
+ * before they do.
  */
 export default function MembershipPage() {
   return (
@@ -73,10 +75,7 @@ export default function MembershipPage() {
       </div>
 
       <main id="main">
-        {/* ---- 2. The whole offer at a glance ---------------------------- */}
-        <BenefitTiles />
-
-        {/* ---- 4. Ready to apply ----------------------------------------- */}
+        {/* ---- 2. Ready to apply ----------------------------------------- */}
         <div className="bg-surface-warm">
           <section id="apply" className="px-6 py-24 sm:py-28">
             <div className="mx-auto max-w-4xl">
@@ -117,6 +116,9 @@ export default function MembershipPage() {
             </div>
           </section>
         </div>
+
+        {/* ---- 3. The whole offer at a glance ---------------------------- */}
+        <BenefitTiles />
 
         {/* ---- 5. The door for anybody who is already in ------------------ */}
         <section className="px-6 py-24 sm:py-28">
