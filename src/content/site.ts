@@ -82,7 +82,7 @@ export const META = {
 
 export const HERO = {
   /** DRAFT. One line, under the wordmark. */
-  line: "An ongoing community for the people building what comes next across brands, creators, platforms and the wider industry.",
+  line: "Bringing the people shaping the creator economy together.",
   /**
    * The hero has ONE button and its label lives in APPLY.cta, because the same
    * button appears three times down the page and they must not drift apart.
