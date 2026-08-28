@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { Wordmark } from "@/components/wordmark";
-import { BenefitStrip } from "@/components/benefit-strip";
+import { BenefitTiles } from "@/components/benefit-tiles";
 import { MembershipCards } from "@/components/membership-cards";
 import { ApplyDialog } from "@/components/apply-dialog";
 import { SignupForm } from "@/components/signup-form";
@@ -75,7 +75,7 @@ export default function MembershipPage() {
 
       <main id="main">
         {/* ---- 2. The whole offer at a glance ---------------------------- */}
-        <BenefitStrip />
+        <BenefitTiles />
 
         {/* ---- 3. The same offer, explained ------------------------------ */}
         <section className="px-6 py-24 sm:py-28">

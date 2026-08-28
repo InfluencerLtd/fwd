@@ -344,11 +344,12 @@ h1, h2, h3, h4 {
   }
 }
 
-/* The photograph band is a slow drift. A single line of text covers the same
-   distance in far fewer pixels, so at 78s it reads as stationary. */
+/* The membership tiles run as a pair. The second goes the other way, so the two
+   rows move against each other rather than sliding along together. */
 @media (prefers-reduced-motion: no-preference) {
-  .fwd-marquee-brisk .fwd-marquee-track {
-    animation-duration: 44s;
+  .fwd-marquee-reverse .fwd-marquee-track {
+    animation-direction: reverse;
+    animation-duration: 92s;
   }
 }
 

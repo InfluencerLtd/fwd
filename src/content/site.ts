@@ -387,6 +387,26 @@ export const IMAGERY = {
   statement: "A wide room at night. Amber light, figures out of focus",
   why: "Detail shot. A gesture mid-sentence, or a table after dinner",
   membership: "A room mid-conversation. Low light, faces optional. For the top of the membership page",
+  /**
+   * DRAFT. The tiles on the membership page, one per benefit, keyed by the card
+   * id in MEMBERSHIP.cards so the two cannot drift apart. Landscape, because
+   * they sit in two rows that drift sideways and a portrait crop would make the
+   * rows twice as tall for the same amount of picture.
+   *
+   * The caption on each tile is the card's own summary, so there is nothing to
+   * write here beyond what the shot should be.
+   */
+  benefits: {
+    "meeting-of-minds": "Two people mid-introduction, a third half out of frame",
+    seats: "A long table at its fullest, shot down the length of it",
+    "the-house": "A phone on a table at a dinner, screen lit, nobody looking at it",
+    network: "A room from above, groups forming and re-forming",
+    profile: "One person, three-quarter, warm light, at ease",
+    newsletter: "Print on a table. Paper, a glass, a hand at the edge",
+    events: "A doorway with people arriving, coats still on",
+    perks: "A detail on a table. Waiting on what the perks actually are",
+  },
+
   /** The band that drifts sideways. Eight in total, all portrait or square. */
   band: [
     "Dinner table from above, candlelight",
