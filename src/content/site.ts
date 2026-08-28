@@ -81,8 +81,14 @@ export const META = {
    =========================================================================== */
 
 export const HERO = {
-  /** DRAFT. One line, under the wordmark. */
-  line: "Bringing the people shaping the creator economy together.",
+  /**
+   * DRAFT. One line, under the wordmark.
+   *
+   * The space before "economy" is a non-breaking space, as in the membership
+   * heading, so the term never splits across two lines. It is invisible in an
+   * editor. If this line is ever retyped, put it back: U+00A0.
+   */
+  line: "The home for the people shaping what’s next in the creator economy.",
   /**
    * The hero has ONE button and its label lives in APPLY.cta, because the same
    * button appears three times down the page and they must not drift apart.
