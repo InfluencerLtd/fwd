@@ -80,14 +80,15 @@ export function PublicSite() {
                   sizes="(min-width: 1024px) 50vw, 100vw"
                   ratio="square"
                   className="fwd-zoom-inner"
+                  // The brief for this shot stays in the content file, but it
+                  // is not printed over the placeholder here. Until the
+                  // photograph lands this is a plain warm panel.
+                  showLabel={false}
                 />
               </div>
 
               <div className="order-1 lg:order-2">
-                <p className="fwd-reveal font-body text-xs tracking-[0.2em] text-ember">
-                  {MEETING_OF_MINDS.eyebrow}
-                </p>
-                <h2 className="fwd-reveal mt-5 text-4xl sm:text-5xl">
+                <h2 className="fwd-reveal text-4xl sm:text-5xl">
                   {MEETING_OF_MINDS.heading}
                 </h2>
                 <p className="fwd-reveal mt-7 font-display text-2xl leading-snug text-ink sm:text-3xl">

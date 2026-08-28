@@ -201,7 +201,6 @@ export const MEMBERSHIP = {
 
 export const MEETING_OF_MINDS = {
   heading: "meeting of minds",
-  eyebrow: "the signature benefit",
   /** DRAFT. */
   standfirst: "The right introduction can change everything.",
   body: [
