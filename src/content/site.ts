@@ -106,7 +106,7 @@ export const ABOUT = {
 } as const;
 
 export const MEMBERSHIP = {
-  heading: "what membership unlocks",
+  heading: "Membership unlocks what’s next in the creator economy.",
 
   /**
    * DRAFT. On the home page this is the whole of it: a heading, this, and the
