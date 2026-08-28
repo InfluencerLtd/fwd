@@ -25,7 +25,10 @@ export function PhotoBand() {
               name={`band-${(index % IMAGERY.band.length) + 1}`}
               sizes="(min-width: 1024px) 19vw, 46vw"
               ratio="portrait"
-              showLabel={index < IMAGERY.band.length}
+              // The brief for each shot stays in the content file, but it is
+              // not printed over the placeholder. Until the photographs land
+              // this band is a row of plain warm panels.
+              showLabel={false}
               className="fwd-zoom-inner w-[46vw] sm:w-[30vw] lg:w-[19vw]"
             />
           </div>
