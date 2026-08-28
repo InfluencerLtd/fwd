@@ -30,6 +30,15 @@ export type ApplicationInput = {
   market: string;
   link: string | null;
   reason: string;
+  /**
+   * Whether they agreed to be emailed.
+   *
+   * Our own form will not submit without the box ticked, so it is true there
+   * and this can be left out. An embedded HubSpot form is built in HubSpot and
+   * may or may not ask, so that path passes what actually happened. We record
+   * what we were told rather than assuming, because this column is the proof.
+   */
+  consented?: boolean;
 };
 
 export type ApplicationResult =
@@ -39,6 +48,8 @@ export type ApplicationResult =
 
 export async function submitApplication(
   input: ApplicationInput,
+  /** True when the application came from HubSpot and is already there. */
+  skipHubspot = false,
 ): Promise<ApplicationResult> {
   const supabase = getServiceClient();
   if (!supabase) return { status: "not-configured" };
@@ -58,8 +69,8 @@ export async function submitApplication(
         market: input.market,
         link: input.link,
         reason: input.reason,
-        consented: true,
-        consented_at: now,
+        consented: input.consented ?? true,
+        consented_at: input.consented === false ? null : now,
       },
       { onConflict: "email" },
     )
@@ -73,7 +84,10 @@ export async function submitApplication(
   // run together rather than one after the other so a slow HubSpot does not
   // hold up the acknowledgement email.
   await Promise.allSettled([
-    pushToHubspot(data.id, input),
+    // An application that arrived through HubSpot's own form is already in
+    // HubSpot. Pushing it again would be a second write of the same contact
+    // for no reason, so that path skips this step.
+    skipHubspot ? Promise.resolve() : pushToHubspot(data.id, input),
     acknowledge(input),
   ]);
 

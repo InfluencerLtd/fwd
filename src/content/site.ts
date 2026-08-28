@@ -262,6 +262,15 @@ export const APPLY = {
   cta: "apply for membership",
 
   /**
+   * Shown only if the embedded HubSpot form cannot be reached, which usually
+   * means an ad blocker or a corporate network rather than anything wrong at
+   * either end. It gives them somewhere to go rather than an empty space, and
+   * it never claims the application was received.
+   */
+  embedUnavailable:
+    "The application form could not load, which is usually a blocker or a work network rather than anything you have done. Write to us and we will send it to you directly.",
+
+  /**
    * Applying starts by saying which of the two you are, because the questions
    * worth asking a creator are not the questions worth asking somebody at a
    * brand. There are two forms behind this, not one form with a dropdown.

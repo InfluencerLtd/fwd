@@ -134,3 +134,82 @@ export async function submitMembershipApplication(
   console.error("[fwd.] Application failed to save:", result.reason);
   return { status: "error", message: APPLY.error, fieldErrors: {} };
 }
+
+/* ========================================================================== */
+/* Applications that arrived through HubSpot's own form                       */
+/* ========================================================================== */
+
+/**
+ * Mirrors a HubSpot form submission into our own applications table.
+ *
+ * When the apply section is showing embedded HubSpot forms, the answers go
+ * straight to HubSpot and never touch this codebase. That would be fine for
+ * marketing and useless for everything else: the admin where applications are
+ * read, and the accept and decline emails, both run off our own table. This is
+ * what keeps them fed.
+ *
+ * IT IS A COPY, NOT THE RECORD OF TRUTH. HubSpot already has the submission by
+ * the time this runs, so if this fails the application still exists. That is
+ * why it returns nothing the applicant is shown: they have already been told
+ * they are done, by HubSpot's own form, and they were told the truth.
+ *
+ * Every field is validated again here rather than trusted. This is a public
+ * endpoint like any other server action, and being called by our own embed
+ * script is not something the server can check.
+ */
+export async function mirrorHubspotApplication(values: {
+  name: string;
+  email: string;
+  role: string;
+  company: string;
+  group: string;
+  market: string;
+  link: string;
+  reason: string;
+  consented: boolean;
+}): Promise<{ mirrored: boolean; reason?: string }> {
+  if (!APPLICATIONS_OPEN) return { mirrored: false, reason: "closed" };
+
+  const name = values.name.trim();
+  const email = normalizeEmail(values.email);
+  const role = values.role.trim();
+  const company = values.company.trim();
+  const market = values.market.trim();
+  const reason = values.reason.trim();
+  const link = values.link.trim();
+
+  if (!name || !email || !looksLikeEmail(email)) {
+    return { mirrored: false, reason: "missing name or email" };
+  }
+
+  const group = MEMBER_GROUPS.some((g) => g.id === values.group)
+    ? (values.group as MemberGroupId)
+    : null;
+  if (!group) return { mirrored: false, reason: "unknown group" };
+
+  const result = await submitApplication(
+    {
+      name,
+      email,
+      role,
+      company,
+      group,
+      market,
+      link: link || null,
+      reason,
+      consented: values.consented,
+    },
+    // Already in HubSpot. Pushing it back would be a pointless second write.
+    true,
+  );
+
+  if (result.status === "saved") return { mirrored: true };
+
+  // Loud, because the applicant has been told they are done and only our copy
+  // is missing. Nothing on the page can say so without lying to them.
+  console.error(
+    "[fwd.] A HubSpot application was not mirrored into Supabase:",
+    result.status === "not-configured" ? "Supabase is not configured" : result.reason,
+  );
+  return { mirrored: false, reason: result.status };
+}

@@ -89,6 +89,50 @@ Add to `.env.local`:
 HUBSPOT_ACCESS_TOKEN="the token"
 ```
 
+### The two embedded application forms (optional)
+
+The apply section can show HubSpot's own forms instead of ours. Until the three
+values below are set it uses our form, which already creates the HubSpot contact
+through the API, so there is nothing to do here unless you want HubSpot to own
+the form itself.
+
+Build **two** forms in HubSpot, one for creators and one for brands, platforms
+and industry, then take the ids out of the embed code HubSpot gives you:
+
+```
+NEXT_PUBLIC_HUBSPOT_PORTAL_ID="1234567"
+NEXT_PUBLIC_HUBSPOT_FORM_CREATOR="the creator form id"
+NEXT_PUBLIC_HUBSPOT_FORM_BRAND="the brand form id"
+NEXT_PUBLIC_HUBSPOT_REGION="na1"          # "eu1" if the portal is European
+```
+
+Both form ids are needed. One on its own is treated as none, so the two paths
+can never end up looking different from each other.
+
+These are `NEXT_PUBLIC_` because a portal id and a form id are not secrets. They
+appear in the page source of every HubSpot embed there is. The access token
+above is the secret and never reaches the browser.
+
+**What the forms must ask.** Every submission is also copied into our own
+applications table, which is what the admin reads and what the accept and
+decline emails run off. The copy is matched up by field name, and the names it
+looks for are listed in `src/lib/hubspot-forms.ts`. HubSpot's standard contact
+properties already match, so a form built from `email`, `firstname`, `lastname`,
+`company` and `jobtitle` works as it is. Anything else, add the name to that
+file.
+
+Two it cannot guess:
+
+- **The group.** The creator form does not need to ask, it is fixed. The other
+  form has to offer `brand`, `platform` and `industry` as the stored values, or
+  the application will not be copied across.
+- **Consent.** If the HubSpot form has no consent field, the application is
+  recorded as not having consented, because that column is the proof and it is
+  not something to assume. Add HubSpot's own consent checkbox to both forms.
+
+Turning these on also changes the cookie page, which starts saying that HubSpot
+sets cookies. That happens on its own.
+
 ---
 
 ## 4. Your own always-on access

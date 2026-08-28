@@ -38,4 +38,12 @@ export const COOKIES = {
     "Our full cookie notice is being prepared and will be published here before fwd. opens.",
     "This site does not currently use any advertising or analytics cookies. The only cookie it sets is one that remembers the fwd. team's early access preview, and your browser remembers your choice of light or dark mode on your own device.",
   ],
+  /**
+   * Added to the list above ONLY while the embedded HubSpot application forms
+   * are switched on. HubSpot's form script sets its own cookies, which makes
+   * the sentence above untrue, so the page says so rather than the two
+   * contradicting each other. See src/components/legal-page.tsx.
+   */
+  hubspotText:
+    "The membership application form is provided by HubSpot. Opening it loads HubSpot's own script, which sets cookies on your device so a part-finished application is not lost and so a submission can be matched to an earlier visit. Nothing is loaded until you open the form.",
 } as const;
