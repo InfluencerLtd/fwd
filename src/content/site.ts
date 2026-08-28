@@ -20,9 +20,25 @@
  * across this folder to see everything still waiting on a decision.
  */
 
+/**
+ * DRAFT. What fwd. is, in one line.
+ *
+ * The hero, the holding page and the link preview all read this, so there is a
+ * single place to change the positioning and it cannot drift between them.
+ * Drift is exactly what happened before: three descriptions written as
+ * siblings, and two of them left behind when the third was rewritten.
+ *
+ * \u00a0 is a non-breaking space, so "creator economy" never splits across two
+ * lines. It is written as an escape rather than typed, because typed it looks
+ * exactly like an ordinary space and the next person to edit this line would
+ * lose it without ever seeing it.
+ */
+export const POSITIONING =
+  "The home for the people shaping what\u2019s next in the creator\u00a0economy.";
+
 export const HOLDING = {
-  /** DRAFT. The one line under the wordmark. */
-  line: "An invitation-only community for senior people across brands, creators, platforms and the wider industry.",
+  /** The one line under the wordmark, the same one the hero carries. */
+  line: POSITIONING,
 
   /** DRAFT. The prompt above the email field. */
   capturePrompt: "Be the first to hear when applications open.",
@@ -68,9 +84,11 @@ export const FOOTER = {
 export const META = {
   /** DRAFT. */
   title: "fwd.",
-  /** DRAFT. Keep under about 155 characters or search engines cut it off. */
-  description:
-    "An invitation-only community for senior people across brands, creators, platforms and the wider industry. By influencer.",
+  /**
+   * Keep under about 155 characters or search engines cut it off. This one is
+   * 84, so there is room if the positioning line ever grows.
+   */
+  description: `${POSITIONING} By influencer.`,
 } as const;
 
 /* ===========================================================================
@@ -81,14 +99,8 @@ export const META = {
    =========================================================================== */
 
 export const HERO = {
-  /**
-   * DRAFT. One line, under the wordmark.
-   *
-   * The space before "economy" is a non-breaking space, as in the membership
-   * heading, so the term never splits across two lines. It is invisible in an
-   * editor. If this line is ever retyped, put it back: U+00A0.
-   */
-  line: "The home for the people shaping what’s next in the creator economy.",
+  /** One line, under the wordmark. */
+  line: POSITIONING,
   /**
    * The hero has ONE button and its label lives in APPLY.cta, because the same
    * button appears three times down the page and they must not drift apart.
@@ -112,12 +124,8 @@ export const ABOUT = {
 } as const;
 
 export const MEMBERSHIP = {
-  /**
-   * The space between "creator" and "economy" is a non-breaking space, so the
-   * term never splits across two lines. It is invisible in an editor. If this
-   * line is ever retyped, put it back: U+00A0.
-   */
-  heading: "Membership unlocks what’s next in the creator economy.",
+  /** \u00a0 keeps "creator economy" on one line. See POSITIONING above. */
+  heading: "Membership unlocks what\u2019s next in the creator\u00a0economy.",
 
   /**
    * DRAFT. On the home page this is the whole of it: a heading, this, and the

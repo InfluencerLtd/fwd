@@ -38,6 +38,7 @@ export function PhotoPlaceholder({
   priority = false,
   sizes = "100vw",
   scrim,
+  washClassName = "bg-photo-ground/50",
   children,
 }: {
   /** What the photograph should be. Written for whoever briefs the shoot. */
@@ -81,6 +82,18 @@ export function PhotoPlaceholder({
    * Defaults to on wherever there is something on top of the picture.
    */
   scrim?: boolean;
+  /**
+   * How heavy that wash is, as a whole Tailwind class.
+   *
+   * 50% is right for the hero, where the only things over the picture are the
+   * wordmark and one line, both large and both high up the frame. The holding
+   * page is a different job: it carries a form, a consent line and a footer,
+   * all small, all low down where this photograph is at its brightest. Every
+   * one of those measured under 4.5:1 at 50% and clears it at 70%.
+   *
+   * Change this and the page it belongs to has to be measured again.
+   */
+  washClassName?: string;
   children?: React.ReactNode;
 }) {
   const src = photoSrc(name);
@@ -110,7 +123,7 @@ export function PhotoPlaceholder({
       {src && wash ? (
         <div
           aria-hidden="true"
-          className="absolute inset-0 z-1 bg-photo-ground/50"
+          className={`absolute inset-0 z-1 ${washClassName}`}
         />
       ) : null}
       {children}

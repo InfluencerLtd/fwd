@@ -2,7 +2,7 @@ import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { Wordmark } from "@/components/wordmark";
 import { SignupForm } from "@/components/signup-form";
 import Link from "next/link";
-import { HOLDING, FOOTER } from "@/content/site";
+import { HOLDING, FOOTER, IMAGERY } from "@/content/site";
 import { CONTACT } from "@/lib/brand";
 
 /**
@@ -21,7 +21,19 @@ export function HoldingPage() {
   return (
     <main className="fwd-on-dark flex min-h-screen flex-col">
       <PhotoPlaceholder
-        label="placeholder for the hero photograph"
+        /* The same photograph the full site opens on, and the same brief, so
+           the holding page and launch day are one continuous image rather than
+           two different first impressions. */
+        label={IMAGERY.hero}
+        name="hero"
+        priority
+        sizes="100vw"
+        ratio="fill"
+        showLabel={false}
+        /* Heavier than the hero's 50%. Everything on this page below the
+           wordmark is small and sits low on the frame, where this photograph
+           is brightest. See washClassName in PhotoPlaceholder. */
+        washClassName="bg-photo-ground/70"
         className="flex min-h-screen flex-1 flex-col justify-end"
       >
         <div className="relative z-1 mx-auto flex w-full max-w-5xl flex-col px-6 pb-20 pt-40">

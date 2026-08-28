@@ -29,8 +29,26 @@ export function SignupForm({
   const isDark = tone === "dark";
   const c = {
     label: isDark ? "text-photo-ink/70" : "text-ink-muted",
+    /*
+     * The dark field has a fill and a heavier border than it used to.
+     *
+     * It used to have neither: a 30% border and no background, sitting over a
+     * flat placeholder gradient it was measured against. The holding page now
+     * carries the real hero photograph, which is not flat and not predictable.
+     * Measured against the brightest pixel the field crossed, the 30% border
+     * came out at 1.75:1 where a control's boundary needs 3:1, and the 55%
+     * placeholder at 2.62:1 where text needs 4.5:1.
+     *
+     * Chasing those numbers with opacity alone does not hold, because the
+     * crop under the field changes with the window and a brighter patch moves
+     * beneath it. The fill is the fix: it gives everything inside the field a
+     * known ground, so the placeholder and the typed address are measured
+     * against a colour we control rather than against whatever the photograph
+     * is doing at that size. The border is still measured against the
+     * photograph, so that one is raised instead.
+     */
     input: isDark
-      ? "border-photo-ink/30 text-photo-ink placeholder:text-photo-ink/55"
+      ? "border-photo-ink/65 bg-photo-ground/85 text-photo-ink placeholder:text-photo-ink/70"
       : "border-border bg-surface-raised text-ink placeholder:text-ink-muted/60",
     consent: isDark ? "text-photo-ink/70" : "text-ink-muted",
     message: isDark ? "text-accent-on-dark" : "text-ink",
