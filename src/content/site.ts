@@ -448,8 +448,6 @@ export const STATEMENT = {
 export const MEMBERSHIP_PAGE = {
   /** DRAFT. */
   heading: "membership",
-  /** DRAFT. The standfirst under the heading. */
-  intro: "by application only.",
   /**
    * Not printed anywhere. It names the row of benefit tiles for a screen
    * reader, which otherwise meets eight sentences with nothing saying what

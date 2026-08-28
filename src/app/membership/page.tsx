@@ -45,22 +45,12 @@ export default function MembershipPage() {
             <Link href="/" aria-label={META.title} className="inline-block">
               <Wordmark size="footer" />
             </Link>
-            {/* The standfirst sits beside the heading rather than under it,
-                lined up on the baseline the letters sit on. Aligning the boxes
-                instead would leave the small text visibly floating against a
-                word this size. It wraps underneath on a narrow screen.
-
-                text-photo-ink, not the default ink: this is on the dark
+            {/* text-photo-ink, not the default ink: this is on the dark
                 photograph, and ink is the near-black for the light page, so it
                 would have been black type on a black picture. */}
-            <div className="mt-10 flex flex-wrap items-baseline gap-x-5 gap-y-2">
-              <h1 className="text-5xl text-photo-ink sm:text-6xl">
-                {MEMBERSHIP_PAGE.heading}
-              </h1>
-              <p className="font-body text-lg leading-relaxed text-photo-ink/85">
-                {MEMBERSHIP_PAGE.intro}
-              </p>
-            </div>
+            <h1 className="mt-10 text-5xl text-photo-ink sm:text-6xl">
+              {MEMBERSHIP_PAGE.heading}
+            </h1>
 
             {/* The only ask on the page, and it opens the form rather than
                 scrolling to it. It used to jump to a button further down, which
