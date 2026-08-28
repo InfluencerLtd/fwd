@@ -124,8 +124,13 @@ export const ABOUT = {
 } as const;
 
 export const MEMBERSHIP = {
-  /** \u00a0 keeps "creator economy" on one line. See POSITIONING above. */
-  heading: "Membership unlocks what\u2019s next in the creator\u00a0economy.",
+  /**
+   * The two \u00a0 keep "the creator economy" together, which is what sets the
+   * line break: everything before it goes on the first line, and the phrase
+   * drops whole onto the second. See POSITIONING above.
+   */
+  heading:
+    "Membership unlocks what\u2019s next in the\u00a0creator\u00a0economy.",
 
   /**
    * DRAFT. On the home page this is the whole of it: a heading, this, and the
