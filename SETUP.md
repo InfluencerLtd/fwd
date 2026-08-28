@@ -16,9 +16,10 @@ you do not know, that is a fault in this document.
 2. Create a **new project**. Call it `fwd-clubhouse`. Choose a region close to
    London. It takes a couple of minutes to build.
 3. When it is ready, open **SQL Editor** in the left-hand menu.
-4. Open the folder `supabase/migrations` in this project. There are four files,
-   numbered. **Open each one in turn, paste the whole thing into the SQL
-   editor, and press Run.** Do them in number order, 0001 first.
+4. Open the folder `supabase/migrations` in this project. There are **six**
+   files, numbered 0001 to 0006. **Open each one in turn, paste the whole thing
+   into the SQL editor, and press Run.** Do them in number order, 0001 first.
+   Each one prints "Success. No rows returned", which is what you want.
 5. Optional but useful: do the same with `supabase/seed-examples.sql`. That adds
    five obviously fake members so you can look at the member area before there
    are real members in it, and the four real events from the club plan. The fake
@@ -43,7 +44,20 @@ SUPABASE_SERVICE_ROLE_KEY="the service_role key"
 
 > **The service_role key can do anything to the database.** It belongs only in
 > `.env.local` and in Vercel's settings. Never paste it into a message, a
-> document, or any other file in this project.
+> document, or any other file in this project. `.env.local` is already in
+> `.gitignore`, so it cannot be committed by accident.
+
+Then check it:
+
+```
+npm run check:supabase
+```
+
+That connects for real and tells you, line by line, whether every table exists,
+whether row level security is on, whether anything is publicly readable, and
+whether the private `library` bucket is there. It writes one obviously fake
+sign-up and deletes it again, so it proves the connection both ways rather than
+just that the keys parse. If anything is wrong it says which step to go back to.
 
 ---
 
