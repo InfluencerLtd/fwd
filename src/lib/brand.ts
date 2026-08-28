@@ -47,11 +47,52 @@ export const BENEFITS = {
  * `domain` is still a placeholder and renders as visible placeholder text so it
  * cannot ship unnoticed. Replace it when the domain is registered.
  */
+/**
+ * Where the site lives, as an absolute address with no trailing slash.
+ *
+ * THIS USED TO BE `process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"`
+ * AND IT BROKE THE FIRST DEPLOYMENT.
+ *
+ * `??` only falls back on null or undefined. An environment variable that is
+ * present but empty is an empty string, and an empty string is neither, so the
+ * fallback never ran. `new URL("")` throws, and because that happens inside
+ * `metadataBase` in the root layout, the whole build died with:
+ *
+ *     Failed to collect configuration for /_not-found
+ *     [cause]: TypeError: Invalid URL
+ *
+ * Which points nowhere near the actual cause. Hence this.
+ *
+ * It also strips a trailing slash. Every use of this concatenates a path onto
+ * it, so `https://fwd.example/` would have produced `https://fwd.example//unsubscribe`
+ * in every email that goes out.
+ */
+function resolveSiteUrl(): string {
+  const FALLBACK = "http://localhost:3000";
+  const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  if (!raw) return FALLBACK;
+
+  try {
+    // Throws on anything that is not a real absolute URL, which is the whole
+    // point: catching it here means one wrong value is a warning in the log
+    // rather than a build that fails somewhere unrelated.
+    const parsed = new URL(raw);
+    return parsed.origin + parsed.pathname.replace(/\/+$/, "");
+  } catch {
+    console.warn(
+      `[fwd.] NEXT_PUBLIC_SITE_URL is not a valid absolute URL (${JSON.stringify(raw)}). ` +
+        `Falling back to ${FALLBACK}. Links in emails and social share images will be wrong ` +
+        `until it is set to something like "https://fwd.example".`,
+    );
+    return FALLBACK;
+  }
+}
+
 export const CONTACT = {
   domain: "[DOMAIN NOT YET REGISTERED]",
   email: "fwd@influencer.com",
-  /** Used for absolute URLs in social share images. Update at launch. */
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+  /** Absolute, no trailing slash. Used for links in emails and share images. */
+  siteUrl: resolveSiteUrl(),
 } as const;
 
 /** The four groups the membership spans. Order is deliberate. */
