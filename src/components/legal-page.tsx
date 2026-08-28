@@ -2,6 +2,7 @@ import Link from "next/link";
 import { CONTACT } from "@/lib/brand";
 import { FOOTER } from "@/content/site";
 import { SiteFooter } from "@/components/site-footer";
+import { SiteMenu } from "@/components/site-menu";
 
 /** Shared layout for the privacy and cookie pages. */
 export function LegalPage({
@@ -13,6 +14,7 @@ export function LegalPage({
 }) {
   return (
     <>
+      <SiteMenu />
       <main className="flex-1 px-6 py-24">
         <div className="mx-auto max-w-2xl">
           <Link

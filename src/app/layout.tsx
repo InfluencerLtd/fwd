@@ -4,7 +4,6 @@ import { CONTACT } from "@/lib/brand";
 import { META } from "@/content/site";
 import { fontVariables, rootFontStyle } from "@/lib/fonts";
 import { THEME_INIT_SCRIPT } from "@/lib/theme";
-import { SiteMenu } from "@/components/site-menu";
 
 export const metadata: Metadata = {
   // Needed so the link preview image gets a full web address rather than a
@@ -38,9 +37,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
       </head>
       <body className="min-h-full flex flex-col bg-surface text-ink">
+        {/* The three line menu is NOT here.
+            It used to be, which put it on all twenty-nine routes including the
+            holding page, where it offered a way around a site that is not open
+            yet. It belongs to the pages that are navigable, so each of those
+            renders it. See src/components/site-menu.tsx. */}
         {children}
-        {/* On every page, so there is always a way around. */}
-        <SiteMenu />
       </body>
     </html>
   );

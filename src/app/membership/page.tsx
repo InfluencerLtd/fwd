@@ -4,6 +4,7 @@ import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { Wordmark } from "@/components/wordmark";
 import { BenefitTiles } from "@/components/benefit-tiles";
 import { ApplyDialog } from "@/components/apply-dialog";
+import { SiteMenu } from "@/components/site-menu";
 import { SignupForm } from "@/components/signup-form";
 import { SiteFooter } from "@/components/site-footer";
 import { ButtonLink } from "@/components/button";
@@ -31,6 +32,8 @@ export const metadata: Metadata = {
 export default function MembershipPage() {
   return (
     <>
+      <SiteMenu />
+
       {/* ---- 1. A short dark top, so the page opens the way the site does -- */}
       <div className="fwd-on-dark">
         <PhotoPlaceholder

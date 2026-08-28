@@ -1,4 +1,5 @@
 import { Hero } from "@/components/hero";
+import { SiteMenu } from "@/components/site-menu";
 import { Section } from "@/components/section";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { PhotoBand } from "@/components/photo-band";
@@ -31,6 +32,8 @@ export function PublicSite() {
       >
         {NAV.skipToContent}
       </a>
+
+      <SiteMenu />
 
       {/* ---- 1. The hero ------------------------------------------------ */}
       <Hero />
