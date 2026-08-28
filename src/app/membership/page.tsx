@@ -109,28 +109,12 @@ export default function MembershipPage() {
                     {MEMBERSHIP_PAGE.ready.note}
                   </p>
 
-                  <div className="fwd-reveal mt-10 max-w-2xl rounded-2xl border border-border bg-surface-raised p-7">
-                    <h3 className="font-body text-sm tracking-[0.14em] text-ink-muted">
-                      {MEMBERSHIP_PAGE.ready.needHeading}
-                    </h3>
-                    <ul className="mt-5 space-y-3">
-                      {MEMBERSHIP_PAGE.ready.need.map((item) => (
-                        <li
-                          key={item}
-                          className="font-body text-[15px] leading-relaxed text-ink"
-                        >
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* One button, and nothing next to it. The two paths used to
-                      be here as a pair of quiet cards, which looked like the
-                      other cards on the page rather than like the way in.
-                      Choosing between them is a question the form can ask once
-                      it is open. */}
-                  <div className="fwd-reveal mt-12">
+                  {/* One button, and nothing next to it. This section used to
+                      carry a list of what the form would ask for and a pair of
+                      quiet cards for the two paths, both of which read as more
+                      page rather than as the way in. The form asks its own
+                      questions once it is open. */}
+                  <div className="fwd-reveal mt-10">
                     <ApplyDialog />
                   </div>
                 </>

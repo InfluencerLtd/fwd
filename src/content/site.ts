@@ -447,14 +447,15 @@ export const MEMBERSHIP_PAGE = {
 
   ready: {
     heading: "ready to apply?",
-    needHeading: "what you will need",
-    /** DRAFT. Set expectations before the form, not inside it. */
-    need: [
-      "Your role and where you work, or what you make and where people find you.",
-      "The market you are based in.",
-      "A link to your profile, if you have one worth sending.",
-      "A few lines on why you want to be in the room. This is the part that is actually read.",
-    ],
+    /**
+     * The only thing between the heading and the button now.
+     *
+     * A list of what the form would ask for used to sit under this. It went
+     * because it was one more thing to read before the way in, and the form
+     * asks its own questions perfectly well once it is open. This sentence
+     * stayed because it answers the only question worth answering first: how
+     * much of my afternoon is this.
+     */
     note: "It takes a couple of minutes. There is nothing to pay and nothing to upload.",
   },
 
