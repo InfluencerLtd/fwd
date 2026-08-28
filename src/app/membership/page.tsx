@@ -42,8 +42,12 @@ export default function MembershipPage() {
           className="flex min-h-[52vh] flex-col justify-end"
         >
           <div className="relative z-2 mx-auto w-full max-w-4xl px-6 pb-14 pt-24">
+            {/* No signature here. This mark is a small link home above a very
+                large heading, and "by influencer" at that size read as clutter
+                rather than as an endorsement. It is still on the hero, the
+                holding page and the footer. */}
             <Link href="/" aria-label={META.title} className="inline-block">
-              <Wordmark size="footer" />
+              <Wordmark size="footer" signature={false} />
             </Link>
             {/* text-photo-ink, not the default ink: this is on the dark
                 photograph, and ink is the near-black for the light page, so it

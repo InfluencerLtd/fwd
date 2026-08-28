@@ -22,6 +22,7 @@ export function Wordmark({
   size = "hero",
   heading = false,
   align = "left",
+  signature = true,
 }: {
   size?: "hero" | "footer" | "small";
   /**
@@ -30,6 +31,19 @@ export function Wordmark({
    */
   heading?: boolean;
   align?: "left" | "center";
+  /**
+   * Whether the "by influencer" signature appears beside the mark.
+   *
+   * On by default, and it should stay on almost everywhere: the endorsement is
+   * the point of the lockup. It is off at the top of the membership page, where
+   * the mark is a small link back to the home page sitting above a large
+   * heading, and the signature at that size read as clutter rather than as an
+   * endorsement.
+   *
+   * Turning this off does not change the naming rules in src/lib/brand.ts. The
+   * two are still never joined into a single phrase in running text.
+   */
+  signature?: boolean;
 }) {
   const markClass =
     size === "hero"
@@ -56,14 +70,16 @@ export function Wordmark({
         {/* The same pale ice blue as the mark. The brief asks that the
             signature always reads quieter, and here that is carried by size and
             by the italic rather than by colour: the mark is six to nine times
-            larger beside it. All three places this appears are dark grounds,
-            where the pale blue measures 13.42:1. It must never be used on a
-            light one. */}
-        <span
-          className={`font-display italic leading-none text-accent-on-dark ${signatureClass}`}
-        >
-          {BRAND.endorsement}
-        </span>
+            larger beside it. Every place this appears is a dark ground, where
+            the pale blue measures 13.42:1. It must never be used on a light
+            one. */}
+        {signature ? (
+          <span
+            className={`font-display italic leading-none text-accent-on-dark ${signatureClass}`}
+          >
+            {BRAND.endorsement}
+          </span>
+        ) : null}
       </div>
     </div>
   );
