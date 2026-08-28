@@ -4,7 +4,7 @@ import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { Wordmark } from "@/components/wordmark";
 import { BenefitStrip } from "@/components/benefit-strip";
 import { MembershipCards } from "@/components/membership-cards";
-import { ApplyPanel } from "@/components/apply-panel";
+import { ApplyDialog } from "@/components/apply-dialog";
 import { SignupForm } from "@/components/signup-form";
 import { SiteFooter } from "@/components/site-footer";
 import { ButtonLink } from "@/components/button";
@@ -125,14 +125,13 @@ export default function MembershipPage() {
                     </ul>
                   </div>
 
-                  <h3 className="fwd-reveal mt-16 text-2xl">
-                    {MEMBERSHIP_PAGE.paths.heading}
-                  </h3>
-                  <p className="fwd-reveal mt-3 max-w-2xl font-body text-[15px] leading-relaxed text-ink-muted">
-                    {MEMBERSHIP_PAGE.paths.lead}
-                  </p>
-                  <div className="fwd-reveal mt-8">
-                    <ApplyPanel />
+                  {/* One button, and nothing next to it. The two paths used to
+                      be here as a pair of quiet cards, which looked like the
+                      other cards on the page rather than like the way in.
+                      Choosing between them is a question the form can ask once
+                      it is open. */}
+                  <div className="fwd-reveal mt-12">
+                    <ApplyDialog />
                   </div>
                 </>
               ) : (

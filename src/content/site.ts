@@ -258,8 +258,19 @@ export const APPLY = {
     submitting: "sending",
     success: "Thank you. You are on the list and we will be in touch.",
   },
-  /** The button on the page. The form itself lives behind it, in a panel. */
+  /**
+   * The button on the home page and on the membership page's dark top. Both
+   * lead to the membership page, so it names the destination.
+   */
   cta: "apply for membership",
+
+  /**
+   * The button that opens the form itself, at the bottom of the membership
+   * page. Different words from `cta` on purpose: by this point somebody has
+   * already pressed "apply for membership" to get here, and pressing the same
+   * words again would look like it had not worked. This one is the action.
+   */
+  start: "start application",
 
   /**
    * Shown only if the embedded HubSpot form cannot be reached, which usually
@@ -277,6 +288,12 @@ export const APPLY = {
    */
   choose: {
     heading: "first, which are you?",
+    /**
+     * DRAFT. Moved here from the membership page, which used to carry a "two
+     * ways in" section explaining this above a pair of cards. The cards are the
+     * explanation, so the section went and the sentence came with it.
+     */
+    lead: "The questions worth asking a creator are not the ones worth asking somebody at a brand, so there are two forms. Pick the one that fits.",
     creator: {
       label: "a creator",
       hint: "You make the work, whatever the platform.",
@@ -416,12 +433,6 @@ export const MEMBERSHIP_PAGE = {
     heading: "what it gets you",
     /** DRAFT. Shorter than the home page, because you are further down the path. */
     lead: "Some of it is access. Most of it is people.",
-  },
-
-  paths: {
-    heading: "two ways in",
-    /** DRAFT. */
-    lead: "The questions worth asking a creator are not the ones worth asking somebody at a brand, so there are two forms. Pick the one that fits.",
   },
 
   /**

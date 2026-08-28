@@ -51,7 +51,12 @@ export function ApplyPanel() {
   }
 
   return (
-    <div className="grid gap-4 sm:grid-cols-2">
+    <div>
+      <h3 className="font-display text-2xl text-ink">{APPLY.choose.heading}</h3>
+      <p className="mt-2 font-body text-[15px] leading-relaxed text-ink-muted">
+        {APPLY.choose.lead}
+      </p>
+      <div className="mt-6 grid gap-4 sm:grid-cols-2">
       {(
         [
           ["creator", APPLY.choose.creator],
@@ -70,8 +75,9 @@ export function ApplyPanel() {
           <span className="mt-2 block text-[15px] leading-relaxed text-ink-muted">
             {option.hint}
           </span>
-        </button>
-      ))}
+          </button>
+        ))}
+      </div>
     </div>
   );
 }
