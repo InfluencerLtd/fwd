@@ -344,6 +344,14 @@ h1, h2, h3, h4 {
   }
 }
 
+/* The photograph band is a slow drift. A single line of text covers the same
+   distance in far fewer pixels, so at 78s it reads as stationary. */
+@media (prefers-reduced-motion: no-preference) {
+  .fwd-marquee-brisk .fwd-marquee-track {
+    animation-duration: 44s;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .fwd-marquee {
     overflow-x: auto;

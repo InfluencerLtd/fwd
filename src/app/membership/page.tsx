@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { Wordmark } from "@/components/wordmark";
+import { BenefitStrip } from "@/components/benefit-strip";
 import { MembershipCards } from "@/components/membership-cards";
 import { ApplyPanel } from "@/components/apply-panel";
 import { SignupForm } from "@/components/signup-form";
 import { SiteFooter } from "@/components/site-footer";
-import { MEMBERSHIP_PAGE, META } from "@/content/site";
+import { ButtonLink } from "@/components/button";
+import { APPLY, MEMBERSHIP_PAGE, META, NAV } from "@/content/site";
 import { APPLICATIONS_OPEN } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -17,14 +19,18 @@ export const metadata: Metadata = {
 /**
  * Where every "apply for membership" button on the home page leads.
  *
- * The shape: what it is, what it gets you, which of the two you are, what you
- * will need to hand, then the form. The form is on the page rather than behind
- * another click, because somebody who has come this far has already said yes.
+ * The shape follows the order somebody actually reads in: what this is and the
+ * ask, the whole offer at a glance, the offer explained, what we will need from
+ * you, the form, and finally the door for anybody who is already a member.
+ *
+ * The ask appears twice, once at the top for anybody who arrived already
+ * decided, and once at the bottom in full. The form is on the page rather than
+ * behind another click, because somebody who has read this far has said yes.
  */
 export default function MembershipPage() {
   return (
     <>
-      {/* ---- A short dark top, so the page opens the way the site does ---- */}
+      {/* ---- 1. A short dark top, so the page opens the way the site does -- */}
       <div className="fwd-on-dark">
         <PhotoPlaceholder
           label="A room mid-conversation. Low light, faces optional"
@@ -54,12 +60,24 @@ export default function MembershipPage() {
                 {MEMBERSHIP_PAGE.intro}
               </p>
             </div>
+
+            {/* The page is long now, so the ask is here as well as at the
+                bottom. It jumps rather than navigates: the form is already on
+                this page. */}
+            <div className="mt-9">
+              <ButtonLink href="#apply" variant="onDark" size="lg">
+                {APPLY.cta}
+              </ButtonLink>
+            </div>
           </div>
         </PhotoPlaceholder>
       </div>
 
       <main id="main">
-        {/* ---- What it gets you ---------------------------------------- */}
+        {/* ---- 2. The whole offer at a glance ---------------------------- */}
+        <BenefitStrip />
+
+        {/* ---- 3. The same offer, explained ------------------------------ */}
         <section className="px-6 py-24 sm:py-28">
           <div className="mx-auto max-w-4xl">
             <h2 className="fwd-reveal text-4xl sm:text-5xl">
@@ -72,7 +90,7 @@ export default function MembershipPage() {
           </div>
         </section>
 
-        {/* ---- Ready to apply ------------------------------------------ */}
+        {/* ---- 4. Ready to apply ----------------------------------------- */}
         <div className="bg-surface-warm">
           <section id="apply" className="px-6 py-24 sm:py-28">
             <div className="mx-auto max-w-4xl">
@@ -84,6 +102,13 @@ export default function MembershipPage() {
 
               {APPLICATIONS_OPEN ? (
                 <>
+                  {/* How long this will take comes before what it will ask
+                      for. Somebody deciding whether to start wants the size of
+                      the job first, and the list second. */}
+                  <p className="fwd-reveal mt-6 max-w-2xl font-body text-[17px] leading-relaxed text-ink-muted">
+                    {MEMBERSHIP_PAGE.ready.note}
+                  </p>
+
                   <div className="fwd-reveal mt-10 max-w-2xl rounded-2xl border border-border bg-surface-raised p-7">
                     <h3 className="font-body text-sm tracking-[0.14em] text-ink-muted">
                       {MEMBERSHIP_PAGE.ready.needHeading}
@@ -98,9 +123,6 @@ export default function MembershipPage() {
                         </li>
                       ))}
                     </ul>
-                    <p className="mt-6 font-body text-[13px] leading-relaxed text-ink-muted">
-                      {MEMBERSHIP_PAGE.ready.note}
-                    </p>
                   </div>
 
                   <h3 className="fwd-reveal mt-16 text-2xl">
@@ -126,6 +148,26 @@ export default function MembershipPage() {
             </div>
           </section>
         </div>
+
+        {/* ---- 5. The door for anybody who is already in ------------------ */}
+        <section className="px-6 py-24 sm:py-28">
+          <div className="mx-auto max-w-4xl">
+            <h2 className="fwd-reveal text-4xl sm:text-5xl">
+              {MEMBERSHIP_PAGE.member.heading}
+            </h2>
+            <p className="fwd-reveal mt-6 max-w-2xl font-body text-[17px] leading-relaxed text-ink-muted">
+              {MEMBERSHIP_PAGE.member.lead}
+            </p>
+            <div className="fwd-reveal mt-9">
+              {/* NAV.signIn, not the footer's shorter label. A button this
+                  size, on its own at the end of the page, can say where it
+                  goes. */}
+              <ButtonLink href="/clubhouse" variant="quiet" size="lg">
+                {NAV.signIn}
+              </ButtonLink>
+            </div>
+          </div>
+        </section>
       </main>
 
       <SiteFooter />

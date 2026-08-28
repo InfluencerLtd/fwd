@@ -396,6 +396,16 @@ export const MEMBERSHIP_PAGE = {
     lead: "The questions worth asking a creator are not the ones worth asking somebody at a brand, so there are two forms. Pick the one that fits.",
   },
 
+  /**
+   * The way in for somebody who already belongs here. It is the last thing on
+   * the page, after the ask, because anybody who is already a member is not
+   * reading the rest of it.
+   */
+  member: {
+    heading: "already a member?",
+    lead: "The House is the members-only side of the site: the directory, what is coming up, your own profile and the newsletter archive. Sign in with your email address and a six-digit code. There is no password.",
+  },
+
   ready: {
     heading: "ready to apply?",
     needHeading: "what you will need",
