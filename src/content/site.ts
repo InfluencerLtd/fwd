@@ -106,7 +106,12 @@ export const ABOUT = {
 } as const;
 
 export const MEMBERSHIP = {
-  heading: "Membership unlocks what’s next in the creator economy.",
+  /**
+   * The space between "creator" and "economy" is a non-breaking space, so the
+   * term never splits across two lines. It is invisible in an editor. If this
+   * line is ever retyped, put it back: U+00A0.
+   */
+  heading: "Membership unlocks what’s next in the creator economy.",
 
   /**
    * DRAFT. On the home page this is the whole of it: a heading, this, and the
