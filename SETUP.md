@@ -16,10 +16,14 @@ you do not know, that is a fault in this document.
 2. Create a **new project**. Call it `fwd-clubhouse`. Choose a region close to
    London. It takes a couple of minutes to build.
 3. When it is ready, open **SQL Editor** in the left-hand menu.
-4. Open the folder `supabase/migrations` in this project. There are **six**
-   files, numbered 0001 to 0006. **Open each one in turn, paste the whole thing
-   into the SQL editor, and press Run.** Do them in number order, 0001 first.
-   Each one prints "Success. No rows returned", which is what you want.
+4. Open the file `supabase/all-migrations.sql` in this project. **Select all of
+   it, paste it into the SQL editor, and press Run.** It should say "Success.
+   No rows returned".
+
+   That one file is the six numbered files in `supabase/migrations` joined
+   together, so this is one paste rather than six. Postgres runs a paste as a
+   single transaction, so if any part of it fails nothing is applied at all and
+   you can fix the problem and paste again. Running it twice is safe.
 5. Optional but useful: do the same with `supabase/seed-examples.sql`. That adds
    five obviously fake members so you can look at the member area before there
    are real members in it, and the four real events from the club plan. The fake

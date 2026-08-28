@@ -40,6 +40,53 @@ for (const file of files) {
   }
 }
 
+/*
+ * supabase/all-migrations.sql is the same six files joined together, so the
+ * database can be set up in one paste rather than six. It is generated, and a
+ * generated file that has drifted from its source is worse than no file: it
+ * would build a database quietly missing whatever was added last.
+ *
+ * So it is built on a second empty database here and the two are compared,
+ * table for table and column for column.
+ */
+console.log("\nThe one-paste file builds the same database:");
+{
+  const combined = new PGlite();
+  const SHAPE = `select table_name, column_name, data_type
+                 from information_schema.columns
+                 where table_schema = 'public'
+                 order by table_name, column_name`;
+  try {
+    await combined.exec(
+      await readFile(path.join(process.cwd(), "supabase", "all-migrations.sql"), "utf8"),
+    );
+    report(true, "all-migrations.sql runs");
+
+    const a = await db.query<{ table_name: string; column_name: string; data_type: string }>(SHAPE);
+    const b = await combined.query<{ table_name: string; column_name: string; data_type: string }>(SHAPE);
+    const key = (r: { table_name: string; column_name: string; data_type: string }) =>
+      `${r.table_name}.${r.column_name}:${r.data_type}`;
+    const fromFiles = a.rows.map(key);
+    const fromCombined = b.rows.map(key);
+    const missing = fromFiles.filter((k) => !fromCombined.includes(k));
+    const extra = fromCombined.filter((k) => !fromFiles.includes(k));
+    report(
+      missing.length === 0 && extra.length === 0,
+      `identical schema, ${fromFiles.length} columns across ${new Set(a.rows.map((r) => r.table_name)).size} tables`,
+      missing.length || extra.length
+        ? `missing: ${missing.join(", ") || "none"}; unexpected: ${extra.join(", ") || "none"}. Run: npm run build:sql`
+        : "",
+    );
+  } catch (error) {
+    report(
+      false,
+      "all-migrations.sql runs",
+      `${error instanceof Error ? error.message : String(error)}. Run: npm run build:sql`,
+    );
+  }
+  await combined.close();
+}
+
 // The example data has to load cleanly too, or the walkthrough cannot happen.
 console.log("\nThe example data loads:");
 try {
