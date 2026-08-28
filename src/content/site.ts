@@ -107,16 +107,22 @@ export const ABOUT = {
 
 export const MEMBERSHIP = {
   heading: "what membership unlocks",
-  /** DRAFT. */
-  intro: "Some of it is access. Most of it is people.",
+
   /**
-   * DRAFT. The short "what this actually is" lead, which used to be a section
-   * of its own. It sits above the cards now.
+   * DRAFT. On the home page this is the whole of it: a heading, this, and the
+   * ask. The eight cards are not here any more. They are on the membership
+   * page, which is where somebody who wants the detail is going anyway.
+   *
+   * So this has to do the cards' job in prose. Two paragraphs, no lists.
    */
   lead: [
     "fwd. is a community, not a series of events. It runs all year, in person and online, across brands, creators, platforms and the wider industry.",
-    "There is no permanent space, and that is deliberate. Members are global, and membership is by application.",
+    "Membership gets you a seat at dinners and roundtables put together with a chosen guest list, everyone else in the room in a directory you can actually search, introductions made properly rather than names passed along, and a quarterly read on what is really changing. There is no permanent space, and that is deliberate.",
   ],
+
+  /** Still used on the membership page, above the cards. */
+  intro: "Some of it is access. Most of it is people.",
+
   /**
    * These open to reveal the detail, so the section stays scannable but the
    * substance is there for anyone who wants it.

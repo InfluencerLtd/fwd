@@ -1,6 +1,5 @@
 import { Hero } from "@/components/hero";
 import { Section } from "@/components/section";
-import { MembershipCards } from "@/components/membership-cards";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { PhotoBand } from "@/components/photo-band";
 import { ApplyLink } from "@/components/apply-link";
@@ -39,29 +38,33 @@ export function PublicSite() {
       <FloatingThemeToggle watch="hero" />
 
       <main id="main">
-        {/* ---- 2. What membership unlocks ------------------------------- */}
-        <Section id="membership" heading={MEMBERSHIP.heading}>
-          <div className="fwd-reveal mt-8 max-w-2xl space-y-5">
-            {MEMBERSHIP.lead.map((line) => (
-              <p
-                key={line}
-                className="font-body text-[17px] leading-relaxed text-ink-muted"
-              >
-                {line}
-              </p>
-            ))}
+        {/* ---- 2. What membership unlocks -------------------------------
+             A heading, a paragraph and the ask, centred. The eight cards used
+             to be here; they are on the membership page now, which is where
+             anybody who wants that much detail is heading anyway. This says
+             what it gets you and gets out of the way. */}
+        <section id="membership" className="px-6 py-28 sm:py-36">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="fwd-reveal text-4xl sm:text-5xl">
+              {MEMBERSHIP.heading}
+            </h2>
+
+            <div className="fwd-reveal mt-10 space-y-6">
+              {MEMBERSHIP.lead.map((line) => (
+                <p
+                  key={line}
+                  className="mx-auto max-w-xl font-body text-[17px] leading-relaxed text-ink-muted"
+                >
+                  {line}
+                </p>
+              ))}
+            </div>
+
+            <div className="fwd-reveal mt-12">
+              <ApplyLink />
+            </div>
           </div>
-
-          <p className="fwd-reveal mt-10 font-display text-2xl text-ink sm:text-3xl">
-            {MEMBERSHIP.intro}
-          </p>
-
-          <MembershipCards />
-
-          <div className="fwd-reveal mt-14">
-            <ApplyLink />
-          </div>
-        </Section>
+        </section>
 
         {/* ---- 3. The band of photographs. Left exactly as it was. ------- */}
         <PhotoBand />
