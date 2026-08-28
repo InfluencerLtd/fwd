@@ -209,19 +209,39 @@ This is what turns the site into a link you can send to anyone.
 
 1. Put this project on GitHub.
 2. At vercel.com, create a project from that repository.
-3. In the project's **Environment Variables**, add every line from your
-   `.env.local`, plus:
-
-   ```
-   NEXT_PUBLIC_SITE_URL="https://the real address"
-   ```
-
+3. In the project's **Settings**, then **Environment Variables**, add the ones
+   in the table below.
 4. Deploy.
 
-The site will show the **holding page**, which is what should be at the address
-before launch. To see the full site while everyone else sees the holding page,
-add `NEXT_PUBLIC_SITE_MODE="live"` to a preview environment only, or set
-`EARLY_ACCESS_PASSWORD` and use `/early-access`.
+**`.env.local` never leaves your computer.** It is in `.gitignore`, so it is
+not in the repository and Vercel never sees it. Anything not entered here does
+not exist in production: the site will still run, and it will save nothing.
+
+**Do not simply copy every line across.** Two of them mean something different
+in production, and one of those would put the site live before you meant to.
+
+| Variable | What to set in Vercel |
+| --- | --- |
+| `NEXT_PUBLIC_SUPABASE_URL` | Same as local. Not secret. |
+| `SUPABASE_SERVICE_ROLE_KEY` | Same as local. **Secret.** |
+| `RESEND_API_KEY` | Same as local. **Secret.** |
+| `EMAIL_FROM` | Same as local. |
+| `HUBSPOT_ACCESS_TOKEN` | Same as local. **Secret.** |
+| `OWNER_EMAIL`, `OWNER_NAME` | Same as local. |
+| `NEXT_PUBLIC_SITE_URL` | The real address, e.g. `https://fwd.example`. Not set locally. |
+| `LINK_SECRET` | **A new one, not the local one.** Generate with `openssl rand -hex 32`. This signs invitation, unsubscribe and session links; a development secret that has been on a laptop should not be the one signing real ones. |
+| `ADMIN_PASSWORD` | **A new, strong one.** This is the only thing between the internet and every application. |
+| `EARLY_ACCESS_PASSWORD` | A new one, if the team wants to preview the full site before launch. |
+| `NEXT_PUBLIC_SITE_MODE` | **Do not set it.** ⚠️ |
+
+That last row is the one to be careful about. Locally it is set to `"live"` so
+you see the full site. In production, leaving it out means the address shows
+the **holding page**, which is what should be there before launch. Copying the
+local value across would put the whole site up early.
+
+To preview the full site once it is deployed, either set
+`NEXT_PUBLIC_SITE_MODE="live"` on Vercel's **Preview** environment only, never
+Production, or set `EARLY_ACCESS_PASSWORD` and use `/early-access`.
 
 On launch day, change `DEFAULT_SITE_MODE` to `"live"` in
 `src/lib/site-config.ts`.
@@ -229,6 +249,15 @@ On launch day, change `DEFAULT_SITE_MODE` to `"live"` in
 ---
 
 ## Checking it worked
+
+```bash
+npm run check:supabase
+```
+
+connects to the real Supabase project and tells you whether every table exists,
+whether anything is publicly readable that should not be, and whether the
+private `library` bucket is there. It writes one fake sign-up and deletes it
+again, so it proves the connection both ways.
 
 ```bash
 npm run check:db
