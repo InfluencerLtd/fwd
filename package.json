@@ -10,7 +10,8 @@
     "check:links": "tsx scripts/check-links.ts",
     "check:db": "tsx scripts/check-migrations.mts",
     "check:supabase": "tsx scripts/check-supabase.mts",
-    "build:sql": "tsx scripts/build-sql.mts"
+    "build:sql": "tsx scripts/build-sql.mts",
+    "check:hubspot": "tsx scripts/check-hubspot.mts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.112.4",

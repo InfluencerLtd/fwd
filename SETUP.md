@@ -99,12 +99,17 @@ You can read all three emails at `/review/emails` before any are sent.
 
 ## 3. HubSpot, for marketing records
 
-Applications are still saved without this, so it is not urgent.
+Applications are still saved without this, so it is not urgent. They are
+recorded as waiting to be pushed, and go across once this exists, so nothing is
+lost by leaving it until later.
 
-1. In HubSpot, create a **private app** and give it permission to read and write
-   contacts. That gives you an access token.
-2. Create three custom contact properties, or HubSpot will reject the whole
-   record:
+**Do step 2 before step 1 is switched on.** HubSpot does not ignore a property
+it does not recognise, it rejects the whole contact, so a missing property does
+not lose one field, it loses every application.
+
+1. **The three custom properties.** In HubSpot go to **Settings**, then
+   **Properties**, then **Create property**. Object type **Contact**, field type
+   **Single-line text**. The internal name has to be exactly this:
 
    | Property name | Type |
    | --- | --- |
@@ -112,11 +117,28 @@ Applications are still saved without this, so it is not urgent.
    | `fwd_market` | Single-line text |
    | `fwd_profile_link` | Single-line text |
 
+2. **The private app.** **Settings**, then **Integrations**, then **Private
+   Apps**, then **Create a private app**. On the **Scopes** tab tick
+   `crm.objects.contacts.read` and `crm.objects.contacts.write`. Creating it
+   gives you an access token that starts `pat-`.
+
 Add to `.env.local`:
 
 ```
 HUBSPOT_ACCESS_TOKEN="the token"
 ```
+
+Then check it:
+
+```
+npm run check:hubspot
+```
+
+That connects for real and tells you whether the token works, whether it has the
+right permissions, and whether all three custom properties exist with the right
+type. It writes nothing to your CRM, because creating a contact can set
+workflows off. To prove it can write, run `npm run check:hubspot -- --write`,
+which creates one obviously fake contact and archives it again.
 
 ### The two embedded application forms (optional)
 
@@ -265,6 +287,13 @@ npm run check:db
 
 runs the database files against a real database on your own computer and tells
 you if any of them is broken. It needs no accounts and changes nothing.
+
+```bash
+npm run check:hubspot
+```
+
+checks the HubSpot token, its permissions, and the three custom properties that
+every application depends on.
 
 ```bash
 npm run check:links
