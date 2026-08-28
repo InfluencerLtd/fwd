@@ -78,19 +78,19 @@ export default function MembershipPage() {
       </div>
 
       <main id="main">
-        {/* ---- 2. Ready to apply ----------------------------------------- */}
+        {/* ---- 2. What membership is -------------------------------------- */}
         <div className="bg-surface-warm">
-          <section id="apply" className="px-6 py-24 sm:py-28">
+          <section className="px-6 py-24 sm:py-28">
             <div className="mx-auto max-w-4xl text-center">
               <h2 className="fwd-reveal text-4xl sm:text-5xl">
                 {APPLICATIONS_OPEN
-                  ? MEMBERSHIP_PAGE.ready.heading
+                  ? MEMBERSHIP_PAGE.about.heading
                   : MEMBERSHIP_PAGE.closed.heading}
               </h2>
 
               {APPLICATIONS_OPEN ? (
                 <p className="fwd-reveal mx-auto mt-6 max-w-2xl font-body text-[17px] leading-relaxed text-ink-muted">
-                  {MEMBERSHIP_PAGE.ready.note}
+                  {MEMBERSHIP_PAGE.about.note}
                 </p>
               ) : (
                 <div className="fwd-reveal mx-auto mt-8 max-w-xl">

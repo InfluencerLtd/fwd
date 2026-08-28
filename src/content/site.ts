@@ -475,18 +475,16 @@ export const MEMBERSHIP_PAGE = {
     heading: "already a member?",
   },
 
-  ready: {
-    heading: "ready to apply?",
-    /**
-     * The only thing between the heading and the button now.
-     *
-     * A list of what the form would ask for used to sit under this. It went
-     * because it was one more thing to read before the way in, and the form
-     * asks its own questions perfectly well once it is open. This sentence
-     * stayed because it answers the only question worth answering first: how
-     * much of my afternoon is this.
-     */
-    note: "It takes a couple of minutes. There is nothing to pay and nothing to upload.",
+  /**
+   * The band under the header. This used to be the ask: a heading that said
+   * "ready to apply?" and a button under it. The ask moved into the header, so
+   * this says what membership is instead.
+   */
+  about: {
+    /** DRAFT. */
+    heading: "fwd. membership",
+    /** DRAFT. */
+    note: "Members get access to the rooms, people and ideas shaping the creator economy from invite-only dinners and private conversations to industry briefings, experiences and a network that extends far beyond the room.",
   },
 
   /** Shown instead of the form when applications are closed. */
