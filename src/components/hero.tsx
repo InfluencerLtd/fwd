@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { Wordmark } from "@/components/wordmark";
-import { ApplyButton } from "@/components/apply-dialog";
+import { ApplyLink } from "@/components/apply-link";
 import { HERO, IMAGERY } from "@/content/site";
 
 /**
@@ -36,7 +36,7 @@ export function Hero() {
           </p>
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <ApplyButton variant="onDark" />
+            <ApplyLink variant="onDark" />
           </div>
 
           {/* The quiet way in for existing members. Deliberately a text link

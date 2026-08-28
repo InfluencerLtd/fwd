@@ -20,6 +20,7 @@ photographs are still missing.
 | `meeting-of-minds` | Two people in conversation, close, warm, slightly obscured |
 | `statement` | A wide room at night. Amber light, figures out of focus |
 | `why` | Detail shot. A gesture mid-sentence, or a table after dinner |
+| `membership` | The top of the membership page. A room mid-conversation, low light |
 | `band-1` to `band-8` | The eight in the strip that drifts sideways. Portrait or square |
 
 ## What makes a good one here

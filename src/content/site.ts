@@ -321,6 +321,7 @@ export const IMAGERY = {
   meetingOfMinds: "Two people in conversation, close, warm, slightly obscured",
   statement: "A wide room at night. Amber light, figures out of focus",
   why: "Detail shot. A gesture mid-sentence, or a table after dinner",
+  membership: "A room mid-conversation. Low light, faces optional. For the top of the membership page",
   /** The band that drifts sideways. Eight in total, all portrait or square. */
   band: [
     "Dinner table from above, candlelight",
@@ -337,4 +338,54 @@ export const IMAGERY = {
 export const STATEMENT = {
   /** DRAFT. The pull quote on the dark band. Not a testimonial, our own words. */
   line: "The room is the product. Everything else follows from who is in it.",
+} as const;
+
+/* ===========================================================================
+   THE MEMBERSHIP PAGE
+   ---------------------------------------------------------------------------
+   Where every "apply for membership" button on the home page leads. It follows
+   the shape of a good membership page: what it is, what it gets you, which of
+   the two you are, what you will need to hand, then the form itself.
+
+   The form is on the page rather than behind another click. Somebody who has
+   come this far has already said yes twice.
+   =========================================================================== */
+
+export const MEMBERSHIP_PAGE = {
+  /** DRAFT. */
+  heading: "membership",
+  intro:
+    "Membership is by application, and every application is read by a person. Here is what it gets you, and what we will ask.",
+
+  benefits: {
+    heading: "what it gets you",
+    /** DRAFT. Shorter than the home page, because you are further down the path. */
+    lead: "Some of it is access. Most of it is people.",
+  },
+
+  paths: {
+    heading: "two ways in",
+    /** DRAFT. */
+    lead: "The questions worth asking a creator are not the ones worth asking somebody at a brand, so there are two forms. Pick the one that fits.",
+  },
+
+  ready: {
+    heading: "ready to apply?",
+    needHeading: "what you will need",
+    /** DRAFT. Set expectations before the form, not inside it. */
+    need: [
+      "Your role and where you work, or what you make and where people find you.",
+      "The market you are based in.",
+      "A link to your profile, if you have one worth sending.",
+      "A few lines on why you want to be in the room. This is the part that is actually read.",
+    ],
+    note: "It takes a couple of minutes. There is nothing to pay and nothing to upload.",
+  },
+
+  /** Shown instead of the form when applications are closed. */
+  closed: {
+    heading: "applications are closed",
+    intro:
+      "They open in windows rather than all year. Leave your address and we will tell you when the next one opens.",
+  },
 } as const;

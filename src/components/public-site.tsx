@@ -3,7 +3,7 @@ import { Section } from "@/components/section";
 import { MembershipCards } from "@/components/membership-cards";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { PhotoBand } from "@/components/photo-band";
-import { ApplyProvider, ApplyButton } from "@/components/apply-dialog";
+import { ApplyLink } from "@/components/apply-link";
 import { FloatingThemeToggle } from "@/components/floating-theme-toggle";
 import { SiteFooter } from "@/components/site-footer";
 import { MEMBERSHIP, MEETING_OF_MINDS, NAV, IMAGERY } from "@/content/site";
@@ -26,7 +26,7 @@ import { MEMBERSHIP, MEETING_OF_MINDS, NAV, IMAGERY } from "@/content/site";
  */
 export function PublicSite() {
   return (
-    <ApplyProvider>
+    <>
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-surface-raised focus:px-5 focus:py-2 focus:font-body focus:text-sm focus:text-ink"
@@ -59,7 +59,7 @@ export function PublicSite() {
           <MembershipCards />
 
           <div className="fwd-reveal mt-14">
-            <ApplyButton />
+            <ApplyLink />
           </div>
         </Section>
 
@@ -104,7 +104,7 @@ export function PublicSite() {
                 </div>
 
                 <div className="fwd-reveal mt-10">
-                  <ApplyButton />
+                  <ApplyLink />
                 </div>
               </div>
             </div>
@@ -114,6 +114,6 @@ export function PublicSite() {
 
       {/* ---- 5. The footer --------------------------------------------- */}
       <SiteFooter />
-    </ApplyProvider>
+    </>
   );
 }
