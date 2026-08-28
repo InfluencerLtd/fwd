@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Wordmark } from "@/components/wordmark";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { CONTACT, BRAND } from "@/lib/brand";
+import { CONTACT } from "@/lib/brand";
 import { FOOTER } from "@/content/site";
 
 /**
@@ -51,9 +51,6 @@ export function SiteFooter() {
             </nav>
           </div>
 
-          <p className="mt-10 font-body text-xs text-photo-ink/60">
-            {BRAND.markLong}. {BRAND.endorsement}.
-          </p>
         </div>
       </div>
     </footer>

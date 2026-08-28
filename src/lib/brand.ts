@@ -38,12 +38,18 @@ export const BENEFITS = {
 } as const;
 
 /**
- * PLACEHOLDERS - not yet registered. Replace when the domain and mailbox exist.
- * They render as visible placeholder text so they cannot ship unnoticed.
+ * The address the site publishes, and the domain it will live on.
+ *
+ * `email` is now a real one and appears in the footer, on the legal pages, in
+ * the unsubscribe flow and inside every email that goes out, so anything sent
+ * to it needs somebody reading it.
+ *
+ * `domain` is still a placeholder and renders as visible placeholder text so it
+ * cannot ship unnoticed. Replace it when the domain is registered.
  */
 export const CONTACT = {
   domain: "[DOMAIN NOT YET REGISTERED]",
-  email: "[EMAIL NOT YET REGISTERED]",
+  email: "fwd@influencer.com",
   /** Used for absolute URLs in social share images. Update at launch. */
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
 } as const;
