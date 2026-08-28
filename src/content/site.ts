@@ -113,11 +113,13 @@ export const MEMBERSHIP = {
    * ask. The eight cards are not here any more. They are on the membership
    * page, which is where somebody who wants the detail is going anyway.
    *
-   * So this has to do the cards' job in prose. Two paragraphs, no lists.
+   * So this has to do the cards' job in prose. Four paragraphs, no lists.
    */
   lead: [
-    "fwd. is a community, not a series of events. It runs all year, in person and online, across brands, creators, platforms and the wider industry.",
-    "Membership gets you a seat at dinners and roundtables put together with a chosen guest list, everyone else in the room in a directory you can actually search, introductions made properly rather than names passed along, and a quarterly read on what is really changing. There is no permanent space, and that is deliberate.",
+    "fwd. brings together the people shaping the future of the creator economy. The brands. The creators. The platforms. The people with something to say, build, change or start next.",
+    "Membership unlocks a year-round program of intimate dinners, private conversations, industry briefings and experiences alongside a network that extends far beyond the room.",
+    "Meet someone you’ve wanted to meet. Hear what’s coming before it becomes obvious. Share an idea with the person who can make it happen.",
+    "This is where the creator economy comes together to shape what happens next.",
   ],
 
   /** Still used on the membership page, above the cards. */
@@ -196,7 +198,7 @@ export const MEETING_OF_MINDS = {
   heading: "meeting of minds",
   eyebrow: "the signature benefit",
   /** DRAFT. */
-  standfirst: "The introduction is the point.",
+  standfirst: "The right introduction can change everything.",
   body: [
     "Most networks hand you a list and leave the rest to you. This one works the other way around.",
     "When two members should know each other, we say why, to both of them, with enough context that the first conversation starts somewhere useful.",
