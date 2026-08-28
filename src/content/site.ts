@@ -480,6 +480,15 @@ export const MEMBERSHIP_PAGE = {
    * "ready to apply?" and a button under it. The ask moved into the header, so
    * this says what membership is instead.
    */
+  /**
+   * DRAFT. The second button in the header, beside the ask.
+   *
+   * NOTE THAT THIS IS THE THIRD LABEL ON THE SITE FOR THE SAME DOOR. The menu
+   * says "sign in to The House", the footer says "member sign in", and this
+   * says "member log in". They all go to /clubhouse. Worth settling on one.
+   */
+  logIn: "member log in",
+
   about: {
     /** DRAFT. */
     heading: "fwd. membership",

@@ -67,11 +67,18 @@ export default function MembershipPage() {
                 stopped making sense once that section moved up to sit directly
                 underneath this one: it was a button that scrolled you almost
                 nowhere, to a second button saying the same thing. */}
-            <div className="mt-9">
+            <div className="mt-9 flex flex-wrap items-center gap-3">
               <ApplyDialog
                 label={APPLY.cta}
                 className="fwd-btn bg-accent-on-dark px-8 py-3.5 font-body text-base text-photo-ground hover:bg-photo-ink"
               />
+              {/* Outlined rather than filled. Two filled buttons side by side
+                  read as two equal choices, and these are not: almost everybody
+                  arriving here is applying, and the members already know the
+                  way in. */}
+              <ButtonLink href="/clubhouse" variant="outlineOnDark" size="lg">
+                {MEMBERSHIP_PAGE.logIn}
+              </ButtonLink>
             </div>
           </div>
         </PhotoPlaceholder>
