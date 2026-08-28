@@ -62,13 +62,16 @@ export default function MembershipPage() {
               </p>
             </div>
 
-            {/* The page is long now, so the ask is here as well as at the
-                bottom. It jumps rather than navigates: the form is already on
-                this page. */}
+            {/* The only ask on the page, and it opens the form rather than
+                scrolling to it. It used to jump to a button further down, which
+                stopped making sense once that section moved up to sit directly
+                underneath this one: it was a button that scrolled you almost
+                nowhere, to a second button saying the same thing. */}
             <div className="mt-9">
-              <ButtonLink href="#apply" variant="onDark" size="lg">
-                {APPLY.cta}
-              </ButtonLink>
+              <ApplyDialog
+                label={APPLY.cta}
+                className="fwd-btn bg-accent-on-dark px-8 py-3.5 font-body text-base text-photo-ground hover:bg-photo-ink"
+              />
             </div>
           </div>
         </PhotoPlaceholder>
@@ -94,14 +97,6 @@ export default function MembershipPage() {
                     {MEMBERSHIP_PAGE.ready.note}
                   </p>
 
-                  {/* One button, and nothing next to it. This section used to
-                      carry a list of what the form would ask for and a pair of
-                      quiet cards for the two paths, both of which read as more
-                      page rather than as the way in. The form asks its own
-                      questions once it is open. */}
-                  <div className="fwd-reveal mt-10">
-                    <ApplyDialog />
-                  </div>
                 </>
               ) : (
                 <div className="fwd-reveal mt-8 max-w-xl">

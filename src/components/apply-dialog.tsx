@@ -19,8 +19,18 @@ import { APPLY, NAV } from "@/content/site";
  * WHY A DIALOG AND NOT ANOTHER PAGE: the form is short, and sending somebody to
  * a third page after they have already come from the home page to this one is a
  * step too many. It opens where they are.
+ *
+ * The button takes its label and its dressing from wherever it is used, so the
+ * same dialog can be opened from the dark top of the page or from a light
+ * section further down without either one growing its own copy of the form.
  */
-export function ApplyDialog() {
+export function ApplyDialog({
+  label = APPLY.start,
+  className = "fwd-btn border border-photo-ground/60 bg-accent-on-dark px-9 py-4 font-body text-base text-photo-ground hover:border-photo-ground hover:bg-photo-ground hover:text-accent-on-dark",
+}: {
+  label?: string;
+  className?: string;
+} = {}) {
   const dialog = useRef<HTMLDialogElement>(null);
   const [open, setOpen] = useState(false);
 
@@ -47,9 +57,9 @@ export function ApplyDialog() {
         onClick={show}
         aria-haspopup="dialog"
         aria-expanded={open}
-        className="fwd-btn border border-photo-ground/60 bg-accent-on-dark px-9 py-4 font-body text-base text-photo-ground hover:border-photo-ground hover:bg-photo-ground hover:text-accent-on-dark"
+        className={className}
       >
-        {APPLY.start}
+        {label}
       </button>
 
       <dialog
