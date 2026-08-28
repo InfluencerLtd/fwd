@@ -66,13 +66,13 @@ export function PhotoPlaceholder({
    *             wordmark   body text
    *   no wash    4.49:1     5.43:1
    *   20%        5.71:1     6.90:1
-   *   25%        6.07:1     7.34:1   what is set
-   *   50%        8.22:1     9.93:1   muddied the picture for nothing
+   *   25%        6.07:1     7.34:1
+   *   50%        8.22:1     9.93:1   what is set, chosen for the look
    *
    * The wordmark is large text and needs 3:1. The line beneath it is normal
    * size and needs 4.5:1. This photograph clears both with no wash at all, so
-   * 25% is margin rather than necessity, and it is kept low deliberately: more
-   * than that and an already dark picture turns to mud.
+   * the setting is a look rather than a requirement, and 50% is what was
+   * chosen: a heavier, moodier frame with the photograph further back.
    *
    * IF A BRIGHTER PHOTOGRAPH IS EVER USED HERE, THIS NUMBER HAS TO BE CHECKED
    * AGAIN. The same measurement on the version Canva served, which was not
@@ -110,7 +110,7 @@ export function PhotoPlaceholder({
       {src && wash ? (
         <div
           aria-hidden="true"
-          className="absolute inset-0 z-1 bg-photo-ground/25"
+          className="absolute inset-0 z-1 bg-photo-ground/50"
         />
       ) : null}
       {children}

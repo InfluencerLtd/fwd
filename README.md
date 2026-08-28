@@ -358,10 +358,9 @@ photographs are still needed.
 Anything with words over it gets a light dark wash automatically, so the words
 stay readable over the brightest part of a picture.
 
-It is set to 25%. The hero photograph arrives already darkened from the artwork
-and clears the standard with no wash at all, so this is margin rather than
-necessity, and it is kept low on purpose: more than that and an already dark
-picture turns to mud.
+It is set to 50%. The hero photograph arrives already darkened from the artwork
+and clears the standard with no wash at all, so this is a look rather than a
+requirement: a heavier, moodier frame with the photograph sitting further back.
 
 **If you ever swap in a brighter photograph, this needs checking again.** The
 number is `bg-photo-ground/25` in `src/components/photo-placeholder.tsx`, and
