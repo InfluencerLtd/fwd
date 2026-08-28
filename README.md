@@ -356,9 +356,13 @@ what is missing, so nothing ever looks broken and it stays obvious which
 photographs are still needed.
 
 Anything with words over it gets a dark wash automatically. That is not a mood
-choice: the pale blue only works on a dark ground, and a photograph with a
-bright patch in it would swallow the wordmark without it. The strength is one
-number, `bg-photo-ground/55` in `src/components/photo-placeholder.tsx`.
+choice. Measured against the real hero photograph, the wordmark scores 1.27:1
+with no wash, which means it disappears into the pale satin dress. It needs 3:1.
+The wash is set to 50%, which gives 3.82:1, and anything below 45% fails.
+
+The strength is one number, `bg-photo-ground/50` in
+`src/components/photo-placeholder.tsx`. If you lighten it, check the wordmark
+still reads over the brightest part of the picture.
 
 ## How to add an event
 

@@ -55,12 +55,19 @@ export function PhotoPlaceholder({
   /**
    * A dark wash over the photograph.
    *
-   * This is not a mood choice, it is what keeps the words legible. The pale ice
-   * blue only works on a dark ground: it measures 13.42:1 on the near-black and
-   * 1.27:1 on a light one. A real photograph has bright patches, a shirt or a
-   * window or a skin tone, and the wordmark crossing one of those would vanish.
-   * The wash holds the whole frame dark enough that it cannot happen, whatever
-   * the photograph turns out to be.
+   * This is not a mood choice, it is what keeps the words legible, and the real
+   * hero photograph proves the point. Measured against every pixel in it:
+   *
+   *   no wash   1.27:1   the wordmark disappears into the pale satin dress
+   *   40%       2.97:1   still fails
+   *   45%       3.36:1   the floor
+   *   50%       3.82:1   what is set
+   *   55%       4.36:1
+   *
+   * Large text needs 3:1. Those figures are the worst pixel in the whole frame,
+   * so there is more headroom than they suggest: the wordmark only crosses the
+   * middle of it. Anything below 45% and the mark starts to vanish wherever the
+   * picture is brightest.
    *
    * Defaults to on wherever there is something on top of the picture.
    */
@@ -94,7 +101,7 @@ export function PhotoPlaceholder({
       {src && wash ? (
         <div
           aria-hidden="true"
-          className="absolute inset-0 z-1 bg-photo-ground/55"
+          className="absolute inset-0 z-1 bg-photo-ground/50"
         />
       ) : null}
       {children}
