@@ -4,6 +4,7 @@ import { CONTACT } from "@/lib/brand";
 import { META } from "@/content/site";
 import { fontVariables, rootFontStyle } from "@/lib/fonts";
 import { THEME_INIT_SCRIPT } from "@/lib/theme";
+import { SiteMenu } from "@/components/site-menu";
 
 export const metadata: Metadata = {
   // Needed so the link preview image gets a full web address rather than a
@@ -38,6 +39,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       </head>
       <body className="min-h-full flex flex-col bg-surface text-ink">
         {children}
+        {/* On every page, so there is always a way around. */}
+        <SiteMenu />
       </body>
     </html>
   );

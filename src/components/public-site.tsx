@@ -3,7 +3,6 @@ import { Section } from "@/components/section";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { PhotoBand } from "@/components/photo-band";
 import { ApplyLink } from "@/components/apply-link";
-import { FloatingThemeToggle } from "@/components/floating-theme-toggle";
 import { SiteFooter } from "@/components/site-footer";
 import { MEMBERSHIP, MEETING_OF_MINDS, NAV, IMAGERY } from "@/content/site";
 
@@ -35,7 +34,6 @@ export function PublicSite() {
 
       {/* ---- 1. The hero ------------------------------------------------ */}
       <Hero />
-      <FloatingThemeToggle watch="hero" />
 
       <main id="main">
         {/* ---- 2. What membership unlocks -------------------------------

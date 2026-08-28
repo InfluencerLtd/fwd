@@ -302,6 +302,14 @@ export const NAV = {
    * past the hero into the page.
    */
   skipToContent: "skip to content",
+
+  /** The three-line button, and the panel it opens. */
+  menu: "menu",
+  menuClose: "close",
+  home: "home",
+  membership: "membership",
+  signIn: "sign in to The House",
+  appearance: "light or dark",
 } as const;
 
 /* ===========================================================================

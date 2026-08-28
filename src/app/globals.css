@@ -483,3 +483,10 @@ textarea.fwd-field {
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
+/* The menu reuses the dialog, but it is a short list rather than a form, so it
+   is narrower and sits near the corner it opened from rather than dead centre. */
+.fwd-menu {
+  width: min(24rem, calc(100vw - 2rem));
+  margin: 1rem 1rem auto auto;
+}
