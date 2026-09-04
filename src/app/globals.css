@@ -580,6 +580,14 @@ textarea.fwd-field {
   /* Tailwind's reset zeroes the margin on every element, including the one the
      browser uses to centre a dialog. Without this it sits against the top. */
   margin: auto;
+
+  /* A <dialog> is lifted into the top layer but STAYS WHERE IT IS IN THE DOM,
+     so it still inherits from whatever it happens to sit inside. Putting the
+     apply button in a centred section quietly centre-aligned every field label
+     and hint in the form, which floats each label away from the field it
+     names. A dialog is its own surface and should not care where its button
+     lives, so it sets this rather than inheriting it. */
+  text-align: left;
   width: min(46rem, calc(100vw - 2rem));
   max-height: min(46rem, calc(100dvh - 2rem));
   padding: 0;

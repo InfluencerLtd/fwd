@@ -302,11 +302,13 @@ export const APPLY = {
   choose: {
     heading: "first, which are you?",
     /**
-     * DRAFT. Moved here from the membership page, which used to carry a "two
-     * ways in" section explaining this above a pair of cards. The cards are the
-     * explanation, so the section went and the sentence came with it.
+     * DRAFT. Cut to its last sentence. It used to explain that the questions
+     * worth asking a creator are not the ones worth asking somebody at a
+     * brand, which is true and is not the reader's problem: the two cards
+     * underneath say what the choice is far faster than a sentence about why
+     * the choice exists.
      */
-    lead: "The questions worth asking a creator are not the ones worth asking somebody at a brand, so there are two forms. Pick the one that fits.",
+    lead: "Pick the one that fits.",
     creator: {
       label: "a creator",
       hint: "You make the work, whatever the platform.",
