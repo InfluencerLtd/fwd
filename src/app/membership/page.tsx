@@ -63,7 +63,7 @@ export default function MembershipPage() {
                 paragraph below, next to the words that make the case for it,
                 rather than above them. */}
             <div className="mt-9">
-              <ButtonLink href="/clubhouse" variant="outlineOnDark" size="lg">
+              <ButtonLink href="/clubhouse" variant="outlineOnDark" size="sm">
                 {MEMBERSHIP_PAGE.logIn}
               </ButtonLink>
             </div>

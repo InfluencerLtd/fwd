@@ -12,7 +12,7 @@ import Link from "next/link";
  */
 
 type Variant = "primary" | "onDark" | "outlineOnDark" | "quiet";
-type Size = "md" | "lg";
+type Size = "sm" | "md" | "lg";
 
 const VARIANTS: Record<Variant, string> = {
   /**
@@ -51,6 +51,14 @@ const VARIANTS: Record<Variant, string> = {
 };
 
 const SIZES: Record<Size, string> = {
+  /**
+   * For a button that should be findable rather than persuasive: the members'
+   * door beside a heading, where the ask itself is somewhere else entirely.
+   *
+   * About half the area of `lg`, and still 32px tall, which clears the 24px
+   * minimum a target has to meet. It should not go smaller than this.
+   */
+  sm: "px-5 py-1.5 text-sm",
   md: "px-6 py-2.5 text-[15px]",
   lg: "px-8 py-3.5 text-base",
 };
