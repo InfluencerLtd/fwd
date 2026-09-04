@@ -53,7 +53,32 @@ export function Wordmark({
     size === "hero" ? "text-lg sm:text-xl" : size === "footer" ? "text-xs" : "text-[10px]";
   // Enough of a gap to read as a signature beside the mark rather than as part
   // of the word, and no more.
-  const gapClass = size === "hero" ? "gap-2.5 sm:gap-3" : size === "footer" ? "gap-1.5" : "gap-1";
+  const gapClass =
+    size === "hero"
+      ? "gap-y-1 sm:gap-x-3"
+      : size === "footer"
+        ? "gap-1.5"
+        : "gap-1";
+
+  /*
+   * AT HERO SIZE THE SIGNATURE DROPS UNDER THE MARK ON A PHONE.
+   *
+   * Beside it, the pair is as wide as "fwd." plus "by influencer" plus a gap,
+   * which on a 375px screen leaves the mark nowhere to go but smaller. The
+   * point of the hero is that the mark is enormous, so the signature moves
+   * instead of the mark shrinking.
+   *
+   * Stacked it also reads more like a signature under a name, which is what it
+   * is. Above sm it goes back beside the mark, where there is room.
+   *
+   * `items-baseline` only applies once they share a line: baselines mean
+   * nothing between two stacked rows, and it would sit the second row's text
+   * oddly. So the alignment is part of the same switch.
+   */
+  const stackClass =
+    size === "hero"
+      ? `flex-col ${align === "center" ? "items-center" : "items-start"} sm:flex-row sm:items-baseline`
+      : "items-baseline";
 
   const Mark = heading ? "h1" : "span";
 
@@ -61,7 +86,7 @@ export function Wordmark({
     <div className={align === "center" ? "flex justify-center" : "flex"}>
       {/* Shrink-wrapped to the two of them together, so the pair centres as one
           unit rather than the mark centring and the signature hanging off it. */}
-      <div className={`inline-flex items-baseline ${gapClass}`}>
+      <div className={`inline-flex ${stackClass} ${gapClass}`}>
         <Mark
           className={`font-display leading-[0.85] text-accent-on-dark ${markClass}`}
         >

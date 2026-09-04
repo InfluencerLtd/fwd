@@ -25,10 +25,12 @@ export function ApplyPanel() {
   if (path) {
     return (
       <div>
+        {/* Padded out to a thumb-sized target, pulled back out of the layout
+            so nothing moves. Bare, a 14px line of text is 22px tall. */}
         <button
           type="button"
           onClick={() => setPath(null)}
-          className="fwd-underline font-body text-sm text-accent"
+          className="fwd-underline -my-2 py-2 font-body text-sm text-accent"
         >
           {APPLY.back}
         </button>

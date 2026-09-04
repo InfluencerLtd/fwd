@@ -42,10 +42,14 @@ export function Hero() {
           {/* The quiet way in for existing members. Deliberately a text link
               rather than a third button, and part of this block rather than a
               bar sitting on top of the photograph. */}
-          <p className="mt-9 font-body text-sm text-photo-ink/60">
+          {/* The padding is the tap target, and the negative margin takes it
+              back out of the layout so nothing moves. A 14px line of text is
+              19px tall, which is a small thing to hit with a thumb on the one
+              link a returning member is looking for. This makes it 35. */}
+          <p className="mt-7 font-body text-sm text-photo-ink/60">
             <Link
               href="/clubhouse"
-              className="fwd-underline text-photo-ink/75 hover:text-photo-ink"
+              className="fwd-underline -my-2 inline-block py-2 text-photo-ink/75 hover:text-photo-ink"
             >
               {HERO.memberSignIn}
             </Link>
