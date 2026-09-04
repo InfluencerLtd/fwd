@@ -59,20 +59,10 @@ export default function MembershipPage() {
               {MEMBERSHIP_PAGE.heading}
             </h1>
 
-            {/* The only ask on the page, and it opens the form rather than
-                scrolling to it. It used to jump to a button further down, which
-                stopped making sense once that section moved up to sit directly
-                underneath this one: it was a button that scrolled you almost
-                nowhere, to a second button saying the same thing. */}
-            <div className="mt-9 flex flex-wrap items-center gap-3">
-              <ApplyDialog
-                label={APPLY.cta}
-                className="fwd-btn bg-accent-on-dark px-8 py-3.5 font-body text-base text-photo-ground hover:bg-photo-ink"
-              />
-              {/* Outlined rather than filled. Two filled buttons side by side
-                  read as two equal choices, and these are not: almost everybody
-                  arriving here is applying, and the members already know the
-                  way in. */}
+            {/* Only the members' door up here. The ask sits under the
+                paragraph below, next to the words that make the case for it,
+                rather than above them. */}
+            <div className="mt-9">
               <ButtonLink href="/clubhouse" variant="outlineOnDark" size="lg">
                 {MEMBERSHIP_PAGE.logIn}
               </ButtonLink>
@@ -93,9 +83,16 @@ export default function MembershipPage() {
               </h2>
 
               {APPLICATIONS_OPEN ? (
-                <p className="fwd-reveal mx-auto mt-6 max-w-2xl font-body text-[17px] leading-relaxed text-ink-muted">
-                  {MEMBERSHIP_PAGE.about.note}
-                </p>
+                <>
+                  <p className="fwd-reveal mx-auto mt-6 max-w-2xl font-body text-[17px] leading-relaxed text-ink-muted">
+                    {MEMBERSHIP_PAGE.about.note}
+                  </p>
+                  {/* The ask, directly under the case for it. Centred by the
+                      text-center on the container. */}
+                  <div className="fwd-reveal mt-10">
+                    <ApplyDialog label={APPLY.cta} />
+                  </div>
+                </>
               ) : (
                 <div className="fwd-reveal mx-auto mt-8 max-w-xl">
                   <p className="font-body text-[17px] leading-relaxed text-ink-muted">
