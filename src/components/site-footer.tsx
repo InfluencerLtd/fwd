@@ -40,28 +40,13 @@ export function SiteFooter() {
         <div className="relative z-1 mx-auto max-w-5xl px-6 py-16">
           <Wordmark size="footer" />
 
+          {/* Address on the left under the lockup, places on the right. The
+              two are read in different ways: the address is the one thing a
+              stranger wants, so it sits where the eye lands after the mark,
+              and the list of places is a set of exits, which belong at the
+              far edge. Right aligned so the list has an edge of its own to
+              hang from rather than floating in the middle of the footer. */}
           <div className="mt-14 grid gap-10 border-t border-photo-ink/15 pt-10 sm:grid-cols-2">
-            <nav aria-label={FOOTER.navHeading}>
-              <h2 className={GROUP_HEADING}>{FOOTER.navHeading}</h2>
-              {/* The padding is the tap target. A 15px line of text is about
-                  21px tall, which is a small thing to hit with a thumb, and
-                  the padding takes each link to 37 without changing how the
-                  list looks. The gap between them stays big enough that a near
-                  miss does not land on the wrong one. */}
-              <ul className="mt-2.5 space-y-1">
-                {PLACES.map((place) => (
-                  <li key={place.href}>
-                    <Link
-                      href={place.href}
-                      className="fwd-underline block py-2 font-body text-[15px] text-photo-ink"
-                    >
-                      {place.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-
             <div>
               <h2 className={GROUP_HEADING}>{FOOTER.contactHeading}</h2>
               {/* A link, not a line of text. It is the only way of reaching us
@@ -74,6 +59,33 @@ export function SiteFooter() {
                 {CONTACT.email}
               </a>
             </div>
+
+            <nav aria-label={FOOTER.navHeading} className="sm:text-right">
+              <h2 className={GROUP_HEADING}>{FOOTER.navHeading}</h2>
+              {/* The padding is the tap target. A 15px line of text is about
+                  21px tall, which is a small thing to hit with a thumb, and
+                  the padding takes each link to 37 without changing how the
+                  list looks. The gap between them stays big enough that a near
+                  miss does not land on the wrong one.
+
+                  inline-block, not block, so the underline and the tap target
+                  are the width of the words rather than the width of the
+                  column. A block link right aligned would still be clickable
+                  all the way back to the left edge, which is a large invisible
+                  target sitting over nothing. */}
+              <ul className="mt-2.5 space-y-1">
+                {PLACES.map((place) => (
+                  <li key={place.href}>
+                    <Link
+                      href={place.href}
+                      className="fwd-underline inline-block py-2 font-body text-[15px] text-photo-ink"
+                    >
+                      {place.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           </div>
 
           {/* The bottom line. Legal pages and the appearance switch: the two

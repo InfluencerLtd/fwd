@@ -254,7 +254,11 @@ export const WHY = {
 
 export const APPLY = {
   open: {
-    heading: "apply",
+    /**
+     * The dialog's title, and the name a screen reader announces when it
+     * opens. The same words as the button that opened it, so the two match.
+     */
+    heading: "apply for membership",
     /** DRAFT. */
     intro: "Memberships are by application only.",
     submit: "send application",
