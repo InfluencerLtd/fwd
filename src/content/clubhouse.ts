@@ -28,8 +28,8 @@ export const SIGN_IN = {
    * which is the one thing the directory exists to protect.
    */
   codeIntro:
-    "If that address belongs to a member, a six digit code is on its way. It works once and expires in ten minutes.",
-  codeLabel: "six digit code",
+    "If that address belongs to a member, a code is on its way. It works once and expires in ten minutes.",
+  codeLabel: "code",
   codeSubmit: "sign in",
   checking: "checking",
   resend: "use a different address",
