@@ -355,7 +355,6 @@ export const APPLY = {
       marketPlaceholder: "Where are you based",
       link: "LinkedIn or social profile",
       reason: "why do you want to be part of it",
-      reasonHint: "A few lines is plenty.",
     },
     creator: {
       heading: "apply, as a creator",
@@ -369,7 +368,7 @@ export const APPLY = {
       heading: "apply",
       role: "role",
       company: "company",
-      group: "which best describes your company",
+      group: "which best describes you",
       linkLabel: "LinkedIn or social profile",
     },
   },

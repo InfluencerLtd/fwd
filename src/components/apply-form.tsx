@@ -234,7 +234,6 @@ export function ApplyForm({
         <Field
           id={ids.reason}
           label={shared.reason}
-          hint={shared.reasonHint}
           error={errors.reason}
         >
           <textarea
