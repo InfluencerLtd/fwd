@@ -40,6 +40,9 @@ export default async function OpengraphImage() {
   const glyph = `data:image/svg+xml;base64,${Buffer.from(logo).toString("base64")}`;
   const MARK_SIZE = 220;
   const glyphHeight = Math.round(MARK_SIZE * 0.36);
+  /* The glyph's own width over its height. It is tilted, so this is not the
+     ratio of the upright shape and has to move with it. See mark.tsx. */
+  const GLYPH_RATIO = 1.2507;
 
   return new ImageResponse(
     (
@@ -68,7 +71,7 @@ export default async function OpengraphImage() {
               src={glyph}
               alt=""
               height={glyphHeight}
-              width={Math.round(glyphHeight * 1.2823)}
+              width={Math.round(glyphHeight * GLYPH_RATIO)}
               style={{ marginBottom: 14 }}
             />
             <span
