@@ -93,10 +93,11 @@ export function Wordmark({
     size === "hero"
       ? "text-7xl sm:text-8xl lg:text-9xl"
       : size === "large"
-        ? // Half again as big as the bars: 1.875rem to 2.8125rem. There is no
-          // step on the type scale at 45px, and rounding to the nearest one
-          // would be 36 or 48, neither of which is the size asked for.
-          "text-[2.8125rem]"
+        ? // Half again as big as the bars, twice: 1.875rem to 2.8125rem to
+          // 4.21875rem, which is 67.5px. Set directly, because the type scale
+          // has no step near either number — the nearest to 45 are 36 and 48,
+          // and the nearest to 67.5 are 60 and 72.
+          "text-[4.21875rem]"
         : size === "page"
           ? "text-4xl"
           : "text-3xl";
