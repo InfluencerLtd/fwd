@@ -241,8 +241,8 @@ export const MEETING_OF_MINDS = {
   standfirst: "The right introduction can change everything.",
   body: [
     "Most networks hand you a list and leave the rest to you. This one works the other way around.",
-    "When two members should know each other, we say why, to both of them, with enough context that the first conversation starts somewhere useful.",
-    "You can ask for an introduction to any member. The request comes to the fwd. team, never to them.",
+    "We make the introduction ourselves, and we tell both sides why it is worth making.",
+    "Ask for an introduction to any member. Your details stay with us, and so do theirs.",
   ],
 } as const;
 
