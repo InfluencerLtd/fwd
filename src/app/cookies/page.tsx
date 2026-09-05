@@ -13,8 +13,8 @@ export default function CookiesPage() {
    * for however long it takes anyone to notice.
    */
   const body = areHubspotFormsConfigured()
-    ? [...COOKIES.holdingText, COOKIES.hubspotText]
-    : COOKIES.holdingText;
+    ? [...COOKIES.body, COOKIES.hubspotText]
+    : COOKIES.body;
 
   return <LegalPage heading={COOKIES.heading} body={body} />;
 }

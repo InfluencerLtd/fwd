@@ -14,6 +14,7 @@ import { APPLICATIONS_OPEN } from "@/lib/site-config";
 import { submitApplication } from "@/lib/store/applications";
 import { recordSignup, type SignupSource } from "@/lib/store/signups";
 import { looksLikeEmail, normalizeEmail } from "@/lib/validate";
+import { isRateLimited } from "@/lib/rate-limit";
 
 export async function signUpForUpdates(
   _previous: SignupState,
@@ -28,6 +29,12 @@ export async function signUpForUpdates(
   }
   if (!consented) {
     return { status: "error", message: HOLDING.consentRequired };
+  }
+
+  // After the checks that cost nothing, before the write. Checking earlier
+  // would spend a database round trip on somebody who mistyped their address.
+  if (await isRateLimited("signup", email)) {
+    return { status: "error", message: HOLDING.tooMany };
   }
 
   const result = await recordSignup(email, source);
@@ -106,6 +113,13 @@ export async function submitMembershipApplication(
       message: "Please check the fields marked below.",
       fieldErrors,
     };
+  }
+
+  // Everything above is free. This is the first thing that touches the database,
+  // and it is what stops a script filling the applications table and the CRM
+  // behind it. See src/lib/rate-limit.ts.
+  if (await isRateLimited("application", email)) {
+    return { status: "error", message: APPLY.tooMany, fieldErrors: {} };
   }
 
   const result = await submitApplication({

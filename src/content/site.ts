@@ -69,6 +69,14 @@ export const HOLDING = {
     "I am happy to receive occasional email about fwd. You can unsubscribe at any time.",
 
   consentRequired: "Please tick the box so we know we can email you.",
+
+  /**
+   * Shown when the same address, or the same connection, has sent this several
+   * times in an hour. It does not accuse anybody of anything: by far the most
+   * likely person to see it is somebody who was not sure it had worked.
+   */
+  tooMany:
+    "We have that already. If you have not heard anything, write to us instead.",
 } as const;
 
 export const FOOTER = {
@@ -366,6 +374,9 @@ export const APPLY = {
   /** Shown when a required field is empty. */
   required: "Please fill this in.",
   error: "Something went wrong at our end. Please try again in a moment.",
+  /** Shown when this has been sent several times within the hour. */
+  tooMany:
+    "We have your application. If you have not heard back, write to us rather than sending it again.",
   consent:
     "I am happy to receive occasional email about fwd. You can unsubscribe at any time.",
 } as const;

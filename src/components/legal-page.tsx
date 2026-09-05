@@ -8,9 +8,21 @@ import { SiteMenu } from "@/components/site-menu";
 export function LegalPage({
   heading,
   body,
+  link,
+  smallPrint,
 }: {
   heading: string;
   body: readonly string[];
+  /**
+   * A document held somewhere else that governs this page.
+   *
+   * The privacy page uses it for Influencer's notice. It opens in a new tab
+   * because it leaves the site, and it carries rel="noreferrer" for the same
+   * reason every outbound link here does.
+   */
+  link?: { href: string; label: string };
+  /** Registered details and the like. Quieter than the body, and last. */
+  smallPrint?: readonly string[];
 }) {
   return (
     <>
@@ -34,9 +46,40 @@ export function LegalPage({
               </p>
             ))}
           </div>
-          <p className="mt-10 font-body text-sm text-ink-muted">
-            {CONTACT.email}
+
+          {link ? (
+            <p className="mt-8">
+              <a
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+                className="fwd-underline font-body text-lg text-accent"
+              >
+                {link.label}
+              </a>
+            </p>
+          ) : null}
+
+          {/* A link, not a line to copy out: this is the address somebody is
+              told to write to, on the page telling them to write to it. */}
+          <p className="mt-10 font-body text-sm">
+            <a
+              href={`mailto:${CONTACT.email}`}
+              className="fwd-underline text-accent"
+            >
+              {CONTACT.email}
+            </a>
           </p>
+
+          {smallPrint ? (
+            <div className="mt-8 space-y-1 border-t border-border pt-6">
+              {smallPrint.map((line) => (
+                <p key={line} className="font-body text-sm text-ink-muted">
+                  {line}
+                </p>
+              ))}
+            </div>
+          ) : null}
         </div>
       </main>
       <SiteFooter />

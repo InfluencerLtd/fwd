@@ -5,5 +5,12 @@ import { LegalPage } from "@/components/legal-page";
 export const metadata: Metadata = { title: "Privacy" };
 
 export default function PrivacyPage() {
-  return <LegalPage heading={PRIVACY.heading} body={PRIVACY.holdingText} />;
+  return (
+    <LegalPage
+      heading={PRIVACY.heading}
+      body={PRIVACY.body}
+      link={PRIVACY.link}
+      smallPrint={PRIVACY.controller}
+    />
+  );
 }

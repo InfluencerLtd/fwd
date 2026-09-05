@@ -116,7 +116,7 @@ const db = createClient(url, serviceKey, {
   auth: { persistSession: false, autoRefreshToken: false },
 });
 
-/** Every table the six migrations create. */
+/** Every table the migrations create. */
 const TABLES = [
   "signups",
   "applications",
@@ -130,6 +130,9 @@ const TABLES = [
   "content_items",
   "merch_items",
   "merch_claims",
+  // 0008. Without it the public forms still work, but nothing limits how many
+  // times they can be submitted: src/lib/rate-limit.ts fails open on purpose.
+  "rate_limits",
 ] as const;
 
 console.log("\nSupabase\n");
@@ -216,7 +219,19 @@ console.log("\nThe tables the migrations create:");
 {
   const missing: string[] = [];
   for (const table of TABLES) {
-    const { error } = await db.from(table).select("*", { head: true, count: "exact" });
+    /*
+     * THIS USED TO PASS `head: true` AND IT MADE THE WHOLE CHECK USELESS.
+     *
+     * A head request against a table that does not exist comes back 204 with no
+     * error at all, so every table was reported present, including ones that
+     * had never been created. The one thing this check exists to catch was the
+     * one thing it could not see.
+     *
+     * limit(0) with an exact count asks the same cheap question — no rows come
+     * back, so nobody's details are pulled into a terminal — and it does raise
+     * PGRST205 when the table is not there.
+     */
+    const { error } = await db.from(table).select("*", { count: "exact" }).limit(0);
     if (error) missing.push(table);
   }
   if (missing.length === 0) {
