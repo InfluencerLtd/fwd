@@ -34,6 +34,7 @@ export function Wordmark({
   heading = false,
   align = "left",
   signature = true,
+  ground = "dark",
 }: {
   size?: "hero" | "footer" | "small";
   /**
@@ -55,6 +56,19 @@ export function Wordmark({
    * two are still never joined into a single phrase in running text.
    */
   signature?: boolean;
+  /**
+   * What the lockup is sitting on.
+   *
+   * Dark almost everywhere, because almost everywhere it sits on a photograph
+   * or on the near-black. The pale ice blue is 13.42:1 there and it is the
+   * identity.
+   *
+   * IT MUST NEVER BE USED ON A LIGHT GROUND. On the off-white it measures about
+   * 1.5:1, which is a colour you can see is there and cannot read. The sign-in
+   * page is the one place the lockup sits on the light surface, so it takes the
+   * near-black instead. Same lockup, same proportions, a colour that works.
+   */
+  ground?: "dark" | "light";
 }) {
   const markClass =
     size === "hero"
@@ -107,28 +121,28 @@ export function Wordmark({
    * size the word is using. Without it the em would take the parent's size and
    * the glyph would come out the wrong scale at every size but one.
    */
+  const inkClass = ground === "dark" ? "text-accent-on-dark" : "text-ink";
+
   const glyph = (
     <MarkGlyph
-      className={`${markClass} ${size === "hero" ? "mb-[0.05em] h-[0.36em]" : "h-[0.5em]"} text-accent-on-dark`}
+      className={`${markClass} ${size === "hero" ? "mb-[0.05em] h-[0.36em]" : "h-[0.5em]"} ${inkClass}`}
     />
   );
 
   const word = (
     <>
       <Mark
-        className={`font-display leading-[0.85] text-accent-on-dark ${markClass}`}
+        className={`font-display leading-[0.85] ${inkClass} ${markClass}`}
       >
         {BRAND.markShort}
       </Mark>
-      {/* The same pale ice blue as the word. The brief asks that the
-          signature always reads quieter, and here that is carried by size and
-          by the italic rather than by colour: the word is six to nine times
-          larger beside it. Every place this appears is a dark ground, where
-          the pale blue measures 13.42:1. It must never be used on a light
-          one. */}
+      {/* The same colour as the word. The brief asks that the signature always
+          reads quieter, and here that is carried by size and by the italic
+          rather than by colour: the word is six to nine times larger beside
+          it. */}
       {signature ? (
         <span
-          className={`font-display italic leading-none text-accent-on-dark ${signatureClass}`}
+          className={`font-display italic leading-none ${inkClass} ${signatureClass}`}
         >
           {BRAND.endorsement}
         </span>

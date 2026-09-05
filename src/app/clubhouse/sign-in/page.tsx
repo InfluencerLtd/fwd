@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { getCurrentMember } from "@/lib/auth/session";
 import { safeNextPath } from "@/lib/invitations";
 import { SignInForm } from "./form";
+import { Wordmark } from "@/components/wordmark";
 import { BRAND } from "@/lib/brand";
 import { SIGN_IN } from "@/content/clubhouse";
 
@@ -31,15 +32,24 @@ export default async function SignInPage({
   return (
     <main className="flex flex-1 flex-col items-center justify-center px-6 py-20">
       <div className="w-full max-w-md">
-        {/* The mark is the way back out. Without it this page is a dead end:
+        {/* The lockup is the way back out. Without it this page is a dead end:
             somebody who is not a member, or who changed their mind, had
-            nowhere to go from here. */}
+            nowhere to go from here.
+
+            This is the one place the lockup sits on the light surface, so it
+            takes the near-black rather than the pale blue, which is unreadable
+            on the off-white. No signature: it is a small link sitting directly
+            above a large heading, the same job it does at the top of the
+            membership page, and the endorsement at this size reads as clutter.
+
+            The whole lockup is the link, glyph included, so there is no small
+            target next to a large one that does the same thing. */}
         <Link
           href="/"
-          className="font-display text-4xl lowercase text-ink"
+          className="inline-block"
           aria-label={`${BRAND.markShort} home`}
         >
-          {BRAND.markShort}
+          <Wordmark size="footer" ground="light" signature={false} />
         </Link>
 
         <div className="mt-10">
