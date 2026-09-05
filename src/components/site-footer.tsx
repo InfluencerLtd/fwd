@@ -22,8 +22,8 @@ import { Mark } from "@/components/mark";
  * carrying on should not be announced by a line drawn under everything else.
  *
  * The address sits beside the mark rather than in a column of its own, so the
- * footer is a single row of three: the mark and the address, then the site
- * links, then the legal ones, all starting on the same line.
+ * footer is a single row: the mark and the address holding the left, the two
+ * lists of links against the right, all starting on the same line.
  *
  * The columns carry no visible headings. There are eight words in this whole
  * footer and a heading over each pair would be more furniture than content;
@@ -73,26 +73,27 @@ export function SiteFooter({
   return (
     <footer className={`mt-auto ${background}`}>
       <div className="mx-auto max-w-5xl px-6 py-14">
-        {/* The near-black, not the brand blue. Down here the mark is the
-            quietest thing on the page rather than the identity announcing
-            itself, and a blue would have been the loudest thing in the footer.
-            It is `ink`, the same colour as the links beside it, so it turns
-            near-white in dark mode along with them: 15.4:1 on the warm sand,
-            17.5:1 on the off-white. */}
-        {/* One row of three, all starting at the same line: the mark and the
-            address, then the two lists.
+        {/* One row, all starting on the same line: the mark and the address
+            holding the left, the two lists of links against the right.
 
             `items-start` is what holds that line. Without it the columns
             stretch to match each other and the shorter one centres itself
             against the taller, so the legal pair would float half a line below
             everything else.
 
-            On a phone there is one column and the three stack, which is the
+            On a phone it is all one column and everything stacks, which is the
             only thing that fits. */}
-        <div className="grid items-start gap-10 sm:grid-cols-3">
+        <div className="flex flex-col gap-10 sm:flex-row sm:items-start sm:justify-between">
           {/* The mark and the address, centred on each other rather than sat
               on the same baseline, because the mark has no baseline of its own
               to sit on.
+
+              The mark is the near-black rather than the brand blue: down here
+              it is the quietest thing on the page rather than the identity
+              announcing itself, and a blue would have been the loudest thing in
+              the footer. `ink` is the same colour as the links, so it turns
+              near-white in dark mode along with them — 15.4:1 on the warm sand,
+              17.5:1 on the off-white.
 
               The address is a link, not a line of text: it is the way of
               reaching us from this page, so it should be one press rather than
@@ -108,31 +109,36 @@ export function SiteFooter({
             </a>
           </div>
 
-          <nav aria-label={FOOTER.navHeading}>
-            <ul className="space-y-2">
-              {PLACES.map((place) => (
-                <li key={place.href}>
-                  <Link href={place.href} className={`${LINK} text-ink`}>
-                    {place.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          {/* The two lists travel together and sit against the right edge of
+              the page rather than in thirds of it. `justify-between` on the row
+              above is what puts them there: the mark and the address hold the
+              left, and this pair takes the other end. */}
+          <div className="flex flex-col gap-10 sm:flex-row sm:gap-20">
+            <nav aria-label={FOOTER.navHeading}>
+              <ul className="space-y-2">
+                {PLACES.map((place) => (
+                  <li key={place.href}>
+                    <Link href={place.href} className={`${LINK} text-ink`}>
+                      {place.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
 
-          <nav aria-label={FOOTER.legalHeading}>
-            <ul className="space-y-2">
-              {LEGAL.map((page) => (
-                <li key={page.href}>
-                  <Link href={page.href} className={`${LINK} text-ink-muted`}>
-                    {page.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+            <nav aria-label={FOOTER.legalHeading}>
+              <ul className="space-y-2">
+                {LEGAL.map((page) => (
+                  <li key={page.href}>
+                    <Link href={page.href} className={`${LINK} text-ink-muted`}>
+                      {page.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
         </div>
-
       </div>
     </footer>
   );
