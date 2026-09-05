@@ -45,9 +45,21 @@ const LEGAL = [
  */
 const LINK = "fwd-underline -my-1 inline-block py-1 font-body text-[15px]";
 
-export function SiteFooter() {
+export function SiteFooter({
+  /**
+   * The ground the footer sits on.
+   *
+   * The warm sand by default, because on the home page the section directly
+   * above it is the sand too, so the page runs into its footer. The membership
+   * page ends on the off-white instead, and a band of sand under it would be a
+   * colour change with nothing behind it, so that page passes its own.
+   */
+  background = "bg-surface-warm",
+}: {
+  background?: string;
+} = {}) {
   return (
-    <footer className="mt-auto border-t border-border bg-surface-warm">
+    <footer className={`mt-auto border-t border-border ${background}`}>
       <div className="mx-auto max-w-5xl px-6 py-14">
         <div className="grid gap-10 sm:grid-cols-3">
           <nav aria-label={FOOTER.navHeading}>

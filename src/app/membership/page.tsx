@@ -132,7 +132,9 @@ export default function MembershipPage() {
         </section>
       </main>
 
-      <SiteFooter />
+      {/* The off-white, matching the section above it. This page ends on the
+          page ground rather than the sand, so the footer follows it. */}
+      <SiteFooter background="bg-surface" />
     </>
   );
 }
