@@ -359,9 +359,7 @@ export const APPLY = {
     creator: {
       heading: "apply, as a creator",
       role: "what you make",
-      roleHint: "The kind of work, in a few words.",
       company: "where people find you",
-      companyHint: "Your main handle or channel.",
       linkLabel: "your biggest platform",
     },
     brand: {

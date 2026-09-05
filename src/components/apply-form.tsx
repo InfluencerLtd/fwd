@@ -131,7 +131,6 @@ export function ApplyForm({
         <Field
           id={ids.role}
           label={words.role}
-          hint={"roleHint" in words ? words.roleHint : undefined}
           error={errors.role}
         >
           <input
@@ -150,7 +149,6 @@ export function ApplyForm({
         <Field
           id={ids.company}
           label={words.company}
-          hint={"companyHint" in words ? words.companyHint : undefined}
           error={errors.company}
         >
           <input
@@ -284,7 +282,6 @@ export function ApplyForm({
 function Field({
   id,
   label,
-  hint,
   error,
   optional,
   className = "",
@@ -292,7 +289,6 @@ function Field({
 }: {
   id: string;
   label: string;
-  hint?: string;
   error?: string;
   optional?: boolean;
   className?: string;
@@ -305,9 +301,6 @@ function Field({
         {optional ? <span className="text-ink-muted/70"> (optional)</span> : null}
       </label>
       {children}
-      {hint && !error ? (
-        <p className="mt-1.5 text-[13px] text-ink-muted/80">{hint}</p>
-      ) : null}
       {error ? (
         <p id={`${id}-error`} className="mt-1.5 text-[13px] text-ink">
           {error}
