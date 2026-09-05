@@ -21,8 +21,8 @@ import { Mark } from "@/components/mark";
  * it did — a little too well. A footer that is meant to read as the page
  * carrying on should not be announced by a line drawn under everything else.
  *
- * The address sits under the mark rather than in a column of its own, so the
- * two things that are not navigation are together at the top and the links are
+ * The address sits beside the mark rather than in a column of its own, so the
+ * two things that are not navigation share a line at the top and the links are
  * a block underneath.
  *
  * The columns carry no visible headings. There are eight words in this whole
@@ -79,18 +79,22 @@ export function SiteFooter({
             It is `ink`, the same colour as the links beside it, so it turns
             near-white in dark mode along with them: 15.4:1 on the warm sand,
             17.5:1 on the off-white. */}
-        <Mark className="h-6 text-ink" />
+        {/* The mark and the address on one line. Centred on each other rather
+            than sat on the same baseline, because the mark has no baseline of
+            its own to sit on.
 
-        {/* Under the mark, not off in the third column.
-            A link, not a line of text: it is the only way of reaching us from
-            this page, so it should be one press rather than a select and a
-            copy. */}
-        <a
-          href={`mailto:${CONTACT.email}`}
-          className={`${LINK} mt-4 text-accent`}
-        >
-          {CONTACT.email}
-        </a>
+            The address is a link, not a line of text: it is the way of reaching
+            us from this page, so it should be one press rather than a select
+            and a copy. It keeps the site's usual hover underline rather than
+            the permanent one the sign-in link needed — an email address already
+            reads as something you can write to, and if somebody misses that it
+            is clickable they can still read it and copy it. */}
+        <div className="flex items-center gap-4">
+          <Mark className="h-6 text-ink" />
+          <a href={`mailto:${CONTACT.email}`} className={`${LINK} text-ink`}>
+            {CONTACT.email}
+          </a>
+        </div>
 
         <div className="mt-10 grid gap-10 sm:grid-cols-2">
           <nav aria-label={FOOTER.navHeading}>
