@@ -23,7 +23,7 @@ import { Mark } from "@/components/mark";
  *
  * The address sits beside the mark rather than in a column of its own, so the
  * two things that are not navigation share a line at the top and the links are
- * a block underneath.
+ * a block underneath, held over to the right of it.
  *
  * The columns carry no visible headings. There are eight words in this whole
  * footer and a heading over each pair would be more furniture than content;
@@ -96,8 +96,13 @@ export function SiteFooter({
           </a>
         </div>
 
-        <div className="mt-10 grid gap-10 sm:grid-cols-2">
-          <nav aria-label={FOOTER.navHeading}>
+        {/* Three columns with the first one left empty, so the links sit in
+            the middle and right thirds under the mark rather than starting
+            beneath it. `col-start-2` is what does that, and it only applies
+            from the small breakpoint up — on a phone there is one column and
+            the two lists stack, which is the only thing that fits. */}
+        <div className="mt-10 grid gap-10 sm:grid-cols-3">
+          <nav aria-label={FOOTER.navHeading} className="sm:col-start-2">
             <ul className="space-y-2">
               {PLACES.map((place) => (
                 <li key={place.href}>
