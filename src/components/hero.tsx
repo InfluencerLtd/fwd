@@ -30,8 +30,24 @@ export function Hero() {
         {/* Centred over the photograph, following the approved artwork, rather
             than sitting in the bottom left corner. */}
         <div className="relative z-2 mx-auto flex w-full max-w-4xl flex-1 flex-col items-center justify-center px-6 pb-20 pt-28 text-center">
-          <Wordmark size="hero" heading align="center" />
+          {/* A soft radial scrim under the lockup, from the placement rules.
+              The wash over the whole photograph has gone, so this is what keeps
+              the mark holding its shape wherever the picture is busiest,
+              without darkening the frame the way a flat overlay did. It is
+              behind the lockup only: -z-1 puts it under the text, and the
+              padding is what gives it something to fade across. */}
+          <div className="relative">
+            <div
+              aria-hidden="true"
+              className="fwd-lockup-scrim absolute -inset-x-16 -inset-y-12 -z-1"
+            />
+            <Wordmark size="hero" heading align="center" />
+          </div>
 
+          {/* Clear space: the rules ask for at least the height of the "d"
+              before the headline starts. The mark is 128px on a large screen
+              and the d is about a third of that, so mt-14 (56px) clears it with
+              room over. */}
           <p className="mt-14 max-w-xl font-body text-lg leading-relaxed text-photo-ink/85 sm:text-xl">
             {HERO.line}
           </p>

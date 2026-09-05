@@ -55,29 +55,31 @@ export function Wordmark({
   // of the word, and no more.
   const gapClass =
     size === "hero"
-      ? "gap-y-1 sm:gap-x-3"
+      ? "gap-y-1"
       : size === "footer"
         ? "gap-1.5"
         : "gap-1";
 
   /*
-   * AT HERO SIZE THE SIGNATURE DROPS UNDER THE MARK ON A PHONE.
+   * AT HERO SIZE THE SIGNATURE IS ALWAYS UNDER THE MARK, NOT BESIDE IT.
    *
-   * Beside it, the pair is as wide as "fwd." plus "by influencer" plus a gap,
-   * which on a 375px screen leaves the mark nowhere to go but smaller. The
-   * point of the hero is that the mark is enormous, so the signature moves
-   * instead of the mark shrinking.
+   * The placement rules call for the stacked lockup in the hero, and they are
+   * right about why: inline, the pair is as wide as "fwd." plus "by
+   * influencer" plus a gap, so it spreads across the busiest part of the
+   * photograph and the endorsement ends up competing with whatever is behind
+   * it. Stacked, the lockup holds its own shape against a busy image, and it
+   * reads as a signature under a name, which is what it is.
    *
-   * Stacked it also reads more like a signature under a name, which is what it
-   * is. Above sm it goes back beside the mark, where there is room.
+   * It used to be stacked only below 640px, for a different reason: on a phone
+   * the inline pair left the mark nowhere to go but smaller. Both reasons point
+   * the same way, so it is stacked everywhere now.
    *
-   * `items-baseline` only applies once they share a line: baselines mean
-   * nothing between two stacked rows, and it would sit the second row's text
-   * oddly. So the alignment is part of the same switch.
+   * `items-baseline` would mean nothing between two stacked rows, so the
+   * alignment goes with it.
    */
   const stackClass =
     size === "hero"
-      ? `flex-col ${align === "center" ? "items-center" : "items-start"} sm:flex-row sm:items-baseline`
+      ? `flex-col ${align === "center" ? "items-center" : "items-start"}`
       : "items-baseline";
 
   const Mark = heading ? "h1" : "span";

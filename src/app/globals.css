@@ -497,6 +497,32 @@ h1, h2, h3, h4 {
 }
 
 /* ===========================================================================
+   The lockup scrim
+   ---------------------------------------------------------------------------
+   A soft radial darkening behind the hero lockup, called for in the logo
+   placement rules.
+
+   It replaces nothing the eye will miss: the flat 50% wash over the whole
+   photograph has gone, because the picture arrives already darkened and every
+   piece of text over it measured clear without one. What a flat wash cannot do
+   is protect the mark specifically when a bright part of the photograph lands
+   behind it, and what it does badly is push the whole picture back.
+
+   This is the opposite trade: nothing at the edges of the frame, a little in
+   the middle where the lockup sits. transparent at 70% out, so there is no
+   visible edge to it at any size.
+   =========================================================================== */
+
+.fwd-lockup-scrim {
+  background: radial-gradient(
+    ellipse at center,
+    color-mix(in oklab, var(--fwd-photo-ground) 55%, transparent) 0%,
+    color-mix(in oklab, var(--fwd-photo-ground) 30%, transparent) 45%,
+    transparent 70%
+  );
+}
+
+/* ===========================================================================
    Buttons
    ---------------------------------------------------------------------------
    Lozenge shaped throughout. The shape is set here rather than on each button,
