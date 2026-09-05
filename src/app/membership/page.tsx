@@ -49,7 +49,7 @@ export default function MembershipPage() {
                 rather than as an endorsement. It is still on the hero, the
                 holding page and the footer. */}
             <Link href="/" aria-label={META.title} className="inline-block">
-              <Wordmark size="footer" signature={false} />
+              <Wordmark size="large" signature={false} />
             </Link>
             {/* text-photo-ink, not the default ink: this is on the dark
                 photograph, and ink is the near-black for the light page, so it

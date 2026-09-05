@@ -34,9 +34,9 @@ export function Wordmark({
   heading = false,
   align = "left",
   signature = true,
-  ground = "dark",
+  tone = "onDark",
 }: {
-  size?: "hero" | "page" | "footer" | "small";
+  size?: "hero" | "page" | "large" | "footer" | "small";
   /**
    * Makes the mark the page's main heading. Every page needs exactly one, and
    * the name of the thing is the right thing for it to be.
@@ -57,25 +57,27 @@ export function Wordmark({
    */
   signature?: boolean;
   /**
-   * What the lockup is sitting on.
+   * Which of the three colours the lockup is set in. It follows the ground.
    *
-   * Dark almost everywhere, because almost everywhere it sits on a photograph
-   * or on the near-black. The pale ice blue is 13.42:1 there and it is the
-   * identity.
+   * `onDark` is the pale ice blue and the default, because almost everywhere
+   * the lockup sits on a photograph or on the near-black. It is 13.42:1 there
+   * and it is the identity. IT MUST NEVER GO ON A LIGHT GROUND: on the
+   * off-white it is about 1.3:1, a colour you can see is there and cannot read.
    *
-   * IT MUST NEVER BE USED ON A LIGHT GROUND. On the off-white it measures about
-   * 1.3:1, which is a colour you can see is there and cannot read. The sign-in
-   * page is the one place the lockup sits on the light surface, so it takes the
-   * brand dark blue instead — #004ad5, from the influencer guidelines, 6.61:1
-   * on the off-white.
+   * `brand` is the dark blue from the influencer guidelines, 6.61:1 on the
+   * off-white. The sign-in page, where the lockup is the only branding on
+   * screen and can carry the colour.
    *
-   * That is `--fwd-accent`, which is the right token rather than the dark blue
-   * written out, because it already knows both answers: on a light page it is
-   * the dark blue, and in dark mode it becomes the pale ice blue, which is the
-   * only one of the two that can be read on a near-black page. A hard-coded
-   * dark blue would measure 2.69:1 there.
+   * `ink` is the near-black, 16.7:1. For a light ground where the lockup is one
+   * thing among several and the blue would be the loudest thing in the panel —
+   * the menu, where it sits directly above the navigation it belongs to.
+   *
+   * `brand` and `ink` are both tokens rather than colours written out, so they
+   * follow the page into dark mode: `accent` becomes the pale ice blue there,
+   * because the dark blue is 2.69:1 on near-black, and `ink` becomes the
+   * off-white.
    */
-  ground?: "dark" | "light";
+  tone?: "onDark" | "brand" | "ink";
 }) {
   /*
    * "page" is a fifth of a step up from the rest, and that is the whole
@@ -90,13 +92,18 @@ export function Wordmark({
   const markClass =
     size === "hero"
       ? "text-7xl sm:text-8xl lg:text-9xl"
-      : size === "page"
-        ? "text-4xl"
-        : "text-3xl";
+      : size === "large"
+        ? // Half again as big as the bars: 1.875rem to 2.8125rem. There is no
+          // step on the type scale at 45px, and rounding to the nearest one
+          // would be 36 or 48, neither of which is the size asked for.
+          "text-[2.8125rem]"
+        : size === "page"
+          ? "text-4xl"
+          : "text-3xl";
   const signatureClass =
     size === "hero"
       ? "text-lg sm:text-xl"
-      : size === "footer" || size === "page"
+      : size === "footer" || size === "page" || size === "large"
         ? "text-xs"
         : "text-[10px]";
   // Enough of a gap to read as a signature beside the mark rather than as part
@@ -104,7 +111,7 @@ export function Wordmark({
   const gapClass =
     size === "hero"
       ? "gap-y-1"
-      : size === "footer" || size === "page"
+      : size === "footer" || size === "page" || size === "large"
         ? "gap-1.5"
         : "gap-1";
 
@@ -144,7 +151,12 @@ export function Wordmark({
    * size the word is using. Without it the em would take the parent's size and
    * the glyph would come out the wrong scale at every size but one.
    */
-  const inkClass = ground === "dark" ? "text-accent-on-dark" : "text-accent";
+  const inkClass =
+    tone === "onDark"
+      ? "text-accent-on-dark"
+      : tone === "brand"
+        ? "text-accent"
+        : "text-ink";
 
   const glyph = (
     <MarkGlyph

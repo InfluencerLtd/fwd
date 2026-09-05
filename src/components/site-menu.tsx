@@ -80,10 +80,14 @@ export function SiteMenu() {
       >
         <div className="flex flex-col p-5">
           <div className="flex items-start justify-between gap-6">
-            <Link href="/" onClick={hide} aria-label={NAV.home}>
-              <span className="fwd-on-dark inline-block rounded-lg bg-photo-ground px-3 py-2">
-                <Wordmark size="small" />
-              </span>
+            {/* THE BLACK PILL HAS GONE. The lockup only had one because it
+                was set in the pale ice blue, which is invisible on this panel
+                — so a slab of near-black had to be put behind it to make the
+                blue legible. Setting the lockup in the near-black instead
+                removes the reason for the box, and the mark sits on the panel
+                like everything else in it rather than in a badge of its own. */}
+            <Link href="/" onClick={hide} aria-label={NAV.home} className="inline-block">
+              <Wordmark size="small" tone="ink" />
             </Link>
 
             <button

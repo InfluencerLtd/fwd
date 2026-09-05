@@ -49,7 +49,7 @@ export default async function SignInPage({
           className="inline-block"
           aria-label={`${BRAND.markShort} home`}
         >
-          <Wordmark size="page" ground="light" signature={false} />
+          <Wordmark size="page" tone="brand" signature={false} />
         </Link>
 
         <div className="mt-10">

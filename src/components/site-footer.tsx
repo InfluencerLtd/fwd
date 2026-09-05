@@ -14,9 +14,12 @@ import { Mark } from "@/components/mark";
  *
  * So it sits on the warm sand instead: the same ground the meeting of minds
  * band above it uses, so the home page runs into its footer rather than
- * stopping at it. Still quiet, still the page's own palette, and a hairline
- * keeps the join legible on the pages where the section above is the off-white
- * rather than the sand.
+ * stopping at it. Still quiet, still the page's own palette.
+ *
+ * There is no rule across the top. It was there to keep the join legible on
+ * the pages where the section above is the off-white rather than the sand, and
+ * it did — a little too well. A footer that is meant to read as the page
+ * carrying on should not be announced by a line drawn under everything else.
  *
  * The columns carry no visible headings. There are eight words in this whole
  * footer and a heading over each pair would be more furniture than content;
@@ -64,7 +67,7 @@ export function SiteFooter({
   background?: string;
 } = {}) {
   return (
-    <footer className={`mt-auto border-t border-border ${background}`}>
+    <footer className={`mt-auto ${background}`}>
       <div className="mx-auto max-w-5xl px-6 py-14">
         {/* The brand dark blue, the same as the lockup on any other light
             ground. It is the `accent` token rather than that blue written out,
