@@ -64,7 +64,13 @@ export function SignInForm({ next }: { next: string }) {
               className="fwd-field mt-2 w-full border border-border bg-surface-raised px-5 py-3 text-center font-mono text-2xl tracking-[0.4em] text-ink disabled:opacity-60"
             />
 
-            <Button type="submit" size="lg" disabled={pending} className="mt-6 w-full">
+            <Button
+              type="submit"
+              variant="brand"
+              size="lg"
+              disabled={pending}
+              className="mt-6 w-full"
+            >
               {pending ? SIGN_IN.checking : SIGN_IN.codeSubmit}
             </Button>
           </>
@@ -85,7 +91,13 @@ export function SignInForm({ next }: { next: string }) {
               className="fwd-field mt-2 w-full border border-border bg-surface-raised px-5 py-3 text-base text-ink disabled:opacity-60"
             />
 
-            <Button type="submit" size="lg" disabled={pending} className="mt-6 w-full">
+            <Button
+              type="submit"
+              variant="brand"
+              size="lg"
+              disabled={pending}
+              className="mt-6 w-full"
+            >
               {pending ? SIGN_IN.sending : SIGN_IN.emailSubmit}
             </Button>
           </>

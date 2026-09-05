@@ -11,7 +11,7 @@ import Link from "next/link";
  * and the pale ice blue is unreadable on a light one.
  */
 
-type Variant = "primary" | "onDark" | "outlineOnDark" | "quiet" | "chosen";
+type Variant = "primary" | "brand" | "onDark" | "outlineOnDark" | "quiet" | "chosen";
 type Size = "sm" | "md" | "lg";
 
 const VARIANTS: Record<Variant, string> = {
@@ -41,6 +41,29 @@ const VARIANTS: Record<Variant, string> = {
    */
   primary:
     "border border-photo-ground/60 bg-accent-on-dark text-photo-ground hover:border-photo-ground hover:bg-photo-ground hover:text-accent-on-dark",
+  /**
+   * Filled with the brand dark blue, for LIGHT grounds.
+   *
+   * Where `primary` needs a border to have a shape at all, this one is the
+   * shape: #004ad5 against the off-white page is 6.61:1 on its own, so there is
+   * nothing for an edge to add.
+   *
+   * BOTH COLOURS MOVE TOGETHER BETWEEN LIGHT AND DARK MODE, which is the whole
+   * reason it is `accent` and `surface` rather than a blue and a white written
+   * out. `--fwd-accent` is the dark blue on a light page and becomes the pale
+   * ice blue on a dark one, because the dark blue is only 2.69:1 against
+   * near-black. `--fwd-surface` moves the opposite way, so the label is the
+   * off-white on the dark blue and the near-black on the pale blue. Measured:
+   * 6.61:1 in light mode, 13.91:1 in dark. A fixed white label would have been
+   * 1.34:1 the moment somebody switched the site to dark.
+   *
+   * Hover swaps the two over: the label colour becomes the fill and the fill
+   * becomes the label. `ink` and `surface` are already opposites of each other
+   * in whichever mode you are in, so it is near-black on off-white in light and
+   * near-white on near-black in dark, and there is no arrangement of the four
+   * that comes out illegible.
+   */
+  brand: "bg-accent text-surface hover:bg-ink hover:text-surface",
   /** Filled, for dark grounds and over photography. */
   onDark: "bg-accent-on-dark text-photo-ground hover:bg-photo-ink",
   /** Outlined, for dark grounds where a filled button would shout. */
