@@ -144,7 +144,7 @@ export const MEMBERSHIP = {
    * So this has to do the cards' job in prose. Four paragraphs, no lists.
    */
   lead: [
-    "fwd. brings together the people shaping the future of the creator economy. The brands. The creators. The platforms. The people with something to say, build, change or start next.",
+    "fwd. brings together the people shaping the future of the creator economy. The brands. The creators. The platforms.\nThe people with something to say, build, change or start next.",
     "Membership unlocks a year-round program of intimate dinners, private conversations, industry briefings and experiences alongside a network that extends far beyond the room.",
     "Meet someone you’ve wanted to meet. Hear what’s coming before it becomes obvious. Share an idea with the person who can make it happen.",
     "This is where the creator economy comes together to shape what happens next.",

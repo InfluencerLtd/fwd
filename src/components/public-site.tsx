@@ -51,10 +51,16 @@ export function PublicSite() {
             </h2>
 
             <div className="fwd-reveal mt-10 space-y-6">
+              {/* whitespace-pre-line so a newline in the content file is a line
+                  break here. It is the only way to break a line inside a
+                  paragraph from a file of plain strings, and the alternative,
+                  splitting the sentence into its own entry, would give it a
+                  paragraph's worth of space above it rather than a line's.
+                  Spaces are still collapsed, so nothing else changes. */}
               {MEMBERSHIP.lead.map((line) => (
                 <p
                   key={line}
-                  className="mx-auto max-w-xl font-body text-[17px] leading-relaxed text-ink-muted"
+                  className="mx-auto max-w-xl font-body text-[17px] leading-relaxed whitespace-pre-line text-ink-muted"
                 >
                   {line}
                 </p>
