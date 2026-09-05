@@ -166,8 +166,16 @@ export function ApplyForm({
           />
         </Field>
 
+        {/* The group question runs across both columns. It is a question
+            rather than a short answer, and in half a row the dropdown cut it
+            off mid-word. */}
         {path === "brand" ? (
-          <Field id={ids.group} label={APPLY.fields.brand.group} error={errors.group}>
+          <Field
+            id={ids.group}
+            label={APPLY.fields.brand.group}
+            error={errors.group}
+            className="sm:col-span-2"
+          >
             <select
               id={ids.group}
               name="group"
@@ -178,7 +186,7 @@ export function ApplyForm({
               className={fieldClass("group")}
             >
               <option value="" disabled>
-                {APPLY.fields.brand.group}
+                {APPLY.chooseOne}
               </option>
               {/* Creators have their own form, so they are not offered here. */}
               {MEMBER_GROUPS.filter((g) => g.id !== "creator").map((group) => (
@@ -281,6 +289,7 @@ function Field({
   hint,
   error,
   optional,
+  className = "",
   children,
 }: {
   id: string;
@@ -288,10 +297,11 @@ function Field({
   hint?: string;
   error?: string;
   optional?: boolean;
+  className?: string;
   children: React.ReactNode;
 }) {
   return (
-    <div>
+    <div className={className}>
       <label htmlFor={id} className="fwd-float">
         {label}
         {optional ? <span className="text-ink-muted/70"> (optional)</span> : null}

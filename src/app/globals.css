@@ -579,8 +579,20 @@ textarea.fwd-field {
 
    So the label returns, small, above the field, the moment the field stops
    being empty. `:placeholder-shown` is what knows: it is true only while the
-   hint is on screen. A dropdown has no placeholder, so it is asked a different
-   question — whether its "nothing chosen yet" option is still the chosen one.
+   hint is on screen.
+
+   A DROPDOWN IS THE OTHER WAY ROUND: its label is always there. It has no
+   placeholder at all, which means `:not(:placeholder-shown)` is true for one
+   from the moment it is drawn, so it is excluded from that rule — and it has
+   nothing to gain from the rest of the trick either, because a dropdown always
+   shows something and what it shows is the ANSWER. "industry" does not say
+   which question it was the answer to, empty or filled. So the label stays up.
+
+   The first attempt at this asked whether the "nothing chosen yet" option was
+   still the chosen one, which would have been neater and is not legal:
+   `:has()` cannot be nested inside `:has()`. The selector was thrown away
+   whole, silently, and no dropdown ever got a label. Worth knowing before
+   writing another one.
 
    IT COSTS NO SPACE AND MOVES NOTHING. The label is taken out of the flow and
    hung in the gap above its field, so a form does not shuffle down a line as
@@ -616,12 +628,11 @@ textarea.fwd-field {
   white-space: nowrap;
 }
 
-:where(div, p, form, fieldset):has(> .fwd-field:not(:placeholder-shown))
-  > .fwd-float,
 :where(div, p, form, fieldset):has(
-    > select.fwd-field:not(:has(option[value=""]:checked))
+    > :is(input, textarea).fwd-field:not(:placeholder-shown)
   )
-  > .fwd-float {
+  > .fwd-float,
+:where(div, p, form, fieldset):has(> select.fwd-field) > .fwd-float {
   opacity: 1;
 }
 

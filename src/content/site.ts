@@ -370,6 +370,8 @@ export const APPLY = {
       linkLabel: "LinkedIn or social profile",
     },
   },
+  /** The unchosen state of the group dropdown. The label sits above it. */
+  chooseOne: "choose one",
   /** Shown when a required field is empty. */
   required: "Please fill this in.",
   error: "Something went wrong at our end. Please try again in a moment.",
