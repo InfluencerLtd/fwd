@@ -13,9 +13,11 @@ import { FOOTER, NAV } from "@/content/site";
  * somebody goes when they did not find what they wanted above, and it should
  * feel like the page continuing rather than a second design arriving.
  *
- * So it sits on the page's own ground now, separated by a hairline rather than
- * by a change of colour, which is also what the member area's footer has always
- * done. The two match.
+ * So it sits on the warm sand instead: the same ground the meeting of minds
+ * band above it uses, so the home page runs into its footer rather than
+ * stopping at it. Still quiet, still the page's own palette, and a hairline
+ * keeps the join legible on the pages where the section above is the off-white
+ * rather than the sand.
  *
  * The columns carry no visible headings. There are eight words in this whole
  * footer and a heading over each pair would be more furniture than content;
@@ -47,7 +49,7 @@ const LINK = "fwd-underline -my-1 inline-block py-1 font-body text-[15px]";
 
 export function SiteFooter() {
   return (
-    <footer className="mt-auto border-t border-border">
+    <footer className="mt-auto border-t border-border bg-surface-warm">
       <div className="mx-auto max-w-5xl px-6 py-14">
         <div className="grid gap-10 sm:grid-cols-3">
           <nav aria-label={FOOTER.navHeading}>
