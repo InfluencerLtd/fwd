@@ -5,6 +5,18 @@ import { NAV } from "@/content/clubhouse";
 import { signOut } from "@/app/clubhouse/actions";
 
 /** The bar across the top of the member area. Only shown to signed-in members. */
+/*
+ * The padding is the tap target, and the negative margin takes it back out of
+ * the layout so the bar does not grow.
+ *
+ * A 14px line of text is 22px tall, and 24 is the smallest a thing should be to
+ * hit with a thumb. Every link up here was two under. The bar is the only way
+ * around The House on a phone, so these are the last targets on the site that
+ * should be awkward.
+ */
+const LINK =
+  "fwd-underline -my-1 inline-block py-1 text-photo-ink/75 hover:text-photo-ink";
+
 export function ClubhouseNav() {
   const links = [
     { href: "/clubhouse/directory", label: NAV.directory },
@@ -37,7 +49,7 @@ export function ClubhouseNav() {
             <Link
               key={link.href}
               href={link.href}
-              className="fwd-underline text-photo-ink/75 hover:text-photo-ink"
+              className={LINK}
             >
               {link.label}
             </Link>
@@ -47,7 +59,7 @@ export function ClubhouseNav() {
         <form action={signOut}>
           <button
             type="submit"
-            className="fwd-underline text-photo-ink/75 hover:text-photo-ink"
+            className={LINK}
           >
             {NAV.signOut}
           </button>

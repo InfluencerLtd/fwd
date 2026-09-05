@@ -61,31 +61,35 @@ export function ProfileForm({ member }: { member: Member }) {
         <input id={ids.link} name="link" type="url" placeholder="https://" defaultValue={member.link ?? ""} disabled={pending} className={field} />
       </div>
 
+      {/* The boxes are 24px square rather than 20. That is the smallest a
+          thing should be to hit with a thumb, and these two were the last
+          controls on the site under it. The labels are joined to them by
+          htmlFor, so the words are a target as well as the box. */}
       <fieldset className="mt-9">
         <legend className={label}>{PROFILE.contactPreferences}</legend>
 
-        <div className="mt-4 flex items-start gap-3">
+        <div className="mt-4 flex items-center gap-3">
           <input
             id={ids.newsletter}
             name="newsletter"
             type="checkbox"
             defaultChecked={member.newsletter_opt_in}
             disabled={pending}
-            className="mt-0.5 h-5 w-5 shrink-0 accent-[var(--fwd-accent)]"
+            className="h-6 w-6 shrink-0 accent-[var(--fwd-accent)]"
           />
           <label htmlFor={ids.newsletter} className="text-[15px] leading-relaxed text-ink">
             {PROFILE.newsletterLabel}
           </label>
         </div>
 
-        <div className="mt-3 flex items-start gap-3">
+        <div className="mt-3 flex items-center gap-3">
           <input
             id={ids.introductions}
             name="introductions"
             type="checkbox"
             defaultChecked={member.introductions_opt_in}
             disabled={pending}
-            className="mt-0.5 h-5 w-5 shrink-0 accent-[var(--fwd-accent)]"
+            className="h-6 w-6 shrink-0 accent-[var(--fwd-accent)]"
           />
           <label htmlFor={ids.introductions} className="text-[15px] leading-relaxed text-ink">
             {PROFILE.introsLabel}
