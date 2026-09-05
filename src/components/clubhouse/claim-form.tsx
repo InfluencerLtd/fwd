@@ -44,7 +44,7 @@ export function ClaimForm({
 
   const field =
     "fwd-field mt-2 w-full border border-border bg-surface-raised px-5 py-3 font-body text-base text-ink transition-colors duration-300 hover:border-ink/30 disabled:opacity-60";
-  const label = "block font-body text-sm text-ink-muted";
+  const label = "sr-only";
 
   const source = existing ?? prefill;
 
@@ -157,7 +157,7 @@ export function ClaimForm({
             {MERCH.noteLabel}{" "}
             <span className="text-ink-muted/70">({MERCH.optional})</span>
           </label>
-          <textarea id={ids.note} name="note" rows={3} defaultValue={source?.note ?? ""} disabled={pending} className={field} />
+          <textarea id={ids.note} name="note" rows={3} placeholder={MERCH.noteLabel} defaultValue={source?.note ?? ""} disabled={pending} className={field} />
           <p className="mt-1.5 text-[13px] text-ink-muted/80">{MERCH.noteHint}</p>
         </div>
 

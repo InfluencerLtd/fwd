@@ -14,7 +14,7 @@ export function EarlyAccessForm() {
 
   return (
     <form action={formAction} className="mt-8 font-body">
-      <label htmlFor={passwordId} className="block text-sm text-ink-muted">
+      <label htmlFor={passwordId} className="sr-only">
         Password
       </label>
       <input
@@ -22,6 +22,7 @@ export function EarlyAccessForm() {
         name="password"
         type="password"
         autoComplete="current-password"
+        placeholder="enter password"
         required
         disabled={pending}
         aria-describedby={state.error ? errorId : undefined}

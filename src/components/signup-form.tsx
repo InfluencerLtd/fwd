@@ -84,7 +84,7 @@ export function SignupForm({
     <form action={formAction} className="font-body">
       <input type="hidden" name="source" value={source} />
 
-      <label htmlFor={emailId} className={`block text-sm ${c.label}`}>
+      <label htmlFor={emailId} className="sr-only">
         {HOLDING.emailLabel}
       </label>
 

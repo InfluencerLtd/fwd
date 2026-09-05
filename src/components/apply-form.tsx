@@ -178,7 +178,7 @@ export function ApplyForm({
               className={fieldClass("group")}
             >
               <option value="" disabled>
-                choose one
+                {APPLY.fields.brand.group}
               </option>
               {/* Creators have their own form, so they are not offered here. */}
               {MEMBER_GROUPS.filter((g) => g.id !== "creator").map((group) => (
@@ -216,7 +216,7 @@ export function ApplyForm({
             name="link"
             type="url"
             inputMode="url"
-            placeholder="https://"
+            placeholder={`${words.linkLabel} (https://)`}
             disabled={pending}
             className={fieldClass("link")}
           />
@@ -233,6 +233,7 @@ export function ApplyForm({
           <textarea
             id={ids.reason}
             name="reason"
+            placeholder={shared.reason}
             rows={5}
             disabled={pending}
             aria-invalid={errors.reason ? true : undefined}
@@ -291,7 +292,7 @@ function Field({
 }) {
   return (
     <div>
-      <label htmlFor={id} className="block text-sm text-ink-muted">
+      <label htmlFor={id} className="sr-only">
         {label}
         {optional ? <span className="text-ink-muted/70"> (optional)</span> : null}
       </label>

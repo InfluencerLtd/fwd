@@ -56,7 +56,7 @@ export function LibraryBrowser({ items }: { items: LibraryItem[] }) {
     <>
       <div className="mt-10 grid gap-4 sm:grid-cols-[1.6fr_1fr_1fr]">
         <div>
-          <label htmlFor={searchId} className="block font-body text-sm text-ink-muted">
+          <label htmlFor={searchId} className="sr-only">
             {LIBRARY.searchLabel}
           </label>
           <input
@@ -70,7 +70,7 @@ export function LibraryBrowser({ items }: { items: LibraryItem[] }) {
         </div>
 
         <div>
-          <label htmlFor={kindId} className="block font-body text-sm text-ink-muted">
+          <label htmlFor={kindId} className="sr-only">
             {LIBRARY.kindLabel}
           </label>
           <select
@@ -87,7 +87,7 @@ export function LibraryBrowser({ items }: { items: LibraryItem[] }) {
         </div>
 
         <div>
-          <label htmlFor={categoryId} className="block font-body text-sm text-ink-muted">
+          <label htmlFor={categoryId} className="sr-only">
             {LIBRARY.categoryLabel}
           </label>
           <select

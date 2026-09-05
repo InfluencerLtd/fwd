@@ -45,7 +45,7 @@ export function SignInForm({ next }: { next: string }) {
             {/* Kept so the second step knows which address to check. */}
             <input type="hidden" name="email" value={state.email} />
 
-            <label htmlFor={codeId} className="block text-sm text-ink-muted">
+            <label htmlFor={codeId} className="sr-only">
               {SIGN_IN.codeLabel}
             </label>
             <input
@@ -77,7 +77,7 @@ export function SignInForm({ next }: { next: string }) {
           </>
         ) : (
           <>
-            <label htmlFor={emailId} className="block text-sm text-ink-muted">
+            <label htmlFor={emailId} className="sr-only">
               {SIGN_IN.emailLabel}
             </label>
             <input

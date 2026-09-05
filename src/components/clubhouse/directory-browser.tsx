@@ -51,7 +51,7 @@ export function DirectoryBrowser({ members }: { members: DirectoryMember[] }) {
     <>
       <div className="mt-10 grid gap-4 sm:grid-cols-[1.6fr_1fr_1fr]">
         <div>
-          <label htmlFor={searchId} className="block font-body text-sm text-ink-muted">
+          <label htmlFor={searchId} className="sr-only">
             {DIRECTORY.searchLabel}
           </label>
           <input
@@ -65,7 +65,7 @@ export function DirectoryBrowser({ members }: { members: DirectoryMember[] }) {
         </div>
 
         <div>
-          <label htmlFor={groupId} className="block font-body text-sm text-ink-muted">
+          <label htmlFor={groupId} className="sr-only">
             {DIRECTORY.groupLabel}
           </label>
           <select
@@ -84,7 +84,7 @@ export function DirectoryBrowser({ members }: { members: DirectoryMember[] }) {
         </div>
 
         <div>
-          <label htmlFor={marketId} className="block font-body text-sm text-ink-muted">
+          <label htmlFor={marketId} className="sr-only">
             {DIRECTORY.marketLabel}
           </label>
           <select

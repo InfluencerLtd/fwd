@@ -47,12 +47,13 @@ export function IntroForm({
         {INTRO.intro.replace("{name}", targetName.split(" ")[0])}
       </p>
 
-      <label htmlFor={reasonId} className="mt-6 block text-sm text-ink-muted">
+      <label htmlFor={reasonId} className="sr-only">
         {INTRO.reasonLabel}
       </label>
       <textarea
         id={reasonId}
         name="reason"
+        placeholder={INTRO.reasonLabel}
         rows={4}
         disabled={pending}
         aria-invalid={state.status === "error" ? true : undefined}

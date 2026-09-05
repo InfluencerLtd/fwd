@@ -73,7 +73,7 @@ export const DIRECTORY = {
   /** DRAFT. */
   intro: "Everyone in the room. Search it, or filter it, and ask for an introduction to anyone.",
   searchLabel: "search by name, role or company",
-  searchPlaceholder: "search",
+  searchPlaceholder: "search by name, role or company",
   groupLabel: "group",
   marketLabel: "market",
   allGroups: "every group",
@@ -157,10 +157,10 @@ export const LIBRARY = {
   /** DRAFT. */
   intro: "Research, white papers, event recaps and briefings.",
   searchLabel: "search the library",
-  searchPlaceholder: "search",
+  searchPlaceholder: "search the library",
   kindLabel: "type",
   categoryLabel: "category",
-  allKinds: "everything",
+  allKinds: "every type",
   allCategories: "every category",
   empty: "Nothing matches that. Try fewer words.",
   none: "There is nothing in the library yet. It will fill up as fwd. produces things.",

@@ -27,7 +27,7 @@ export function ProfileForm({ member }: { member: Member }) {
 
   const field =
     "fwd-field mt-2 w-full border border-border bg-surface-raised px-5 py-3 font-body text-base text-ink transition-colors duration-300 hover:border-ink/30 disabled:opacity-60";
-  const label = "block font-body text-sm text-ink-muted";
+  const label = "sr-only";
 
   return (
     <form action={action} className="mt-10 font-body" noValidate>
@@ -52,13 +52,13 @@ export function ProfileForm({ member }: { member: Member }) {
 
       <div className="mt-6">
         <label htmlFor={ids.bio} className={label}>{PROFILE.bioLabel}</label>
-        <textarea id={ids.bio} name="bio" rows={4} defaultValue={member.bio} disabled={pending} className={field} />
+        <textarea id={ids.bio} name="bio" rows={4} placeholder={PROFILE.bioLabel} defaultValue={member.bio} disabled={pending} className={field} />
         <p className="mt-1.5 text-[13px] text-ink-muted/80">{PROFILE.bioHint}</p>
       </div>
 
       <div className="mt-6">
         <label htmlFor={ids.link} className={label}>{PROFILE.linkLabel}</label>
-        <input id={ids.link} name="link" type="url" placeholder="https://" defaultValue={member.link ?? ""} disabled={pending} className={field} />
+        <input id={ids.link} name="link" type="url" placeholder={`${PROFILE.linkLabel} (https://)`} defaultValue={member.link ?? ""} disabled={pending} className={field} />
       </div>
 
       {/* The boxes are 24px square rather than 20. That is the smallest a
@@ -66,7 +66,7 @@ export function ProfileForm({ member }: { member: Member }) {
           controls on the site under it. The labels are joined to them by
           htmlFor, so the words are a target as well as the box. */}
       <fieldset className="mt-9">
-        <legend className={label}>{PROFILE.contactPreferences}</legend>
+        <legend className="block font-body text-sm text-ink-muted">{PROFILE.contactPreferences}</legend>
 
         <div className="mt-4 flex items-center gap-3">
           <input

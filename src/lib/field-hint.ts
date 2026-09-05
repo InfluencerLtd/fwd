@@ -8,24 +8,25 @@
  * the label beside them and can all drift away from it. Rename a label and the
  * hint follows on its own.
  *
- * ONLY SINGLE-LINE FIELDS GET ONE. Every text area on the site already carries
- * a line of guidance underneath — "A few lines is plenty", "Delivery
- * instructions, or a different address for a few weeks" — which says something
- * a hint could not. And their labels are questions and phrases rather than
- * nouns: "why would you like to meet?" and "anything we should know" do not
- * survive having "enter" put in front of them.
+ * EVERY FIELD HAS TO HAVE ONE NOW, because the labels above the fields are no
+ * longer drawn. They are still there — every one is a real <label>, moved to
+ * `sr-only` rather than deleted, so a screen reader still announces the field
+ * and clicking the words still focuses it — but on screen the hint is the only
+ * thing naming the field, so a field without one is a field with no name.
  *
- * A field whose format matters keeps the hint it already had. `https://` on a
- * profile link is telling you the shape of the answer, which is worth more than
- * being told again what the label says.
+ * Text areas and dropdowns take their label as it stands. Their labels are
+ * questions and phrases rather than nouns — "why would you like to meet?",
+ * "anything we should know" — and those read correctly sitting in a box, while
+ * "enter why would you like to meet?" does not.
+ *
+ * THE COST, WRITTEN DOWN SO IT IS NOT A SURPRISE: a hint disappears the moment
+ * somebody types. On a long form that means nothing on screen says what each
+ * answer was for when you read back over it before sending. The small lines of
+ * guidance under some fields — "A few lines is plenty" — stay visible, which
+ * softens it, and it is the trade that was asked for.
  *
  * The colour and the contrast are handled once, in globals.css, on
  * `.fwd-field::placeholder`.
- *
- * A hint is never the only thing naming a field. Every one of these sits under
- * a real <label>, because a placeholder disappears the moment somebody types:
- * a form labelled only by its hints is one that cannot be checked over before
- * it is sent, and is invisible to a screen reader that reads labels.
  */
 export function fieldHint(label: string): string {
   return `enter ${label}`;
