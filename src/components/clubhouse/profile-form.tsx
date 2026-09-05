@@ -6,6 +6,7 @@ import { initialProfileState } from "@/lib/form-state";
 import { PROFILE } from "@/content/clubhouse";
 import { Button } from "@/components/button";
 import type { Member } from "@/lib/auth/session";
+import { fieldHint } from "@/lib/field-hint";
 
 export function ProfileForm({ member }: { member: Member }) {
   const [state, action, pending] = useActionState(
@@ -33,19 +34,19 @@ export function ProfileForm({ member }: { member: Member }) {
       <div className="grid gap-6 sm:grid-cols-2">
         <div>
           <label htmlFor={ids.name} className={label}>{PROFILE.nameLabel}</label>
-          <input id={ids.name} name="name" defaultValue={member.name} disabled={pending} className={field} />
+          <input id={ids.name} name="name" placeholder={fieldHint(PROFILE.nameLabel)} defaultValue={member.name} disabled={pending} className={field} />
         </div>
         <div>
           <label htmlFor={ids.role} className={label}>{PROFILE.roleLabel}</label>
-          <input id={ids.role} name="role" defaultValue={member.role} disabled={pending} className={field} />
+          <input id={ids.role} name="role" placeholder={fieldHint(PROFILE.roleLabel)} defaultValue={member.role} disabled={pending} className={field} />
         </div>
         <div>
           <label htmlFor={ids.company} className={label}>{PROFILE.companyLabel}</label>
-          <input id={ids.company} name="company" defaultValue={member.company} disabled={pending} className={field} />
+          <input id={ids.company} name="company" placeholder={fieldHint(PROFILE.companyLabel)} defaultValue={member.company} disabled={pending} className={field} />
         </div>
         <div>
           <label htmlFor={ids.market} className={label}>{PROFILE.marketLabel}</label>
-          <input id={ids.market} name="market" defaultValue={member.market} disabled={pending} className={field} />
+          <input id={ids.market} name="market" placeholder={fieldHint(PROFILE.marketLabel)} defaultValue={member.market} disabled={pending} className={field} />
         </div>
       </div>
 

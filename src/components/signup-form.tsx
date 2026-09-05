@@ -6,6 +6,7 @@ import { initialSignupState } from "@/lib/form-state";
 import { HOLDING } from "@/content/site";
 import type { SignupSource } from "@/lib/store/signups";
 import { Button } from "@/components/button";
+import { fieldHint } from "@/lib/field-hint";
 
 /**
  * The email capture. Used on the holding page now, and by the waitlist later,
@@ -95,7 +96,7 @@ export function SignupForm({
           autoComplete="email"
           required
           disabled={pending}
-          placeholder={HOLDING.emailPlaceholder}
+          placeholder={fieldHint(HOLDING.emailLabel)}
           aria-describedby={state.status === "error" ? messageId : undefined}
           aria-invalid={state.status === "error" || undefined}
           className={`fwd-field w-full max-w-sm border bg-transparent px-5 py-3 text-base transition-colors duration-300 disabled:opacity-60 ${c.input}`}

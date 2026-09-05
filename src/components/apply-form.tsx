@@ -6,6 +6,7 @@ import { initialApplicationState } from "@/lib/form-state";
 import { APPLY } from "@/content/site";
 import { MEMBER_GROUPS } from "@/lib/brand";
 import { Button } from "@/components/button";
+import { fieldHint } from "@/lib/field-hint";
 
 /**
  * The membership application.
@@ -103,6 +104,7 @@ export function ApplyForm({
           <input
             id={ids.name}
             name="name"
+            placeholder={fieldHint(shared.name)}
             type="text"
             autoComplete="name"
             disabled={pending}
@@ -116,6 +118,7 @@ export function ApplyForm({
           <input
             id={ids.email}
             name="email"
+            placeholder={fieldHint(shared.email)}
             type="email"
             autoComplete="email"
             disabled={pending}
@@ -134,6 +137,7 @@ export function ApplyForm({
           <input
             id={ids.role}
             name="role"
+            placeholder={fieldHint(words.role)}
             type="text"
             autoComplete={path === "brand" ? "organization-title" : "off"}
             disabled={pending}
@@ -152,6 +156,7 @@ export function ApplyForm({
           <input
             id={ids.company}
             name="company"
+            placeholder={fieldHint(words.company)}
             type="text"
             autoComplete={path === "brand" ? "organization" : "off"}
             disabled={pending}
@@ -194,6 +199,7 @@ export function ApplyForm({
           <input
             id={ids.market}
             name="market"
+            placeholder={fieldHint(shared.market)}
             type="text"
             disabled={pending}
             aria-invalid={errors.market ? true : undefined}

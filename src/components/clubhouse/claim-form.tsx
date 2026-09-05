@@ -6,6 +6,7 @@ import { initialClaimState } from "@/lib/form-state";
 import { MERCH } from "@/content/clubhouse";
 import { Button } from "@/components/button";
 import type { MerchClaim } from "@/lib/store/merch";
+import { fieldHint } from "@/lib/field-hint";
 
 /**
  * Claiming an item.
@@ -97,6 +98,7 @@ export function ClaimForm({
           <input
             id={ids.recipient}
             name="recipient"
+            placeholder={fieldHint(MERCH.recipientLabel)}
             autoComplete="name"
             defaultValue={source?.recipient ?? ""}
             disabled={pending}
@@ -111,6 +113,7 @@ export function ClaimForm({
           <input
             id={ids.address1}
             name="address_1"
+            placeholder={fieldHint(MERCH.address1Label)}
             autoComplete="address-line1"
             defaultValue={source?.address_1 ?? ""}
             disabled={pending}
@@ -126,6 +129,7 @@ export function ClaimForm({
           <input
             id={ids.address2}
             name="address_2"
+            placeholder={fieldHint(MERCH.address2Label)}
             autoComplete="address-line2"
             defaultValue={source?.address_2 ?? ""}
             disabled={pending}
@@ -136,15 +140,15 @@ export function ClaimForm({
         <div className="mt-4 grid gap-4 sm:grid-cols-3">
           <div>
             <label htmlFor={ids.city} className={label}>{MERCH.cityLabel}</label>
-            <input id={ids.city} name="city" autoComplete="address-level2" defaultValue={source?.city ?? ""} disabled={pending} className={field} />
+            <input id={ids.city} name="city" placeholder={fieldHint(MERCH.cityLabel)} autoComplete="address-level2" defaultValue={source?.city ?? ""} disabled={pending} className={field} />
           </div>
           <div>
             <label htmlFor={ids.postcode} className={label}>{MERCH.postcodeLabel}</label>
-            <input id={ids.postcode} name="postcode" autoComplete="postal-code" defaultValue={source?.postcode ?? ""} disabled={pending} className={field} />
+            <input id={ids.postcode} name="postcode" placeholder={fieldHint(MERCH.postcodeLabel)} autoComplete="postal-code" defaultValue={source?.postcode ?? ""} disabled={pending} className={field} />
           </div>
           <div>
             <label htmlFor={ids.country} className={label}>{MERCH.countryLabel}</label>
-            <input id={ids.country} name="country" autoComplete="country-name" defaultValue={source?.country ?? ""} disabled={pending} className={field} />
+            <input id={ids.country} name="country" placeholder={fieldHint(MERCH.countryLabel)} autoComplete="country-name" defaultValue={source?.country ?? ""} disabled={pending} className={field} />
           </div>
         </div>
 

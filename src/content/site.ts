@@ -44,7 +44,6 @@ export const HOLDING = {
   capturePrompt: "Be the first to hear when applications open.",
 
   emailLabel: "email address",
-  emailPlaceholder: "you@company.com",
   submit: "keep me posted",
   submitting: "just a moment",
 
