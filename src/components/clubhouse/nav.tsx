@@ -16,20 +16,20 @@ export function ClubhouseNav() {
   ] as const;
 
   return (
-    <header className="border-b border-border bg-surface-raised">
+    /* The bar is the near-black photo ground, not the raised off-white it used
+       to be. fwd-on-dark switches the focus ring to the pale blue, because the
+       brand dark blue measures 2.69:1 on this ground and a keyboard user would
+       lose track of where they are. */
+    <header className="fwd-on-dark border-b border-photo-ink/15 bg-photo-ground">
       <nav
         aria-label={BRAND.memberArea}
         className="mx-auto flex max-w-5xl flex-wrap items-center gap-x-7 gap-y-3 px-6 py-4 font-body text-sm"
       >
-        {/* The lockup, in a dark pill so the pale blue can appear at all.
-            On the off-white it measures 1.27:1 and would be invisible; the
-            pill gives it the dark ground the blue is defined for. Same
-            treatment as the mark inside the three line menu on the public
-            site, so the two match. */}
-        <Link href="/clubhouse" aria-label={BRAND.memberArea}>
-          <span className="fwd-on-dark inline-block rounded-lg bg-photo-ground px-3 py-2">
-            <Wordmark size="small" />
-          </span>
+        {/* No pill any more. It existed only because the bar was light and the
+            pale blue needed a dark ground of its own to sit on. The bar is that
+            ground now, so the lockup sits straight on it. */}
+        <Link href="/clubhouse" aria-label={BRAND.memberArea} className="mr-2">
+          <Wordmark size="small" />
         </Link>
 
         <div className="flex flex-1 flex-wrap items-center gap-x-6 gap-y-2">
@@ -37,7 +37,7 @@ export function ClubhouseNav() {
             <Link
               key={link.href}
               href={link.href}
-              className="fwd-underline text-ink-muted hover:text-ink"
+              className="fwd-underline text-photo-ink/75 hover:text-photo-ink"
             >
               {link.label}
             </Link>
@@ -47,7 +47,7 @@ export function ClubhouseNav() {
         <form action={signOut}>
           <button
             type="submit"
-            className="fwd-underline text-ink-muted hover:text-ink"
+            className="fwd-underline text-photo-ink/75 hover:text-photo-ink"
           >
             {NAV.signOut}
           </button>
