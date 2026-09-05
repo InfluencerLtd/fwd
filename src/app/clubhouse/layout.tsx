@@ -18,6 +18,7 @@ export const metadata: Metadata = {
 
 export default async function ClubhouseLayout({
   children,
+  modal,
 }: LayoutProps<"/clubhouse">) {
   // The navigation only appears once somebody is signed in. Somebody looking at
   // an invitation without signing in sees the invitation and nothing else, with
@@ -28,6 +29,10 @@ export default async function ClubhouseLayout({
     <div className="flex min-h-full flex-1 flex-col">
       {member ? <ClubhouseNav /> : null}
       {children}
+      {/* Where an event or a merch item opens when a member clicks through to
+          one, over the list rather than instead of it. Empty otherwise. See
+          src/app/clubhouse/@modal. */}
+      {modal}
       {/* Only for signed-in members. Somebody looking at an invitation without
           signing in still gets that one event and no route into the club. */}
       {member ? <ClubhouseFooter /> : null}

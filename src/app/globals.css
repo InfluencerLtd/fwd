@@ -624,6 +624,13 @@ textarea.fwd-field {
   overflow: hidden;
 }
 
+/* The route modals carry a whole page of detail, so they are wider and taller
+   than the apply form's dialog. */
+.fwd-dialog-wide {
+  width: min(58rem, calc(100vw - 2rem));
+  max-height: min(52rem, calc(100dvh - 2rem));
+}
+
 .fwd-dialog::backdrop {
   background: color-mix(in oklab, var(--fwd-photo-ground) 72%, transparent);
   backdrop-filter: blur(3px);
