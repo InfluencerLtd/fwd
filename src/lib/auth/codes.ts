@@ -39,7 +39,6 @@
 import { createHmac, randomInt, timingSafeEqual } from "node:crypto";
 import { getServiceClient } from "@/lib/supabase";
 import { sendEmail } from "@/lib/email";
-import { MEMBER_GROUPS } from "@/lib/brand";
 import { EMAILS } from "@/content/emails";
 
 /** How long a code is good for. Long enough to find the email, no longer. */
@@ -104,10 +103,7 @@ export async function requestSignInCode(
         {
           email,
           name: process.env.OWNER_NAME || "Owner",
-          // Has to be one of MEMBER_GROUPS. This record exists so the owner
-          // cannot be locked out, not to say anything true about which group
-          // they belong to, and the owner can change it on their own profile.
-          group_type: MEMBER_GROUPS[0].id,
+          group_type: "industry",
           status: "active",
         },
         { onConflict: "email" },

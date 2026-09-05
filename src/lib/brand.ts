@@ -95,19 +95,12 @@ export const CONTACT = {
   siteUrl: resolveSiteUrl(),
 } as const;
 
-/**
- * The three groups the membership spans. Order is deliberate.
- *
- * There was a fourth, "industry". It has gone from what the site offers, but
- * NOT from the database: `application_group` in migration 0002 is a Postgres
- * enum, and a value cannot be dropped from one while any row still uses it.
- * Any record already stored as industry stays readable and stays valid; it
- * simply cannot be chosen again, and the directory filter no longer lists it.
- */
+/** The four groups the membership spans. Order is deliberate. */
 export const MEMBER_GROUPS = [
   { id: "brand", label: "brands" },
   { id: "creator", label: "creators" },
   { id: "platform", label: "platforms" },
+  { id: "industry", label: "industry" },
 ] as const;
 
 export type MemberGroupId = (typeof MEMBER_GROUPS)[number]["id"];

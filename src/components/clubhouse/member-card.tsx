@@ -30,7 +30,12 @@ export function MemberCard({
     >
       <span
         aria-hidden="true"
-        className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-surface-warm font-body text-sm text-ink-muted"
+        /* Pale blue, with the near-black on it rather than the muted grey.
+           The blue is a fill here, which is the one way it is allowed on a
+           light page, and the initials need a colour that belongs on the blue
+           rather than on the page: ink-muted would have been 2.9:1 against it,
+           the near-black is 13.42:1. */
+        className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent-on-dark font-body text-sm text-photo-ground"
       >
         {initials(member.name)}
       </span>
