@@ -13,7 +13,7 @@ export const SIGN_IN = {
   heading: "sign in",
   /** DRAFT. */
   intro:
-    "Members only. Enter your email and we'll send you a six-digit code. No password required.",
+    "Members only. Enter your email and we'll send you a code. No password required.",
 
   emailLabel: "email address",
   emailSubmit: "send me a code",
