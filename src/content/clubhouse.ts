@@ -129,6 +129,7 @@ export const PROFILE = {
   roleLabel: "role",
   companyLabel: "company",
   marketLabel: "market",
+  marketPlaceholder: "Where are you based",
   bioLabel: "short bio",
   bioHint: "A line or two on what you are working on. This is what makes an introduction useful.",
   linkLabel: "LinkedIn or social profile",

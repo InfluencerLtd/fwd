@@ -46,7 +46,7 @@ export function ProfileForm({ member }: { member: Member }) {
         </div>
         <div>
           <label htmlFor={ids.market} className={label}>{PROFILE.marketLabel}</label>
-          <input id={ids.market} name="market" placeholder={fieldHint(PROFILE.marketLabel)} defaultValue={member.market} disabled={pending} className={field} />
+          <input id={ids.market} name="market" placeholder={PROFILE.marketPlaceholder} defaultValue={member.market} disabled={pending} className={field} />
         </div>
       </div>
 

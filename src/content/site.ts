@@ -349,7 +349,10 @@ export const APPLY = {
       name: "full name",
       email: "email address",
       market: "market",
-      marketHint: "Where you are based.",
+      /* Asked in full inside the box rather than in a line under it. The
+         label above stays the short "market", which is what it is once it has
+         been answered. */
+      marketPlaceholder: "Where are you based",
       link: "LinkedIn or social profile",
       reason: "why do you want to be part of it",
       reasonHint: "A few lines is plenty.",

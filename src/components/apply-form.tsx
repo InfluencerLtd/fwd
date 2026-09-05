@@ -201,13 +201,12 @@ export function ApplyForm({
         <Field
           id={ids.market}
           label={shared.market}
-          hint={shared.marketHint}
           error={errors.market}
         >
           <input
             id={ids.market}
             name="market"
-            placeholder={fieldHint(shared.market)}
+            placeholder={shared.marketPlaceholder}
             type="text"
             disabled={pending}
             aria-invalid={errors.market ? true : undefined}
