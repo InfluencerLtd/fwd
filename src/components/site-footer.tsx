@@ -22,8 +22,8 @@ import { Mark } from "@/components/mark";
  * carrying on should not be announced by a line drawn under everything else.
  *
  * The address sits beside the mark rather than in a column of its own, so the
- * two things that are not navigation share a line at the top and the links are
- * a block underneath, held over to the right of it.
+ * footer is a single row of three: the mark and the address, then the site
+ * links, then the legal ones, all starting on the same line.
  *
  * The columns carry no visible headings. There are eight words in this whole
  * footer and a heading over each pair would be more furniture than content;
@@ -79,30 +79,36 @@ export function SiteFooter({
             It is `ink`, the same colour as the links beside it, so it turns
             near-white in dark mode along with them: 15.4:1 on the warm sand,
             17.5:1 on the off-white. */}
-        {/* The mark and the address on one line. Centred on each other rather
-            than sat on the same baseline, because the mark has no baseline of
-            its own to sit on.
+        {/* One row of three, all starting at the same line: the mark and the
+            address, then the two lists.
 
-            The address is a link, not a line of text: it is the way of reaching
-            us from this page, so it should be one press rather than a select
-            and a copy. It keeps the site's usual hover underline rather than
-            the permanent one the sign-in link needed — an email address already
-            reads as something you can write to, and if somebody misses that it
-            is clickable they can still read it and copy it. */}
-        <div className="flex items-center gap-4">
-          <Mark className="h-6 text-ink" />
-          <a href={`mailto:${CONTACT.email}`} className={`${LINK} text-ink`}>
-            {CONTACT.email}
-          </a>
-        </div>
+            `items-start` is what holds that line. Without it the columns
+            stretch to match each other and the shorter one centres itself
+            against the taller, so the legal pair would float half a line below
+            everything else.
 
-        {/* Three columns with the first one left empty, so the links sit in
-            the middle and right thirds under the mark rather than starting
-            beneath it. `col-start-2` is what does that, and it only applies
-            from the small breakpoint up — on a phone there is one column and
-            the two lists stack, which is the only thing that fits. */}
-        <div className="mt-10 grid gap-10 sm:grid-cols-3">
-          <nav aria-label={FOOTER.navHeading} className="sm:col-start-2">
+            On a phone there is one column and the three stack, which is the
+            only thing that fits. */}
+        <div className="grid items-start gap-10 sm:grid-cols-3">
+          {/* The mark and the address, centred on each other rather than sat
+              on the same baseline, because the mark has no baseline of its own
+              to sit on.
+
+              The address is a link, not a line of text: it is the way of
+              reaching us from this page, so it should be one press rather than
+              a select and a copy. It keeps the site's usual hover underline
+              rather than the permanent one the sign-in link needed — an email
+              address already reads as something you can write to, and if
+              somebody misses that it is clickable they can still read it and
+              copy it. */}
+          <div className="flex items-center gap-4">
+            <Mark className="h-6 text-ink" />
+            <a href={`mailto:${CONTACT.email}`} className={`${LINK} text-ink`}>
+              {CONTACT.email}
+            </a>
+          </div>
+
+          <nav aria-label={FOOTER.navHeading}>
             <ul className="space-y-2">
               {PLACES.map((place) => (
                 <li key={place.href}>
