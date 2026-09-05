@@ -36,7 +36,7 @@ export function Wordmark({
   signature = true,
   ground = "dark",
 }: {
-  size?: "hero" | "footer" | "small";
+  size?: "hero" | "page" | "footer" | "small";
   /**
    * Makes the mark the page's main heading. Every page needs exactly one, and
    * the name of the thing is the right thing for it to be.
@@ -77,18 +77,34 @@ export function Wordmark({
    */
   ground?: "dark" | "light";
 }) {
+  /*
+   * "page" is a fifth of a step up from the rest, and that is the whole
+   * difference: 1.875rem to 2.25rem is exactly the 20% asked for.
+   *
+   * It exists because the sign-in page is not a bar. There, the lockup is the
+   * only branding on screen and the only way back out, rather than one item in
+   * a row of navigation, so it can carry a little more weight without shouting.
+   * Everywhere that IS a bar stays where it was: making them all bigger would
+   * grow the bar to hold it.
+   */
   const markClass =
     size === "hero"
       ? "text-7xl sm:text-8xl lg:text-9xl"
-      : "text-3xl";
+      : size === "page"
+        ? "text-4xl"
+        : "text-3xl";
   const signatureClass =
-    size === "hero" ? "text-lg sm:text-xl" : size === "footer" ? "text-xs" : "text-[10px]";
+    size === "hero"
+      ? "text-lg sm:text-xl"
+      : size === "footer" || size === "page"
+        ? "text-xs"
+        : "text-[10px]";
   // Enough of a gap to read as a signature beside the mark rather than as part
   // of the word, and no more.
   const gapClass =
     size === "hero"
       ? "gap-y-1"
-      : size === "footer"
+      : size === "footer" || size === "page"
         ? "gap-1.5"
         : "gap-1";
 

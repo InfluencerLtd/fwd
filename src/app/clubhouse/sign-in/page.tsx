@@ -49,7 +49,7 @@ export default async function SignInPage({
           className="inline-block"
           aria-label={`${BRAND.markShort} home`}
         >
-          <Wordmark size="footer" ground="light" signature={false} />
+          <Wordmark size="page" ground="light" signature={false} />
         </Link>
 
         <div className="mt-10">
@@ -57,7 +57,21 @@ export default async function SignInPage({
         </div>
 
         <p className="mt-10 border-t border-border pt-6 font-body text-sm text-ink-muted">
-          <Link href="/" className="fwd-underline text-accent">
+          {/* Black, not the accent blue: it is the way out of a page whose whole
+              job is the way in, and it should not compete with the lockup above
+              it now that the lockup is the blue one.
+
+              THE UNDERLINE IS ALWAYS THERE, and that is why this is not
+              fwd-underline like every other link on the site. That class draws
+              its line on hover only, which is fine while colour is doing the
+              work of saying "this is a link". In black, at body-text colour and
+              body-text size, nothing would have been left saying so: a
+              non-member would have been looking at the only way off this page
+              and seeing a sentence. */}
+          <Link
+            href="/"
+            className="text-ink underline decoration-1 underline-offset-4"
+          >
             {SIGN_IN.notAMember}
           </Link>
         </p>
