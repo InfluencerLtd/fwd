@@ -65,15 +65,18 @@ export function PhotoPlaceholder({
    * already darkened from the artwork:
    *
    *             wordmark   body text
-   *   no wash    4.49:1     5.43:1
+   *   no wash    4.49:1     5.43:1   WHAT THE HERO NOW USES
    *   20%        5.71:1     6.90:1
    *   25%        6.07:1     7.34:1
-   *   50%        8.22:1     9.93:1   what is set, chosen for the look
+   *   50%        8.22:1     9.93:1
    *
    * The wordmark is large text and needs 3:1. The line beneath it is normal
-   * size and needs 4.5:1. This photograph clears both with no wash at all, so
-   * the setting is a look rather than a requirement, and 50% is what was
-   * chosen: a heavier, moodier frame with the photograph further back.
+   * size and needs 4.5:1. This photograph clears both with no wash at all,
+   * which is why the hero now runs without one: `scrim={false}` in hero.tsx.
+   *
+   * Every piece of text over it was measured again with the wash off, against
+   * the brightest pixel each one crosses, at 1149px and at 375px. The lowest
+   * was 5.09:1 on the line under the mark, against a 4.5 requirement.
    *
    * IF A BRIGHTER PHOTOGRAPH IS EVER USED HERE, THIS NUMBER HAS TO BE CHECKED
    * AGAIN. The same measurement on the version Canva served, which was not

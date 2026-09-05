@@ -24,6 +24,7 @@ export function Hero() {
            "photograph goes here" caption that the smaller placeholders do. The
            shot it needs is still written down, in IMAGERY in content/site.ts. */
         showLabel={false}
+        scrim={false}
         className="flex min-h-[92vh] flex-col"
       >
         {/* Centred over the photograph, following the approved artwork, rather
