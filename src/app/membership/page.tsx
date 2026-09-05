@@ -7,8 +7,7 @@ import { ApplyDialog } from "@/components/apply-dialog";
 import { SiteMenu } from "@/components/site-menu";
 import { SignupForm } from "@/components/signup-form";
 import { SiteFooter } from "@/components/site-footer";
-import { ButtonLink } from "@/components/button";
-import { APPLY, MEMBERSHIP_PAGE, META } from "@/content/site";
+import { APPLY, HERO, MEMBERSHIP_PAGE, META } from "@/content/site";
 import { APPLICATIONS_OPEN } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -59,14 +58,19 @@ export default function MembershipPage() {
               {MEMBERSHIP_PAGE.heading}
             </h1>
 
-            {/* Only the members' door up here. The ask sits under the
-                paragraph below, next to the words that make the case for it,
-                rather than above them. */}
-            <div className="mt-9">
-              <ButtonLink href="/clubhouse" variant="outlineOnDark" size="sm">
-                {MEMBERSHIP_PAGE.logIn}
-              </ButtonLink>
-            </div>
+            {/* Only the members' door up here, and set as a line of text
+                rather than a button. The ask sits under the paragraph below,
+                and a button up here competed with it for the same attention.
+                The same words and the same treatment as the home page, so a
+                member sees one thing in both places. */}
+            <p className="mt-8 font-body text-sm text-photo-ink/60">
+              <Link
+                href="/clubhouse"
+                className="fwd-underline -my-2 inline-block py-2 text-photo-ink/75 hover:text-photo-ink"
+              >
+                {HERO.memberSignIn}
+              </Link>
+            </p>
           </div>
         </PhotoPlaceholder>
       </div>
