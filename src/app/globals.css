@@ -557,6 +557,34 @@ textarea.fwd-field {
   border-radius: 1.25rem;
 }
 
+/* ---------------------------------------------------------------------------
+   The arrow on a dropdown.
+
+   Every browser draws the native one differently and all of them put it hard
+   against the right edge of the padding box. In a pill that edge is a curve:
+   these fields are 47px tall, so the corner radius is 23.5px and the arrow was
+   sitting inside it, which is what made it look like it had been dropped in
+   rather than placed.
+
+   So the native one is switched off and this is ours: the same chevron on every
+   browser, 20px in from the edge with enough padding that the longest option
+   cannot run into it. Drawn in ink-muted, which is why it is declared twice:
+   a background image cannot read currentColor, so the dark mode value has to be
+   written out rather than inherited.
+   --------------------------------------------------------------------------- */
+
+select.fwd-field {
+  appearance: none;
+  padding-right: 3rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' stroke='%235a6472' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1.25rem center;
+}
+
+.dark select.fwd-field {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' stroke='%23a89f95' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
 /* ===========================================================================
    The scroll cue at the bottom of the hero
    =========================================================================== */

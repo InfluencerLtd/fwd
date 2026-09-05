@@ -117,7 +117,9 @@ export default function MembershipPage() {
         <BenefitTiles />
 
         {/* ---- 4. The ask again, after the pictures ----------------------- */}
-        <section className="px-6 py-24 sm:py-28">
+        {/* 15px less top and bottom than the section pattern elsewhere.
+            py-24 is 96 and py-28 is 112, so this is 81 and 97. */}
+        <section className="px-6 py-[81px] sm:py-[97px]">
           <div className="mx-auto max-w-4xl text-center">
             <h2 className="fwd-reveal text-4xl sm:text-5xl">
               {MEMBERSHIP_PAGE.closing.heading}

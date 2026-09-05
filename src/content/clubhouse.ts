@@ -180,7 +180,7 @@ export const MERCH = {
    * DRAFT. The wording matters here: members CLAIM things, they do not buy
    * them. There is no price anywhere and nothing should read like a shop.
    */
-  intro: "fwd. pieces. Yours to claim, not to buy.",
+  intro: "fwd. pieces. Choose what you'd like, confirm where to send it, and we'll do the rest.",
   none: "Nothing to claim at the moment. There will be.",
   closed: "Claims are closed on this one.",
   allGone: "All claimed.",
