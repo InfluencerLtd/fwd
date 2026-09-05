@@ -1,0 +1,41 @@
+/**
+ * The mark: the arrow glyph that sits with "fwd." in the lockup.
+ *
+ * IT IS DRAWN HERE RATHER THAN LOADED FROM A FILE, on purpose. Inline it takes
+ * `currentColor`, so it is the same pale blue as the type beside it without
+ * anybody keeping two colours in step, and it changes with the type when the
+ * ground changes. It also costs no second request, which matters because this
+ * is in the hero, above the fold, on the first page anybody sees.
+ *
+ * The outlines came from the approved artwork. That file was a Canva export,
+ * which sounds like a vector but was a 186x147 bitmap in an SVG wrapper: it
+ * would have gone soft the moment it was shown larger than a favicon, and it
+ * could not be recoloured. The shape was traced back into real paths at the
+ * half-way alpha level, so this scales to any size and takes any colour.
+ *
+ * public/logo.svg is the same outlines with the pale blue baked in, for the
+ * places that need a file rather than a component: the browser tab icon, and
+ * anybody outside the project who asks for "the logo".
+ *
+ * The `height` is in em so the mark scales with the type it sits beside rather
+ * than being set in pixels at every size.
+ */
+export function Mark({
+  className = "",
+}: {
+  className?: string;
+}) {
+  return (
+    <svg
+      viewBox="0 0 165.99 129.45"
+      fill="currentColor"
+      aria-hidden="true"
+      focusable="false"
+      className={`w-auto shrink-0 ${className}`}
+    >
+      <path d="M139.03 0.48 L131.03 1.25 L122.03 1.79 L115.03 2.65 L112.03 2.65 L111.03 2.94 L110.40 3.52 L109.91 4.52 L109.85 5.52 L110.10 6.52 L110.63 7.52 L112.46 9.52 L113.07 10.52 L114.57 13.52 L115.17 15.52 L115.35 18.52 L114.70 22.52 L113.59 26.52 L112.84 28.52 L109.99 33.52 L107.69 39.52 L105.08 44.52 L103.90 47.52 L102.25 50.52 L101.40 52.52 L96.03 63.32 L94.73 66.52 L92.70 72.52 L91.96 75.52 L91.24 82.52 L91.43 88.52 L91.94 92.52 L92.59 95.52 L94.56 101.52 L96.60 105.52 L98.45 108.52 L105.03 118.35 L112.03 128.05 L113.03 129.03 L114.03 129.45 L115.03 128.95 L115.92 127.52 L120.43 118.52 L122.47 113.52 L128.17 101.52 L131.03 95.08 L135.03 86.98 L140.63 74.52 L143.32 69.52 L145.91 63.52 L148.36 58.52 L150.51 53.52 L152.11 50.52 L154.72 44.52 L157.03 40.23 L158.97 35.52 L161.51 30.52 L162.69 27.52 L164.55 23.52 L165.03 22.23 L165.69 19.52 L165.99 17.52 L165.96 14.52 L165.74 12.52 L165.03 9.98 L164.03 7.91 L163.03 6.40 L161.03 4.39 L158.85 2.52 L157.03 1.36 L155.03 0.50 L154.03 0.26 L148.03 0.00 Z" />
+      <path d="M96.03 5.50 L83.03 6.92 L72.03 8.39 L69.03 8.61 L65.03 9.17 L62.03 9.29 L58.03 10.01 L54.03 10.22 L46.03 11.28 L42.62 11.52 L38.03 12.28 L34.56 12.52 L30.03 13.33 L22.03 14.08 L15.03 15.18 L7.03 15.93 L1.03 16.77 L0.05 17.52 L0.00 18.52 L0.95 20.52 L2.03 22.13 L14.64 38.52 L17.03 40.74 L20.03 42.97 L24.03 45.36 L26.60 46.52 L31.03 47.97 L34.03 48.61 L38.03 49.13 L42.03 49.31 L50.03 48.69 L61.03 47.38 L67.03 46.83 L72.03 46.05 L80.03 45.11 L83.03 45.16 L86.03 45.63 L89.03 46.84 L91.03 48.26 L92.32 49.52 L93.22 50.52 L95.03 53.31 L96.03 53.58 L97.03 53.24 L98.03 52.32 L100.03 48.52 L102.33 42.52 L105.11 36.52 L107.48 30.52 L110.03 25.63 L111.25 21.52 L111.48 18.52 L111.04 15.52 L110.06 12.52 L109.59 11.52 L108.03 9.58 L104.03 6.87 L103.29 6.52 L100.03 5.62 L98.03 5.44 Z" />
+      <path d="M49.03 70.52 L47.03 70.81 L45.03 71.32 L42.03 72.60 L40.57 73.52 L39.39 74.52 L37.03 77.36 L35.03 80.83 L34.40 82.52 L33.60 85.52 L33.33 88.52 L33.65 92.52 L35.23 97.52 L36.29 99.52 L37.72 101.52 L38.64 102.52 L40.03 103.80 L42.03 105.27 L45.03 106.80 L47.03 107.58 L49.03 108.09 L51.03 108.31 L53.03 108.29 L58.03 107.50 L60.03 106.87 L60.66 106.52 L64.03 104.11 L66.96 101.52 L68.55 99.52 L69.56 97.52 L70.31 95.52 L71.23 91.52 L71.35 88.52 L70.93 85.52 L70.03 82.42 L68.62 79.52 L65.31 75.52 L63.03 73.45 L61.55 72.52 L59.52 71.52 L55.65 70.52 L54.03 70.25 L52.03 70.18 Z" />
+    </svg>
+  );
+}

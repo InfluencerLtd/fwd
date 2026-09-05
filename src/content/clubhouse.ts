@@ -62,8 +62,6 @@ export const HOME = {
   intro: "What is coming up, and who else is in the room.",
   upcomingHeading: "next up",
   noEvents: "Nothing in the calendar just yet. You will get an email when there is.",
-  directoryTeaser: "the members",
-  directoryLine: "Search the room by name, company, market or group.",
 } as const;
 
 export const DIRECTORY = {
@@ -153,8 +151,7 @@ export const NEWSLETTER = {
 export const LIBRARY = {
   heading: "the library",
   /** DRAFT. */
-  intro:
-    "Research, white papers, event recaps and briefings. Members only, and yours to use.",
+  intro: "Research, white papers, event recaps and briefings.",
   searchLabel: "search the library",
   searchPlaceholder: "search",
   kindLabel: "type",

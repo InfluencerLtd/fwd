@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { requireMember } from "@/lib/auth/guard";
 import { listEvents } from "@/lib/store/clubhouse";
 import { EventCard } from "@/components/clubhouse/event-card";
@@ -63,19 +62,6 @@ export default async function ClubhouseHome() {
             )}
           </section>
         )}
-
-        <section className="mt-16 rounded-2xl border border-border bg-surface-warm p-8">
-          <h2 className="text-2xl">{HOME.directoryTeaser}</h2>
-          <p className="mt-3 font-body text-[15px] text-ink-muted">
-            {HOME.directoryLine}
-          </p>
-          <Link
-            href="/clubhouse/directory"
-            className="fwd-underline mt-5 inline-block font-body text-[15px] text-accent"
-          >
-            {HOME.directoryTeaser}
-          </Link>
-        </section>
 
       </div>
     </main>

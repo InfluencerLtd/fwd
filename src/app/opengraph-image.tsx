@@ -19,12 +19,27 @@ export const contentType = "image/png";
 export const alt = `${BRAND.markShort} ${BRAND.endorsement}`;
 
 const FONT_DIR = path.join(process.cwd(), "src", "assets", "fonts");
+const LOGO = path.join(process.cwd(), "public", "logo.svg");
 
 export default async function OpengraphImage() {
-  const [regular, italic] = await Promise.all([
+  const [regular, italic, logo] = await Promise.all([
     readFile(path.join(FONT_DIR, "InstrumentSerif-Regular.ttf")),
     readFile(path.join(FONT_DIR, "InstrumentSerif-Italic.ttf")),
+    readFile(LOGO, "utf8"),
   ]);
+
+  /*
+   * The glyph comes from the same file the rest of the world gets, rather than
+   * being redrawn here, so the two can never drift apart. It arrives as a data
+   * URI because this image is assembled by a layout engine that lays out HTML,
+   * not by a browser: an <img> is the thing it is sure to place correctly.
+   *
+   * Proportions match the lockup on the site: the glyph is a little over a
+   * third of the word's size, sitting above it.
+   */
+  const glyph = `data:image/svg+xml;base64,${Buffer.from(logo).toString("base64")}`;
+  const MARK_SIZE = 220;
+  const glyphHeight = Math.round(MARK_SIZE * 0.36);
 
   return new ImageResponse(
     (
@@ -48,17 +63,26 @@ export default async function OpengraphImage() {
             justifyContent: "space-between",
           }}
         >
-          <span
-            style={{
-              fontFamily: "Instrument Serif",
-              fontSize: 220,
-              lineHeight: 0.85,
-              // The pale ice blue, on a dark ground where it belongs.
-              color: "#b1e3fc",
-            }}
-          >
-            {BRAND.markShort}
-          </span>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
+            <img
+              src={glyph}
+              alt=""
+              height={glyphHeight}
+              width={Math.round(glyphHeight * 1.2823)}
+              style={{ marginBottom: 14 }}
+            />
+            <span
+              style={{
+                fontFamily: "Instrument Serif",
+                fontSize: MARK_SIZE,
+                lineHeight: 0.85,
+                // The pale ice blue, on a dark ground where it belongs.
+                color: "#b1e3fc",
+              }}
+            >
+              {BRAND.markShort}
+            </span>
+          </div>
           <span
             style={{
               fontFamily: "Instrument Serif",
