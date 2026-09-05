@@ -1,6 +1,4 @@
 import Link from "next/link";
-import { Wordmark } from "@/components/wordmark";
-import { ThemeToggle } from "@/components/theme-toggle";
 import { CONTACT } from "@/lib/brand";
 import { FOOTER, NAV } from "@/content/site";
 
@@ -24,9 +22,9 @@ import { FOOTER, NAV } from "@/content/site";
  * the labels live on the nav elements instead, where a screen reader still gets
  * the structure and the eye is not given anything else to read.
  *
- * The lockup is in the near-black, NOT the pale blue it is everywhere else.
- * That is not a preference: the pale blue is for dark grounds only, and on the
- * off-white it measures 1.27:1. See the `tone` prop in Wordmark.
+ * There is no lockup down here any more, and no year. The mark is at the top of
+ * every page already, and a footer that repeats it is a site signing its name
+ * twice on the same letter.
  */
 
 const PLACES = [
@@ -89,22 +87,6 @@ export function SiteFooter() {
           </div>
         </div>
 
-        {/* The bottom line: the mark, the appearance switch, and the year. */}
-        <div className="mt-16 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-          <Wordmark size="footer" tone="page" />
-
-          <div className="flex items-center gap-4 font-body text-[12px] text-ink-muted">
-            {/* The light and dark switch lives here rather than on the hero, so
-                nothing sits on top of the photograph. */}
-            <span className="flex items-center gap-2.5">
-              <ThemeToggle />
-              {NAV.appearance}
-            </span>
-            {/* Baked in at build. The site is redeployed far more often than
-                once a year, so this cannot go stale in practice. */}
-            <span>{new Date().getFullYear()}</span>
-          </div>
-        </div>
       </div>
     </footer>
   );
