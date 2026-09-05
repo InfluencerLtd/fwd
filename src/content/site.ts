@@ -322,7 +322,7 @@ export const APPLY = {
       hint: "You make the work, whatever the platform.",
     },
     brand: {
-      label: "a brand, a platform, or industry",
+      label: "a brand or a platform",
       hint: "You work at a company in or around the creator economy.",
     },
   },
