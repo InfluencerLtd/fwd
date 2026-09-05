@@ -37,8 +37,8 @@ export default async function SignInPage({
             nowhere to go from here.
 
             This is the one place the lockup sits on the light surface, so it
-            takes the near-black rather than the pale blue, which is unreadable
-            on the off-white. No signature: it is a small link sitting directly
+            takes the brand dark blue rather than the pale blue, which is
+            unreadable on the off-white. No signature: it is a small link sitting
             above a large heading, the same job it does at the top of the
             membership page, and the endorsement at this size reads as clutter.
 

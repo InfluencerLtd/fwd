@@ -64,9 +64,16 @@ export function Wordmark({
    * identity.
    *
    * IT MUST NEVER BE USED ON A LIGHT GROUND. On the off-white it measures about
-   * 1.5:1, which is a colour you can see is there and cannot read. The sign-in
+   * 1.3:1, which is a colour you can see is there and cannot read. The sign-in
    * page is the one place the lockup sits on the light surface, so it takes the
-   * near-black instead. Same lockup, same proportions, a colour that works.
+   * brand dark blue instead — #004ad5, from the influencer guidelines, 6.61:1
+   * on the off-white.
+   *
+   * That is `--fwd-accent`, which is the right token rather than the dark blue
+   * written out, because it already knows both answers: on a light page it is
+   * the dark blue, and in dark mode it becomes the pale ice blue, which is the
+   * only one of the two that can be read on a near-black page. A hard-coded
+   * dark blue would measure 2.69:1 there.
    */
   ground?: "dark" | "light";
 }) {
@@ -121,7 +128,7 @@ export function Wordmark({
    * size the word is using. Without it the em would take the parent's size and
    * the glyph would come out the wrong scale at every size but one.
    */
-  const inkClass = ground === "dark" ? "text-accent-on-dark" : "text-ink";
+  const inkClass = ground === "dark" ? "text-accent-on-dark" : "text-accent";
 
   const glyph = (
     <MarkGlyph
