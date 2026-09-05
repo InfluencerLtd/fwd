@@ -51,13 +51,6 @@ export default function MembershipPage() {
             <Link href="/" aria-label={META.title} className="inline-block">
               <Wordmark size="large" signature={false} />
             </Link>
-            {/* text-photo-ink, not the default ink: this is on the dark
-                photograph, and ink is the near-black for the light page, so it
-                would have been black type on a black picture. */}
-            <h1 className="mt-10 text-5xl text-photo-ink sm:text-6xl">
-              {MEMBERSHIP_PAGE.heading}
-            </h1>
-
             {/* Only the members' door up here, and set as a line of text
                 rather than a button. The ask sits under the paragraph below,
                 and a button up here competed with it for the same attention.
@@ -80,11 +73,18 @@ export default function MembershipPage() {
         <div className="bg-surface-warm">
           <section className="px-6 py-24 sm:py-28">
             <div className="mx-auto max-w-4xl text-center">
-              <h2 className="fwd-reveal text-4xl sm:text-5xl">
+              {/* THIS IS THE PAGE'S h1 NOW. The word "membership" used to sit
+                  over the photograph and be it; with that gone, something still
+                  has to be the page's one main heading, or the page has none
+                  and a screen reader jumping by heading lands in the middle of
+                  it. This one names the page and is the first thing under the
+                  picture, so it is the honest choice. Its size and weight are
+                  unchanged — this is what it is, not how it looks. */}
+              <h1 className="fwd-reveal text-4xl sm:text-5xl">
                 {APPLICATIONS_OPEN
                   ? MEMBERSHIP_PAGE.about.heading
                   : MEMBERSHIP_PAGE.closed.heading}
-              </h2>
+              </h1>
 
               {APPLICATIONS_OPEN ? (
                 <>
