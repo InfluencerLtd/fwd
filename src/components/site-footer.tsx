@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CONTACT } from "@/lib/brand";
 import { FOOTER, NAV } from "@/content/site";
+import { Mark } from "@/components/mark";
 
 /**
  * The footer.
@@ -22,9 +23,13 @@ import { FOOTER, NAV } from "@/content/site";
  * the labels live on the nav elements instead, where a screen reader still gets
  * the structure and the eye is not given anything else to read.
  *
- * There is no lockup down here any more, and no year. The mark is at the top of
- * every page already, and a footer that repeats it is a site signing its name
- * twice on the same letter.
+ * THE MARK IS HERE, THE WORD IS NOT, and there is still no year. "fwd." is
+ * already at the top of every page, and a footer that sets it again is a site
+ * signing its name twice on the same letter — which is why the lockup came out
+ * of here in the first place. The glyph on its own is a different thing: it
+ * closes the page without repeating anything, the way a small mark at the end
+ * of an article does. It is not a link, because everything it could lead to is
+ * in the column directly beneath it.
  */
 
 const PLACES = [
@@ -61,6 +66,12 @@ export function SiteFooter({
   return (
     <footer className={`mt-auto border-t border-border ${background}`}>
       <div className="mx-auto max-w-5xl px-6 py-14">
+        {/* The brand dark blue, the same as the lockup on any other light
+            ground. It is the `accent` token rather than that blue written out,
+            so it becomes the pale ice blue in dark mode, where the dark blue
+            would be 2.69:1 against the ground. */}
+        <Mark className="mb-9 h-6 text-accent" />
+
         <div className="grid gap-10 sm:grid-cols-3">
           <nav aria-label={FOOTER.navHeading}>
             <ul className="space-y-2">
