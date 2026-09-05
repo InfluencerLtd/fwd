@@ -76,7 +76,7 @@ export function ApplyForm({
   }
 
   const fieldClass = (key: string) =>
-    `fwd-field mt-2 w-full border bg-surface-raised px-5 py-3 font-body text-base text-ink transition-colors duration-300 disabled:opacity-60 ${
+    `fwd-field w-full border bg-surface-raised px-5 py-3 font-body text-base text-ink transition-colors duration-300 disabled:opacity-60 ${
       errors[key] ? "border-ink" : "border-border hover:border-ink/30"
     }`;
 
@@ -292,7 +292,7 @@ function Field({
 }) {
   return (
     <div>
-      <label htmlFor={id} className="sr-only">
+      <label htmlFor={id} className="fwd-float">
         {label}
         {optional ? <span className="text-ink-muted/70"> (optional)</span> : null}
       </label>

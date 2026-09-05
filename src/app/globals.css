@@ -568,6 +568,63 @@ textarea.fwd-field {
    ink-muted is the same colour as the label above the field, and measures 6:1
    on the white field. It is still obviously lighter than a typed answer, which
    is `ink` at 18.6:1, so a hint never reads as something already filled in. */
+/* ---------------------------------------------------------------------------
+   The label that comes back once you have answered.
+
+   The words above each field are not drawn any more: the hint inside the box
+   says what the field is. That works right up until somebody types, at which
+   point the hint is replaced by their answer and a long form becomes a column
+   of sentences with nothing saying what each one was for. On an eight-field
+   application read back before sending, that matters.
+
+   So the label returns, small, above the field, the moment the field stops
+   being empty. `:placeholder-shown` is what knows: it is true only while the
+   hint is on screen. A dropdown has no placeholder, so it is asked a different
+   question — whether its "nothing chosen yet" option is still the chosen one.
+
+   IT COSTS NO SPACE AND MOVES NOTHING. The label is taken out of the flow and
+   hung in the gap above its field, so a form does not shuffle down a line as
+   you fill it in. That is also why it fades rather than appears: at 11px in a
+   24px gap, something arriving instantly reads as a flicker.
+
+   It is `opacity`, not `display`, on purpose. A label that is switched off
+   is gone from the accessibility tree with it, and the whole point of keeping
+   these as real labels was that a screen reader still announces every field
+   whether it is filled in or not.
+   --------------------------------------------------------------------------- */
+
+/* Whatever holds a field becomes the thing its label is hung from. */
+:where(div, p, form, fieldset):has(> .fwd-field) {
+  position: relative;
+}
+
+.fwd-float {
+  position: absolute;
+  top: 0;
+  /* Lines up with the field's own left padding, so the label sits over the
+     first letter of the answer rather than over the curve of the pill. */
+  left: 1.25rem;
+  transform: translateY(-100%);
+  padding-bottom: 3px;
+  font-size: 11px;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  color: var(--fwd-ink-muted);
+  opacity: 0;
+  transition: opacity 300ms cubic-bezier(0.2, 0, 0, 1);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+:where(div, p, form, fieldset):has(> .fwd-field:not(:placeholder-shown))
+  > .fwd-float,
+:where(div, p, form, fieldset):has(
+    > select.fwd-field:not(:has(option[value=""]:checked))
+  )
+  > .fwd-float {
+  opacity: 1;
+}
+
 .fwd-field::placeholder {
   color: var(--fwd-ink-muted);
   opacity: 1;

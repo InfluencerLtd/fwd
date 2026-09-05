@@ -51,7 +51,7 @@ export function DirectoryBrowser({ members }: { members: DirectoryMember[] }) {
     <>
       <div className="mt-10 grid gap-4 sm:grid-cols-[1.6fr_1fr_1fr]">
         <div>
-          <label htmlFor={searchId} className="sr-only">
+          <label htmlFor={searchId} className="fwd-float">
             {DIRECTORY.searchLabel}
           </label>
           <input
@@ -60,19 +60,19 @@ export function DirectoryBrowser({ members }: { members: DirectoryMember[] }) {
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder={DIRECTORY.searchPlaceholder}
-            className={`${selectClass} mt-2`}
+            className={selectClass}
           />
         </div>
 
         <div>
-          <label htmlFor={groupId} className="sr-only">
+          <label htmlFor={groupId} className="fwd-float">
             {DIRECTORY.groupLabel}
           </label>
           <select
             id={groupId}
             value={group}
             onChange={(event) => setGroup(event.target.value)}
-            className={`${selectClass} mt-2`}
+            className={selectClass}
           >
             <option value="">{DIRECTORY.allGroups}</option>
             {MEMBER_GROUPS.map((option) => (
@@ -84,14 +84,14 @@ export function DirectoryBrowser({ members }: { members: DirectoryMember[] }) {
         </div>
 
         <div>
-          <label htmlFor={marketId} className="sr-only">
+          <label htmlFor={marketId} className="fwd-float">
             {DIRECTORY.marketLabel}
           </label>
           <select
             id={marketId}
             value={market}
             onChange={(event) => setMarket(event.target.value)}
-            className={`${selectClass} mt-2`}
+            className={selectClass}
           >
             <option value="">{DIRECTORY.allMarkets}</option>
             {markets.map((option) => (

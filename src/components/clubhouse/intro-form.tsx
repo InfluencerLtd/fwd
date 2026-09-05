@@ -47,18 +47,20 @@ export function IntroForm({
         {INTRO.intro.replace("{name}", targetName.split(" ")[0])}
       </p>
 
-      <label htmlFor={reasonId} className="sr-only">
-        {INTRO.reasonLabel}
-      </label>
-      <textarea
+      <div className="mt-6">
+        <label htmlFor={reasonId} className="fwd-float">
+          {INTRO.reasonLabel}
+        </label>
+        <textarea
         id={reasonId}
         name="reason"
         placeholder={INTRO.reasonLabel}
         rows={4}
         disabled={pending}
         aria-invalid={state.status === "error" ? true : undefined}
-        className="fwd-field mt-2 w-full border border-border bg-surface px-5 py-3 text-base text-ink disabled:opacity-60"
-      />
+          className="fwd-field w-full border border-border bg-surface px-5 py-3 text-base text-ink disabled:opacity-60"
+        />
+      </div>
       <p className="mt-1.5 text-[13px] text-ink-muted/80">{INTRO.reasonHint}</p>
 
       <Button type="submit" size="lg" disabled={pending} className="mt-6">

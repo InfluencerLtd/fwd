@@ -56,7 +56,7 @@ export function LibraryBrowser({ items }: { items: LibraryItem[] }) {
     <>
       <div className="mt-10 grid gap-4 sm:grid-cols-[1.6fr_1fr_1fr]">
         <div>
-          <label htmlFor={searchId} className="sr-only">
+          <label htmlFor={searchId} className="fwd-float">
             {LIBRARY.searchLabel}
           </label>
           <input
@@ -65,19 +65,19 @@ export function LibraryBrowser({ items }: { items: LibraryItem[] }) {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder={LIBRARY.searchPlaceholder}
-            className={`${control} mt-2`}
+            className={control}
           />
         </div>
 
         <div>
-          <label htmlFor={kindId} className="sr-only">
+          <label htmlFor={kindId} className="fwd-float">
             {LIBRARY.kindLabel}
           </label>
           <select
             id={kindId}
             value={kind}
             onChange={(e) => setKind(e.target.value)}
-            className={`${control} mt-2`}
+            className={control}
           >
             <option value="">{LIBRARY.allKinds}</option>
             {kindsPresent.map((k) => (
@@ -87,14 +87,14 @@ export function LibraryBrowser({ items }: { items: LibraryItem[] }) {
         </div>
 
         <div>
-          <label htmlFor={categoryId} className="sr-only">
+          <label htmlFor={categoryId} className="fwd-float">
             {LIBRARY.categoryLabel}
           </label>
           <select
             id={categoryId}
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className={`${control} mt-2`}
+            className={control}
           >
             <option value="">{LIBRARY.allCategories}</option>
             {categories.map((c) => (

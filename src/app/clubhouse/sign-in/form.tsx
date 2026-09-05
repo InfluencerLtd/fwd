@@ -45,10 +45,13 @@ export function SignInForm({ next }: { next: string }) {
             {/* Kept so the second step knows which address to check. */}
             <input type="hidden" name="email" value={state.email} />
 
-            <label htmlFor={codeId} className="sr-only">
-              {SIGN_IN.codeLabel}
-            </label>
-            <input
+            {/* The label is hung off this wrapper rather than off the form,
+                so it lands above its own field and not above everything. */}
+            <div>
+              <label htmlFor={codeId} className="fwd-float">
+                {SIGN_IN.codeLabel}
+              </label>
+              <input
               id={codeId}
               name="code"
               // A numeric keypad on a phone, and the code filled in from the
@@ -62,8 +65,9 @@ export function SignInForm({ next }: { next: string }) {
               disabled={pending}
               aria-invalid={state.error ? true : undefined}
               aria-describedby={state.error ? errorId : undefined}
-              className="fwd-field mt-2 w-full border border-border bg-surface-raised px-5 py-3 text-center font-mono text-2xl tracking-[0.4em] text-ink placeholder:font-body placeholder:text-base placeholder:tracking-normal disabled:opacity-60"
-            />
+                className="fwd-field w-full border border-border bg-surface-raised px-5 py-3 text-center font-mono text-2xl tracking-[0.4em] text-ink placeholder:font-body placeholder:text-base placeholder:tracking-normal disabled:opacity-60"
+              />
+            </div>
 
             <Button
               type="submit"
@@ -77,10 +81,11 @@ export function SignInForm({ next }: { next: string }) {
           </>
         ) : (
           <>
-            <label htmlFor={emailId} className="sr-only">
-              {SIGN_IN.emailLabel}
-            </label>
-            <input
+            <div>
+              <label htmlFor={emailId} className="fwd-float">
+                {SIGN_IN.emailLabel}
+              </label>
+              <input
               id={emailId}
               name="email"
               type="email"
@@ -90,8 +95,9 @@ export function SignInForm({ next }: { next: string }) {
               disabled={pending}
               aria-invalid={state.error ? true : undefined}
               aria-describedby={state.error ? errorId : undefined}
-              className="fwd-field mt-2 w-full border border-border bg-surface-raised px-5 py-3 text-base text-ink disabled:opacity-60"
-            />
+                className="fwd-field w-full border border-border bg-surface-raised px-5 py-3 text-base text-ink disabled:opacity-60"
+              />
+            </div>
 
             <Button
               type="submit"

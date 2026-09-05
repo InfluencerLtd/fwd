@@ -43,8 +43,8 @@ export function ClaimForm({
   const sent = existing?.status === "sent";
 
   const field =
-    "fwd-field mt-2 w-full border border-border bg-surface-raised px-5 py-3 font-body text-base text-ink transition-colors duration-300 hover:border-ink/30 disabled:opacity-60";
-  const label = "sr-only";
+    "fwd-field w-full border border-border bg-surface-raised px-5 py-3 font-body text-base text-ink transition-colors duration-300 hover:border-ink/30 disabled:opacity-60";
+  const label = "fwd-float";
 
   const source = existing ?? prefill;
 

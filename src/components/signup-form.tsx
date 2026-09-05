@@ -84,11 +84,12 @@ export function SignupForm({
     <form action={formAction} className="font-body">
       <input type="hidden" name="source" value={source} />
 
-      <label htmlFor={emailId} className="sr-only">
-        {HOLDING.emailLabel}
-      </label>
-
+      {/* The label hangs off the row that holds the field, not off the form,
+          so it lands above the field rather than above the whole thing. */}
       <div className="mt-2 flex flex-col gap-3 sm:flex-row">
+        <label htmlFor={emailId} className="fwd-float">
+          {HOLDING.emailLabel}
+        </label>
         <input
           id={emailId}
           name="email"

@@ -14,10 +14,11 @@ export function EarlyAccessForm() {
 
   return (
     <form action={formAction} className="mt-8 font-body">
-      <label htmlFor={passwordId} className="sr-only">
-        Password
-      </label>
-      <input
+      <div>
+        <label htmlFor={passwordId} className="fwd-float">
+          Password
+        </label>
+        <input
         id={passwordId}
         name="password"
         type="password"
@@ -27,8 +28,9 @@ export function EarlyAccessForm() {
         disabled={pending}
         aria-describedby={state.error ? errorId : undefined}
         aria-invalid={state.error ? true : undefined}
-        className="fwd-field mt-2 w-full border border-border bg-surface-raised px-5 py-3 text-base text-ink disabled:opacity-60"
-      />
+          className="fwd-field w-full border border-border bg-surface-raised px-5 py-3 text-base text-ink disabled:opacity-60"
+        />
+      </div>
       <button
         type="submit"
         disabled={pending}
