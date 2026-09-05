@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { BRAND } from "@/lib/brand";
+import { Wordmark } from "@/components/wordmark";
 import { NAV } from "@/content/clubhouse";
 import { signOut } from "@/app/clubhouse/actions";
 
@@ -20,8 +21,15 @@ export function ClubhouseNav() {
         aria-label={BRAND.memberArea}
         className="mx-auto flex max-w-5xl flex-wrap items-center gap-x-7 gap-y-3 px-6 py-4 font-body text-sm"
       >
-        <Link href="/clubhouse" className="font-display text-2xl text-ink">
-          {BRAND.markShort}
+        {/* The lockup, in a dark pill so the pale blue can appear at all.
+            On the off-white it measures 1.27:1 and would be invisible; the
+            pill gives it the dark ground the blue is defined for. Same
+            treatment as the mark inside the three line menu on the public
+            site, so the two match. */}
+        <Link href="/clubhouse" aria-label={BRAND.memberArea}>
+          <span className="fwd-on-dark inline-block rounded-lg bg-photo-ground px-3 py-2">
+            <Wordmark size="small" />
+          </span>
         </Link>
 
         <div className="flex flex-1 flex-wrap items-center gap-x-6 gap-y-2">
