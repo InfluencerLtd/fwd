@@ -11,7 +11,7 @@ import Link from "next/link";
  * and the pale ice blue is unreadable on a light one.
  */
 
-type Variant = "primary" | "onDark" | "outlineOnDark" | "quiet";
+type Variant = "primary" | "onDark" | "outlineOnDark" | "quiet" | "chosen";
 type Size = "sm" | "md" | "lg";
 
 const VARIANTS: Record<Variant, string> = {
@@ -48,6 +48,16 @@ const VARIANTS: Record<Variant, string> = {
     "border border-accent-on-dark text-accent-on-dark hover:bg-accent-on-dark hover:text-photo-ground",
   /** Outlined, for light grounds. */
   quiet: "border border-ink/20 text-ink hover:border-ink hover:bg-ink hover:text-surface",
+  /**
+   * The one already chosen, out of a set where every option is `primary`.
+   *
+   * It is the primary button inverted: the near-black becomes the fill and the
+   * pale blue becomes the label. Two buttons that are both pale blue cannot say
+   * which one you picked, and a choice you have already made should not look
+   * identical to the one you did not. 13.42:1 either way round.
+   */
+  chosen:
+    "border border-photo-ground bg-photo-ground text-accent-on-dark hover:bg-ink",
 };
 
 const SIZES: Record<Size, string> = {

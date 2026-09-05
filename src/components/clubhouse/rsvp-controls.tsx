@@ -39,13 +39,17 @@ export function RsvpControls({
         </p>
       ) : null}
 
+      {/* Both pale blue. The one already chosen is the same button inverted,
+          near-black fill with a pale blue label, because two identical buttons
+          cannot say which answer you gave. The line above says it in words as
+          well, but the colour is what carries it at a glance. */}
       <div className="mt-4 flex flex-wrap gap-3">
         <Button
           type="submit"
           name="response"
           value="going"
           size="lg"
-          variant={response === "going" ? "primary" : "quiet"}
+          variant={response === "going" ? "chosen" : "primary"}
           disabled={pending}
         >
           {pending ? EVENTS.rsvpSaving : EVENTS.rsvpGoing}
@@ -55,7 +59,7 @@ export function RsvpControls({
           name="response"
           value="not_going"
           size="lg"
-          variant={response === "not_going" ? "primary" : "quiet"}
+          variant={response === "not_going" ? "chosen" : "primary"}
           disabled={pending}
         >
           {EVENTS.rsvpNotGoing}
