@@ -78,10 +78,14 @@ export const FOOTER = {
   privacy: "privacy",
   cookies: "cookies",
   signIn: "member sign in",
-  /** Above the short list of places the footer can take you. */
+  /**
+   * Not printed. The footer's columns carry no visible headings, because there
+   * are eight words in the whole footer and a heading over each pair would be
+   * more furniture than content. These name the two lists for a screen reader,
+   * which still gets the structure without the eye being given more to read.
+   */
   navHeading: "site",
-  /** Above the address. */
-  contactHeading: "get in touch",
+  legalHeading: "legal",
 } as const;
 
 /** Used for the browser tab, search results, and link previews in email, WhatsApp and Slack. */

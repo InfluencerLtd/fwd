@@ -7,20 +7,24 @@ import { FOOTER, NAV } from "@/content/site";
 /**
  * The footer.
  *
- * IT USED TO BE ONE ROW: the lockup, then a line with the address, the light
- * and dark switch and three links crammed together. Three problems with that.
- * It was not navigable, because the only places it could take you were the
- * member area and two legal pages, so the three line menu was the only way
- * around the site. The address sat next to the appearance switch as though
- * they were the same kind of thing. And the address was not a link, which is
- * an odd thing to do to the only way of reaching us.
+ * IT USED TO BE A DARK BAND. A slab of near-black with a pale blue lockup on
+ * it, which made it the loudest thing on the page: every page ended by
+ * announcing itself. A footer is the quietest part of a site. It is where
+ * somebody goes when they did not find what they wanted above, and it should
+ * feel like the page continuing rather than a second design arriving.
  *
- * Now it is three tiers, which is the least structure that lets each thing be
- * what it is: the lockup, then the places and the address as two labelled
- * groups, then a quiet bottom line for the legal pages and the switch.
+ * So it sits on the page's own ground now, separated by a hairline rather than
+ * by a change of colour, which is also what the member area's footer has always
+ * done. The two match.
  *
- * It sits on the dark photo ground so the lockup appears the same way it does
- * in the hero, with the pale blue where it belongs.
+ * The columns carry no visible headings. There are eight words in this whole
+ * footer and a heading over each pair would be more furniture than content;
+ * the labels live on the nav elements instead, where a screen reader still gets
+ * the structure and the eye is not given anything else to read.
+ *
+ * The lockup is in the near-black, NOT the pale blue it is everywhere else.
+ * That is not a preference: the pale blue is for dark grounds only, and on the
+ * off-white it measures 1.27:1. See the `tone` prop in Wordmark.
  */
 
 const PLACES = [
@@ -29,95 +33,74 @@ const PLACES = [
   { href: "/clubhouse", label: FOOTER.signIn },
 ] as const;
 
-/** Small caps-ish label over each group. */
-const GROUP_HEADING =
-  "font-body text-[11px] tracking-[0.18em] text-photo-ink/60";
+const LEGAL = [
+  { href: "/privacy", label: FOOTER.privacy },
+  { href: "/cookies", label: FOOTER.cookies },
+] as const;
+
+/*
+ * The padding is the tap target, and the negative margin takes it back out of
+ * the layout so the lists stay tight. A 15px line of text is about 21px tall,
+ * which is a small thing to hit with a thumb.
+ */
+const LINK = "fwd-underline -my-1 inline-block py-1 font-body text-[15px]";
 
 export function SiteFooter() {
   return (
-    <footer className="fwd-on-dark bg-photo-ground">
-      <div className="fwd-grain">
-        <div className="relative z-1 mx-auto max-w-5xl px-6 py-16">
-          <Wordmark size="footer" />
+    <footer className="mt-auto border-t border-border">
+      <div className="mx-auto max-w-5xl px-6 py-14">
+        <div className="grid gap-10 sm:grid-cols-3">
+          <nav aria-label={FOOTER.navHeading}>
+            <ul className="space-y-2">
+              {PLACES.map((place) => (
+                <li key={place.href}>
+                  <Link href={place.href} className={`${LINK} text-ink`}>
+                    {place.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-          {/* Address on the left under the lockup, places on the right. The
-              two are read in different ways: the address is the one thing a
-              stranger wants, so it sits where the eye lands after the mark,
-              and the list of places is a set of exits, which belong at the
-              far edge. Right aligned so the list has an edge of its own to
-              hang from rather than floating in the middle of the footer. */}
-          <div className="mt-14 grid gap-10 border-t border-photo-ink/15 pt-10 sm:grid-cols-2">
-            <div>
-              <h2 className={GROUP_HEADING}>{FOOTER.contactHeading}</h2>
-              {/* A link, not a line of text. It is the only way of reaching us
-                  from this page, so it should be one press rather than a
-                  select and a copy. */}
-              <a
-                href={`mailto:${CONTACT.email}`}
-                className="fwd-underline mt-2.5 inline-block py-2 font-body text-[15px] text-accent-on-dark"
-              >
-                {CONTACT.email}
-              </a>
-            </div>
+          <nav aria-label={FOOTER.legalHeading}>
+            <ul className="space-y-2">
+              {LEGAL.map((page) => (
+                <li key={page.href}>
+                  <Link href={page.href} className={`${LINK} text-ink-muted`}>
+                    {page.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-            <nav aria-label={FOOTER.navHeading} className="sm:text-right">
-              <h2 className={GROUP_HEADING}>{FOOTER.navHeading}</h2>
-              {/* The padding is the tap target. A 15px line of text is about
-                  21px tall, which is a small thing to hit with a thumb, and
-                  the padding takes each link to 37 without changing how the
-                  list looks. The gap between them stays big enough that a near
-                  miss does not land on the wrong one.
-
-                  inline-block, not block, so the underline and the tap target
-                  are the width of the words rather than the width of the
-                  column. A block link right aligned would still be clickable
-                  all the way back to the left edge, which is a large invisible
-                  target sitting over nothing. */}
-              <ul className="mt-2.5 space-y-1">
-                {PLACES.map((place) => (
-                  <li key={place.href}>
-                    <Link
-                      href={place.href}
-                      className="fwd-underline inline-block py-2 font-body text-[15px] text-photo-ink"
-                    >
-                      {place.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </div>
-
-          {/* The bottom line. Legal pages and the appearance switch: the two
-              things nobody comes here for and everybody should be able to
-              find. */}
-          <div className="mt-14 flex flex-col gap-5 border-t border-photo-ink/15 pt-8 font-body text-sm sm:flex-row-reverse sm:items-center sm:justify-between">
-            <div className="flex items-center gap-3">
-              {/* The light and dark switch lives here rather than on the hero,
-                  so nothing sits on top of the photograph. */}
-              <ThemeToggle className="border-photo-ink/25 text-photo-ink/70 hover:text-photo-ink" />
-              <span className="text-[12px] text-photo-ink/60">
-                {NAV.appearance}
-              </span>
-            </div>
-
-            <nav
-              aria-label={FOOTER.privacy}
-              className="flex flex-wrap items-center gap-x-7 gap-y-3"
+          <div>
+            {/* A link, not a line of text. It is the only way of reaching us
+                from this page, so it should be one press rather than a select
+                and a copy. */}
+            <a
+              href={`mailto:${CONTACT.email}`}
+              className={`${LINK} text-accent`}
             >
-              <Link
-                href="/privacy"
-                className="fwd-underline -my-1.5 py-1.5 text-photo-ink/70"
-              >
-                {FOOTER.privacy}
-              </Link>
-              <Link
-                href="/cookies"
-                className="fwd-underline -my-1.5 py-1.5 text-photo-ink/70"
-              >
-                {FOOTER.cookies}
-              </Link>
-            </nav>
+              {CONTACT.email}
+            </a>
+          </div>
+        </div>
+
+        {/* The bottom line: the mark, the appearance switch, and the year. */}
+        <div className="mt-16 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+          <Wordmark size="footer" tone="page" />
+
+          <div className="flex items-center gap-4 font-body text-[12px] text-ink-muted">
+            {/* The light and dark switch lives here rather than on the hero, so
+                nothing sits on top of the photograph. */}
+            <span className="flex items-center gap-2.5">
+              <ThemeToggle />
+              {NAV.appearance}
+            </span>
+            {/* Baked in at build. The site is redeployed far more often than
+                once a year, so this cannot go stale in practice. */}
+            <span>{new Date().getFullYear()}</span>
           </div>
         </div>
       </div>

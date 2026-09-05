@@ -23,6 +23,7 @@ export function Wordmark({
   heading = false,
   align = "left",
   signature = true,
+  tone = "photo",
 }: {
   size?: "hero" | "footer" | "small";
   /**
@@ -44,6 +45,23 @@ export function Wordmark({
    * two are still never joined into a single phrase in running text.
    */
   signature?: boolean;
+  /**
+   * Which kind of ground the lockup is sitting on.
+   *
+   * "photo" is the pale ice blue. It is a FIXED colour, for the grounds that
+   * stay dark whatever the light and dark switch says: the hero, the holding
+   * page, the top of the membership page. globals.css says that blue is "ONLY
+   * ever on dark grounds" and it means it, so this must not be used anywhere
+   * the ground can turn light.
+   *
+   * "page" is the ink token, which follows the switch: near-black on the light
+   * page, near-white on the dark one. That is what the footer wants, because
+   * the footer sits on the page rather than on a photograph.
+   *
+   * The signature stays quieter than the mark either way, and it is size and
+   * the italic that carry that, not colour.
+   */
+  tone?: "photo" | "page";
 }) {
   const markClass =
     size === "hero"
@@ -81,6 +99,7 @@ export function Wordmark({
       : "items-baseline";
 
   const Mark = heading ? "h1" : "span";
+  const inkClass = tone === "photo" ? "text-accent-on-dark" : "text-ink";
 
   return (
     <div className={align === "center" ? "flex justify-center" : "flex"}>
@@ -88,7 +107,7 @@ export function Wordmark({
           unit rather than the mark centring and the signature hanging off it. */}
       <div className={`inline-flex ${stackClass} ${gapClass}`}>
         <Mark
-          className={`font-display leading-[0.85] text-accent-on-dark ${markClass}`}
+          className={`font-display leading-[0.85] ${inkClass} ${markClass}`}
         >
           {BRAND.markShort}
         </Mark>
@@ -100,7 +119,7 @@ export function Wordmark({
             one. */}
         {signature ? (
           <span
-            className={`font-display italic leading-none text-accent-on-dark ${signatureClass}`}
+            className={`font-display italic leading-none ${inkClass} ${signatureClass}`}
           >
             {BRAND.endorsement}
           </span>
