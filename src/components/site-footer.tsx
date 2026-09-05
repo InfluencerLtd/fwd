@@ -21,6 +21,10 @@ import { Mark } from "@/components/mark";
  * it did — a little too well. A footer that is meant to read as the page
  * carrying on should not be announced by a line drawn under everything else.
  *
+ * The address sits under the mark rather than in a column of its own, so the
+ * two things that are not navigation are together at the top and the links are
+ * a block underneath.
+ *
  * The columns carry no visible headings. There are eight words in this whole
  * footer and a heading over each pair would be more furniture than content;
  * the labels live on the nav elements instead, where a screen reader still gets
@@ -69,13 +73,26 @@ export function SiteFooter({
   return (
     <footer className={`mt-auto ${background}`}>
       <div className="mx-auto max-w-5xl px-6 py-14">
-        {/* The brand dark blue, the same as the lockup on any other light
-            ground. It is the `accent` token rather than that blue written out,
-            so it becomes the pale ice blue in dark mode, where the dark blue
-            would be 2.69:1 against the ground. */}
-        <Mark className="mb-9 h-6 text-accent" />
+        {/* The near-black, not the brand blue. Down here the mark is the
+            quietest thing on the page rather than the identity announcing
+            itself, and a blue would have been the loudest thing in the footer.
+            It is `ink`, the same colour as the links beside it, so it turns
+            near-white in dark mode along with them: 15.4:1 on the warm sand,
+            17.5:1 on the off-white. */}
+        <Mark className="h-6 text-ink" />
 
-        <div className="grid gap-10 sm:grid-cols-3">
+        {/* Under the mark, not off in the third column.
+            A link, not a line of text: it is the only way of reaching us from
+            this page, so it should be one press rather than a select and a
+            copy. */}
+        <a
+          href={`mailto:${CONTACT.email}`}
+          className={`${LINK} mt-4 text-accent`}
+        >
+          {CONTACT.email}
+        </a>
+
+        <div className="mt-10 grid gap-10 sm:grid-cols-2">
           <nav aria-label={FOOTER.navHeading}>
             <ul className="space-y-2">
               {PLACES.map((place) => (
@@ -99,18 +116,6 @@ export function SiteFooter({
               ))}
             </ul>
           </nav>
-
-          <div>
-            {/* A link, not a line of text. It is the only way of reaching us
-                from this page, so it should be one press rather than a select
-                and a copy. */}
-            <a
-              href={`mailto:${CONTACT.email}`}
-              className={`${LINK} text-accent`}
-            >
-              {CONTACT.email}
-            </a>
-          </div>
         </div>
 
       </div>
