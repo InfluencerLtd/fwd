@@ -37,7 +37,11 @@ export function HoldingPage() {
         <div className="relative z-1 mx-auto flex w-full max-w-5xl flex-col px-6 pb-20 pt-40">
           <Wordmark size="hero" heading />
 
-          <p className="mt-12 max-w-xl font-body text-lg leading-relaxed text-photo-ink/85 sm:text-xl">
+          {/* max-w-2xl, not the xl the rest of the page uses. At 20px this line
+              wants 628px and xl caps it at 576, which broke one sentence across
+              two lines for the sake of 52 pixels. It still wraps on a phone,
+              where nothing could hold it on one line. */}
+          <p className="mt-12 max-w-2xl font-body text-lg leading-relaxed text-photo-ink/85 sm:text-xl">
             {HOLDING.line}
           </p>
 
