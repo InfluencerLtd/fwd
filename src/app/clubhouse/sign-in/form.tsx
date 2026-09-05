@@ -57,11 +57,12 @@ export function SignInForm({ next }: { next: string }) {
               autoComplete="one-time-code"
               pattern="[0-9]*"
               maxLength={6}
+              placeholder={SIGN_IN.codePlaceholder}
               autoFocus
               disabled={pending}
               aria-invalid={state.error ? true : undefined}
               aria-describedby={state.error ? errorId : undefined}
-              className="fwd-field mt-2 w-full border border-border bg-surface-raised px-5 py-3 text-center font-mono text-2xl tracking-[0.4em] text-ink disabled:opacity-60"
+              className="fwd-field mt-2 w-full border border-border bg-surface-raised px-5 py-3 text-center font-mono text-2xl tracking-[0.4em] text-ink placeholder:font-body placeholder:text-base placeholder:tracking-normal disabled:opacity-60"
             />
 
             <Button
@@ -84,6 +85,7 @@ export function SignInForm({ next }: { next: string }) {
               name="email"
               type="email"
               autoComplete="email"
+              placeholder={SIGN_IN.emailPlaceholder}
               defaultValue={state.email}
               disabled={pending}
               aria-invalid={state.error ? true : undefined}

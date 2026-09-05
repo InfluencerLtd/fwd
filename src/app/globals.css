@@ -558,6 +558,22 @@ textarea.fwd-field {
 }
 
 /* ---------------------------------------------------------------------------
+   The hint inside an empty field.
+
+   The colour is set rather than left to the browser. Every browser picks its
+   own grey and most of them pick one that cannot be read: the usual default
+   lands around 2.5:1 on white, and Firefox then applies its own opacity on top
+   of whatever colour it is given, which is what `opacity: 1` is undoing.
+
+   ink-muted is the same colour as the label above the field, and measures 6:1
+   on the white field. It is still obviously lighter than a typed answer, which
+   is `ink` at 18.6:1, so a hint never reads as something already filled in. */
+.fwd-field::placeholder {
+  color: var(--fwd-ink-muted);
+  opacity: 1;
+}
+
+/* ---------------------------------------------------------------------------
    The arrow on a dropdown.
 
    Every browser draws the native one differently and all of them put it hard

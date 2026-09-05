@@ -16,6 +16,7 @@ export const SIGN_IN = {
     "Members only. Enter your email and we'll send you a code. No password required.",
 
   emailLabel: "email address",
+  emailPlaceholder: "enter email address",
   emailSubmit: "send me a code",
   sending: "sending",
 
@@ -30,6 +31,9 @@ export const SIGN_IN = {
   codeIntro:
     "If that address belongs to a member, a code is on its way. It works once and expires in ten minutes.",
   codeLabel: "code",
+  /* The label is short and this is where the detail goes: six is worth knowing
+     while you are typing, and it does not need to be in the label as well. */
+  codePlaceholder: "enter six digit code",
   codeSubmit: "sign in",
   checking: "checking",
   resend: "use a different address",
