@@ -167,7 +167,9 @@ export async function findApplicationsAwaitingHubspot(limit = 50) {
 
   const { data } = await supabase
     .from("applications")
-    .select("id, name, email, role, company, group_type, market, link, reason")
+    .select(
+      "id, name, email, role, company, group_type, market, link, reason, consented",
+    )
     .is("hubspot_synced_at", null)
     .order("created_at", { ascending: true })
     .limit(limit);

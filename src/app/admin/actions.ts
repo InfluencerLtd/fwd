@@ -25,6 +25,10 @@ import {
 } from "@/lib/store/library";
 import { isKnownKind } from "@/lib/library-kinds";
 import { saveMerchItem, setClaimStatus } from "@/lib/store/merch";
+import {
+  findApplicationsAwaitingHubspot,
+  pushToHubspot,
+} from "@/lib/store/applications";
 
 function matches(given: string, expected: string): boolean {
   const a = Buffer.from(given);
@@ -69,6 +73,49 @@ export async function decide(formData: FormData): Promise<void> {
   if (!id || (decision !== "accepted" && decision !== "declined")) return;
 
   await decideApplication(id, decision, "admin");
+  revalidatePath("/admin");
+}
+
+/**
+ * Pushes every application that has not reached HubSpot yet.
+ *
+ * WITHOUT THIS, "it will be pushed once a token is set" was not true. Each
+ * application tries HubSpot once, when it arrives, and records the failure if
+ * there is one. Nothing ever looked at those again. Applications that came in
+ * before the token existed — which is all of them, until somebody in HubSpot
+ * gets round to it — would have sat there unsynced for good, with the site
+ * saying they were waiting for something that was never going to happen.
+ *
+ * It is a button rather than a schedule because it is a thing that needs doing
+ * on the day the token arrives, and perhaps once more if HubSpot has an
+ * afternoon off. A cron job to catch an event that happens twice is more moving
+ * parts than the problem has.
+ *
+ * Fifty at a time, which is what findApplicationsAwaitingHubspot returns.
+ * Pressing it again picks up the next fifty, and the count on the button says
+ * whether there are any.
+ */
+export async function pushWaitingApplicationsToHubspot(): Promise<void> {
+  if (!(await isAdmin())) return;
+
+  const waiting = await findApplicationsAwaitingHubspot();
+  for (const application of waiting) {
+    await pushToHubspot(application.id, {
+      name: application.name,
+      email: application.email,
+      role: application.role,
+      company: application.company,
+      group: application.group_type as MemberGroupId,
+      market: application.market,
+      link: application.link,
+      reason: application.reason,
+      // Carried through rather than assumed. HubSpot is not sent it, but
+      // saying "yes they consented" about somebody who did not is not a thing
+      // to write down anywhere, even where it is ignored.
+      consented: application.consented,
+    });
+  }
+
   revalidatePath("/admin");
 }
 

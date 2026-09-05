@@ -1,9 +1,10 @@
 import { requireAdmin } from "@/lib/auth/admin-guard";
 import type { Metadata } from "next";
 import { findPendingApplications } from "@/lib/store/decisions";
+import { findApplicationsAwaitingHubspot } from "@/lib/store/applications";
 import { isHubspotConfigured } from "@/lib/hubspot";
 import { isEmailConfigured } from "@/lib/email";
-import { decide } from "./actions";
+import { decide, pushWaitingApplicationsToHubspot } from "./actions";
 import { MEMBER_GROUPS } from "@/lib/brand";
 
 export const metadata: Metadata = { title: "Applications" };
@@ -19,6 +20,12 @@ export default async function AdminPage() {
   await requireAdmin();
 
   const pending = await findPendingApplications();
+  const hubspotConnected = isHubspotConfigured();
+  // Only worth asking for when there is a token to push them with. Before that
+  // they are waiting on HubSpot existing, which the warning above already says.
+  const awaitingHubspot = hubspotConnected
+    ? (await findApplicationsAwaitingHubspot()).length
+    : 0;
 
   return (
     <main className="px-6 py-16 font-body">
@@ -27,9 +34,30 @@ export default async function AdminPage() {
 
         <Warnings
           databaseMissing={pending === null}
-          hubspot={isHubspotConfigured()}
+          hubspot={hubspotConnected}
           email={isEmailConfigured()}
         />
+
+        {awaitingHubspot > 0 ? (
+          /* Every application tries HubSpot once, as it arrives. The ones that
+             came in before the token existed never got a second go, so this is
+             the second go. Fifty at a time; press it again if the count is
+             still there. */
+          <form action={pushWaitingApplicationsToHubspot} className="mt-8">
+            <p className="text-[14px] leading-relaxed text-ink">
+              {awaitingHubspot === 1
+                ? "One application has not reached HubSpot."
+                : `${awaitingHubspot} applications have not reached HubSpot.`}{" "}
+              They were saved before it was connected, or a push failed.
+            </p>
+            <button
+              type="submit"
+              className="fwd-btn font-body mt-3 border border-photo-ground/60 bg-accent-on-dark px-5 py-1.5 text-sm text-photo-ground hover:border-photo-ground hover:bg-photo-ground hover:text-accent-on-dark"
+            >
+              push them to HubSpot
+            </button>
+          </form>
+        ) : null}
 
         {pending === null ? null : pending.length === 0 ? (
           <p className="mt-10 text-[15px] text-ink-muted">
@@ -131,7 +159,7 @@ function Warnings({
     );
   if (!hubspot)
     problems.push(
-      "HubSpot is not connected. Applications are still saved here and will be pushed once a token is set.",
+      "HubSpot is not connected. Applications are still saved here, and once a token is set a button appears on this page to push the waiting ones across.",
     );
   if (!email)
     problems.push(

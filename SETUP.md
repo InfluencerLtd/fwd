@@ -86,14 +86,40 @@ welcome or decline emails.
    somebody with access to the domain's DNS settings.
 3. Create an **API key**.
 
+**Which domain.** Verify `fwd.influencer.com`, the site's own subdomain, and
+send from that. Verifying a subdomain adds records under that subdomain only and
+does not touch influencer.com's own email — worth saying out loud to whoever
+runs the DNS, because a request to add SPF and DKIM records is the sort of thing
+that rightly makes people ask.
+
 Add to `.env.local`:
 
 ```
 RESEND_API_KEY="the key"
-EMAIL_FROM="fwd. <hello@yourdomain>"
+EMAIL_FROM="fwd. <hello@fwd.influencer.com>"
 ```
 
-You can read all three emails at `/review/emails` before any are sent.
+The same two go into Vercel, or it works on your machine and not on the site.
+See section 6.
+
+Then check it:
+
+```
+npm run check:email
+```
+
+That connects for real: the key, whether the domain is actually verified (an
+unverified one does not warn, it refuses every send), whether the links inside
+the emails point at the real site rather than at localhost, and whether all five
+emails still render. It sends nothing. To prove delivery as well:
+
+```
+npm run check:email -- --send you@example.com
+```
+
+which sends one real sign-in email to an address you can read.
+
+You can read all five emails at `/review/emails` before any are sent.
 
 ---
 
@@ -287,6 +313,14 @@ npm run check:db
 
 runs the database files against a real database on your own computer and tells
 you if any of them is broken. It needs no accounts and changes nothing.
+
+```bash
+npm run check:email
+```
+
+checks the Resend key, whether the sending domain is verified, whether the links
+inside the emails point at the real site, and whether all five emails render.
+This is the one to run first: without email nobody can sign in at all.
 
 ```bash
 npm run check:hubspot
