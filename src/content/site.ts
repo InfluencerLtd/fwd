@@ -169,12 +169,12 @@ export const MEMBERSHIP = {
   /**
    * The eight things membership gets you.
    *
-   * ONLY `id` AND `summary` ARE ON THE SITE at the moment. They are the caption
-   * and the photograph on each tile at the top of the membership page.
+   * ONLY `id` AND `title` ARE ON THE SITE. They are the photograph and the
+   * words on each tile at the top of the membership page.
    *
-   * `title` is not drawn anywhere yet. It is the headline for each card, kept
-   * because the tiles are one line each and that line is not always enough to
-   * say what the benefit is called.
+   * `summary` is not drawn anywhere now. It is the line under each headline,
+   * kept because it is the only written record of what each benefit actually
+   * is, and because the tiles say almost nothing on their own.
    *
    * The long `detail` field that used to sit here has gone. Nothing ever
    * rendered it, this note used to say to delete it rather than leave copy
@@ -191,8 +191,8 @@ export const MEMBERSHIP = {
     {
       id: "seats",
       title: "A seat in the room",
-      /* The only tile whose line is its own headline. Asked for directly. */
-      summary: "A seat in the room",
+      summary:
+        "Dinners, roundtables and gatherings, on a guest list built by hand.",
     },
     {
       id: "partner-rooms",

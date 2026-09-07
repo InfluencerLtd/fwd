@@ -53,7 +53,7 @@ function Row({
         {row.map((card, index) => (
           <li
             key={`${card.id}-${index}`}
-            // The duplicate half. Same eight benefits again, so it is hidden
+            // The duplicate half. The same benefits again, so it is hidden
             // rather than read out a second time.
             aria-hidden={index >= cards.length || undefined}
             className={`shrink-0 ${TILE_HEIGHT} ${WIDTHS[index % WIDTHS.length]}`}
@@ -71,8 +71,15 @@ function Row({
               washClassName="bg-photo-ground/60"
               className="h-full rounded-xl"
             >
-              <p className="absolute inset-0 z-2 flex items-center justify-center px-6 text-center font-body text-[15px] leading-snug text-photo-ink sm:text-base">
-                {card.summary}
+              {/* THE HEADLINE, NOT THE LINE UNDER IT. The tiles used to carry
+                  the longer summary and it was too much reading for something
+                  that drifts past: four cards were asked for one at a time to
+                  say their own name instead, which is the whole set. The
+                  summaries stay in the content file — they are still the only
+                  written record of what each benefit is — and putting them
+                  back is this one line. */}
+              <p className="absolute inset-0 z-2 flex items-center justify-center px-6 text-center font-body text-base leading-snug text-photo-ink sm:text-lg">
+                {card.title}
               </p>
             </PhotoPlaceholder>
           </li>
