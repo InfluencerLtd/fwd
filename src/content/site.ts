@@ -507,7 +507,7 @@ export const MEMBERSHIP_PAGE = {
     /** DRAFT. */
     heading: "fwd. membership",
     /** DRAFT. */
-    note: "Members get access to the rooms, people and ideas shaping the creator economy from invite-only dinners and private conversations to industry briefings, experiences and a network that extends far beyond the room.",
+    note: "Members get access to the rooms, people, and ideas shaping the creator economy. Connect through invite-only dinners, private conversations, and industry briefings with a network that extends far beyond the room.",
   },
 
   /** Shown instead of the form when applications are closed. */
