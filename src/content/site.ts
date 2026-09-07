@@ -470,6 +470,31 @@ export const IMAGERY = {
     "global-access": "Waiting on what this card says. A city at night from a window",
   },
 
+  /**
+   * DRAFT, ALL EIGHT. The words across the band.
+   *
+   * These are mine, not yours: there was no caption copy for this band, only
+   * the shot briefs below, which are notes to a photographer. They are what a
+   * member actually does here rather than adjectives about it, and they are
+   * short because the band moves. Overwrite them.
+   *
+   * They deliberately do not repeat the benefit tiles further down the
+   * membership page. Saying "the directory" in both places would make the two
+   * bands read as the same list twice.
+   */
+  /** Names the band for a screen reader. Not printed. */
+  bandLabel: "what happens in the room",
+  bandCaptions: [
+    "Dinners",
+    "Roundtables",
+    "Introductions",
+    "Briefings",
+    "Guest lists",
+    "Late conversations",
+    "Small rooms",
+    "People worth meeting",
+  ],
+
   /** The band that drifts sideways. Eight in total, all portrait or square. */
   band: [
     "Dinner table from above, candlelight",

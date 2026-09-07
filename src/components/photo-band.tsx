@@ -11,29 +11,55 @@ import { IMAGERY } from "@/content/site";
  *
  * It pauses when the cursor is over it. For anyone who has asked their computer
  * to reduce motion it does not move at all and can be scrolled by hand instead.
+ *
+ * IT USED TO BE HIDDEN FROM SCREEN READERS ENTIRELY, and could be, because it
+ * was eight pictures and no words: pure decoration, and announcing eight empty
+ * panels would have been noise. It carries words now, so it is a labelled list
+ * like the benefit tiles, with only the duplicate half hidden — otherwise the
+ * one part of this band that says anything would be the part nobody using a
+ * screen reader could reach.
  */
 export function PhotoBand() {
-  const row = [...IMAGERY.band, ...IMAGERY.band];
+  const captions = IMAGERY.bandCaptions;
+  const row = [...captions, ...captions];
 
   return (
-    <div className="fwd-marquee bg-photo-ground py-px" aria-hidden="true">
-      <div className="fwd-marquee-track gap-px">
-        {row.map((description, index) => (
-          <div key={`${description}-${index}`} className="fwd-zoom shrink-0">
-            <PhotoPlaceholder
-              label={description}
-              name={`band-${(index % IMAGERY.band.length) + 1}`}
-              sizes="(min-width: 1024px) 19vw, 46vw"
-              ratio="portrait"
-              // The brief for each shot stays in the content file, but it is
-              // not printed over the placeholder. Until the photographs land
-              // this band is a row of plain warm panels.
-              showLabel={false}
-              className="fwd-zoom-inner w-[46vw] sm:w-[30vw] lg:w-[19vw]"
-            />
-          </div>
-        ))}
-      </div>
+    <div className="fwd-marquee bg-photo-ground py-px">
+      <ul className="fwd-marquee-track gap-px" aria-label={IMAGERY.bandLabel}>
+        {row.map((caption, index) => {
+          const shot = index % captions.length;
+          return (
+            <li
+              key={`${caption}-${index}`}
+              aria-hidden={index >= captions.length || undefined}
+              className="fwd-zoom shrink-0"
+            >
+              <PhotoPlaceholder
+                label={IMAGERY.band[shot]}
+                name={`band-${shot + 1}`}
+                sizes="(min-width: 1024px) 19vw, 46vw"
+                ratio="portrait"
+                // The brief for each shot stays in the content file, but it is
+                // not printed over the placeholder. Until the photographs land
+                // this band is a row of plain warm panels.
+                showLabel={false}
+                // Heavier than the hero's, for the same reason the benefit
+                // tiles are: the words sit over eight different pictures that
+                // nobody has measured yet, and the wash is what makes that
+                // safe before they land.
+                washClassName="bg-photo-ground/55"
+                className="fwd-zoom-inner w-[46vw] sm:w-[30vw] lg:w-[19vw]"
+              >
+                {/* Low in the frame rather than dead centre. These are
+                    portraits and the middle is where a face lands. */}
+                <p className="absolute inset-x-0 bottom-0 z-2 px-5 pb-5 font-body text-[15px] leading-snug text-photo-ink sm:text-base">
+                  {caption}
+                </p>
+              </PhotoPlaceholder>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }
