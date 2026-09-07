@@ -1,3 +1,5 @@
+import { BENEFITS, BRAND } from "@/lib/brand";
+
 /**
  * site.ts
  * ---------------------------------------------------------------------------
@@ -170,74 +172,95 @@ export const MEMBERSHIP = {
    * ONLY `id` AND `summary` ARE ON THE SITE at the moment. They are the caption
    * and the photograph on each tile at the top of the membership page.
    *
-   * `title` and `detail` are not shown anywhere. They were the written out
-   * version underneath the tiles, which has been taken off the page. They are
-   * kept because they are the only written record of what each benefit
-   * actually is, and because the tiles say almost nothing on their own. If
-   * they are never going back on the page, delete them rather than leaving
-   * copy here that nobody will ever read.
+   * `title` is not drawn anywhere yet. It is the headline for each card, kept
+   * because the tiles are one line each and that line is not always enough to
+   * say what the benefit is called.
+   *
+   * The long `detail` field that used to sit here has gone. Nothing ever
+   * rendered it, this note used to say to delete it rather than leave copy
+   * nobody would read, and the cards now come as a headline and a line rather
+   * than as three levels.
    */
   cards: [
     {
       id: "meeting-of-minds",
-      /** DRAFT. */
       title: "Meeting of Minds",
-      summary: "Introductions made properly.",
-      detail:
-        "The signature benefit. When two members should know each other, the introduction comes with context and a clear reason for it, to both people. Never a name passed along, never a cold forward. You can request an introduction to any member, and the fwd. team makes it.",
+      summary:
+        "Introductions made properly, with a reason attached, not a name passed along.",
     },
     {
       id: "seats",
       title: "A seat in the room",
-      summary: "Dinners, roundtables and gatherings, on a chosen guest list.",
-      detail:
-        "Small rooms and conversations that do not happen at a conference. Some are hosted with platforms, some are ours. The guest list is the product, so it is put together carefully every time.",
+      summary:
+        "Dinners, roundtables and gatherings, on a guest list built by hand.",
     },
     {
+      id: "partner-rooms",
+      title: "Partner rooms",
+      summary: "Closed sessions with the platforms.",
+    },
+    {
+      id: "guest-passes",
+      title: "Guest passes",
+      summary: "Twice a year, bring someone who should be here.",
+    },
+    {
+      id: "directory",
+      title: "The directory",
+      summary: "Who else is in the room, and what they actually do.",
+    },
+    {
+      id: "ask-the-room",
+      title: "Ask the room",
+      summary:
+        "Put a question to the membership and hear from people who have already solved it.",
+    },
+    {
+      /**
+       * THE SHEET THIS CAME FROM CALLED THIS ONE "The Clubhouse", and it is
+       * "The House" here on purpose. src/lib/brand.ts sets two naming rules
+       * that it would break: the member area is always The House, and the word
+       * "club" is not used anywhere a visitor or member can read. Calling it
+       * something else on this one card would give the same room two names on
+       * the same site. If the name really is changing, change it in brand.ts
+       * and it changes everywhere, including here.
+       */
       id: "the-house",
-      title: "The House",
-      summary: "The members-only area, online and always open.",
-      detail:
-        "Where members find each other, see what is coming up, reserve a place and keep their own profile current. Signed in, and members only.",
+      title: BRAND.memberArea,
+      summary: "The members\u2019 area. Private, online, always open.",
     },
     {
-      id: "network",
-      title: "The member network",
-      summary: "Who else is in the room, and how to reach them.",
-      detail:
-        "A directory of members with their role, company, market and focus, searchable so you can find the right person rather than the nearest one.",
+      id: "founding-members",
+      /** PLACEHOLDER. The sheet had a headline and no line under it. */
+      summary: "[FOUNDING MEMBERS: this card has no line yet]",
+      title: "Founding members",
     },
     {
-      id: "profile",
-      title: "Your member profile",
-      summary: "How the rest of the room finds you.",
-      detail:
-        "Your own page in the directory. You decide what it says, and you can change it whenever you like.",
+      id: "digital-rooms",
+      title: "Digital rooms",
+      summary: "Webinars and small breakout sessions.",
     },
     {
       id: "newsletter",
-      title: "The quarterly newsletter",
-      summary: "[NEWSLETTER NAME], from Jenny. Four times a year, members only.",
-      detail:
-        "What is actually changing in the industry, from someone whose read on it is worth having. Written for members, not for an audience.",
+      title: BENEFITS.newsletterName,
+      summary:
+        "Quarterly, members only. What is actually changing, from people in a position to know.",
     },
     {
-      id: "events",
-      title: "Events and RSVP",
-      summary: "What is coming up, and a place if you want one.",
-      detail:
-        "Invitations arrive by email and link straight to the event, which you can look at without signing in. Signing in is only needed to reserve or change your place.",
+      id: "merch",
+      title: "Members\u2019 merch",
+      summary: "Made in small numbers just for our members.",
     },
     {
-      id: "perks",
-      title: "Member perks",
-      /**
-       * PLACEHOLDER. I do not know what these are and will not invent them.
-       * Needed: what the perks actually are, and who provides them.
-       */
-      summary: "[MEMBER PERKS: I need the detail for this card]",
-      detail:
-        "[PLACEHOLDER. This card needs real content: what the perks are, who provides them, and whether they vary by market. Nothing invented here on purpose.]",
+      id: "nominate",
+      title: "Nominate a member",
+      summary: "Once a year.",
+    },
+    {
+      id: "global-access",
+      /** PLACEHOLDER. The sheet had a headline and no line under it. */
+      summary: "[GLOBAL ACCESS: this card has no line yet]",
+      title: "Global access",
     },
   ],
 } as const;
@@ -434,12 +457,17 @@ export const IMAGERY = {
   benefits: {
     "meeting-of-minds": "Two people mid-introduction, a third half out of frame",
     seats: "A long table at its fullest, shot down the length of it",
+    "partner-rooms": "A small closed room, screen glow, a handful of chairs",
+    "guest-passes": "A door held open, one person arriving behind another",
+    directory: "A room from above, groups forming and re-forming",
+    "ask-the-room": "Two people leaning in over one phone, mid-answer",
     "the-house": "A phone on a table at a dinner, screen lit, nobody looking at it",
-    network: "A room from above, groups forming and re-forming",
-    profile: "One person, three-quarter, warm light, at ease",
+    "founding-members": "Waiting on what this card says. A first table, early, half laid",
+    "digital-rooms": "A laptop open on a kitchen table at night, one face lit",
     newsletter: "Print on a table. Paper, a glass, a hand at the edge",
-    events: "A doorway with people arriving, coats still on",
-    perks: "A detail on a table. Waiting on what the perks actually are",
+    merch: "One piece, folded, on a dark surface. No model",
+    nominate: "Two people talking, one gesturing off to somebody else",
+    "global-access": "Waiting on what this card says. A city at night from a window",
   },
 
   /** The band that drifts sideways. Eight in total, all portrait or square. */
