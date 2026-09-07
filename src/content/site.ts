@@ -191,8 +191,8 @@ export const MEMBERSHIP = {
     {
       id: "seats",
       title: "A seat in the room",
-      summary:
-        "Dinners, roundtables and gatherings, on a guest list built by hand.",
+      /* The only tile whose line is its own headline. Asked for directly. */
+      summary: "A seat in the room",
     },
     {
       id: "partner-rooms",
