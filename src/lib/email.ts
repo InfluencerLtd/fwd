@@ -164,6 +164,15 @@ export async function sendEmail(
       body: JSON.stringify({
         from,
         to: [to.email],
+        /*
+         * REPLIES GO SOMEWHERE A PERSON READS, not back to the sending
+         * address. Email has to be sent from a domain Resend has verified,
+         * which is the fwd. subdomain; the address the site publishes and that
+         * somebody actually watches is CONTACT.email. Without this, hitting
+         * reply on a welcome or a decline would send it into a subdomain
+         * inbox nobody has opened.
+         */
+        reply_to: CONTACT.email,
         subject,
         html,
         text,
