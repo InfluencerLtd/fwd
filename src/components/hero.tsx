@@ -51,7 +51,9 @@ export function Hero() {
                 aria-hidden="true"
                 className="fwd-lockup-scrim absolute -inset-x-24 -inset-y-16 -z-1 sm:-inset-x-40 sm:-inset-y-24 lg:-inset-x-64 lg:-inset-y-36"
               />
-              <Wordmark size="heroLarge" heading align="center" />
+              {/* No signature on the hero. It is still on the header lockup at the
+                  top of every page, which is where the endorsement now lives. */}
+              <Wordmark size="heroLarge" heading align="center" signature={false} />
             </div>
 
             {/* Clear space: at least the height of the "d" before anything
