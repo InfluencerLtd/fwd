@@ -152,6 +152,124 @@ h1, h2, h3, h4 {
 }
 
 /* ===========================================================================
+   THE TYPE SCALE
+   ---------------------------------------------------------------------------
+   One scale, defined once, so a page cannot be art-directed by whoever last
+   picked a Tailwind size.
+
+   WHY THIS EXISTS AT ALL. Before it, the largest thing on the home page after
+   the hero was 48px and the smallest was 17px, and almost everything was one
+   of those two. A page with no scale contrast reads as even, and even reads as
+   polite. The reference sites that feel confident run from about 10px to about
+   200px inside a single scroll. That range is the whole trick, and it costs
+   nothing and needs no photography.
+
+   THEY ARE IN @layer components ON PURPOSE. Tailwind's utilities sit in a
+   later layer, so `text-3xl` on an element that also has `.fwd-statement`
+   still wins. Written unlayered — the mistake the heading rule below makes and
+   gets away with because nothing needs to override it — these would be
+   unoverridable, and the first section that wanted a smaller statement would
+   have to stop using the scale.
+
+   EVERY SIZE IS A clamp() AGAINST THE VIEWPORT, so there are no separate
+   mobile sizes to keep in step. The middle term is the real one; the two ends
+   are the floor and the ceiling.
+   =========================================================================== */
+
+@layer components {
+  /**
+   * The one that does the work. Two or three per page, never more: it is only
+   * large because most things are not.
+   *
+   * 0.9 leading, because at 100px+ the default is a hole between the lines,
+   * and a touch of negative tracking, because display serifs are drawn for
+   * text sizes and set slightly loose when they get this big.
+   */
+  .fwd-statement {
+    font-family: var(--fwd-font-display), ui-serif, Georgia, serif;
+    font-size: clamp(46px, 9.5vw, 148px);
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    font-weight: 400;
+    text-transform: lowercase;
+    text-wrap: balance;
+  }
+
+  /** Section headings. Was a fixed 48px everywhere. */
+  .fwd-h2 {
+    font-size: clamp(34px, 5.2vw, 76px);
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+  }
+
+  /**
+   * The bridge between a heading and body copy. Set in the display face, so a
+   * paragraph that matters does not have to be a heading to look like it does.
+   */
+  .fwd-standfirst {
+    font-family: var(--fwd-font-display), ui-serif, Georgia, serif;
+    font-size: clamp(21px, 2.3vw, 32px);
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+
+  /**
+   * A bare figure.
+   *
+   * Nearly statement scale, and it has to be: the whole device is the ratio
+   * between the number and the word under it. At heading size against a 15px
+   * label that ratio is about three to one and the figures read as bullets in
+   * a list. At this size it is closer to seven to one and they read as an
+   * exhibit. Numerals are narrow, so four of these across a row are far
+   * quieter on the page than one sentence at the same size would be.
+   */
+  .fwd-figure {
+    font-family: var(--fwd-font-display), ui-serif, Georgia, serif;
+    font-size: clamp(56px, 7vw, 112px);
+    line-height: 0.85;
+    letter-spacing: -0.02em;
+    font-weight: 400;
+    font-variant-numeric: lining-nums;
+  }
+
+  /**
+   * The small label above a section. The only place on the site that is set in
+   * capitals — see the heading rule below, which forbids them everywhere else.
+   */
+  .fwd-eyebrow {
+    font-family: var(--fwd-font-body), ui-sans-serif, system-ui, sans-serif;
+    font-size: 11px;
+    line-height: 1;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  /** Body copy at the one measure that has always worked here. */
+  .fwd-body {
+    font-family: var(--fwd-font-body), ui-sans-serif, system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+  }
+}
+
+/* ===========================================================================
+   A dark section
+   ---------------------------------------------------------------------------
+   The warm near-black was only ever the ground behind photography. It is a
+   section ground too now, which is what gives the page dark punctuation
+   without introducing a colour that is not already in the palette.
+
+   Put `fwd-dark` on the section. It brings the ground, the right text colour
+   and, through `fwd-on-dark`, the pale ice blue focus ring — because the brand
+   dark blue measures 2.69:1 here and a keyboard user would lose the ring.
+   =========================================================================== */
+
+.fwd-dark {
+  background-color: var(--fwd-photo-ground);
+  color: var(--fwd-photo-ink);
+}
+
+/* ===========================================================================
    Grain
    ---------------------------------------------------------------------------
    A single overlay layer of monochrome noise. It should be felt, not seen.

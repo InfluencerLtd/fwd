@@ -99,7 +99,11 @@ export const CLUB = {
    */
   lead: [
     "fwd. is a community rather than a series of events. It runs all year, in person and online, and it spans brands, creators, platforms and the wider industry.",
-    "It exists because the people shaping the creator economy mostly meet each other on stage, on panels, or not at all. Those are the worst possible conditions for the conversation that actually matters.",
+    // Deliberately NOT the sentence the home page uses. That section makes the
+    // case that the three sides never share a room; this one goes a step past
+    // it, to what that costs. A visitor who has read the home page and clicked
+    // through should be told something new, not the same line again.
+    "It exists because the industry meets in public. On a stage, on a panel, with a badge on. Very little of what people actually know gets said in those rooms, and none of it gets said first.",
     "So the rooms are small, the guest list is built by hand, and nobody is presenting at anybody.",
   ],
   how: {

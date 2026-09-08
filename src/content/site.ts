@@ -153,27 +153,125 @@ export const ABOUT = {
   ],
 } as const;
 
+/**
+ * The line the whole thing rests on.
+ *
+ * DECLARED HERE RATHER THAN FURTHER DOWN because CASE below reads it, and a
+ * const cannot be read above the line that creates it — the module would throw
+ * on load rather than fail to build, which is the worst way to find out.
+ */
+export const STATEMENT = {
+  /** DRAFT. Our own words, not a testimonial. */
+  line: "The room is the product. Everything else follows from who is in it.",
+} as const;
+
+/* ===========================================================================
+   THE CASE
+   ---------------------------------------------------------------------------
+   The argument, before the offer.
+
+   The home page used to open with the picture and go straight to what
+   membership unlocks. A visitor who did not already agree that the industry
+   has a problem was being sold a solution to a problem nobody had named.
+
+   The structure is deliberately the oldest one there is: the situation, what
+   is wrong with it, what we did about it. The first paragraph is three
+   sentences in the same shape, because parallel construction is what makes a
+   list of facts read as an argument.
+
+   WHY IT SAYS "NOBODY IS ON A STAGE" TWICE OVER THE PAGE. Once here, as the
+   objection to how the industry currently meets, and once as a number further
+   down. It is the whole differentiator, and a differentiator stated once is a
+   detail.
+   =========================================================================== */
+
+export const CASE = {
+  eyebrow: "why it exists",
+  /** DRAFT. */
+  heading: "Everyone sees a different part of the same picture.",
+  /** DRAFT. */
+  body: [
+    "Brands have agencies. Platforms have roadmaps. Creators have audiences. All three are building the same industry and almost never sit in the same room.",
+    "When they do meet it is on a stage, on a panel, or at a conference with four thousand other people in it. Those are the worst possible conditions for the conversation that actually matters.",
+    "So we make the room instead. Small, off the record, nobody selling anything, and a guest list put together by hand.",
+  ],
+  /**
+   * The payoff, at full size. This sentence was written months ago, lived in
+   * STATEMENT below, and had never appeared on the site.
+   */
+  statement: STATEMENT.line,
+} as const;
+
+/* ===========================================================================
+   THE SHAPE OF IT
+   ---------------------------------------------------------------------------
+   Four numbers, bare, no cards and no icons.
+
+   THEY ARE ABOUT SHAPE, NOT SCALE, and that is the whole reason this section
+   can exist at all. The obvious version of a numbers section brags: members,
+   events, cities, years. We are pre-launch with seventeen places left, and
+   claiming size we do not have is the fastest way to look small.
+
+   These say how the thing is built instead. The last one is the argument in a
+   single character, and it is the reason the section is worth having.
+   =========================================================================== */
+
+export const SHAPE = {
+  eyebrow: "the shape of it",
+  /** DRAFT. Every figure here has to stay true or the section has to go. */
+  figures: [
+    { figure: "2", label: "cities in year one", note: "London, then New York" },
+    { figure: "5", label: "kinds of room", note: "None of them a conference" },
+    { figure: "4", label: "briefings a year", note: "Members only" },
+    { figure: "0", label: "stages", note: "Nobody presents at anybody" },
+  ],
+} as const;
+
+/* ===========================================================================
+   THE WAY IN
+   ---------------------------------------------------------------------------
+   The last thing before the footer.
+
+   The page used to end on a section about a newsletter, which is a strange
+   note to leave somebody on when the only thing we want them to do is apply.
+   =========================================================================== */
+
+export const WAY_IN = {
+  /** DRAFT. */
+  heading: "the way in is an application",
+  /** DRAFT. Urgency that happens to be true, which is the only kind worth having. */
+  note: "Every one is read by a person. The founding cohort closes when it is full rather than on a date.",
+} as const;
+
 export const MEMBERSHIP = {
   /**
-   * The two \u00a0 keep "the creator economy" together, which is what sets the
-   * line break: everything before it goes on the first line, and the phrase
-   * drops whole onto the second. See POSITIONING above.
+   * DRAFT, AND A REWRITE. It was "Membership unlocks what's next in the
+   * creator economy", which is the positioning line with the word membership
+   * in front of it — it described fwd. rather than describing membership, and
+   * it did so three sections after the page had already said it twice.
+   *
+   * This one names the only two things membership actually is.
    */
-  heading:
-    "Membership unlocks what\u2019s next in the\u00a0creator\u00a0economy.",
+  heading: "A year of rooms, and the people in\u00a0them.",
 
   /**
    * DRAFT. On the home page this is the whole of it: a heading, this, and the
    * ask. The eight cards are not here any more. They are on the membership
    * page, which is where somebody who wants the detail is going anyway.
    *
-   * So this has to do the cards' job in prose. Four paragraphs, no lists.
+   * So this has to do the cards' job in prose.
+   *
+   * IT USED TO BE FIVE PARAGRAPHS AND IS NOW TWO. Three of the five said the
+   * positioning line again in different words — what fwd. brings together, who
+   * is in it, and that this is where the industry shapes what happens next.
+   * That argument is made properly one section above now, at full size, so
+   * repeating it here made the page say the same thing three times and then
+   * ask for an application. What is left is the only part that was ever about
+   * membership rather than about fwd.
    */
   lead: [
-    "fwd. brings together the people shaping the future of the creator economy. The brands. The creators. The platforms.\nThe people with something to say, build, change or start next.",
-    "Membership unlocks a year-round program of intimate dinners, private conversations, industry briefings and experiences alongside a network that extends far beyond the room.",
-    "Meet someone you’ve wanted to meet. Hear what’s coming before it becomes obvious. Share an idea with the person who can make it happen.",
-    "This is where the creator economy comes together to shape what happens next.",
+    "Membership unlocks a year-round programme of intimate dinners, private conversations, industry briefings and experiences — alongside a network that extends well beyond the room.",
+    "Meet someone you’ve wanted to meet. Hear what’s coming before it becomes obvious. Share an idea with the person who can act on it.",
   ],
 
   /** Still used on the membership page, above the cards. */
@@ -571,11 +669,6 @@ export const IMAGERY = {
     "A quiet corner of the room",
     "Someone speaking, lit from one side",
   ],
-} as const;
-
-export const STATEMENT = {
-  /** DRAFT. The pull quote on the dark band. Not a testimonial, our own words. */
-  line: "The room is the product. Everything else follows from who is in it.",
 } as const;
 
 /* ===========================================================================

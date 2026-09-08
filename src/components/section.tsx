@@ -17,7 +17,7 @@ export function Section({
     <section id={id} className={`px-6 py-24 sm:py-32 ${className}`}>
       <div className="mx-auto max-w-4xl">
         {heading ? (
-          <h2 className="fwd-reveal text-4xl sm:text-5xl">{heading}</h2>
+          <h2 className="fwd-reveal fwd-h2">{heading}</h2>
         ) : null}
         {children}
       </div>
@@ -36,7 +36,7 @@ export function Prose({
   return (
     <div className={`fwd-reveal max-w-2xl space-y-5 ${className}`}>
       {lines.map((line) => (
-        <p key={line} className="font-body text-[17px] leading-relaxed text-ink-muted">
+        <p key={line} className="fwd-body text-ink-muted">
           {line}
         </p>
       ))}

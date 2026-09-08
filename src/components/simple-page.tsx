@@ -48,7 +48,7 @@ export function SimplePage({
                 h4 and sets it in the serif, and "The Forward Class of 2026"
                 has to keep its capitals. The page's h1 is the section below,
                 which is lowercase anyway. */}
-            <p className="font-display text-4xl leading-tight text-photo-ink sm:text-5xl">
+            <p className="fwd-h2 font-display text-photo-ink">
               {heading}
             </p>
           </div>
@@ -58,10 +58,18 @@ export function SimplePage({
       <main id="main" className="flex-1">
         <section className="px-6 py-24 sm:py-28">
           <div className="mx-auto max-w-2xl">
-            {lead.map((paragraph) => (
+            {lead.map((paragraph, index) => (
               <p
                 key={paragraph}
-                className="fwd-reveal mb-6 font-body text-[17px] leading-relaxed text-ink-muted last:mb-0"
+                className={
+                  index === 0
+                    ? // The first paragraph is the page's argument. Set in the
+                      // display face at standfirst size so the eye has
+                      // somewhere to land between the name over the photograph
+                      // and a column of body copy.
+                      "fwd-reveal fwd-standfirst mb-8 text-ink"
+                    : "fwd-reveal fwd-body mb-6 text-ink-muted last:mb-0"
+                }
               >
                 {paragraph}
               </p>
@@ -73,8 +81,8 @@ export function SimplePage({
 
         <section className="px-6 py-[81px] sm:py-[97px]">
           <div className="mx-auto max-w-4xl text-center">
-            <h1 className="fwd-reveal text-4xl sm:text-5xl">{closingHeading}</h1>
-            <p className="fwd-reveal mx-auto mt-6 max-w-xl font-body text-[17px] leading-relaxed text-ink-muted">
+            <h1 className="fwd-reveal fwd-h2">{closingHeading}</h1>
+            <p className="fwd-reveal fwd-body mx-auto mt-6 max-w-xl text-ink-muted">
               {closingNote}
             </p>
             <div className="fwd-reveal mt-9">

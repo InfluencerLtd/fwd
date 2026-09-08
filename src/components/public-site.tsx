@@ -5,27 +5,38 @@ import { Section } from "@/components/section";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { PhotoBand } from "@/components/photo-band";
 import { ApplyLink } from "@/components/apply-link";
+import { TheCase } from "@/components/the-case";
+import { TheShape } from "@/components/the-shape";
 import { BriefingSubmit } from "@/components/briefing-submit";
+import { WayIn } from "@/components/way-in";
 import { SiteFooter } from "@/components/site-footer";
 import { MEMBERSHIP, MEETING_OF_MINDS, NAV, IMAGERY } from "@/content/site";
 
 /**
  * The public site: one page, scrolling.
  *
- *   1  the hero            the picture, what this is, and the ask
- *   2  what membership     what it unlocks, then the ask again
- *      unlocks
- *   3  the photo band      untouched
- *   4  most of it comes    the briefing, and the way to put something in it
- *      from the room
- *   5  Meeting of Minds    the one thing nobody else does, then the ask again
- *   6  the footer
+ *   1  the hero            photograph      the picture, and the name
+ *   2  the case            near-black      why any of this needs to exist
+ *   3  membership          off-white       what it gets you, then the ask
+ *   4  the band            photography     texture
+ *   5  the shape of it     off-white       four numbers, bare
+ *   6  Meeting of Minds    sand            the one thing nobody else does
+ *   7  the briefing        off-white       the ask that is not "apply"
+ *   8  the way in          near-black      the close
+ *   9  the footer
  *
- * The ask appears three times and the panel it opens is the same one each time.
- * Everything the brief asked to be on this page is still here: what the club is
- * now opens section two rather than standing alone, and why it exists frames
- * Meeting of Minds rather than being a section of its own. Fewer, longer
- * sections, each ending in something to do.
+ * THE GROUND CHANGES SIX TIMES ON THE WAY DOWN, and that is the structure
+ * rather than decoration. Before this the page was off-white almost the whole
+ * way with a single photographic band in it, and a scroll with no change of
+ * ground reads as one long document rather than as a sequence of rooms. Each
+ * change is a page turn.
+ *
+ * WHY THE ARGUMENT COMES BEFORE THE OFFER. The page used to open with the
+ * photograph and go straight to what membership unlocks, which sells a
+ * solution to a problem nobody had named. Section two names it. Everything
+ * after it is answering something.
+ *
+ * The ask appears four times and opens the same panel every time.
  */
 export function PublicSite() {
   return (
@@ -38,59 +49,50 @@ export function PublicSite() {
       </a>
 
       <SiteMenu />
-
-      {/* ---- 0. The bar across the top --------------------------------- */}
       <SiteHeader overHero />
-
-      {/* ---- 1. The hero ------------------------------------------------ */}
       <Hero />
 
       <main id="main">
-        {/* ---- 2. What membership unlocks -------------------------------
-             A heading, a paragraph and the ask, centred. The eight cards used
-             to be here; they are on the membership page now, which is where
-             anybody who wants that much detail is heading anyway. This says
-             what it gets you and gets out of the way. */}
-        <section id="membership" className="scroll-mt-20 px-6 py-28 sm:py-36">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="fwd-reveal text-4xl sm:text-5xl">
-              {MEMBERSHIP.heading}
-            </h2>
+        {/* ---- 2. The case ---------------------------------------------- */}
+        <TheCase />
 
-            <div className="fwd-reveal mt-10 space-y-6">
-              {/* whitespace-pre-line so a newline in the content file is a line
-                  break here. It is the only way to break a line inside a
-                  paragraph from a file of plain strings, and the alternative,
-                  splitting the sentence into its own entry, would give it a
-                  paragraph's worth of space above it rather than a line's.
-                  Spaces are still collapsed, so nothing else changes. */}
+        {/* ---- 3. What membership is ------------------------------------
+             Left-aligned, and the two paragraphs run as a pair of columns
+             beneath the heading rather than as a centred stack. That is a
+             different composition from the section above on purpose: two big
+             left-aligned headings with a right-hand column each would read as
+             one section repeated. Here the heading is the only thing on its
+             line and the reading happens underneath it. */}
+        <section id="membership" className="scroll-mt-20 px-6 py-28 sm:py-36">
+          <div className="mx-auto max-w-6xl">
+            <h2 className="fwd-reveal fwd-h2 max-w-4xl">{MEMBERSHIP.heading}</h2>
+
+            <div className="mt-12 grid gap-x-16 gap-y-6 sm:mt-16 md:grid-cols-2">
+              {/* whitespace-pre-line so a newline in the content file is a
+                  line break here, and spaces still collapse. */}
               {MEMBERSHIP.lead.map((line) => (
                 <p
                   key={line}
-                  className="mx-auto max-w-xl font-body text-[17px] leading-relaxed whitespace-pre-line text-ink-muted"
+                  className="fwd-reveal fwd-body whitespace-pre-line text-ink-muted"
                 >
                   {line}
                 </p>
               ))}
             </div>
 
-            <div className="fwd-reveal mt-12">
+            <div className="fwd-reveal mt-14">
               <ApplyLink />
             </div>
           </div>
         </section>
 
-        {/* ---- 3. The band of photographs. Left exactly as it was. ------- */}
+        {/* ---- 4. The band of photographs. Left exactly as it was. ------- */}
         <PhotoBand />
 
-        {/* ---- 4. Most of it comes from the room ------------------------
-             The brief puts this between a briefing section and a cities
-             section. Neither exists on this page, so it sits here: after the
-             band, before the last section, which is the same place it has in
-             the reference — the contribution, and then the ask. */}
-        <BriefingSubmit />
+        {/* ---- 5. Four numbers ------------------------------------------ */}
+        <TheShape />
 
-        {/* ---- 5. Meeting of Minds --------------------------------------
+        {/* ---- 6. Meeting of Minds --------------------------------------
              Where Soho House puts the festival: the one thing that is theirs
              and nobody else's. For fwd. that is the introductions. */}
         <div className="bg-surface-warm">
@@ -103,26 +105,18 @@ export function PublicSite() {
                   sizes="(min-width: 1024px) 50vw, 100vw"
                   ratio="square"
                   className="fwd-zoom-inner"
-                  // The brief for this shot stays in the content file, but it
-                  // is not printed over the placeholder here. Until the
-                  // photograph lands this is a plain warm panel.
                   showLabel={false}
                 />
               </div>
 
               <div className="order-1 lg:order-2">
-                <h2 className="fwd-reveal text-4xl sm:text-5xl">
-                  {MEETING_OF_MINDS.heading}
-                </h2>
-                <p className="fwd-reveal mt-7 font-display text-2xl leading-snug text-ink sm:text-3xl">
+                <h2 className="fwd-reveal fwd-h2">{MEETING_OF_MINDS.heading}</h2>
+                <p className="fwd-reveal fwd-standfirst mt-7 text-ink">
                   {MEETING_OF_MINDS.standfirst}
                 </p>
                 <div className="fwd-reveal mt-7 space-y-5">
                   {MEETING_OF_MINDS.body.map((line) => (
-                    <p
-                      key={line}
-                      className="font-body text-[17px] leading-relaxed text-ink-muted"
-                    >
+                    <p key={line} className="fwd-body text-ink-muted">
                       {line}
                     </p>
                   ))}
@@ -135,9 +129,15 @@ export function PublicSite() {
             </div>
           </Section>
         </div>
+
+        {/* ---- 7. Most of it comes from the room ------------------------- */}
+        <BriefingSubmit />
+
+        {/* ---- 8. The close --------------------------------------------- */}
+        <WayIn />
       </main>
 
-      {/* ---- 6. The footer --------------------------------------------- */}
+      {/* ---- 9. The footer --------------------------------------------- */}
       <SiteFooter />
     </>
   );

@@ -28,16 +28,16 @@ export function BriefingSubmit() {
       <div className="mx-auto max-w-4xl">
         <div className="grid gap-10 border-t border-border pt-12 min-[860px]:grid-cols-2 min-[860px]:items-start min-[860px]:gap-16">
           <div>
-            <p className="fwd-reveal font-body text-xs uppercase tracking-[0.16em] text-ink-muted">
+            <p className="fwd-reveal fwd-eyebrow text-ink-muted">
               {BRIEFING_SUBMIT.eyebrow}
             </p>
-            <h2 className="fwd-reveal mt-4 text-4xl sm:text-5xl">
+            <h2 className="fwd-reveal fwd-h2 mt-5">
               {BRIEFING_SUBMIT.heading}
             </h2>
           </div>
 
           <div>
-            <p className="fwd-reveal max-w-xl font-body text-[17px] leading-relaxed text-ink-muted">
+            <p className="fwd-reveal fwd-body max-w-xl text-ink-muted">
               {BRIEFING_SUBMIT.body}
             </p>
 

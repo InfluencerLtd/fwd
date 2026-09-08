@@ -54,7 +54,7 @@ export default function MembershipPage() {
                 Not marked up as a heading, for the same reason as on those
                 pages: the h1 is the section below, and this would make two.
                 See the note on it. */}
-            <p className="font-display text-4xl leading-tight text-photo-ink sm:text-5xl">
+            <p className="fwd-h2 font-display text-photo-ink">
               {MEMBERSHIP_PAGE.heading}
             </p>
             {/* The members' door was here, and has gone with every other
@@ -76,7 +76,7 @@ export default function MembershipPage() {
                   a screen reader jumping by heading would land in the middle
                   of it. Its size and weight are unchanged: this is what it is,
                   not how it looks. */}
-              <h1 className="fwd-reveal text-4xl sm:text-5xl">
+              <h1 className="fwd-reveal fwd-h2">
                 {APPLICATIONS_OPEN
                   ? MEMBERSHIP_PAGE.about.heading
                   : MEMBERSHIP_PAGE.closed.heading}
@@ -84,7 +84,7 @@ export default function MembershipPage() {
 
               {APPLICATIONS_OPEN ? (
                 <>
-                  <p className="fwd-reveal mx-auto mt-6 max-w-2xl font-body text-[17px] leading-relaxed text-ink-muted">
+                  <p className="fwd-reveal fwd-body mx-auto mt-6 max-w-2xl text-ink-muted">
                     {MEMBERSHIP_PAGE.about.note}
                   </p>
                   {/* The ask, directly under the case for it. Centred by the
@@ -117,7 +117,7 @@ export default function MembershipPage() {
             py-24 is 96 and py-28 is 112, so this is 81 and 97. */}
         <section className="px-6 py-[81px] sm:py-[97px]">
           <div className="mx-auto max-w-4xl text-center">
-            <h2 className="fwd-reveal text-4xl sm:text-5xl">
+            <h2 className="fwd-reveal fwd-h2">
               {MEMBERSHIP_PAGE.closing.heading}
             </h2>
             {/* The same dialog the header opens, not a second form. Somebody
