@@ -37,7 +37,7 @@ export function PublicSite() {
       <SiteMenu />
 
       {/* ---- 0. The bar across the top --------------------------------- */}
-      <SiteHeader />
+      <SiteHeader overHero />
 
       {/* ---- 1. The hero ------------------------------------------------ */}
       <Hero />
@@ -48,7 +48,7 @@ export function PublicSite() {
              to be here; they are on the membership page now, which is where
              anybody who wants that much detail is heading anyway. This says
              what it gets you and gets out of the way. */}
-        <section id="membership" className="px-6 py-28 sm:py-36">
+        <section id="membership" className="scroll-mt-20 px-6 py-28 sm:py-36">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="fwd-reveal text-4xl sm:text-5xl">
               {MEMBERSHIP.heading}

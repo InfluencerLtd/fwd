@@ -5,11 +5,11 @@
  *
  * >>> THREE THINGS IN HERE ARE NOT AGREED. <<<
  *
- * 1. FOUR OF THE FIVE NAV ITEMS HAVE NO PAGE. Only membership exists. The
- *    others are rendered as plain text rather than as links, because a link
- *    that goes nowhere is worse than a label that never claimed to: it is
- *    something a visitor presses and is punished for. Give each one a href
- *    below and it becomes a link.
+ * 1. EVERY NAV ITEM NOW GOES SOMEWHERE. Two are anchors into writing that
+ *    already existed — the club is the home page's own argument, rooms is the
+ *    membership page — and two are pages built for them. An item with a null
+ *    href renders as plain text rather than as a link that punishes you for
+ *    pressing it, which is what all four of these were until the pages existed.
  *
  * 2. "the club" BREAKS A NAMING RULE. src/lib/brand.ts says the word club is
  *    not used anywhere a visitor or member can read, and that where a common
@@ -22,13 +22,15 @@
  *    recommends until somebody decides.
  */
 
-export const HEADER_NAV = [
-  { label: "the club", href: null },
+export const HEADER_NAV: readonly { label: string; href: string | null }[] = [
+  // Two of these are anchors rather than pages, because the writing they point
+  // at already exists and did not need a page built round it to be reachable.
+  { label: "the club", href: "/#membership" },
   { label: "membership", href: "/membership" },
-  { label: "rooms", href: null },
-  { label: "the class of 2026", href: null },
-  { label: "the briefing", href: null },
-] as const;
+  { label: "rooms", href: "/membership#rooms" },
+  { label: "the class of 2026", href: "/class-of-2026" },
+  { label: "the briefing", href: "/briefing" },
+];
 
 export const HERO_STRIP = {
   /** Set to null to drop the figure entirely rather than show a placeholder. */

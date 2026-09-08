@@ -36,10 +36,24 @@ import { META } from "@/content/site";
  * sign-in link do not fit across the top of the screen at any size a thumb can
  * hit, and the site already has a menu that does fit.
  */
-export function SiteHeader() {
-  const [scrolled, setScrolled] = useState(false);
+export function SiteHeader({
+  /**
+   * Whether this page opens with the photograph the header sits on.
+   *
+   * A page without one has no transparent state to be in: the bar starts solid
+   * and stays there, otherwise it is white type with nothing behind it on a
+   * light page. Passed in rather than worked out from the DOM, because it is
+   * known before anything renders and asking the document afterwards means a
+   * frame of the wrong header.
+   */
+  overHero = false,
+}: {
+  overHero?: boolean;
+} = {}) {
+  const [scrolled, setScrolled] = useState(!overHero);
 
   useEffect(() => {
+    if (!overHero) return;
     const hero = document.getElementById("hero");
     if (!hero) return;
     // Watching the hero itself rather than counting pixels: the bar goes solid
@@ -51,7 +65,7 @@ export function SiteHeader() {
     );
     observer.observe(hero);
     return () => observer.disconnect();
-  }, []);
+  }, [overHero]);
 
   return (
     <header className="fwd-on-dark fixed inset-x-0 top-0 z-40">
