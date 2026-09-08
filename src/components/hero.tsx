@@ -34,7 +34,12 @@ export function Hero() {
             centre both together and push the lockup up; the strip is pinned to
             the bottom by `mt-auto` instead, so the middle stays the middle. */}
         <div className="relative z-2 flex w-full flex-1 flex-col items-center px-6 pb-0 pt-28 text-center">
-          <div className="my-auto flex flex-col items-center">
+          {/* The 10px is padding rather than a margin: the block is centred
+              with `my-auto`, and an auto margin has no room left to give once
+              the content nearly fills the screen — which is exactly when the
+              button ends up against the rule. Padding is not negotiable in the
+              same way, so the gap holds at every height. */}
+          <div className="my-auto flex flex-col items-center pb-[10px]">
             {/* A soft radial scrim under the lockup, from the placement rules.
                 The wash over the whole photograph has gone, so this is what
                 keeps the mark holding its shape wherever the picture is
