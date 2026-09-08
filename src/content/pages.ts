@@ -52,7 +52,7 @@ export const CLASS_OF_2026 = {
 
 export const BRIEFING = {
   title: "the briefing",
-  /** The name is still a placeholder. It renders as one, on purpose. */
+  /** Named in src/lib/brand.ts, so the page and the navigation cannot drift. */
   heading: BENEFITS.newsletterName,
   /** DRAFT. */
   lead: [

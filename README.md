@@ -122,9 +122,10 @@ The rules about the name are written at the top of that file. The short version:
 the mark is always `fwd.`, lowercase, always with the full stop, and
 `by influencer` always sits apart from it and always looks quieter.
 
-The same file holds the placeholders for the club email address, the domain and
-the name of Jenny's quarterly newsletter. They currently render as visible
-placeholder text such as `[NEWSLETTER NAME]` so they cannot ship by accident.
+The same file holds the club email address, the domain, and the name of Jenny's
+quarterly newsletter. Anything in there still undecided renders as visible
+placeholder text in square brackets, so it cannot ship by accident. The domain
+is the one still in that state.
 
 ---
 

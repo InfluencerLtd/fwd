@@ -33,8 +33,13 @@ export const BRAND = {
 export const BENEFITS = {
   /** Confirmed signature member benefit. Wording may still be polished. */
   signature: "Meeting of Minds",
-  /** Jenny's quarterly members-only newsletter. Name not decided yet. */
-  newsletterName: "[NEWSLETTER NAME]",
+  /**
+   * Jenny's quarterly members-only newsletter.
+   *
+   * It is the same words as the navigation item and the page it lives on, so
+   * the thing and the link to it are not two different names.
+   */
+  newsletterName: "the briefing",
 } as const;
 
 /**
