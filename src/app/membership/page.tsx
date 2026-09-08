@@ -106,13 +106,8 @@ export default function MembershipPage() {
           </section>
         </div>
 
-        {/* ---- 3. The whole offer at a glance ----------------------------
-             The id is here rather than inside BenefitTiles so the component
-             stays the same wherever else it is used. "rooms" in the header
-             lands on it. */}
-        <div id="rooms" className="scroll-mt-20">
-          <BenefitTiles />
-        </div>
+        {/* ---- 3. The whole offer at a glance ---------------------------- */}
+        <BenefitTiles />
 
         {/* ---- 4. The ask again, after the pictures ----------------------- */}
         {/* 15px less top and bottom than the section pattern elsewhere.

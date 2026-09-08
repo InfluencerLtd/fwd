@@ -88,3 +88,56 @@ export const BRIEFING = {
     note: "There is no public list and no free version. It goes to members, and the way to read it is to be one.",
   },
 } as const;
+
+export const CLUB = {
+  title: "the club",
+  heading: "The club",
+  /**
+   * DRAFT. Written from the material already on the site — the positioning
+   * line, the membership section, Meeting of Minds — rather than invented, but
+   * these are new sentences and nobody has signed them off.
+   */
+  lead: [
+    "fwd. is a community rather than a series of events. It runs all year, in person and online, and it spans brands, creators, platforms and the wider industry.",
+    "It exists because the people shaping the creator economy mostly meet each other on stage, on panels, or not at all. Those are the worst possible conditions for the conversation that actually matters.",
+    "So the rooms are small, the guest list is built by hand, and nobody is presenting at anybody.",
+  ],
+  how: {
+    heading: "how it works",
+    /** DRAFT. */
+    items: [
+      {
+        name: "It is chosen, not open",
+        line: "Membership is by application, and the room is kept balanced on purpose. A room that is mostly one kind of person is not a room, it is an audience.",
+      },
+      {
+        name: "The introductions are made",
+        line: "Ask to meet any member and we make it properly, with a reason attached to both sides. Never a name passed along.",
+      },
+      {
+        name: "It carries on between the rooms",
+        line: "A members' area, a quarterly briefing, and a directory of who else is in it — so the year is not four dinners and eleven months of nothing.",
+      },
+    ],
+  },
+  closing: {
+    heading: "who it is for",
+    /** DRAFT. */
+    note: "People with something to say and somewhere to take it. If that is a description of you, the way in is an application rather than an introduction.",
+  },
+} as const;
+
+export const ROOMS = {
+  title: "rooms",
+  heading: "The rooms",
+  /** DRAFT. */
+  lead: [
+    "Five kinds of room, and the same rule in all of them: small enough that everybody can hear everybody, and a guest list put together on purpose.",
+    "Some are hosted with the platforms, some are ours. What they have in common is that nobody is on a stage.",
+  ],
+  closing: {
+    heading: "a seat in the room",
+    /** DRAFT. */
+    note: "Rooms are for members. Invitations come by email, and the way to get one is to be in the room in the first place.",
+  },
+} as const;
