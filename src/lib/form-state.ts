@@ -32,6 +32,18 @@ export type ApplicationState =
 
 export const initialApplicationState: ApplicationState = { status: "idle" };
 
+export type BriefingSubmitState =
+  | { status: "idle" }
+  | { status: "success" }
+  | {
+      status: "error";
+      message: string;
+      /** Which fields were wrong, so each one is flagged where it sits. */
+      fieldErrors: Record<string, string>;
+    };
+
+export const initialBriefingSubmitState: BriefingSubmitState = { status: "idle" };
+
 export type AdminState = { error: string | null };
 export const initialAdminState: AdminState = { error: null };
 

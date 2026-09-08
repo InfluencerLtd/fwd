@@ -1,4 +1,5 @@
-import { ButtonLink } from "@/components/button";
+import { ButtonLink, buttonClass } from "@/components/button";
+import { BriefingSubmitDialog } from "@/components/briefing-submit-dialog";
 import { BRIEFING_SUBMIT } from "@/content/site";
 
 /**
@@ -41,12 +42,12 @@ export function BriefingSubmit() {
             </p>
 
             <div className="fwd-reveal mt-8 flex flex-wrap gap-3">
-              {/* TODO: both of these go nowhere. The first one opens the
-                  submission form on the briefing-submit-form branch; the second
-                  has no destination decided yet. */}
-              <ButtonLink href="#" variant="primary">
-                {BRIEFING_SUBMIT.send}
-              </ButtonLink>
+              {/* Shaped by the same code as every other primary button, so it
+                  cannot drift away from them. */}
+              <BriefingSubmitDialog className={buttonClass("primary")} />
+              {/* TODO: "ask the room" still goes nowhere. Where it should go
+                  has not been decided — it is a different thing from sending
+                  something in, and it may not be a form at all. */}
               <ButtonLink href="#" variant="quiet">
                 {BRIEFING_SUBMIT.ask}
               </ButtonLink>

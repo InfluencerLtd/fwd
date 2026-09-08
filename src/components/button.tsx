@@ -96,6 +96,22 @@ const SIZES: Record<Size, string> = {
   lg: "px-8 py-3.5 text-base",
 };
 
+/**
+ * The class list for a button, without a button around it.
+ *
+ * Exported because a couple of things on the site are shaped like a button and
+ * cannot be one of these: the trigger for a <dialog> is its own component, and
+ * it should not have to keep a hand-copied version of the variant in step with
+ * this file. Anything that can be a Button or a ButtonLink still should be.
+ */
+export function buttonClass(
+  variant: Variant = "primary",
+  size: Size = "md",
+  className = "",
+) {
+  return classes(variant, size, className);
+}
+
 function classes(variant: Variant, size: Size, className: string) {
   return `fwd-btn font-body ${VARIANTS[variant]} ${SIZES[size]} ${className}`;
 }

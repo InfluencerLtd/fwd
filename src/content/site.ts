@@ -308,6 +308,37 @@ export const BRIEFING_SUBMIT = {
   body: "The briefing is built from what members are actually seeing. A shift in how a budget is being spent, a format that has stopped working, a question worth putting to the rest of the membership. If you have something, send it. Nothing is attributed without asking you first.",
   send: "send something in",
   ask: "ask the room",
+
+  /**
+   * The panel behind "send something in".
+   *
+   * READ `attribute` AND `attributeHint` TOGETHER. The box is not ticked when
+   * the form opens and it is not required, so leaving it alone is a complete
+   * and valid answer: off the record is what happens by default rather than
+   * something anybody has to ask for. The hint says so out loud, because a
+   * promise a person cannot see is not a promise.
+   */
+  form: {
+    heading: "send something in",
+    /** DRAFT. */
+    intro:
+      "For members. A shift you have noticed, something that has stopped working, or a question worth putting to the rest of the room.",
+    name: "your name",
+    email: "your email",
+    subject: "what it is about",
+    message: "what you have",
+    attribute: "you can attribute this to me",
+    attributeHint:
+      "Leave this unticked and nothing is put in your name. Off the record is the default, not the favour.",
+    submit: "send it",
+    submitting: "sending",
+    required: "Needed.",
+    success:
+      "Thank you. It has landed with the people writing the next briefing, and nobody will attribute it without asking you first.",
+    error: "That did not send. Please try again.",
+    notReady: "We cannot take submissions just now. Please try again shortly.",
+    tooMany: "That is a few in a row. Please try again a little later.",
+  },
 } as const;
 
 export const WHY = {

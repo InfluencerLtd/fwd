@@ -7,12 +7,17 @@
  * the visitor's browser, which is why it is safe for it to touch the database.
  */
 
-import { HOLDING, APPLY } from "@/content/site";
-import type { SignupState, ApplicationState } from "@/lib/form-state";
+import { HOLDING, APPLY, BRIEFING_SUBMIT } from "@/content/site";
+import type {
+  SignupState,
+  ApplicationState,
+  BriefingSubmitState,
+} from "@/lib/form-state";
 import { MEMBER_GROUPS, type MemberGroupId } from "@/lib/brand";
 import { APPLICATIONS_OPEN } from "@/lib/site-config";
 import { submitApplication } from "@/lib/store/applications";
 import { recordSignup, type SignupSource } from "@/lib/store/signups";
+import { recordBriefingSubmission } from "@/lib/store/briefing-submissions";
 import { looksLikeEmail, normalizeEmail } from "@/lib/validate";
 import { isRateLimited } from "@/lib/rate-limit";
 
@@ -55,6 +60,76 @@ export async function signUpForUpdates(
 
   console.error("[fwd.] Sign-up failed to save:", result.reason);
   return { status: "error", message: HOLDING.error };
+}
+
+/* ========================================================================== */
+/* Sending something in for the briefing                                      */
+/* ========================================================================== */
+
+/**
+ * THE CONSENT BOX IS NOT CHECKED HERE, and that is the point of the whole
+ * feature rather than an omission.
+ *
+ * Every other form on this site refuses to go through without its box ticked,
+ * because those boxes are permission to email somebody and we do not have that
+ * permission until it is given. This box is the opposite kind of box: it grants
+ * something extra, and not granting it is a complete answer. Requiring it would
+ * turn "you may put my name to this" into "you must let us put your name to
+ * this", which is the exact opposite of what it is for.
+ *
+ * So it is read, recorded, and never insisted on.
+ */
+export async function sendToBriefing(
+  _previous: BriefingSubmitState,
+  formData: FormData,
+): Promise<BriefingSubmitState> {
+  const copy = BRIEFING_SUBMIT.form;
+  const text = (key: string) => String(formData.get(key) ?? "").trim();
+
+  const name = text("name");
+  const email = normalizeEmail(formData.get("email"));
+  const subject = text("subject");
+  const message = text("message");
+  const attributable = formData.get("attribute") === "on";
+
+  const fieldErrors: Record<string, string> = {};
+  if (!name) fieldErrors.name = copy.required;
+  if (!email) fieldErrors.email = copy.required;
+  else if (!looksLikeEmail(email)) fieldErrors.email = HOLDING.invalidEmail;
+  if (!subject) fieldErrors.subject = copy.required;
+  if (!message) fieldErrors.message = copy.required;
+
+  if (Object.keys(fieldErrors).length > 0) {
+    return { status: "error", message: "", fieldErrors };
+  }
+
+  // After the free checks, before the write. Same order as the other two.
+  if (await isRateLimited("briefingSubmission", email)) {
+    return { status: "error", message: copy.tooMany, fieldErrors: {} };
+  }
+
+  const result = await recordBriefingSubmission({
+    name,
+    email,
+    subject,
+    message,
+    attributable,
+  });
+
+  if (result.status === "saved") return { status: "success" };
+
+  if (result.status === "not-configured") {
+    // Loud, because it means submissions are being turned away rather than
+    // stored, and nobody would otherwise find out.
+    console.error(
+      "[fwd.] A briefing submission was turned away because Supabase is not " +
+        "configured, or 0009_briefing_submissions.sql has not been run.",
+    );
+    return { status: "error", message: copy.notReady, fieldErrors: {} };
+  }
+
+  console.error("[fwd.] Briefing submission failed to save:", result.reason);
+  return { status: "error", message: copy.error, fieldErrors: {} };
 }
 
 /* ========================================================================== */

@@ -43,6 +43,12 @@ import { getServiceClient } from "@/lib/supabase";
 export const LIMITS = {
   application: { perAddress: 3, perConnection: 5 },
   signup: { perAddress: 3, perConnection: 5 },
+  /**
+   * Looser than the other two, because this is the one form a person has a
+   * real reason to use more than once: a member who has three things to send
+   * sends three things. Still hopeless for a script.
+   */
+  briefingSubmission: { perAddress: 6, perConnection: 10 },
 } as const;
 
 const WINDOW_MINUTES = 60;
