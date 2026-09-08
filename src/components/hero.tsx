@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { HeroStrip } from "@/components/hero-strip";
 import { Wordmark } from "@/components/wordmark";
@@ -70,21 +69,11 @@ export function Hero() {
               <ApplyLink variant="onDark" />
             </div>
 
-            {/* The quiet way in for existing members. Back on the page because
-                the mock has it, and it is worth knowing that it contradicts
-                the decision taken earlier today to keep the member area off
-                the public site entirely. One of the two has to give.
+            {/* NO MEMBERS' DOOR HERE EITHER. The mock puts one under the
+                button and it is left out for the same reason it is left out of
+                the header: the member area is not a feature of the website.
+                Nothing on a public page says it exists. */}
 
-                The padding is the tap target and the negative margin takes it
-                back out of the layout, so nothing moves. */}
-            <p className="mt-7 font-body text-sm text-photo-ink/60">
-              <Link
-                href="/clubhouse"
-                className="fwd-underline -my-2 inline-block py-2 text-photo-ink/75 hover:text-photo-ink"
-              >
-                {HERO.memberSignIn}
-              </Link>
-            </p>
           </div>
 
           <HeroStrip />

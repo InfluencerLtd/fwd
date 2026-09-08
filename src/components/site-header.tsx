@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Wordmark } from "@/components/wordmark";
 import { ButtonLink } from "@/components/button";
 import { HEADER_NAV } from "@/content/hero-modules";
-import { APPLY, NAV, HERO } from "@/content/site";
+import { APPLY, NAV } from "@/content/site";
 import { META } from "@/content/site";
 
 /**
@@ -25,6 +25,12 @@ import { META } from "@/content/site";
  * WHICH ITEMS ARE LINKS IS DECIDED IN THE CONTENT FILE, not here, and four of
  * the five currently are not: those pages do not exist. They are rendered as
  * text so nobody presses them and lands nowhere. See src/content/hero-modules.ts.
+ *
+ * THERE IS NO SIGN-IN HERE. The mock has one and it is deliberately not built:
+ * the member area is kept off the public site entirely, so nothing a visitor
+ * can see says The House exists. Members are sent there by the code in a
+ * sign-in email or the link in an invitation, and /clubhouse/sign-in still
+ * works for anyone who has been given it.
  *
  * The menu button stays for phones. Below 900px five nav items, a pill and a
  * sign-in link do not fit across the top of the screen at any size a thumb can
@@ -93,15 +99,6 @@ export function SiteHeader() {
           <ButtonLink href="/membership" variant="onDark" size="sm">
             {APPLY.cta}
           </ButtonLink>
-
-          {/* Set slightly apart and quieter than the rest: it is for the few
-              people who already belong here, not part of the argument. */}
-          <Link
-            href="/clubhouse"
-            className="fwd-underline -my-1 ml-1 inline-block py-1 text-photo-ink/70 hover:text-photo-ink"
-          >
-            {HERO.memberSignIn.replace("already a member? ", "")}
-          </Link>
         </nav>
       </div>
     </header>
