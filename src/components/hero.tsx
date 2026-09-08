@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { Wordmark } from "@/components/wordmark";
 import { ApplyLink } from "@/components/apply-link";
@@ -56,21 +55,13 @@ export function Hero() {
             <ApplyLink variant="onDark" />
           </div>
 
-          {/* The quiet way in for existing members. Deliberately a text link
-              rather than a third button, and part of this block rather than a
-              bar sitting on top of the photograph. */}
-          {/* The padding is the tap target, and the negative margin takes it
-              back out of the layout so nothing moves. A 14px line of text is
-              19px tall, which is a small thing to hit with a thumb on the one
-              link a returning member is looking for. This makes it 35. */}
-          <p className="mt-7 font-body text-sm text-photo-ink/60">
-            <Link
-              href="/clubhouse"
-              className="fwd-underline -my-2 inline-block py-2 text-photo-ink/75 hover:text-photo-ink"
-            >
-              {HERO.memberSignIn}
-            </Link>
-          </p>
+          {/* THERE IS NO MEMBERS' DOOR HERE ANY MORE. There was a text link
+              under the button, and it has gone along with every other mention
+              of the member area on the public site. The House is not a feature
+              of the website: members are sent there, by the code in a sign-in
+              email or the link in an invitation, and a visitor has no reason
+              to know it exists. /clubhouse/sign-in still works for anyone who
+              has been given it. */}
 
           <p
             aria-hidden="true"

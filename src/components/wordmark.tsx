@@ -1,19 +1,15 @@
 import { BRAND } from "@/lib/brand";
-import { Mark as MarkGlyph } from "@/components/mark";
 
 /**
- * The primary lockup: the glyph, the word "fwd.", and the "by influencer"
- * signature.
+ * The primary lockup: the word "fwd." and the "by influencer" signature.
  *
- * THE GLYPH SITS ABOVE THE WORD AT HERO SIZE AND BESIDE IT EVERYWHERE ELSE.
- * Stacked is the approved artwork and it is what the hero uses. A header bar is
- * a different problem: stacked, the lockup is three rows tall and the bar has to
- * grow to hold it, which is a lot of furniture for a mark you are meant to
- * glance at. Beside the word it keeps the bar its own height and still reads as
- * one lockup rather than an icon that happens to be near some type.
+ * THERE IS NO GLYPH ANY MORE. An arrow mark sat above the word in the hero and
+ * beside it in the bars, traced from the approved artwork. It has been taken
+ * out on the brief that fwd. should be a word mark rather than an icon: an icon
+ * reads as a brand of its own, and this one is meant to sit next to influencer
+ * and next to partner brands without competing with either.
  *
- * The glyph is sized in em against the word, so the two stay in proportion at
- * every size without a second set of numbers to keep in step.
+ * The word set in the display face IS the mark. Nothing else is needed.
  *
  * `items-baseline` is what does that. It lines the two up by the line the
  * letters sit on rather than by the top or the bottom of their boxes, which is
@@ -140,30 +136,12 @@ export function Wordmark({
 
   const Mark = heading ? "h1" : "span";
 
-  /*
-   * The glyph, sized against the word.
-   *
-   * The proportions come off the artwork: the glyph is a little over a third of
-   * the word's font size when it is stacked above it. Beside the word it is
-   * given a touch more, because a mark set next to type at its stacked size
-   * reads as an afterthought rather than as half of a lockup.
-   *
-   * markClass is on the glyph as well so the em resolves against the same font
-   * size the word is using. Without it the em would take the parent's size and
-   * the glyph would come out the wrong scale at every size but one.
-   */
   const inkClass =
     tone === "onDark"
       ? "text-accent-on-dark"
       : tone === "brand"
         ? "text-accent"
         : "text-ink";
-
-  const glyph = (
-    <MarkGlyph
-      className={`${markClass} ${size === "hero" ? "mb-[0.05em] h-[0.36em]" : "h-[0.5em]"} ${inkClass}`}
-    />
-  );
 
   const word = (
     <>
@@ -188,22 +166,9 @@ export function Wordmark({
 
   return (
     <div className={align === "center" ? "flex justify-center" : "flex"}>
-      {/* Shrink-wrapped to the pieces together, so the lockup centres as one
-          unit rather than the word centring and the rest hanging off it. */}
-      {size === "hero" ? (
-        <div className={`inline-flex ${stackClass} ${gapClass}`}>
-          {glyph}
-          {word}
-        </div>
-      ) : (
-        /* Beside the word, and centred on it rather than on its baseline: the
-           glyph has no baseline of its own to sit on. The word and the
-           signature keep their own baseline pairing inside. */
-        <div className="inline-flex items-center gap-2">
-          {glyph}
-          <div className={`inline-flex ${stackClass} ${gapClass}`}>{word}</div>
-        </div>
-      )}
+      {/* Shrink-wrapped to the two of them together, so the pair centres as one
+          unit rather than the word centring and the signature hanging off it. */}
+      <div className={`inline-flex ${stackClass} ${gapClass}`}>{word}</div>
     </div>
   );
 }

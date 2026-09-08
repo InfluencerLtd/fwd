@@ -19,30 +19,12 @@ export const contentType = "image/png";
 export const alt = `${BRAND.markShort} ${BRAND.endorsement}`;
 
 const FONT_DIR = path.join(process.cwd(), "src", "assets", "fonts");
-const LOGO = path.join(process.cwd(), "public", "logo.svg");
 
 export default async function OpengraphImage() {
-  const [regular, italic, logo] = await Promise.all([
+  const [regular, italic] = await Promise.all([
     readFile(path.join(FONT_DIR, "InstrumentSerif-Regular.ttf")),
     readFile(path.join(FONT_DIR, "InstrumentSerif-Italic.ttf")),
-    readFile(LOGO, "utf8"),
   ]);
-
-  /*
-   * The glyph comes from the same file the rest of the world gets, rather than
-   * being redrawn here, so the two can never drift apart. It arrives as a data
-   * URI because this image is assembled by a layout engine that lays out HTML,
-   * not by a browser: an <img> is the thing it is sure to place correctly.
-   *
-   * Proportions match the lockup on the site: the glyph is a little over a
-   * third of the word's size, sitting above it.
-   */
-  const glyph = `data:image/svg+xml;base64,${Buffer.from(logo).toString("base64")}`;
-  const MARK_SIZE = 220;
-  const glyphHeight = Math.round(MARK_SIZE * 0.36);
-  /* The glyph's own width over its height. It is tilted, so this is not the
-     ratio of the upright shape and has to move with it. See mark.tsx. */
-  const GLYPH_RATIO = 1.2507;
 
   return new ImageResponse(
     (
@@ -66,26 +48,17 @@ export default async function OpengraphImage() {
             justifyContent: "space-between",
           }}
         >
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
-            <img
-              src={glyph}
-              alt=""
-              height={glyphHeight}
-              width={Math.round(glyphHeight * GLYPH_RATIO)}
-              style={{ marginBottom: 14 }}
-            />
-            <span
-              style={{
-                fontFamily: "Instrument Serif",
-                fontSize: MARK_SIZE,
-                lineHeight: 0.85,
-                // The pale ice blue, on a dark ground where it belongs.
-                color: "#b1e3fc",
-              }}
-            >
-              {BRAND.markShort}
-            </span>
-          </div>
+          <span
+            style={{
+              fontFamily: "Instrument Serif",
+              fontSize: 220,
+              lineHeight: 0.85,
+              // The pale ice blue, on a dark ground where it belongs.
+              color: "#b1e3fc",
+            }}
+          >
+            {BRAND.markShort}
+          </span>
           <span
             style={{
               fontFamily: "Instrument Serif",

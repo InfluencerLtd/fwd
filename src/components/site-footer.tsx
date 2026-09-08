@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { CONTACT } from "@/lib/brand";
 import { FOOTER, NAV } from "@/content/site";
-import { Mark } from "@/components/mark";
 
 /**
  * The footer.
@@ -30,19 +29,15 @@ import { Mark } from "@/components/mark";
  * the labels live on the nav elements instead, where a screen reader still gets
  * the structure and the eye is not given anything else to read.
  *
- * THE MARK IS HERE, THE WORD IS NOT, and there is still no year. "fwd." is
+ * NOTHING DOWN HERE CARRIES THE NAME, and there is still no year. "fwd." is
  * already at the top of every page, and a footer that sets it again is a site
- * signing its name twice on the same letter — which is why the lockup came out
- * of here in the first place. The glyph on its own is a different thing: it
- * closes the page without repeating anything, the way a small mark at the end
- * of an article does. It is not a link, because everything it could lead to is
- * in the column directly beneath it.
+ * signing its name twice on the same letter. The glyph that briefly sat here
+ * instead has gone with every other one.
  */
 
 const PLACES = [
   { href: "/", label: NAV.home },
   { href: "/membership", label: NAV.membership },
-  { href: "/clubhouse", label: FOOTER.signIn },
 ] as const;
 
 const LEGAL = [
@@ -84,26 +79,18 @@ export function SiteFooter({
             On a phone it is all one column and everything stacks, which is the
             only thing that fits. */}
         <div className="flex flex-col gap-10 sm:flex-row sm:items-start sm:justify-between">
-          {/* The mark and the address, centred on each other rather than sat
-              on the same baseline, because the mark has no baseline of its own
-              to sit on.
+          {/* The address, where the mark used to sit beside it. The mark has
+              gone with every other appearance of the glyph: fwd. is a word
+              mark, and the footer already ends the page quietly enough without
+              one.
 
-              The mark is the near-black rather than the brand blue: down here
-              it is the quietest thing on the page rather than the identity
-              announcing itself, and a blue would have been the loudest thing in
-              the footer. `ink` is the same colour as the links, so it turns
-              near-white in dark mode along with them — 15.4:1 on the warm sand,
-              17.5:1 on the off-white.
-
-              The address is a link, not a line of text: it is the way of
-              reaching us from this page, so it should be one press rather than
-              a select and a copy. It keeps the site's usual hover underline
-              rather than the permanent one the sign-in link needed — an email
-              address already reads as something you can write to, and if
-              somebody misses that it is clickable they can still read it and
-              copy it. */}
-          <div className="flex items-center gap-4">
-            <Mark className="h-6 text-ink" />
+              It is a link, not a line of text: it is the way of reaching us
+              from this page, so it should be one press rather than a select and
+              a copy. It keeps the site's usual hover underline rather than the
+              permanent one the sign-in link needed — an email address already
+              reads as something you can write to, and if somebody misses that
+              it is clickable they can still read it and copy it. */}
+          <div>
             <a href={`mailto:${CONTACT.email}`} className={`${LINK} text-ink`}>
               {CONTACT.email}
             </a>

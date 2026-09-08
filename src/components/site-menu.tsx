@@ -45,10 +45,14 @@ export function SiteMenu() {
   // Where you can go. Privacy and cookies are not here: they are legal pages
   // rather than places, they live in the footer, and a menu this short reads
   // better without them.
+  //
+  // NEITHER IS THE MEMBER AREA. It is not linked from anywhere a visitor can
+  // see: members are sent there, by the code in a sign-in email or the link in
+  // an invitation. /clubhouse/sign-in still works for anybody who has been
+  // given it. See src/components/hero.tsx.
   const links = [
     { href: "/", label: NAV.home },
     { href: "/membership", label: NAV.membership },
-    { href: "/clubhouse", label: NAV.signIn },
   ] as const;
 
   return (
