@@ -5,6 +5,7 @@ import { Section } from "@/components/section";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { PhotoBand } from "@/components/photo-band";
 import { ApplyLink } from "@/components/apply-link";
+import { BriefingSubmit } from "@/components/briefing-submit";
 import { SiteFooter } from "@/components/site-footer";
 import { MEMBERSHIP, MEETING_OF_MINDS, NAV, IMAGERY } from "@/content/site";
 
@@ -15,8 +16,10 @@ import { MEMBERSHIP, MEETING_OF_MINDS, NAV, IMAGERY } from "@/content/site";
  *   2  what membership     what it unlocks, then the ask again
  *      unlocks
  *   3  the photo band      untouched
- *   4  Meeting of Minds    the one thing nobody else does, then the ask again
- *   5  the footer
+ *   4  most of it comes    the briefing, and the way to put something in it
+ *      from the room
+ *   5  Meeting of Minds    the one thing nobody else does, then the ask again
+ *   6  the footer
  *
  * The ask appears three times and the panel it opens is the same one each time.
  * Everything the brief asked to be on this page is still here: what the club is
@@ -80,7 +83,14 @@ export function PublicSite() {
         {/* ---- 3. The band of photographs. Left exactly as it was. ------- */}
         <PhotoBand />
 
-        {/* ---- 4. Meeting of Minds --------------------------------------
+        {/* ---- 4. Most of it comes from the room ------------------------
+             The brief puts this between a briefing section and a cities
+             section. Neither exists on this page, so it sits here: after the
+             band, before the last section, which is the same place it has in
+             the reference — the contribution, and then the ask. */}
+        <BriefingSubmit />
+
+        {/* ---- 5. Meeting of Minds --------------------------------------
              Where Soho House puts the festival: the one thing that is theirs
              and nobody else's. For fwd. that is the introductions. */}
         <div className="bg-surface-warm">
@@ -127,7 +137,7 @@ export function PublicSite() {
         </div>
       </main>
 
-      {/* ---- 5. The footer --------------------------------------------- */}
+      {/* ---- 6. The footer --------------------------------------------- */}
       <SiteFooter />
     </>
   );
