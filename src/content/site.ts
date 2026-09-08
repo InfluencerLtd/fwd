@@ -591,6 +591,14 @@ export const STATEMENT = {
 
 export const MEMBERSHIP_PAGE = {
   /**
+   * The page's name, over the photograph, the way every other page names
+   * itself there. The wordmark used to sit in that spot and say nothing about
+   * where you had landed. It is still the link home, in the header, on this
+   * page and on all the others.
+   */
+  heading: "membership",
+
+  /**
    * Not printed anywhere. It names the row of benefit tiles for a screen
    * reader, which otherwise meets eight sentences with nothing saying what
    * they are a list of. It used to be a visible heading over a written out

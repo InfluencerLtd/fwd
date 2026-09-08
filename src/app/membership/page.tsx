@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
-import { Wordmark } from "@/components/wordmark";
 import { BenefitTiles } from "@/components/benefit-tiles";
 import { ApplyDialog } from "@/components/apply-dialog";
 import { SiteMenu } from "@/components/site-menu";
@@ -46,13 +44,19 @@ export default function MembershipPage() {
           className="flex min-h-[52vh] flex-col justify-end"
         >
           <div className="relative z-2 mx-auto w-full max-w-4xl px-6 pb-14 pt-24">
-            {/* No signature here. This mark is a small link home above a very
-                large heading, and "by influencer" at that size read as clutter
-                rather than as an endorsement. It is still on the hero, the
-                holding page and the footer. */}
-            <Link href="/" aria-label={META.title} className="inline-block">
-              <Wordmark size="large" signature={false} />
-            </Link>
+            {/* The page's name, not the wordmark. Every other page names
+                itself here — the club, rooms, the class of 2026, the briefing
+                — and this one showed the mark instead, which told somebody
+                which site they were on and nothing about which page. The link
+                home has not gone: it is the lockup at the top left of the
+                header, on this page and on every other one.
+
+                Not marked up as a heading, for the same reason as on those
+                pages: the h1 is the section below, and this would make two.
+                See the note on it. */}
+            <p className="font-display text-4xl leading-tight text-photo-ink sm:text-5xl">
+              {MEMBERSHIP_PAGE.heading}
+            </p>
             {/* The members' door was here, and has gone with every other
                 mention of the member area on the public site. Members are sent
                 to The House rather than finding it. */}
@@ -66,13 +70,12 @@ export default function MembershipPage() {
         <div className="bg-surface-warm">
           <section className="px-6 py-24 sm:py-28">
             <div className="mx-auto max-w-4xl text-center">
-              {/* THIS IS THE PAGE'S h1 NOW. The word "membership" used to sit
-                  over the photograph and be it; with that gone, something still
-                  has to be the page's one main heading, or the page has none
-                  and a screen reader jumping by heading lands in the middle of
-                  it. This one names the page and is the first thing under the
-                  picture, so it is the honest choice. Its size and weight are
-                  unchanged — this is what it is, not how it looks. */}
+              {/* THIS IS THE PAGE'S h1. The name over the photograph is not
+                  marked up as one — same as on every other page — so if this
+                  were not here the page would have no main heading at all and
+                  a screen reader jumping by heading would land in the middle
+                  of it. Its size and weight are unchanged: this is what it is,
+                  not how it looks. */}
               <h1 className="fwd-reveal text-4xl sm:text-5xl">
                 {APPLICATIONS_OPEN
                   ? MEMBERSHIP_PAGE.about.heading
