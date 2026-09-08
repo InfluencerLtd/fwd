@@ -119,6 +119,19 @@ export const HERO = {
   /** One line, under the wordmark. */
   line: POSITIONING,
   /**
+   * THE HERO SAYS THIS INSTEAD, and POSITIONING above is untouched on purpose:
+   * the same sentence is still the holding page's line and still the page's
+   * meta description, and neither of those wants percussion.
+   *
+   * Two lines that must never become one. The full stops are the device — they
+   * are what turns a list into three beats — and the second line is the answer
+   * to the first, which only works if it lands on its own.
+   *
+   * The stops break the guideline that titles carry no punctuation. Recorded
+   * here rather than left for marketing to find.
+   */
+  headline: { one: "Brands. Creators. Culture.", two: "One room." },
+  /**
    * The hero has ONE button and its label lives in APPLY.cta, because the same
    * button appears three times down the page and they must not drift apart.
    * cta, ctaWaitlist and secondaryCta used to live here and nothing read them.

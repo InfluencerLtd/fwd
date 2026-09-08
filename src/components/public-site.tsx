@@ -1,5 +1,6 @@
 import { Hero } from "@/components/hero";
 import { SiteMenu } from "@/components/site-menu";
+import { SiteHeader } from "@/components/site-header";
 import { Section } from "@/components/section";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { PhotoBand } from "@/components/photo-band";
@@ -34,6 +35,9 @@ export function PublicSite() {
       </a>
 
       <SiteMenu />
+
+      {/* ---- 0. The bar across the top --------------------------------- */}
+      <SiteHeader />
 
       {/* ---- 1. The hero ------------------------------------------------ */}
       <Hero />

@@ -514,11 +514,20 @@ h1, h2, h3, h4 {
    =========================================================================== */
 
 .fwd-lockup-scrim {
+  /* An ellipse a little above centre, so the clean field sits where the lockup
+     sits rather than where the section's middle happens to be. Near-solid under
+     the type, half that at the edge of the lockup, almost nothing by the frame
+     — which is what stops it reading as a box drawn on the photograph. */
   background: radial-gradient(
-    ellipse at center,
-    color-mix(in oklab, var(--fwd-photo-ground) 55%, transparent) 0%,
-    color-mix(in oklab, var(--fwd-photo-ground) 30%, transparent) 45%,
-    transparent 70%
+    ellipse 52% 46% at 50% 48%,
+    rgba(6, 7, 9, 0.66) 0%,
+    rgba(6, 7, 9, 0.42) 55%,
+    rgba(6, 7, 9, 0.1) 82%,
+    /* And out to nothing. The brief's last stop is a tenth rather than zero,
+       which leaves the gradient still faintly painted when the element it is
+       painted in ends — a rectangle over the photograph, which is the one
+       thing this scrim exists to avoid. */
+    transparent 100%
   );
 }
 

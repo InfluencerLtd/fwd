@@ -32,7 +32,7 @@ export function Wordmark({
   signature = true,
   tone = "onDark",
 }: {
-  size?: "hero" | "page" | "large" | "footer" | "small";
+  size?: "hero" | "heroLarge" | "page" | "large" | "footer" | "small";
   /**
    * Makes the mark the page's main heading. Every page needs exactly one, and
    * the name of the thing is the right thing for it to be.
@@ -86,27 +86,44 @@ export function Wordmark({
    * grow the bar to hold it.
    */
   const markClass =
-    size === "hero"
-      ? "text-7xl sm:text-8xl lg:text-9xl"
-      : size === "large"
-        ? // Half again as big as the bars, twice: 1.875rem to 2.8125rem to
-          // 4.21875rem, which is 67.5px. Set directly, because the type scale
-          // has no step near either number — the nearest to 45 are 36 and 48,
-          // and the nearest to 67.5 are 60 and 72.
-          "text-[4.21875rem]"
-        : size === "page"
-          ? "text-4xl"
-          : "text-3xl";
+    size === "heroLarge"
+      ? /*
+         * A FRACTION OF THE WINDOW, NOT A LIST OF FIXED SIZES, because that is
+         * what "roughly a third of the viewport" actually asks for. Fourteen
+         * per cent of the width puts the lockup at about a quarter of the
+         * screen at every size, which is the proportion in the mock, and it
+         * holds at widths nobody thought to write a breakpoint for.
+         *
+         * The floor stops it disappearing on a narrow phone. The ceiling stops
+         * it filling a cinema display, where a third of the width would be
+         * absurd rather than confident.
+         */
+        "text-[clamp(56px,14vw,200px)]"
+      : size === "hero"
+        ? "text-7xl sm:text-8xl lg:text-9xl"
+        : size === "large"
+          ? // Half again as big as the bars, twice: 1.875rem to 2.8125rem to
+            // 4.21875rem, which is 67.5px. Set directly, because the type scale
+            // has no step near either number — the nearest to 45 are 36 and 48,
+            // and the nearest to 67.5 are 60 and 72.
+            "text-[4.21875rem]"
+          : size === "page"
+            ? "text-4xl"
+            : "text-3xl";
   const signatureClass =
-    size === "hero"
-      ? "text-lg sm:text-xl"
-      : size === "footer" || size === "page" || size === "large"
-        ? "text-xs"
-        : "text-[10px]";
+    size === "heroLarge"
+      ? // The same curve at about a fifth of it, so the signature stays a
+        // signature rather than growing into a second headline.
+        "text-[clamp(12px,2.9vw,42px)]"
+      : size === "hero"
+        ? "text-lg sm:text-xl"
+        : size === "footer" || size === "page" || size === "large"
+          ? "text-xs"
+          : "text-[10px]";
   // Enough of a gap to read as a signature beside the mark rather than as part
   // of the word, and no more.
   const gapClass =
-    size === "hero"
+    size === "hero" || size === "heroLarge"
       ? "gap-y-1"
       : size === "footer" || size === "page" || size === "large"
         ? "gap-1.5"
@@ -130,7 +147,7 @@ export function Wordmark({
    * alignment goes with it.
    */
   const stackClass =
-    size === "hero"
+    size === "hero" || size === "heroLarge"
       ? `flex-col ${align === "center" ? "items-center" : "items-start"}`
       : "items-baseline";
 
