@@ -4,6 +4,7 @@ import { readToken } from "@/lib/tokens";
 import { unsubscribeEmail } from "@/lib/store/unsubscribe";
 import { CONTACT } from "@/lib/brand";
 import { FOOTER } from "@/content/site";
+import { SiteHeader } from "@/components/site-header";
 
 export const metadata: Metadata = {
   title: "Unsubscribe",
@@ -28,7 +29,11 @@ export default async function UnsubscribePage({
   const outcome = await handle(t);
 
   return (
-    <main className="flex flex-1 items-center justify-center px-6 py-24">
+    <>
+      {/* Solid from the top: no dark band on this page for the bar to sit
+          over, and the extra padding clears the fixed header. */}
+      <SiteHeader />
+      <main className="flex flex-1 items-center justify-center px-6 pb-24 pt-36">
       <div className="max-w-md text-center">
         <h1 className="text-3xl">{outcome.heading}</h1>
         <p className="mt-5 font-body text-base leading-relaxed text-ink-muted">
@@ -46,7 +51,8 @@ export default async function UnsubscribePage({
           {FOOTER.back}
         </Link>
       </div>
-    </main>
+      </main>
+    </>
   );
 }
 

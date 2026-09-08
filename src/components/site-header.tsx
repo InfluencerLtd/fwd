@@ -54,8 +54,11 @@ export function SiteHeader({
 
   useEffect(() => {
     if (!overHero) return;
-    const hero = document.getElementById("hero");
-    if (!hero) return;
+    // A data attribute rather than #hero: any page can open with a dark
+    // photographic band the bar sits over, and only one of them can be called
+    // "hero" without duplicating an id.
+    const band = document.querySelector("[data-hero]");
+    if (!band) return;
     // Watching the hero itself rather than counting pixels: the bar goes solid
     // exactly when the picture has left, whatever height the picture is on this
     // screen, and no scroll handler runs on every frame to work that out.
@@ -63,7 +66,7 @@ export function SiteHeader({
       ([entry]) => setScrolled(!entry.isIntersecting),
       { rootMargin: "-64px 0px 0px 0px" },
     );
-    observer.observe(hero);
+    observer.observe(band);
     return () => observer.disconnect();
   }, [overHero]);
 

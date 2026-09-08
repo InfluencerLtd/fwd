@@ -3,6 +3,7 @@ import { CONTACT } from "@/lib/brand";
 import { FOOTER } from "@/content/site";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteMenu } from "@/components/site-menu";
+import { SiteHeader } from "@/components/site-header";
 
 /** Shared layout for the privacy and cookie pages. */
 export function LegalPage({
@@ -26,8 +27,13 @@ export function LegalPage({
 }) {
   return (
     <>
+      {/* No `overHero`: this page has no dark band for the bar to sit over, so
+          it is solid from the top. The extra top padding is the height of that
+          bar — the fixed header is out of the flow, and without it the "back"
+          link starts underneath it. */}
+      <SiteHeader />
       <SiteMenu />
-      <main className="flex-1 px-6 py-24">
+      <main className="flex-1 px-6 pb-24 pt-36">
         <div className="mx-auto max-w-2xl">
           <Link
             href="/"

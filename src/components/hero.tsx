@@ -13,7 +13,7 @@ import { HERO, IMAGERY } from "@/content/site";
  */
 export function Hero() {
   return (
-    <div id="hero" className="fwd-on-dark">
+    <div id="hero" data-hero className="fwd-on-dark">
       <PhotoPlaceholder
         label={IMAGERY.hero}
         name="hero"

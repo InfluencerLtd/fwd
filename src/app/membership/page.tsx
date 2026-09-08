@@ -5,6 +5,7 @@ import { Wordmark } from "@/components/wordmark";
 import { BenefitTiles } from "@/components/benefit-tiles";
 import { ApplyDialog } from "@/components/apply-dialog";
 import { SiteMenu } from "@/components/site-menu";
+import { SiteHeader } from "@/components/site-header";
 import { SignupForm } from "@/components/signup-form";
 import { SiteFooter } from "@/components/site-footer";
 import { APPLY, MEMBERSHIP_PAGE, META } from "@/content/site";
@@ -31,10 +32,11 @@ export const metadata: Metadata = {
 export default function MembershipPage() {
   return (
     <>
+      <SiteHeader overHero />
       <SiteMenu />
 
       {/* ---- 1. A short dark top, so the page opens the way the site does -- */}
-      <div className="fwd-on-dark">
+      <div data-hero className="fwd-on-dark">
         <PhotoPlaceholder
           label="A room mid-conversation. Low light, faces optional"
           name="membership"

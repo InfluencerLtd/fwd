@@ -31,10 +31,10 @@ export function SimplePage({
 }) {
   return (
     <>
-      <SiteHeader />
+      <SiteHeader overHero />
       <SiteMenu />
 
-      <div className="fwd-on-dark">
+      <div data-hero className="fwd-on-dark">
         <PhotoPlaceholder
           label={`${heading}. Photograph to come`}
           name={photo}
