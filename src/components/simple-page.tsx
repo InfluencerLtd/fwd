@@ -67,8 +67,8 @@ export function SimplePage({
                       // display face at standfirst size so the eye has
                       // somewhere to land between the name over the photograph
                       // and a column of body copy.
-                      "fwd-reveal fwd-standfirst mb-8 text-ink"
-                    : "fwd-reveal fwd-body mb-6 text-ink-muted last:mb-0"
+                      "fwd-reveal fwd-standfirst mb-8 whitespace-pre-line text-ink"
+                    : "fwd-reveal fwd-body mb-6 whitespace-pre-line text-ink-muted last:mb-0"
                 }
               >
                 {paragraph}
