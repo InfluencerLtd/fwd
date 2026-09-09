@@ -29,7 +29,7 @@ export default function ClubPage() {
   const [opening, ...rest] = ABOUT_PAGE.lead;
 
   return (
-    <PageShell footer="bg-surface">
+    <PageShell footer="light">
       {/* ---- The argument, as the opening ------------------------------- */}
       <section
         data-hero

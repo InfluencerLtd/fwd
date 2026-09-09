@@ -24,12 +24,12 @@ export function PageShell({
    * light ground needs — see the note in site-header.tsx.
    */
   overHero = true,
-  /** The footer's ground, so it continues whatever the last section was. */
-  footer = "bg-surface",
+  /** The footer's tone, so it continues whatever the last section was. */
+  footer = "light",
   children,
 }: {
   overHero?: boolean;
-  footer?: string;
+  footer?: "sand" | "light" | "dark";
   children: React.ReactNode;
 }) {
   return (
@@ -37,7 +37,7 @@ export function PageShell({
       <SiteHeader overHero={overHero} />
       <SiteMenu />
       <main id="main">{children}</main>
-      <SiteFooter background={footer} />
+      <SiteFooter tone={footer} />
     </>
   );
 }

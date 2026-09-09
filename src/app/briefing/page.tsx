@@ -24,6 +24,10 @@ export const metadata: Metadata = {
  *
  * "What is in it" is set as a contents page, because that is what it is.
  *
+ * THE ONLY PAGE WITH A DARK FOOTER. It closes on a dark section, and a band
+ * of off-white under that would stop the page rather than end it. The footer
+ * carries the close on to the bottom of the screen instead.
+ *
  * THE CONTRIBUTE SECTION IS THE SAME COMPONENT THE HOME PAGE USES. It belongs
  * here more than it belongs there — this is the page somebody reads when they
  * are deciding whether they have something worth sending — and two copies of
@@ -33,7 +37,7 @@ export default function BriefingPage() {
   const [opening, ...rest] = BRIEFING.lead;
 
   return (
-    <PageShell overHero={false} footer="bg-surface">
+    <PageShell overHero={false} footer="dark">
       {/* ---- The masthead ----------------------------------------------- */}
       <section className="px-6 pb-16 pt-36 sm:pb-20 sm:pt-44">
         <div className="mx-auto max-w-6xl">

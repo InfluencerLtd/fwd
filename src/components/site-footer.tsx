@@ -52,21 +52,48 @@ const LEGAL = [
  */
 const LINK = "fwd-underline -my-1 inline-block py-1 font-body text-[15px]";
 
+/**
+ * The ground, and the two text colours that go with it.
+ *
+ * ONE PROP RATHER THAN A BACKGROUND STRING, and that is the point of it. This
+ * used to take any Tailwind class as its ground, with the link colours fixed at
+ * near-black — so passing a dark ground gave a footer of black text on black,
+ * and nothing in the type system would have stopped it. A tone cannot be set
+ * wrong: the ground and the text always move together.
+ */
+const TONES = {
+  /** The home page's, because the band above it is the sand too. */
+  sand: { ground: "bg-surface-warm", text: "text-ink", muted: "text-ink-muted" },
+  /** For a page that ends on the off-white. */
+  light: { ground: "bg-surface", text: "text-ink", muted: "text-ink-muted" },
+  /**
+   * For a page that ends on a dark section, so the footer carries it on rather
+   * than stopping it with a band of light. `fwd-on-dark` comes with it, which
+   * switches the focus ring to the pale ice blue — the brand dark blue measures
+   * 2.69:1 here and a keyboard user would lose track of where they are.
+   */
+  dark: {
+    ground: "fwd-dark fwd-on-dark",
+    text: "text-photo-ink",
+    muted: "text-photo-ink/60",
+  },
+} as const;
+
 export function SiteFooter({
   /**
-   * The ground the footer sits on.
+   * Which ground the footer sits on, and therefore what colour its links are.
    *
    * The warm sand by default, because on the home page the section directly
-   * above it is the sand too, so the page runs into its footer. The membership
-   * page ends on the off-white instead, and a band of sand under it would be a
-   * colour change with nothing behind it, so that page passes its own.
+   * above it is the sand too, so the page runs into its footer.
    */
-  background = "bg-surface-warm",
+  tone = "sand",
 }: {
-  background?: string;
+  tone?: keyof typeof TONES;
 } = {}) {
+  const { ground, text, muted } = TONES[tone];
+
   return (
-    <footer className={`mt-auto ${background}`}>
+    <footer className={`mt-auto ${ground}`}>
       <div className="mx-auto max-w-5xl px-6 py-14">
         {/* One row, all starting on the same line: the mark and the address
             holding the left, the two lists of links against the right.
@@ -91,7 +118,7 @@ export function SiteFooter({
               reads as something you can write to, and if somebody misses that
               it is clickable they can still read it and copy it. */}
           <div>
-            <a href={`mailto:${CONTACT.email}`} className={`${LINK} text-ink`}>
+            <a href={`mailto:${CONTACT.email}`} className={`${LINK} ${text}`}>
               {CONTACT.email}
             </a>
           </div>
@@ -105,7 +132,7 @@ export function SiteFooter({
               <ul className="space-y-2">
                 {PLACES.map((place) => (
                   <li key={place.href}>
-                    <Link href={place.href} className={`${LINK} text-ink`}>
+                    <Link href={place.href} className={`${LINK} ${text}`}>
                       {place.label}
                     </Link>
                   </li>
@@ -117,7 +144,7 @@ export function SiteFooter({
               <ul className="space-y-2">
                 {LEGAL.map((page) => (
                   <li key={page.href}>
-                    <Link href={page.href} className={`${LINK} text-ink-muted`}>
+                    <Link href={page.href} className={`${LINK} ${muted}`}>
                       {page.label}
                     </Link>
                   </li>

@@ -31,7 +31,7 @@ export const metadata: Metadata = {
  */
 export default function ClassOf2026Page() {
   return (
-    <PageShell footer="bg-surface">
+    <PageShell footer="light">
       {/* ---- The announcement ------------------------------------------- */}
       <section
         data-hero
