@@ -1,5 +1,4 @@
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
-import { HeroStrip } from "@/components/hero-strip";
 import { Wordmark } from "@/components/wordmark";
 import { PhotoScrim } from "@/components/photo-scrim";
 import { ApplyLink } from "@/components/apply-link";
@@ -34,6 +33,20 @@ export function Hero() {
             `justify-center` on a flex column that also holds the strip would
             centre both together and push the lockup up; the strip is pinned to
             the bottom by `mt-auto` instead, so the middle stays the middle. */}
+        {/* A FLAT WASH ACROSS THE WHOLE FRAME, added when the photograph
+            changed. The previous hero was a dark, close-cropped shot and the
+            radial scrim under the mark was enough on its own. This one is a
+            lit room with pale faces and festoon lights through the middle of
+            it, and measured against it the tagline sat at 1.64:1 — white type
+            you cannot read — with the mark itself only scraping 3.05.
+
+            The radial pool still does the work under the mark. This puts a
+            floor under everything else, including the line the pool does not
+            reach. */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-1 bg-black/[0.45]"
+        />
         <div className="relative z-2 flex w-full flex-1 flex-col items-center px-6 pb-0 pt-28 text-center">
           {/* The 10px is padding rather than a margin: the block is centred
               with `my-auto`, and an auto margin has no room left to give once
@@ -81,7 +94,6 @@ export function Hero() {
 
           </div>
 
-          <HeroStrip />
         </div>
       </PhotoPlaceholder>
     </div>
