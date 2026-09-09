@@ -670,7 +670,13 @@ export const MEMBERSHIP_PAGE = {
    * where you had landed. It is still the link home, in the header, on this
    * page and on all the others.
    */
-  heading: "membership",
+  /**
+   * NOT THE PAGE'S NAME ANY MORE. It said "membership" over the photograph
+   * and "fwd. membership" in the heading directly under it, which named the
+   * page twice in one screen. This says something instead, and the h1 below
+   * still does the naming.
+   */
+  heading: "behind closed doors",
 
   /**
    * Not printed anywhere. It names the row of benefit tiles for a screen
