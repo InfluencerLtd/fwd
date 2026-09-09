@@ -114,9 +114,17 @@ export const BRIEFING = {
   },
 } as const;
 
-export const CLUB = {
-  title: "the club",
-  heading: "The club",
+export const ABOUT_PAGE = {
+  /**
+   * "what it is", not "the club".
+   *
+   * The naming rule in src/lib/brand.ts has always said the word club is not
+   * used anywhere a visitor can read. The navigation broke it, and the
+   * positioning document settles the argument from the other direction too:
+   * The Social Club was rejected for describing the format rather than the
+   * ambition. So the item says what the page contains.
+   */
+  title: "what it is",
   /**
    * DRAFT. Written from the material already on the site — the positioning
    * line, the membership section, Meeting of Minds — rather than invented, but
@@ -149,6 +157,36 @@ export const CLUB = {
       },
     ],
   },
+  /**
+   * WHY IT IS CALLED FORWARD.
+   *
+   * Taken from the positioning document, in its own words. It is the one piece
+   * of writing about this brand that explains the name, and nothing on the
+   * site said it — a visitor met the mark on every page and was never told
+   * what it meant.
+   *
+   * IT ALSO CARRIES THE WIDER FRAME, and this is the only page that does. The
+   * home page and the meta description stay on the creator economy, which is
+   * specific, searchable and what the first cohort actually is. The ambition —
+   * culture, creativity, media and influence — lives here, where somebody has
+   * clicked through because they want to know what this is.
+   */
+  ambition: {
+    heading: "why forward",
+    /** From the positioning document. */
+    body: [
+      "The name is directional on purpose. It suggests movement, momentum and looking ahead rather than simply bringing people together socially.",
+      "It is a space designed to move the industry forward — the people shaping culture, creativity, media and influence, in a room together to exchange ideas, challenge thinking and make connections that matter.",
+      "Somewhere to step outside the day-to-day, have the conversations that are hard to have anywhere else, and work out where this is all going next.",
+    ],
+    /** The three it is built around. From the document. */
+    pillars: [
+      "Progressive discussion",
+      "Fresh perspectives",
+      "A meeting of minds",
+    ],
+  },
+
   closing: {
     heading: "who it is for",
     /** DRAFT. */

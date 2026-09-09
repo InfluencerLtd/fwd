@@ -13,6 +13,16 @@ const nextConfig: NextConfig = {
    * the warnings.
    */
   devIndicators: false,
+
+  /**
+   * /club was the page now at /about. The word club has gone from the site —
+   * brand.ts forbids it anywhere a visitor can read — but the old address may
+   * already be in an email or a message, and a permanent redirect costs
+   * nothing and keeps whatever link equity the page has.
+   */
+  async redirects() {
+    return [{ source: "/club", destination: "/about", permanent: true }];
+  },
 };
 
 export default nextConfig;

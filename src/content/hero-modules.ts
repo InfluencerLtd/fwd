@@ -10,10 +10,11 @@
  *    as plain text rather than as a link that punishes you for pressing it,
  *    which is what four of these were before the pages existed.
  *
- * 2. "the club" BREAKS A NAMING RULE. src/lib/brand.ts says the word club is
- *    not used anywhere a visitor or member can read, and that where a common
- *    noun is needed the copy says "the room". It is here because it is in the
- *    mock. One of the two has to give.
+ * 2. SETTLED: the first item said "the club" and now says "what it is". The
+ *    naming rule in src/lib/brand.ts won — it forbids the word anywhere a
+ *    visitor can read — and the positioning document agreed from the other
+ *    side, having rejected "The Social Club" for describing the format rather
+ *    than the ambition.
  *
  * 3. THE FOUNDING PLACES FIGURE IS A NUMBER FROM A MOCK. Publishing it fixes a
  *    cap that the framework doc still has open. Set it to null and the strip
@@ -22,7 +23,7 @@
  */
 
 export const HEADER_NAV: readonly { label: string; href: string | null }[] = [
-  { label: "the club", href: "/club" },
+  { label: "what it is", href: "/about" },
   { label: "membership", href: "/membership" },
   { label: "rooms", href: "/rooms" },
   { label: "the class of 2026", href: "/class-of-2026" },

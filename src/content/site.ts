@@ -143,16 +143,6 @@ export const HERO = {
   memberSignIn: "already a member? sign in",
 } as const;
 
-export const ABOUT = {
-  heading: "what fwd. is",
-  /** DRAFT. */
-  body: [
-    "fwd. is a community, not a series of events. It runs all year, in person and online, and it spans brands, creators, platforms and the wider industry.",
-    "There is no permanent space, and that is deliberate. It lives through the rooms it puts together, the conversations it starts and the introductions it makes.",
-    "Members are global. Membership is by application.",
-  ],
-} as const;
-
 /**
  * The line the whole thing rests on.
  *
