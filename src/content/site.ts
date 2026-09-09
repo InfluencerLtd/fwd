@@ -83,6 +83,16 @@ export const HOLDING = {
 export const FOOTER = {
   /** The way back to the home page from privacy and cookies. */
   back: "back",
+  /**
+   * The parent company, and the way to it.
+   *
+   * IT KEEPS ITS CAPITAL AND ITS DOMAIN. Everything else in this footer is
+   * lowercase, and this is not styling — it is a name, and the naming rules in
+   * src/lib/brand.ts spell the endorsement "by Influencer" with a capital I.
+   * Written as the address rather than the word because that is what it is:
+   * somewhere else to go, not a page of this site.
+   */
+  parent: { label: "Influencer.com", href: "https://www.influencer.com" },
   /** DRAFT. */
   privacy: "privacy",
   cookies: "cookies",

@@ -23,7 +23,8 @@ were 4240px originals, resized to 2400 and re-encoded at quality 82.
 | `rooms-close` | DSC01119 again | /rooms close |
 | `briefing` | DSC01100 again | /briefing close |
 | `meeting-of-minds` | earlier | the square tile on the home page |
-| `band-1` … `band-6` | the evening set | the drifting band |
+| `band-1` | 4F0A0955 | the drifting band — the "Dinners" tile |
+| `band-2` … `band-6` | the evening set | the drifting band |
 | `band-7`, `band-8` | portrait crops of DSC01064 and DSC01068 | the drifting band |
 
 ## Still missing

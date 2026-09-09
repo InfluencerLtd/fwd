@@ -18,12 +18,12 @@ import { FOOTER } from "@/content/site";
  *
  * There is no rule across the top. The change of ground is the join.
  *
- * IT IS ONE LINE NOW. The address holds the left and the legal pair sits
- * against the right, all on the same baseline — the two links beside each
- * other rather than stacked, which is what four words deserve. Stacking them
- * made a column out of a pair.
+ * IT IS ONE LINE NOW. The address holds the left, and the parent company and
+ * the legal pair sit against the right, all on the same baseline — beside each
+ * other rather than stacked, which is what six words deserve. Stacking them
+ * made a column out of a row.
  *
- * There are no visible headings over any of it. There are five words in this
+ * There are no visible headings over any of it. There are six words in this
  * whole footer and a heading would be more furniture than content; the labels
  * live on the nav element instead, where a screen reader still gets the
  * structure and the eye is not given anything else to read.
@@ -94,20 +94,39 @@ export function SiteFooter() {
             </a>
           </div>
 
-          {/* The pair sits against the right edge of the page rather than in
-              a third of it — `justify-between` on the row above is what puts
-              it there — and runs along one line rather than down two. */}
-          <nav aria-label={FOOTER.legalHeading}>
-            <ul className="flex gap-8">
-              {LEGAL.map((page) => (
-                <li key={page.href}>
-                  <Link href={page.href} className={`${LINK} ${MUTED}`}>
-                    {page.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          {/* The right-hand end of the row: the parent company, then the
+              legal pair, all on one line.
+
+              INFLUENCER.COM IS NOT IN THE LEGAL LIST, even though it sits
+              beside it. It is the company this belongs to and the only link in
+              the footer that leaves the site; privacy and cookies are pages of
+              this one. A screen reader is told they are two different things
+              rather than three items of the same kind.
+
+              It leaves the site, so it opens in its own tab and carries
+              rel="noreferrer", which is what every outbound link here does. */}
+          <div className="flex items-baseline gap-8">
+            <a
+              href={FOOTER.parent.href}
+              target="_blank"
+              rel="noreferrer"
+              className={`${LINK} ${MUTED}`}
+            >
+              {FOOTER.parent.label}
+            </a>
+
+            <nav aria-label={FOOTER.legalHeading}>
+              <ul className="flex gap-8">
+                {LEGAL.map((page) => (
+                  <li key={page.href}>
+                    <Link href={page.href} className={`${LINK} ${MUTED}`}>
+                      {page.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
         </div>
       </div>
     </footer>
