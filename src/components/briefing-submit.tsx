@@ -38,7 +38,7 @@ export function BriefingSubmit() {
           </div>
 
           <div>
-            <p className="fwd-reveal fwd-body max-w-xl text-ink-muted">
+            <p className="fwd-reveal fwd-body max-w-xl whitespace-pre-line text-ink-muted">
               {BRIEFING_SUBMIT.body}
             </p>
 

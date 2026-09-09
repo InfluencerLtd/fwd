@@ -385,7 +385,10 @@ export const BRIEFING_SUBMIT = {
    * until they have said yes — applies here too. Asked for directly, so it is
    * written; it wants her agreement and probably a surname before launch.
    */
-  body: "The briefing is built from what is actually changing in the creator economy, from the people in a position to know it rather than the people quickest to write about it. Four issues released throughout the year, to members only. Written by our CRO, Jenny.",
+  // The \n is a line break inside the paragraph, not a new paragraph, and it is
+  // rendered because the section sets whitespace-pre-line. It falls where the
+  // copy turns: what the briefing is, then the facts about it.
+  body: "The briefing is built from what is actually changing in the creator economy, from the people in a position to know it rather than the people quickest to write about it.\nFour issues released throughout the year, to members only. Written by our CRO, Jenny.",
   send: "send something in",
 
   /**
