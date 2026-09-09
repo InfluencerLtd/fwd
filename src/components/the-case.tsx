@@ -1,7 +1,15 @@
 import { CASE } from "@/content/site";
 
 /**
- * The argument, on the warm near-black, before anything is offered.
+ * The argument, on the light grey band, before anything is offered.
+ *
+ * IT WAS ON THE WARM NEAR-BLACK. The same grey the Meeting of Minds band uses,
+ * so the two editorial sections of the page share a ground and the darks are
+ * left to the photography. The grain went with it: the grey band elsewhere on
+ * the page does not carry it, and the argument for it was texture on a large
+ * flat dark area that is no longer here.
+ *
+ * Measured on this ground: the heading is 15.06:1 and the body 4.78:1.
  *
  * This is the section the site did not have. It opened with a photograph and
  * went straight to what membership unlocks, which sells a solution to a
@@ -22,8 +30,8 @@ import { CASE } from "@/content/site";
  */
 export function TheCase() {
   return (
-    <section id="why" className="fwd-dark fwd-on-dark fwd-grain scroll-mt-20 px-6 py-28 sm:py-40">
-      <div className="relative z-1 mx-auto max-w-6xl">
+    <section id="why" className="bg-surface-alt scroll-mt-20 px-6 py-28 sm:py-40">
+      <div className="mx-auto max-w-6xl">
         {/* No eyebrow. "why it exists" over a heading that asks why it
             exists is a label on something already labelled, and the section
             has one job — the argument arrives faster without it. */}
@@ -31,7 +39,7 @@ export function TheCase() {
           {/* Seven of twelve columns. The heading is the loudest thing on the
               page after the wordmark itself, and it is left-aligned so the
               rag falls where the reading starts. */}
-          <h2 className="fwd-rise fwd-statement col-span-full text-photo-ink lg:col-span-7">
+          <h2 className="fwd-rise fwd-statement col-span-full text-ink lg:col-span-7">
             {CASE.heading}
           </h2>
 
@@ -39,7 +47,7 @@ export function TheCase() {
               composition. */}
           <div className="col-span-full space-y-6 lg:col-span-4 lg:col-start-9 lg:self-end">
             {CASE.body.map((line) => (
-              <p key={line} className="fwd-reveal fwd-body text-photo-ink/70">
+              <p key={line} className="fwd-reveal fwd-body text-ink-muted">
                 {line}
               </p>
             ))}
