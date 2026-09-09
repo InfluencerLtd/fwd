@@ -54,6 +54,22 @@ export const BRIEFING = {
   title: "the briefing",
   /** Named in src/lib/brand.ts, so the page and the navigation cannot drift. */
   heading: BENEFITS.newsletterName,
+
+  /**
+   * The masthead row under the name — the facts a reader wants before they
+   * read a word of description: how often, who gets it, when the next one is,
+   * how long it takes.
+   *
+   * >>> `next` IS A DATE NOBODY HAS COMMITTED TO. <<< It is the only thing on
+   * this page that could be wrong on a Tuesday. Set it to null and the row
+   * shows three columns instead of four.
+   */
+  masthead: [
+    { label: "cadence", value: "Four times a year" },
+    { label: "who gets it", value: "Members only" },
+    { label: "next issue", value: "11.26" as string | null },
+    { label: "read in", value: "Under ten minutes" },
+  ],
   /** DRAFT. */
   lead: [
     "Four times a year, to members only. What is actually changing in the creator economy, from the people in a position to know it rather than the people quickest to write about it.",
@@ -99,7 +115,7 @@ export const CLUB = {
    */
   lead: [
     // The \n is a line break inside the paragraph, not a new paragraph. It is
-    // rendered because simple-page.tsx sets whitespace-pre-line; spaces still
+    // rendered because the club page sets whitespace-pre-line; spaces still
     // collapse, so nothing else in these strings changes.
     "fwd. brings together the people shaping the future of the creator economy. The brands. The creators. The platforms.\nThe people with something to say, build, change or start next.",
     "Membership unlocks a year-round program of intimate dinners, private conversations, industry briefings and experiences alongside a network that extends far beyond the room.",

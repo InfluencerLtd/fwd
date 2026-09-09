@@ -41,7 +41,7 @@ export default function MembershipPage() {
           showLabel={false}
           sizes="100vw"
           ratio="fill"
-          className="flex min-h-[52vh] flex-col justify-end"
+          className="flex min-h-[78vh] flex-col justify-end"
         >
           <div className="relative z-2 mx-auto w-full max-w-4xl px-6 pb-14 pt-24">
             {/* The page's name, not the wordmark. Every other page names
