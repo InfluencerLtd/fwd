@@ -30,7 +30,7 @@ export type EmailTemplate = {
 export const EMAILS = {
   /** Sent when an application is accepted. */
   accepted: {
-    subject: "Welcome to fwd.",
+    subject: "Welcome to Forward",
     body: [
       "Hello {name},",
       "Your application has been accepted. Welcome in.",
@@ -43,10 +43,10 @@ export const EMAILS = {
 
   /** Sent when an application is declined. Short, warm, and not a lecture. */
   declined: {
-    subject: "Your fwd. application",
+    subject: "Your Forward application",
     body: [
       "Hello {name},",
-      "Thank you for applying to fwd., and for taking the time to tell us about your work.",
+      "Thank you for applying to Forward, and for taking the time to tell us about your work.",
       "We are not able to offer you a place at the moment. Membership is kept deliberately small and balanced across brands, creators, platforms and the wider industry, so this is far more about the shape of the room than about you.",
       "We would be glad to hear from you again. If anything changes on your side, or if you would like us to keep you in mind, just reply to this message.",
     ],
@@ -70,7 +70,7 @@ export const EMAILS = {
 
   /** The six-digit code for signing in to The House. */
   signIn: {
-    subject: "Your fwd. sign-in code",
+    subject: "Your Forward sign-in code",
     body: [
       "Hello {name},",
       "Your code is {code}",
@@ -80,7 +80,7 @@ export const EMAILS = {
 
   /** Sent as soon as an application is received. */
   received: {
-    subject: "We have your fwd. application",
+    subject: "We have your Forward application",
     body: [
       "Hello {name},",
       "Thank you. Your application is with us and someone will read it properly.",
@@ -91,6 +91,6 @@ export const EMAILS = {
 
 export const EMAIL_FOOTER = {
   /** Appears at the bottom of every email. The unsubscribe link is required. */
-  lines: ["fwd., by influencer", "{contactEmail}"],
-  unsubscribeLabel: "Unsubscribe from fwd. email",
+  lines: ["Forward by Influencer", "{contactEmail}"],
+  unsubscribeLabel: "Unsubscribe from Forward email",
 } as const;

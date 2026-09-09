@@ -7,9 +7,23 @@
  * If a name changes, change it here once and it changes across the whole site.
  *
  * NAMING RULES (these are not style preferences, they are the identity):
- *   - The short mark is always `fwd.` - lowercase, always with the full stop.
- *     Never FWD. Never Fwd. Never fwd without the stop.
- *   - `Forward` is the long form, used in prose where the full word reads better.
+ *
+ *   THE NAME IS FORWARD. THE MARK IS fwd. They are not alternatives and they
+ *   are not interchangeable — each has a job:
+ *
+ *     - In prose, the club is called `Forward`. "Forward brings together brands,
+ *       creators and cultural tastemakers." "Welcome to Forward." Spoken, it is
+ *       always "Forward", never "eff-double-you-dee".
+ *     - In logos, graphics, social assets and branded headings, it is `fwd.` —
+ *       lowercase, always with the full stop. Never FWD, Fwd, FWD. or forward.
+ *     - `by Influencer` is the endorsement, used where the relationship with
+ *       Influencer needs to be clear: "Forward by Influencer", or the lock-up
+ *       `fwd. by Influencer`.
+ *     - On first introduction to an audience that does not know the brand:
+ *       "Forward (fwd.) by Influencer", or the lock-up beside copy naming
+ *       Forward. Once they know it, `fwd.` may stand alone.
+ *
+ *   Never alternate between the two arbitrarily inside one piece of writing.
  *   - `by influencer` is a signature, not a logo. It always sits apart from the
  *     mark in the layout and is always visually quieter. Never join the two into
  *     a single phrase in a sentence.
@@ -20,9 +34,9 @@
  */
 
 export const BRAND = {
-  /** Primary mark. Lowercase, with the full stop. */
+  /** THE MARK. For logos, graphics and branded headings. Never in prose. */
   markShort: "fwd.",
-  /** Long form, for prose. */
+  /** THE NAME. For prose, and for anything anybody says out loud. */
   markLong: "Forward",
   /** Endorsement signature. Set in italic serif, always quieter than the mark. */
   endorsement: "by influencer",

@@ -26,7 +26,7 @@
 export const PRIVACY = {
   heading: "privacy",
   body: [
-    "fwd. is run by Influencer. Your information is handled under Influencer’s privacy notice, which covers this site.",
+    "Forward is run by Influencer. Your information is handled under Influencer’s privacy notice, which covers this site.",
     "What this site asks for: if you apply for membership, your name, email address, role, company, market, a profile link if you want to give one, and whatever you write in your own note. If you only ask to be kept up to date, your email address and nothing else. If you are a member, we also hold your member record and whether you said you were coming to an event.",
     "Where it goes: our own database, and a copy in HubSpot, which is the system Influencer uses to keep track of the people it works with. We do not sell it, and we do not pass it to anybody outside Influencer and the services that run this site.",
     "If you want to know what we hold about you, or you want it removed, write to us and we will deal with it.",
@@ -45,7 +45,7 @@ export const PRIVACY = {
 export const COOKIES = {
   heading: "cookies",
   body: [
-    "This site sets one cookie of its own. It remembers the fwd. team’s early access preview, so they are not asked for the password on every page.",
+    "This site sets one cookie of its own. It remembers the Forward team’s early access preview, so they are not asked for the password on every page.",
     "It counts how many people visit, using Vercel’s analytics. That sets no cookie and does not follow anybody between sites: visitors are counted by a code that is thrown away every day, so there is nothing kept that could be tied back to a person.",
     "Your browser remembers whether you chose light or dark mode. That is stored on your own device and never sent to us.",
     "There is no advertising cookie, and nothing here is shared with an advertising network.",

@@ -50,7 +50,7 @@ export const SIGN_IN = {
 
 export const NAV = {
   /** The way back out to the public site, so no page is a dead end. */
-  publicSite: "the fwd. site",
+  publicSite: "the Forward site",
   directory: "members",
   events: "events",
   library: "library",
@@ -87,12 +87,12 @@ export const INTRO = {
   heading: BENEFITS.signature,
   /** DRAFT. */
   intro:
-    "Tell us why you would like to meet {name} and we will make the introduction properly, with context, to both of you. This comes to the fwd. team. It does not email them.",
+    "Tell us why you would like to meet {name} and we will make the introduction properly, with context, to both of you. This comes to the Forward team. It does not email them.",
   reasonLabel: "why would you like to meet?",
   reasonHint: "A sentence or two is plenty. The more specific, the better the introduction.",
   submit: "ask for an introduction",
   sending: "Sending",
-  success: "Thank you. That is with the fwd. team and we will be in touch before we introduce you.",
+  success: "Thank you. That is with the Forward team and we will be in touch before we introduce you.",
   required: "Please tell us why, so the introduction means something.",
   optedOut: "This member is not taking introductions at the moment.",
   error: "Something went wrong at our end. Please try again in a moment.",
@@ -134,7 +134,7 @@ export const PROFILE = {
   bioHint: "A line or two on what you are working on. This is what makes an introduction useful.",
   linkLabel: "LinkedIn or social profile",
   photoLabel: "photo",
-  photoHint: "Photo uploads are not built yet. For now the fwd. team can add one for you.",
+  photoHint: "Photo uploads are not built yet. For now the Forward team can add one for you.",
   newsletterLabel: "send me the quarterly newsletter",
   introsLabel: "other members can ask to be introduced to me",
   contactPreferences: "contact preferences",
@@ -164,12 +164,12 @@ export const LIBRARY = {
   allKinds: "every type",
   allCategories: "every category",
   empty: "Nothing matches that. Try fewer words.",
-  none: "There is nothing in the library yet. It will fill up as fwd. produces things.",
+  none: "There is nothing in the library yet. It will fill up as Forward produces things.",
   countOne: "1 item",
   countMany: "{n} items",
   download: "download",
   downloadUnavailable:
-    "This file is not available to download at the moment. Please let the fwd. team know.",
+    "This file is not available to download at the moment. Please let the Forward team know.",
   /** Explains why the link is short-lived, so nobody thinks it is broken. */
   downloadNote:
     "Download links are personal to you and stop working after a few minutes. Come back here for a fresh one.",
@@ -182,7 +182,7 @@ export const MERCH = {
    * DRAFT. The wording matters here: members CLAIM things, they do not buy
    * them. There is no price anywhere and nothing should read like a shop.
    */
-  intro: "fwd. pieces. Choose what you'd like, confirm where to send it, and we'll do the rest.",
+  intro: "Forward pieces. Choose what you'd like, confirm where to send it, and we'll do the rest.",
   none: "Nothing to claim at the moment. There will be.",
   closed: "Claims are closed on this one.",
   allGone: "All claimed.",
@@ -214,5 +214,5 @@ export const MERCH = {
 
   /** Said plainly, because we are asking for somebody's home address. */
   addressNote:
-    "We only use this to send you this one thing. It is not added to your profile and it is not shared with anyone outside the fwd. team and whoever posts it.",
+    "We only use this to send you this one thing. It is not added to your profile and it is not shared with anyone outside the Forward team and whoever posts it.",
 } as const;

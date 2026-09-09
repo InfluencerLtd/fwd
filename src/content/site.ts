@@ -67,7 +67,7 @@ export const HOLDING = {
 
   /** The consent line next to the checkbox. Required, and must stay honest. */
   consent:
-    "I am happy to receive occasional email about fwd. You can unsubscribe at any time.",
+    "I am happy to receive occasional email about Forward. You can unsubscribe at any time.",
 
   consentRequired: "Please tick the box so we know we can email you.",
 
@@ -99,8 +99,18 @@ export const FOOTER = {
 
 /** Used for the browser tab, search results, and link previews in email, WhatsApp and Slack. */
 export const META = {
-  /** DRAFT. */
-  title: "fwd.",
+  /**
+   * THE NAME, NOT THE MARK. This was "fwd." — which is the wordmark, and a
+   * wordmark in a search result tells somebody who has never heard of us
+   * nothing at all. The naming rule covers exactly this case: on first
+   * introduction to a new audience, write Forward (fwd.) by Influencer. A
+   * search result, a browser tab and a link preview in somebody's inbox are
+   * the definition of a first introduction.
+   *
+   * The mark is still the first thing on the page itself, at the top left of
+   * every screen, which is where a wordmark belongs.
+   */
+  title: "Forward (fwd.) by Influencer",
   /**
    * Keep under about 155 characters or search engines cut it off. This one is
    * 84, so there is room if the positioning line ever grows.
@@ -551,7 +561,7 @@ export const APPLY = {
   tooMany:
     "We have your application. If you have not heard back, write to us rather than sending it again.",
   consent:
-    "I am happy to receive occasional email about fwd. You can unsubscribe at any time.",
+    "I am happy to receive occasional email about Forward. You can unsubscribe at any time.",
 } as const;
 
 export const NAV = {
@@ -691,7 +701,7 @@ export const MEMBERSHIP_PAGE = {
    * who has not seen it.
    */
   description:
-    "Membership of fwd. is by application. What it gets you, what we will ask, and how to apply.",
+    "Membership of Forward is by application. What it gets you, what we will ask, and how to apply.",
 
   /**
    * The last thing on the page. The ask again, after the pictures, so anybody

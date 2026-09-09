@@ -56,7 +56,7 @@ export const FORMATS = [
     name: "Conferences",
     /** TEST COPY. */
     description:
-      "Where fwd. takes a room inside somebody else's week. Cannes, Ad Week, and the handful of others worth the flights.",
+      "Where Forward takes a room inside somebody else's week. Cannes, Ad Week, and the handful of others worth the flights.",
     size: "varies",
     frequency: "three a year",
   },
