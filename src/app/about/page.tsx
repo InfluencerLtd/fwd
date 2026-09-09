@@ -3,6 +3,7 @@ import { PageShell } from "@/components/page-shell";
 import { PageClose } from "@/components/page-close";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { PhotoScrim } from "@/components/photo-scrim";
+import { TablePlan } from "@/components/table-plan";
 import { ABOUT_PAGE } from "@/content/pages";
 import { IMAGERY } from "@/content/site";
 
@@ -47,7 +48,8 @@ export default function ClubPage() {
           className="flex min-h-[62vh] flex-col justify-end px-6 pb-20 pt-40 sm:pb-28"
         >
         <div className="relative z-2 mx-auto w-full max-w-6xl">
-          <p className="fwd-enter fwd-eyebrow text-accent-on-dark/70">{ABOUT_PAGE.title}</p>
+          {/* No eyebrow. It said "what it is" over a paragraph that says what
+              it is, and the navigation item three inches above says it too. */}
           {/* HEADING SCALE, NOT STATEMENT SCALE, and `normal-case` on top of
               it. Both are corrections to the obvious version of this page.
 
@@ -65,12 +67,12 @@ export default function ClubPage() {
 
               Not an h1 either: the page's one main heading is "how it works"
               below. */}
-          <div className="relative mt-10 inline-block">
+          <div className="relative inline-block">
             <PhotoScrim size="lockup" />
-            <p
-              className="fwd-enter fwd-h2 max-w-5xl normal-case text-photo-ink"
-              style={{ "--fwd-enter-delay": "260ms" } as React.CSSProperties}
-            >
+            {/* No delay: with the eyebrow gone there is nothing for it to
+                arrive after, and a page opening on a quarter-second of empty
+                screen is not a page opening. */}
+            <p className="fwd-enter fwd-h2 max-w-5xl normal-case text-photo-ink">
               {opening}
             </p>
           </div>
@@ -90,6 +92,12 @@ export default function ClubPage() {
                 {paragraph}
               </p>
             ))}
+          </div>
+
+          {/* The room, drawn. It sits in the space this section was already
+              holding open rather than the section growing to fit it. */}
+          <div className="col-span-full lg:col-span-4 lg:col-start-8">
+            <TablePlan />
           </div>
         </div>
       </section>
