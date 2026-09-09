@@ -140,20 +140,17 @@ export const ABOUT_PAGE = {
     // Without them the line wrapped mid-phrase — "The" was left at the end of
     // one line and "creators." began the next, which reads as a stumble. Now
     // each pair drops whole to the line below rather than splitting.
-    // A circle round each of the three, which is the one place on the site the
-    // device repeats itself deliberately: three of the same shape reads as a
-    // list being counted off, where three different ones would read as three
-    // unrelated emphases. The non-breaking spaces matter more than ever now —
-    // a circled phrase that breaks across two lines draws half an ellipse at
-    // the end of one line and half at the start of the next.
+    // NO CIRCLES ROUND THE THREE. They were drawn and taken out again: at the
+    // width where all three fit on one line, each ellipse overhangs its phrase
+    // by more than the space between them, so the row read as one long loop
+    // rather than as three marks. The line still stands on its own.
+    //
     // The \n is a line break inside the paragraph, not a new paragraph, and it
-    // is rendered because the page sets whitespace-pre-line on this line. It is
-    // here so the three circled phrases start a line together instead of two of
-    // them finishing one line and the third opening the next — three of the
-    // same mark only read as a set when they are side by side. Below about a
-    // tablet they still have to wrap; there is no width at which forty
-    // characters of heading type fit on a phone.
-    "Bringing together the people [[shaping|swoosh]] the future of the creator economy.\n[[The\u00a0brands.|circle]] [[The\u00a0creators.|circle]] [[The\u00a0platforms.|circle]]",
+    // is rendered because the page sets whitespace-pre-line. The three short
+    // sentences are held together with non-breaking spaces so a pair cannot
+    // split mid-phrase, with "The" left at the end of one line and "creators."
+    // opening the next.
+    "Bringing together the people [[shaping|swoosh]] the future of the creator economy.\nThe\u00a0brands. The\u00a0creators. The\u00a0platforms.",
     "Membership unlocks a year-round program of intimate dinners, private conversations, industry briefings and experiences alongside a network that extends far beyond the room.",
     "Meet someone you\u2019ve wanted to meet. Hear what\u2019s coming before it becomes obvious. Share an idea with the person who can make it happen.",
   ],
