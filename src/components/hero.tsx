@@ -42,10 +42,14 @@ export function Hero() {
 
             The radial pool still does the work under the mark. This puts a
             floor under everything else, including the line the pool does not
-            reach. */}
+            reach.
+
+            0.45 cleared the numbers at 6.98 and 4.90. This is 0.58, which is
+            not about clearing them: the type reads as sitting on the picture
+            rather than fighting it. Mark 8.80:1, tagline 7.12:1. */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 z-1 bg-black/[0.45]"
+          className="pointer-events-none absolute inset-0 z-1 bg-black/[0.58]"
         />
         <div className="relative z-2 flex w-full flex-1 flex-col items-center px-6 pb-0 pt-28 text-center">
           {/* The 10px is padding rather than a margin: the block is centred
