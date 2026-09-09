@@ -54,9 +54,9 @@ export function SiteHeader({
    * See the `signature` prop in wordmark.tsx for why it is one or the other
    * and never both.
    *
-   * The width stays 108px either way, so the "fwd." is the same size on every
+   * The width is the same either way, so the "fwd." is the same size on every
    * page and only the bar's height changes — the signature is what the extra
-   * fifteen pixels were for.
+   * thirteen pixels are for.
    */
   signature = true,
 }: {
@@ -106,8 +106,10 @@ export function SiteHeader({
 
       <div className="relative mx-auto flex max-w-6xl items-center gap-6 px-6 py-4">
         {/* THE SLOT IS THE HEIGHT OF THE FULL LOCKUP WHATEVER IS IN IT — the
-            artwork's own ratio at 108px wide, so it is one number to change.
-            Without it the homepage bar is fifteen pixels shorter than every
+            artwork's own ratio at the bar width, so it is one number to
+            change, and it has to be the same number as `size="small"` in
+            wordmark.tsx.
+            Without it the homepage bar is thirteen pixels shorter than every
             other page's, and the nav beside it, which is centred against this,
             moves half of that up the screen when you leave the homepage. The
             mark is top-aligned in the slot, so it stays where it has always
@@ -115,7 +117,7 @@ export function SiteHeader({
         <Link
           href="/"
           aria-label={META.title}
-          className="inline-block h-[calc(108px*214.87/355.96)] shrink-0"
+          className="inline-block h-[calc(92px*214.87/355.96)] shrink-0"
         >
           <Wordmark size="small" signature={signature} />
         </Link>

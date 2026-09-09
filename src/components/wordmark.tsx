@@ -109,11 +109,20 @@ export function Wordmark({
                  *
                  * The signature is about a thirteenth of the lockup's height,
                  * so a cap height worth having sets the width, and the width
-                 * sets the bar. 108px puts the lockup at 65px and the cap
+                 * sets the bar. 108px put the lockup at 65px and the cap
                  * height near 5 — small, which an endorsement should be, and
                  * readable, which it has to be.
+                 *
+                 * IT IS 92px NOW, asked for as fifteen per cent off the bar
+                 * mark. That takes the lockup to 55px and the signature's cap
+                 * height to about 4.3, which is the smallest this can be and
+                 * still be read rather than recognised. Anything further and
+                 * the endorsement is decoration; if the bar needs to be
+                 * lighter again after that, the honest move is to drop the
+                 * signature from it — see `signature` below — rather than to
+                 * keep setting it smaller.
                  */
-                "w-[108px]";
+                "w-[92px]";
 
   const inkClass =
     tone === "onDark"
