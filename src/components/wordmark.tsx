@@ -1,29 +1,29 @@
 import { BRAND } from "@/lib/brand";
 
 /**
- * The primary lockup: the word "fwd." and the "by influencer" signature.
+ * The lockup: the supplied artwork, not type set to look like it.
  *
- * THERE IS NO GLYPH ANY MORE. An arrow mark sat above the word in the hero and
- * beside it in the bars, traced from the approved artwork. It has been taken
- * out on the brief that fwd. should be a word mark rather than an icon: an icon
- * reads as a brand of its own, and this one is meant to sit next to influencer
- * and next to partner brands without competing with either.
+ * IT USED TO BE LIVE TEXT — "fwd." in the display face with "by influencer"
+ * beside it in italic. That was a good stand-in and it is not the logo. The
+ * delivered mark differs in three ways that type could not have guessed: the
+ * signature is a sans rather than an italic serif, it reads "by Influencer"
+ * with a capital I, and it sits tucked under the right of the mark rather than
+ * beside it on the baseline.
  *
- * The word set in the display face IS the mark. Nothing else is needed.
+ * IT IS A MASK, NOT AN IMAGE, so the artwork carries no colour of its own and
+ * `tone` still works exactly as it did. See `.fwd-logo` in globals.css for why
+ * that matters more than it sounds.
  *
- * `items-baseline` is what does that. It lines the two up by the line the
- * letters sit on rather than by the top or the bottom of their boxes, which is
- * the only alignment that looks right when two pieces of type are this
- * different in size. Aligning the boxes instead would leave the signature
- * floating visibly high or low against the mark.
+ * THE SHAPE IS FIXED NOW, which changes what some of these props can mean. The
+ * old component could restack the signature under the mark at hero size and
+ * put it beside the mark in a bar; the artwork has one arrangement and that is
+ * the point of artwork. `size` is a width rather than a font size, and the
+ * height follows from the aspect ratio.
  *
- * The signature belongs to the MARK, not to the page: it sits directly beside
- * the word, whatever width the word happens to be. An earlier version pushed it
- * to the far right edge of the page, which broke the lockup into two things
- * that happened to share a line.
- *
- * The two are still separate elements and never join into a single phrase in
- * running text. This is a layout relationship, not a name.
+ * THE LOCKUP IS ALSO TALLER THAN IT WAS RELATIVE TO ITS WIDTH — 1.66:1 against
+ * roughly 4:1 for the old inline pair — because the signature is underneath
+ * rather than alongside. Every bar it sits in had to be checked rather than
+ * assumed.
  */
 export function Wordmark({
   size = "hero",
@@ -40,16 +40,15 @@ export function Wordmark({
   heading?: boolean;
   align?: "left" | "center";
   /**
-   * Whether the "by influencer" signature appears beside the mark.
+   * Whether the "by Influencer" signature is part of it.
    *
    * On by default, and it should stay on almost everywhere: the endorsement is
-   * the point of the lockup. It is off at the top of the membership page, where
-   * the mark is a small link back to the home page sitting above a large
-   * heading, and the signature at that size read as clutter rather than as an
-   * endorsement.
+   * the point of the lockup. Off on the hero, where the mark stands alone at
+   * full size and the endorsement is carried by the header lockup at the top
+   * of the same screen.
    *
-   * Turning this off does not change the naming rules in src/lib/brand.ts. The
-   * two are still never joined into a single phrase in running text.
+   * This switches to a second file rather than hiding an element, because the
+   * mark is drawn artwork and its signature is part of the drawing.
    */
   signature?: boolean;
   /**
@@ -69,89 +68,31 @@ export function Wordmark({
    * the menu, where it sits directly above the navigation it belongs to.
    *
    * `brand` and `ink` are both tokens rather than colours written out, so they
-   * follow the page into dark mode: `accent` becomes the pale ice blue there,
-   * because the dark blue is 2.69:1 on near-black, and `ink` becomes the
-   * off-white.
+   * follow the page into dark mode.
    */
   tone?: "onDark" | "brand" | "ink";
 }) {
-  /*
-   * "page" is a fifth of a step up from the rest, and that is the whole
-   * difference: 1.875rem to 2.25rem is exactly the 20% asked for.
+  /**
+   * A WIDTH, not a font size, and the height comes from the aspect ratio.
    *
-   * It exists because the sign-in page is not a bar. There, the lockup is the
-   * only branding on screen and the only way back out, rather than one item in
-   * a row of navigation, so it can carry a little more weight without shouting.
-   * Everywhere that IS a bar stays where it was: making them all bigger would
-   * grow the bar to hold it.
+   * The hero is a fraction of the window rather than a list of fixed sizes,
+   * which is what "roughly a third of the viewport" actually asks for: it
+   * holds the same proportion at widths nobody thought to write a breakpoint
+   * for. The floor stops it disappearing on a narrow phone; the ceiling stops
+   * it filling a cinema display.
    */
-  const markClass =
+  const widthClass =
     size === "heroLarge"
-      ? /*
-         * A FRACTION OF THE WINDOW, NOT A LIST OF FIXED SIZES, because that is
-         * what "roughly a third of the viewport" actually asks for. Fourteen
-         * per cent of the width puts the lockup at about a quarter of the
-         * screen at every size, which is the proportion in the mock, and it
-         * holds at widths nobody thought to write a breakpoint for.
-         *
-         * The floor stops it disappearing on a narrow phone. The ceiling stops
-         * it filling a cinema display, where a third of the width would be
-         * absurd rather than confident.
-         */
-        "text-[clamp(56px,14vw,200px)]"
+      ? "w-[clamp(190px,32vw,560px)]"
       : size === "hero"
-        ? "text-7xl sm:text-8xl lg:text-9xl"
+        ? "w-[clamp(170px,26vw,420px)]"
         : size === "large"
-          ? // Half again as big as the bars, twice: 1.875rem to 2.8125rem to
-            // 4.21875rem, which is 67.5px. Set directly, because the type scale
-            // has no step near either number — the nearest to 45 are 36 and 48,
-            // and the nearest to 67.5 are 60 and 72.
-            "text-[4.21875rem]"
+          ? "w-[150px]"
           : size === "page"
-            ? "text-4xl"
-            : "text-3xl";
-  const signatureClass =
-    size === "heroLarge"
-      ? // The same curve at about a fifth of it, so the signature stays a
-        // signature rather than growing into a second headline.
-        "text-[clamp(12px,2.9vw,42px)]"
-      : size === "hero"
-        ? "text-lg sm:text-xl"
-        : size === "footer" || size === "page" || size === "large"
-          ? "text-xs"
-          : "text-[10px]";
-  // Enough of a gap to read as a signature beside the mark rather than as part
-  // of the word, and no more.
-  const gapClass =
-    size === "hero" || size === "heroLarge"
-      ? "gap-y-1"
-      : size === "footer" || size === "page" || size === "large"
-        ? "gap-1.5"
-        : "gap-1";
-
-  /*
-   * AT HERO SIZE THE SIGNATURE IS ALWAYS UNDER THE MARK, NOT BESIDE IT.
-   *
-   * The placement rules call for the stacked lockup in the hero, and they are
-   * right about why: inline, the pair is as wide as "fwd." plus "by
-   * influencer" plus a gap, so it spreads across the busiest part of the
-   * photograph and the endorsement ends up competing with whatever is behind
-   * it. Stacked, the lockup holds its own shape against a busy image, and it
-   * reads as a signature under a name, which is what it is.
-   *
-   * It used to be stacked only below 640px, for a different reason: on a phone
-   * the inline pair left the mark nowhere to go but smaller. Both reasons point
-   * the same way, so it is stacked everywhere now.
-   *
-   * `items-baseline` would mean nothing between two stacked rows, so the
-   * alignment goes with it.
-   */
-  const stackClass =
-    size === "hero" || size === "heroLarge"
-      ? `flex-col ${align === "center" ? "items-center" : "items-start"}`
-      : "items-baseline";
-
-  const Mark = heading ? "h1" : "span";
+            ? "w-[124px]"
+            : size === "footer"
+              ? "w-[84px]"
+              : "w-[68px]";
 
   const inkClass =
     tone === "onDark"
@@ -160,32 +101,44 @@ export function Wordmark({
         ? "text-accent"
         : "text-ink";
 
-  const word = (
-    <>
-      <Mark
-        className={`font-display leading-[0.85] ${inkClass} ${markClass}`}
-      >
-        {BRAND.markShort}
-      </Mark>
-      {/* The same colour as the word. The brief asks that the signature always
-          reads quieter, and here that is carried by size and by the italic
-          rather than by colour: the word is six to nine times larger beside
-          it. */}
-      {signature ? (
-        <span
-          className={`font-display italic leading-none ${inkClass} ${signatureClass}`}
-        >
-          {BRAND.endorsement}
-        </span>
-      ) : null}
-    </>
-  );
+  /**
+   * THE SIGNATURE IS DROPPED BELOW A SIZE IT CAN BE READ AT, whatever the
+   * caller asked for.
+   *
+   * In the artwork "by Influencer" is about a eighth of the lockup's height.
+   * In a header bar the lockup is 68px wide and 41px tall, which puts the
+   * signature at roughly 5px with a cap height near 3. That is not a small
+   * endorsement, it is a smudge — and a smudge of the parent company's name is
+   * worse than no endorsement at all.
+   *
+   * Enforced here rather than left to the call sites, because it is a fact
+   * about the artwork rather than a decision about a page: four bars ask for
+   * the small size and all four would have to remember.
+   */
+  const readableSignature = signature && size !== "small" && size !== "footer";
+
+  const Tag = heading ? "h1" : "span";
 
   return (
     <div className={align === "center" ? "flex justify-center" : "flex"}>
-      {/* Shrink-wrapped to the two of them together, so the pair centres as one
-          unit rather than the word centring and the signature hanging off it. */}
-      <div className={`inline-flex ${stackClass} ${gapClass}`}>{word}</div>
+      {/* The name is on the wrapper and the artwork is hidden from the
+          accessibility tree. A mask has no alt text and no glyphs to read: to
+          a screen reader it is an empty box unless something says what it is.
+          Nothing about it is lowercased or restyled, so this is the one place
+          the two halves of the name appear as a single phrase — see the naming
+          rules in src/lib/brand.ts, which allow it in the lock-up and forbid
+          it in running text. */}
+      <Tag className={`${widthClass} ${inkClass}`}>
+        <span className="sr-only">
+          {`${BRAND.markShort} ${BRAND.endorsement}`}
+        </span>
+        <span
+          aria-hidden="true"
+          className={`fwd-logo w-full ${
+            readableSignature ? "fwd-logo-lockup" : "fwd-logo-mark"
+          }`}
+        />
+      </Tag>
     </div>
   );
 }

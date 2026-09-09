@@ -38,8 +38,15 @@ export const BRAND = {
   markShort: "fwd.",
   /** THE NAME. For prose, and for anything anybody says out loud. */
   markLong: "Forward",
-  /** Endorsement signature. Set in italic serif, always quieter than the mark. */
-  endorsement: "by influencer",
+  /**
+   * Endorsement signature.
+   *
+   * CAPITAL I, matching the delivered artwork and the naming rules above. It
+   * was lowercase for the life of the project, from a stand-in lockup set in
+   * italic serif. The real mark sets it in a sans, tucked under the right of
+   * the word, and spells Influencer with a capital.
+   */
+  endorsement: "by Influencer",
   /** The gated member area. */
   memberArea: "The House",
 } as const;
