@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
 import { PageClose } from "@/components/page-close";
+import { PhotoPlaceholder } from "@/components/photo-placeholder";
+import { PhotoScrim } from "@/components/photo-scrim";
 import { ABOUT_PAGE } from "@/content/pages";
+import { IMAGERY } from "@/content/site";
 
 export const metadata: Metadata = {
   title: ABOUT_PAGE.title,
@@ -15,11 +18,11 @@ export const metadata: Metadata = {
  * anywhere a visitor can read, and the positioning document rejected "The
  * Social Club" for describing the format rather than the ambition.
  *
- * IT IS THE ONE PAGE THAT OPENS WITHOUT A PHOTOGRAPH, and that is its whole
- * design. Every other page on the site starts with a picture; this one starts
- * with the argument, at statement scale, on the warm near-black. It is the page
- * somebody reads when they want to know what fwd. thinks, so the writing should
- * be the thing that arrives rather than a caption under an image.
+ * IT OPENS ON A PHOTOGRAPH WITH THE HERO'S SCRIM — a pool of darkness under
+ * the type only, rather than a flat wash over the frame. It used to open on
+ * flat near-black with no picture at all, which was its distinguishing feature
+ * and is no longer: what makes it itself now is the composition below, and the
+ * fact that the writing rather than the name is what arrives first.
  *
  * The rest is a narrow column with a great deal of space to the right of it.
  * That emptiness is the point: a page that is confident about what it has to
@@ -31,11 +34,19 @@ export default function ClubPage() {
   return (
     <PageShell footer="light">
       {/* ---- The argument, as the opening ------------------------------- */}
-      <section
-        data-hero
-        className="fwd-dark fwd-on-dark fwd-grain flex min-h-[62vh] flex-col justify-end px-6 pb-20 pt-40 sm:pb-28"
-      >
-        <div className="relative z-1 mx-auto w-full max-w-6xl">
+      <div data-hero className="fwd-on-dark">
+        <PhotoPlaceholder
+          label={IMAGERY.aboutOpening}
+          name="about"
+          showLabel={false}
+          sizes="100vw"
+          ratio="fill"
+          /* The placeholder's own flat wash is off. The scrim below does the
+             darkening, under the type only, exactly as on the hero. */
+          scrim={false}
+          className="flex min-h-[62vh] flex-col justify-end px-6 pb-20 pt-40 sm:pb-28"
+        >
+        <div className="relative z-2 mx-auto w-full max-w-6xl">
           <p className="fwd-enter fwd-eyebrow text-accent-on-dark/70">{ABOUT_PAGE.title}</p>
           {/* HEADING SCALE, NOT STATEMENT SCALE, and `normal-case` on top of
               it. Both are corrections to the obvious version of this page.
@@ -54,14 +65,18 @@ export default function ClubPage() {
 
               Not an h1 either: the page's one main heading is "how it works"
               below. */}
-          <p
-            className="fwd-enter fwd-h2 mt-10 max-w-5xl normal-case text-photo-ink"
-            style={{ "--fwd-enter-delay": "260ms" } as React.CSSProperties}
-          >
-            {opening}
-          </p>
+          <div className="relative mt-10 inline-block">
+            <PhotoScrim size="lockup" />
+            <p
+              className="fwd-enter fwd-h2 max-w-5xl normal-case text-photo-ink"
+              style={{ "--fwd-enter-delay": "260ms" } as React.CSSProperties}
+            >
+              {opening}
+            </p>
+          </div>
         </div>
-      </section>
+        </PhotoPlaceholder>
+      </div>
 
       {/* ---- The rest of it, held to the left --------------------------- */}
       <section className="px-6 py-28 sm:py-36">

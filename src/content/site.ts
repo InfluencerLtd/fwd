@@ -602,6 +602,10 @@ export const IMAGERY = {
   aboutDetail: "A small detail. A place card, a glass, a hand on the table",
   meetingOfMinds: "Two people in conversation, close, warm, slightly obscured",
   statement: "A wide room at night. Amber light, figures out of focus",
+  roomsClose:
+    "A table at the end of the night. Empty chairs, glasses still out, one lamp on. For the foot of the rooms page",
+  aboutOpening:
+    "A wide room mid-conversation, shot from the edge of it. Warm, low light, nobody looking at the camera. For the top of the what it is page",
   briefingClose:
     "Someone reading, alone, after the room has emptied. Low light, close crop, face optional. For the foot of the briefing page",
   why: "Detail shot. A gesture mid-sentence, or a table after dinner",

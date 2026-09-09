@@ -5,6 +5,7 @@ import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { PhotoScrim } from "@/components/photo-scrim";
 import { FORMATS } from "@/content/formats";
 import { ROOMS } from "@/content/pages";
+import { IMAGERY } from "@/content/site";
 
 export const metadata: Metadata = {
   title: ROOMS.title,
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
  */
 export default function RoomsPage() {
   return (
-    <PageShell footer="light">
+    <PageShell footer="dark">
       {/* ---- A letterbox, not a block ----------------------------------- */}
       <div data-hero className="fwd-on-dark">
         <PhotoPlaceholder
@@ -121,7 +122,8 @@ export default function RoomsPage() {
       <PageClose
         heading={ROOMS.closing.heading}
         note={ROOMS.closing.note}
-        tone="dark"
+        photo="rooms-close"
+        photoBrief={IMAGERY.roomsClose}
       />
     </PageShell>
   );
