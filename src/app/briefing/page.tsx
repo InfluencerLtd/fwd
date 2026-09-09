@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
 import { PageClose } from "@/components/page-close";
 import { BriefingSubmit } from "@/components/briefing-submit";
+import { IMAGERY } from "@/content/site";
 import { BRIEFING } from "@/content/pages";
 
 export const metadata: Metadata = {
@@ -117,7 +118,8 @@ export default function BriefingPage() {
       <PageClose
         heading={BRIEFING.closing.heading}
         note={BRIEFING.closing.note}
-        tone="dark"
+        photo="briefing"
+        photoBrief={IMAGERY.briefingClose}
       />
     </PageShell>
   );
