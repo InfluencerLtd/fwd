@@ -1,36 +1,55 @@
-# Photographs
+# Photography
 
-Save a photograph in this folder and it appears on the site. Nothing else needs
-doing: no code to change, nothing to uncomment.
+Drop a file in here named after the slot it fills and the site picks it up.
+No extension in the code: `hero`, `about`, `band-3` and so on. Both `.jpg` and
+`.webp` work. A name with no file behind it falls back to the warm placeholder
+gradient, which is a drifting glow — visibly a missing picture rather than a
+broken one, but not something to ship.
 
-The file must be named exactly as listed below, with any of these endings:
-`.avif`, `.webp`, `.jpg`, `.jpeg` or `.png`. If two exist with the same name,
-the one earliest in that list wins, so a `.webp` beats a `.jpg`.
+The brief for every shot is in `IMAGERY` in `src/content/site.ts`.
 
-Until a file is here, that spot on the site shows a warm placeholder with a
-label saying what the shot should be. Nothing breaks, and it stays obvious which
-photographs are still missing.
+## What is here (9 September 2026)
 
-| File name | What the shot should be |
-| --- | --- |
-| `hero` | The approved hero shot. Warm, dimly lit, close-cropped, people in frame |
-| `about-wide` | Hands and glasses across a table. Candlelight, close crop |
-| `about-tall` | A room mid-conversation. Low light, shallow focus, faces optional |
-| `about-detail` | A small detail. A place card, a glass, a hand on the table |
-| `meeting-of-minds` | Two people in conversation, close, warm, slightly obscured |
-| `statement` | A wide room at night. Amber light, figures out of focus |
-| `why` | Detail shot. A gesture mid-sentence, or a table after dinner |
-| `membership` | The top of the membership page. A room mid-conversation, low light |
-| `band-1` to `band-8` | The eight in the strip that drifts sideways. Portrait or square |
+From the shared Drive folder. The evening set is 900px and the four DSC files
+were 4240px originals, resized to 2400 and re-encoded at quality 82.
 
-## What makes a good one here
+| File | Source | Where it appears |
+|---|---|---|
+| `hero` | earlier | home page hero, holding page |
+| `about` | DSC01100 | /about opening — the long table, guests gathering |
+| `membership` | DSC01119 | /membership opening — the dinner in progress |
+| `rooms` | DSC01068 | /rooms letterbox — standing conversation |
+| `closing` | DSC01064 | home page close — the place setting |
+| `rooms-close` | DSC01119 again | /rooms close |
+| `briefing` | DSC01100 again | /briefing close |
+| `meeting-of-minds` | earlier | the square tile on the home page |
+| `band-1` … `band-6` | the evening set | the drifting band |
+| `band-7`, `band-8` | portrait crops of DSC01064 and DSC01068 | the drifting band |
 
-Warm, low light, shallow depth of field, close crops. Hands, glasses, gestures,
-rooms. Faces optional. Never bright, evenly lit conference or corporate
-photography, which will break the look faster than anything else.
+## Still missing
 
-## Size
+**The thirteen `benefit-*` tiles** on the membership page. They render as
+placeholders until there are photographs for them. Names are `benefit-` plus
+the card id in `MEMBERSHIP.cards` — `benefit-seats`, `benefit-guest-passes` and
+so on.
 
-Save them large: at least 2000px on the long edge for the hero and the wide
-ones. The site resizes them for each screen automatically, so a big original is
-better than a small one. It will not send a 2000px image to a phone.
+**Two of the closes are reusing a photograph** that is already doing another
+job. They sit under a heavy mask so it is not obvious, but it is a reuse and
+it should be replaced.
+
+**Four files could not be fetched.** `MON03990`, `MON04225`, `MON04274` and
+`MON04363` in the Drive folder are between 10.7MB and 15.1MB, and the Drive
+connector will not download anything over 10MB. Export them at a smaller size,
+or drop them in here by hand.
+
+## What was deliberately left out
+
+Five frames from the daytime set: the two of somebody speaking into a
+microphone, the posed group against the red wall, the posed portrait with a
+drink, and the branded booth.
+
+They are good photographs of a different thing. The site argues in several
+places that this is precisely what Forward is not — "0 stages" in the home
+page figures, "nobody is presenting at anybody", "no panel and no lectern" —
+and photographs win an argument against copy every time. They are also shot
+against Influencer's red, which is not this brand's palette.

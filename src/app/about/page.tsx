@@ -36,21 +36,7 @@ export default function ClubPage() {
       <div data-hero className="fwd-on-dark">
         <PhotoPlaceholder
           label={IMAGERY.aboutOpening}
-          /**
-           * A STAND-IN. There is no `about` photograph yet, and a name with no
-           * file behind it falls back to the warm placeholder gradient — which
-           * has a slow drifting glow in it and reads as a design element
-           * rather than as a missing picture.
-           *
-           * This is the room-from-above shot, which is the closest thing we
-           * own to the brief in IMAGERY.aboutOpening. It is also on the home
-           * page, at a quarter of this size and square, so the two are not
-           * obviously the same photograph — but they are, and that is a reason
-           * to shoot this one rather than a reason to leave it.
-           *
-           * Change to "about" the moment the real file lands.
-           */
-          name="meeting-of-minds"
+          name="about"
           showLabel={false}
           sizes="100vw"
           ratio="fill"
