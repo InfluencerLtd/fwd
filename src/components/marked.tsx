@@ -20,7 +20,17 @@
  * rather than a change to a component.
  */
 
-type Style = "underline" | "circle";
+type Style = "underline" | "double" | "swoosh" | "circle";
+
+/*
+ * EVERY BOX SETS AN EXPLICIT WIDTH RATHER THAN LEFT AND RIGHT WITH width:auto.
+ *
+ * That is the obvious way to stretch an absolutely positioned element between
+ * two offsets, and it does not work here: an <svg> is a replaced element, so
+ * `width: auto` takes its intrinsic size instead of the distance between the
+ * offsets. The swoosh came out 68px wide inside a 145px phrase — underlining
+ * the first word and stopping.
+ */
 
 /**
  * Both drawn with `preserveAspectRatio="none"` so one path stretches to any
@@ -28,26 +38,33 @@ type Style = "underline" | "circle";
  * a line, so nothing distorts in a way the eye can catch.
  */
 const PATHS: Record<Style, { d: string; viewBox: string; box: string }> = {
+  /** One rising stroke. The quiet one, for a phrase inside body copy. */
   underline: {
-    // Rises very slightly to the right and settles, the way a hand does. A
-    // dead-level line reads as a border, which is what this is not.
     d: "M4 10.5 C 34 5.4, 86 3.6, 132 5.4 S 176 8.6, 196 4.6",
     viewBox: "0 0 200 14",
     box: "absolute left-0 right-0 -bottom-[0.06em] h-[0.26em] w-full",
   },
+  /** Gone over twice, the second pass not quite tracking the first. */
+  double: {
+    d: "M4 8 C 40 3, 92 2, 134 4 S 178 7, 196 3.4 M10 12.4 C 46 8.6, 96 7.4, 138 9 S 180 11.6, 192 9.2",
+    viewBox: "0 0 200 16",
+    box: "absolute left-0 right-0 -bottom-[0.09em] h-[0.30em] w-full",
+  },
+  /** Runs past the end of the word and flicks up, the way a hand leaves. */
+  swoosh: {
+    d: "M3 9 C 38 3.6, 96 2.4, 142 4.6 C 170 6, 188 8.4, 197 6 C 200 5.2, 198 3.4, 193 2.2",
+    viewBox: "0 0 200 14",
+    box: "absolute left-0 w-[calc(100%+0.10em)] -bottom-[0.07em] h-[0.28em]",
+  },
+  /** One sweep round, overshooting rather than meeting itself. */
   circle: {
-    // One sweep, overshooting past where it began rather than meeting itself,
-    // because a circle drawn in a single movement never quite closes.
     d: "M150 8 C 108 -1, 40 1, 16 20 C -3 35, 14 58, 72 66 C 132 74, 192 62, 196 40 C 199 24, 178 13, 146 8 C 138 6.7, 129 5.6, 120 5",
     viewBox: "0 0 200 72",
-    /* MEASURED, NOT GUESSED. Three attempts at this by eye were all wrong,
-       because the statement type sets leading to 0.9 and the intuition that
-       a circle should overhang the line box badly overshoots: measured on the
-       rendered page, the letters of a marked word run from 287px to 380px
-       while the box around them runs 280 to 389. The ink and the box are very
-       nearly the same thing, so the mark barely overhangs at all — an earlier
-       version hung 49px of empty circle below the baseline. */
-    box: "absolute -left-[0.22em] -right-[0.22em] -top-[0.05em] -bottom-[0.05em] w-auto",
+    /* MEASURED, NOT GUESSED. Three attempts by eye were all wrong: the
+       statement type sets leading to 0.9, so the box is very nearly the ink
+       and the instinct to overhang generously put half a circle in empty
+       space below the baseline. */
+    box: "absolute -left-[0.22em] w-[calc(100%+0.44em)] -top-[0.05em] -bottom-[0.05em]",
   },
 };
 

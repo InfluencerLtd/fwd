@@ -5,6 +5,7 @@ import { Section } from "@/components/section";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { PhotoBand } from "@/components/photo-band";
 import { ApplyLink } from "@/components/apply-link";
+import { MarkedText } from "@/components/marked";
 import { TheCase } from "@/components/the-case";
 import { BriefingSubmit } from "@/components/briefing-submit";
 import { PageClose } from "@/components/page-close";
@@ -114,7 +115,7 @@ export function PublicSite() {
               <div className="order-1 lg:order-2">
                 <h2 className="fwd-reveal fwd-h2">{MEETING_OF_MINDS.heading}</h2>
                 <p className="fwd-reveal fwd-standfirst mt-7 text-ink">
-                  {MEETING_OF_MINDS.standfirst}
+                  <MarkedText text={MEETING_OF_MINDS.standfirst} style="double" />
                 </p>
                 <div className="fwd-reveal mt-7 space-y-5">
                   {MEETING_OF_MINDS.body.map((line) => (

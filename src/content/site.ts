@@ -354,7 +354,7 @@ export const MEMBERSHIP = {
 export const MEETING_OF_MINDS = {
   heading: "meeting of minds",
   /** DRAFT. */
-  standfirst: "The right introduction can change everything.",
+  standfirst: "The right introduction can [[change everything]].",
   body: [
     "Most networks hand you a list and leave the rest to you. This one works the other way around.",
     "We make the introduction ourselves, and we tell both sides why it is worth making.",
@@ -713,7 +713,7 @@ export const MEMBERSHIP_PAGE = {
     /** DRAFT. */
     heading: "fwd. membership",
     /** DRAFT. */
-    note: "Members get access to the rooms, people, and ideas shaping the creator economy. Connect through invite-only dinners, private conversations, and industry briefings with a network that extends far beyond the room.",
+    note: "Members get access to the rooms, people, and ideas shaping the creator economy. Connect through [[invite-only dinners]], private conversations, and industry briefings with a network that extends far beyond the room.",
   },
 
   /** Shown instead of the form when applications are closed. */

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { PhotoScrim } from "@/components/photo-scrim";
+import { MarkedText } from "@/components/marked";
 import { BenefitTiles } from "@/components/benefit-tiles";
 import { ApplyDialog } from "@/components/apply-dialog";
 import { SiteMenu } from "@/components/site-menu";
@@ -93,7 +94,7 @@ export default function MembershipPage() {
               {APPLICATIONS_OPEN ? (
                 <>
                   <p className="fwd-reveal fwd-body mx-auto mt-6 max-w-2xl text-ink-muted">
-                    {MEMBERSHIP_PAGE.about.note}
+                    <MarkedText text={MEMBERSHIP_PAGE.about.note} style="swoosh" />
                   </p>
                   {/* The ask, directly under the case for it. Centred by the
                       text-center on the container. */}

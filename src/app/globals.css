@@ -1061,9 +1061,26 @@ select.fwd-field {
    the switch here too rather than a second class to remember.
    =========================================================================== */
 
+/* THE PALE ICE BLUE IS THE MARK ON DARK GROUNDS AND CANNOT BE ON LIGHT ONES.
+   Measured on the grey band it is 1.10:1 — not faint, absent. So the light
+   ground gets its own value: a sky blue that still reads as the light blue
+   the mark is meant to be, rather than the royal #004ad5 of a link, which is
+   right for text and far too solid for a pen line.
+
+   #2f86cf is 3.08:1 on the grey band, clear of the 3:1 a graphic has to meet.
+   It is the one colour on the site outside the two documented blues, and it
+   exists because a mark that has to work on both grounds cannot be one value
+   — the alternative was a mark nobody can see. */
+:root {
+  --fwd-mark: #2f86cf;
+}
+
 .fwd-mark {
-  color: var(--fwd-accent);
+  color: var(--fwd-mark);
   overflow: visible;
+}
+.fwd-on-dark .fwd-mark {
+  color: var(--fwd-accent-on-dark);
 }
 
 /* THE PEN SCALES WITH THE TYPE IT MARKS, which a number on the element cannot
@@ -1077,9 +1094,6 @@ select.fwd-field {
    hair rather than as somebody's pen. */
 .fwd-mark path {
   stroke-width: max(1.7px, 0.03em);
-}
-.fwd-on-dark .fwd-mark {
-  color: var(--fwd-accent-on-dark);
 }
 
 /* It draws itself as the line it belongs to arrives, on the same scroll
