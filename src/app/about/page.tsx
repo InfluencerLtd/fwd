@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
-import { PageClose } from "@/components/page-close";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { MarkedText } from "@/components/marked";
+import { ApplyDialog } from "@/components/apply-dialog";
 import { ABOUT_PAGE } from "@/content/pages";
-import { IMAGERY } from "@/content/site";
+import { APPLY, IMAGERY } from "@/content/site";
 
 export const metadata: Metadata = {
   title: ABOUT_PAGE.title,
@@ -213,11 +213,57 @@ export default function ClubPage() {
         </div>
       </section>
 
-      <PageClose
-        heading={ABOUT_PAGE.closing.heading}
-        note={ABOUT_PAGE.closing.note}
-        tone="light"
-      />
+      {/* ---- Who it is for, in three -----------------------------------
+           NOT PageClose. Every other page ends on the shared close, and this
+           one does the same thing with a list in the middle of it: the
+           question, then the three answers side by side, then the ask. The
+           shared component was not given a slot for that — a close that can
+           take arbitrary content in its middle is not a close any more, it is
+           a section with a button at the bottom.
+
+           THE CIRCLES ARE WHY THIS IS THREE COLUMNS. All three phrases were
+           briefly on one line over the photograph at the top of this page,
+           each with a circle round it, and at the width where the line fit the
+           marks ran into one another — one long loop rather than three. In a
+           column each, nothing is beside anything, and every circle is its own
+           mark again.
+
+           On the off-white the blue is faint by design and by measurement:
+           1.28:1, which is the brand colour on the brand ground. See the note
+           over --fwd-mark in globals.css. */}
+      <section className="px-6 py-28 sm:py-36">
+        <div className="mx-auto max-w-5xl text-center">
+          <h2 className="fwd-reveal fwd-h2">{ABOUT_PAGE.closing.heading}</h2>
+
+          <p className="fwd-reveal mx-auto mt-7 max-w-lg font-body text-[15px] leading-relaxed text-ink-muted">
+            {ABOUT_PAGE.closing.note}
+          </p>
+
+          {/* gap-y-14 rather than gap-y-10: stacked on a phone these are three
+              circled phrases down the middle of the screen, and a circle needs
+              air around it or it reads as touching the line beneath. */}
+          <ul className="fwd-stagger mx-auto mt-16 grid max-w-4xl gap-x-12 gap-y-14 sm:mt-20 sm:grid-cols-3">
+            {ABOUT_PAGE.closing.forWhom.map((item) => (
+              <li key={item.name} className="fwd-reveal">
+                {/* Not a heading. Three of these are a list of who is in the
+                    room, not a structure anybody should be able to navigate
+                    by — and they keep their capitals, which a heading here
+                    would take away. */}
+                <p className="fwd-standfirst text-ink">
+                  <MarkedText text={item.name} />
+                </p>
+                <p className="mx-auto mt-5 max-w-[26ch] font-body text-[15px] leading-relaxed text-ink-muted">
+                  {item.line}
+                </p>
+              </li>
+            ))}
+          </ul>
+
+          <div className="fwd-reveal mt-16 sm:mt-20">
+            <ApplyDialog label={APPLY.cta} />
+          </div>
+        </div>
+      </section>
     </PageShell>
   );
 }
