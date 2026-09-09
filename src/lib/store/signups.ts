@@ -1,7 +1,7 @@
 /**
  * signups.ts  (server only)
  * ---------------------------------------------------------------------------
- * Saving an email address from the holding page or the waitlist.
+ * Saving an email address from the holding page.
  *
  * The one rule this file exists to enforce: never tell somebody we saved their
  * details when we did not. If the database is missing or the write fails, the
@@ -10,7 +10,12 @@
 
 import { getServiceClient } from "@/lib/supabase";
 
-export type SignupSource = "holding" | "waitlist";
+/*
+ * ONE SOURCE. It was `"holding" | "waitlist"`, and the waitlist has gone from
+ * the site — applications are the only way in. Rows already stored with the
+ * old value are untouched and still read back fine; nothing writes it again.
+ */
+export type SignupSource = "holding";
 
 export type SignupResult =
   | { status: "saved" }

@@ -1,6 +1,5 @@
 import { ButtonLink } from "@/components/button";
 import { APPLY } from "@/content/site";
-import { APPLICATIONS_OPEN } from "@/lib/site-config";
 
 /**
  * The ask. It appears three times down the home page and they all lead to the
@@ -18,7 +17,7 @@ export function ApplyLink({
 }) {
   return (
     <ButtonLink href="/membership" variant={variant} size="lg" className={className}>
-      {APPLICATIONS_OPEN ? APPLY.cta : APPLY.closed.heading}
+      {APPLY.cta}
     </ButtonLink>
   );
 }

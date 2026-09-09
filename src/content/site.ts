@@ -457,15 +457,6 @@ export const APPLY = {
     success:
       "Thank you. Your application is with us and we will be in touch.",
   },
-  closed: {
-    heading: "join the waitlist",
-    /** DRAFT. */
-    intro:
-      "Applications are closed at the moment. Leave your details and we will let you know when they open again.",
-    submit: "join the waitlist",
-    submitting: "sending",
-    success: "Thank you. You are on the list and we will be in touch.",
-  },
   /**
    * The button on the home page and on the membership page's dark top. Both
    * lead to the membership page, so it names the destination.

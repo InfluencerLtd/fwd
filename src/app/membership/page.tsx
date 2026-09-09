@@ -6,10 +6,8 @@ import { BenefitTiles } from "@/components/benefit-tiles";
 import { ApplyDialog } from "@/components/apply-dialog";
 import { SiteMenu } from "@/components/site-menu";
 import { SiteHeader } from "@/components/site-header";
-import { SignupForm } from "@/components/signup-form";
 import { SiteFooter } from "@/components/site-footer";
 import { APPLY, MEMBERSHIP_PAGE, META } from "@/content/site";
-import { APPLICATIONS_OPEN } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: `membership · ${META.title}`,
@@ -92,34 +90,22 @@ export default function MembershipPage() {
                   of it. Its size and weight are unchanged: this is what it is,
                   not how it looks. */}
               <h1 className="fwd-reveal fwd-h2 text-photo-ink">
-                {APPLICATIONS_OPEN
-                  ? MEMBERSHIP_PAGE.about.heading
-                  : MEMBERSHIP_PAGE.closed.heading}
+                {MEMBERSHIP_PAGE.about.heading}
               </h1>
 
-              {APPLICATIONS_OPEN ? (
-                <>
-                  <p className="fwd-reveal fwd-body mx-auto mt-6 max-w-2xl text-photo-ink/75">
-                    <MarkedText text={MEMBERSHIP_PAGE.about.note} style="swoosh" />
-                  </p>
-                  {/* The ask, directly under the case for it. Centred by the
-                      text-center on the container. */}
-                  <div className="fwd-reveal mt-10">
-                    <ApplyDialog label={APPLY.cta} />
-                  </div>
-                </>
-              ) : (
-                <div className="fwd-reveal mx-auto mt-8 max-w-xl">
-                  <p className="font-body text-[17px] leading-relaxed text-photo-ink/75">
-                    {MEMBERSHIP_PAGE.closed.intro}
-                  </p>
-                  {/* Back to the left. A centred heading is a heading; centred
-                      field labels and error messages are just hard to read. */}
-                  <div className="mt-8 text-left">
-                    <SignupForm source="waitlist" tone="dark" />
-                  </div>
-                </div>
-              )}
+              {/* NO WAITLIST. This used to fork on APPLICATIONS_OPEN: the
+                  application when they were open, an email capture when they
+                  were not. There is no waitlist any more, so there is no fork
+                  — the page always makes the same ask, and the switch, its
+                  copy and the form have gone with it. */}
+              <p className="fwd-reveal fwd-body mx-auto mt-6 max-w-2xl text-photo-ink/75">
+                <MarkedText text={MEMBERSHIP_PAGE.about.note} style="swoosh" />
+              </p>
+              {/* The ask, directly under the case for it. Centred by the
+                  text-center on the container. */}
+              <div className="fwd-reveal mt-10">
+                <ApplyDialog label={APPLY.cta} />
+              </div>
             </div>
           </section>
 

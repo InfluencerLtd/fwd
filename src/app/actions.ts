@@ -14,7 +14,6 @@ import type {
   BriefingSubmitState,
 } from "@/lib/form-state";
 import { MEMBER_GROUPS, type MemberGroupId } from "@/lib/brand";
-import { APPLICATIONS_OPEN } from "@/lib/site-config";
 import { submitApplication } from "@/lib/store/applications";
 import { recordSignup, type SignupSource } from "@/lib/store/signups";
 import { recordBriefingSubmission } from "@/lib/store/briefing-submissions";
@@ -140,17 +139,6 @@ export async function submitMembershipApplication(
   _previous: ApplicationState,
   formData: FormData,
 ): Promise<ApplicationState> {
-  // If applications are closed, the form on the page is a waitlist sign-up, so
-  // nothing should be reaching this action. Refusing here as well means the
-  // switch cannot be worked around by anyone posting to it directly.
-  if (!APPLICATIONS_OPEN) {
-    return {
-      status: "error",
-      message: APPLY.closed.intro,
-      fieldErrors: {},
-    };
-  }
-
   const text = (key: string) => String(formData.get(key) ?? "").trim();
 
   const name = text("name");
@@ -257,8 +245,6 @@ export async function mirrorHubspotApplication(values: {
   reason: string;
   consented: boolean;
 }): Promise<{ mirrored: boolean; reason?: string }> {
-  if (!APPLICATIONS_OPEN) return { mirrored: false, reason: "closed" };
-
   const name = values.name.trim();
   const email = normalizeEmail(values.email);
   const role = values.role.trim();

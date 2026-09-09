@@ -9,8 +9,8 @@ import { Button } from "@/components/button";
 import { fieldHint } from "@/lib/field-hint";
 
 /**
- * The email capture. Used on the holding page now, and by the waitlist later,
- * which is why the source is passed in rather than hard-coded.
+ * The email capture. The holding page is the only thing that uses it — the
+ * waitlist it was also built for has gone from the membership page.
  *
  * It is a real HTML form wired to a server action, so it still works if
  * JavaScript is slow to load or fails.
@@ -21,9 +21,9 @@ export function SignupForm({
 }: {
   source?: SignupSource;
   /**
-   * "dark" for the holding page, which sits on the photograph.
-   * "light" for the waitlist on the public page, which sits on the off-white.
-   * The two grounds need different colours or the text stops being legible.
+   * "dark" for the holding page, which sits on the photograph. "light" is
+   * kept for a light ground, and nothing uses it since the waitlist went. The
+   * two grounds need different colours or the text stops being legible.
    */
   tone?: "dark" | "light";
 }) {

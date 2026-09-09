@@ -40,16 +40,13 @@ const OVERRIDE = process.env.NEXT_PUBLIC_SITE_MODE;
 export const SITE_MODE: SiteMode =
   OVERRIDE === "live" || OVERRIDE === "holding" ? OVERRIDE : DEFAULT_SITE_MODE;
 
-/**
- * WHETHER APPLICATIONS ARE OPEN.
- *
- *   true  - the application form is shown.
- *   false - a waitlist sign-up is shown instead, with different wording.
- *
- * The plan is a two-week open window at launch, then waitlist, so this gets
- * used. Nothing else needs changing when it does.
+/*
+ * THERE IS NO APPLICATIONS_OPEN SWITCH ANY MORE. It flipped the membership
+ * page between the application and a waitlist sign-up, and there is no
+ * waitlist: applications are the only way in, so the page has one state. If a
+ * closed period is ever wanted, it is a new decision rather than a flag left
+ * lying here for it.
  */
-export const APPLICATIONS_OPEN = true;
 
 /**
  * The password for the early access route, used by the team to preview the
