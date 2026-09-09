@@ -72,11 +72,16 @@ export const BRIEFING = {
    * >>> `next` IS A DATE NOBODY HAS COMMITTED TO. <<< It is the only thing on
    * this page that could be wrong on a Tuesday. Set it to null and the row
    * shows three columns instead of four.
+   *
+   * Written as a named month, like the two in the hero strip, so it cannot be
+   * read as a day.
    */
   masthead: [
     { label: "cadence", value: "Four times a year" },
     { label: "who gets it", value: "Members only" },
-    { label: "next issue", value: "11.26" as string | null },
+    // Named for the same reason as the hero strip's: "11.26" is unreadable
+    // as a month in one country and as a day in the other.
+    { label: "next issue", value: "Nov 2026" as string | null },
     { label: "read in", value: "Under ten minutes" },
   ],
   /** DRAFT. */

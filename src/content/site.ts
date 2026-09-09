@@ -198,31 +198,6 @@ export const CASE = {
 } as const;
 
 /* ===========================================================================
-   THE SHAPE OF IT
-   ---------------------------------------------------------------------------
-   Four numbers, bare, no cards and no icons.
-
-   THEY ARE ABOUT SHAPE, NOT SCALE, and that is the whole reason this section
-   can exist at all. The obvious version of a numbers section brags: members,
-   events, cities, years. We are pre-launch with seventeen places left, and
-   claiming size we do not have is the fastest way to look small.
-
-   These say how the thing is built instead. The last one is the argument in a
-   single character, and it is the reason the section is worth having.
-   =========================================================================== */
-
-export const SHAPE = {
-  eyebrow: "the shape of it",
-  /** DRAFT. Every figure here has to stay true or the section has to go. */
-  figures: [
-    { figure: "2", label: "cities in year one", note: "London, then New York" },
-    { figure: "5", label: "kinds of room", note: "None of them a conference" },
-    { figure: "4", label: "briefings a year", note: "Members only" },
-    { figure: "0", label: "stages", note: "Nobody presents at anybody" },
-  ],
-} as const;
-
-/* ===========================================================================
    THE WAY IN
    ---------------------------------------------------------------------------
    The last thing before the footer.
@@ -265,7 +240,7 @@ export const MEMBERSHIP = {
    * membership rather than about fwd.
    */
   lead: [
-    "Membership unlocks a year-round programme of intimate dinners, private conversations, industry briefings and experiences — alongside a network that extends well beyond the room.",
+    "Membership unlocks a year-round program of intimate dinners, private conversations, industry briefings and experiences — alongside a network that extends well beyond the room.",
     "Meet someone you’ve wanted to meet. Hear what’s coming before it becomes obvious. Share an idea with the person who can act on it.",
   ],
 

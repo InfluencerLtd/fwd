@@ -42,9 +42,22 @@ export const HERO_STRIP = {
   foundingPlaces: 17 as number | null,
   foundingPlacesLabel: "founding places remaining",
 
-  firstRoom: "21.10",
+  /**
+   * >>> DATES ARE NAMED, NOT NUMBERED, AND THAT IS A CORRECTION. <<<
+   *
+   * These read "21.10" and "02.27". Two numbers in the same row, in two
+   * different schemes, with nothing to tell them apart: the first was day and
+   * month, the second was month and year. An American reader parses "02.27" as
+   * the twenty-seventh of February — a date six weeks from now rather than a
+   * city opening the year after next — and there is no way for them to know
+   * otherwise. Written out, neither can be misread in either country.
+   *
+   * BOTH ARE STILL PLACEHOLDERS. They came from a mock. Nobody has committed
+   * to a night in October or a month in New York.
+   */
+  firstRoom: "Oct 21",
   firstRoomLabel: "the first room, London",
 
-  newYork: "02.27",
+  newYork: "Feb 2027",
   newYorkLabel: "New York opens",
 } as const;

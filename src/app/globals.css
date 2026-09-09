@@ -223,25 +223,6 @@ h1, h2, h3, h4 {
   }
 
   /**
-   * A bare figure.
-   *
-   * Nearly statement scale, and it has to be: the whole device is the ratio
-   * between the number and the word under it. At heading size against a 15px
-   * label that ratio is about three to one and the figures read as bullets in
-   * a list. At this size it is closer to seven to one and they read as an
-   * exhibit. Numerals are narrow, so four of these across a row are far
-   * quieter on the page than one sentence at the same size would be.
-   */
-  .fwd-figure {
-    font-family: var(--fwd-font-display), ui-serif, Georgia, serif;
-    font-size: clamp(56px, 7vw, 112px);
-    line-height: 0.85;
-    letter-spacing: -0.02em;
-    font-weight: 400;
-    font-variant-numeric: lining-nums;
-  }
-
-  /**
    * The small label above a section. The only place on the site that is set in
    * capitals — see the heading rule below, which forbids them everywhere else.
    */

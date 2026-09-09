@@ -6,11 +6,16 @@ import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { PhotoBand } from "@/components/photo-band";
 import { ApplyLink } from "@/components/apply-link";
 import { TheCase } from "@/components/the-case";
-import { TheShape } from "@/components/the-shape";
 import { BriefingSubmit } from "@/components/briefing-submit";
-import { WayIn } from "@/components/way-in";
+import { PageClose } from "@/components/page-close";
 import { SiteFooter } from "@/components/site-footer";
-import { MEMBERSHIP, MEETING_OF_MINDS, NAV, IMAGERY } from "@/content/site";
+import {
+  MEMBERSHIP,
+  MEETING_OF_MINDS,
+  NAV,
+  IMAGERY,
+  WAY_IN,
+} from "@/content/site";
 
 /**
  * The public site: one page, scrolling.
@@ -89,10 +94,7 @@ export function PublicSite() {
         {/* ---- 4. The band of photographs. Left exactly as it was. ------- */}
         <PhotoBand />
 
-        {/* ---- 5. Four numbers ------------------------------------------ */}
-        <TheShape />
-
-        {/* ---- 6. Meeting of Minds --------------------------------------
+        {/* ---- 5. Meeting of Minds --------------------------------------
              Where Soho House puts the festival: the one thing that is theirs
              and nobody else's. For fwd. that is the introductions. */}
         <div className="bg-surface-alt">
@@ -130,14 +132,23 @@ export function PublicSite() {
           </Section>
         </div>
 
-        {/* ---- 7. Most of it comes from the room ------------------------- */}
+        {/* ---- 6. Most of it comes from the room ------------------------- */}
         <BriefingSubmit />
 
-        {/* ---- 8. The close --------------------------------------------- */}
-        <WayIn />
+        {/* ---- 7. The close ---------------------------------------------
+             The same component every other page closes on, at the larger
+             scale. It used to be a component of its own, which is how it
+             ended up with a mask two revisions behind everyone else's. */}
+        <PageClose
+          heading={WAY_IN.heading}
+          note={WAY_IN.note}
+          photo="closing"
+          photoBrief={IMAGERY.statement}
+          scale="statement"
+        />
       </main>
 
-      {/* ---- 9. The footer --------------------------------------------- */}
+      {/* ---- 8. The footer --------------------------------------------- */}
       <SiteFooter />
     </>
   );

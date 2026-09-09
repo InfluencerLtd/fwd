@@ -6,10 +6,17 @@ import { APPLY } from "@/content/site";
 /**
  * The ask at the end of a page.
  *
- * The one thing the four pages still share, because the answer to all of them
- * is the same answer and it would be strange to phrase it four ways. What
- * changes is the ground it sits on, so it reads as the end of *this* page
- * rather than as a footer that arrived early.
+ * The one thing every page shares, because the answer to all of them is the
+ * same answer and it would be strange to phrase it four ways. What changes is
+ * the ground it sits on, so it reads as the end of *this* page rather than as
+ * a footer that arrived early.
+ *
+ * THE HOME PAGE USED TO KEEP ITS OWN COPY OF THIS. Same heading, same note,
+ * same button, a larger type size — and the two drifted the way two copies of
+ * one thing always do. When the mask behind the type was rebuilt here, the
+ * home page kept the old one, and its close sat as white type on a lit
+ * tablecloth for a day before anybody noticed. The size was the only real
+ * difference, so the size is a prop and there is one of these.
  */
 export function PageClose({
   heading,
@@ -17,10 +24,19 @@ export function PageClose({
   tone = "light",
   photo,
   photoBrief,
+  scale = "heading",
 }: {
   heading: string;
   note: string;
   tone?: "light" | "alt" | "dark";
+  /**
+   * How loud the closing line is.
+   *
+   * `heading` on the interior pages, where the close ends one page among
+   * several. `statement` on the home page, which is the last thing anybody
+   * reads before deciding.
+   */
+  scale?: "heading" | "statement";
   /**
    * A photograph to close on, treated the way the hero is: the picture full
    * bleed, and a soft radial pool of darkness under the type only rather than
@@ -44,7 +60,11 @@ export function PageClose({
           sit around the heading alone, which left the note and the button on
           bare photograph. */}
       {photo ? <PhotoScrim size="lockup" /> : null}
-      <h2 className={`fwd-reveal fwd-h2 ${dark || photo ? "text-photo-ink" : ""}`}>
+      <h2
+        className={`${
+          scale === "statement" ? "fwd-rise fwd-statement" : "fwd-reveal fwd-h2"
+        } ${dark || photo ? "text-photo-ink" : ""}`}
+      >
         {heading}
       </h2>
 
