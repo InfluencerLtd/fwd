@@ -1,9 +1,9 @@
-import { ButtonLink, buttonClass } from "@/components/button";
+import { buttonClass } from "@/components/button";
 import { BriefingSubmitDialog } from "@/components/briefing-submit-dialog";
 import { BRIEFING_SUBMIT } from "@/content/site";
 
 /**
- * "Most of it comes from the room" — the contribute section.
+ * "What is actually changing?" — the contribute section.
  *
  * Two columns that read left to right: what this is on the left, what to do
  * about it on the right, both hanging from the same top line. One column below
@@ -17,10 +17,11 @@ import { BRIEFING_SUBMIT } from "@/content/site";
  * along the top does the separating instead, which is the device the rest of
  * the site already uses.
  *
- * THE SECOND BUTTON IS NOT PALE BLUE, for the same reason nothing else on a
- * light ground is. #b1e3fc measures 1.27:1 against the page — see the note at
- * the top of globals.css. `quiet` is the outlined button for light grounds and
- * is the same pill, the same padding and the same radius as the primary.
+ * THERE IS ONE BUTTON. "Put it to the members" sat beside it in the outlined
+ * treatment and pointed at "#" — a control that looked like a control and did
+ * nothing, waiting on a decision about where it should go that was never
+ * taken. A section with one thing to press says what to do more clearly than
+ * one with two, and half of one of them broken.
  */
 export function BriefingSubmit() {
   return (
@@ -41,16 +42,10 @@ export function BriefingSubmit() {
               {BRIEFING_SUBMIT.body}
             </p>
 
-            <div className="fwd-reveal mt-8 flex flex-wrap gap-3">
+            <div className="fwd-reveal mt-8">
               {/* Shaped by the same code as every other primary button, so it
                   cannot drift away from them. */}
               <BriefingSubmitDialog className={buttonClass("primary")} />
-              {/* TODO: "put it to the members" still goes nowhere. Where it
-                  should go has not been decided — it is a different thing from
-                  sending something in, and it may not be a form at all. */}
-              <ButtonLink href="#" variant="quiet">
-                {BRIEFING_SUBMIT.ask}
-              </ButtonLink>
             </div>
           </div>
         </div>

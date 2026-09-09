@@ -387,7 +387,6 @@ export const BRIEFING_SUBMIT = {
    */
   body: "The briefing is built from what is actually changing in the creator economy, from the people in a position to know it rather than the people quickest to write about it. Four issues released throughout the year, to members only. Written by our CRO, Jenny.",
   send: "send something in",
-  ask: "put it to the members",
 
   /**
    * The panel behind "send something in".
