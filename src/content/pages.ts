@@ -27,7 +27,19 @@ import { BENEFITS } from "@/lib/brand";
 
 export const CLASS_OF_2026 = {
   title: "the class of 2026",
-  heading: "The Forward Class of 2026",
+  /**
+   * >>> THIS BREAKS THE NAMING RULE IN src/lib/brand.ts, DELIBERATELY. <<<
+   *
+   * That file says the mark is always `fwd.` — lowercase, with the full stop,
+   * "Never FWD. Never Fwd." This is the only place on the site that does not
+   * follow it, and it is written out as a literal rather than read from
+   * BRAND.markShort so that nothing else inherits the exception.
+   *
+   * Asked for in this form. Flagged rather than quietly corrected, because a
+   * rule with one silent exception stops being a rule. Change it to
+   * `${BRAND.markShort} Founding Class 2026` to bring it back in line.
+   */
+  heading: "FWD. Founding Class 2026",
   /** DRAFT. */
   lead: [
     "fwd. does not open its doors and see who walks in. The first cohort is chosen, one name at a time, and the people in it are the room everybody else joins later.",
