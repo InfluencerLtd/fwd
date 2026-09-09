@@ -143,7 +143,13 @@ export const ABOUT_PAGE = {
     // ONE SENTENCE. "The brands. The creators. The platforms." was the second
     // half of this and it has gone — with it went the line break that held the
     // three together and the circles that were briefly drawn round them.
-    "Bringing together the people [[shaping|swoosh]] the future of the creator economy.",
+    //
+    // TWO MARKS, ON "the people" AND "future", and the swoosh that was under
+    // "shaping" has gone rather than making a third. Both are the plain
+    // underline: the same shape twice in one sentence reads as one hand
+    // marking two words, where two different shapes would read as two
+    // different kinds of emphasis nobody could explain.
+    "Bringing together [[the people]] shaping the [[future]] of the creator economy.",
     "Membership unlocks a year-round program of intimate dinners, private conversations, industry briefings and experiences alongside a network that extends far beyond the room.",
     "Meet someone you\u2019ve wanted to meet. Hear what\u2019s coming before it becomes obvious. Share an idea with the person who can make it happen.",
   ],
