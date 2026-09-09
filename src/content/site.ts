@@ -187,7 +187,6 @@ export const STATEMENT = {
    =========================================================================== */
 
 export const CASE = {
-  eyebrow: "why it exists",
   /** DRAFT. */
   heading: "Everyone sees a different part of the same picture.",
   /** DRAFT. */

@@ -24,11 +24,10 @@ export function TheCase() {
   return (
     <section id="why" className="fwd-dark fwd-on-dark fwd-grain scroll-mt-20 px-6 py-28 sm:py-40">
       <div className="relative z-1 mx-auto max-w-6xl">
-        <p className="fwd-reveal fwd-eyebrow text-accent-on-dark/70">
-          {CASE.eyebrow}
-        </p>
-
-        <div className="mt-10 grid gap-y-12 lg:grid-cols-12 lg:gap-x-16">
+        {/* No eyebrow. "why it exists" over a heading that asks why it
+            exists is a label on something already labelled, and the section
+            has one job — the argument arrives faster without it. */}
+        <div className="grid gap-y-12 lg:grid-cols-12 lg:gap-x-16">
           {/* Seven of twelve columns. The heading is the loudest thing on the
               page after the wordmark itself, and it is left-aligned so the
               rag falls where the reading starts. */}

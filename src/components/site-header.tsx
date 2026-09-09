@@ -94,20 +94,28 @@ export function SiteHeader({
 
         <nav
           aria-label={NAV.menu}
-          className="ml-auto hidden items-center gap-7 font-body text-sm min-[900px]:flex"
+          className="ml-auto hidden items-center gap-4 font-body text-sm min-[900px]:flex"
         >
           {HEADER_NAV.map((item) =>
             item.href ? (
               <Link
                 key={item.label}
                 href={item.href}
-                className="fwd-underline -my-1 inline-block py-1 text-photo-ink/75 hover:text-photo-ink"
+                /* A LOZENGE ON HOVER, NOT THE SITE'S USUAL UNDERLINE. The
+                   underline is the quiet treatment for links inside running
+                   text; up here the items are already a row of controls, and
+                   a filled pill is what the apply button beside them is. The
+                   near-white fill and near-black label are the two fixed
+                   colours, not the mode-dependent ones, because this sits over
+                   photography that stays dark in light and dark mode alike —
+                   13.42:1 either way. */
+                className="inline-block rounded-full px-3 py-1.5 text-photo-ink/75 transition-colors duration-200 hover:bg-photo-ink hover:text-photo-ground"
               >
                 {item.label}
               </Link>
             ) : (
               // Not a link, on purpose. See the note in hero-modules.ts.
-              <span key={item.label} className="py-1 text-photo-ink/75">
+              <span key={item.label} className="px-3 py-1.5 text-photo-ink/75">
                 {item.label}
               </span>
             ),
