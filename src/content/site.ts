@@ -214,8 +214,8 @@ export const CASE = {
 export const WAY_IN = {
   /** DRAFT. */
   heading: "the way in is an application",
-  /** DRAFT. Urgency that happens to be true, which is the only kind worth having. */
-  note: "Every one is read by a person. The founding cohort closes when it is full rather than on a date.",
+  /** DRAFT. */
+  note: "Every application is reviewed personally, with membership intentionally curated.",
 } as const;
 
 export const MEMBERSHIP = {
