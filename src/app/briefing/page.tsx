@@ -37,13 +37,11 @@ export default function BriefingPage() {
       {/* ---- The masthead ----------------------------------------------- */}
       <section className="px-6 pb-16 pt-36 sm:pb-20 sm:pt-44">
         <div className="mx-auto max-w-6xl">
-          <p className="fwd-enter fwd-eyebrow text-ink-muted">{BRIEFING.title}</p>
-          <h1
-            className="fwd-enter fwd-statement mt-8"
-            style={{ "--fwd-enter-delay": "260ms" } as React.CSSProperties}
-          >
-            {BRIEFING.heading}
-          </h1>
+          {/* No eyebrow. It said "the briefing" directly above a heading that
+              says "the briefing", which is a label for something already
+              named. The heading leads on its own, so it also loses the delay
+              it was given to arrive after the eyebrow. */}
+          <h1 className="fwd-enter fwd-statement">{BRIEFING.heading}</h1>
 
           {/* On screen before anybody scrolls, so these enter on load rather
               than on a scroll timeline. The delay is set on the list and
@@ -51,7 +49,7 @@ export default function BriefingPage() {
               finished arriving; the stagger then walks the four along. */}
           <dl
             className="fwd-stagger mt-16 grid grid-cols-2 gap-x-8 gap-y-9 border-t border-ink/15 pt-8 sm:mt-20 md:grid-cols-4"
-            style={{ "--fwd-enter-delay": "620ms" } as React.CSSProperties}
+            style={{ "--fwd-enter-delay": "420ms" } as React.CSSProperties}
           >
             {BRIEFING.masthead.map((item) =>
               item.value ? (
