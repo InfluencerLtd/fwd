@@ -156,9 +156,10 @@ export const ABOUT = {
 /**
  * The line the whole thing rests on.
  *
- * DECLARED HERE RATHER THAN FURTHER DOWN because CASE below reads it, and a
- * const cannot be read above the line that creates it — the module would throw
- * on load rather than fail to build, which is the worst way to find out.
+ * >>> NOT RENDERED ANYWHERE. <<< It was on the home page under the case for a
+ * few hours and has been taken off again. Kept because it is the sharpest
+ * sentence written for this brand and somewhere will want it — an email, the
+ * deck, the invitation — but nothing on the site reads it today.
  */
 export const STATEMENT = {
   /** DRAFT. Our own words, not a testimonial. */
@@ -195,11 +196,6 @@ export const CASE = {
     "When they do meet it is on a stage, on a panel, or at a conference with four thousand other people in it. Those are the worst possible conditions for the conversation that actually matters.",
     "So we make the room instead. Small, off the record, nobody selling anything, and a guest list put together by hand.",
   ],
-  /**
-   * The payoff, at full size. This sentence was written months ago, lived in
-   * STATEMENT below, and had never appeared on the site.
-   */
-  statement: STATEMENT.line,
 } as const;
 
 /* ===========================================================================

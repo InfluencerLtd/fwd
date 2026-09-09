@@ -13,9 +13,12 @@ import { CASE } from "@/content/site";
  * empty. Centred type reads as the default a template gave you — asymmetry and
  * held space read as somebody having decided.
  *
- * THE STATEMENT REVEALS AFTER THE BODY. `--fwd-reveal-shift` pushes its scroll
- * range down, so the argument has been read by the time the conclusion lands.
- * It is the one moment on this page allowed to feel like a moment.
+ * THE HEADING IS THE SECTION'S ONE MACRO MOMENT. It is uncovered from its own
+ * baseline rather than faded in — see `.fwd-rise` in globals.css.
+ *
+ * There was a second line under all of this, at standfirst size, carrying the
+ * conclusion. It has been taken out: the section now ends on the third
+ * paragraph, and the ground changing underneath is what closes it.
  */
 export function TheCase() {
   return (
@@ -43,13 +46,6 @@ export function TheCase() {
             ))}
           </div>
         </div>
-
-        <p
-          className="fwd-rise fwd-standfirst mt-24 max-w-3xl text-accent-on-dark sm:mt-32"
-          style={{ "--fwd-reveal-shift": "7%" } as React.CSSProperties}
-        >
-          {CASE.statement}
-        </p>
       </div>
     </section>
   );
