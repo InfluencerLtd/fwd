@@ -32,7 +32,7 @@ export default function ClubPage() {
         className="fwd-dark fwd-on-dark fwd-grain flex min-h-[62vh] flex-col justify-end px-6 pb-20 pt-40 sm:pb-28"
       >
         <div className="relative z-1 mx-auto w-full max-w-6xl">
-          <p className="fwd-eyebrow text-accent-on-dark/70">{CLUB.title}</p>
+          <p className="fwd-enter fwd-eyebrow text-accent-on-dark/70">{CLUB.title}</p>
           {/* HEADING SCALE, NOT STATEMENT SCALE, and `normal-case` on top of
               it. Both are corrections to the obvious version of this page.
 
@@ -50,7 +50,10 @@ export default function ClubPage() {
 
               Not an h1 either: the page's one main heading is "how it works"
               below. */}
-          <p className="fwd-h2 mt-10 max-w-5xl normal-case text-photo-ink">
+          <p
+            className="fwd-enter fwd-h2 mt-10 max-w-5xl normal-case text-photo-ink"
+            style={{ "--fwd-enter-delay": "260ms" } as React.CSSProperties}
+          >
             {opening}
           </p>
         </div>
@@ -77,7 +80,7 @@ export default function ClubPage() {
         <div className="mx-auto max-w-6xl">
           <h1 className="fwd-reveal fwd-h2">{CLUB.how.heading}</h1>
 
-          <ol className="mt-14 sm:mt-20">
+          <ol className="fwd-stagger mt-14 sm:mt-20">
             {CLUB.how.items.map((item, index) => (
               <li
                 key={item.name}

@@ -20,7 +20,7 @@ export function WayIn() {
   return (
     <section className="fwd-dark fwd-on-dark fwd-grain px-6 py-32 sm:py-44">
       <div className="relative z-1 mx-auto max-w-4xl text-center">
-        <h2 className="fwd-reveal fwd-statement text-photo-ink">
+        <h2 className="fwd-rise fwd-statement text-photo-ink">
           {WAY_IN.heading}
         </h2>
         <p className="fwd-reveal mx-auto mt-9 max-w-md font-body text-[15px] leading-relaxed text-photo-ink/65">

@@ -38,11 +38,14 @@ export default function ClassOf2026Page() {
         className="fwd-dark fwd-on-dark fwd-grain flex min-h-[82vh] flex-col justify-center px-6 py-32"
       >
         <div className="relative z-1 mx-auto w-full max-w-4xl text-center">
-          <p className="fwd-eyebrow text-accent-on-dark/70">
+          <p className="fwd-enter fwd-eyebrow text-accent-on-dark/70">
             {CLASS_OF_2026.closing.heading}
           </p>
 
-          <p className="fwd-statement mt-9 normal-case text-photo-ink">
+          <p
+            className="fwd-enter fwd-statement mt-9 normal-case text-photo-ink"
+            style={{ "--fwd-enter-delay": "260ms" } as React.CSSProperties}
+          >
             {CLASS_OF_2026.heading}
           </p>
 
@@ -83,7 +86,7 @@ export default function ClassOf2026Page() {
             {CLASS_OF_2026.whatYouGet.heading}
           </h1>
 
-          <ol className="mt-14 sm:mt-20">
+          <ol className="fwd-stagger mt-14 sm:mt-20">
             {CLASS_OF_2026.whatYouGet.items.map((item, index) => (
               <li
                 key={item}

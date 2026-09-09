@@ -23,9 +23,21 @@ export function TheShape() {
       <div className="mx-auto max-w-6xl">
         <p className="fwd-reveal fwd-eyebrow text-ink-muted">{SHAPE.eyebrow}</p>
 
-        <dl className="mt-14 grid grid-cols-2 gap-x-8 gap-y-14 lg:grid-cols-4">
-          {SHAPE.figures.map((item) => (
-            <div key={item.label} className="fwd-reveal border-t border-ink/15 pt-5">
+        <dl className="fwd-stagger mt-14 grid grid-cols-2 gap-x-8 gap-y-14 lg:grid-cols-4">
+          {SHAPE.figures.map((item, index) => (
+            <div
+              key={item.label}
+              className="fwd-reveal border-t border-ink/15 pt-5"
+              // The stagger class already walks these along two per cent at a
+              // time. The last one gets an extra beat on top, because it is the
+              // punchline: nought stages is the argument of the whole section,
+              // and a punchline that lands with the rest of the list is not one.
+              style={
+                index === SHAPE.figures.length - 1
+                  ? ({ "--fwd-reveal-shift": "9%" } as React.CSSProperties)
+                  : undefined
+              }
+            >
               {/* A <dd> before its <dt> is the correct order for a description
                   list where the value is the thing being shown. The figure is
                   not marked up as a heading: it is data, and a screen reader

@@ -73,7 +73,7 @@ export default function RoomsPage() {
       {/* ---- The five, all at once -------------------------------------- */}
       <section className="px-6 pb-24 pt-16 sm:pb-32">
         <div className="mx-auto max-w-6xl">
-          <ol>
+          <ol className="fwd-stagger">
             {FORMATS.map((format, index) => (
               <li
                 key={format.id}

@@ -37,13 +37,25 @@ export default function BriefingPage() {
       {/* ---- The masthead ----------------------------------------------- */}
       <section className="px-6 pb-16 pt-36 sm:pb-20 sm:pt-44">
         <div className="mx-auto max-w-6xl">
-          <p className="fwd-eyebrow text-ink-muted">{BRIEFING.title}</p>
-          <h1 className="fwd-statement mt-8">{BRIEFING.heading}</h1>
+          <p className="fwd-enter fwd-eyebrow text-ink-muted">{BRIEFING.title}</p>
+          <h1
+            className="fwd-enter fwd-statement mt-8"
+            style={{ "--fwd-enter-delay": "260ms" } as React.CSSProperties}
+          >
+            {BRIEFING.heading}
+          </h1>
 
-          <dl className="mt-16 grid grid-cols-2 gap-x-8 gap-y-9 border-t border-ink/15 pt-8 sm:mt-20 md:grid-cols-4">
+          {/* On screen before anybody scrolls, so these enter on load rather
+              than on a scroll timeline. The delay is set on the list and
+              inherited, so the whole row starts after the name above it has
+              finished arriving; the stagger then walks the four along. */}
+          <dl
+            className="fwd-stagger mt-16 grid grid-cols-2 gap-x-8 gap-y-9 border-t border-ink/15 pt-8 sm:mt-20 md:grid-cols-4"
+            style={{ "--fwd-enter-delay": "620ms" } as React.CSSProperties}
+          >
             {BRIEFING.masthead.map((item) =>
               item.value ? (
-                <div key={item.label}>
+                <div key={item.label} className="fwd-enter">
                   <dt className="fwd-eyebrow text-ink-muted">{item.label}</dt>
                   <dd className="mt-3 font-display text-2xl leading-none text-ink">
                     {item.value}
@@ -76,7 +88,7 @@ export default function BriefingPage() {
         <div className="mx-auto max-w-6xl">
           <h2 className="fwd-reveal fwd-h2">{BRIEFING.inside.heading}</h2>
 
-          <ol className="mt-14 sm:mt-20">
+          <ol className="fwd-stagger mt-14 sm:mt-20">
             {BRIEFING.inside.items.map((item, index) => (
               <li
                 key={item.name}

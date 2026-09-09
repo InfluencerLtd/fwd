@@ -29,7 +29,7 @@ export function TheCase() {
           {/* Seven of twelve columns. The heading is the loudest thing on the
               page after the wordmark itself, and it is left-aligned so the
               rag falls where the reading starts. */}
-          <h2 className="fwd-reveal fwd-statement col-span-full text-photo-ink lg:col-span-7">
+          <h2 className="fwd-rise fwd-statement col-span-full text-photo-ink lg:col-span-7">
             {CASE.heading}
           </h2>
 
@@ -45,7 +45,7 @@ export function TheCase() {
         </div>
 
         <p
-          className="fwd-reveal fwd-standfirst mt-24 max-w-3xl text-accent-on-dark sm:mt-32"
+          className="fwd-rise fwd-standfirst mt-24 max-w-3xl text-accent-on-dark sm:mt-32"
           style={{ "--fwd-reveal-shift": "7%" } as React.CSSProperties}
         >
           {CASE.statement}

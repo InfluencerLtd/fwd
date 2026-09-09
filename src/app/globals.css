@@ -335,13 +335,61 @@ h1, h2, h3, h4 {
    script that failed to load.
    =========================================================================== */
 
+/* ---------------------------------------------------------------------------
+   THE MOTION HIERARCHY. Three tiers, and the point of it is that most things
+   are in the quietest one.
+
+   Before this, twenty-seven elements on the home page all did exactly the same
+   thing: fade in and lift fourteen pixels, over the same range. When everything
+   moves identically, movement stops carrying information — it is wallpaper.
+   Motion says something only when most of the page is still.
+
+     MICRO   hover, focus, press. 150-250ms. Defined with the components
+             themselves — buttons, links, photographs.
+     MEDIUM  `.fwd-reveal`. Almost everything. Deliberately quieter than it
+             was: eight pixels rather than fourteen, so the tier above it has
+             somewhere to go.
+     MACRO   `.fwd-rise` and `.fwd-enter`. Two or three per page, no more. The
+             statement type, and nothing else.
+
+   `.fwd-stagger` sits across the tiers: it makes a group of children arrive in
+   sequence rather than as a block.
+   --------------------------------------------------------------------------- */
+
 @keyframes fwd-reveal-in {
   from {
     opacity: 0;
-    transform: translateY(14px);
+    /* Was 14px. See the note above: this tier had to get quieter before the
+       one above it could mean anything. */
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
+    transform: none;
+  }
+}
+
+/**
+ * MACRO. The line wipes up from its own baseline rather than fading in.
+ *
+ * A fade is what everything else does. At 137px a fade is also nothing: large
+ * type appearing at full opacity does not read as arriving, it reads as having
+ * always been there. This uncovers the letters from below, which is the one
+ * movement that suits type set this size — it is how a line of hot metal
+ * appears, and it does not slide, bounce or scale.
+ *
+ * THE END STATE HAS NEGATIVE INSETS ON PURPOSE. clip-path cannot animate to
+ * `none`, so it has to finish somewhere; finishing at inset(0) would shave the
+ * descenders and the overshoot of a round letter for the rest of the page's
+ * life. The negatives put the edges safely outside the glyphs.
+ */
+@keyframes fwd-rise-in {
+  from {
+    clip-path: inset(105% -0.2em -0.3em -0.2em);
+    transform: translateY(0.16em);
+  }
+  to {
+    clip-path: inset(-0.4em -0.2em -0.3em -0.2em);
     transform: none;
   }
 }
@@ -354,8 +402,61 @@ h1, h2, h3, h4 {
       animation-range: entry calc(8% + var(--fwd-reveal-shift, 0%)) cover
         calc(26% + var(--fwd-reveal-shift, 0%));
     }
+
+    /**
+     * Scroll-driven, so it is only for statements BELOW THE FOLD. An element
+     * already on screen when the page loads is part-way through a view()
+     * timeline before anybody has scrolled, which would leave a heading sitting
+     * half-clipped until the visitor moved. Page openings use `.fwd-enter`.
+     *
+     * A later, longer range than the medium tier: the big line finishes after
+     * the paragraph beside it, so it lands as the conclusion rather than as
+     * another thing appearing.
+     */
+    .fwd-rise {
+      animation: fwd-rise-in linear both;
+      animation-timeline: view();
+      animation-range: entry calc(14% + var(--fwd-reveal-shift, 0%)) cover
+        calc(42% + var(--fwd-reveal-shift, 0%));
+    }
   }
 }
+
+/**
+ * MACRO, on load rather than on scroll. For the type a page opens with, which
+ * is on screen before there is any scrolling to drive anything.
+ *
+ * No @supports guard is needed — this is an ordinary time-based animation, so
+ * a browser either runs it or has already failed at far more basic things.
+ * `both` holds the end state, and reduced-motion collapses the duration to
+ * nothing through the global rule further up.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .fwd-enter {
+    animation: fwd-rise-in 1100ms cubic-bezier(0.2, 0, 0, 1) both;
+    /* Two variables rather than one: the first is the element's own place in
+       the opening, the second is what `.fwd-stagger` adds on top of it. A
+       single variable would mean a staggered group could not also start late
+       as a group, because the stagger would overwrite the offset. */
+    animation-delay: calc(
+      var(--fwd-enter-delay, 120ms) + var(--fwd-enter-shift, 0ms)
+    );
+  }
+}
+
+/**
+ * A group that arrives in sequence.
+ *
+ * It works by pushing each child's scroll range a little further down the page
+ * than the one before it, so they complete left to right, or top to bottom, as
+ * you scroll — rather than by delaying each one in time, which would be wrong
+ * for a scroll-driven animation because a visitor who scrolls fast should not
+ * be made to wait.
+ */
+.fwd-stagger > *:nth-child(2) { --fwd-reveal-shift: 2%; --fwd-enter-shift: 90ms; }
+.fwd-stagger > *:nth-child(3) { --fwd-reveal-shift: 4%; --fwd-enter-shift: 180ms; }
+.fwd-stagger > *:nth-child(4) { --fwd-reveal-shift: 6%; --fwd-enter-shift: 270ms; }
+.fwd-stagger > *:nth-child(n + 5) { --fwd-reveal-shift: 8%; --fwd-enter-shift: 360ms; }
 
 /* ===========================================================================
    Expandable cards
