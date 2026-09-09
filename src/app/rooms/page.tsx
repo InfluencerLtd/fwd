@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
 import { PageClose } from "@/components/page-close";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
+import { PhotoScrim } from "@/components/photo-scrim";
 import { FORMATS } from "@/content/formats";
 import { ROOMS } from "@/content/pages";
 
@@ -47,7 +48,10 @@ export default function RoomsPage() {
                 capitals worth keeping — globals.css lowercases it to "the
                 rooms", which is what the navigation calls it anyway. The page
                 needs one main heading and this is the honest one. */}
-            <h1 className="fwd-h2 text-photo-ink">{ROOMS.heading}</h1>
+            <div className="relative inline-block">
+              <PhotoScrim />
+              <h1 className="fwd-h2 text-photo-ink">{ROOMS.heading}</h1>
+            </div>
           </div>
         </PhotoPlaceholder>
       </div>

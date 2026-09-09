@@ -26,7 +26,10 @@ export const HEADER_NAV: readonly { label: string; href: string | null }[] = [
   { label: "what it is", href: "/about" },
   { label: "membership", href: "/membership" },
   { label: "rooms", href: "/rooms" },
-  { label: "the class of 2026", href: "/class-of-2026" },
+  // REMOVED FROM THE NAVIGATION, NOT DELETED. /class-of-2026 still exists and
+  // still works for anybody sent the link; it is off the bar until the cohort
+  // is ready to be talked about publicly. Put this line back to restore it:
+  //   { label: "the class of 2026", href: "/class-of-2026" },
   { label: "the briefing", href: "/briefing" },
 ];
 

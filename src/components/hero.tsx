@@ -1,6 +1,7 @@
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { HeroStrip } from "@/components/hero-strip";
 import { Wordmark } from "@/components/wordmark";
+import { PhotoScrim } from "@/components/photo-scrim";
 import { ApplyLink } from "@/components/apply-link";
 import { HERO, IMAGERY } from "@/content/site";
 
@@ -47,10 +48,7 @@ export function Hero() {
                 did. It is behind the lockup only: -z-1 puts it under the text,
                 and the padding is what gives it something to fade across. */}
             <div className="relative">
-              <div
-                aria-hidden="true"
-                className="fwd-lockup-scrim absolute -inset-x-24 -inset-y-16 -z-1 sm:-inset-x-40 sm:-inset-y-24 lg:-inset-x-64 lg:-inset-y-36"
-              />
+              <PhotoScrim size="lockup" />
               {/* No signature on the hero. It is still on the header lockup at the
                   top of every page, which is where the endorsement now lives. */}
               <Wordmark size="heroLarge" heading align="center" signature={false} />

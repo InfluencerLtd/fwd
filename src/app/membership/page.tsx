@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
+import { PhotoScrim } from "@/components/photo-scrim";
 import { BenefitTiles } from "@/components/benefit-tiles";
 import { ApplyDialog } from "@/components/apply-dialog";
 import { SiteMenu } from "@/components/site-menu";
@@ -54,9 +55,16 @@ export default function MembershipPage() {
                 Not marked up as a heading, for the same reason as on those
                 pages: the h1 is the section below, and this would make two.
                 See the note on it. */}
-            <p className="fwd-h2 font-display text-photo-ink">
-              {MEMBERSHIP_PAGE.heading}
-            </p>
+            {/* The hero's scrim, at page-name size. Without it this is
+                white type sitting on whatever the photograph happens to be,
+                which is fine while the picture is a placeholder and stops
+                being fine the moment a real one arrives. */}
+            <div className="relative inline-block">
+              <PhotoScrim />
+              <p className="fwd-h2 font-display text-photo-ink">
+                {MEMBERSHIP_PAGE.heading}
+              </p>
+            </div>
             {/* The members' door was here, and has gone with every other
                 mention of the member area on the public site. Members are sent
                 to The House rather than finding it. */}
