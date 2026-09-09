@@ -370,13 +370,13 @@ export const MEETING_OF_MINDS = {
  * already a member has any reason to press.
  *
  * THE HEADING KEEPS ITS CAPITAL HERE AND LOSES IT ON THE PAGE. Headings are
- * lowercased in globals.css, site-wide, so this renders as "most of it comes
- * from the room". The string is stored as it was written so the copy is
- * reviewable against the brief rather than against the stylesheet.
+ * lowercased in globals.css, site-wide, so this renders as "what is actually
+ * changing?". The string is stored as it was written so the copy is reviewable
+ * against the brief rather than against the stylesheet.
  */
 export const BRIEFING_SUBMIT = {
   eyebrow: "the briefing",
-  heading: "Most of it comes from the room",
+  heading: "What is actually changing?",
   /** DRAFT. */
   body: "The briefing is built from what members are actually seeing. A shift in how a budget is being spent, a format that has stopped working, a question worth putting to the rest of the membership. If you have something, send it. Nothing is attributed without asking you first.",
   send: "send something in",
