@@ -63,7 +63,7 @@ export default function MembershipPage() {
             <div className="relative inline-block">
               <PhotoScrim />
               <p className="fwd-h2 font-display text-photo-ink">
-                {MEMBERSHIP_PAGE.heading}
+                <MarkedText text={MEMBERSHIP_PAGE.heading} />
               </p>
             </div>
             {/* The members' door was here, and has gone with every other
@@ -75,8 +75,14 @@ export default function MembershipPage() {
       </div>
 
       <main id="main">
-        {/* ---- 2. What membership is -------------------------------------- */}
-        <div className="bg-surface-alt">
+        {/* ---- 2. What membership is --------------------------------------
+             DARK, AND SO IS EVERYTHING BELOW IT. The page used to run
+             off-white from here to the footer with the tiles as the only dark
+             thing in it, so the tiles read as a band dropped into a light page.
+             From the photograph down it is now one dark page: this section,
+             the tiles, and the ask at the end. The blue button is unchanged —
+             it is 13.4:1 on this ground, which is where it is strongest. */}
+        <div className="fwd-dark fwd-on-dark">
           <section className="px-6 py-24 sm:py-28">
             <div className="mx-auto max-w-4xl text-center">
               {/* THIS IS THE PAGE'S h1. The name over the photograph is not
@@ -85,7 +91,7 @@ export default function MembershipPage() {
                   a screen reader jumping by heading would land in the middle
                   of it. Its size and weight are unchanged: this is what it is,
                   not how it looks. */}
-              <h1 className="fwd-reveal fwd-h2">
+              <h1 className="fwd-reveal fwd-h2 text-photo-ink">
                 {APPLICATIONS_OPEN
                   ? MEMBERSHIP_PAGE.about.heading
                   : MEMBERSHIP_PAGE.closed.heading}
@@ -93,7 +99,7 @@ export default function MembershipPage() {
 
               {APPLICATIONS_OPEN ? (
                 <>
-                  <p className="fwd-reveal fwd-body mx-auto mt-6 max-w-2xl text-ink-muted">
+                  <p className="fwd-reveal fwd-body mx-auto mt-6 max-w-2xl text-photo-ink/75">
                     <MarkedText text={MEMBERSHIP_PAGE.about.note} style="swoosh" />
                   </p>
                   {/* The ask, directly under the case for it. Centred by the
@@ -104,39 +110,39 @@ export default function MembershipPage() {
                 </>
               ) : (
                 <div className="fwd-reveal mx-auto mt-8 max-w-xl">
-                  <p className="font-body text-[17px] leading-relaxed text-ink-muted">
+                  <p className="font-body text-[17px] leading-relaxed text-photo-ink/75">
                     {MEMBERSHIP_PAGE.closed.intro}
                   </p>
                   {/* Back to the left. A centred heading is a heading; centred
                       field labels and error messages are just hard to read. */}
                   <div className="mt-8 text-left">
-                    <SignupForm source="waitlist" tone="light" />
+                    <SignupForm source="waitlist" tone="dark" />
                   </div>
                 </div>
               )}
             </div>
           </section>
-        </div>
 
-        {/* ---- 3. The whole offer at a glance ---------------------------- */}
-        <BenefitTiles />
+          {/* ---- 3. The whole offer at a glance -------------------------- */}
+          <BenefitTiles />
 
-        {/* ---- 4. The ask again, after the pictures ----------------------- */}
-        {/* 15px less top and bottom than the section pattern elsewhere.
-            py-24 is 96 and py-28 is 112, so this is 81 and 97. */}
-        <section className="px-6 py-[81px] sm:py-[97px]">
-          <div className="mx-auto max-w-4xl text-center">
-            <h2 className="fwd-reveal fwd-h2">
-              {MEMBERSHIP_PAGE.closing.heading}
-            </h2>
-            {/* The same dialog the header opens, not a second form. Somebody
-                persuaded by the pictures should not have to scroll back up to
-                act on it. */}
-            <div className="fwd-reveal mt-9">
-              <ApplyDialog label={APPLY.cta} />
+          {/* ---- 4. The ask again, after the pictures --------------------- */}
+          {/* 15px less top and bottom than the section pattern elsewhere.
+              py-24 is 96 and py-28 is 112, so this is 81 and 97. */}
+          <section className="px-6 py-[81px] sm:py-[97px]">
+            <div className="mx-auto max-w-4xl text-center">
+              <h2 className="fwd-reveal fwd-h2 text-photo-ink">
+                {MEMBERSHIP_PAGE.closing.heading}
+              </h2>
+              {/* The same dialog the header opens, not a second form.
+                  Somebody persuaded by the pictures should not have to scroll
+                  back up to act on it. */}
+              <div className="fwd-reveal mt-9">
+                <ApplyDialog label={APPLY.cta} />
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
       </main>
 
       <SiteFooter />
