@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
 import { PageClose } from "@/components/page-close";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
-import { TablePlan } from "@/components/table-plan";
 import { ABOUT_PAGE } from "@/content/pages";
 import { IMAGERY } from "@/content/site";
 
@@ -133,12 +132,6 @@ export default function ClubPage() {
                 {paragraph}
               </p>
             ))}
-          </div>
-
-          {/* The room, drawn. It sits in the space this section was already
-              holding open rather than the section growing to fit it. */}
-          <div className="col-span-full lg:col-span-4 lg:col-start-8">
-            <TablePlan />
           </div>
         </div>
       </section>
