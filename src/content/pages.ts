@@ -200,7 +200,19 @@ export const ABOUT_PAGE = {
 
 export const ROOMS = {
   title: "rooms",
-  heading: "The rooms",
+  /**
+   * "the events", following the navigation item.
+   *
+   * >>> THE REST OF THIS PAGE STILL SAYS ROOMS. <<< The lead below counts
+   * "five kinds of room", the closing heading is "a seat in the room", and
+   * the address is /rooms. The word is also the brand's central image — see
+   * the naming rules in src/lib/brand.ts, which nominate "the room" as the
+   * common noun to use wherever a name will not do.
+   *
+   * So this is halfway through a change rather than a finished one. Either the
+   * page follows the heading or the heading follows the page.
+   */
+  heading: "the events",
   /** DRAFT. */
   lead: [
     "Five kinds of room, and the same rule in all of them: small enough that everybody can hear everybody, and a guest list put together on purpose.",
