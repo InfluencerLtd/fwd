@@ -741,6 +741,48 @@ h1, h2, h3, h4 {
 }
 
 /* ===========================================================================
+   The header's bottom edge
+   ---------------------------------------------------------------------------
+   The bar past the hero is a tinted, blurred panel, and a panel has an edge.
+   It used to be a hairline rule at the exact bottom of the row, which is a
+   hard line drawn across a page whose whole language is soft edges — the
+   photographs fade, the scrim fades, the grounds change by section rather than
+   by rule.
+
+   So the panel simply stops being there. It is drawn 28px taller than the row
+   it holds and the last 28px of it fade to nothing, which takes the tint, the
+   blur and the edge with them in one go. Nothing is layered on top to hide the
+   join, because there is no join.
+
+   THE MASK HAS TO BE ON THE ELEMENT THAT CARRIES THE BLUR, not on a parent. A
+   mask on an ancestor makes that ancestor a backdrop root, and a backdrop
+   filter inside a backdrop root has nothing behind it to sample: the blur
+   disappears entirely rather than fading.
+
+   The fade is squared rather than linear — the ease is what keeps it from
+   reading as a grey band under the bar. Full strength for the first two
+   thirds, then most of the falloff in the last few pixels.
+   =========================================================================== */
+
+.fwd-header-veil {
+  --fwd-header-fade: 28px;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 calc(100% - var(--fwd-header-fade)),
+    rgba(0, 0, 0, 0.72) calc(100% - var(--fwd-header-fade) * 0.62),
+    rgba(0, 0, 0, 0.28) calc(100% - var(--fwd-header-fade) * 0.28),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 calc(100% - var(--fwd-header-fade)),
+    rgba(0, 0, 0, 0.72) calc(100% - var(--fwd-header-fade) * 0.62),
+    rgba(0, 0, 0, 0.28) calc(100% - var(--fwd-header-fade) * 0.28),
+    transparent 100%
+  );
+}
+
+/* ===========================================================================
    Buttons
    ---------------------------------------------------------------------------
    Lozenge shaped throughout. The shape is set here rather than on each button,
