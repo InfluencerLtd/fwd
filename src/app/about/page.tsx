@@ -169,13 +169,17 @@ export default function ClubPage() {
                otherwise open page drew more attention than the three phrases
                under them. The space is the separation.
 
-               THE LIST IS NARROWER THAN THE SECTION IT SITS IN. Three equal
-               thirds of the full width put a hand's width of empty page
-               between each phrase and the next, and three things that far
-               apart stop reading as one set. Held to max-w-4xl they are a
-               group with air around it rather than three lines spread across
-               the screen. */}
-          <ul className="fwd-stagger col-span-full mt-12 grid max-w-4xl gap-x-10 gap-y-12 sm:mt-16 sm:grid-cols-3">
+               THE LIST IS NARROWER THAN THE SECTION IT SITS IN, AND CENTRED
+               IN IT. Three equal thirds of the full width put a hand's width
+               of empty page between each phrase and the next, and three things
+               that far apart stop reading as one set. Held to max-w-4xl and
+               centred, they are a group with even air either side of it rather
+               than three lines spread across the screen — and the middle of
+               the block is the middle of the page, which is the axis the
+               header lockup and every centred close on the site already sit
+               on. The type inside each column stays left-aligned: it is
+               reading, not a caption. */}
+          <ul className="fwd-stagger col-span-full mx-auto mt-12 grid max-w-4xl gap-x-10 gap-y-12 sm:mt-16 sm:grid-cols-3">
             {ABOUT_PAGE.forWhom.map((item) => (
               <li key={item.name} className="fwd-reveal">
                 {/* Not a heading. Three of these are a list of who is in the
