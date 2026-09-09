@@ -99,7 +99,7 @@ export default function ClubPage() {
             {/* No delay: with the eyebrow gone there is nothing for it to
                 arrive after, and a page opening on a quarter-second of empty
                 screen is not a page opening. */}
-            <p className="fwd-enter fwd-h2 max-w-5xl whitespace-pre-line normal-case text-photo-ink">
+            <p className="fwd-enter fwd-h2 max-w-5xl normal-case text-photo-ink">
               {/* One mark, on "shaping", and it is a decision taken in the
                   content file rather than here. On the photograph the blue is
                   13.4:1, so this is the one place on the site the device is at

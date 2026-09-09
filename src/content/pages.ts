@@ -140,17 +140,10 @@ export const ABOUT_PAGE = {
     // Without them the line wrapped mid-phrase — "The" was left at the end of
     // one line and "creators." began the next, which reads as a stumble. Now
     // each pair drops whole to the line below rather than splitting.
-    // NO CIRCLES ROUND THE THREE. They were drawn and taken out again: at the
-    // width where all three fit on one line, each ellipse overhangs its phrase
-    // by more than the space between them, so the row read as one long loop
-    // rather than as three marks. The line still stands on its own.
-    //
-    // The \n is a line break inside the paragraph, not a new paragraph, and it
-    // is rendered because the page sets whitespace-pre-line. The three short
-    // sentences are held together with non-breaking spaces so a pair cannot
-    // split mid-phrase, with "The" left at the end of one line and "creators."
-    // opening the next.
-    "Bringing together the people [[shaping|swoosh]] the future of the creator economy.\nThe\u00a0brands. The\u00a0creators. The\u00a0platforms.",
+    // ONE SENTENCE. "The brands. The creators. The platforms." was the second
+    // half of this and it has gone — with it went the line break that held the
+    // three together and the circles that were briefly drawn round them.
+    "Bringing together the people [[shaping|swoosh]] the future of the creator economy.",
     "Membership unlocks a year-round program of intimate dinners, private conversations, industry briefings and experiences alongside a network that extends far beyond the room.",
     "Meet someone you\u2019ve wanted to meet. Hear what\u2019s coming before it becomes obvious. Share an idea with the person who can make it happen.",
   ],
@@ -170,7 +163,7 @@ export const ABOUT_PAGE = {
     // under three words at this size is a rule rather than a pen line. Gone
     // over twice, which is the heaviest of the four shapes and the only one
     // that reads at the end of a sentence this size.
-    "This is where the creator economy comes together to shape\u00a0what happens [[next|double]].",
+    "This is where the creator economy [[comes together|circle]] to shape\u00a0what happens [[next|double]].",
   how: {
     heading: "how it works",
     /** DRAFT. */
