@@ -385,7 +385,7 @@ export const MEETING_OF_MINDS = {
  * against the brief rather than against the stylesheet.
  */
 export const BRIEFING_SUBMIT = {
-  eyebrow: "the briefing",
+  // No eyebrow. It said "the briefing" over a heading about the briefing.
   heading: "What is actually changing?",
   /** DRAFT. */
   /**

@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc --noEmit)",
+      "Bash(npx tsc --noEmit *)",
+      "Bash(npm run lint)",
+      "Bash(npm run lint *)",
+      "Bash(npm run typecheck)",
+      "Bash(npm run typecheck *)",
+      "Bash(npm run build)",
+      "Bash(npm run build *)",
+      "Bash(npx eslint src --max-warnings=0)",
+      "Bash(npx eslint src --max-warnings=0 *)",
+      "Bash(npm list *)",
+      "Bash(npm ls *)",
+      "Bash(sips -g *)",
+      "Bash(curl -s http://localhost:*)",
+      "Bash(curl -sI http://localhost:*)",
+      "mcp__Claude_Browser__read_page",
+      "mcp__Claude_Browser__get_page_text",
+      "mcp__Claude_Browser__read_console_messages",
+      "mcp__Claude_Browser__read_network_requests",
+      "mcp__Claude_Browser__tabs_context",
+      "mcp__Claude_Browser__find",
+      "mcp__Claude_Browser__preview_list",
+      "mcp__Claude_Browser__preview_logs",
+      "mcp__20978a38-a7e0-448e-a2aa-0416d17ca6c8__search_files",
+      "mcp__20978a38-a7e0-448e-a2aa-0416d17ca6c8__get_file_metadata",
+      "mcp__20978a38-a7e0-448e-a2aa-0416d17ca6c8__read_file_content"
+    ]
+  }
+}
