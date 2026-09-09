@@ -57,9 +57,6 @@ export const HOLDING = {
   // stumble and puts the mark next to a hanging preposition.
   line: "The home for the people shaping [[what\u2019s next]] in\u00a0the\u00a0creator\u00a0economy.",
 
-  /** DRAFT. The prompt above the email field. */
-  capturePrompt: "Be the first to hear when applications open.",
-
   emailLabel: "email address",
   submit: "keep me posted",
   submitting: "just a moment",

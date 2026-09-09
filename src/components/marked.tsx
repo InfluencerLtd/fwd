@@ -82,8 +82,16 @@ const PATHS: Record<Style, { d: string; viewBox: string; box: string }> = {
     /* MEASURED, NOT GUESSED. Three attempts by eye were all wrong: the
        statement type sets leading to 0.9, so the box is very nearly the ink
        and the instinct to overhang generously put half a circle in empty
-       space below the baseline. */
-    box: "absolute -left-[0.22em] w-[calc(100%+0.44em)] -top-[0.05em] -bottom-[0.05em]",
+       space below the baseline.
+       >>> THE HEIGHT IS SET, NOT IMPLIED BY TOP AND BOTTOM. <<< It was
+       `-top-[0.05em] -bottom-[0.05em]`, which reads like it pins the box to
+       the word at both ends and does not: an <svg> is a replaced element with
+       an intrinsic aspect ratio, so with `height: auto` it takes its height
+       from its own width and ignores the bottom offset entirely. The circle
+       was therefore as tall as its word was long — 77px around a two-word
+       phrase 41px high, and taller again on a wider one. It is the same trap
+       the swoosh's width fell into, at ninety degrees. */
+    box: "absolute -left-[0.22em] w-[calc(100%+0.44em)] -top-[0.05em] h-[calc(100%+0.10em)]",
   },
 };
 

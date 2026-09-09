@@ -80,18 +80,18 @@ export function HoldingPage() {
             {/* NO RULE ACROSS THE MIDDLE. There was one, separating the line
                 from the form, and on a photograph a hairline drawn edge to
                 edge reads as a scratch on the picture. The space does it. */}
+            {/* NO PROMPT OVER THE FIELD. It said "Be the first to hear when
+                applications open." above a box asking for an email address,
+                which is the box saying it twice. The field's own placeholder
+                and the button carry it. */}
             <div className="fwd-enter mt-14 w-full sm:mt-16">
-              <p className="font-body text-base text-photo-ink/85">
-                {HOLDING.capturePrompt}
-              </p>
-
               {/* THE BLOCK IS CENTRED AND THE FORM INSIDE IT IS NOT. A centred
                   heading is a heading; centred field labels, error messages
                   and a consent line are just hard to read, because the eye has
                   no fixed left edge to return to. So the form keeps its own
                   alignment inside a column that sits in the middle of the
                   page. */}
-              <div className="mx-auto mt-6 max-w-md text-left">
+              <div className="mx-auto max-w-md text-left">
                 <SignupForm source="holding" />
               </div>
             </div>
