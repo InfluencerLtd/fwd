@@ -51,7 +51,11 @@ export const HOLDING = {
    *
    * >>> IF POSITIONING CHANGES, CHANGE THIS TOO. <<<
    */
-  line: "The home for the people shaping [[what\u2019s next]] in the creator\u00a0economy.",
+  // "in the creator economy." is held together as one run, so the line breaks
+  // after "what\u2019s next" and the whole of the rest drops together. Without it
+  // "in the" was stranded at the end of the first line, which reads as a
+  // stumble and puts the mark next to a hanging preposition.
+  line: "The home for the people shaping [[what\u2019s next]] in\u00a0the\u00a0creator\u00a0economy.",
 
   /** DRAFT. The prompt above the email field. */
   capturePrompt: "Be the first to hear when applications open.",
