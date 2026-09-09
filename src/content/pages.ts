@@ -167,8 +167,10 @@ export const ABOUT_PAGE = {
     // "shape what" is held together with a non-breaking space so "what" sits at
     // the end of the line above rather than opening the last line. The mark is
     // on the last word alone: it is what the sentence is about, and a mark
-    // under three words at this size is a rule rather than a pen line.
-    "This is where the creator economy comes together to shape\u00a0what happens [[next]].",
+    // under three words at this size is a rule rather than a pen line. Gone
+    // over twice, which is the heaviest of the four shapes and the only one
+    // that reads at the end of a sentence this size.
+    "This is where the creator economy comes together to shape\u00a0what happens [[next|double]].",
   how: {
     heading: "how it works",
     /** DRAFT. */
