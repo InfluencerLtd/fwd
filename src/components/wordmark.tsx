@@ -83,7 +83,7 @@ export function Wordmark({
    */
   const widthClass =
     size === "heroLarge"
-      ? "w-[clamp(190px,32vw,560px)]"
+      ? "w-[clamp(180px,calc(32vw-10px),550px)]"
       : size === "hero"
         ? "w-[clamp(170px,26vw,420px)]"
         : size === "large"
