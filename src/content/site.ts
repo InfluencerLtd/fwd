@@ -188,7 +188,12 @@ export const STATEMENT = {
 
 export const CASE = {
   /** DRAFT. */
-  heading: "Everyone sees a different part of the same picture.",
+  /**
+   * [[double brackets]] mark a word for the drawn emphasis line. See
+   * src/components/marked.tsx — the mark is chosen here, in the writing,
+   * rather than in the component.
+   */
+  heading: "Everyone sees a [[different]] part of the same picture.",
   /** DRAFT. */
   body: [
     "Brands have agencies. Platforms have roadmaps. Creators have audiences. All three are building the same industry and almost never sit in the same room.",
