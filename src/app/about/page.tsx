@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
 import { PageClose } from "@/components/page-close";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
-import { PhotoScrim } from "@/components/photo-scrim";
 import { TablePlan } from "@/components/table-plan";
 import { ABOUT_PAGE } from "@/content/pages";
 import { IMAGERY } from "@/content/site";
@@ -38,7 +37,21 @@ export default function ClubPage() {
       <div data-hero className="fwd-on-dark">
         <PhotoPlaceholder
           label={IMAGERY.aboutOpening}
-          name="about"
+          /**
+           * A STAND-IN. There is no `about` photograph yet, and a name with no
+           * file behind it falls back to the warm placeholder gradient — which
+           * has a slow drifting glow in it and reads as a design element
+           * rather than as a missing picture.
+           *
+           * This is the room-from-above shot, which is the closest thing we
+           * own to the brief in IMAGERY.aboutOpening. It is also on the home
+           * page, at a quarter of this size and square, so the two are not
+           * obviously the same photograph — but they are, and that is a reason
+           * to shoot this one rather than a reason to leave it.
+           *
+           * Change to "about" the moment the real file lands.
+           */
+          name="meeting-of-minds"
           showLabel={false}
           sizes="100vw"
           ratio="fill"
@@ -47,6 +60,35 @@ export default function ClubPage() {
           scrim={false}
           className="flex min-h-[62vh] flex-col justify-end px-6 pb-20 pt-40 sm:pb-28"
         >
+        {/* A GRADIENT UP FROM THE BOTTOM, NOT THE HERO'S RADIAL POOL.
+            The scrim works on the hero because the mark there is a compact
+            block in the middle of the frame, so a soft ellipse covers it. Here
+            the type is four wide lines anchored to the bottom left, and an
+            ellipse either misses the ends of the lines or has to be so large
+            it darkens the whole photograph anyway. A gradient rising from the
+            edge the type sits on is the right shape for the type that is
+            actually there — the same device the hero strip already uses along
+            its own bottom. */}
+        {/* TWO LAYERS, AND THE FLAT ONE IS NOT A FAILURE OF NERVE. Measured
+            with the real photograph behind it, the gradient alone left the
+            worst point behind the heading at 3.07:1 — which technically clears
+            the 3:1 large text has to meet and visibly loses the type against
+            the bright shirt at the top right. A gradient can only be as strong
+            as its darkest end, and its darkest end is at the bottom, which is
+            not where the trouble is.
+
+            So: a light even wash to put a floor under the whole frame, and the
+            gradient on top of it doing the work at the edge the type sits on.
+            The wash is deliberately light — it darkens the photograph rather
+            than flattening it. */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-1 bg-black/[0.32]"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 bottom-0 z-1 h-[86%] bg-gradient-to-t from-black/[0.82] via-black/[0.5] to-transparent"
+        />
         <div className="relative z-2 mx-auto w-full max-w-6xl">
           {/* No eyebrow. It said "what it is" over a paragraph that says what
               it is, and the navigation item three inches above says it too. */}
@@ -68,7 +110,6 @@ export default function ClubPage() {
               Not an h1 either: the page's one main heading is "how it works"
               below. */}
           <div className="relative inline-block">
-            <PhotoScrim size="lockup" />
             {/* No delay: with the eyebrow gone there is nothing for it to
                 arrive after, and a page opening on a quarter-second of empty
                 screen is not a page opening. */}
