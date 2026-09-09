@@ -378,7 +378,14 @@ export const BRIEFING_SUBMIT = {
   eyebrow: "the briefing",
   heading: "What is actually changing?",
   /** DRAFT. */
-  body: "The briefing is built from what members are actually seeing. A shift in how a budget is being spent, a format that has stopped working, a question worth putting to the rest of the membership. If you have something, send it. Nothing is attributed without asking you first.",
+  /**
+   * >>> THIS NAMES A REAL PERSON. <<< "our CRO, Jenny" is the only name on the
+   * public site, and the rule the rest of the copy follows — see the note over
+   * CLASS_OF_2026 in src/content/pages.ts, which keeps the curators unnamed
+   * until they have said yes — applies here too. Asked for directly, so it is
+   * written; it wants her agreement and probably a surname before launch.
+   */
+  body: "The briefing is built from what is actually changing in the creator economy, from the people in a position to know it rather than the people quickest to write about it. Four issues released throughout the year, to members only. Written by our CRO, Jenny.",
   send: "send something in",
   ask: "put it to the members",
 
