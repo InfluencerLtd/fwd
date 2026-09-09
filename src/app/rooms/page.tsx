@@ -33,7 +33,7 @@ export const metadata: Metadata = {
  */
 export default function RoomsPage() {
   return (
-    <PageShell footer="dark">
+    <PageShell>
       {/* ---- A letterbox, not a block ----------------------------------- */}
       <div data-hero className="fwd-on-dark">
         <PhotoPlaceholder

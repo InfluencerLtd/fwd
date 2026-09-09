@@ -32,7 +32,7 @@ export default function ClubPage() {
   const [opening, ...rest] = ABOUT_PAGE.lead;
 
   return (
-    <PageShell footer="light">
+    <PageShell>
       {/* ---- The argument, as the opening ------------------------------- */}
       <div data-hero className="fwd-on-dark">
         <PhotoPlaceholder

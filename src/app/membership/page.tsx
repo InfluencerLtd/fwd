@@ -139,9 +139,7 @@ export default function MembershipPage() {
         </section>
       </main>
 
-      {/* The off-white, matching the section above it. This page ends on the
-          page ground rather than the grey, so the footer follows it. */}
-      <SiteFooter tone="light" />
+      <SiteFooter />
     </>
   );
 }

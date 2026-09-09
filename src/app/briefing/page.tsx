@@ -38,7 +38,7 @@ export default function BriefingPage() {
   const [opening, ...rest] = BRIEFING.lead;
 
   return (
-    <PageShell overHero={false} footer="dark">
+    <PageShell overHero={false}>
       {/* ---- The masthead ----------------------------------------------- */}
       <section className="px-6 pb-16 pt-36 sm:pb-20 sm:pt-44">
         <div className="mx-auto max-w-6xl">
