@@ -1,5 +1,7 @@
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
+import { PhotoScrim } from "@/components/photo-scrim";
 import { Wordmark } from "@/components/wordmark";
+import { MarkedText } from "@/components/marked";
 import { SignupForm } from "@/components/signup-form";
 import { HOLDING, IMAGERY } from "@/content/site";
 
@@ -10,10 +12,25 @@ import { HOLDING, IMAGERY } from "@/content/site";
  * until SITE_MODE in src/lib/site-config.ts is switched to "live". It is not
  * deleted at launch, so it can be brought back at any time.
  *
- * It is dark throughout, because it is essentially all hero: the photograph
- * fills the screen and the wordmark sits on it. That is the approved treatment,
- * and it is why there is no light/dark toggle here. The toggle belongs on the
- * full site, where there are light surfaces to toggle.
+ * WHAT IT IS ALLOWED TO SAY. The name, one line about who it is for, and a
+ * field to leave an address in. Nothing about the format, the membership, the
+ * cost or the calendar — somebody who hears about this early should be able to
+ * catch the premise and register interest, and should not be able to work out
+ * the whole offering from a page that exists to tease it.
+ *
+ * IT IS THE HERO OF THE FULL SITE, MINUS THE SITE. That is deliberate rather
+ * than lazy: the launch page is the piece of this identity everybody responds
+ * to, and somebody who sees this page in September should recognise it as the
+ * same thing when the site opens. Same photograph, same centred lockup on the
+ * same radial scrim, same flat wash over the frame, same blue on the button.
+ * The only thing that replaces the "apply for membership" pill is the field.
+ *
+ * It was left-aligned and anchored to the bottom of the frame, which was the
+ * earlier hero's composition and is no longer anybody's. Centred now, like the
+ * one it is meant to rhyme with.
+ *
+ * It is dark throughout, and there is no light/dark toggle. The toggle belongs
+ * on the full site, where there are light surfaces to toggle.
  */
 export function HoldingPage() {
   return (
@@ -28,28 +45,56 @@ export function HoldingPage() {
         sizes="100vw"
         ratio="fill"
         showLabel={false}
-        /* Heavier than the hero's 50%. Everything on this page below the
-           wordmark is small and sits low on the frame, where this photograph
-           is brightest. See washClassName in PhotoPlaceholder. */
-        washClassName="bg-photo-ground/70"
-        className="flex min-h-screen flex-1 flex-col justify-end"
+        /* The placeholder's own wash is off; the two layers below do it, the
+           same way the hero does. */
+        scrim={false}
+        className="flex min-h-screen flex-1 flex-col"
       >
-        <div className="relative z-1 mx-auto flex w-full max-w-5xl flex-col px-6 pb-20 pt-40">
-          <Wordmark size="hero" heading />
+        {/* A FLAT WASH ACROSS THE WHOLE FRAME, at the hero's 0.58. This
+            photograph is a lit room with pale faces in it, and the type over
+            the lower half of it — a line, a prompt, a field, a consent line —
+            is smaller than anything the hero carries. The wash is what puts a
+            floor under all of it; the radial pool below does the mark. */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-1 bg-black/[0.58]"
+        />
 
-          {/* max-w-2xl, not the xl the rest of the page uses. At 20px this line
-              wants 628px and xl caps it at 576, which broke one sentence across
-              two lines for the sake of 52 pixels. It still wraps on a phone,
-              where nothing could hold it on one line. */}
-          <p className="mt-12 max-w-2xl font-body text-lg leading-relaxed text-photo-ink/85 sm:text-xl">
-            {HOLDING.line}
-          </p>
+        <div className="relative z-2 mx-auto flex w-full max-w-3xl flex-1 flex-col items-center px-6 pb-20 pt-28 text-center">
+          <div className="my-auto flex w-full flex-col items-center">
+            {/* THE SIGNATURE IS ON, unlike the site's hero. There the header
+                lockup at the top of the same screen carries the endorsement;
+                here there is no header, so this is the only place it can be —
+                and this is the page that has to say whose it is. */}
+            <div className="relative">
+              <PhotoScrim size="lockup" />
+              <Wordmark size="heroLarge" heading align="center" />
+            </div>
 
-          <div className="mt-14 border-t border-photo-ink/15 pt-10">
-            <p className="mb-5 font-body text-base text-photo-ink">
-              {HOLDING.capturePrompt}
+            {/* Clear space: at least the height of the "d" before anything
+                else starts, the same rule the hero follows. */}
+            <p className="fwd-enter mt-12 max-w-2xl font-body text-lg leading-[1.5] text-photo-ink sm:mt-16 sm:text-[22px] lg:mt-[88px]">
+              <MarkedText text={HOLDING.line} />
             </p>
-            <SignupForm source="holding" />
+
+            {/* NO RULE ACROSS THE MIDDLE. There was one, separating the line
+                from the form, and on a photograph a hairline drawn edge to
+                edge reads as a scratch on the picture. The space does it. */}
+            <div className="fwd-enter mt-14 w-full sm:mt-16">
+              <p className="font-body text-base text-photo-ink/85">
+                {HOLDING.capturePrompt}
+              </p>
+
+              {/* THE BLOCK IS CENTRED AND THE FORM INSIDE IT IS NOT. A centred
+                  heading is a heading; centred field labels, error messages
+                  and a consent line are just hard to read, because the eye has
+                  no fixed left edge to return to. So the form keeps its own
+                  alignment inside a column that sits in the middle of the
+                  page. */}
+              <div className="mx-auto mt-6 max-w-md text-left">
+                <SignupForm source="holding" />
+              </div>
+            </div>
           </div>
 
           {/* NOTHING BELOW THE FORM.
@@ -65,7 +110,6 @@ export function HoldingPage() {
               be told the address. */}
         </div>
       </PhotoPlaceholder>
-
     </main>
   );
 }

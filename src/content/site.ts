@@ -39,8 +39,19 @@ export const POSITIONING =
   "The home for the people shaping what\u2019s next in the creator\u00a0economy.";
 
 export const HOLDING = {
-  /** The one line under the wordmark, the same one the hero carries. */
-  line: POSITIONING,
+  /**
+   * The one line under the wordmark.
+   *
+   * IT IS POSITIONING WITH A MARK IN IT, and it is written out rather than
+   * built from POSITIONING with a replace, because the brackets cannot live in
+   * POSITIONING itself — META.description is that same constant, and a search
+   * result is no place for [[double brackets]]. Written out, the two can be
+   * read side by side; derived, a replace that silently stops matching would
+   * take the mark away and nobody would see it go.
+   *
+   * >>> IF POSITIONING CHANGES, CHANGE THIS TOO. <<<
+   */
+  line: "The home for the people shaping [[what\u2019s next]] in the creator\u00a0economy.",
 
   /** DRAFT. The prompt above the email field. */
   capturePrompt: "Be the first to hear when applications open.",
