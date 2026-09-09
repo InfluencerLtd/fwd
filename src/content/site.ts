@@ -240,7 +240,7 @@ export const MEMBERSHIP = {
    * membership rather than about fwd.
    */
   lead: [
-    "Membership unlocks a year-round program of intimate dinners, private conversations, industry briefings and experiences — alongside a network that extends well beyond the room.",
+    "Membership unlocks a year-round program of intimate dinners, private conversations, industry briefings and experiences — alongside a network that extends well beyond the events.",
     "Meet someone you’ve wanted to meet. Hear what’s coming before it becomes obvious. Share an idea with the person who can act on it.",
   ],
 
