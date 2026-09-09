@@ -236,12 +236,13 @@ export const ABOUT_PAGE = {
      */
     forWhom: [
       {
-        name: "[[The\u00a0creators.|circle]]",
-        line: "The people who built the audience, and decide what gets made for it.",
-      },
-      {
         name: "[[The\u00a0brands.|circle]]",
         line: "The people spending the budget, and answering for where it went.",
+      },
+      // The creators in the middle, with the other two either side of them.
+      {
+        name: "[[The\u00a0creators.|circle]]",
+        line: "The people who built the audience, and decide what gets made for it.",
       },
       {
         name: "[[The\u00a0platforms.|circle]]",
