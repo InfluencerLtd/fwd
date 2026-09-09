@@ -22,8 +22,9 @@ import { BRAND } from "@/lib/brand";
  *
  * THE LOCKUP IS ALSO TALLER THAN IT WAS RELATIVE TO ITS WIDTH — 1.66:1 against
  * roughly 4:1 for the old inline pair — because the signature is underneath
- * rather than alongside. Every bar it sits in had to be checked rather than
- * assumed.
+ * rather than alongside. That is what makes the bars the hard case: a lockup
+ * wide enough to read the endorsement is tall enough to grow the bar around
+ * it, and there is no arrangement of the artwork that avoids the trade.
  */
 export function Wordmark({
   size = "hero",
@@ -91,8 +92,22 @@ export function Wordmark({
           : size === "page"
             ? "w-[124px]"
             : size === "footer"
-              ? "w-[84px]"
-              : "w-[68px]";
+              ? "w-[104px]"
+              : /*
+                 * THE BAR LOCKUP IS SIZED BY ITS SIGNATURE, NOT BY ITS MARK.
+                 *
+                 * At 68px wide — which is all the "fwd." needs to read
+                 * comfortably — the lockup is 41px tall and "by Influencer"
+                 * lands around 5px with a cap height near 3. Legible only if
+                 * you already know what it says.
+                 *
+                 * The signature is about a thirteenth of the lockup's height,
+                 * so a cap height worth having sets the width, and the width
+                 * sets the bar. 108px puts the lockup at 65px and the cap
+                 * height near 5 — small, which an endorsement should be, and
+                 * readable, which it has to be.
+                 */
+                "w-[108px]";
 
   const inkClass =
     tone === "onDark"
@@ -100,22 +115,6 @@ export function Wordmark({
       : tone === "brand"
         ? "text-accent"
         : "text-ink";
-
-  /**
-   * THE SIGNATURE IS DROPPED BELOW A SIZE IT CAN BE READ AT, whatever the
-   * caller asked for.
-   *
-   * In the artwork "by Influencer" is about a eighth of the lockup's height.
-   * In a header bar the lockup is 68px wide and 41px tall, which puts the
-   * signature at roughly 5px with a cap height near 3. That is not a small
-   * endorsement, it is a smudge — and a smudge of the parent company's name is
-   * worse than no endorsement at all.
-   *
-   * Enforced here rather than left to the call sites, because it is a fact
-   * about the artwork rather than a decision about a page: four bars ask for
-   * the small size and all four would have to remember.
-   */
-  const readableSignature = signature && size !== "small" && size !== "footer";
 
   const Tag = heading ? "h1" : "span";
 
@@ -135,7 +134,7 @@ export function Wordmark({
         <span
           aria-hidden="true"
           className={`fwd-logo w-full ${
-            readableSignature ? "fwd-logo-lockup" : "fwd-logo-mark"
+            signature ? "fwd-logo-lockup" : "fwd-logo-mark"
           }`}
         />
       </Tag>
