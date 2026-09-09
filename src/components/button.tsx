@@ -18,12 +18,12 @@ const VARIANTS: Record<Variant, string> = {
   /**
    * Filled with the pale ice blue, dark text, for LIGHT grounds.
    *
-   * The border is not decoration. The pale blue measures 1.12:1 against the
-   * warm sand and 1.27:1 against the off-white page, so a filled button with no
-   * edge has no visible shape at all: it reads as dark text floating on the
-   * page. The border is the near-black at 60%, measuring 4.61:1 on sand and
-   * 4.81:1 on off-white, which clears the 3:1 minimum a control's outline has
-   * to meet. The label was never the problem, at 13.74:1.
+   * The border is not decoration. The pale blue measures 1.14:1 against the
+   * cool grey band and 1.27:1 against the off-white page, so a filled button
+   * with no edge has no visible shape at all: it reads as dark text floating on
+   * the page. The border is the near-black at 60%, measuring 3.88:1 on the grey
+   * and 4.81:1 on off-white, which clears the 3:1 minimum a control's outline
+   * has to meet. The label was never the problem, at 13.74:1.
    *
    * This is the pale-blue-on-light trap in a different hat: the colour is fine
    * as a fill under dark text, and invisible as an edge.

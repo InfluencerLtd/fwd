@@ -134,7 +134,11 @@ export const ABOUT_PAGE = {
     // The \n is a line break inside the paragraph, not a new paragraph. It is
     // rendered because the club page sets whitespace-pre-line; spaces still
     // collapse, so nothing else in these strings changes.
-    "Forward brings together the people shaping the future of the creator economy. The brands. The creators. The platforms.\nThe people with something to say, build, change or start next.",
+    // The three short sentences are held together with non-breaking spaces.
+    // Without them the line wrapped mid-phrase — "The" was left at the end of
+    // one line and "creators." began the next, which reads as a stumble. Now
+    // each pair drops whole to the line below rather than splitting.
+    "Forward brings together the people shaping the future of the creator economy. The\u00a0brands. The\u00a0creators. The\u00a0platforms.\nThe people with something to say, build, change or start next.",
     "Membership unlocks a year-round program of intimate dinners, private conversations, industry briefings and experiences alongside a network that extends far beyond the room.",
     "Meet someone you\u2019ve wanted to meet. Hear what\u2019s coming before it becomes obvious. Share an idea with the person who can make it happen.",
     "This is where the creator economy comes together to shape what happens next.",

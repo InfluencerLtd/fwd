@@ -20,7 +20,7 @@ export function PageClose({
 }: {
   heading: string;
   note: string;
-  tone?: "light" | "sand" | "dark";
+  tone?: "light" | "alt" | "dark";
   /**
    * A photograph to close on, treated the way the hero is: the picture full
    * bleed, and a soft radial pool of darkness under the type only rather than
@@ -34,8 +34,8 @@ export function PageClose({
   const ground =
     tone === "dark"
       ? "fwd-dark fwd-on-dark fwd-grain"
-      : tone === "sand"
-        ? "bg-surface-warm"
+      : tone === "alt"
+        ? "bg-surface-alt"
         : "";
 
   const body = (

@@ -87,7 +87,7 @@ export default function BriefingPage() {
       </section>
 
       {/* ---- The contents ----------------------------------------------- */}
-      <section className="bg-surface-warm px-6 py-24 sm:py-32">
+      <section className="bg-surface-alt px-6 py-24 sm:py-32">
         <div className="mx-auto max-w-6xl">
           <h2 className="fwd-reveal fwd-h2">{BRIEFING.inside.heading}</h2>
 

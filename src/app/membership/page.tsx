@@ -75,7 +75,7 @@ export default function MembershipPage() {
 
       <main id="main">
         {/* ---- 2. What membership is -------------------------------------- */}
-        <div className="bg-surface-warm">
+        <div className="bg-surface-alt">
           <section className="px-6 py-24 sm:py-28">
             <div className="mx-auto max-w-4xl text-center">
               {/* THIS IS THE PAGE'S h1. The name over the photograph is not
@@ -139,7 +139,7 @@ export default function MembershipPage() {
       </main>
 
       {/* The off-white, matching the section above it. This page ends on the
-          page ground rather than the sand, so the footer follows it. */}
+          page ground rather than the grey, so the footer follows it. */}
       <SiteFooter tone="light" />
     </>
   );

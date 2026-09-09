@@ -92,15 +92,15 @@ type Pair = { fg: string; bg: string; note?: string; forbidden?: boolean };
 
 const LIGHT_PAIRS: Pair[] = [
   { fg: "ink", bg: "surface", note: "Body text on the page" },
-  { fg: "ink", bg: "surface-warm", note: "Body text on a sand band" },
+  { fg: "ink", bg: "surface-alt", note: "Body text on the grey band" },
   { fg: "ink", bg: "surface-raised", note: "Body text on a card" },
   { fg: "ink-muted", bg: "surface", note: "Captions and labels" },
-  { fg: "ink-muted", bg: "surface-warm", note: "Captions on a sand band" },
+  { fg: "ink-muted", bg: "surface-alt", note: "Captions on the grey band" },
   { fg: "ink-muted", bg: "surface-raised", note: "Captions on a card" },
   { fg: "accent", bg: "surface", note: "Links and buttons" },
-  { fg: "accent", bg: "surface-warm", note: "Buttons on a sand band" },
+  { fg: "accent", bg: "surface-alt", note: "Buttons on the grey band" },
   { fg: "ember", bg: "surface", note: "The warm accent on the page" },
-  { fg: "ember", bg: "surface-warm", note: "The warm accent on sand" },
+  { fg: "ember", bg: "surface-alt", note: "The warm accent on the grey" },
   {
     fg: "accent-on-dark",
     bg: "surface",
@@ -111,10 +111,10 @@ const LIGHT_PAIRS: Pair[] = [
 
 const DARK_PAIRS: Pair[] = [
   { fg: "ink", bg: "surface", note: "Body text on the page" },
-  { fg: "ink", bg: "surface-warm", note: "Body text on a warm band" },
+  { fg: "ink", bg: "surface-alt", note: "Body text on a warm band" },
   { fg: "ink", bg: "surface-raised", note: "Body text on a card" },
   { fg: "ink-muted", bg: "surface", note: "Captions and labels" },
-  { fg: "ink-muted", bg: "surface-warm", note: "Captions on a warm band" },
+  { fg: "ink-muted", bg: "surface-alt", note: "Captions on a warm band" },
   { fg: "ink-muted", bg: "surface-raised", note: "Captions on a card" },
   { fg: "accent", bg: "surface", note: "Links and buttons" },
   { fg: "ember", bg: "surface", note: "The warm accent on the page" },
@@ -350,7 +350,7 @@ export default async function ReviewPage() {
               upside-down version of the other.
             </p>
             <p className="mt-3">
-              Two of these are new since the first pass: a warm sand ground for
+              Two of these are new since the first pass: a cool grey ground for
               the bands that break up the page, and an ember accent taken from
               candlelight. They were added to answer &ldquo;too dark and
               boring&rdquo;. The brief originally said warmth should come from

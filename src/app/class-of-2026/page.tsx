@@ -80,7 +80,7 @@ export default function ClassOf2026Page() {
       </section>
 
       {/* ---- What the first cohort gets --------------------------------- */}
-      <section className="bg-surface-warm px-6 py-24 sm:py-32">
+      <section className="bg-surface-alt px-6 py-24 sm:py-32">
         <div className="mx-auto max-w-6xl">
           <h1 className="fwd-reveal fwd-h2 max-w-3xl">
             {CLASS_OF_2026.whatYouGet.heading}

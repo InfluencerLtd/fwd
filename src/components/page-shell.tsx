@@ -29,7 +29,7 @@ export function PageShell({
   children,
 }: {
   overHero?: boolean;
-  footer?: "sand" | "light" | "dark";
+  footer?: "alt" | "light" | "dark";
   children: React.ReactNode;
 }) {
   return (

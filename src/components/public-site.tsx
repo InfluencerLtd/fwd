@@ -20,7 +20,7 @@ import { MEMBERSHIP, MEETING_OF_MINDS, NAV, IMAGERY } from "@/content/site";
  *   3  membership          off-white       what it gets you, then the ask
  *   4  the band            photography     texture
  *   5  the shape of it     off-white       four numbers, bare
- *   6  Meeting of Minds    sand            the one thing nobody else does
+*   6  Meeting of Minds    grey            the one thing nobody else does
  *   7  the briefing        off-white       the ask that is not "apply"
  *   8  the way in          near-black      the close
  *   9  the footer
@@ -95,7 +95,7 @@ export function PublicSite() {
         {/* ---- 6. Meeting of Minds --------------------------------------
              Where Soho House puts the festival: the one thing that is theirs
              and nobody else's. For fwd. that is the introductions. */}
-        <div className="bg-surface-warm">
+        <div className="bg-surface-alt">
           <Section id="meeting-of-minds">
             <div className="grid items-center gap-12 lg:grid-cols-2">
               <div className="fwd-zoom fwd-reveal order-2 overflow-hidden rounded-2xl lg:order-1">

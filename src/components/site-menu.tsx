@@ -114,7 +114,7 @@ export function SiteMenu() {
                   <Link
                     href={link.href}
                     onClick={hide}
-                    className="block rounded-lg px-3 py-2.5 font-display text-xl text-ink transition-colors duration-300 hover:bg-surface-warm"
+                    className="block rounded-lg px-3 py-2.5 font-display text-xl text-ink transition-colors duration-300 hover:bg-surface-alt"
                   >
                     {link.label}
                   </Link>

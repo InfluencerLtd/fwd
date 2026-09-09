@@ -11,12 +11,12 @@ import { FOOTER, NAV } from "@/content/site";
  * somebody goes when they did not find what they wanted above, and it should
  * feel like the page continuing rather than a second design arriving.
  *
- * So it sits on the warm sand instead: the same ground the meeting of minds
+ * So it sits on the cool grey band instead: the same ground the meeting of minds
  * band above it uses, so the home page runs into its footer rather than
  * stopping at it. Still quiet, still the page's own palette.
  *
  * There is no rule across the top. It was there to keep the join legible on
- * the pages where the section above is the off-white rather than the sand, and
+ * the pages where the section above is the off-white rather than the grey, and
  * it did — a little too well. A footer that is meant to read as the page
  * carrying on should not be announced by a line drawn under everything else.
  *
@@ -62,8 +62,8 @@ const LINK = "fwd-underline -my-1 inline-block py-1 font-body text-[15px]";
  * wrong: the ground and the text always move together.
  */
 const TONES = {
-  /** The home page's, because the band above it is the sand too. */
-  sand: { ground: "bg-surface-warm", text: "text-ink", muted: "text-ink-muted" },
+  /** The home page’s, because the band above it is the grey too. */
+  alt: { ground: "bg-surface-alt", text: "text-ink", muted: "text-ink-muted" },
   /** For a page that ends on the off-white. */
   light: { ground: "bg-surface", text: "text-ink", muted: "text-ink-muted" },
   /**
@@ -83,10 +83,10 @@ export function SiteFooter({
   /**
    * Which ground the footer sits on, and therefore what colour its links are.
    *
-   * The warm sand by default, because on the home page the section directly
-   * above it is the sand too, so the page runs into its footer.
+   * The cool grey band by default, because on the home page the section directly
+   * above it is the grey too, so the page runs into its footer.
    */
-  tone = "sand",
+  tone = "alt",
 }: {
   tone?: keyof typeof TONES;
 } = {}) {
