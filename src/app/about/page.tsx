@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { MarkedText } from "@/components/marked";
-import { PageClose } from "@/components/page-close";
 import { ABOUT_PAGE } from "@/content/pages";
 import { IMAGERY } from "@/content/site";
 
@@ -165,12 +164,20 @@ export default function ClubPage() {
                1.28:1, the brand colour on the brand ground. See the note over
                --fwd-mark in globals.css.
 
-               The rule over each one is the same device the pillars use on the
-               dark section below, which is what makes three short phrases read
-               as a set rather than as three loose lines. */}
-          <ul className="fwd-stagger col-span-full mt-8 grid gap-x-12 gap-y-12 sm:mt-12 sm:grid-cols-3">
-            {ABOUT_PAGE.closing.forWhom.map((item) => (
-              <li key={item.name} className="fwd-reveal border-t border-ink/15 pt-8">
+               NO RULE OVER EACH ONE. There was one, borrowed from the pillars
+               on the dark section below, and three hairlines across an
+               otherwise open page drew more attention than the three phrases
+               under them. The space is the separation.
+
+               THE LIST IS NARROWER THAN THE SECTION IT SITS IN. Three equal
+               thirds of the full width put a hand's width of empty page
+               between each phrase and the next, and three things that far
+               apart stop reading as one set. Held to max-w-4xl they are a
+               group with air around it rather than three lines spread across
+               the screen. */}
+          <ul className="fwd-stagger col-span-full mt-12 grid max-w-4xl gap-x-10 gap-y-12 sm:mt-16 sm:grid-cols-3">
+            {ABOUT_PAGE.forWhom.map((item) => (
+              <li key={item.name} className="fwd-reveal">
                 {/* Not a heading. Three of these are a list of who is in the
                     room, not a structure anybody should be able to navigate
                     by — and they keep their capitals, which a heading here
@@ -178,7 +185,7 @@ export default function ClubPage() {
                 <p className="fwd-standfirst text-ink">
                   <MarkedText text={item.name} />
                 </p>
-                <p className="mt-5 max-w-[30ch] font-body text-[15px] leading-relaxed text-ink-muted">
+                <p className="mt-5 max-w-[28ch] font-body text-[15px] leading-relaxed text-ink-muted">
                   {item.line}
                 </p>
               </li>
@@ -251,12 +258,12 @@ export default function ClubPage() {
         </div>
       </section>
 
-      <PageClose
-        heading={ABOUT_PAGE.closing.heading}
-        note={ABOUT_PAGE.closing.note}
-        tone="light"
-      />
-
+      {/* NO CLOSE ON THIS PAGE. Every other page ends on the shared "ready to
+          apply" block and this one deliberately does not: it ended on "who it
+          is for" over a paragraph that said who it is for, three sections
+          after the three columns that answer the same question. The page ends
+          on how it works, and the ask is in the bar at the top of the screen
+          the whole way down. */}
     </PageShell>
   );
 }

@@ -218,38 +218,38 @@ export const ABOUT_PAGE = {
     ],
   },
 
-  closing: {
-    heading: "who it is for",
-    /** DRAFT. */
-    note: "People with something to say and somewhere to take it. If that is a description of you, the way in is an application rather than an introduction.",
-    /**
-     * THE THREE, EACH IN ITS OWN COLUMN WITH A CIRCLE ROUND IT.
-     *
-     * They were briefly a single line over the photograph at the top of this
-     * page, with three circles drawn along it, and the three marks ran into
-     * one another at the width where the line fit — one long loop rather than
-     * three. A column each is what the device wanted all along: nothing is
-     * next to anything, so every circle is its own mark.
-     *
-     * DRAFT lines. Each says what that third of the room actually does, in one
-     * sentence, without telling any of them how important they are.
-     */
-    forWhom: [
-      {
-        name: "[[The\u00a0brands.|circle]]",
-        line: "The people spending the budget, and answering for where it went.",
-      },
-      // The creators in the middle, with the other two either side of them.
-      {
-        name: "[[The\u00a0creators.|circle]]",
-        line: "The people who built the audience, and decide what gets made for it.",
-      },
-      {
-        name: "[[The\u00a0platforms.|circle]]",
-        line: "The people who set the rules the other two work inside.",
-      },
-    ],
-  },
+  /**
+   * THE THREE, EACH IN ITS OWN COLUMN WITH A CIRCLE ROUND IT.
+   *
+   * They were briefly a single line over the photograph at the top of this
+   * page, with three circles drawn along it, and the three marks ran into one
+   * another at the width where the line fit — one long loop rather than three.
+   * A column each is what the device wanted all along: nothing is next to
+   * anything, so every circle is its own mark.
+   *
+   * IT USED TO LIVE UNDER `closing`, WHICH HAS GONE WITH THE SECTION. The page
+   * ended on "who it is for" over a paragraph saying who it is for, three
+   * sections after these three columns answered the same question, so the
+   * close was deleted and this came up here.
+   *
+   * DRAFT lines. Each says what that third of the room actually does, in one
+   * sentence, without telling any of them how important they are.
+   */
+  forWhom: [
+    {
+      name: "[[The\u00a0brands.|circle]]",
+      line: "The people spending the budget, and answering for where it went.",
+    },
+    // The creators in the middle, with the other two either side of them.
+    {
+      name: "[[The\u00a0creators.|circle]]",
+      line: "The people who built the audience, and decide what gets made for it.",
+    },
+    {
+      name: "[[The\u00a0platforms.|circle]]",
+      line: "The people who set the rules the other two work inside.",
+    },
+  ],
 } as const;
 
 export const ROOMS = {
