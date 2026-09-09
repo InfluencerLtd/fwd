@@ -43,11 +43,25 @@ type Style = "underline" | "double" | "swoosh" | "circle";
  * a line, so nothing distorts in a way the eye can catch.
  */
 const PATHS: Record<Style, { d: string; viewBox: string; box: string }> = {
-  /** One rising stroke. The quiet one, for a phrase inside body copy. */
+  /**
+   * One stroke under the word. The quiet one, for a phrase inside body copy.
+   *
+   * IT USED TO READ AS UNFINISHED. The old path started at 4 and stopped at
+   * 196 inside a box the exact width of the word, so it fell short at both
+   * ends, and it climbed from 10.5 to 4.6 — a rise of well over a third of
+   * the box — so the right end lifted away from the last letter and looked
+   * like a stroke that had been abandoned rather than completed.
+   *
+   * Now it runs the full width with a little overshoot either side, the way a
+   * hand drawing under a word starts before it and finishes after it, and the
+   * climb is half what it was. Still not level: a perfectly flat line is a
+   * text-decoration, and the whole point of this device is that somebody drew
+   * it.
+   */
   underline: {
-    d: "M4 10.5 C 34 5.4, 86 3.6, 132 5.4 S 176 8.6, 196 4.6",
+    d: "M1 9.8 C 32 5.6, 84 4.2, 128 5.4 S 174 7.8, 199 6.6",
     viewBox: "0 0 200 14",
-    box: "absolute left-0 right-0 -bottom-[0.06em] h-[0.26em] w-full",
+    box: "absolute -left-[0.05em] w-[calc(100%+0.10em)] -bottom-[0.06em] h-[0.26em]",
   },
   /** Gone over twice, the second pass not quite tracking the first. */
   double: {
