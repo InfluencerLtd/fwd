@@ -66,9 +66,16 @@ export function Hero() {
                 and the padding is what gives it something to fade across. */}
             <div className="relative">
               <PhotoScrim size="lockup" />
-              {/* No signature on the hero. It is still on the header lockup at the
-                  top of every page, which is where the endorsement now lives. */}
-              <Wordmark size="heroLarge" heading align="center" signature={false} />
+              {/* THE SIGNATURE IS HERE, and only here, on this page. The bar
+                  at the top of the homepage is the mark on its own; every
+                  other page keeps the endorsement up there in the corner
+                  because it has nothing this size to put it on. See the
+                  `signature` prop in wordmark.tsx.
+
+                  The width is unchanged, so the "fwd." is exactly the size it
+                  was — the lockup adds its height underneath rather than
+                  shrinking the mark to make room. */}
+              <Wordmark size="heroLarge" heading align="center" />
             </div>
 
             {/* Clear space: at least the height of the "d" before anything

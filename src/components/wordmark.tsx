@@ -44,9 +44,15 @@ export function Wordmark({
    * Whether the "by Influencer" signature is part of it.
    *
    * On by default, and it should stay on almost everywhere: the endorsement is
-   * the point of the lockup. Off on the hero, where the mark stands alone at
-   * full size and the endorsement is carried by the header lockup at the top
-   * of the same screen.
+   * the point of the lockup.
+   *
+   * IT APPEARS ONCE PER SCREEN, AND THE HOMEPAGE IS THE ONE PAGE WHERE THAT IS
+   * NOT THE HEADER. Everywhere else the bar at the top left carries it, because
+   * the bar is the only place the name appears at all. The homepage also has
+   * the mark across the middle of the photograph at ten times the size, and the
+   * endorsement belongs on the larger of the two — so there the hero has it and
+   * the bar is the mark alone. Two lockups on one screen is the thing to avoid:
+   * the signature is small enough that repeating it reads as a print error.
    *
    * This switches to a second file rather than hiding an element, because the
    * mark is drawn artwork and its signature is part of the drawing.

@@ -47,8 +47,21 @@ export function SiteHeader({
    * frame of the wrong header.
    */
   overHero = false,
+  /**
+   * Whether the bar's lockup carries "by Influencer".
+   *
+   * On everywhere but the homepage, where the hero's mark carries it instead.
+   * See the `signature` prop in wordmark.tsx for why it is one or the other
+   * and never both.
+   *
+   * The width stays 108px either way, so the "fwd." is the same size on every
+   * page and only the bar's height changes — the signature is what the extra
+   * fifteen pixels were for.
+   */
+  signature = true,
 }: {
   overHero?: boolean;
+  signature?: boolean;
 } = {}) {
   const [scrolled, setScrolled] = useState(!overHero);
 
@@ -88,8 +101,19 @@ export function SiteHeader({
       />
 
       <div className="relative mx-auto flex max-w-6xl items-center gap-6 px-6 py-4">
-        <Link href="/" aria-label={META.title} className="inline-block shrink-0">
-          <Wordmark size="small" />
+        {/* THE SLOT IS THE HEIGHT OF THE FULL LOCKUP WHATEVER IS IN IT — the
+            artwork's own ratio at 108px wide, so it is one number to change.
+            Without it the homepage bar is fifteen pixels shorter than every
+            other page's, and the nav beside it, which is centred against this,
+            moves half of that up the screen when you leave the homepage. The
+            mark is top-aligned in the slot, so it stays where it has always
+            been and only the empty space below it comes and goes. */}
+        <Link
+          href="/"
+          aria-label={META.title}
+          className="inline-block h-[calc(108px*214.87/355.96)] shrink-0"
+        >
+          <Wordmark size="small" signature={signature} />
         </Link>
 
         <nav

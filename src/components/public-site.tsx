@@ -55,7 +55,9 @@ export function PublicSite() {
       </a>
 
       <SiteMenu />
-      <SiteHeader overHero />
+      {/* The mark alone up here: the hero below carries the endorsement on
+          this page. */}
+      <SiteHeader overHero signature={false} />
       <Hero />
 
       <main id="main">
