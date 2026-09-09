@@ -45,9 +45,9 @@ export function BriefingSubmit() {
               {/* Shaped by the same code as every other primary button, so it
                   cannot drift away from them. */}
               <BriefingSubmitDialog className={buttonClass("primary")} />
-              {/* TODO: "ask the room" still goes nowhere. Where it should go
-                  has not been decided — it is a different thing from sending
-                  something in, and it may not be a form at all. */}
+              {/* TODO: "put it to the members" still goes nowhere. Where it
+                  should go has not been decided — it is a different thing from
+                  sending something in, and it may not be a form at all. */}
               <ButtonLink href="#" variant="quiet">
                 {BRIEFING_SUBMIT.ask}
               </ButtonLink>

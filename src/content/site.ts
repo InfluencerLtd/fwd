@@ -380,7 +380,7 @@ export const BRIEFING_SUBMIT = {
   /** DRAFT. */
   body: "The briefing is built from what members are actually seeing. A shift in how a budget is being spent, a format that has stopped working, a question worth putting to the rest of the membership. If you have something, send it. Nothing is attributed without asking you first.",
   send: "send something in",
-  ask: "ask the room",
+  ask: "put it to the members",
 
   /**
    * The panel behind "send something in".
