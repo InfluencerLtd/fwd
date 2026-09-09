@@ -25,11 +25,11 @@
 export const HEADER_NAV: readonly { label: string; href: string | null }[] = [
   { label: "what it is", href: "/about" },
   { label: "membership", href: "/membership" },
-  // The label says "events" and the page it opens still calls itself the
-  // rooms, top to bottom — "the rooms", "a seat in the room", "five kinds of
-  // room". Asked for as a label change only. If events is the word, the page
-  // and the route want to follow it.
-  { label: "events", href: "/rooms" },
+  // The label says "what\u2019s on" and the page it opens still calls itself
+  // the rooms, top to bottom — "the events" at the top, then "a seat in the
+  // room", "five kinds of room". Asked for as a label change only. If what\u2019s
+  // on is the word, the page and the route want to follow it.
+  { label: "what\u2019s on", href: "/rooms" },
   // REMOVED FROM THE NAVIGATION, NOT DELETED. /class-of-2026 still exists and
   // still works for anybody sent the link; it is off the bar until the cohort
   // is ready to be talked about publicly. Put this line back to restore it:
