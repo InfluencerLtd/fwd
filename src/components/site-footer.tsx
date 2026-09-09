@@ -11,7 +11,7 @@ import { FOOTER, NAV } from "@/content/site";
  * somebody goes when they did not find what they wanted above, and it should
  * feel like the page continuing rather than a second design arriving.
  *
- * So it sits on the cool grey band instead: the same ground the meeting of minds
+ * So it sits on the warm grey band instead: the same ground the meeting of minds
  * band above it uses, so the home page runs into its footer rather than
  * stopping at it. Still quiet, still the page's own palette.
  *
@@ -83,7 +83,7 @@ export function SiteFooter({
   /**
    * Which ground the footer sits on, and therefore what colour its links are.
    *
-   * The cool grey band by default, because on the home page the section directly
+   * The warm grey band by default, because on the home page the section directly
    * above it is the grey too, so the page runs into its footer.
    */
   tone = "alt",

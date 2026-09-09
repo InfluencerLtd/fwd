@@ -350,7 +350,7 @@ export default async function ReviewPage() {
               upside-down version of the other.
             </p>
             <p className="mt-3">
-              Two of these are new since the first pass: a cool grey ground for
+              Two of these are new since the first pass: a warm grey ground for
               the bands that break up the page, and an ember accent taken from
               candlelight. They were added to answer &ldquo;too dark and
               boring&rdquo;. The brief originally said warmth should come from

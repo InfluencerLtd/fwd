@@ -20,7 +20,7 @@
   color-scheme: light;
 
   --fwd-surface: #f7f6f3; /* warm off-white - the page ground */
-  --fwd-surface-alt: #e7eaec; /* cool light grey - bands that break up the page */
+  --fwd-surface-alt: #e8e5e1; /* warm light grey - bands that break up the page */
   --fwd-surface-raised: #ffffff; /* cards and panels that sit above the page */
   --fwd-ink: #0e1116; /* body and heading text */
   --fwd-ink-muted: #5a6472; /* secondary text, captions, labels */
@@ -46,7 +46,7 @@
      cold and flat. Same darkness, warmer temperature, so it sits with
      candlelight photography rather than against it. */
   --fwd-surface: #14110e;
-  --fwd-surface-alt: #1b1f23;
+  --fwd-surface-alt: #211e1b;
   --fwd-surface-raised: #1f1a16;
   --fwd-ink: #f2f0ec;
   --fwd-ink-muted: #a89f95;
