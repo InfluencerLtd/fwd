@@ -4,6 +4,7 @@ import { CONTACT } from "@/lib/brand";
 import { META } from "@/content/site";
 import { fontVariables, rootFontStyle } from "@/lib/fonts";
 import { THEME_INIT_SCRIPT } from "@/lib/theme";
+import { InlineScript } from "@/components/inline-script";
 import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
@@ -34,8 +35,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <head>
         {/* Runs before the page is drawn so there is never a flash of the
-            wrong colour mode. See src/lib/theme.ts. */}
-        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+            wrong colour mode. See src/lib/theme.ts for what it does, and
+            src/components/inline-script.tsx for why it is not written as a
+            plain <script> tag here. */}
+        <InlineScript html={THEME_INIT_SCRIPT} />
       </head>
       <body className="min-h-full flex flex-col bg-surface text-ink">
         {/* The three line menu is NOT here.
