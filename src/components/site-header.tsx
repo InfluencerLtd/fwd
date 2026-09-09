@@ -95,11 +95,11 @@ export function SiteHeader({
       />
       {/* NO RULE ALONG THE BOTTOM. The panel is drawn past the row and faded
           out instead, so the tint and the blur end without an edge — see
-          .fwd-header-veil in globals.css. -bottom-7 is the 28px the mask
-          fades across; the two numbers have to agree. */}
+          .fwd-header-veil in globals.css. -bottom-[10px] is the distance the
+          mask fades across; the two numbers have to agree. */}
       <div
         aria-hidden="true"
-        className={`fwd-header-veil absolute inset-x-0 -bottom-7 top-0 bg-photo-ground/[0.92] backdrop-blur-md transition-opacity duration-200 ${
+        className={`fwd-header-veil absolute inset-x-0 -bottom-[10px] top-0 bg-photo-ground/[0.92] backdrop-blur-md transition-opacity duration-200 ${
           scrolled ? "opacity-100" : "opacity-0"
         }`}
       />

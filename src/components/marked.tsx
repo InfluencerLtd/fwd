@@ -18,6 +18,11 @@
  * in the content file and it gets marked. Emphasis is a writing decision, so
  * it belongs where the writing is — and moving it is an edit to a sentence
  * rather than a change to a component.
+ *
+ * AND THE SHAPE CAN BE CHOSEN THERE TOO: [[a word|swoosh]] takes that style
+ * instead of the block's. One paragraph can then carry two different marks,
+ * which is the difference between a hand that marked a proof and a template
+ * that stamped the same arc on every emphasis it found.
  */
 
 type Style = "underline" | "double" | "swoosh" | "circle";
@@ -120,6 +125,7 @@ export function Marked({
  */
 export function MarkedText({
   text,
+  /** The shape for any mark that does not name its own. */
   style = "underline",
 }: {
   text: string;
@@ -127,15 +133,22 @@ export function MarkedText({
 }) {
   return (
     <>
-      {text.split(/(\[\[[^\]]+\]\])/g).map((part, i) =>
-        part.startsWith("[[") && part.endsWith("]]") ? (
-          <Marked key={i} style={style}>
-            {part.slice(2, -2)}
+      {text.split(/(\[\[[^\]]+\]\])/g).map((part, i) => {
+        if (!part.startsWith("[[") || !part.endsWith("]]")) return part;
+
+        /* [[word]] or [[word|swoosh]]. An unknown name after the pipe falls
+           back to the block's style rather than throwing: the copy is edited
+           by people, and a typo in a content file should cost a mark that
+           looks like its neighbours, not a page that will not render. */
+        const [word, named] = part.slice(2, -2).split("|");
+        const chosen = named && named in PATHS ? (named as Style) : style;
+
+        return (
+          <Marked key={i} style={chosen}>
+            {word}
           </Marked>
-        ) : (
-          part
-        ),
-      )}
+        );
+      })}
     </>
   );
 }

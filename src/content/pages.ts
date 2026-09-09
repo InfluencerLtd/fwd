@@ -136,18 +136,42 @@ export const ABOUT_PAGE = {
    * these are new sentences and nobody has signed them off.
    */
   lead: [
-    // The \n is a line break inside the paragraph, not a new paragraph. It is
-    // rendered because the club page sets whitespace-pre-line; spaces still
-    // collapse, so nothing else in these strings changes.
     // The three short sentences are held together with non-breaking spaces.
     // Without them the line wrapped mid-phrase — "The" was left at the end of
     // one line and "creators." began the next, which reads as a stumble. Now
     // each pair drops whole to the line below rather than splitting.
-    "Forward brings together the people shaping the future of the creator economy. The\u00a0brands. The\u00a0creators. The\u00a0platforms.\nThe people with something to say, build, change or start next.",
+    // A circle round each of the three, which is the one place on the site the
+    // device repeats itself deliberately: three of the same shape reads as a
+    // list being counted off, where three different ones would read as three
+    // unrelated emphases. The non-breaking spaces matter more than ever now —
+    // a circled phrase that breaks across two lines draws half an ellipse at
+    // the end of one line and half at the start of the next.
+    // The \n is a line break inside the paragraph, not a new paragraph, and it
+    // is rendered because the page sets whitespace-pre-line on this line. It is
+    // here so the three circled phrases start a line together instead of two of
+    // them finishing one line and the third opening the next — three of the
+    // same mark only read as a set when they are side by side. Below about a
+    // tablet they still have to wrap; there is no width at which forty
+    // characters of heading type fit on a phone.
+    "Bringing together the people [[shaping|swoosh]] the future of the creator economy.\n[[The\u00a0brands.|circle]] [[The\u00a0creators.|circle]] [[The\u00a0platforms.|circle]]",
     "Membership unlocks a year-round program of intimate dinners, private conversations, industry briefings and experiences alongside a network that extends far beyond the room.",
     "Meet someone you\u2019ve wanted to meet. Hear what\u2019s coming before it becomes obvious. Share an idea with the person who can make it happen.",
-    "This is where the creator economy comes together to shape what happens next.",
   ],
+  /**
+   * The line the two paragraphs above are the detail of, set at heading size
+   * over them.
+   *
+   * IT WAS THE LAST OF THE FOUR PARAGRAPHS AND IT WAS BURIED. Three paragraphs
+   * of the same size, in one narrow column, with the conclusion at the bottom
+   * in the same voice as everything above it — nothing on the page said which
+   * of them was the point. It is the point, so it is now the size of one.
+   */
+  statement:
+    // "shape what" is held together with a non-breaking space so "what" sits at
+    // the end of the line above rather than opening the last line. The mark is
+    // on the last word alone: it is what the sentence is about, and a mark
+    // under three words at this size is a rule rather than a pen line.
+    "This is where the creator economy comes together to shape\u00a0what happens [[next]].",
   how: {
     heading: "how it works",
     /** DRAFT. */

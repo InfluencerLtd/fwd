@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
 import { PageClose } from "@/components/page-close";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
+import { MarkedText } from "@/components/marked";
 import { ABOUT_PAGE } from "@/content/pages";
 import { IMAGERY } from "@/content/site";
 
@@ -98,18 +99,44 @@ export default function ClubPage() {
             {/* No delay: with the eyebrow gone there is nothing for it to
                 arrive after, and a page opening on a quarter-second of empty
                 screen is not a page opening. */}
-            <p className="fwd-enter fwd-h2 max-w-5xl normal-case text-photo-ink">
-              {opening}
+            <p className="fwd-enter fwd-h2 max-w-5xl whitespace-pre-line normal-case text-photo-ink">
+              {/* One mark, on "shaping", and it is a decision taken in the
+                  content file rather than here. On the photograph the blue is
+                  13.4:1, so this is the one place on the site the device is at
+                  full strength. */}
+              <MarkedText text={opening} />
             </p>
           </div>
         </div>
         </PhotoPlaceholder>
       </div>
 
-      {/* ---- The rest of it, held to the left --------------------------- */}
+      {/* ---- The claim, then the detail of it ---------------------------
+           THREE PARAGRAPHS OF THE SAME SIZE IN ONE COLUMN IS NOT A SECTION,
+           it is a block of text, and the reader has nothing to go on about
+           which line matters. So the section now has two voices: the claim at
+           heading size across the top, and the two paragraphs that are its
+           detail underneath in the body face, as a pair of columns rather than
+           a single stack.
+
+           THE CLAIM HOLDS THE LEFT, THE DETAIL RUNS DOWN THE RIGHT. Reading it
+           is a diagonal rather than a column: the eye takes the big line, then
+           drops to the paragraphs beside it. The gap between the two columns
+           is what makes them read as claim and gloss rather than as two
+           paragraphs that happen to be different sizes. */}
       <section className="px-6 py-28 sm:py-36">
-        <div className="mx-auto grid max-w-6xl gap-y-6 lg:grid-cols-12">
-          <div className="col-span-full space-y-6 lg:col-span-5">
+        <div className="mx-auto grid max-w-6xl gap-y-12 lg:grid-cols-12 lg:gap-x-16">
+          {/* normal-case for the same reason as the opening: the heading
+              scale lowercases what it is given, which is right for a heading
+              and wrong for a sentence with "This" at the front of it. */}
+          <p className="fwd-reveal fwd-h2 col-span-full normal-case lg:col-span-6">
+            <MarkedText text={ABOUT_PAGE.statement} style="underline" />
+          </p>
+
+          {/* Starting at 8 rather than 7 leaves a column of air between the
+              two, so the right-hand text is beside the claim rather than
+              butted against it. */}
+          <div className="col-span-full space-y-6 lg:col-span-5 lg:col-start-8">
             {rest.map((paragraph) => (
               <p
                 key={paragraph}
