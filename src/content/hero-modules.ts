@@ -37,27 +37,41 @@ export const HEADER_NAV: readonly { label: string; href: string | null }[] = [
   { label: "the briefing", href: "/briefing" },
 ];
 
+/**
+ * THE THREE FIGURES ALONG THE BOTTOM OF THE HERO.
+ *
+ * They describe the shape of the thing rather than its size, which is the only
+ * honest register available to a club that has not held its first dinner. One
+ * table, three kinds of people at it, four briefings a year.
+ *
+ * >>> "17 FOUNDING PLACES REMAINING" HAS GONE FROM HERE. <<< It was the only
+ * urgency on the home page, and with the numbers section removed there is now
+ * none at all. That may be right — scarcity you have to state is weaker than
+ * scarcity somebody works out — but it was not a decision anybody took on
+ * purpose, so it is written down. `foundingPlaces` is kept below and read by
+ * nothing.
+ */
 export const HERO_STRIP = {
-  /** Set to null to drop the figure entirely rather than show a placeholder. */
-  foundingPlaces: 17 as number | null,
-  foundingPlacesLabel: "founding places remaining",
+  figures: [
+    { figure: "1", label: "table" },
+    {
+      figure: "3",
+      label: "perspectives",
+      /** The only one with a second line. See the note in hero-strip.tsx. */
+      note: "Brands, creators, platforms",
+    },
+    /**
+     * FOUR, NOT AN X. The brief for this line left the number open; the
+     * briefing page has said "four times a year" since it was written, so this
+     * is that number rather than a new claim.
+     */
+    { figure: "4", label: "briefings" },
+  ] as readonly { figure: string; label: string; note?: string }[],
 
   /**
-   * >>> DATES ARE NAMED, NOT NUMBERED, AND THAT IS A CORRECTION. <<<
-   *
-   * These read "21.10" and "02.27". Two numbers in the same row, in two
-   * different schemes, with nothing to tell them apart: the first was day and
-   * month, the second was month and year. An American reader parses "02.27" as
-   * the twenty-seventh of February — a date six weeks from now rather than a
-   * city opening the year after next — and there is no way for them to know
-   * otherwise. Written out, neither can be misread in either country.
-   *
-   * BOTH ARE STILL PLACEHOLDERS. They came from a mock. Nobody has committed
-   * to a night in October or a month in New York.
+   * Not rendered. Kept because the figure itself is still contested — the
+   * class of 2026 notes say fifty and this said seventeen — and deleting it
+   * would quietly close an argument nobody has had.
    */
-  firstRoom: "Oct 21",
-  firstRoomLabel: "the first room, London",
-
-  newYork: "Feb 2027",
-  newYorkLabel: "New York opens",
+  foundingPlaces: 17 as number | null,
 } as const;

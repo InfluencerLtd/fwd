@@ -140,7 +140,7 @@ export const HERO = {
    * The stops break the guideline that titles carry no punctuation. Recorded
    * here rather than left for marketing to find.
    */
-  headline: { one: "Brands. Creators. Culture.", two: "One room." },
+  headline: { one: "Brands. Creators. Platforms.", two: "One room." },
   /**
    * The hero has ONE button and its label lives in APPLY.cta, because the same
    * button appears three times down the page and they must not drift apart.
