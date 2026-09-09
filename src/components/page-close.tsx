@@ -40,21 +40,17 @@ export function PageClose({
 
   const body = (
     <div className="relative z-2 mx-auto max-w-4xl text-center">
-      {/* The scrim only exists over a photograph. On a flat ground there is
-          nothing for it to protect the type from, and it would read as a
-          smudge. */}
-      <div className={photo ? "relative inline-block" : undefined}>
-        {photo ? <PhotoScrim size="lockup" /> : null}
-        <h2
-          className={`fwd-reveal fwd-h2 ${dark || photo ? "text-photo-ink" : ""}`}
-        >
-          {heading}
-        </h2>
-      </div>
+      {/* THE SCRIM IS BEHIND THE WHOLE BLOCK, NOT JUST THE HEADING. It used to
+          sit around the heading alone, which left the note and the button on
+          bare photograph. */}
+      {photo ? <PhotoScrim size="lockup" /> : null}
+      <h2 className={`fwd-reveal fwd-h2 ${dark || photo ? "text-photo-ink" : ""}`}>
+        {heading}
+      </h2>
 
       <p
         className={`fwd-reveal mx-auto mt-7 max-w-lg font-body text-[15px] leading-relaxed ${
-          dark || photo ? "text-photo-ink/75" : "text-ink-muted"
+          dark ? "text-photo-ink/75" : photo ? "text-photo-ink/85" : "text-ink-muted"
         }`}
       >
         {note}
@@ -77,8 +73,27 @@ export function PageClose({
           /* The placeholder's own wash is off: the scrim above does the
              darkening, in the one place it is needed, as on the hero. */
           scrim={false}
-          className="flex min-h-[68vh] flex-col justify-center px-6 py-28"
+          className="relative flex min-h-[68vh] flex-col justify-center px-6 py-28"
         >
+          {/* A FLAT WASH, AND IT HAS TO BE A HEAVY ONE. Measured against the
+              photograph now behind this section, the white type was sitting on
+              1.07:1 at the heading and 1.00:1 at the note — white on a lit
+              tablecloth. The radial pool alone cannot fix that: it peaks at
+              two thirds opacity in the middle and falls away to nothing, and
+              the trouble here is the whole frame rather than one bright patch.
+
+              So the wash puts a floor under the picture and the pool deepens
+              it where the type actually is.
+
+              AT 0.46 THE NUMBERS WERE ALREADY FINE — heading 5.77:1, note
+              8.18:1 — and the frame still read brighter than every other dark
+              section on the site. That is a different complaint from an
+              unreadable one and just as real, so this is 0.60, which sits with
+              them. */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 z-1 bg-black/[0.60]"
+          />
           {body}
         </PhotoPlaceholder>
       </div>
