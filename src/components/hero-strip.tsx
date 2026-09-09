@@ -58,7 +58,7 @@ export function HeroStrip() {
       />
 
       <div className="relative mx-auto max-w-6xl px-6">
-        <div className="flex flex-col items-center gap-8 border-t border-accent-on-dark/[0.22] pb-[26px] pt-[22px] text-center min-[700px]:flex-row min-[700px]:justify-between min-[700px]:gap-4 min-[700px]:text-left">
+        <div className="flex flex-col items-center gap-8 pb-[26px] pt-[22px] text-center min-[700px]:flex-row min-[700px]:justify-between min-[700px]:gap-4 min-[700px]:text-left">
           {figures.map((figure) => (
             <div
               key={figure.label}
