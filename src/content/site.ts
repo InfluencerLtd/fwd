@@ -653,7 +653,7 @@ export const IMAGERY = {
     "Introductions",
     "Briefings",
     "Guest lists",
-    "Late conversations",
+    "Lasting conversations",
     "Small rooms",
     "People worth meeting",
   ],
