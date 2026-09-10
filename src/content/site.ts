@@ -334,6 +334,8 @@ export const MEMBERSHIP = {
       id: "the-house",
       title: BRAND.memberArea,
       summary: "The members\u2019 area. Private, online, always open.",
+      /** Not built yet: the tile is pale blue with this on it, no photograph. */
+      comingSoon: "Coming soon",
     },
     {
       id: "founding-members",
