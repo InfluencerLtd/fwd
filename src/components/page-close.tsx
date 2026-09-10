@@ -121,7 +121,7 @@ export function PageClose({
   }
 
   return (
-    <section className={`${ground} px-6 py-28 sm:py-36`}>
+    <section className={`${ground} fwd-section px-6`}>
       <div className="relative z-1 mx-auto max-w-4xl text-center">
         <h2 className={`fwd-reveal fwd-h2 ${dark ? "text-photo-ink" : ""}`}>
           {heading}

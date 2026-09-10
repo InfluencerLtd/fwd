@@ -60,9 +60,9 @@ export default function MembershipPage() {
                 being fine the moment a real one arrives. */}
             <div className="relative inline-block">
               <PhotoScrim />
-              <p className="fwd-h2 font-display text-photo-ink">
+              <h1 className="fwd-statement text-photo-ink">
                 <MarkedText text={MEMBERSHIP_PAGE.heading} />
-              </p>
+              </h1>
             </div>
             {/* The members' door was here, and has gone with every other
                 mention of the member area on the public site. Members are sent
@@ -81,17 +81,17 @@ export default function MembershipPage() {
              the tiles, and the ask at the end. The blue button is unchanged —
              it is 13.4:1 on this ground, which is where it is strongest. */}
         <div className="fwd-dark fwd-on-dark">
-          <section className="px-6 py-24 sm:py-28">
+          <section className="fwd-section px-6">
             <div className="mx-auto max-w-4xl text-center">
-              {/* THIS IS THE PAGE'S h1. The name over the photograph is not
-                  marked up as one — same as on every other page — so if this
+              {/* NOT THE h1 ANY MORE. The name over the photograph is now,
+                  at page-name size; this was standing in for it — same as on every other page — so if this
                   were not here the page would have no main heading at all and
                   a screen reader jumping by heading would land in the middle
                   of it. Its size and weight are unchanged: this is what it is,
                   not how it looks. */}
-              <h1 className="fwd-reveal fwd-h2 text-photo-ink">
+              <h2 className="fwd-reveal fwd-h2 text-photo-ink">
                 {MEMBERSHIP_PAGE.about.heading}
-              </h1>
+              </h2>
 
               {/* NO WAITLIST. This used to fork on APPLICATIONS_OPEN: the
                   application when they were open, an email capture when they
@@ -114,8 +114,9 @@ export default function MembershipPage() {
 
           {/* ---- 4. The ask again, after the pictures --------------------- */}
           {/* 15px less top and bottom than the section pattern elsewhere.
-              py-24 is 96 and py-28 is 112, so this is 81 and 97. */}
-          <section className="px-6 py-[81px] sm:py-[97px]">
+              Now the compact section token — 64 / 72 / 96 — which keeps the 97
+              asked for at desktop. */}
+          <section className="fwd-section-compact px-6">
             <div className="mx-auto max-w-4xl text-center">
               <h2 className="fwd-reveal fwd-h2 text-photo-ink">
                 {MEMBERSHIP_PAGE.closing.heading}

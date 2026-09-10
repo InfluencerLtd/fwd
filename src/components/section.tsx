@@ -14,8 +14,8 @@ export function Section({
   className?: string;
 }) {
   return (
-    <section id={id} className={`px-6 py-24 sm:py-32 ${className}`}>
-      <div className="mx-auto max-w-4xl">
+    <section id={id} className={`fwd-section px-6 ${className}`}>
+      <div className="mx-auto max-w-6xl">
         {heading ? (
           <h2 className="fwd-reveal fwd-h2">{heading}</h2>
         ) : null}

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
 import { PageClose } from "@/components/page-close";
 import { BriefingSubmit } from "@/components/briefing-submit";
-import { IMAGERY } from "@/content/site";
+import { IMAGERY, BRIEFING_SUBMIT } from "@/content/site";
 import { BRIEFING } from "@/content/pages";
 
 export const metadata: Metadata = {
@@ -71,12 +71,12 @@ export default function BriefingPage() {
       </section>
 
       {/* ---- What it is, held to one column ----------------------------- */}
-      <section className="px-6 pb-24 pt-8 sm:pb-32">
+      <section className="fwd-section px-6 pt-8">
         <div className="mx-auto grid max-w-6xl gap-x-16 gap-y-6 lg:grid-cols-12">
           <p className="fwd-reveal fwd-standfirst col-span-full text-ink lg:col-span-6">
             {opening}
           </p>
-          <div className="col-span-full space-y-6 lg:col-span-4 lg:col-start-9 lg:self-end">
+          <div className="col-span-full space-y-6 lg:col-span-5 lg:col-start-8 lg:self-end">
             {rest.map((paragraph) => (
               <p key={paragraph} className="fwd-reveal fwd-body text-ink-muted">
                 {paragraph}
@@ -87,7 +87,7 @@ export default function BriefingPage() {
       </section>
 
       {/* ---- The contents ----------------------------------------------- */}
-      <section className="bg-surface-alt px-6 py-24 sm:py-32">
+      <section className="fwd-section bg-surface-alt px-6">
         <div className="mx-auto max-w-6xl">
           <h2 className="fwd-reveal fwd-h2">{BRIEFING.inside.heading}</h2>
 
@@ -113,7 +113,10 @@ export default function BriefingPage() {
         </div>
       </section>
 
-      <BriefingSubmit />
+      <BriefingSubmit
+        heading={BRIEFING_SUBMIT.onBriefingPage.heading}
+        body={BRIEFING_SUBMIT.onBriefingPage.body}
+      />
 
       <PageClose
         heading={BRIEFING.closing.heading}

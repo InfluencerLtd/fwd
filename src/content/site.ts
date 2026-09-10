@@ -414,6 +414,16 @@ export const BRIEFING_SUBMIT = {
   // is now the name, so the sentence under it no longer has to say it again.
   body: "Built from what is actually changing in the creator economy, from the people in a position to know it rather than the people quickest to write about it.\nFour issues released throughout the year, to members only. Written by our CRO, Jenny.",
   send: "send something in",
+  /**
+   * THE SAME SECTION, ON THE BRIEFING PAGE. There it sat under an h1 already
+   * reading "the briefing", with a paragraph restating the page's own lead,
+   * so the page said both twice. This is the section's original heading and
+   * body — the contribute pitch, which is what the section is actually for.
+   */
+  onBriefingPage: {
+    heading: "Most of it comes from the room",
+    body: "The briefing is built from what members are actually seeing. A shift in how a budget is being spent, a format that has stopped working, a question worth putting to the rest of the membership. If you have something, send it. Nothing is attributed without asking you first.",
+  },
 
   /**
    * The panel behind "send something in".

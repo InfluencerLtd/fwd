@@ -188,7 +188,7 @@ h1, h2, h3, h4 {
   .fwd-statement {
     font-family: var(--fwd-font-display), ui-serif, Georgia, serif;
     font-size: clamp(46px, 9.5vw, 148px);
-    line-height: 0.9;
+    line-height: 0.95; /* was 0.9: 123px lines at 137px left p/g/y no clearance */
     letter-spacing: -0.02em;
     font-weight: 400;
     text-transform: lowercase;
@@ -209,6 +209,39 @@ h1, h2, h3, h4 {
     font-size: clamp(34px, 5.2vw, 76px);
     line-height: 1.02;
     letter-spacing: -0.015em;
+  }
+
+  /**
+   * THE THIRD HEADING SIZE. The scale went 137 / 75 / 32 with nothing between
+   * 75 and 32 — a 2.3x jump — so list items that needed to read as headings
+   * had to borrow the 75px section size and compete with the page title
+   * (the five formats on /rooms). This is the step between: 46px at 1440,
+   * 26px on a phone.
+   */
+  .fwd-h3 {
+    font-family: var(--fwd-font-display), ui-serif, Georgia, serif;
+    font-size: clamp(26px, 3.2vw, 48px);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+
+  /**
+   * SECTION SPACING, TWO SIZES FOR THE WHOLE SITE. There were nine — 16 to
+   * 176px, and four consecutive home page sections stepping 160, 144, 128,
+   * 112 — close enough to look like one value and different enough to look
+   * like a mistake. Standard: 80 / 96 / 128. Compact, for bands and short
+   * closes: 64 / 72 / 96. In the components layer, so a utility such as
+   * `pt-8` on a paired section still wins for the one edge it names.
+   */
+  .fwd-section { padding-block: 5rem; }
+  .fwd-section-compact { padding-block: 4rem; }
+  @media (min-width: 640px) {
+    .fwd-section { padding-block: 6rem; }
+    .fwd-section-compact { padding-block: 4.5rem; }
+  }
+  @media (min-width: 1024px) {
+    .fwd-section { padding-block: 8rem; }
+    .fwd-section-compact { padding-block: 6rem; }
   }
 
   /**

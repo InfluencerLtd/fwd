@@ -52,7 +52,7 @@ export function PhotoBand() {
               >
                 {/* Low in the frame rather than dead centre. These are
                     portraits and the middle is where a face lands. */}
-                <p className="absolute inset-x-0 bottom-0 z-2 px-5 pb-5 font-body text-[15px] leading-snug text-photo-ink sm:text-base">
+                <p className="absolute inset-x-0 bottom-0 z-2 px-5 pb-5 font-body text-[15px] leading-snug text-photo-ink">
                   {caption}
                 </p>
               </PhotoPlaceholder>

@@ -50,7 +50,22 @@ const LEGAL = [
  * the layout so the lists stay tight. A 15px line of text is about 21px tall,
  * which is a small thing to hit with a thumb.
  */
-const LINK = "fwd-underline -my-1 inline-block py-1 font-body text-[15px]";
+/*
+ * THE TAP TARGET IS A PSEUDO-ELEMENT, NOT PADDING. Padding was the first
+ * attempt and it cannot work here: `.fwd-underline` sets its own
+ * padding-bottom: 2px in plain CSS, which outranks a utility, so py-[11px]
+ * came out as 11px on top and 2px underneath — 35.5px tall, measured, not 44.
+ * And padding would have been wrong even if it applied, because the underline
+ * is a background drawn along the bottom of the box: pad the box and the line
+ * drops away from the words.
+ *
+ * So the link keeps its tight box and the underline stays where it was, and an
+ * invisible ::after reaches 11px above and below it. The underline does not use
+ * ::after, so nothing else is disturbed. On a phone the links stack with 24px
+ * between rows, so 11px either side cannot reach the next link's area.
+ */
+const LINK =
+  "fwd-underline relative -my-1 inline-block py-1 font-body text-[15px] after:absolute after:inset-x-0 after:-inset-y-[11px] after:content-['']";
 
 /*
  * The ground, and the two text colours that go with it.

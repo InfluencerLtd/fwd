@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { ApplyPanel } from "@/components/apply-panel";
+import { buttonClass } from "@/components/button";
 import { APPLY, NAV } from "@/content/site";
 
 /**
@@ -26,7 +27,8 @@ import { APPLY, NAV } from "@/content/site";
  */
 export function ApplyDialog({
   label = APPLY.start,
-  className = "fwd-btn border border-photo-ground/60 bg-accent-on-dark px-9 py-4 font-body text-base text-photo-ground hover:border-photo-ground hover:bg-photo-ground hover:text-accent-on-dark",
+  /* The shared large button, not its own padding: see SIZES in button.tsx. */
+  className = buttonClass("primary", "lg"),
 }: {
   label?: string;
   className?: string;

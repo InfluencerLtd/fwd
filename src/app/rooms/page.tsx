@@ -51,14 +51,14 @@ export default function RoomsPage() {
                 needs one main heading and this is the honest one. */}
             <div className="relative inline-block">
               <PhotoScrim />
-              <h1 className="fwd-h2 text-photo-ink">{ROOMS.heading}</h1>
+              <h1 className="fwd-statement text-photo-ink">{ROOMS.heading}</h1>
             </div>
           </div>
         </PhotoPlaceholder>
       </div>
 
       {/* ---- The lead, beside the index rather than above it ------------- */}
-      <section className="px-6 pb-4 pt-20 sm:pt-24">
+      <section className="fwd-section px-6 pb-4">
         <div className="mx-auto grid max-w-6xl gap-x-16 gap-y-6 lg:grid-cols-12">
           {ROOMS.lead.map((paragraph, index) => (
             <p
@@ -66,7 +66,7 @@ export default function RoomsPage() {
               className={
                 index === 0
                   ? "fwd-reveal fwd-standfirst col-span-full text-ink lg:col-span-6"
-                  : "fwd-reveal fwd-body col-span-full text-ink-muted lg:col-span-4 lg:col-start-9 lg:self-end"
+                  : "fwd-reveal fwd-body col-span-full text-ink-muted lg:col-span-5 lg:col-start-8 lg:self-end"
               }
             >
               {paragraph}
@@ -76,7 +76,7 @@ export default function RoomsPage() {
       </section>
 
       {/* ---- The five, all at once -------------------------------------- */}
-      <section className="px-6 pb-24 pt-16 sm:pb-32">
+      <section className="fwd-section px-6 pt-16">
         <div className="mx-auto max-w-6xl">
           <ol className="fwd-stagger">
             {FORMATS.map((format, index) => (
@@ -89,11 +89,11 @@ export default function RoomsPage() {
                 </span>
 
                 {/* Not a heading: the names keep their capitals. */}
-                <p className="fwd-h2 col-span-full font-display leading-none text-ink md:col-span-4">
+                <p className="fwd-h3 col-span-full leading-none text-ink md:col-span-4">
                   {format.name}
                 </p>
 
-                <p className="fwd-body col-span-full text-ink-muted md:col-span-4 md:col-start-6">
+                <p className="fwd-body col-span-full text-ink-muted md:col-span-5 md:col-start-6">
                   {format.description}
                 </p>
 

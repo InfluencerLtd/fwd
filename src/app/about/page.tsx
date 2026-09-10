@@ -98,13 +98,18 @@ export default function ClubPage() {
             {/* No delay: with the eyebrow gone there is nothing for it to
                 arrive after, and a page opening on a quarter-second of empty
                 screen is not a page opening. */}
-            <p className="fwd-enter fwd-h2 max-w-5xl normal-case text-photo-ink">
+            {/* normal-case WITH A !, because this is an h1 now. The site-wide
+                h1–h4 rule that lowercases headings is plain CSS, and plain CSS
+                outranks a utility — on a <p> it never applied, as an h1 it
+                turned "Bringing" into "bringing". !important is the one thing
+                that reaches past it. */}
+            <h1 className="fwd-enter fwd-h2 max-w-5xl normal-case! text-photo-ink">
               {/* One mark, on "shaping", and it is a decision taken in the
                   content file rather than here. On the photograph the blue is
                   13.4:1, so this is the one place on the site the device is at
                   full strength. */}
               <MarkedText text={opening} />
-            </p>
+            </h1>
           </div>
         </div>
         </PhotoPlaceholder>
@@ -123,7 +128,7 @@ export default function ClubPage() {
            drops to the paragraphs beside it. The gap between the two columns
            is what makes them read as claim and gloss rather than as two
            paragraphs that happen to be different sizes. */}
-      <section className="px-6 py-28 sm:py-36">
+      <section className="fwd-section px-6">
         <div className="mx-auto grid max-w-6xl gap-y-12 lg:grid-cols-12 lg:gap-x-16">
           {/* normal-case for the same reason as the opening: the heading
               scale lowercases what it is given, which is right for a heading
@@ -205,7 +210,7 @@ export default function ClubPage() {
            convert or be searched for stays on the narrower, more specific
            claim; the ambition lives one click in, where somebody has already
            chosen to find out what this is. */}
-      <section className="fwd-dark fwd-on-dark fwd-grain px-6 py-28 sm:py-36">
+      <section className="fwd-dark fwd-on-dark fwd-grain fwd-section px-6">
         <div className="relative z-1 mx-auto grid max-w-6xl gap-y-12 lg:grid-cols-12 lg:gap-x-16">
           <h2 className="fwd-reveal fwd-h2 col-span-full text-photo-ink lg:col-span-4">
             {ABOUT_PAGE.ambition.heading}
@@ -236,9 +241,9 @@ export default function ClubPage() {
       </section>
 
       {/* ---- How it works, as a numbered index -------------------------- */}
-      <section className="bg-surface-alt px-6 py-24 sm:py-32">
+      <section className="fwd-section bg-surface-alt px-6">
         <div className="mx-auto max-w-6xl">
-          <h1 className="fwd-reveal fwd-h2">{ABOUT_PAGE.how.heading}</h1>
+          <h2 className="fwd-reveal fwd-h2">{ABOUT_PAGE.how.heading}</h2>
 
           <ol className="fwd-stagger mt-14 sm:mt-20">
             {ABOUT_PAGE.how.items.map((item, index) => (

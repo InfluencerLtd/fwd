@@ -31,7 +31,7 @@ import { CASE } from "@/content/site";
  */
 export function TheCase() {
   return (
-    <section id="why" className="bg-surface-alt scroll-mt-20 px-6 py-28 sm:py-40">
+    <section id="why" className="fwd-section bg-surface-alt scroll-mt-20 px-6">
       <div className="mx-auto max-w-6xl">
         {/* No eyebrow. "why it exists" over a heading that asks why it
             exists is a label on something already labelled, and the section
@@ -46,7 +46,7 @@ export function TheCase() {
 
           {/* Four of twelve, starting at nine: the gap between the two is the
               composition. */}
-          <div className="col-span-full space-y-6 lg:col-span-4 lg:col-start-9 lg:self-end">
+          <div className="col-span-full space-y-6 lg:col-span-5 lg:col-start-8 lg:self-end">
             {CASE.body.map((line) => (
               <p key={line} className="fwd-reveal fwd-body text-ink-muted">
                 {line}

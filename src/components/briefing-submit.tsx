@@ -28,18 +28,30 @@ import { BRIEFING_SUBMIT } from "@/content/site";
  * taken. A section with one thing to press says what to do more clearly than
  * one with two, and half of one of them broken.
  */
-export function BriefingSubmit() {
+export function BriefingSubmit({
+  heading = BRIEFING_SUBMIT.heading,
+  body = BRIEFING_SUBMIT.body,
+}: {
+  /**
+   * On /briefing this section sits under a page already headed "the briefing"
+   * and led by near enough the same paragraph, so it takes its own heading and
+   * body there — see BRIEFING_SUBMIT.onBriefingPage. The home page uses the
+   * defaults.
+   */
+  heading?: string;
+  body?: string;
+} = {}) {
   return (
-    <section id="briefing" className="scroll-mt-20 px-6 py-24 sm:py-28">
-      <div className="mx-auto max-w-4xl">
+    <section id="briefing" className="fwd-section scroll-mt-20 px-6">
+      <div className="mx-auto max-w-6xl">
         <div className="grid gap-10 min-[860px]:grid-cols-2 min-[860px]:items-start min-[860px]:gap-16">
           <div>
-            <h2 className="fwd-reveal fwd-h2">{BRIEFING_SUBMIT.heading}</h2>
+            <h2 className="fwd-reveal fwd-h2">{heading}</h2>
           </div>
 
           <div>
             <p className="fwd-reveal fwd-body max-w-xl whitespace-pre-line text-ink-muted">
-              {BRIEFING_SUBMIT.body}
+              {body}
             </p>
 
             <div className="fwd-reveal mt-8">

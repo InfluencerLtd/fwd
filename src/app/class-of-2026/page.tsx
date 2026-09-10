@@ -42,12 +42,12 @@ export default function ClassOf2026Page() {
             {CLASS_OF_2026.closing.heading}
           </p>
 
-          <p
-            className="fwd-enter fwd-statement mt-9 normal-case text-photo-ink"
+          <h1
+            className="fwd-enter fwd-statement mt-9 normal-case! text-photo-ink"
             style={{ "--fwd-enter-delay": "260ms" } as React.CSSProperties}
           >
             {CLASS_OF_2026.heading}
-          </p>
+          </h1>
 
           <p className="mx-auto mt-10 max-w-md font-body text-[15px] leading-relaxed text-photo-ink/65">
             {CLASS_OF_2026.closing.note}
@@ -60,7 +60,7 @@ export default function ClassOf2026Page() {
       </section>
 
       {/* ---- Who it is for, in a single column off the centre ------------ */}
-      <section className="px-6 py-28 sm:py-36">
+      <section className="fwd-section px-6">
         <div className="mx-auto grid max-w-6xl gap-y-6 lg:grid-cols-12">
           <div className="col-span-full lg:col-span-6 lg:col-start-4">
             {CLASS_OF_2026.lead.map((paragraph, index) => (
@@ -80,11 +80,11 @@ export default function ClassOf2026Page() {
       </section>
 
       {/* ---- What the first cohort gets --------------------------------- */}
-      <section className="bg-surface-alt px-6 py-24 sm:py-32">
+      <section className="fwd-section bg-surface-alt px-6">
         <div className="mx-auto max-w-6xl">
-          <h1 className="fwd-reveal fwd-h2 max-w-3xl">
+          <h2 className="fwd-reveal fwd-h2 max-w-3xl">
             {CLASS_OF_2026.whatYouGet.heading}
-          </h1>
+          </h2>
 
           <ol className="fwd-stagger mt-14 sm:mt-20">
             {CLASS_OF_2026.whatYouGet.items.map((item, index) => (

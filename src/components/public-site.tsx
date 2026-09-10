@@ -71,7 +71,7 @@ export function PublicSite() {
              left-aligned headings with a right-hand column each would read as
              one section repeated. Here the heading is the only thing on its
              line and the reading happens underneath it. */}
-        <section id="membership" className="scroll-mt-20 px-6 py-28 sm:py-36">
+        <section id="membership" className="fwd-section scroll-mt-20 px-6">
           <div className="mx-auto max-w-6xl">
             <h2 className="fwd-reveal fwd-h2 max-w-4xl">{MEMBERSHIP.heading}</h2>
 
@@ -155,7 +155,6 @@ export function PublicSite() {
           note={WAY_IN.note}
           photo="closing"
           photoBrief={IMAGERY.statement}
-          scale="statement"
         />
       </main>
 

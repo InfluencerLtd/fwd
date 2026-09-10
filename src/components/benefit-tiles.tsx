@@ -69,7 +69,7 @@ function Row({
               // are eight different pictures rather than one that has been
               // measured. The wash is what makes that safe.
               washClassName="bg-photo-ground/60"
-              className="h-full rounded-xl"
+              className="h-full rounded-2xl"
             >
               {/* THE HEADLINE, NOT THE LINE UNDER IT. The tiles used to carry
                   the longer summary and it was too much reading for something
@@ -78,7 +78,7 @@ function Row({
                   summaries stay in the content file — they are still the only
                   written record of what each benefit is — and putting them
                   back is this one line. */}
-              <p className="absolute inset-0 z-2 flex items-center justify-center px-6 text-center font-body text-base leading-snug text-photo-ink sm:text-lg">
+              <p className="absolute inset-0 z-2 flex items-center justify-center px-6 text-center font-body text-[17px] leading-snug text-photo-ink">
                 {card.title}
               </p>
             </PhotoPlaceholder>
@@ -98,7 +98,7 @@ export function BenefitTiles() {
     // read as part of it rather than as the first thing on the page.
     <section
       aria-label={MEMBERSHIP_PAGE.benefitsLabel}
-      className="space-y-2 overflow-hidden py-16 sm:py-20"
+      className="fwd-section-compact space-y-2 overflow-hidden"
     >
       <Row cards={cards.slice(0, half)} reverse={false} />
       <Row cards={cards.slice(half)} reverse />

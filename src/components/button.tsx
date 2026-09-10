@@ -83,6 +83,14 @@ const VARIANTS: Record<Variant, string> = {
     "border border-photo-ground bg-photo-ground text-accent-on-dark hover:bg-ink",
 };
 
+/*
+ * HEIGHTS, NOT VERTICAL PADDING. The sizes were padding, so a 1px border made
+ * a bordered button 2px taller than an unbordered one of the same size — and
+ * the dialog's trigger set its own px-9 py-4 on top — which is how the same
+ * "apply for membership" came out 52, 54 and 58px tall on one page. A fixed
+ * height with box-sizing: border-box includes the border, so every button of a
+ * size is that size: 32, 44, 52.
+ */
 const SIZES: Record<Size, string> = {
   /**
    * For a button that should be findable rather than persuasive: the members'
@@ -91,9 +99,9 @@ const SIZES: Record<Size, string> = {
    * About half the area of `lg`, and still 32px tall, which clears the 24px
    * minimum a target has to meet. It should not go smaller than this.
    */
-  sm: "px-5 py-1.5 text-sm",
-  md: "px-6 py-2.5 text-[15px]",
-  lg: "px-8 py-3.5 text-base",
+  sm: "h-8 px-5 text-sm",
+  md: "h-11 px-6 text-[15px]",
+  lg: "h-13 px-8 text-base",
 };
 
 /**
