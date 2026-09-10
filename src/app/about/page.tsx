@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
+import { PageClose } from "@/components/page-close";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { Circled, MarkedText, plainText } from "@/components/marked";
 import { ABOUT_PAGE } from "@/content/pages";
-import { IMAGERY } from "@/content/site";
+import { IMAGERY, WAY_IN } from "@/content/site";
 
 export const metadata: Metadata = {
   title: ABOUT_PAGE.title,
@@ -263,12 +264,17 @@ export default function ClubPage() {
         </div>
       </section>
 
-      {/* NO CLOSE ON THIS PAGE. Every other page ends on the shared "ready to
-          apply" block and this one deliberately does not: it ended on "who it
-          is for" over a paragraph that said who it is for, three sections
-          after the three columns that answer the same question. The page ends
-          on how it works, and the ask is in the bar at the top of the screen
-          the whole way down. */}
+      {/* THE SAME CLOSE AS THE HOME PAGE: the heading, the note and the apply
+          button over a photograph, so every page ends on the way in. It was
+          left off here once, when the page ended on a paragraph repeating
+          "who it is for"; that paragraph has gone, and the page was the only
+          one without a button at its foot. */}
+      <PageClose
+        heading={WAY_IN.heading}
+        note={WAY_IN.note}
+        photo="about-close"
+        photoBrief={IMAGERY.aboutClose}
+      />
     </PageShell>
   );
 }
