@@ -115,7 +115,7 @@ export const BRIEFING = {
   closing: {
     heading: "members only",
     /** DRAFT. */
-    note: "There is no public list and no free version. It goes to members, and the way to read it is to be one.",
+    note: "Four times a year, to our members.",
   },
 } as const;
 
