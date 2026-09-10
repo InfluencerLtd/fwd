@@ -56,7 +56,7 @@ export function SiteHeader({
    *
    * The width is the same either way, so the "fwd." is the same size on every
    * page and only the bar's height changes — the signature is what the extra
-   * thirteen pixels are for.
+   * eleven pixels are for.
    */
   signature = true,
 }: {
@@ -109,7 +109,7 @@ export function SiteHeader({
             artwork's own ratio at the bar width, so it is one number to
             change, and it has to be the same number as `size="small"` in
             wordmark.tsx.
-            Without it the homepage bar is thirteen pixels shorter than every
+            Without it the homepage bar is eleven pixels shorter than every
             other page's, and the nav beside it, which is centred against this,
             moves half of that up the screen when you leave the homepage. The
             mark is top-aligned in the slot, so it stays where it has always
@@ -117,7 +117,7 @@ export function SiteHeader({
         <Link
           href="/"
           aria-label={META.title}
-          className="inline-block h-[calc(92px*214.87/355.96)] shrink-0"
+          className="inline-block h-[calc(78px*214.87/355.96)] shrink-0"
         >
           <Wordmark size="small" signature={signature} />
         </Link>

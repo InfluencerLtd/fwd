@@ -126,16 +126,16 @@ export function Wordmark({
                  * height near 5 — small, which an endorsement should be, and
                  * readable, which it has to be.
                  *
-                 * IT IS 92px NOW, asked for as fifteen per cent off the bar
-                 * mark. That takes the lockup to 55px and the signature's cap
-                 * height to about 4.3, which is the smallest this can be and
-                 * still be read rather than recognised. Anything further and
-                 * the endorsement is decoration; if the bar needs to be
-                 * lighter again after that, the honest move is to drop the
-                 * signature from it — see `signature` below — rather than to
-                 * keep setting it smaller.
+                 * IT IS 78px NOW — fifteen per cent off twice, 108 to 92 to 78.
+                 * The lockup is 47px tall and the signature's cap height is
+                 * about 3.6px, which is past the point where "by Influencer"
+                 * is read: at this size it is recognised by its shape. That is
+                 * a decision, not an accident — the mark is the thing the bar
+                 * is for. If the endorsement has to be legible in the bar, the
+                 * width goes back up; setting it smaller again would make the
+                 * signature a smudge.
                  */
-                "w-[92px]";
+                "w-[78px]";
 
   const inkClass =
     tone === "onDark"
