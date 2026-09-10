@@ -1095,6 +1095,26 @@ select.fwd-field {
   aspect-ratio: 355.96 / 163.78;
 }
 
+/* THE HOLDING PAGE, ONCE SOMEBODY HAS SIGNED UP.
+   The success message carries data-signup-done. When it is on the page, the
+   date and the line are taken away and the message moves up into the place the
+   date held: same top margin at every breakpoint, centred like the date was.
+   :has() rather than lifted React state, so the page stays a server component
+   and the form does not need to know what page it is on. */
+.fwd-holding:has([data-signup-done]) .fwd-holding-lede {
+  display: none;
+}
+.fwd-holding:has([data-signup-done]) .fwd-holding-form {
+  margin-top: 3rem;           /* mt-12, the date's */
+  text-align: center;
+}
+@media (min-width: 640px) {
+  .fwd-holding:has([data-signup-done]) .fwd-holding-form { margin-top: 4rem; }   /* sm:mt-16 */
+}
+@media (min-width: 1024px) {
+  .fwd-holding:has([data-signup-done]) .fwd-holding-form { margin-top: 88px; }   /* lg:mt-[88px] */
+}
+
 /* THE LOCKUP IN TWO PIECES, for the blinking full stop. Both files are the
    delivered lockup with the same viewBox — one with the dot removed, one with
    only the dot — so stacked in the same box they are the original artwork,

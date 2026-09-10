@@ -32,14 +32,14 @@ export function HoldingPage() {
   return (
     <main className="fwd-on-dark flex min-h-screen flex-col bg-photo-ground">
       <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col items-center px-6 pb-20 pt-28 text-center">
-        <div className="my-auto flex w-full flex-col items-center">
+        <div className="fwd-holding my-auto flex w-full flex-col items-center">
           {/* THE SIGNATURE IS ON. There is no header on this page to carry
               the endorsement, so this is the only place it can be — and this
               is the page that has to say whose it is.
 
               THE FULL STOP BLINKS. It is the one moving thing on the page:
               the cursor at the end of a sentence nobody has finished writing
-              yet, which is what "coming October" is. See `blinkDot` in
+              yet, which is what "coming soon" is. See `blinkDot` in
               wordmark.tsx for how the dot is lifted out of the artwork. */}
           <Wordmark size="heroLarge" heading align="center" blinkDot />
 
@@ -50,7 +50,7 @@ export function HoldingPage() {
               so it reads as a label rather than a headline; the line under it
               is the one thing on the page in the serif italic, which is what
               makes it read as a voice rather than a caption. */}
-          <div className="fwd-enter mt-12 flex flex-col items-center sm:mt-16 lg:mt-[88px]">
+          <div className="fwd-holding-lede fwd-enter mt-12 flex flex-col items-center sm:mt-16 lg:mt-[88px]">
             {/* LARGER AND WIDER-SPACED THAN THE SITE'S EYEBROW, following the
                 reference: there the date runs nearly the width of the line
                 under it, which is what lets two lines of such different sizes
@@ -63,13 +63,20 @@ export function HoldingPage() {
             </p>
           </div>
 
+          {/* AFTER SIGNING UP THE PAGE SAYS ONE THING. The date and the line go,
+              and the thank-you moves up into the place the date held — the
+              page has told them what it had to tell them, and repeating "the
+              room is being set" at somebody who has just asked to be let in is
+              the page not listening. Done in CSS off the success message rather
+              than by lifting the form's state up here, so this stays a server
+              component; see .fwd-holding in globals.css. */}
           {/* THE FIELD AND THE BUTTON, AND NOTHING UNDER THEM. The consent line
               and its box have gone — see signUpForUpdates in app/actions.ts
               for what that changes about what these addresses may be used for.
 
               The block is centred and the form inside it keeps its own left
               edge, so an error message still has somewhere to start from. */}
-          <div className="fwd-enter mx-auto mt-14 w-full max-w-md text-left sm:mt-16">
+          <div className="fwd-holding-form fwd-enter mx-auto mt-14 w-full max-w-md text-left sm:mt-16">
             <SignupForm source="holding" />
           </div>
         </div>

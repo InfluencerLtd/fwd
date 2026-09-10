@@ -73,6 +73,9 @@ export function SignupForm({
         className={`font-body text-base ${c.success}`}
         role="status"
         aria-live="polite"
+        /* The holding page watches for this to take its date and line away
+           once somebody has signed up — see .fwd-holding in globals.css. */
+        data-signup-done=""
       >
         {state.message}
       </p>
