@@ -35,9 +35,9 @@ were 4240px originals, resized to 2400 and re-encoded at quality 82.
 | `benefit-partner-rooms` | 4F0A1343 | membership band — "Partner rooms" |
 | `benefit-guest-passes` | influencer-tiktok-dinner51 | membership band — "Guest passes" |
 | `benefit-directory` | 4F0A0973 | membership band — "The directory" |
-| `benefit-ask-the-room` | 4F0A1265 | membership band — "Ask the room" |
+| `benefit-ask-the-room` | 2026-06-10_17-37-37_2225 (the full-size original, cut 3:2 at the face) | membership band — "Ask the room" |
 | `benefit-the-house` | 4F0A1403 | not shown: "The House" is a pale blue "coming soon" tile for now |
-| `benefit-founding-members` | 4F0A0934 | membership band — "Founding members" |
+| `benefit-founding-members` | 2026-06-11_12-32-57_2991 (the 4000px original) | membership band — "Founding members" |
 | `benefit-digital-rooms` | 07347340 (laptop at the table, Cannes) | membership band — "Digital rooms" |
 | `benefit-newsletter` | 4F0A0962 | membership band — "the briefing" |
 | `benefit-merch` | D1813DE6 | membership band — "Members' merch" |
