@@ -245,6 +245,17 @@ h1, h2, h3, h4 {
   }
 
   /**
+   * NO WORD LEFT ON A LINE BY ITSELF. Only the statement size balanced its
+   * lines, so on a phone "most of it comes from the room" put "room" alone on
+   * the second line, and the standfirsts on /rooms and /class-of-2026 ended on
+   * a line 9–18% wide. Headings share their words out evenly across lines;
+   * reading text avoids a single-word last line without reshaping the rest.
+   * Both are progressive: a browser without them wraps exactly as before.
+   */
+  h1, h2, h3, .fwd-h2, .fwd-h3 { text-wrap: balance; }
+  .fwd-standfirst, .fwd-body { text-wrap: pretty; }
+
+  /**
    * The bridge between a heading and body copy. Set in the display face, so a
    * paragraph that matters does not have to be a heading to look like it does.
    */

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Wordmark } from "@/components/wordmark";
 import { NAV } from "@/content/site";
+import { HEADER_NAV } from "@/content/hero-modules";
 
 /**
  * The three-line menu.
@@ -50,10 +51,20 @@ export function SiteMenu() {
   // see: members are sent there, by the code in a sign-in email or the link in
   // an invitation. /clubhouse/sign-in still works for anybody who has been
   // given it. See src/components/hero.tsx.
+  /*
+   * EVERY PAGE THE DESKTOP BAR LINKS TO, AND HOME. This list was written out
+   * by hand as home and membership only, so on a phone "what it is", "what's
+   * on" and "the briefing" could not be reached from the navigation at all —
+   * the bar that has them is hidden below 900px. It reads HEADER_NAV now, the
+   * same list the bar reads, so the two cannot drift apart again. Items with
+   * no page yet (href: null) are left out, as they are in the bar.
+   */
   const links = [
     { href: "/", label: NAV.home },
-    { href: "/membership", label: NAV.membership },
-  ] as const;
+    ...HEADER_NAV.filter(
+      (item): item is { label: string; href: string } => item.href !== null,
+    ),
+  ];
 
   return (
     <>
@@ -101,7 +112,7 @@ export function SiteMenu() {
               type="button"
               onClick={hide}
               aria-label={NAV.menuClose}
-              className="-mr-1 -mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border font-body text-base leading-none text-ink-muted transition-colors duration-300 hover:border-ink/30 hover:text-ink"
+              className="-mr-1 -mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-border font-body text-base leading-none text-ink-muted transition-colors duration-300 hover:border-ink/30 hover:text-ink"
             >
               <span aria-hidden="true">&times;</span>
             </button>

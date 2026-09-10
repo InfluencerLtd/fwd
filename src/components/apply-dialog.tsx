@@ -83,7 +83,7 @@ export function ApplyDialog({
               type="button"
               onClick={hide}
               aria-label={NAV.menuClose}
-              className="-mr-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border font-body text-base leading-none text-ink-muted transition-colors duration-300 hover:border-ink/30 hover:text-ink"
+              className="-mr-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-border font-body text-base leading-none text-ink-muted transition-colors duration-300 hover:border-ink/30 hover:text-ink"
             >
               <span aria-hidden="true">&times;</span>
             </button>

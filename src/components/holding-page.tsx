@@ -31,7 +31,12 @@ import { HOLDING } from "@/content/site";
 export function HoldingPage() {
   return (
     <main className="fwd-on-dark flex min-h-screen flex-col bg-photo-ground">
-      <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col items-center px-6 pb-20 pt-28 text-center">
+      {/* LESS PADDING ON A SHORT SCREEN. pt-28 / pb-20 came from the site's
+          hero, where the top padding clears a fixed header — and this page has
+          no header. On a 320x640 phone the 192px of padding pushed the page
+          past one screen, so it scrolled. 64 / 48 there, the old 112 / 80 from
+          sm up, and the content is still centred by my-auto either way. */}
+      <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col items-center px-6 pb-12 pt-16 text-center sm:pb-20 sm:pt-28">
         <div className="fwd-holding my-auto flex w-full flex-col items-center">
           {/* THE SIGNATURE IS ON. There is no header on this page to carry
               the endorsement, so this is the only place it can be — and this

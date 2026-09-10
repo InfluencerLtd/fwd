@@ -51,7 +51,7 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
       onClick={() => apply(theme === "dark" ? "light" : "dark")}
       aria-label={label}
       title={label}
-      className={`inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-ink-muted transition-colors duration-300 hover:text-ink ${className}`}
+      className={`inline-flex h-11 w-11 items-center justify-center rounded-full border border-border text-ink-muted transition-colors duration-300 hover:text-ink ${className}`}
     >
       <span aria-hidden="true" className="text-[13px] leading-none">
         {theme === "dark" ? "☾" : "☀"}

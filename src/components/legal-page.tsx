@@ -37,7 +37,7 @@ export function LegalPage({
         <div className="mx-auto max-w-2xl">
           <Link
             href="/"
-            className="fwd-underline font-body text-sm text-accent"
+            className="fwd-underline relative font-body text-sm text-accent after:absolute after:-inset-x-[7px] after:-inset-y-[13px] after:content-['']"
           >
             {FOOTER.back}
           </Link>
