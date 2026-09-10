@@ -353,6 +353,8 @@ export const MEMBERSHIP = {
       title: BENEFITS.newsletterName,
       summary:
         "Quarterly, members only. What is actually changing, from people in a position to know.",
+      /** Not out yet: a pale blue tile like The House, no photograph. */
+      comingSoon: "Coming soon",
     },
     {
       id: "merch",

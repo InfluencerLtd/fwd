@@ -39,7 +39,7 @@ were 4240px originals, resized to 2400 and re-encoded at quality 82.
 | `benefit-the-house` | 4F0A1403 | not shown: "The House" is a pale blue "coming soon" tile for now |
 | `benefit-founding-members` | 2026-06-11_12-32-57_2991 (the 4000px original) | membership band — "Founding members" |
 | `benefit-digital-rooms` | 2026-06-10_12-38-32_0651, cropped to the phone | membership band — "Digital rooms" |
-| `benefit-newsletter` | 4F0A0962 | membership band — "the briefing" |
+| `benefit-newsletter` | 4F0A0962 | not shown: "the briefing" is a pale blue "coming soon" tile for now |
 | `benefit-merch` | 2026-06-11_17-41-50_5104 (full-size original, cut 3:2 from face to chest) | membership band — "Members' merch" |
 | `benefit-nominate` | 4F0A1209 | membership band — "Nominate a member" |
 | `benefit-global-access` | 3CDE719A (Cannes) | membership band — "Global access" |
