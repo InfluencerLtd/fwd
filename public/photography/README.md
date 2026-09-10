@@ -27,7 +27,8 @@ were 4240px originals, resized to 2400 and re-encoded at quality 82.
 | `band-2` | influencer-tiktok-dinner108, cropped to the standing figure | the drifting band — the "Roundtables" tile |
 | `band-3` | the evening set | the drifting band |
 | `band-4` | influencer-tiktok-dinner120, cropped to the pass | the drifting band — the "Dinners" tile |
-| `band-5`, `band-6` | the evening set | the drifting band |
+| `band-5` | the evening set | the drifting band |
+| `band-6` | influencer-tiktok-dinner51, cut 3:4 around the four | the drifting band — the "Connections" tile |
 | `band-7` | 4F0A1146 | the drifting band — the "Small rooms" tile |
 | `band-8` | portrait crop of DSC01068 | the drifting band |
 | `benefit-meeting-of-minds` | influencer-tiktok-dinner78 | membership band — "Meeting of Minds" |
