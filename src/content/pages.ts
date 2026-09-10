@@ -267,7 +267,7 @@ export const ROOMS = {
    * "the events", following the navigation item.
    *
    * >>> THE REST OF THIS PAGE STILL SAYS ROOMS. <<< The lead below counts
-   * "five kinds of room", the closing heading is "a seat in the room", and
+   * "five kinds of room", the closing heading is "a seat at the table", and
    * the address is /rooms. The word is also the brand's central image — see
    * the naming rules in src/lib/brand.ts, which nominate "the room" as the
    * common noun to use wherever a name will not do.
@@ -282,8 +282,6 @@ export const ROOMS = {
     "Some are hosted with the platforms, some are ours. What they have in common is that nobody is on a stage.",
   ],
   closing: {
-    heading: "a seat in the room",
-    /** DRAFT. */
-    note: "Rooms are for members. Invitations come by email, and the way to get one is to be in the room in the first place.",
+    heading: "a seat at the table",
   },
 } as const;

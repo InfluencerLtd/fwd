@@ -121,7 +121,6 @@ export default function RoomsPage() {
 
       <PageClose
         heading={ROOMS.closing.heading}
-        note={ROOMS.closing.note}
         photo="rooms-close"
         photoBrief={IMAGERY.roomsClose}
       />

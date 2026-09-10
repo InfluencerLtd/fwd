@@ -27,7 +27,8 @@ export function PageClose({
   scale = "heading",
 }: {
   heading: string;
-  note: string;
+  /** Optional: the /rooms close is the heading and the button alone. */
+  note?: string;
   tone?: "light" | "alt" | "dark";
   /**
    * How loud the closing line is.
@@ -68,13 +69,15 @@ export function PageClose({
         {heading}
       </h2>
 
-      <p
-        className={`fwd-reveal mx-auto mt-7 max-w-lg font-body text-[15px] leading-relaxed ${
-          dark ? "text-photo-ink/75" : photo ? "text-photo-ink/85" : "text-ink-muted"
-        }`}
-      >
-        {note}
-      </p>
+      {note && (
+        <p
+          className={`fwd-reveal mx-auto mt-7 max-w-lg font-body text-[15px] leading-relaxed ${
+            dark ? "text-photo-ink/75" : photo ? "text-photo-ink/85" : "text-ink-muted"
+          }`}
+        >
+          {note}
+        </p>
+      )}
       <div className="fwd-reveal mt-11">
         <ApplyDialog label={APPLY.cta} />
       </div>
@@ -126,13 +129,15 @@ export function PageClose({
         <h2 className={`fwd-reveal fwd-h2 ${dark ? "text-photo-ink" : ""}`}>
           {heading}
         </h2>
-        <p
-          className={`fwd-reveal mx-auto mt-7 max-w-lg font-body text-[15px] leading-relaxed ${
-            dark ? "text-photo-ink/65" : "text-ink-muted"
-          }`}
-        >
-          {note}
-        </p>
+        {note && (
+          <p
+            className={`fwd-reveal mx-auto mt-7 max-w-lg font-body text-[15px] leading-relaxed ${
+              dark ? "text-photo-ink/65" : "text-ink-muted"
+            }`}
+          >
+            {note}
+          </p>
+        )}
         <div className="fwd-reveal mt-11">
           <ApplyDialog label={APPLY.cta} />
         </div>
