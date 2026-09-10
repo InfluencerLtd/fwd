@@ -149,13 +149,15 @@ export const ABOUT_PAGE = {
     // underline: the same shape twice in one sentence reads as one hand
     // marking two words, where two different shapes would read as two
     // different kinds of emphasis nobody could explain.
-    // ONE MARK, A SWOOSH UNDER "something". That is the word the sentence
-    // turns on — it is the qualification for being in the room — and the
-    // swoosh's flick past the end of the word reads as the sentence carrying on
-    // into the four verbs after it. "next" is left alone on purpose: the claim
-    // further down this page already ends on a double-underlined "next", and
-    // marking it twice on one page would make the device a habit.
-    "The people with [[something|swoosh]] to say, build, change or start next.",
+    // THE INVITE'S LINE, WORD FOR WORD: "The people building, challenging
+    // and shaping what comes next." The site said "something to say, build,
+    // change or start next", which the invite's feedback asked to lose, so the
+    // two now say the same thing.
+    //
+    // ONE MARK, A SWOOSH UNDER "challenging" — the one of the three verbs no
+    // other networking pitch would use. "next" is left alone: the claim further
+    // down already ends on a double-underlined "next".
+    "The people building, [[challenging|swoosh]] and shaping what comes next.",
     "Membership unlocks a year-round program of intimate dinners, private conversations, industry briefings and experiences alongside a network that extends far beyond the room.",
     "Meet someone you\u2019ve wanted to meet. Hear what\u2019s coming before it becomes obvious. Share an idea with the person who can make it happen.",
   ],

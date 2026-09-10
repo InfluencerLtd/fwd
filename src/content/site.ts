@@ -756,7 +756,7 @@ export const MEMBERSHIP_PAGE = {
     // Three marks, and the first is the odd one out on purpose: the swoosh
     // opens the list, the two plain underlines follow it. Naming the shape per
     // phrase rather than on the component is what lets one sentence do that.
-    note: "Members get access to the rooms, people, and ideas shaping the creator economy. Connect through [[invite-only dinners]], [[private conversations|underline]], and [[industry briefings|underline]] with a network that extends far beyond the room.",
+    note: "Members get access to the rooms, people, and ideas shaping the creator economy. Connect through moments such as [[invite-only dinners]], [[private conversations|underline]], and [[industry briefings|underline]] with a network that extends far beyond the room.",
   },
 
   /** Shown instead of the form when applications are closed. */
