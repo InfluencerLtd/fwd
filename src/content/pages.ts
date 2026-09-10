@@ -183,16 +183,16 @@ export const ABOUT_PAGE = {
     /** DRAFT. */
     items: [
       {
-        name: "It is chosen, not open",
-        line: "Membership is by application, and the room is kept balanced on purpose. A room that is mostly one kind of person is not a room, it is an audience.",
+        name: "The guest list is balanced by hand",
+        line: "Membership is by application, and every guest list is put together deliberately. When one group dominates, everybody else is just an audience.",
       },
       {
-        name: "The introductions are made",
-        line: "Ask to meet any member and we make it properly, with a reason attached to both sides. Never a name passed along.",
+        name: "The introductions are made for you",
+        line: "Ask to meet any member and we make the introduction properly, with a reason attached for both sides. Never a name passed along.",
       },
       {
-        name: "It carries on between the rooms",
-        line: "A members' area, a quarterly briefing, and a directory of who else is in it — so the year is not four dinners and eleven months of nothing.",
+        name: "It does not stop when dinner does",
+        line: "A members' area, The Briefing four times a year, and a directory of everyone else in the room. Membership runs all year, not around one date in the diary.",
       },
     ],
   },
