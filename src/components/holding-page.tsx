@@ -41,7 +41,7 @@ export function HoldingPage() {
               the cursor at the end of a sentence nobody has finished writing
               yet, which is what "coming soon" is. See `blinkDot` in
               wordmark.tsx for how the dot is lifted out of the artwork. */}
-          <Wordmark size="heroLarge" heading align="center" blinkDot />
+          <Wordmark size="holding" heading align="center" blinkDot />
 
           {/* Clear space: at least the height of the "d" before anything
               else starts, the same rule the hero follows.
@@ -51,6 +51,9 @@ export function HoldingPage() {
               is the one thing on the page in the serif italic, which is what
               makes it read as a voice rather than a caption. */}
           <div className="fwd-holding-lede fwd-enter mt-12 flex flex-col items-center sm:mt-16 lg:mt-[88px]">
+            {/* THE LINE STEPS UP AT md, NOT sm, so it is never wider than the
+                mark above it: 28px (about 213px wide) until 768, when the mark
+                is already 338px; 40px from there, 46px from 1024. */}
             {/* LARGER AND WIDER-SPACED THAN THE SITE'S EYEBROW, following the
                 reference: there the date runs nearly the width of the line
                 under it, which is what lets two lines of such different sizes
@@ -58,7 +61,7 @@ export function HoldingPage() {
             <p className="fwd-eyebrow text-[13px] tracking-[0.32em] text-photo-ink/70 sm:text-[15px]">
               {HOLDING.eyebrow}
             </p>
-            <p className="mt-6 font-display text-[32px] italic leading-[1.1] text-photo-ink sm:mt-7 sm:text-[40px] lg:text-[46px]">
+            <p className="mt-6 font-display text-[28px] italic leading-[1.1] text-photo-ink sm:mt-7 md:text-[40px] lg:text-[46px]">
               {HOLDING.line}
             </p>
           </div>

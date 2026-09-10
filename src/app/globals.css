@@ -909,6 +909,25 @@ textarea.fwd-field {
   opacity: 1;
 }
 
+/* ON A DARK GROUND THE HINT IS THE PALE INK AT 70%, not ink-muted.
+   The rule above is unlayered, so it beat the form's own
+   `placeholder:text-photo-ink/70` utility — cascade layers put every utility
+   below plain CSS — and the holding page's "enter email address" was rendering
+   in the light-page grey, rgb(90,100,114), at 3.08:1 on the near-black. This
+   is the colour the form always asked for: about 8:1 there.
+
+   THE DIALOG IS PUT BACK, AND IT HAS TO BE. The application dialog is a DOM
+   descendant of whatever section its button sits in, and on the membership
+   page that is a dark section — so without the second rule every field in a
+   light dialog would get a white hint on a white field. Same specificity, so
+   the later rule wins. */
+.fwd-on-dark .fwd-field::placeholder {
+  color: color-mix(in srgb, var(--fwd-photo-ink) 70%, transparent);
+}
+.fwd-dialog .fwd-field::placeholder {
+  color: var(--fwd-ink-muted);
+}
+
 /* ---------------------------------------------------------------------------
    The arrow on a dropdown.
 

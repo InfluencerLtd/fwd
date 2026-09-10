@@ -107,7 +107,7 @@ export function SignupForm({
           placeholder={fieldHint(HOLDING.emailLabel)}
           aria-describedby={state.status === "error" ? messageId : undefined}
           aria-invalid={state.status === "error" || undefined}
-          className={`fwd-field w-full max-w-sm border bg-transparent px-5 py-3 text-base transition-colors duration-300 disabled:opacity-60 ${c.input}`}
+          className={`fwd-field min-h-[52px] w-full max-w-sm border px-5 py-3 text-base transition-colors duration-300 disabled:opacity-60 ${c.input}`}
         />
         <Button
           type="submit"

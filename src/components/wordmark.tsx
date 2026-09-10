@@ -34,7 +34,7 @@ export function Wordmark({
   tone = "onDark",
   blinkDot = false,
 }: {
-  size?: "hero" | "heroLarge" | "page" | "large" | "footer" | "small";
+  size?: "hero" | "heroLarge" | "holding" | "page" | "large" | "footer" | "small";
   /**
    * Makes the mark the page's main heading. Every page needs exactly one, and
    * the name of the thing is the right thing for it to be.
@@ -102,7 +102,18 @@ export function Wordmark({
    * it filling a cinema display.
    */
   const widthClass =
-    size === "heroLarge"
+    size === "holding"
+      ? /*
+         * THE HOLDING PAGE'S MARK IS THE PAGE, so it is wider than anything
+         * under it at every width. At heroLarge it was 289px against a 349px
+         * line on desktop and 115px against 243px on a phone — the italic line
+         * led and the mark followed, on a page that is meant to be mostly the
+         * mark. 250px floor, 44vw, 460px ceiling: always the widest thing on
+         * the page, measured against the line's own breakpoints in
+         * holding-page.tsx.
+         */
+        "w-[clamp(250px,44vw,460px)]"
+      : size === "heroLarge"
       ? "w-[clamp(115px,calc(20.48vw-6.4px),352px)]"
       : size === "hero"
         ? "w-[clamp(170px,26vw,420px)]"
