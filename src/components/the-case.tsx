@@ -41,7 +41,7 @@ export function TheCase() {
               page after the wordmark itself, and it is left-aligned so the
               rag falls where the reading starts. */}
           <h2 className="fwd-rise fwd-statement col-span-full text-ink lg:col-span-7">
-            <MarkedText text={CASE.heading} />
+            <MarkedText text={CASE.heading} dot />
           </h2>
 
           {/* Four of twelve, starting at nine: the gap between the two is the

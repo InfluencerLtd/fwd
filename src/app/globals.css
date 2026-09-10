@@ -1225,3 +1225,31 @@ select.fwd-field {
    the switch here too rather than a second class to remember.
    =========================================================================== */
 
+
+/* ===========================================================================
+   Emphasis, now that the drawn marks are gone. See marked.tsx.
+   =========================================================================== */
+
+/* The bracketed words: the serif italic, whatever face the line around them is
+   set in. Inside a sans paragraph the serif is a size smaller to the eye, so it
+   is nudged up to sit level with its neighbours. */
+.fwd-em {
+  font-family: var(--fwd-font-display), ui-serif, Georgia, serif;
+  font-style: italic;
+}
+.fwd-body .fwd-em,
+.font-body .fwd-em {
+  font-size: 1.12em;
+  line-height: 0;
+}
+
+/* The logo's full stop at the end of a heading. The deep blue on light
+   grounds, where the pale blue measures 1.13:1 and cannot be seen; the pale
+   blue on the dark sections and over photographs, where it is the brand. */
+.fwd-dot {
+  color: var(--fwd-accent);
+}
+.fwd-on-dark .fwd-dot,
+.fwd-dark .fwd-dot {
+  color: var(--fwd-accent-on-dark);
+}

@@ -51,7 +51,7 @@ export default function RoomsPage() {
             <div className="relative inline-block">
               <PhotoScrim />
               <h1 className="fwd-statement text-photo-ink normal-case!">
-                <MarkedText text={ROOMS.heading} />
+                <MarkedText text={ROOMS.heading} dot />
               </h1>
             </div>
           </div>
@@ -83,7 +83,7 @@ export default function RoomsPage() {
       <section className="fwd-section bg-surface-alt px-6">
         <div className="mx-auto max-w-6xl">
           <h2 className="fwd-rise fwd-statement max-w-4xl text-ink">
-            <MarkedText text={ROOMS.claim} />
+            <MarkedText text={ROOMS.claim} dot />
           </h2>
 
           <h3 className="fwd-reveal fwd-h3 mt-20 text-ink sm:mt-24 lg:mt-32">

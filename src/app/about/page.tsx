@@ -108,7 +108,7 @@ export default function ClubPage() {
                   content file rather than here. On the photograph the blue is
                   13.4:1, so this is the one place on the site the device is at
                   full strength. */}
-              <MarkedText text={opening} />
+              <MarkedText text={opening} dot />
             </h1>
           </div>
         </div>
@@ -134,7 +134,7 @@ export default function ClubPage() {
               scale lowercases what it is given, which is right for a heading
               and wrong for a sentence with "This" at the front of it. */}
           <p className="fwd-reveal fwd-h2 col-span-full normal-case lg:col-span-6">
-            <MarkedText text={ABOUT_PAGE.statement} />
+            <MarkedText text={ABOUT_PAGE.statement} dot />
           </p>
 
           {/* Starting at 8 rather than 7 leaves a column of air between the
@@ -188,7 +188,7 @@ export default function ClubPage() {
                     by — and they keep their capitals, which a heading here
                     would take away. */}
                 <p className="fwd-standfirst text-ink">
-                  <MarkedText text={item.name} />
+                  <MarkedText text={item.name} dot />
                 </p>
                 <p className="mt-5 max-w-[28ch] font-body text-[15px] leading-relaxed text-ink-muted">
                   {item.line}
