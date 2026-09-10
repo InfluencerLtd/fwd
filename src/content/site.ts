@@ -390,13 +390,15 @@ export const MEETING_OF_MINDS = {
  * already a member has any reason to press.
  *
  * THE HEADING KEEPS ITS CAPITAL HERE AND LOSES IT ON THE PAGE. Headings are
- * lowercased in globals.css, site-wide, so this renders as "what is actually
- * changing?". The string is stored as it was written so the copy is reviewable
- * against the brief rather than against the stylesheet.
+ * lowercased in globals.css, site-wide. It is the newsletter's name, which is
+ * already lowercase — "the briefing" — so there is nothing for the stylesheet
+ * to change.
  */
 export const BRIEFING_SUBMIT = {
   // No eyebrow. It said "the briefing" over a heading about the briefing.
-  heading: "What is actually changing?",
+  // The newsletter's own name, read from brand.ts like the briefing page and
+  // the navigation take it, so the three cannot drift apart.
+  heading: BENEFITS.newsletterName,
   /** DRAFT. */
   /**
    * >>> THIS NAMES A REAL PERSON. <<< "our CRO, Jenny" is the only name on the
