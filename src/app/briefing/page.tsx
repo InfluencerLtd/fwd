@@ -46,14 +46,19 @@ export default function BriefingPage() {
               says "the briefing", which is a label for something already
               named. The heading leads on its own, so it also loses the delay
               it was given to arrive after the eyebrow. */}
-          <h1 className="fwd-enter fwd-statement">{BRIEFING.heading}</h1>
+          {/* A capital T here only: the name is lowercase in the navigation, so
+              the heading capitalises it rather than the name changing. */}
+          <h1 className="fwd-enter fwd-statement normal-case!">
+            {BRIEFING.heading.charAt(0).toUpperCase() + BRIEFING.heading.slice(1)}
+          </h1>
 
           {/* On screen before anybody scrolls, so these enter on load rather
               than on a scroll timeline. The delay is set on the list and
               inherited, so the whole row starts after the name above it has
-              finished arriving; the stagger then walks the three along. */}
+              finished arriving; the stagger then walks the three along. Three now,
+              so the row is narrower and centred rather than stretched to the width. */}
           <dl
-            className="fwd-stagger mt-16 grid grid-cols-2 gap-x-8 gap-y-9 border-t border-ink/15 pt-8 sm:mt-20 md:grid-cols-3"
+            className="fwd-stagger mx-auto mt-16 grid max-w-3xl grid-cols-1 gap-y-8 border-t border-ink/15 pt-8 text-center sm:mt-20 sm:grid-cols-3 sm:gap-x-8"
             style={{ "--fwd-enter-delay": "420ms" } as React.CSSProperties}
           >
             {BRIEFING.masthead.map((item) =>
