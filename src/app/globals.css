@@ -1152,7 +1152,20 @@ select.fwd-field {
 
 /* It draws itself as the line it belongs to arrives, on the same scroll
    timeline as everything else — so it reads as part of the sentence landing
-   rather than as a separate thing happening afterwards. */
+   rather than as a separate thing happening afterwards.
+
+   >>> IT MUST BE FINISHED BY THE TIME THE WORD IS ON SCREEN. <<< The range was
+   `entry 18% cover 46%`, which spans well into the middle of the element's
+   time in the viewport — so a mark that is already on screen when the page
+   loads has a scroll timeline sitting part-way through, and the pen stops
+   where the timeline stops. The underline on the membership page's name was
+   measured at a stroke-dashoffset of 0.79: one fifth of a line, permanently,
+   because nothing above the fold ever scrolls into view.
+   Ending inside `entry` fixes it for both cases. Anything fully in the
+   viewport is past entry 100%, so it renders complete at load; anything below
+   the fold still draws itself on the way in. This is the same trap `.fwd-rise`
+   fell into, and it needed `.fwd-enter` to get out of — here the range alone
+   is enough, because the mark has no start state worth protecting. */
 @keyframes fwd-mark-draw {
   from { stroke-dashoffset: 1; }
   to { stroke-dashoffset: 0; }
@@ -1166,7 +1179,7 @@ select.fwd-field {
       stroke-dasharray: 1;
       animation: fwd-mark-draw linear both;
       animation-timeline: view();
-      animation-range: entry 18% cover 46%;
+      animation-range: entry 15% entry 95%;
     }
   }
 }

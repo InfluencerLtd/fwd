@@ -59,7 +59,17 @@ const PATHS: Record<Style, { d: string; viewBox: string; box: string }> = {
    * it.
    */
   underline: {
-    d: "M1 9.8 C 32 5.6, 84 4.2, 128 5.4 S 174 7.8, 199 6.6",
+    /* ONE CUBIC, NOT TWO. The S-curve version had two faults you could see
+       and not name: the left end dived — 9.8 against 5.0 at the middle, five
+       of the box's fourteen units, all of it inside the first sixth of the
+       word — and the second curve reversed direction in the last tenth, so
+       the right end kinked back up. A hook at one end and a flick at the
+       other, on a line that is supposed to be one movement.
+       This is a single arc: down-left to up-right, bowed by about two units,
+       no reversal anywhere along it. Sampled at eight points it climbs 8.8 →
+       6.6 and settles at 7.4, which is a hand drawing left to right and
+       lifting slightly as it goes. */
+    d: "M1 8.8 C 50 6.9, 150 6.4, 199 7.4",
     viewBox: "0 0 200 14",
     box: "absolute -left-[0.05em] w-[calc(100%+0.10em)] -bottom-[0.06em] h-[0.26em]",
   },

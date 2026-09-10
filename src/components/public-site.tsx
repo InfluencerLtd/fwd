@@ -115,7 +115,15 @@ export function PublicSite() {
               </div>
 
               <div className="order-1 lg:order-2">
-                <h2 className="fwd-reveal fwd-h2">{MEETING_OF_MINDS.heading}</h2>
+                {/* ON ONE LINE. Three words broke across two in the right-hand
+                    column, and "minds" alone on a line under "meeting of" is
+                    the heading reading as a stumble. It holds at every width
+                    the site has: at the 34px floor the phrase is about 250px
+                    against 327px of usable width on a 375px phone, and the
+                    column only gets wider from there. */}
+                <h2 className="fwd-reveal fwd-h2 whitespace-nowrap">
+                  {MEETING_OF_MINDS.heading}
+                </h2>
                 <p className="fwd-reveal fwd-standfirst mt-7 text-ink">
                   <MarkedText text={MEETING_OF_MINDS.standfirst} style="double" />
                 </p>
