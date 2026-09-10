@@ -21,7 +21,7 @@ were 4240px originals, resized to 2400 and re-encoded at quality 82.
 | `rooms` | DSC01068 | /rooms letterbox — standing conversation |
 | `closing` | DSC01064 | home page close — the place setting |
 | `rooms-close` | DSC01119 again | /rooms close |
-| `briefing` | DSC01100 again | /briefing close |
+| `briefing` | influencer-tiktok-dinner108, the whole frame | /briefing close — "members only" |
 | `meeting-of-minds` | earlier | the square tile on the home page |
 | `band-1` | 2026-06-11_12-32-57_2991, the 4000px original cropped to the speaker | the drifting band — the "Briefings" tile |
 | `band-2` | influencer-tiktok-dinner108, cropped to the standing figure | the drifting band — the "Roundtables" tile |
@@ -38,8 +38,8 @@ placeholders until there are photographs for them. Names are `benefit-` plus
 the card id in `MEMBERSHIP.cards` — `benefit-seats`, `benefit-guest-passes` and
 so on.
 
-**Two of the closes are reusing a photograph** that is already doing another
-job. They sit under a heavy mask so it is not obvious, but it is a reuse and
+**The /rooms close is reusing a photograph** that is already doing another
+job. It sits under a heavy mask so it is not obvious, but it is a reuse and
 it should be replaced.
 
 **Four files could not be fetched.** `MON03990`, `MON04225`, `MON04274` and
