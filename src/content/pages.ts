@@ -149,7 +149,13 @@ export const ABOUT_PAGE = {
     // underline: the same shape twice in one sentence reads as one hand
     // marking two words, where two different shapes would read as two
     // different kinds of emphasis nobody could explain.
-    "Bringing people [[together]]",
+    // ONE MARK, A SWOOSH UNDER "something". That is the word the sentence
+    // turns on — it is the qualification for being in the room — and the
+    // swoosh's flick past the end of the word reads as the sentence carrying on
+    // into the four verbs after it. "next" is left alone on purpose: the claim
+    // further down this page already ends on a double-underlined "next", and
+    // marking it twice on one page would make the device a habit.
+    "The people with [[something|swoosh]] to say, build, change or start next.",
     "Membership unlocks a year-round program of intimate dinners, private conversations, industry briefings and experiences alongside a network that extends far beyond the room.",
     "Meet someone you\u2019ve wanted to meet. Hear what\u2019s coming before it becomes obvious. Share an idea with the person who can make it happen.",
   ],
@@ -206,9 +212,10 @@ export const ABOUT_PAGE = {
     heading: "why forward",
     /** From the positioning document. */
     body: [
-      "The name is directional on purpose. It suggests movement, momentum and looking ahead rather than simply bringing people together socially.",
+      "You see something good and you forward it. Not to everyone, just to the handful of people whose take you actually want on it.",
+      "That is the whole idea. A small group of people worth forwarding things to, in the same place.",
       "It is a space designed to move the industry forward — the people shaping culture, creativity, media and influence, in a room together to exchange ideas, challenge thinking and make connections that matter.",
-      "Somewhere to step outside the day-to-day, have the conversations that are hard to have anywhere else, and work out where this is all going next.",
+      "Somewhere to step outside the day to day, have the conversations that are hard to have anywhere else, and work out where this is all going next.",
     ],
     /** The three it is built around. From the document. */
     pillars: [
