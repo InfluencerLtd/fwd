@@ -58,7 +58,7 @@ export default function RoomsPage() {
         </PhotoPlaceholder>
       </div>
 
-      {/* ---- The lead ------------------------------------------------------ */}
+      {/* ---- Where it happens ------------------------------------------- */}
       <section className="fwd-section px-6">
         <div className="mx-auto grid max-w-6xl gap-x-16 gap-y-6 lg:grid-cols-12">
           {ROOMS.lead.map((paragraph, index) => (
@@ -66,8 +66,8 @@ export default function RoomsPage() {
               key={paragraph}
               className={
                 index === 0
-                  ? "fwd-reveal fwd-standfirst col-span-full text-ink lg:col-span-6"
-                  : "fwd-reveal fwd-body col-span-full text-ink-muted lg:col-span-5 lg:col-start-8 lg:self-end"
+                  ? "fwd-reveal fwd-standfirst col-span-full text-ink lg:col-span-7"
+                  : "fwd-reveal fwd-body col-span-full text-ink-muted lg:col-span-4 lg:col-start-9 lg:self-end"
               }
             >
               {paragraph}
@@ -76,8 +76,38 @@ export default function RoomsPage() {
         </div>
       </section>
 
+      {/* ---- The claim, and what it can look like ------------------------
+          The claim is set like the case on the home page: the statement size,
+          lowercase, one word circled. The formats under it are not numbered,
+          because they are not a sequence. */}
+      <section className="fwd-section bg-surface-alt px-6">
+        <div className="mx-auto max-w-6xl">
+          <h2 className="fwd-rise fwd-statement max-w-4xl text-ink">
+            <MarkedText text={ROOMS.claim} style="circle" />
+          </h2>
+
+          <h3 className="fwd-reveal fwd-h3 mt-20 text-ink sm:mt-24 lg:mt-32">
+            {ROOMS.formatsHeading}
+          </h3>
+          <ul className="fwd-stagger mt-10 grid gap-x-10 sm:grid-cols-2 lg:grid-cols-4">
+            {ROOMS.formats.map((format) => (
+              <li
+                key={format.name}
+                className="fwd-reveal border-t border-ink/15 pb-10 pt-6"
+              >
+                <p className="font-display text-[26px] leading-[1.1] text-ink">
+                  {format.name}
+                </p>
+                <p className="fwd-body mt-3 text-ink-muted">{format.line}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       <PageClose
         heading={ROOMS.closing.heading}
+        sentence
         photo="rooms-close"
         photoBrief={IMAGERY.roomsClose}
       />

@@ -25,8 +25,11 @@ export function PageClose({
   photo,
   photoBrief,
   scale = "heading",
+  sentence = false,
 }: {
   heading: string;
+  /** A sentence rather than a name: keeps its capital against the lowercase h2 rule. */
+  sentence?: boolean;
   /** Optional: the /rooms close is the heading and the button alone. */
   note?: string;
   tone?: "light" | "alt" | "dark";
@@ -64,7 +67,7 @@ export function PageClose({
       <h2
         className={`${
           scale === "statement" ? "fwd-rise fwd-statement" : "fwd-reveal fwd-h2"
-        } ${dark || photo ? "text-photo-ink" : ""}`}
+        } ${dark || photo ? "text-photo-ink" : ""} ${sentence ? "normal-case!" : ""}`}
       >
         {heading}
       </h2>
@@ -126,7 +129,7 @@ export function PageClose({
   return (
     <section className={`${ground} fwd-section px-6`}>
       <div className="relative z-1 mx-auto max-w-4xl text-center">
-        <h2 className={`fwd-reveal fwd-h2 ${dark ? "text-photo-ink" : ""}`}>
+        <h2 className={`fwd-reveal fwd-h2 ${dark ? "text-photo-ink" : ""} ${sentence ? "normal-case!" : ""}`}>
           {heading}
         </h2>
         {note && (

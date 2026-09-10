@@ -268,12 +268,29 @@ export const ROOMS = {
    * page sets it normal-case). "no" carries the circle — see marked.tsx.
    */
   heading: "There is [[no|circle]] fixed programme.",
-  /** DRAFT. */
   lead: [
-    "Five kinds of room, and the same rule in all of them: small enough that everybody can hear everybody, and a guest list put together on purpose.",
-    "Some are hosted with the platforms, some are ours. What they have in common is that nobody is on a stage.",
+    "A dinner in London one month. A closed conversation in New York the next. Drinks in Cannes because the whole industry has gathered there. Cocktail hour in Texas, a conversation in Los Angeles, or an unexpected gathering wherever our members happen to be.",
+    "Forward goes where the members are, and happens when and where there is reason.",
+  ],
+  /** The big line, set like the case on the home page. */
+  claim: "Every gathering is curated [[by hand]].",
+  formatsHeading: "what that can look like",
+  /**
+   * Not a sequence, so not numbered. The last one is the open door, and its
+   * line is also the page's closing heading.
+   */
+  formats: [
+    { name: "Dinners", line: "A seat at the table and a subject worth exploring" },
+    { name: "Roundtables", line: "One question, and a small group of people with different answers" },
+    { name: "Drinks", line: "Members in the same city, with no agenda beyond being together" },
+    { name: "Closed sessions", line: "Off-the-record conversations, often in partnership with the platforms shaping the industry" },
+    { name: "Offline", line: "The conversations that are better had in the room" },
+    { name: "Online", line: "For the weeks nobody can travel" },
+    { name: "On the road", line: "Taking Forward into the places and moments where the industry is already moving" },
+    { name: "And whatever comes next", line: "The format follows the conversation, not the other way around" },
   ],
   closing: {
-    heading: "a seat at the table",
+    /** A sentence, so the close keeps its capital: see `sentence` on PageClose. */
+    heading: "The format follows the conversation, not the other way around.",
   },
 } as const;
