@@ -105,8 +105,6 @@ export const BRIEFING = {
   /** Members only, so the page cannot end in a sign-up form. It ends in the ask. */
   closing: {
     heading: "members only",
-    /** DRAFT. */
-    note: "Four times a year, to our members.",
   },
 } as const;
 

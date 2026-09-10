@@ -125,7 +125,6 @@ export default function BriefingPage() {
 
       <PageClose
         heading={BRIEFING.closing.heading}
-        note={BRIEFING.closing.note}
         photo="briefing"
         photoBrief={IMAGERY.briefingClose}
       />
