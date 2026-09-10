@@ -20,7 +20,7 @@ were 4240px originals, resized to 2400 and re-encoded at quality 82.
 | `membership` | DSC01119 | /membership opening — the dinner in progress |
 | `rooms` | DSC01068 | /rooms letterbox — standing conversation |
 | `closing` | DSC01064 | home page close — the place setting |
-| `about-close` | 4F0A1031 | /about close — "introduce yourself" |
+| `about-close` | 2026-06-10_11-51-16_0087 (the DJ behind the TikTok logo) | /about close — "Put yourself forward" |
 | `rooms-close` | DSC01119 again | /rooms close |
 | `briefing` | influencer-tiktok-dinner108, the whole frame | /briefing close — "members only" |
 | `meeting-of-minds` | earlier | the square tile on the home page |

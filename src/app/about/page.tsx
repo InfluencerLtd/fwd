@@ -4,7 +4,7 @@ import { PageClose } from "@/components/page-close";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { Circled, MarkedText, plainText } from "@/components/marked";
 import { ABOUT_PAGE } from "@/content/pages";
-import { IMAGERY, WAY_IN } from "@/content/site";
+import { IMAGERY } from "@/content/site";
 
 export const metadata: Metadata = {
   title: ABOUT_PAGE.title,
@@ -270,7 +270,8 @@ export default function ClubPage() {
           "who it is for"; that paragraph has gone, and the page was the only
           one without a button at its foot. */}
       <PageClose
-        heading={WAY_IN.heading}
+        heading={ABOUT_PAGE.closing.heading}
+        sentence
         photo="about-close"
         photoBrief={IMAGERY.aboutClose}
       />

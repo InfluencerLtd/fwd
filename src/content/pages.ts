@@ -248,6 +248,10 @@ export const ABOUT_PAGE = {
       line: "The people who set the rules the other two work inside.",
     },
   ],
+  /** The close at the foot of the page. A sentence, so it keeps its capital. */
+  closing: {
+    heading: "Put yourself forward",
+  },
 } as const;
 
 export const ROOMS = {
