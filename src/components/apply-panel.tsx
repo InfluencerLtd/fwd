@@ -3,8 +3,12 @@
 import { useState } from "react";
 import { ApplyForm, type ApplyPath } from "@/components/apply-form";
 import { HubspotForm } from "@/components/hubspot-form";
+import { TypeformEmbed } from "@/components/typeform-embed";
 import { areHubspotFormsConfigured } from "@/lib/hubspot-forms";
 import { APPLY } from "@/content/site";
+
+/** The creator application lives in Typeform. The brand one is unchanged. */
+const CREATOR_TYPEFORM_ID = "01M25VECYTDKJP4AHS58KNBPWE";
 import { MarkedText } from "@/components/marked";
 
 /**
@@ -43,7 +47,9 @@ export function ApplyPanel() {
         <div className="mt-8">
           {/* Keyed on the path, so switching starts a clean form rather than
               carrying the other one's answers across. */}
-          {areHubspotFormsConfigured() ? (
+          {path === "creator" ? (
+            <TypeformEmbed id={CREATOR_TYPEFORM_ID} />
+          ) : areHubspotFormsConfigured() ? (
             <HubspotForm key={path} path={path} />
           ) : (
             <ApplyForm key={path} path={path} />
