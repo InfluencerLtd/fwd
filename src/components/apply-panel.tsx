@@ -55,8 +55,9 @@ export function ApplyPanel() {
 
   // THE CHOICE IS THE WHOLE STEP. No heading over it and no line under each
   // card: the two labels say what the choice is faster than anything about
-  // it. Each card carries the site's blue underline and a pale blue arrow, and
-  // takes a tint of the same blue on hover, so the dialog belongs to the site.
+  // it. Each card carries the site's blue underline and a pale blue arrow on
+  // the same line, so the cards are only as tall as the label, and
+  // each takes a tint of the same blue on hover, so the dialog belongs to the site.
   return (
     <div>
       <p className="fwd-eyebrow text-ink-muted">{APPLY.choose.lead}</p>
@@ -75,14 +76,14 @@ export function ApplyPanel() {
             key={id}
             type="button"
             onClick={() => setPath(id)}
-            className="group flex min-h-44 flex-col justify-between gap-10 rounded-2xl border border-border bg-surface-raised p-7 text-left font-body transition-colors duration-300 hover:border-accent-on-dark hover:bg-accent-on-dark/25 focus-visible:border-accent-on-dark"
+            className="group flex items-center justify-between gap-4 rounded-2xl border border-border bg-surface-raised p-6 text-left font-body transition-colors duration-300 hover:border-accent-on-dark hover:bg-accent-on-dark/25 focus-visible:border-accent-on-dark"
           >
-            <span className="block font-display text-[30px] leading-[1.05] text-ink">
-              <MarkedText text={`[[${option.label}]]`} />
+            <span className="block font-display text-[26px] leading-[1.1] text-ink">
+              <MarkedText text={option.label} />
             </span>
             <span
               aria-hidden="true"
-              className="flex h-11 w-11 items-center justify-center self-end rounded-full bg-accent-on-dark text-lg text-photo-ground transition-transform duration-300 group-hover:translate-x-1"
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent-on-dark text-lg text-photo-ground transition-transform duration-300 group-hover:translate-x-1"
             >
               &rarr;
             </span>

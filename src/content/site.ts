@@ -519,10 +519,12 @@ export const APPLY = {
      */
     lead: "Pick the one that fits.",
     creator: {
-      label: "a creator",
+      // [[brackets]] mark the words that carry the blue underline. One mark
+      // per word, so a label that wraps on a phone still underlines cleanly.
+      label: "a [[creator]]",
     },
     brand: {
-      label: "a brand or a platform",
+      label: "a [[brand]] or a [[platform]]",
     },
   },
   back: "back",
