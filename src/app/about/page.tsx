@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
-import { MarkedText } from "@/components/marked";
+import { MarkedText, plainText } from "@/components/marked";
 import { ABOUT_PAGE } from "@/content/pages";
 import { IMAGERY } from "@/content/site";
 
 export const metadata: Metadata = {
   title: ABOUT_PAGE.title,
-  description: ABOUT_PAGE.lead[0],
+  description: plainText(ABOUT_PAGE.lead[0]),
 };
 
 /**

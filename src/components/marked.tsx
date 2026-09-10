@@ -184,3 +184,12 @@ export function MarkedText({
     </>
   );
 }
+
+/**
+ * The same string with its [[marks]] taken out, for anywhere that is not a
+ * page — a search description, a link preview. MarkedText is the only thing
+ * that knows what the brackets mean; everything else would print them.
+ */
+export function plainText(text: string) {
+  return text.replace(/\[\[([^\]|]+)(?:\|[^\]]*)?\]\]/g, "$1");
+}

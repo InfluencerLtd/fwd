@@ -149,7 +149,7 @@ export const ABOUT_PAGE = {
     // underline: the same shape twice in one sentence reads as one hand
     // marking two words, where two different shapes would read as two
     // different kinds of emphasis nobody could explain.
-    "Bringing together [[the people]] shaping the [[future]] of the creator economy.",
+    "Bringing people [[together]]",
     "Membership unlocks a year-round program of intimate dinners, private conversations, industry briefings and experiences alongside a network that extends far beyond the room.",
     "Meet someone you\u2019ve wanted to meet. Hear what\u2019s coming before it becomes obvious. Share an idea with the person who can make it happen.",
   ],
