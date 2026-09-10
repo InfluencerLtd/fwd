@@ -57,7 +57,7 @@ export const HOLDING = {
    * case; the eyebrow style sets it in capitals.
    */
   eyebrow: "Coming soon",
-  line: "The room is being set.",
+  line: "The table is being set.",
 
   emailLabel: "email address",
   submit: "request access",

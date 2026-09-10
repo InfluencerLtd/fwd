@@ -18,7 +18,7 @@ import { HOLDING } from "@/content/site";
  * IT IS A BLACK PAGE. It used to carry the full site's hero photograph under a
  * wash and a scrim, so that the holding page and launch day would be one
  * continuous image. The reference it now follows is plainer and better for it:
- * a lit room behind "the room is being set" is the room already set, and the
+ * a lit room behind "the table is being set" is the table already set, and the
  * line says it is not yet. Nothing on the page competes with the mark now,
  * which is the point of a page that is mostly the mark.
  *
@@ -74,7 +74,7 @@ export function HoldingPage() {
           {/* AFTER SIGNING UP THE PAGE SAYS ONE THING. The date and the line go,
               and the thank-you moves up into the place the date held — the
               page has told them what it had to tell them, and repeating "the
-              room is being set" at somebody who has just asked to be let in is
+              table is being set" at somebody who has just asked to be let in is
               the page not listening. Done in CSS off the success message rather
               than by lifting the form's state up here, so this stays a server
               component; see .fwd-holding in globals.css. */}
