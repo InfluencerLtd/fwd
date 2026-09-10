@@ -32,7 +32,7 @@ were 4240px originals, resized to 2400 and re-encoded at quality 82.
 | `band-8` | portrait crop of DSC01068 | the drifting band |
 | `benefit-meeting-of-minds` | influencer-tiktok-dinner78 | membership band — "Meeting of Minds" |
 | `benefit-seats` | 4F0A1031 | membership band — "A seat in the room" |
-| `benefit-partner-rooms` | 2026-06-11_17-44-36_5161 (the full-size original) | membership band — "Partner rooms" |
+| `benefit-partner-rooms` | 2026-06-10_11-51-16_0087 (the full-size original) | membership band — "Partner rooms" |
 | `benefit-guest-passes` | influencer-tiktok-dinner51 | membership band — "Guest passes" |
 | `benefit-directory` | 4F0A0973 | membership band — "The directory" |
 | `benefit-ask-the-room` | 2026-06-10_17-37-37_2225 (the full-size original, cut 3:2 at the face) | membership band — "Ask the room" |
