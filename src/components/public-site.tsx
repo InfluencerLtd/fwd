@@ -125,7 +125,7 @@ export function PublicSite() {
                   {MEETING_OF_MINDS.heading}
                 </h2>
                 <p className="fwd-reveal fwd-standfirst mt-7 text-ink">
-                  <MarkedText text={MEETING_OF_MINDS.standfirst} style="double" />
+                  <MarkedText text={MEETING_OF_MINDS.standfirst} />
                 </p>
                 <div className="fwd-reveal mt-7 space-y-5">
                   {MEETING_OF_MINDS.body.map((line) => (

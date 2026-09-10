@@ -47,7 +47,7 @@ export default function RoomsPage() {
           <div className="relative z-2 mx-auto w-full max-w-6xl px-6 pb-20 pt-40 sm:pb-28">
             {/* THE PAGE'S ONE MAIN HEADING, AND A SENTENCE. normal-case! because
                 the unlayered h1 rule in globals.css would otherwise lowercase
-                it; the mark on "no" comes from the [[brackets]] in pages.ts. */}
+                it. */}
             <div className="relative inline-block">
               <PhotoScrim />
               <h1 className="fwd-statement text-photo-ink normal-case!">
@@ -78,12 +78,12 @@ export default function RoomsPage() {
 
       {/* ---- The claim, and what it can look like ------------------------
           The claim is set like the case on the home page: the statement size,
-          lowercase, one word circled. The formats under it are not numbered,
+          lowercase. The formats under it are not numbered,
           because they are not a sequence. */}
       <section className="fwd-section bg-surface-alt px-6">
         <div className="mx-auto max-w-6xl">
           <h2 className="fwd-rise fwd-statement max-w-4xl text-ink">
-            <MarkedText text={ROOMS.claim} style="circle" />
+            <MarkedText text={ROOMS.claim} />
           </h2>
 
           <h3 className="fwd-reveal fwd-h3 mt-20 text-ink sm:mt-24 lg:mt-32">
@@ -95,9 +95,8 @@ export default function RoomsPage() {
                 key={format.name}
                 className="fwd-reveal border-t border-ink/15 pb-10 pt-6"
               >
-                {/* Each name underlined in the mark blue, the whole name. */}
                 <p className="font-display text-[26px] leading-[1.1] text-ink">
-                  <MarkedText text={`[[${format.name}]]`} />
+                  {format.name}
                 </p>
                 <p className="fwd-body mt-3 text-ink-muted">{format.line}</p>
               </li>

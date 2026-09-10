@@ -55,9 +55,9 @@ export function ApplyPanel() {
 
   // THE CHOICE IS THE WHOLE STEP. No heading over it and no line under each
   // card: the two labels say what the choice is faster than anything about
-  // it. Each card carries the site's blue underline and a pale blue arrow on
-  // the same line, so the cards are only as tall as the label, and
-  // each takes a tint of the same blue on hover, so the dialog belongs to the site.
+  // it. Each card carries a pale blue arrow on the same line as its label, so
+  // the cards are only as tall as the label, and each takes a tint of the same
+  // blue on hover, so the dialog belongs to the site.
   return (
     <div>
       <p className="fwd-eyebrow text-ink-muted">{APPLY.choose.lead}</p>

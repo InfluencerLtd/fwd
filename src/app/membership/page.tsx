@@ -99,7 +99,7 @@ export default function MembershipPage() {
                   — the page always makes the same ask, and the switch, its
                   copy and the form have gone with it. */}
               <p className="fwd-reveal fwd-body mx-auto mt-6 max-w-2xl text-photo-ink/75">
-                <MarkedText text={MEMBERSHIP_PAGE.about.note} style="swoosh" />
+                <MarkedText text={MEMBERSHIP_PAGE.about.note} />
               </p>
               {/* The ask, directly under the case for it. Centred by the
                   text-center on the container. */}

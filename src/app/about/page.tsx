@@ -134,7 +134,7 @@ export default function ClubPage() {
               scale lowercases what it is given, which is right for a heading
               and wrong for a sentence with "This" at the front of it. */}
           <p className="fwd-reveal fwd-h2 col-span-full normal-case lg:col-span-6">
-            <MarkedText text={ABOUT_PAGE.statement} style="underline" />
+            <MarkedText text={ABOUT_PAGE.statement} />
           </p>
 
           {/* Starting at 8 rather than 7 leaves a column of air between the
@@ -160,14 +160,10 @@ export default function ClubPage() {
                their own: two off-white blocks in a row read as one section
                with an accidental gap in it.
 
-               A COLUMN EACH IS WHAT THE CIRCLE WANTED. All three were briefly
-               on one line over the photograph at the top of this page, and the
-               marks ran into one another at the width where the line fit — one
-               long loop rather than three. Nothing is beside anything here.
-
-               On the off-white the blue is faint by design and by measurement:
-               1.28:1, the brand colour on the brand ground. See the note over
-               --fwd-mark in globals.css.
+               A COLUMN EACH. All three were briefly on one line over the
+               photograph at the top of this page; apart, each reads as its own
+               group. (They carried drawn circles until 10 September 2026; the
+               marks came out site-wide, see marked.tsx.)
 
                NO RULE OVER EACH ONE. There was one, borrowed from the pillars
                on the dark section below, and three hairlines across an
