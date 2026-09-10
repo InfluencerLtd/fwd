@@ -57,7 +57,12 @@ export function BriefingSubmit({
             <div className="fwd-reveal mt-8">
               {/* Shaped by the same code as every other primary button, so it
                   cannot drift away from them. */}
-              <BriefingSubmitDialog className={buttonClass("primary")} />
+              {/* THE LABEL IS A SENTENCE NOW, and at 315px it is wider than a
+                  small phone's column. Below sm it may wrap onto two lines;
+                  `!` because .fwd-btn's nowrap is unlayered and would win. */}
+              <BriefingSubmitDialog
+                className={`${buttonClass("primary")} max-sm:h-auto max-sm:min-h-11 max-sm:py-2.5 max-sm:text-center max-sm:leading-snug max-sm:whitespace-normal!`}
+              />
             </div>
           </div>
         </div>
