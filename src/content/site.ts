@@ -332,7 +332,9 @@ export const MEMBERSHIP = {
        * and it changes everywhere, including here.
        */
       id: "the-house",
-      title: BRAND.memberArea,
+      // The tile's own wording. BRAND.memberArea ("The House") still names
+      // the members' area everywhere else, including the sign-in emails.
+      title: "The clubhouse",
       summary: "The members\u2019 area. Private, online, always open.",
       /** Not built yet: the tile is pale blue with this on it, no photograph. */
       comingSoon: "Coming soon",
@@ -350,7 +352,9 @@ export const MEMBERSHIP = {
     },
     {
       id: "newsletter",
-      title: BENEFITS.newsletterName,
+      // Capitalised here to sit beside "The clubhouse"; the name stays
+      // lowercase in the navigation and headings.
+      title: "The briefing",
       summary:
         "Quarterly, members only. What is actually changing, from people in a position to know.",
       /** Not out yet: a pale blue tile like The House, no photograph. */
