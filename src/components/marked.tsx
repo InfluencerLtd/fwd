@@ -51,3 +51,34 @@ export function MarkedText({
 export function plainText(text: string) {
   return text.replace(/\[\[([^\]|]+)(?:\|[^\]]*)?\]\]/g, "$1");
 }
+
+/**
+ * THE ONE DRAWN MARK LEFT: a light blue circle round a whole phrase. Kept for
+ * the three names on /about ("The brands." and the rest) at the owner's
+ * request after the rest came out. One sweep round, overshooting rather than
+ * meeting itself, drawn as the line arrives (see .fwd-mark in globals.css).
+ */
+export function Circled({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="relative inline-block">
+      {children}
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 200 72"
+        preserveAspectRatio="none"
+        fill="none"
+        className="fwd-mark pointer-events-none absolute -left-[0.22em] -top-[0.05em] h-[calc(100%+0.10em)] w-[calc(100%+0.44em)]"
+      >
+        <path
+          d="M150 8 C 108 -1, 40 1, 16 20 C -3 35, 14 58, 72 66 C 132 74, 192 62, 196 40 C 199 24, 178 13, 146 8 C 138 6.7, 129 5.6, 120 5"
+          stroke="currentColor"
+          strokeLinecap="round"
+          // Same width all the way round, however far the box is stretched.
+          vectorEffect="non-scaling-stroke"
+          // A length of one, so the draw-on needs no measured dash length.
+          pathLength={1}
+        />
+      </svg>
+    </span>
+  );
+}

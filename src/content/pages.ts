@@ -235,16 +235,16 @@ export const ABOUT_PAGE = {
    */
   forWhom: [
     {
-      name: "The\u00a0[[brands]].",
+      name: "The\u00a0brands.",
       line: "The people spending the budget, and answering for where it went.",
     },
     // The creators in the middle, with the other two either side of them.
     {
-      name: "The\u00a0[[creators]].",
+      name: "The\u00a0creators.",
       line: "The people who built the audience, and decide what gets made for it.",
     },
     {
-      name: "The\u00a0[[platforms]].",
+      name: "The\u00a0platforms.",
       line: "The people who set the rules the other two work inside.",
     },
   ],

@@ -1253,3 +1253,29 @@ select.fwd-field {
 .fwd-dark .fwd-dot {
   color: var(--fwd-accent-on-dark);
 }
+
+/* The circle round the three names on /about: the brand light blue, a pen
+   line that scales with the type, drawn as it arrives. See Circled in
+   marked.tsx. */
+.fwd-mark {
+  color: #a2e5ff;
+  overflow: visible;
+}
+.fwd-mark path {
+  stroke-width: max(1.7px, 0.03em);
+}
+@keyframes fwd-mark-draw {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .fwd-mark path {
+      stroke-dasharray: 1;
+      animation: fwd-mark-draw linear both;
+      animation-timeline: view();
+      /* Ends inside entry, so a circle already on screen renders whole. */
+      animation-range: entry 15% entry 95%;
+    }
+  }
+}

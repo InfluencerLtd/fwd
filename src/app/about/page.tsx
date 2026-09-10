@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
-import { MarkedText, plainText } from "@/components/marked";
+import { Circled, MarkedText, plainText } from "@/components/marked";
 import { ABOUT_PAGE } from "@/content/pages";
 import { IMAGERY } from "@/content/site";
 
@@ -188,7 +188,7 @@ export default function ClubPage() {
                     by — and they keep their capitals, which a heading here
                     would take away. */}
                 <p className="fwd-standfirst text-ink">
-                  <MarkedText text={item.name} dot />
+                  <Circled>{item.name}</Circled>
                 </p>
                 <p className="mt-5 max-w-[28ch] font-body text-[15px] leading-relaxed text-ink-muted">
                   {item.line}
