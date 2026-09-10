@@ -22,10 +22,12 @@ export async function unlockEarlyAccess(
   _previous: EarlyAccessState,
   formData: FormData,
 ): Promise<EarlyAccessState> {
-  const expected = process.env.EARLY_ACCESS_PASSWORD;
+  // Trimmed both sides: a value saved in Vercel's multi-line box with a
+  // trailing Enter or space could never be typed. Ends are never the password.
+  const expected = process.env.EARLY_ACCESS_PASSWORD?.trim();
   if (!expected) return { error: "Early access is switched off." };
 
-  const given = String(formData.get("password") ?? "");
+  const given = String(formData.get("password") ?? "").trim();
   if (!matches(given, expected)) {
     return { error: "That password is not right." };
   }
