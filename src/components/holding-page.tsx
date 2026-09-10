@@ -1,7 +1,6 @@
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { PhotoScrim } from "@/components/photo-scrim";
 import { Wordmark } from "@/components/wordmark";
-import { MarkedText } from "@/components/marked";
 import { SignupForm } from "@/components/signup-form";
 import { HOLDING, IMAGERY } from "@/content/site";
 
@@ -72,10 +71,26 @@ export function HoldingPage() {
             </div>
 
             {/* Clear space: at least the height of the "d" before anything
-                else starts, the same rule the hero follows. */}
-            <p className="fwd-enter mt-12 max-w-2xl font-body text-lg leading-[1.5] text-photo-ink sm:mt-16 sm:text-[22px] lg:mt-[88px]">
-              <MarkedText text={HOLDING.line} />
-            </p>
+                else starts, the same rule the hero follows.
+
+                WHEN, THEN WHAT. The date is set small and spaced in the sans,
+                so it reads as a label rather than a headline; the line under
+                it is the one thing on the page in the serif italic, which is
+                what makes it read as a voice rather than a caption. It is the
+                only place on the public site the italic is used. */}
+            <div className="fwd-enter mt-12 flex flex-col items-center sm:mt-16 lg:mt-[88px]">
+              {/* LARGER AND WIDER-SPACED THAN THE SITE'S EYEBROW, following the
+                  reference: there the date runs nearly the width of the line
+                  under it, which is what lets two lines of such different
+                  sizes read as one block. The site's 11px label beside a 46px
+                  line was a caption next to a headline. */}
+              <p className="fwd-eyebrow text-[13px] tracking-[0.32em] text-photo-ink/70 sm:text-[15px]">
+                {HOLDING.eyebrow}
+              </p>
+              <p className="mt-6 font-display text-[32px] italic leading-[1.1] text-photo-ink sm:mt-7 sm:text-[40px] lg:text-[46px]">
+                {HOLDING.line}
+              </p>
+            </div>
 
             {/* NO RULE ACROSS THE MIDDLE. There was one, separating the line
                 from the form, and on a photograph a hairline drawn edge to

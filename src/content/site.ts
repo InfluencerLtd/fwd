@@ -40,22 +40,21 @@ export const POSITIONING =
 
 export const HOLDING = {
   /**
-   * The one line under the wordmark.
+   * The two lines under the wordmark: when, then what.
    *
-   * IT IS POSITIONING WITH A MARK IN IT, and it is written out rather than
-   * built from POSITIONING with a replace, because the brackets cannot live in
-   * POSITIONING itself — META.description is that same constant, and a search
-   * result is no place for [[double brackets]]. Written out, the two can be
-   * read side by side; derived, a replace that silently stops matching would
-   * take the mark away and nobody would see it go.
+   * IT NO LONGER SAYS WHAT FORWARD IS. It used to carry the positioning line —
+   * "the home for the people shaping what\u2019s next in the creator economy" —
+   * which explained the premise on a page that exists to tease it. This says
+   * only that something is coming and roughly when, in the brand's own image:
+   * the room, being set. The premise arrives with the site.
    *
-   * >>> IF POSITIONING CHANGES, CHANGE THIS TOO. <<<
+   * POSITIONING is untouched and still feeds the search description, so a
+   * search result still says what Forward is. Only the page stopped saying it.
+   *
+   * >>> THE MONTH IS A PUBLIC DATE. <<< Change it here the moment it moves.
    */
-  // "in the creator economy." is held together as one run, so the line breaks
-  // after "what\u2019s next" and the whole of the rest drops together. Without it
-  // "in the" was stranded at the end of the first line, which reads as a
-  // stumble and puts the mark next to a hanging preposition.
-  line: "The home for the people shaping [[what\u2019s next]] in\u00a0the\u00a0creator\u00a0economy.",
+  eyebrow: "Coming October 2026",
+  line: "The room is being set.",
 
   emailLabel: "email address",
   submit: "keep me posted",
