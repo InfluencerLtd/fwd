@@ -3,9 +3,9 @@ import { PageShell } from "@/components/page-shell";
 import { PageClose } from "@/components/page-close";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { PhotoScrim } from "@/components/photo-scrim";
-import { FORMATS } from "@/content/formats";
 import { ROOMS } from "@/content/pages";
 import { IMAGERY } from "@/content/site";
+import { MarkedText, plainText } from "@/components/marked";
 
 export const metadata: Metadata = {
   title: ROOMS.title,
@@ -37,7 +37,7 @@ export default function RoomsPage() {
       {/* ---- A letterbox, not a block ----------------------------------- */}
       <div data-hero className="fwd-on-dark">
         <PhotoPlaceholder
-          label={`${ROOMS.heading}. Photograph to come`}
+          label={`${plainText(ROOMS.heading)} Photograph to come`}
           name="rooms"
           showLabel={false}
           sizes="100vw"
@@ -45,20 +45,21 @@ export default function RoomsPage() {
           className="flex min-h-[34vh] flex-col justify-end sm:min-h-[38vh]"
         >
           <div className="relative z-2 mx-auto w-full max-w-6xl px-6 pb-10 pt-32">
-            {/* An h1 here, unlike the other pages, because "The rooms" has no
-                capitals worth keeping — globals.css lowercases it to "the
-                rooms", which is what the navigation calls it anyway. The page
-                needs one main heading and this is the honest one. */}
+            {/* THE PAGE'S ONE MAIN HEADING, AND A SENTENCE. normal-case! because
+                the unlayered h1 rule in globals.css would otherwise lowercase
+                it; the mark on "no" comes from the [[brackets]] in pages.ts. */}
             <div className="relative inline-block">
               <PhotoScrim />
-              <h1 className="fwd-statement text-photo-ink">{ROOMS.heading}</h1>
+              <h1 className="fwd-statement text-photo-ink normal-case!">
+                <MarkedText text={ROOMS.heading} />
+              </h1>
             </div>
           </div>
         </PhotoPlaceholder>
       </div>
 
-      {/* ---- The lead, beside the index rather than above it ------------- */}
-      <section className="fwd-section px-6 pb-4">
+      {/* ---- The lead ------------------------------------------------------ */}
+      <section className="fwd-section px-6">
         <div className="mx-auto grid max-w-6xl gap-x-16 gap-y-6 lg:grid-cols-12">
           {ROOMS.lead.map((paragraph, index) => (
             <p
@@ -72,50 +73,6 @@ export default function RoomsPage() {
               {paragraph}
             </p>
           ))}
-        </div>
-      </section>
-
-      {/* ---- The five, all at once -------------------------------------- */}
-      <section className="fwd-section px-6 pt-16">
-        <div className="mx-auto max-w-6xl">
-          <ol className="fwd-stagger">
-            {FORMATS.map((format, index) => (
-              <li
-                key={format.id}
-                className="fwd-reveal grid gap-x-10 gap-y-4 border-t border-ink/15 py-10 md:grid-cols-12 sm:py-12"
-              >
-                <span className="fwd-eyebrow col-span-full pt-2 text-ink-muted md:col-span-1">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-
-                {/* Not a heading: the names keep their capitals. */}
-                <p className="fwd-h3 col-span-full leading-none text-ink md:col-span-4">
-                  {format.name}
-                </p>
-
-                <p className="fwd-body col-span-full text-ink-muted md:col-span-5 md:col-start-6">
-                  {format.description}
-                </p>
-
-                {/* The practical detail, small and last, where a reader looks
-                    for it once they already like the sound of the room. */}
-                <dl className="col-span-full flex gap-x-10 md:col-span-2 md:col-start-11 md:flex-col md:gap-y-5">
-                  <div>
-                    <dt className="fwd-eyebrow text-ink-muted">in the room</dt>
-                    <dd className="mt-1.5 font-body text-[15px] text-ink">
-                      {format.size}
-                    </dd>
-                  </div>
-                  <div>
-                    <dt className="fwd-eyebrow text-ink-muted">how often</dt>
-                    <dd className="mt-1.5 font-body text-[15px] text-ink">
-                      {format.frequency}
-                    </dd>
-                  </div>
-                </dl>
-              </li>
-            ))}
-          </ol>
         </div>
       </section>
 
