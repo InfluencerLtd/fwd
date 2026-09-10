@@ -38,7 +38,7 @@ were 4240px originals, resized to 2400 and re-encoded at quality 82.
 | `benefit-ask-the-room` | 2026-06-10_17-37-37_2225 (the full-size original, cut 3:2 at the face) | membership band — "Ask the room" |
 | `benefit-the-house` | 4F0A1403 | not shown: "The House" is a pale blue "coming soon" tile for now |
 | `benefit-founding-members` | 2026-06-11_12-32-57_2991 (the 4000px original) | membership band — "Founding members" |
-| `benefit-digital-rooms` | 07347340 (laptop at the table, Cannes) | membership band — "Digital rooms" |
+| `benefit-digital-rooms` | 2026-06-10_12-38-32_0651, cropped to the phone | membership band — "Digital rooms" |
 | `benefit-newsletter` | 4F0A0962 | membership band — "the briefing" |
 | `benefit-merch` | 2026-06-11_17-41-50_5104 (full-size original, cut 3:2 from face to chest) | membership band — "Members' merch" |
 | `benefit-nominate` | 4F0A1209 | membership band — "Nominate a member" |
