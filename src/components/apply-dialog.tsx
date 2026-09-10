@@ -77,13 +77,17 @@ export function ApplyDialog({
         {/* The header stays put and the form scrolls under it, so the way out
             is always on screen however long the form is. */}
         <div className="flex max-h-[inherit] flex-col">
-          <div className="flex items-start justify-between gap-6 border-b border-border px-6 py-5 sm:px-8">
-            <h2 className="text-2xl">{APPLY.open.heading}</h2>
+          {/* THE PALE BLUE BAND. The site's one colour, as a ground here
+              rather than a button, so the dialog reads as part of the site
+              instead of a browser form. Its text is the fixed near-black, not
+              the ink token, so it holds in the dark theme too. */}
+          <div className="flex items-center justify-between gap-6 bg-accent-on-dark px-6 py-5 text-photo-ground sm:px-8">
+            <h2 className="text-2xl text-photo-ground sm:text-3xl">{APPLY.open.heading}</h2>
             <button
               type="button"
               onClick={hide}
               aria-label={NAV.menuClose}
-              className="-mr-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-border font-body text-base leading-none text-ink-muted transition-colors duration-300 hover:border-ink/30 hover:text-ink"
+              className="-mr-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-photo-ground/20 font-body text-base leading-none text-photo-ground/70 transition-colors duration-300 hover:border-photo-ground/60 hover:text-photo-ground"
             >
               <span aria-hidden="true">&times;</span>
             </button>

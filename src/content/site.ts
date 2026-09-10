@@ -510,7 +510,6 @@ export const APPLY = {
    * brand. There are two forms behind this, not one form with a dropdown.
    */
   choose: {
-    heading: "first, which are you?",
     /**
      * DRAFT. Cut to its last sentence. It used to explain that the questions
      * worth asking a creator are not the ones worth asking somebody at a
@@ -521,11 +520,9 @@ export const APPLY = {
     lead: "Pick the one that fits.",
     creator: {
       label: "a creator",
-      hint: "You make the work, whatever the platform.",
     },
     brand: {
-      label: "a brand, a platform, or industry",
-      hint: "You work at a company in or around the creator economy.",
+      label: "a brand or a platform",
     },
   },
   back: "back",

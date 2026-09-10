@@ -1075,8 +1075,10 @@ select.fwd-field {
 }
 
 .fwd-dialog::backdrop {
-  background: color-mix(in oklab, var(--fwd-photo-ground) 72%, transparent);
-  backdrop-filter: blur(3px);
+  /* Heavy enough that the page behind reads as a colour, not as text: at 72%
+     and 3px the words underneath were still legible through it. */
+  background: color-mix(in oklab, var(--fwd-photo-ground) 86%, transparent);
+  backdrop-filter: blur(10px);
 }
 
 @media (prefers-reduced-motion: no-preference) {

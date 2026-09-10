@@ -5,6 +5,7 @@ import { ApplyForm, type ApplyPath } from "@/components/apply-form";
 import { HubspotForm } from "@/components/hubspot-form";
 import { areHubspotFormsConfigured } from "@/lib/hubspot-forms";
 import { APPLY } from "@/content/site";
+import { MarkedText } from "@/components/marked";
 
 /**
  * The two application paths, and the form for whichever is chosen.
@@ -52,31 +53,39 @@ export function ApplyPanel() {
     );
   }
 
+  // THE CHOICE IS THE WHOLE STEP. No heading over it and no line under each
+  // card: the two labels say what the choice is faster than anything about
+  // it. Each card carries the site's blue underline and a pale blue arrow, and
+  // takes a tint of the same blue on hover, so the dialog belongs to the site.
   return (
     <div>
-      <h3 className="font-display text-2xl text-ink">{APPLY.choose.heading}</h3>
-      <p className="mt-2 font-body text-[15px] leading-relaxed text-ink-muted">
-        {APPLY.choose.lead}
-      </p>
-      <div className="mt-6 grid gap-4 sm:grid-cols-2">
-      {(
-        [
-          ["creator", APPLY.choose.creator],
-          ["brand", APPLY.choose.brand],
-        ] as const
-      ).map(([id, option]) => (
-        <button
-          key={id}
-          type="button"
-          onClick={() => setPath(id)}
-          className="rounded-2xl border border-border bg-surface-raised p-7 text-left font-body transition-colors duration-300 hover:border-ink/30"
-        >
-          <span className="block font-display text-2xl text-ink">
-            {option.label}
-          </span>
-          <span className="mt-2 block text-[15px] leading-relaxed text-ink-muted">
-            {option.hint}
-          </span>
+      <p className="fwd-eyebrow text-ink-muted">{APPLY.choose.lead}</p>
+      <div
+        role="group"
+        aria-label={APPLY.choose.lead}
+        className="mt-5 grid gap-4 sm:grid-cols-2"
+      >
+        {(
+          [
+            ["creator", APPLY.choose.creator],
+            ["brand", APPLY.choose.brand],
+          ] as const
+        ).map(([id, option]) => (
+          <button
+            key={id}
+            type="button"
+            onClick={() => setPath(id)}
+            className="group flex min-h-44 flex-col justify-between gap-10 rounded-2xl border border-border bg-surface-raised p-7 text-left font-body transition-colors duration-300 hover:border-accent-on-dark hover:bg-accent-on-dark/25 focus-visible:border-accent-on-dark"
+          >
+            <span className="block font-display text-[30px] leading-[1.05] text-ink">
+              <MarkedText text={`[[${option.label}]]`} />
+            </span>
+            <span
+              aria-hidden="true"
+              className="flex h-11 w-11 items-center justify-center self-end rounded-full bg-accent-on-dark text-lg text-photo-ground transition-transform duration-300 group-hover:translate-x-1"
+            >
+              &rarr;
+            </span>
           </button>
         ))}
       </div>
