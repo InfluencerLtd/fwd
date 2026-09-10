@@ -264,14 +264,13 @@ export default function ClubPage() {
         </div>
       </section>
 
-      {/* THE SAME CLOSE AS THE HOME PAGE: the heading, the note and the apply
-          button over a photograph, so every page ends on the way in. It was
+      {/* THE WAY IN: the heading and the apply button over a photograph, so
+          every page ends on it. No note under the heading here. It was
           left off here once, when the page ended on a paragraph repeating
           "who it is for"; that paragraph has gone, and the page was the only
           one without a button at its foot. */}
       <PageClose
         heading={WAY_IN.heading}
-        note={WAY_IN.note}
         photo="about-close"
         photoBrief={IMAGERY.aboutClose}
       />
