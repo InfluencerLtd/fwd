@@ -83,15 +83,11 @@ export function Hero() {
                 quarters of the font size, so at the desktop lockup it is a
                 little over a hundred pixels rather than the fifty-six this
                 used to be. */}
+            {/* ONE LINE. It was two — "Brands. Creators. Platforms." and then
+                "One table." in the pale blue as the answer to it. The answer
+                went; the three nouns stand on their own. */}
             <p className="mt-12 font-body text-lg leading-[1.5] text-photo-ink sm:mt-16 sm:text-[22px] lg:mt-[104px] lg:text-[27px]">
-              {/* Two lines, never one. Each is its own block, so no width can
-                  reflow them together and no width can break either in half:
-                  the second line is the answer to the first and it has to land
-                  on its own. */}
-              <span className="block">{HERO.headline.one}</span>
-              <span className="block text-accent-on-dark">
-                {HERO.headline.two}
-              </span>
+              {HERO.headline}
             </p>
 
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
