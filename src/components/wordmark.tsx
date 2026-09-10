@@ -32,6 +32,7 @@ export function Wordmark({
   align = "left",
   signature = true,
   tone = "onDark",
+  blinkDot = false,
 }: {
   size?: "hero" | "heroLarge" | "page" | "large" | "footer" | "small";
   /**
@@ -78,6 +79,18 @@ export function Wordmark({
    * follow the page into dark mode.
    */
   tone?: "onDark" | "brand" | "ink";
+  /**
+   * Makes the full stop blink. Only with the signature on, and only where the
+   * page is asked to — the holding page, where it is the one moving thing.
+   *
+   * THE DOT IS LIFTED OUT OF THE ARTWORK, not covered over. The lockup is
+   * drawn as a mask, so there is no separate element to animate; instead it
+   * is split into two files with the SAME viewBox — the lockup without its
+   * full stop, and the full stop alone — and the two are stacked. Same
+   * viewBox, same box, same mask sizing: the dot lands exactly where the
+   * artwork put it, at every width, without a single measured offset.
+   */
+  blinkDot?: boolean;
 }) {
   /**
    * A WIDTH, not a font size, and the height comes from the aspect ratio.
@@ -146,12 +159,19 @@ export function Wordmark({
         <span className="sr-only">
           {`${BRAND.markShort} ${BRAND.endorsement}`}
         </span>
-        <span
-          aria-hidden="true"
-          className={`fwd-logo w-full ${
-            signature ? "fwd-logo-lockup" : "fwd-logo-mark"
-          }`}
-        />
+        {blinkDot && signature ? (
+          <span aria-hidden="true" className="relative block w-full">
+            <span className="fwd-logo fwd-logo-lockup-nodot w-full" />
+            <span className="fwd-logo fwd-logo-dot absolute inset-0" />
+          </span>
+        ) : (
+          <span
+            aria-hidden="true"
+            className={`fwd-logo w-full ${
+              signature ? "fwd-logo-lockup" : "fwd-logo-mark"
+            }`}
+          />
+        )}
       </Tag>
     </div>
   );

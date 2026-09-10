@@ -1095,6 +1095,35 @@ select.fwd-field {
   aspect-ratio: 355.96 / 163.78;
 }
 
+/* THE LOCKUP IN TWO PIECES, for the blinking full stop. Both files are the
+   delivered lockup with the same viewBox — one with the dot removed, one with
+   only the dot — so stacked in the same box they are the original artwork,
+   and the dot can be animated without anything else moving. */
+.fwd-logo-lockup-nodot {
+  -webkit-mask-image: url("/brand/fwd-lockup-nodot.svg");
+  mask-image: url("/brand/fwd-lockup-nodot.svg");
+  aspect-ratio: 355.96 / 214.87;
+}
+.fwd-logo-dot {
+  -webkit-mask-image: url("/brand/fwd-lockup-dot.svg");
+  mask-image: url("/brand/fwd-lockup-dot.svg");
+}
+
+/* A CURSOR, NOT A PULSE. On for most of the beat, off for most of the rest,
+   with a short fade at each change so it reads as a blink rather than a strobe.
+   One flash every 1.4 seconds — well under the three a second that WCAG treats
+   as a seizure risk. Under reduced motion it simply stays lit. */
+@keyframes fwd-dot-blink {
+  0%, 46%   { opacity: 1; }
+  54%, 92%  { opacity: 0.12; }
+  100%      { opacity: 1; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .fwd-logo-dot {
+    animation: fwd-dot-blink 1.4s ease-in-out infinite;
+  }
+}
+
 /* ===========================================================================
    THE EMPHASIS MARK
    ---------------------------------------------------------------------------

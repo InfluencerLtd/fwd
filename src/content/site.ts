@@ -51,13 +51,16 @@ export const HOLDING = {
    * POSITIONING is untouched and still feeds the search description, so a
    * search result still says what Forward is. Only the page stopped saying it.
    *
-   * >>> THE MONTH IS A PUBLIC DATE. <<< Change it here the moment it moves.
+   * NO DATE. It said "Coming October 2026", which is a public promise on the
+   * one page everybody sees first, and a date that could move. "Coming soon"
+   * cannot be wrong on any day between now and launch. Stored in sentence
+   * case; the eyebrow style sets it in capitals.
    */
-  eyebrow: "Coming October 2026",
+  eyebrow: "Coming soon",
   line: "The room is being set.",
 
   emailLabel: "email address",
-  submit: "keep me posted",
+  submit: "request access",
   submitting: "just a moment",
 
   /** DRAFT. Shown after a successful sign-up. */
@@ -76,11 +79,7 @@ export const HOLDING = {
   notReady:
     "Sign-ups are not switched on quite yet. Please try again shortly.",
 
-  /** The consent line next to the checkbox. Required, and must stay honest. */
-  consent:
-    "I am happy to receive occasional email about Forward. You can unsubscribe at any time.",
 
-  consentRequired: "Please tick the box so we know we can email you.",
 
   /**
    * Shown when the same address, or the same connection, has sent this several
@@ -556,6 +555,12 @@ export const APPLY = {
   chooseOne: "choose one",
   /** Shown when a required field is empty. */
   required: "Please fill this in.",
+  /**
+   * The application's own consent box — which stays. It was sharing the
+   * holding page's message, and that page's box is gone; this one is still a
+   * request to email somebody about membership, and still needs the tick.
+   */
+  consentRequired: "Please tick the box so we know we can email you.",
   error: "Something went wrong at our end. Please try again in a moment.",
   /** Shown when this has been sent several times within the hour. */
   tooMany:

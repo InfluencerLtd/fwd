@@ -64,7 +64,6 @@ export function SignupForm({
     initialSignupState,
   );
   const emailId = useId();
-  const consentId = useId();
   const messageId = useId();
 
   // Once they are on the list there is nothing left to ask them for.
@@ -87,7 +86,12 @@ export function SignupForm({
       {/* The label hangs off the row that holds the field, not off the form,
           so it lands above the field rather than above the whole thing. */}
       <div className="mt-2 flex flex-col gap-3 sm:flex-row">
-        <label htmlFor={emailId} className="fwd-float">
+        {/* NOT SHOWN, BUT STILL THERE. The label used to float up above the
+            field once you started typing, and the focus ring drew straight
+            through it. The placeholder already says what the box is for, so
+            the visible label went — but a screen reader still needs a name for
+            the field, and a placeholder is not one, so the label stays for it. */}
+        <label htmlFor={emailId} className="sr-only">
           {HOLDING.emailLabel}
         </label>
         <input
@@ -111,19 +115,6 @@ export function SignupForm({
         >
           {pending ? HOLDING.submitting : HOLDING.submit}
         </Button>
-      </div>
-
-      <div className="mt-4 flex max-w-md items-start gap-3">
-        <input
-          id={consentId}
-          name="consent"
-          type="checkbox"
-          disabled={pending}
-          className={`mt-0.5 h-5 w-5 shrink-0 ${c.checkbox}`}
-        />
-        <label htmlFor={consentId} className={`text-[13px] leading-relaxed ${c.consent}`}>
-          {HOLDING.consent}
-        </label>
       </div>
 
       {/* Errors are announced to screen readers as soon as they appear. */}

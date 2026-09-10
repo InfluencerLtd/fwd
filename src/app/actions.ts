@@ -25,14 +25,21 @@ export async function signUpForUpdates(
   formData: FormData,
 ): Promise<SignupState> {
   const email = normalizeEmail(formData.get("email"));
-  const consented = formData.get("consent") === "on";
   const source = (formData.get("source") as SignupSource) ?? "holding";
 
+  /*
+   * >>> THERE IS NO CONSENT BOX ANY MORE, AND THAT NARROWS WHAT THIS LIST IS. <<<
+   * The form used to refuse to go through without "I am happy to receive
+   * occasional email about Forward" ticked. It was removed from the holding
+   * page, so this check had to go with it — left in, it would have turned away
+   * every sign-up with an error about a box that was no longer on screen.
+   *
+   * What somebody does now is press "request access". That is permission to
+   * reply to them about access, and it is not permission to put them on a
+   * newsletter. Use these addresses for the first; ask again before the second.
+   */
   if (!looksLikeEmail(email)) {
     return { status: "error", message: HOLDING.invalidEmail };
-  }
-  if (!consented) {
-    return { status: "error", message: HOLDING.consentRequired };
   }
 
   // After the checks that cost nothing, before the write. Checking earlier
@@ -168,7 +175,7 @@ export async function submitMembershipApplication(
   const validGroup = MEMBER_GROUPS.some((g) => g.id === group);
   if (!validGroup) fieldErrors.group = APPLY.required;
 
-  if (!consented) fieldErrors.consent = HOLDING.consentRequired;
+  if (!consented) fieldErrors.consent = APPLY.consentRequired;
 
   if (Object.keys(fieldErrors).length > 0) {
     return {
