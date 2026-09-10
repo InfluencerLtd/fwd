@@ -10,7 +10,7 @@ The brief for every shot is in `IMAGERY` in `src/content/site.ts`.
 
 ## What is here (9 September 2026)
 
-From the shared Drive folder. The evening set is 900px and the four DSC files
+From the shared Drive folder. Portrait sources for the membership band are cut to 3:2 at the faces. The evening set is 900px and the four DSC files
 were 4240px originals, resized to 2400 and re-encoded at quality 82.
 
 | File | Source | Where it appears |
@@ -30,13 +30,21 @@ were 4240px originals, resized to 2400 and re-encoded at quality 82.
 | `band-5`, `band-6` | the evening set | the drifting band |
 | `band-7` | 4F0A1146 | the drifting band — the "Small rooms" tile |
 | `band-8` | portrait crop of DSC01068 | the drifting band |
+| `benefit-meeting-of-minds` | influencer-tiktok-dinner78 | membership band — "Meeting of Minds" |
+| `benefit-seats` | 4F0A1031 | membership band — "A seat in the room" |
+| `benefit-partner-rooms` | 868AE944 (Cannes partner lounge) | membership band — "Partner rooms" |
+| `benefit-guest-passes` | influencer-tiktok-dinner51 | membership band — "Guest passes" |
+| `benefit-directory` | 4F0A0973 | membership band — "The directory" |
+| `benefit-ask-the-room` | 4F0A1265 | membership band — "Ask the room" |
+| `benefit-the-house` | 4F0A1403 | membership band — "The House" |
+| `benefit-founding-members` | 4F0A0934 | membership band — "Founding members" |
+| `benefit-digital-rooms` | 07347340 (laptop at the table, Cannes) | membership band — "Digital rooms" |
+| `benefit-newsletter` | 4F0A0962 | membership band — "the briefing" |
+| `benefit-merch` | D1813DE6 | membership band — "Members' merch" |
+| `benefit-nominate` | 4F0A1209 | membership band — "Nominate a member" |
+| `benefit-global-access` | 3CDE719A (Cannes) | membership band — "Global access" |
 
 ## Still missing
-
-**The thirteen `benefit-*` tiles** on the membership page. They render as
-placeholders until there are photographs for them. Names are `benefit-` plus
-the card id in `MEMBERSHIP.cards` — `benefit-seats`, `benefit-guest-passes` and
-so on.
 
 **The /rooms close is reusing a photograph** that is already doing another
 job. It sits under a heavy mask so it is not obvious, but it is a reuse and
