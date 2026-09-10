@@ -221,7 +221,7 @@ export const ABOUT_PAGE = {
     ],
     /** The three it is built around. From the document. */
     pillars: [
-      "Progressive discussion",
+      "Off the record",
       "Fresh perspectives",
       "A meeting of minds",
     ],
