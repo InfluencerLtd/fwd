@@ -23,12 +23,13 @@ were 4240px originals, resized to 2400 and re-encoded at quality 82.
 | `rooms-close` | DSC01119 again | /rooms close |
 | `briefing` | DSC01100 again | /briefing close |
 | `meeting-of-minds` | earlier | the square tile on the home page |
-| `band-1` | 4F0A0955 | the drifting band — the "Briefings" tile |
+| `band-1` | 2026-06-11_12-32-57_2991, the 4000px original cropped to the speaker | the drifting band — the "Briefings" tile |
 | `band-2` | influencer-tiktok-dinner108, cropped to the standing figure | the drifting band — the "Roundtables" tile |
 | `band-3` | the evening set | the drifting band |
 | `band-4` | influencer-tiktok-dinner120, cropped to the pass | the drifting band — the "Dinners" tile |
 | `band-5`, `band-6` | the evening set | the drifting band |
-| `band-7`, `band-8` | portrait crops of DSC01064 and DSC01068 | the drifting band |
+| `band-7` | 4F0A1146 | the drifting band — the "Small rooms" tile |
+| `band-8` | portrait crop of DSC01068 | the drifting band |
 
 ## Still missing
 
