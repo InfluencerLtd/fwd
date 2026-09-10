@@ -34,7 +34,7 @@ export const metadata: Metadata = {
 export default function RoomsPage() {
   return (
     <PageShell>
-      {/* ---- A letterbox, not a block ----------------------------------- */}
+      {/* ---- The same height as the /about hero, so the photograph is not cut at the top */}
       <div data-hero className="fwd-on-dark">
         <PhotoPlaceholder
           label={`${plainText(ROOMS.heading)} Photograph to come`}
@@ -42,9 +42,9 @@ export default function RoomsPage() {
           showLabel={false}
           sizes="100vw"
           ratio="fill"
-          className="flex min-h-[34vh] flex-col justify-end sm:min-h-[38vh]"
+          className="flex min-h-[62vh] flex-col justify-end"
         >
-          <div className="relative z-2 mx-auto w-full max-w-6xl px-6 pb-10 pt-32">
+          <div className="relative z-2 mx-auto w-full max-w-6xl px-6 pb-20 pt-40 sm:pb-28">
             {/* THE PAGE'S ONE MAIN HEADING, AND A SENTENCE. normal-case! because
                 the unlayered h1 rule in globals.css would otherwise lowercase
                 it; the mark on "no" comes from the [[brackets]] in pages.ts. */}
@@ -95,8 +95,9 @@ export default function RoomsPage() {
                 key={format.name}
                 className="fwd-reveal border-t border-ink/15 pb-10 pt-6"
               >
+                {/* Each name underlined in the mark blue, the whole name. */}
                 <p className="font-display text-[26px] leading-[1.1] text-ink">
-                  {format.name}
+                  <MarkedText text={`[[${format.name}]]`} />
                 </p>
                 <p className="fwd-body mt-3 text-ink-muted">{format.line}</p>
               </li>

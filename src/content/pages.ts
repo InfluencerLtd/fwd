@@ -66,22 +66,13 @@ export const BRIEFING = {
 
   /**
    * The masthead row under the name — the facts a reader wants before they
-   * read a word of description: how often, who gets it, when the next one is,
-   * how long it takes.
-   *
-   * >>> `next` IS A DATE NOBODY HAS COMMITTED TO. <<< It is the only thing on
-   * this page that could be wrong on a Tuesday. Set it to null and the row
-   * shows three columns instead of four.
-   *
-   * Written as a named month, like the two in the hero strip, so it cannot be
-   * read as a day.
+   * read a word of description: how often, who gets it, how long it takes.
+   * The next-issue date came out; a date nobody had committed to was the one
+   * thing on the page that could be wrong.
    */
   masthead: [
-    { label: "cadence", value: "Four times a year" },
+    { label: "issues", value: "Four times a year" },
     { label: "who gets it", value: "Members only" },
-    // Named for the same reason as the hero strip's: "11.26" is unreadable
-    // as a month in one country and as a day in the other.
-    { label: "next issue", value: "Nov 2026" as string | null },
     { label: "read in", value: "Under ten minutes" },
   ],
   /** DRAFT. */

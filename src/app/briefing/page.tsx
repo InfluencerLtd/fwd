@@ -51,9 +51,9 @@ export default function BriefingPage() {
           {/* On screen before anybody scrolls, so these enter on load rather
               than on a scroll timeline. The delay is set on the list and
               inherited, so the whole row starts after the name above it has
-              finished arriving; the stagger then walks the four along. */}
+              finished arriving; the stagger then walks the three along. */}
           <dl
-            className="fwd-stagger mt-16 grid grid-cols-2 gap-x-8 gap-y-9 border-t border-ink/15 pt-8 sm:mt-20 md:grid-cols-4"
+            className="fwd-stagger mt-16 grid grid-cols-2 gap-x-8 gap-y-9 border-t border-ink/15 pt-8 sm:mt-20 md:grid-cols-3"
             style={{ "--fwd-enter-delay": "420ms" } as React.CSSProperties}
           >
             {BRIEFING.masthead.map((item) =>
