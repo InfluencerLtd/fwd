@@ -232,8 +232,8 @@ export const CASE = {
    =========================================================================== */
 
 export const WAY_IN = {
-  /** DRAFT. */
-  heading: "the way in is an application",
+  /** DRAFT. An invitation rather than a description of the process. */
+  heading: "introduce yourself",
   /** DRAFT. */
   note: "Every application is reviewed personally, with membership intentionally curated.",
 } as const;
@@ -659,12 +659,12 @@ export const IMAGERY = {
   /** Names the band for a screen reader. Not printed. */
   bandLabel: "what happens in the room",
   bandCaptions: [
-    "Dinners",
+    "Briefings",
     "Roundtables",
     "Introductions",
-    "Briefings",
+    "Dinners",
     "Guest lists",
-    "Lasting conversations",
+    "Connections",
     "Small rooms",
     "People worth meeting",
   ],
