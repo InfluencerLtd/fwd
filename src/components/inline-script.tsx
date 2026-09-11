@@ -1,3 +1,5 @@
+"use client";
+
 /**
  * A script that runs while the browser is still parsing the HTML.
  *
@@ -23,6 +25,12 @@
  *
  * This is the helper the Next guide prescribes for exactly this, copied rather
  * than invented.
+ *
+ * >>> IT HAS TO BE A CLIENT COMPONENT. <<< As a server component the
+ * `typeof window` test only ever ran on the server, so the browser was handed
+ * the `text/javascript` version even when it rendered the tag itself (the 404
+ * page re-renders the root layout in the browser), and the warning came back.
+ * "use client" is what makes the second half of the check actually happen.
  */
 export function InlineScript({ html }: { html: string }) {
   return (
