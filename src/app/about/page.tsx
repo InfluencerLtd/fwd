@@ -104,13 +104,19 @@ export default function ClubPage() {
                 outranks a utility — on a <p> it never applied, as an h1 it
                 turned "Bringing" into "bringing". !important is the one thing
                 that reaches past it. */}
-            <h1 className="fwd-enter fwd-h2 max-w-5xl normal-case! text-photo-ink">
-              {/* One mark, on "shaping", and it is a decision taken in the
-                  content file rather than here. On the photograph the blue is
-                  13.4:1, so this is the one place on the site the device is at
-                  full strength. */}
-              <MarkedText text={opening} dot />
+            {/* THE SAME SIZE AS EVERY OTHER PAGE'S HEADING. The full sentence
+                was the heading, at the smaller section size because it runs to
+                two lines; now a short heading carries the statement size and
+                the sentence sits under it as a standfirst. */}
+            <h1 className="fwd-enter fwd-statement normal-case! text-photo-ink">
+              <MarkedText text={ABOUT_PAGE.headline} dot />
             </h1>
+            <p
+              className="fwd-enter fwd-standfirst mt-6 max-w-2xl text-photo-ink/85"
+              style={{ "--fwd-enter-delay": "260ms" } as React.CSSProperties}
+            >
+              <MarkedText text={opening} />
+            </p>
           </div>
         </div>
         </PhotoPlaceholder>

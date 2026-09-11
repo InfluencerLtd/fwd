@@ -123,6 +123,9 @@ export const ABOUT_PAGE = {
    * line, the membership section, Meeting of Minds — rather than invented, but
    * these are new sentences and nobody has signed them off.
    */
+  /** The page heading, at the same size as every other page's. The full
+   * sentence it comes from sits under it, as the first line of `lead`. */
+  headline: "What comes next.",
   lead: [
     // The three short sentences are held together with non-breaking spaces.
     // Without them the line wrapped mid-phrase — "The" was left at the end of
