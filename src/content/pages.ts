@@ -73,7 +73,7 @@ export const BRIEFING = {
   masthead: [
     { label: "issues", value: "Four times a year" },
     { label: "who gets it", value: "Members only" },
-    { label: "read in", value: "Under ten minutes" },
+    { label: "who features", value: "You" },
   ],
   /** DRAFT. */
   lead: [
