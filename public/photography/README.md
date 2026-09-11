@@ -36,7 +36,7 @@ were 4240px originals, resized to 2400 and re-encoded at quality 82.
 | `benefit-seats` | influencer-tiktok-dinner125 | membership band — "A seat in the room" |
 | `benefit-partner-rooms` | 2026-06-10_11-51-16_0087 (the full-size original) | membership band — "Partner rooms" |
 | `benefit-guest-passes` | influencer-tiktok-dinner51 | membership band — "Guest passes" |
-| `benefit-directory` | pexels-bertellifotografia-18999568 (Pexels stock) | membership band — "The directory" |
+| `benefit-directory` | influencer-tiktok-dinner109 | membership band — "The directory" |
 | `benefit-ask-the-room` | 2026-06-10_17-37-37_2225 (the full-size original, cut 3:2 at the face) | membership band — "Ask the room" |
 | `benefit-the-house` | 4F0A1403 | not shown: "The House" is a pale blue "coming soon" tile for now |
 | `benefit-founding-members` | 2026-06-11_12-32-57_2991 (the 4000px original) | membership band — "Founding members" |
