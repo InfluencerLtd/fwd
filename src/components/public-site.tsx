@@ -121,7 +121,7 @@ export function PublicSite() {
                     the site has: at the 34px floor the phrase is about 250px
                     against 327px of usable width on a 375px phone, and the
                     column only gets wider from there. */}
-                <h2 className="fwd-reveal fwd-h2 whitespace-nowrap">
+                <h2 className="fwd-reveal fwd-h2 whitespace-nowrap normal-case!">
                   {MEETING_OF_MINDS.heading}
                 </h2>
                 <p className="fwd-reveal fwd-standfirst mt-7 text-ink">
@@ -152,6 +152,7 @@ export function PublicSite() {
              ended up with a mask two revisions behind everyone else's. */}
         <PageClose
           heading={WAY_IN.heading}
+          sentence
           note={WAY_IN.note}
           photo="closing"
           photoBrief={IMAGERY.statement}

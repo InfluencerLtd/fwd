@@ -233,7 +233,7 @@ export const CASE = {
 
 export const WAY_IN = {
   /** DRAFT. An invitation rather than a description of the process. */
-  heading: "introduce yourself",
+  heading: "Introduce yourself",
   /** DRAFT. */
   note: "Every application is reviewed personally, with membership intentionally curated.",
 } as const;
@@ -380,7 +380,7 @@ export const MEMBERSHIP = {
 } as const;
 
 export const MEETING_OF_MINDS = {
-  heading: "meeting of minds",
+  heading: "Meeting of minds",
   /** DRAFT. */
   standfirst: "The right introduction can [[change everything]].",
   body: [

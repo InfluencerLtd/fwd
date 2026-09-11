@@ -46,7 +46,11 @@ export function BriefingSubmit({
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-10 min-[860px]:grid-cols-2 min-[860px]:items-start min-[860px]:gap-16">
           <div>
-            <h2 className="fwd-reveal fwd-h2">{heading}</h2>
+            {/* Sentence case: the first letter capital, so "the briefing" reads
+                "The briefing" here while the navigation keeps its own label. */}
+            <h2 className="fwd-reveal fwd-h2 normal-case!">
+              {heading.charAt(0).toUpperCase() + heading.slice(1)}
+            </h2>
           </div>
 
           <div>
