@@ -61,7 +61,7 @@ export default function MembershipPage() {
             <div className="relative inline-block">
               <PhotoScrim />
               <h1 className="fwd-statement text-photo-ink normal-case!">
-                <MarkedText text={MEMBERSHIP_PAGE.heading} />
+                <MarkedText text={`${MEMBERSHIP_PAGE.heading}.`} dot />
               </h1>
             </div>
             {/* The members' door was here, and has gone with every other

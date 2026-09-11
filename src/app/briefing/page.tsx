@@ -50,6 +50,8 @@ export default function BriefingPage() {
               the heading capitalises it rather than the name changing. */}
           <h1 className="fwd-enter fwd-statement normal-case!">
             {BRIEFING.heading.charAt(0).toUpperCase() + BRIEFING.heading.slice(1)}
+            {/* The logo's full stop, in the deep blue on this light ground. */}
+            <span className="fwd-dot">.</span>
           </h1>
 
           {/* On screen before anybody scrolls, so these enter on load rather
