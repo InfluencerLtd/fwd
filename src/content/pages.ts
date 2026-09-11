@@ -78,10 +78,9 @@ export const BRIEFING = {
   /** DRAFT. */
   lead: [
     "Four times a year, to members only. What is actually changing in the creator economy, from the people in a position to know it rather than the people quickest to write about it.",
-    "It is short. It is not a roundup, it does not chase the news cycle, and nothing in it is written to be shared.",
   ],
   inside: {
-    heading: "what is in it",
+    heading: "What is in it",
     /** DRAFT. Four pillars, in the shape of the reference site's. */
     items: [
       {
@@ -104,7 +103,7 @@ export const BRIEFING = {
   },
   /** Members only, so the page cannot end in a sign-up form. It ends in the ask. */
   closing: {
-    heading: "members only",
+    heading: "Members only",
   },
 } as const;
 
@@ -168,7 +167,7 @@ export const ABOUT_PAGE = {
     // that reads at the end of a sentence this size.
     "This is where the creator economy [[comes together|circle]] to shape\u00a0what happens [[next|double]].",
   how: {
-    heading: "how it works",
+    heading: "How it works",
     /** DRAFT. */
     items: [
       {
@@ -200,7 +199,7 @@ export const ABOUT_PAGE = {
    * clicked through because they want to know what this is.
    */
   ambition: {
-    heading: "why forward",
+    heading: "Why Forward",
     /** From the positioning document. */
     body: [
       "You see something good and you forward it. Not to everyone, just to the handful of people whose take you actually want on it.",

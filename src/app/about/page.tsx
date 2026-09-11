@@ -209,7 +209,7 @@ export default function ClubPage() {
            chosen to find out what this is. */}
       <section className="fwd-dark fwd-on-dark fwd-grain fwd-section px-6">
         <div className="relative z-1 mx-auto grid max-w-6xl gap-y-12 lg:grid-cols-12 lg:gap-x-16">
-          <h2 className="fwd-reveal fwd-h2 col-span-full text-photo-ink lg:col-span-4">
+          <h2 className="fwd-reveal fwd-h2 col-span-full text-photo-ink lg:col-span-4 normal-case!">
             {ABOUT_PAGE.ambition.heading}
           </h2>
 
@@ -240,7 +240,7 @@ export default function ClubPage() {
       {/* ---- How it works, as a numbered index -------------------------- */}
       <section className="fwd-section bg-surface-alt px-6">
         <div className="mx-auto max-w-6xl">
-          <h2 className="fwd-reveal fwd-h2">{ABOUT_PAGE.how.heading}</h2>
+          <h2 className="fwd-reveal fwd-h2 normal-case!">{ABOUT_PAGE.how.heading}</h2>
 
           <ol className="fwd-stagger mt-14 sm:mt-20">
             {ABOUT_PAGE.how.items.map((item, index) => (

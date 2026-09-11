@@ -81,20 +81,23 @@ export default function BriefingPage() {
           <p className="fwd-reveal fwd-standfirst col-span-full text-ink lg:col-span-6">
             {opening}
           </p>
-          <div className="col-span-full space-y-6 lg:col-span-5 lg:col-start-8 lg:self-end">
-            {rest.map((paragraph) => (
-              <p key={paragraph} className="fwd-reveal fwd-body text-ink-muted">
-                {paragraph}
-              </p>
-            ))}
-          </div>
+          {/* Only when there is more than the opening line. */}
+          {rest.length > 0 && (
+            <div className="col-span-full space-y-6 lg:col-span-5 lg:col-start-8 lg:self-end">
+              {rest.map((paragraph) => (
+                <p key={paragraph} className="fwd-reveal fwd-body text-ink-muted">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
       {/* ---- The contents ----------------------------------------------- */}
       <section className="fwd-section bg-surface-alt px-6">
         <div className="mx-auto max-w-6xl">
-          <h2 className="fwd-reveal fwd-h2">{BRIEFING.inside.heading}</h2>
+          <h2 className="fwd-reveal fwd-h2 normal-case!">{BRIEFING.inside.heading}</h2>
 
           <ol className="fwd-stagger mt-14 sm:mt-20">
             {BRIEFING.inside.items.map((item, index) => (
@@ -125,6 +128,7 @@ export default function BriefingPage() {
 
       <PageClose
         heading={BRIEFING.closing.heading}
+        sentence
         photo="briefing"
         photoBrief={IMAGERY.briefingClose}
       />

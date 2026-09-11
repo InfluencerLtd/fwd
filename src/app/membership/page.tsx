@@ -60,7 +60,7 @@ export default function MembershipPage() {
                 being fine the moment a real one arrives. */}
             <div className="relative inline-block">
               <PhotoScrim />
-              <h1 className="fwd-statement text-photo-ink">
+              <h1 className="fwd-statement text-photo-ink normal-case!">
                 <MarkedText text={MEMBERSHIP_PAGE.heading} />
               </h1>
             </div>
@@ -118,7 +118,7 @@ export default function MembershipPage() {
               asked for at desktop. */}
           <section className="fwd-section-compact px-6">
             <div className="mx-auto max-w-4xl text-center">
-              <h2 className="fwd-reveal fwd-h2 text-photo-ink">
+              <h2 className="fwd-reveal fwd-h2 text-photo-ink normal-case!">
                 {MEMBERSHIP_PAGE.closing.heading}
               </h2>
               {/* The same dialog the header opens, not a second form.

@@ -725,7 +725,7 @@ export const MEMBERSHIP_PAGE = {
    * page twice in one screen. This says something instead, and the h1 below
    * still does the naming.
    */
-  heading: "behind [[closed]] doors",
+  heading: "Behind [[closed]] doors",
 
   /**
    * Not printed anywhere. It names the row of benefit tiles for a screen
@@ -750,7 +750,7 @@ export const MEMBERSHIP_PAGE = {
    * log in button in the header now covers.
    */
   closing: {
-    heading: "ready to apply?",
+    heading: "Ready to apply?",
   },
 
   /**
