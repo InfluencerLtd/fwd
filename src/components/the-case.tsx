@@ -40,7 +40,9 @@ export function TheCase() {
           {/* Seven of twelve columns. The heading is the loudest thing on the
               page after the wordmark itself, and it is left-aligned so the
               rag falls where the reading starts. */}
-          <h2 className="fwd-rise fwd-statement col-span-full text-ink lg:col-span-7">
+          {/* normal-case! keeps the capital E: the statement style lowercases
+              everything, and this line is a sentence. */}
+          <h2 className="fwd-rise fwd-statement col-span-full text-ink normal-case! lg:col-span-7">
             <MarkedText text={CASE.heading} dot />
           </h2>
 
