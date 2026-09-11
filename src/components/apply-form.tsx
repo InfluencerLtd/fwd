@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useId } from "react";
+import { useActionState, useEffect, useId, useRef } from "react";
 import { submitMembershipApplication } from "@/app/actions";
 import { initialApplicationState } from "@/lib/form-state";
 import { APPLY } from "@/content/site";
@@ -52,6 +52,16 @@ export function ApplyForm({
     summary: useId(),
   };
 
+  const firstField = useRef<HTMLInputElement>(null);
+  // THE CURSOR IS ALREADY WAITING, the page carrying on the gesture the
+  // blinking full stop starts. Desktop only: on a phone it would throw the
+  // keyboard up before anybody asked for it.
+  useEffect(() => {
+    if (window.matchMedia("(pointer: fine)").matches) {
+      firstField.current?.focus({ preventScroll: true });
+    }
+  }, []);
+
   const shared = APPLY.fields.shared;
   const words = path === "creator" ? APPLY.fields.creator : APPLY.fields.brand;
   const errors = state.status === "error" ? state.fieldErrors : {};
@@ -102,6 +112,7 @@ export function ApplyForm({
       <div className="grid gap-6 sm:grid-cols-2">
         <Field id={ids.name} label={shared.name} error={errors.name}>
           <input
+            ref={firstField}
             id={ids.name}
             name="name"
             placeholder={fieldHint(shared.name)}

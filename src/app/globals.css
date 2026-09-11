@@ -137,6 +137,15 @@ h1, h2, h3, h4 {
 }
 
 /* Visible, on-brand focus ring for keyboard users. */
+/* SELECTED TEXT IN THE WORDMARK BLUE. Selecting a line is the first step of
+   forwarding it, so it is marked in the brand's own colour. The near-black on
+   the ice blue reads on both grounds, light and dark, so one rule covers the
+   whole site. */
+::selection {
+  background-color: var(--fwd-accent-on-dark);
+  color: var(--fwd-photo-ground);
+}
+
 :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
   outline: 2px solid var(--fwd-accent);
   outline-offset: 3px;
@@ -1207,6 +1216,15 @@ select.fwd-field {
   .fwd-logo-dot {
     animation: fwd-dot-blink 1.4s ease-in-out infinite;
   }
+}
+
+/* THE SENTENCE IS FINISHED. The dot blinks like a cursor waiting for someone
+   to write. Once they have signed up, it has what it was waiting for: the
+   blinking stops and the full stop stays lit. Keyed off the same success
+   message as the rest of the signed-up page (see .fwd-holding above). */
+.fwd-holding:has([data-signup-done]) .fwd-logo-dot {
+  animation: none;
+  opacity: 1;
 }
 
 /* ===========================================================================

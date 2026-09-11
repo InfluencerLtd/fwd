@@ -81,6 +81,10 @@ export function ApplyPanel() {
           <button
             key={id}
             type="button"
+            // Focus opens on the first choice, not on the close button the
+            // dialog would otherwise land on. The panel only ever renders
+            // inside the apply dialog, so this never pulls a page about.
+            autoFocus={id === "creator"}
             onClick={() => setPath(id)}
             className="group flex items-center justify-between gap-4 rounded-2xl border border-border bg-surface-raised p-6 text-left font-body transition-colors duration-300 hover:border-accent-on-dark hover:bg-accent-on-dark/25 focus-visible:border-accent-on-dark"
           >

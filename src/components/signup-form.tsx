@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useId } from "react";
+import { useActionState, useEffect, useId, useRef } from "react";
 import { signUpForUpdates } from "@/app/actions";
 import { initialSignupState } from "@/lib/form-state";
 import { HOLDING } from "@/content/site";
@@ -63,6 +63,16 @@ export function SignupForm({
     signUpForUpdates,
     initialSignupState,
   );
+  const firstField = useRef<HTMLInputElement>(null);
+  // THE CURSOR IS ALREADY WAITING, the page carrying on the gesture the
+  // blinking full stop starts. Desktop only: on a phone it would throw the
+  // keyboard up before anybody asked for it.
+  useEffect(() => {
+    if (window.matchMedia("(pointer: fine)").matches) {
+      firstField.current?.focus({ preventScroll: true });
+    }
+  }, []);
+
   const emailId = useId();
   const messageId = useId();
 
@@ -98,6 +108,7 @@ export function SignupForm({
           {HOLDING.emailLabel}
         </label>
         <input
+          ref={firstField}
           id={emailId}
           name="email"
           type="email"
