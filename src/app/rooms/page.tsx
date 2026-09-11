@@ -82,11 +82,11 @@ export default function RoomsPage() {
           because they are not a sequence. */}
       <section className="fwd-section bg-surface-alt px-6">
         <div className="mx-auto max-w-6xl">
-          <h2 className="fwd-rise fwd-statement max-w-4xl text-ink">
+          <h2 className="fwd-rise fwd-statement max-w-4xl text-ink normal-case!">
             <MarkedText text={ROOMS.claim} dot />
           </h2>
 
-          <h3 className="fwd-reveal fwd-h3 mt-20 text-ink sm:mt-24 lg:mt-32">
+          <h3 className="fwd-reveal fwd-h3 mt-20 text-ink normal-case! sm:mt-24 lg:mt-32">
             {ROOMS.formatsHeading}
           </h3>
           <ul className="fwd-stagger mt-10 grid gap-x-10 sm:grid-cols-2 lg:grid-cols-4">

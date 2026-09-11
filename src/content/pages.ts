@@ -266,7 +266,7 @@ export const ROOMS = {
   ],
   /** The big line, set like the case on the home page. */
   claim: "Every gathering is curated [[by hand]].",
-  formatsHeading: "what that can look like",
+  formatsHeading: "What that can look like",
   /**
    * Not a sequence, so not numbered. The last one is the open door, and its
    * line is also the page's closing heading.
