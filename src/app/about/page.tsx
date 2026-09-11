@@ -135,7 +135,7 @@ export default function ClubPage() {
               scale lowercases what it is given, which is right for a heading
               and wrong for a sentence with "This" at the front of it. */}
           <p className="fwd-reveal fwd-h2 col-span-full normal-case lg:col-span-6">
-            <MarkedText text={ABOUT_PAGE.statement} dot />
+            <MarkedText text={ABOUT_PAGE.statement} />
           </p>
 
           {/* Starting at 8 rather than 7 leaves a column of air between the
