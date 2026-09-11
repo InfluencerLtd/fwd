@@ -73,7 +73,7 @@ export function PublicSite() {
              line and the reading happens underneath it. */}
         <section id="membership" className="fwd-section scroll-mt-20 px-6">
           <div className="mx-auto max-w-6xl">
-            <h2 className="fwd-reveal fwd-h2 max-w-4xl">{MEMBERSHIP.heading}</h2>
+            <h2 className="fwd-reveal fwd-h2 max-w-4xl normal-case!">{MEMBERSHIP.heading}</h2>
 
             <div className="mt-12 grid gap-x-16 gap-y-6 sm:mt-16 md:grid-cols-2">
               {/* whitespace-pre-line so a newline in the content file is a

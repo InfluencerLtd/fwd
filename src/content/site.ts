@@ -493,7 +493,7 @@ export const APPLY = {
    * The button on the home page and on the membership page's dark top. Both
    * lead to the membership page, so it names the destination.
    */
-  cta: "apply for membership",
+  cta: "Apply for membership",
 
   /**
    * The button that opens the form itself, at the bottom of the membership
@@ -600,7 +600,7 @@ export const NAV = {
   /** The three-line button, and the panel it opens. */
   menu: "menu",
   menuClose: "close",
-  home: "home",
+  home: "Home",
   membership: "membership",
   signIn: "sign in to The House",
   appearance: "light or dark",
