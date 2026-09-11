@@ -29,7 +29,7 @@ export const metadata: Metadata = {
  * say does not need to fill the width.
  */
 export default function ClubPage() {
-  const [opening, ...rest] = ABOUT_PAGE.lead;
+  const [, ...rest] = ABOUT_PAGE.lead;
 
   return (
     <PageShell>
@@ -106,17 +106,12 @@ export default function ClubPage() {
                 that reaches past it. */}
             {/* THE SAME SIZE AS EVERY OTHER PAGE'S HEADING. The full sentence
                 was the heading, at the smaller section size because it runs to
-                two lines; now a short heading carries the statement size and
-                the sentence sits under it as a standfirst. */}
+                two lines; now a short heading carries the statement size on
+                its own. The sentence still describes the page to search. */}
             <h1 className="fwd-enter fwd-statement normal-case! text-photo-ink">
               <MarkedText text={ABOUT_PAGE.headline} dot />
             </h1>
-            <p
-              className="fwd-enter fwd-standfirst mt-6 max-w-2xl text-photo-ink/85"
-              style={{ "--fwd-enter-delay": "260ms" } as React.CSSProperties}
-            >
-              <MarkedText text={opening} />
-            </p>
+
           </div>
         </div>
         </PhotoPlaceholder>
