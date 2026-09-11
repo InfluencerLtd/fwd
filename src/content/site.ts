@@ -247,7 +247,7 @@ export const MEMBERSHIP = {
    *
    * This one names the only two things membership actually is.
    */
-  heading: "A year of rooms, and the people in\u00a0them.",
+  heading: "A year of rooms, and the people in\u00a0them",
 
   /**
    * DRAFT. On the home page this is the whole of it: a heading, this, and the
