@@ -210,7 +210,8 @@ export default function ClubPage() {
       <section className="fwd-dark fwd-on-dark fwd-grain fwd-section px-6">
         <div className="relative z-1 mx-auto grid max-w-6xl gap-y-12 lg:grid-cols-12 lg:gap-x-16">
           <h2 className="fwd-reveal fwd-h2 col-span-full text-photo-ink lg:col-span-4 normal-case!">
-            {ABOUT_PAGE.ambition.heading}
+            {/* Ends on the logo's full stop, ice blue on this dark ground. */}
+            <MarkedText text={`${ABOUT_PAGE.ambition.heading}.`} dot />
           </h2>
 
           <div className="col-span-full space-y-6 lg:col-span-6 lg:col-start-6">
