@@ -7,6 +7,7 @@ import { APPLY } from "@/content/site";
 import { MEMBER_GROUPS } from "@/lib/brand";
 import { Button } from "@/components/button";
 import { fieldHint } from "@/lib/field-hint";
+import { MarkedText } from "@/components/marked";
 
 /**
  * The membership application.
@@ -74,7 +75,7 @@ export function ApplyForm({
           aria-live="polite"
           className="max-w-xl font-body text-lg leading-relaxed text-ink"
         >
-          {state.message}
+          <MarkedText text={state.message} dot />
         </p>
         {onDone ? (
           <Button type="button" size="lg" className="mt-8" onClick={onDone}>

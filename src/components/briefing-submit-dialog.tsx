@@ -69,7 +69,7 @@ export function BriefingSubmitDialog({ className }: { className: string }) {
       >
         <div className="flex max-h-[inherit] flex-col">
           <div className="flex items-start justify-between gap-6 border-b border-border px-6 py-5 sm:px-8">
-            <h2 className="text-2xl">{BRIEFING_SUBMIT.form.heading}</h2>
+            <h2 className="text-2xl normal-case!">{BRIEFING_SUBMIT.form.heading}</h2>
             <button
               type="button"
               onClick={hide}

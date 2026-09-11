@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState, useId } from "react";
+import { MarkedText } from "@/components/marked";
 import { askForIntroduction } from "@/app/clubhouse/directory/actions";
 import { initialIntroState } from "@/lib/form-state";
 import { INTRO } from "@/content/clubhouse";
@@ -34,7 +35,7 @@ export function IntroForm({
         aria-live="polite"
         className="mt-4 font-body text-[15px] leading-relaxed text-ink"
       >
-        {INTRO.success}
+        <MarkedText text={INTRO.success} dot />
       </p>
     );
   }

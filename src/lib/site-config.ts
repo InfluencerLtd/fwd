@@ -68,3 +68,12 @@ export const EARLY_ACCESS_COOKIE = "fwd-early-access";
  */
 export const ADMIN_ENABLED = Boolean(process.env.ADMIN_PASSWORD);
 export const ADMIN_COOKIE = "fwd-admin";
+
+/**
+ * THE CLASS OF 2026 PAGE IS PRIVATE UNTIL IT IS REVEALED.
+ *
+ * The founding group is curated, not applied for, and it is announced as its
+ * own campaign in January 2027. Until then /class-of-2026 answers with the 404
+ * page. Set this to true on the day of the reveal.
+ */
+export const CLASS_OF_2026_PUBLIC = false;

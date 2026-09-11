@@ -33,7 +33,7 @@ export const SIGN_IN = {
   codeLabel: "code",
   /* The label is short and this is where the detail goes: six is worth knowing
      while you are typing, and it does not need to be in the label as well. */
-  codePlaceholder: "enter six digit code",
+  codePlaceholder: "......",
   codeSubmit: "sign in",
   checking: "checking",
   resend: "use a different address",

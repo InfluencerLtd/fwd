@@ -7,6 +7,7 @@ import { HOLDING } from "@/content/site";
 import type { SignupSource } from "@/lib/store/signups";
 import { Button } from "@/components/button";
 import { fieldHint } from "@/lib/field-hint";
+import { MarkedText } from "@/components/marked";
 
 /**
  * The email capture. The holding page is the only thing that uses it — the
@@ -87,7 +88,8 @@ export function SignupForm({
            once somebody has signed up — see .fwd-holding in globals.css. */
         data-signup-done=""
       >
-        {state.message}
+        {/* Ends on the logo's full stop: the sentence is finished. */}
+        <MarkedText text={state.message} dot />
       </p>
     );
   }

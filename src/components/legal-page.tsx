@@ -41,7 +41,7 @@ export function LegalPage({
           >
             {FOOTER.back}
           </Link>
-          <h1 className="mt-8 text-4xl sm:text-5xl">{heading}</h1>
+          <h1 className="mt-8 text-4xl normal-case! sm:text-5xl">{heading}</h1>
           <div className="mt-8 space-y-5">
             {body.map((line) => (
               <p

@@ -977,6 +977,27 @@ textarea.fwd-field {
 .fwd-on-dark .fwd-field::placeholder {
   color: color-mix(in srgb, var(--fwd-photo-ink) 70%, transparent);
 }
+/* The typing cursor in the wordmark blue on dark fields, the same blue as the
+   full stop that blinks above the teaser page's email field. */
+.fwd-on-dark .fwd-field {
+  caret-color: var(--fwd-accent-on-dark);
+}
+
+/* A dialog is a light surface even when its button lives in a dark section,
+   and it inherits from wherever that button sits. Put the caret and the full
+   stop back to their light-ground colours inside it, or both disappear. */
+.fwd-dialog .fwd-field,
+.fwd-on-dark .fwd-dialog .fwd-field {
+  caret-color: auto;
+}
+/* Two classes deep so it outranks the dark-ground rule for .fwd-dot, which
+   comes later in this file. */
+.fwd-dialog .fwd-dot,
+.fwd-on-dark .fwd-dialog .fwd-dot,
+.fwd-dark .fwd-dialog .fwd-dot {
+  color: var(--fwd-accent);
+}
+
 .fwd-dialog .fwd-field::placeholder {
   color: var(--fwd-ink-muted);
 }

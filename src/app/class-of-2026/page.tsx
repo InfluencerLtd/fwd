@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { CLASS_OF_2026_PUBLIC } from "@/lib/site-config";
 import { PageShell } from "@/components/page-shell";
 import { ApplyDialog } from "@/components/apply-dialog";
 import { CLASS_OF_2026 } from "@/content/pages";
-import { APPLY } from "@/content/site";
+import { APPLY, NOT_FOUND } from "@/content/site";
 
-export const metadata: Metadata = {
-  title: CLASS_OF_2026.title,
-  description: CLASS_OF_2026.lead[0],
-};
+// While the page is private it answers as the 404 page, name and all, so the
+// browser tab does not give away what is behind it.
+export const metadata: Metadata = CLASS_OF_2026_PUBLIC
+  ? { title: CLASS_OF_2026.title, description: CLASS_OF_2026.lead[0] }
+  : { title: NOT_FOUND.title, robots: { index: false } };
 
 /**
  * The class of 2026 — the announcement page.
@@ -30,6 +33,9 @@ export const metadata: Metadata = {
  * at the bottom as well.
  */
 export default function ClassOf2026Page() {
+  // Private until the reveal: see CLASS_OF_2026_PUBLIC in site-config.ts.
+  if (!CLASS_OF_2026_PUBLIC) notFound();
+
   return (
     <PageShell>
       {/* ---- The announcement ------------------------------------------- */}
@@ -82,7 +88,7 @@ export default function ClassOf2026Page() {
       {/* ---- What the first cohort gets --------------------------------- */}
       <section className="fwd-section bg-surface-alt px-6">
         <div className="mx-auto max-w-6xl">
-          <h2 className="fwd-reveal fwd-h2 max-w-3xl">
+          <h2 className="fwd-reveal fwd-h2 max-w-3xl normal-case!">
             {CLASS_OF_2026.whatYouGet.heading}
           </h2>
 

@@ -7,9 +7,9 @@
  * bits in {curly braces} are filled in automatically:
  *
  *   {name}         the person's first name
- *   {signInUrl}    the link into The House
+ *   {signInUrl}    the link into The clubhouse
  *   {contactEmail} the fwd. email address
- *   {memberArea}   "The House"
+ *   {memberArea}   "The clubhouse"
  *   {unsubscribe}  the unsubscribe link
  *
  * House rules: American English, and no em dashes.

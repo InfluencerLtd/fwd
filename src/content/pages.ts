@@ -44,7 +44,7 @@ export const CLASS_OF_2026 = {
     "Creators, brands and platforms, in a deliberate balance. A founding cohort that is mostly one of the three is not a room, it is an audience.",
   ],
   whatYouGet: {
-    heading: "what the first cohort gets",
+    heading: "What the first cohort gets",
     /** DRAFT. */
     items: [
       "A founding member's place, which is not offered again.",
@@ -262,7 +262,7 @@ export const ROOMS = {
    * A sentence now, not a name, so it keeps its capital and its full stop (the
    * page sets it normal-case). "no" carries the circle — see marked.tsx.
    */
-  heading: "There is [[no|circle]] fixed programme.",
+  heading: "There is [[no|circle]] fixed program.",
   lead: [
     "A dinner in London one month. A closed conversation in New York the next. Drinks in Cannes because the whole industry has gathered there. Cocktail hour in Texas, a conversation in Los Angeles, or an unexpected gathering wherever our members happen to be.",
     "Forward goes where the members are, and happens when and where there is reason.",

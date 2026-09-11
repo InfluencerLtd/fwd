@@ -27,8 +27,9 @@
  *   - `by influencer` is a signature, not a logo. It always sits apart from the
  *     mark in the layout and is always visually quieter. Never join the two into
  *     a single phrase in a sentence.
- *   - The member area is `The House`. Never "portal", never "dashboard".
- *   - The word "club" is not used anywhere a visitor or member can read.
+ *   - The member area is `The clubhouse`. Never "portal", never "dashboard".
+ *   - The word "club" is not used anywhere a visitor or member can read,
+ *     except in that one name.
  *     Where a name works, use the mark. Where a common noun is needed, the
  *     copy says "the room", which is already its central image.
  */
@@ -48,7 +49,7 @@ export const BRAND = {
    */
   endorsement: "by Influencer",
   /** The gated member area. */
-  memberArea: "The House",
+  memberArea: "The clubhouse",
 } as const;
 
 export const BENEFITS = {
@@ -115,7 +116,7 @@ function resolveSiteUrl(): string {
 }
 
 export const CONTACT = {
-  domain: "[DOMAIN NOT YET REGISTERED]",
+  domain: "fwd.influencer.com",
   email: "fwd@influencer.com",
   /** Absolute, no trailing slash. Used for links in emails and share images. */
   siteUrl: resolveSiteUrl(),

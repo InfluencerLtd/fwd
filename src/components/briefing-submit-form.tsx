@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState, useId } from "react";
+import { MarkedText } from "@/components/marked";
 import { sendToBriefing } from "@/app/actions";
 import { initialBriefingSubmitState } from "@/lib/form-state";
 import { BRIEFING_SUBMIT } from "@/content/site";
@@ -51,7 +52,7 @@ export function BriefingSubmitForm({ onDone }: { onDone?: () => void } = {}) {
           aria-live="polite"
           className="font-body text-[17px] leading-relaxed text-ink"
         >
-          {copy.success}
+          <MarkedText text={copy.success} dot />
         </p>
         {onDone ? (
           <Button type="button" variant="quiet" onClick={onDone} className="mt-7">

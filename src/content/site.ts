@@ -323,18 +323,11 @@ export const MEMBERSHIP = {
     },
     {
       /**
-       * THE SHEET THIS CAME FROM CALLED THIS ONE "The Clubhouse", and it is
-       * "The House" here on purpose. src/lib/brand.ts sets two naming rules
-       * that it would break: the member area is always The House, and the word
-       * "club" is not used anywhere a visitor or member can read. Calling it
-       * something else on this one card would give the same room two names on
-       * the same site. If the name really is changing, change it in brand.ts
-       * and it changes everywhere, including here.
+       * The members' area, named once in src/lib/brand.ts: The clubhouse,
+       * from 11 September 2026 (it was The House). One name everywhere.
        */
       id: "the-house",
-      // The tile's own wording. BRAND.memberArea ("The House") still names
-      // the members' area everywhere else, including the sign-in emails.
-      title: "The clubhouse",
+      title: BRAND.memberArea,
       summary: "The members\u2019 area. Private, online, always open.",
       /** Not built yet: the tile is pale blue with this on it, no photograph. */
       comingSoon: "Coming soon",
@@ -342,7 +335,7 @@ export const MEMBERSHIP = {
     {
       id: "founding-members",
       /** PLACEHOLDER. The sheet had a headline and no line under it. */
-      summary: "[FOUNDING MEMBERS: this card has no line yet]",
+      summary: "The first people in the room, chosen before the doors opened.",
       title: "Founding members",
     },
     {
@@ -357,7 +350,7 @@ export const MEMBERSHIP = {
       title: "The briefing",
       summary:
         "Quarterly, members only. What is actually changing, from people in a position to know.",
-      /** Not out yet: a pale blue tile like The House, no photograph. */
+      /** Not out yet: a pale blue tile like The clubhouse, no photograph. */
       comingSoon: "Coming soon",
     },
     {
@@ -373,7 +366,7 @@ export const MEMBERSHIP = {
     {
       id: "global-access",
       /** PLACEHOLDER. The sheet had a headline and no line under it. */
-      summary: "[GLOBAL ACCESS: this card has no line yet]",
+      summary: "Rooms in London, New York and Cannes, and wherever members happen to be.",
       title: "Global access",
     },
   ],
@@ -443,7 +436,7 @@ export const BRIEFING_SUBMIT = {
    * promise a person cannot see is not a promise.
    */
   form: {
-    heading: "send something in",
+    heading: "Send something in",
     /** DRAFT. */
     intro:
       "For members. A shift you have noticed, something that has stopped working, or a question worth putting to the rest of the room.",
@@ -481,7 +474,7 @@ export const APPLY = {
      * The dialog's title, and the name a screen reader announces when it
      * opens. The same words as the button that opened it, so the two match.
      */
-    heading: "apply for membership",
+    heading: "Apply for membership",
     /** DRAFT. */
     intro: "Memberships are by application only.",
     submit: "send application",
@@ -602,7 +595,7 @@ export const NAV = {
   menuClose: "close",
   home: "Home",
   membership: "membership",
-  signIn: "sign in to The House",
+  signIn: "sign in to The clubhouse",
   appearance: "light or dark",
 } as const;
 
@@ -774,4 +767,14 @@ export const MEMBERSHIP_PAGE = {
     intro:
       "They open in windows rather than all year. Leave your address and we will tell you when the next one opens.",
   },
+} as const;
+
+/**
+ * The page for an address that does not exist. The wordmark is shown without
+ * its full stop, which is the whole message: something is missing here.
+ */
+export const NOT_FOUND = {
+  title: "Not found",
+  heading: "This page does not exist.",
+  back: "Go to the home page",
 } as const;

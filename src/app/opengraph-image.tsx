@@ -4,27 +4,26 @@ import path from "node:path";
 import { BRAND } from "@/lib/brand";
 
 /**
- * The picture that appears when the link is pasted into email, WhatsApp,
- * Slack or LinkedIn. This link will be shared constantly, so it is worth
- * getting right: it is the first impression for most people.
+ * The picture a link to the site unfurls with, on LinkedIn, iMessage and the
+ * rest.
  *
- * It is generated from code rather than being a saved image file, so it always
- * matches the identity. The typeface is included in the project rather than
- * fetched from the internet, so building the site never depends on somebody
- * else's server being up.
+ * THE DELIVERED LOCKUP, NOT A TYPESET STAND-IN. This used to set "fwd." and
+ * "by influencer" in the serif, from before the artwork arrived. It now draws
+ * public/brand/fwd-lockup.svg itself, in the wordmark blue on the site's warm
+ * near-black, so a shared link shows exactly the mark the site does.
  */
-
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 export const alt = `${BRAND.markShort} ${BRAND.endorsement}`;
 
-const FONT_DIR = path.join(process.cwd(), "src", "assets", "fonts");
-
 export default async function OpengraphImage() {
-  const [regular, italic] = await Promise.all([
-    readFile(path.join(FONT_DIR, "InstrumentSerif-Regular.ttf")),
-    readFile(path.join(FONT_DIR, "InstrumentSerif-Italic.ttf")),
-  ]);
+  const svg = (
+    await readFile(path.join(process.cwd(), "public", "brand", "fwd-lockup.svg"), "utf8")
+  ).replaceAll("currentColor", "#b1e3fc");
+  const src = `data:image/svg+xml;base64,${Buffer.from(svg).toString("base64")}`;
+  // The lockup's own proportions, from its viewBox.
+  const width = 560;
+  const height = Math.round((width * 214.87) / 355.96);
 
   return new ImageResponse(
     (
@@ -33,52 +32,15 @@ export default async function OpengraphImage() {
           width: "100%",
           height: "100%",
           display: "flex",
-          flexDirection: "column",
-          justifyContent: "flex-end",
-          // The hero ground, which stays dark in every context.
-          backgroundColor: "#0b100c",
-          padding: "72px 80px",
+          alignItems: "center",
+          justifyContent: "center",
+          backgroundColor: "#171310",
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            width: "100%",
-            alignItems: "flex-end",
-            justifyContent: "space-between",
-          }}
-        >
-          <span
-            style={{
-              fontFamily: "Instrument Serif",
-              fontSize: 220,
-              lineHeight: 0.85,
-              // The pale ice blue, on a dark ground where it belongs.
-              color: "#b1e3fc",
-            }}
-          >
-            {BRAND.markShort}
-          </span>
-          <span
-            style={{
-              fontFamily: "Instrument Serif",
-              fontStyle: "italic",
-              fontSize: 34,
-              color: "rgba(242, 240, 236, 0.7)",
-              paddingBottom: 18,
-            }}
-          >
-            {BRAND.endorsement}
-          </span>
-        </div>
+        {/* The image's alt text is `alt` above; this inner img is decorative. */}
+        <img src={src} width={width} height={height} alt="" />
       </div>
     ),
-    {
-      ...size,
-      fonts: [
-        { name: "Instrument Serif", data: regular, style: "normal", weight: 400 },
-        { name: "Instrument Serif", data: italic, style: "italic", weight: 400 },
-      ],
-    },
+    { ...size },
   );
 }
