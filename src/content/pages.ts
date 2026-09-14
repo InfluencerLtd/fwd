@@ -202,11 +202,22 @@ export const ABOUT_PAGE = {
    * clicked through because they want to know what this is.
    */
   ambition: {
-    heading: "Why Forward",
+    /**
+     * IT WAS "WHY FORWARD" AND THE HOME PAGE HAS THAT NOW, with the name
+     * story under it (NAME_STORY in src/content/site.ts). Two pages with the
+     * same heading over different copy is its own kind of confusing, so this
+     * section is named for what is left in it: what the room is for.
+     */
+    heading: "What it is for",
     /** From the positioning document. */
+    /**
+     * THE NAME STORY HAS MOVED TO THE HOME PAGE, word for word, as
+     * NAME_STORY in src/content/site.ts (first-impression critique,
+     * 14 September 2026). It was the strongest writing on the site and it was
+     * on the second page. It is not repeated here: two pages carrying the
+     * same paragraph is what the same critique took out of the offer copy.
+     */
     body: [
-      "You see something good and you forward it. Not to everyone, just to the handful of people whose take you actually want on it.",
-      "That is the whole idea. A small group of people worth forwarding things to, in the same place.",
       "It is a space designed to move the industry forward — the people shaping culture, creativity, media and influence, in a room together to exchange ideas, challenge thinking and make connections that matter.",
       "Somewhere to step outside the day to day, have the conversations that are hard to have anywhere else, and work out where this is all going next.",
     ],
@@ -296,6 +307,21 @@ export const ROOMS = {
     { name: "On the road", line: "Taking Forward into the places and moments where the industry is already moving" },
     { name: "And whatever comes next", line: "The format follows the conversation, not the other way around" },
   ],
+  /**
+   * PROOF THAT A ROOM HAS EVER HAPPENED. The page described rooms in the
+   * future tense and showed no evidence any had taken place, which reads as
+   * aspiration (first-impression critique, 14 September 2026).
+   *
+   * ONLY WHAT IS ON THE RECORD. Cannes Lions 2026 is where Forward started,
+   * and the dinners there happened. No headcounts, no dates and no partner
+   * names until somebody hands them over and they are cleared, because a
+   * number nobody can stand behind is worse than no number.
+   */
+  origin: {
+    heading: "Where this started",
+    body: "Forward began at Cannes Lions 2026, as a collective identity and a handful of private dinners: brands, creators and platforms around the same table, off the record, while the rest of the industry was on stage.",
+  },
+
   closing: {
     /** A sentence, so the close keeps its capital: see `sentence` on PageClose. */
     heading: "The format follows the conversation, not the other way around.",

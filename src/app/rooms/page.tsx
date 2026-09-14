@@ -105,6 +105,16 @@ export default function RoomsPage() {
         </div>
       </section>
 
+      {/* Where this started. The one piece of evidence the page can stand
+          behind today: Cannes 2026 happened. Quiet, near the end, so it reads
+          as a note rather than as a claim the page is built on. */}
+      <section className="fwd-section-compact px-6">
+        <div className="mx-auto max-w-3xl">
+          <h2 className="fwd-reveal fwd-h3 normal-case!">{ROOMS.origin.heading}</h2>
+          <p className="fwd-reveal fwd-body mt-5 text-ink-muted">{ROOMS.origin.body}</p>
+        </div>
+      </section>
+
       <PageClose
         heading={ROOMS.closing.heading}
         sentence

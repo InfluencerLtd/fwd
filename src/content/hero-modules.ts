@@ -29,7 +29,10 @@ export const HEADER_NAV: readonly { label: string; href: string | null }[] = [
   // the rooms, top to bottom — "the events" at the top, then "a seat in the
   // room", "five kinds of room". Asked for as a label change only. If what\u2019s
   // on is the word, the page and the route want to follow it.
-  { label: "What\u2019s on", href: "/rooms" },
+  // "What\u2019s on" promised listings and the page opens by saying there is no
+  // fixed programme, which deflates on arrival (first-impression critique,
+  // 14 September 2026). The label now matches what the page is about.
+  { label: "The rooms", href: "/rooms" },
   // REMOVED FROM THE NAVIGATION, NOT DELETED. /class-of-2026 still exists and
   // still works for anybody sent the link; it is off the bar until the cohort
   // is ready to be talked about publicly. Put this line back to restore it:

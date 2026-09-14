@@ -15,6 +15,7 @@ import {
   MEETING_OF_MINDS,
   NAV,
   IMAGERY,
+  NAME_STORY,
   WAY_IN,
 } from "@/content/site";
 
@@ -63,6 +64,26 @@ export function PublicSite() {
       <main id="main">
         {/* ---- 2. The case ---------------------------------------------- */}
         <TheCase />
+
+        {/* ---- 2b. Why the name -----------------------------------------
+             NEAR-BLACK, BETWEEN TWO LIGHT SECTIONS, so it reads as its own
+             beat rather than as more of the argument above it. The words are
+             the ones that were on /about (first-impression critique,
+             14 September 2026): the name is what makes this stick, and it was
+             on the second page. Short section, one idea, no button. */}
+        <section className="fwd-dark fwd-on-dark fwd-grain fwd-section-compact px-6">
+          <div className="relative z-1 mx-auto max-w-3xl text-center">
+            <h2 className="fwd-reveal fwd-h2 text-photo-ink normal-case!">
+              <MarkedText text={`${NAME_STORY.heading}.`} dot />
+            </h2>
+            <p className="fwd-reveal fwd-standfirst mt-7 text-photo-ink">
+              {NAME_STORY.body[0]}
+            </p>
+            <p className="fwd-reveal fwd-body mt-5 text-photo-ink/70">
+              {NAME_STORY.body[1]}
+            </p>
+          </div>
+        </section>
 
         {/* ---- 3. What membership is ------------------------------------
              Left-aligned, and the two paragraphs run as a pair of columns

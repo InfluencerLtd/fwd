@@ -162,6 +162,16 @@ export const HERO = {
    */
   headline: "Brands. Creators. Platforms.",
   /**
+   * WHAT IT IS, IN PLAIN WORDS. The site never said, and a first-time visitor
+   * had to assemble it from four pages (first-impression critique,
+   * 14 September 2026). It sits under the three nouns, small, so the mood the
+   * hero is built on survives being explained.
+   *
+   * NOT "CLUB". The naming rule in src/lib/brand.ts keeps that word for The
+   * clubhouse and nowhere a visitor can read it, so this says membership.
+   */
+  plain: "Forward is Influencer\u2019s private membership for the creator economy.",
+  /**
    * The hero has ONE button and its label lives in APPLY.cta, because the same
    * button appears three times down the page and they must not drift apart.
    * cta, ctaWaitlist and secondaryCta used to live here and nothing read them.
@@ -235,7 +245,13 @@ export const WAY_IN = {
   /** DRAFT. An invitation rather than a description of the process. */
   heading: "Introduce yourself",
   /** DRAFT. */
-  note: "Every application is reviewed personally, with membership intentionally curated.",
+  /**
+   * IT ANSWERS THE SILENT QUESTION. "Reviewed personally" said how we work;
+   * this says what happens to the person reading it (first-impression
+   * critique, 14 September 2026). The last clause is a promise: somebody has
+   * to reply to every application for it to stay true.
+   */
+  note: "Every application is read by a person. We keep the room balanced, so not everyone gets in, and we answer either way.",
 } as const;
 
 export const MEMBERSHIP = {
@@ -465,6 +481,24 @@ export const BRIEFING_SUBMIT = {
     notReady: "We cannot take submissions just now. Please try again shortly.",
     tooMany: "That is a few in a row. Please try again a little later.",
   },
+} as const;
+
+/* ===========================================================================
+   WHY THE NAME
+   ---------------------------------------------------------------------------
+   MOVED HERE FROM /about, WORD FOR WORD. It was the best paragraph on the site
+   and it was on the second page (first-impression critique, 14 September
+   2026). The name is what makes the brand stick, so the home page leads with
+   it. It is not on /about any more — the same words on both pages is the thing
+   we just finished taking out.
+   =========================================================================== */
+
+export const NAME_STORY = {
+  heading: "Why Forward",
+  body: [
+    "You see something good and you forward it. Not to everyone, just to the handful of people whose take you actually want on it.",
+    "That is the whole idea. A small group of people worth forwarding things to, in the same place.",
+  ],
 } as const;
 
 export const WHY = {
