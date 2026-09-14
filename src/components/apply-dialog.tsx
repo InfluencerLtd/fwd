@@ -81,7 +81,7 @@ export function ApplyDialog({
               rather than a button, so the dialog reads as part of the site
               instead of a browser form. Its text is the fixed near-black, not
               the ink token, so it holds in the dark theme too. */}
-          <div className="flex items-center justify-between gap-6 bg-accent-on-dark px-6 py-5 text-photo-ground sm:px-8">
+          <div className="relative z-10 flex items-center justify-between gap-6 bg-accent-on-dark px-6 py-5 text-photo-ground sm:px-8">
             <h2 className="text-2xl text-photo-ground normal-case! sm:text-3xl">{APPLY.open.heading}</h2>
             <button
               type="button"

@@ -39,5 +39,17 @@ export function TypeformEmbed({ id }: { id: string }) {
 
   // Held open while the form loads, so the dialog does not jump from a
   // thumb's height to the full form.
-  return <div data-tf-live={id} className="min-h-[520px]" />;
+  //
+  // ITS OWN BOX, CLIPPED. The Typeform header was seen overlapping the
+  // dialog's own heading while the form loaded (first-impression critique,
+  // 14 September 2026): the embed positions elements of its own, and without
+  // a clipping box and a stacking context of its own they can be drawn over
+  // whatever sits above them. `isolate` keeps its z-indexes inside itself and
+  // `overflow-hidden` keeps its furniture inside this box, so the worst a
+  // slow load can now do is show an empty rounded panel.
+  return (
+    <div className="relative isolate min-h-[560px] overflow-hidden rounded-2xl" >
+      <div data-tf-live={id} className="min-h-[560px]" />
+    </div>
+  );
 }

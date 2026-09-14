@@ -135,7 +135,7 @@ export const META = {
    * Keep under about 155 characters or search engines cut it off. This one is
    * 84, so there is room if the positioning line ever grows.
    */
-  description: `${POSITIONING} By influencer.`,
+  description: `${POSITIONING} By Influencer.`,
 } as const;
 
 /* ===========================================================================
@@ -216,7 +216,7 @@ export const CASE = {
   heading: "Everyone sees a [[different]] part of the same picture.",
   /** DRAFT. */
   body: [
-    "Brands have agencies. Platforms have roadmaps. Creators have audiences. All three are building the same industry and never often sit in the same room.",
+    "Brands have agencies. Platforms have roadmaps. Creators have audiences. All three are building the same industry, and they rarely sit in the same room.",
     "When they do meet it is on a stage, on a panel, or at a conference with four thousand other people in it. Those are the worst possible conditions for the conversation that actually matters.",
     "So we make the room instead. Small, off the record, and a curated guest list put together by hand.",
   ],
@@ -265,7 +265,7 @@ export const MEMBERSHIP = {
    * membership rather than about fwd.
    */
   lead: [
-    "Membership unlocks a year-round program of intimate dinners, private conversations, industry briefings and experiences — alongside a network that extends well beyond the events.",
+    "Members get a year of small rooms: dinners, roundtables, closed briefings and one-off experiences, plus the network around them.",
     "Meet someone you’ve wanted to meet. Hear what’s coming before it becomes obvious. Share an idea with the person who can act on it.",
   ],
 
@@ -273,14 +273,23 @@ export const MEMBERSHIP = {
   intro: "Some of it is access. Most of it is people.",
 
   /**
+   * Over the list under the tiles. The tiles are names over photographs; this
+   * is where each name is explained.
+   */
+  whatEachIs: "What each one is",
+
+  /**
    * The eight things membership gets you.
    *
    * ONLY `id` AND `title` ARE ON THE SITE. They are the photograph and the
    * words on each tile at the top of the membership page.
    *
-   * `summary` is not drawn anywhere now. It is the line under each headline,
-   * kept because it is the only written record of what each benefit actually
-   * is, and because the tiles say almost nothing on their own.
+   * `summary` IS DRAWN AGAIN, UNDER THE TILES. The drifting band still says
+   * names only — a line of copy moving past is too much to read — but the
+   * list underneath it on the membership page now pairs every name with its
+   * summary, because a first-time visitor cannot tell what "Ask the room" or
+   * "Partner rooms" mean from the name alone (first-impression critique,
+   * 14 September 2026).
    *
    * The long `detail` field that used to sit here has gone. Nothing ever
    * rendered it, this note used to say to delete it rather than leave copy
@@ -303,12 +312,12 @@ export const MEMBERSHIP = {
     {
       id: "partner-rooms",
       title: "Partner rooms",
-      summary: "Closed sessions with the platforms.",
+      summary: "Closed sessions run with the platforms themselves.",
     },
     {
       id: "guest-passes",
       title: "Guest passes",
-      summary: "Twice a year, bring someone who should be here.",
+      summary: "Twice a year, bring the person who should be in the room.",
     },
     {
       id: "directory",
@@ -341,7 +350,7 @@ export const MEMBERSHIP = {
     {
       id: "digital-rooms",
       title: "Digital rooms",
-      summary: "Webinars and small breakout sessions.",
+      summary: "Webinars and small breakout sessions, wherever members are.",
     },
     {
       id: "newsletter",
@@ -356,12 +365,12 @@ export const MEMBERSHIP = {
     {
       id: "merch",
       title: "Members\u2019 merch",
-      summary: "Made in small numbers just for our members.",
+      summary: "Made in small numbers, for members only.",
     },
     {
       id: "nominate",
       title: "Nominate a member",
-      summary: "Once a year.",
+      summary: "One nomination a year, for somebody who should be here.",
     },
     {
       id: "global-access",
@@ -379,7 +388,7 @@ export const MEETING_OF_MINDS = {
   body: [
     "Most networks hand you a list and leave the rest to you. This one works the other way around.",
     "We make the introduction ourselves, and we tell both sides why it is worth making.",
-    "Ask for an introduction to any member. Your details stay with us, and so do theirs.",
+    "Ask for an introduction to any member. No contact details are shared until you both say yes.",
   ],
 } as const;
 
@@ -413,7 +422,7 @@ export const BRIEFING_SUBMIT = {
   // copy turns: what the briefing is, then the facts about it.
   // Starts at "Built" rather than "The briefing is built": the heading above
   // is now the name, so the sentence under it no longer has to say it again.
-  body: "Built from what is actually changing in the creator economy, from the people in a position to know it rather than the people quickest to write about it.\nFour issues released throughout the year, to members only. Written by our CRO, Jenny.",
+  body: "Built from what is actually changing in the creator economy, from the people in a position to know it rather than the people quickest to write about it.\nFour issues released throughout the year, to members only. Written by Jenny Penich, Influencer’s chief revenue officer.",
   send: "If it is worth forwarding, forward it to us",
   /**
    * THE SAME SECTION, ON THE BRIEFING PAGE. There it sat under an h1 already
@@ -543,11 +552,11 @@ export const APPLY = {
     shared: {
       name: "full name",
       email: "email address",
-      market: "market",
+      market: "where you are based",
       /* Asked in full inside the box rather than in a line under it. The
          label above stays the short "market", which is what it is once it has
          been answered. */
-      marketPlaceholder: "Where are you based",
+      marketPlaceholder: "City or country",
       link: "LinkedIn or social profile",
       reason: "why do you want to be part of it",
     },

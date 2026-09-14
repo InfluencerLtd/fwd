@@ -2,6 +2,7 @@ import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { BRAND } from "@/lib/brand";
+import { POSITIONING } from "@/content/site";
 
 /**
  * The picture a link to the site unfurls with, on LinkedIn, iMessage and the
@@ -11,6 +12,12 @@ import { BRAND } from "@/lib/brand";
  * "by influencer" in the serif, from before the artwork arrived. It now draws
  * public/brand/fwd-lockup.svg itself, in the wordmark blue on the site's warm
  * near-black, so a shared link shows exactly the mark the site does.
+ *
+ * IT SAYS WHAT THIS IS NOW, TOO. The card was the mark alone, so a link pasted
+ * into Slack or WhatsApp explained nothing to anybody who had not heard of us
+ * (first-impression critique, 14 September 2026). The positioning line sits
+ * under it, in the site's own display serif, which the repo ships as a file
+ * for exactly this.
  */
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
@@ -21,6 +28,9 @@ export default async function OpengraphImage() {
     await readFile(path.join(process.cwd(), "public", "brand", "fwd-lockup.svg"), "utf8")
   ).replaceAll("currentColor", "#b1e3fc");
   const src = `data:image/svg+xml;base64,${Buffer.from(svg).toString("base64")}`;
+  const serif = await readFile(
+    path.join(process.cwd(), "src", "assets", "fonts", "InstrumentSerif-Regular.ttf"),
+  );
   // The lockup's own proportions, from its viewBox.
   const width = 560;
   const height = Math.round((width * 214.87) / 355.96);
@@ -35,12 +45,29 @@ export default async function OpengraphImage() {
           alignItems: "center",
           justifyContent: "center",
           backgroundColor: "#171310",
+          flexDirection: "column",
         }}
       >
         {/* The image's alt text is `alt` above; this inner img is decorative. */}
         <img src={src} width={width} height={height} alt="" />
+        <div
+          style={{
+            marginTop: 44,
+            maxWidth: 820,
+            textAlign: "center",
+            fontFamily: "Instrument Serif",
+            fontSize: 40,
+            lineHeight: 1.2,
+            color: "#f2f0ec",
+          }}
+        >
+          {POSITIONING}
+        </div>
       </div>
     ),
-    { ...size },
+    {
+      ...size,
+      fonts: [{ name: "Instrument Serif", data: serif, style: "normal", weight: 400 }],
+    },
   );
 }

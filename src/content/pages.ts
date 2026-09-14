@@ -210,6 +210,18 @@ export const ABOUT_PAGE = {
       "It is a space designed to move the industry forward — the people shaping culture, creativity, media and influence, in a room together to exchange ideas, challenge thinking and make connections that matter.",
       "Somewhere to step outside the day to day, have the conversations that are hard to have anywhere else, and work out where this is all going next.",
     ],
+  /**
+   * WHO IS BEHIND IT, IN ONE LINE. "by Influencer" was a wordmark and nothing
+   * else, so the agency's credibility was doing no work for a visitor who has
+   * never heard of either name (first-impression critique, 14 September 2026).
+   * The claim is Influencer's own, from the expansion brief.
+   *
+   * `madeByLink` is the word that carries the link out to influencer.com.
+   */
+    madeBy:
+      "Forward is made by Influencer, the largest independent creator marketing specialist, and the only one founded by creators.",
+    madeByLink: "Influencer",
+
     /** The three it is built around. From the document. */
     pillars: [
       "Off the record",

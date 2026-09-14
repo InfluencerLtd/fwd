@@ -4,7 +4,8 @@ import { PageClose } from "@/components/page-close";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { Circled, MarkedText, plainText } from "@/components/marked";
 import { ABOUT_PAGE } from "@/content/pages";
-import { IMAGERY } from "@/content/site";
+import { FOOTER, IMAGERY } from "@/content/site";
+
 
 export const metadata: Metadata = {
   title: ABOUT_PAGE.title,
@@ -30,6 +31,11 @@ export const metadata: Metadata = {
  */
 export default function ClubPage() {
   const [, ...rest] = ABOUT_PAGE.lead;
+  // The credential line, split either side of the one word that links out, so
+  // the sentence stays one string in the content file.
+  const [before, after] = ABOUT_PAGE.ambition.madeBy.split(
+    ABOUT_PAGE.ambition.madeByLink,
+  );
 
   return (
     <PageShell>
@@ -222,6 +228,21 @@ export default function ClubPage() {
               </p>
             ))}
           </div>
+
+          {/* Who makes it, with the link out. Small and quiet: it is a
+              credential, not a claim the page is making about itself. */}
+          <p className="fwd-reveal col-span-full font-body text-[15px] leading-relaxed text-photo-ink/55 lg:col-span-6 lg:col-start-6">
+            {before}
+            <a
+              className="fwd-underline text-photo-ink/80"
+              href={FOOTER.parent.href}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {ABOUT_PAGE.ambition.madeByLink}
+            </a>
+            {after}
+          </p>
 
           {/* The three it is built around. Not marked up as headings — they
               keep their capitals, and they are a list rather than a structure
