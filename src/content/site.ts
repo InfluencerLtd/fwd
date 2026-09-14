@@ -170,7 +170,7 @@ export const HERO = {
    * NOT "CLUB". The naming rule in src/lib/brand.ts keeps that word for The
    * clubhouse and nowhere a visitor can read it, so this says membership.
    */
-  plain: "Forward is Influencer\u2019s private membership for the creator economy.",
+  plain: "Forward is Influencer\u2019s private community for the creator economy.",
   /**
    * The hero has ONE button and its label lives in APPLY.cta, because the same
    * button appears three times down the page and they must not drift apart.
