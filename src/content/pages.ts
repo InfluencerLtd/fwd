@@ -371,9 +371,15 @@ export const FORWARD_THINKERS = {
     "The inaugural Forward Thinkers: around thirty people driving the creator economy forward, across platforms, brands and creators.",
   eyebrow: "The inaugural list",
   heading: "The people moving this [[forward]].",
+  /**
+   * ONE PARAGRAPH. The second line said when the list is published, "at the
+   * beginning of October", and came off on 15 September 2026: the page does
+   * not need to date itself, and a date that slips is worse than no date.
+   * `rest` in the page component handles an empty second line, so putting one
+   * back is a line here and nothing else.
+   */
   lead: [
     "Forward Thinkers is the first list: around thirty people driving the creator economy forward, across platforms, brands and creators.",
-    "It is published when Forward launches, at the beginning of October.",
   ],
 
   /** How somebody gets on it, which is the part that protects its value. */
