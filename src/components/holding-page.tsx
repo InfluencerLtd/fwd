@@ -1,5 +1,5 @@
 import { Wordmark } from "@/components/wordmark";
-import { TypeformEmbed } from "@/components/typeform-embed";
+import { TypeformPopupButton } from "@/components/typeform-embed";
 import { HOLDING } from "@/content/site";
 
 /**
@@ -28,8 +28,17 @@ import { HOLDING } from "@/content/site";
  *
  * It is dark throughout, and there is no light/dark toggle.
  */
-/** The waiting list form, as set up in Typeform. Asked for on 15 September 2026. */
-const HOLDING_TYPEFORM_ID = "01M2J2Z4KH37M3DYMJBY1QHFJS";
+/**
+ * The waiting list form in Typeform. Asked for on 15 September 2026.
+ *
+ * TWO IDS, AND THE POPUP NEEDS THE SECOND ONE. The embed snippet Typeform
+ * hands out carries the long id — 01M2J2Z4KH37M3DYMJBY1QHFJS — which is what
+ * `data-tf-live` resolves through their API. `data-tf-popup` wants the form's
+ * own public id instead, the one in its address: with the long id it opens
+ * typeform.com's marketing site rather than the form, which is what happened
+ * the first time this was wired up.
+ */
+const HOLDING_TYPEFORM_ID = "qJBLGNKp";
 
 export function HoldingPage() {
   return (
@@ -81,25 +90,27 @@ export function HoldingPage() {
               the page not listening. Done in CSS off the success message rather
               than by lifting the form's state up here, so this stays a server
               component; see .fwd-holding in globals.css. */}
-          {/* THE TYPEFORM, NOT OUR OWN FIELD. Asked for on 15 September 2026.
-              It replaces SignupForm, which wrote addresses to our own database
-              through signUpForUpdates in app/actions.ts: anybody who signs up
-              from here now lands in Typeform instead, so that is where the
-              list lives.
+          {/* ONE BUTTON, AND THE FORM OVER THE TOP OF IT. Asked for on
+              15 September 2026, after the inline embed put a white Typeform
+              panel in the middle of the page. The button is the site's own
+              primary button at the large size; the form opens over the page
+              when it is pressed.
+
+              It replaced SignupForm, which wrote addresses to our own
+              database through signUpForUpdates in app/actions.ts. The waiting
+              list now lives in Typeform.
 
               Two knock-on effects, both in globals.css: .fwd-holding-form
-              styled our field, and .fwd-holding:has([data-signup-done]) used
-              the form's own success marker to clear the date and the line and
-              stop the mark's full stop blinking. Typeform has no such marker,
-              so the page now stays as it is after somebody applies and the
-              dot keeps blinking.
-
-              Clipped and rounded, with a ground of its own, so a white form on
-              a near-black page reads as a panel rather than a hole. */}
-          <div className="fwd-enter mx-auto mt-14 w-full max-w-xl text-left sm:mt-16">
-            <div className="overflow-hidden rounded-2xl">
-              <TypeformEmbed id={HOLDING_TYPEFORM_ID} />
-            </div>
+              styled our own field, and .fwd-holding:has([data-signup-done])
+              used the form's success marker to clear the date and the line
+              and stop the mark's full stop blinking. Typeform has no such
+              marker, so the page stays as it is after somebody applies and
+              the dot keeps blinking. */}
+          <div className="fwd-enter mt-14 sm:mt-16">
+            <TypeformPopupButton
+              id={HOLDING_TYPEFORM_ID}
+              label={HOLDING.submit}
+            />
           </div>
         </div>
 

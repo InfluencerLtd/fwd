@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { buttonClass } from "@/components/button";
 
 const SRC = "https://embed.typeform.com/next/embed.js";
 
@@ -51,5 +52,55 @@ export function TypeformEmbed({ id }: { id: string }) {
     <div className="relative isolate min-h-[560px] overflow-hidden rounded-2xl" >
       <div data-tf-live={id} className="min-h-[560px]" />
     </div>
+  );
+}
+
+/**
+ * The same form, opened over the page instead of set into it.
+ *
+ * WHY A POPUP AND NOT THE INLINE EMBED. Inline, the form arrives as a white
+ * panel in the middle of a near-black page, on Typeform's own theme: a second
+ * company's design in the one place this page has nothing else to look at.
+ * As a popup, the page keeps a single button in the brand's own colour and
+ * the form only appears once somebody asks for it (asked for on 15 September
+ * 2026).
+ *
+ * `data-tf-popup` is read by the same embed script as `data-tf-live`, so this
+ * is one attribute on a button we style ourselves. The size and opacity are
+ * Typeform's own options: full-height, fully opaque.
+ */
+export function TypeformPopupButton({
+  id,
+  label,
+  className = "",
+}: {
+  id: string;
+  label: string;
+  className?: string;
+}) {
+  useEffect(() => {
+    const existing = document.querySelector<HTMLScriptElement>(
+      `script[src="${SRC}"]`,
+    );
+    if (existing) {
+      window.tf?.load?.();
+      return;
+    }
+    const script = document.createElement("script");
+    script.src = SRC;
+    script.async = true;
+    document.body.appendChild(script);
+  }, [id]);
+
+  return (
+    <button
+      type="button"
+      data-tf-popup={id}
+      data-tf-opacity="100"
+      data-tf-size="100"
+      className={buttonClass("primary", "lg", className)}
+    >
+      {label}
+    </button>
   );
 }
