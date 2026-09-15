@@ -509,8 +509,8 @@ export const BRIEFING_SUBMIT = {
 export const NAME_STORY = {
   heading: "Why Forward",
   body: [
-    "You see something good and you forward it. Not to everyone, just to the handful of people whose take you actually want on it.",
-    "That is the whole idea. A small group of people worth forwarding things to, in the same place.",
+    "You see something good and you forward it. Not to everyone, just to a handful of people whose opinion you genuinely value.",
+    "That is the idea behind Forward: the right people, in one place, sharing what matters.",
   ],
 } as const;
 
