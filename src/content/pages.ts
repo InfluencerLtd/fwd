@@ -380,7 +380,7 @@ export const FORWARD_THINKERS = {
    * back is a line here and nothing else.
    */
   lead: [
-    "We\u2019re excited to reveal our inaugural Forward Thinkers. The people who are shaping, challenging and driving the creator economy forward, across platforms, brands and creators.",
+    "We\u2019re excited to reveal our Forward Thinkers. The people who are shaping, challenging and driving the creator economy forward, across platforms, brands and creators.",
   ],
 
   /**
