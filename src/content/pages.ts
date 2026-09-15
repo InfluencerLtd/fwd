@@ -222,6 +222,12 @@ export const ABOUT_PAGE = {
       "Somewhere to step outside the day to day, have the conversations that are hard to have anywhere else, and work out where this is all going next.",
     ],
   /**
+   * NOTHING RENDERS THIS NOW. It was on the page for one day, 14 to 15
+   * September 2026, and came off at Sophie's request. Kept because the
+   * question it answers — who is Influencer, for a visitor who has never
+   * heard of either name — is still unanswered anywhere on the site, and
+   * because the wording here is the wording their own homepage uses.
+   *
    * WHO IS BEHIND IT, IN ONE LINE. "by Influencer" was a wordmark and nothing
    * else, so the agency's credibility was doing no work for a visitor who has
    * never heard of either name (first-impression critique, 14 September 2026).
