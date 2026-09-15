@@ -161,8 +161,20 @@ export const HERO = {
    * here rather than left for marketing to find.
    */
   headline: "Brands. Creators. Platforms.",
+  /**
+   * THE LINE UNDER THE THREE NOUNS. Her words, 15 September 2026. An earlier
+   * attempt at this came off the page the day before for saying too little in
+   * too many words; this one says what Forward is and who it is for, and the
+   * first half is the part nobody else on this list could write.
+   *
+   * Two sentences, so it is set as two lines rather than a paragraph: the
+   * hero holds four things now and none of them should look like body copy.
+   */
+  plain:
+    "Where the creator economy speaks freely. A private community for the brands, creators and platforms shaping what comes next.",
+
   /*
-   * THE PLAIN SENTENCE HAS GONE FROM THE HERO. It was added on 14 September
+   * AN EARLIER, PLAINER SENTENCE SAT HERE AND CAME OFF. It was added on 14 September
    * 2026 for the first-impression critique — "the site never says what this
    * is" — and taken out again on 15 September: under the three nouns it made
    * the hero explain itself, which is not what this photograph is for. The

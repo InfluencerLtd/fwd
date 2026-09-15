@@ -90,6 +90,13 @@ export function Hero() {
               {HERO.headline}
             </p>
 
+            {/* What it is, under the three nouns and over the button. Smaller
+                and quieter than the line above it: the mood is the headline's
+                job and this is here so nobody has to guess. */}
+            <p className="mx-auto mt-6 max-w-[46ch] font-body text-[15px] leading-relaxed text-photo-ink/70 sm:text-base">
+              {HERO.plain}
+            </p>
+
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
               <ApplyLink variant="onDark" />
             </div>
