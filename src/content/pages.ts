@@ -485,7 +485,7 @@ export const FORWARD_THINKERS = {
       },
       {
         name: "A membership",
-        line: "An invitation to Forward, with the rooms, the introductions and The Briefing that come with it.",
+        line: "An invitation to Forward, with the rooms, the introductions and The briefing that come with it.",
       },
       {
         name: "Something to share",
