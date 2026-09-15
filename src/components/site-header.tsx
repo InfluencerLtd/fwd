@@ -3,10 +3,9 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Wordmark } from "@/components/wordmark";
-import { ButtonLink } from "@/components/button";
 import { HEADER_NAV } from "@/content/hero-modules";
-import { APPLY, NAV } from "@/content/site";
-import { META } from "@/content/site";
+import { ApplyLink } from "@/components/apply-link";
+import { META, NAV } from "@/content/site";
 
 /**
  * The bar across the top of the public site.
@@ -151,9 +150,9 @@ export function SiteHeader({
             ),
           )}
 
-          <ButtonLink href="/membership" variant="onDark" size="sm">
-            {APPLY.cta}
-          </ButtonLink>
+          {/* Opens the chooser rather than going to the membership page: see
+              the note in apply-link.tsx. */}
+          <ApplyLink variant="onDark" size="sm" />
         </nav>
       </div>
     </header>

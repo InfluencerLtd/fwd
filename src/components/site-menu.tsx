@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { ApplyLink } from "@/components/apply-link";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Wordmark } from "@/components/wordmark";
 import { NAV } from "@/content/site";
@@ -133,6 +134,15 @@ export function SiteMenu() {
               ))}
             </ul>
           </nav>
+
+          {/* THE ASK, IN THE PHONE MENU. The bar that carries it is hidden
+              below 900px, so on a phone the only way in was a button
+              somewhere down the page. Added 15 September 2026, and it opens
+              the chooser over the menu rather than sending anybody to another
+              page. */}
+          <div className="mt-6 border-t border-border pt-5">
+            <ApplyLink className="w-full justify-center" />
+          </div>
 
           <div className="mt-6 flex items-center gap-3 border-t border-border pt-4">
             <ThemeToggle />

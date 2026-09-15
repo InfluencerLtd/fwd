@@ -11,7 +11,7 @@ import Link from "next/link";
  * and the pale ice blue is unreadable on a light one.
  */
 
-type Variant = "primary" | "brand" | "onDark" | "outlineOnDark" | "quiet" | "chosen";
+export type Variant = "primary" | "brand" | "onDark" | "outlineOnDark" | "quiet" | "chosen";
 type Size = "sm" | "md" | "lg";
 
 const VARIANTS: Record<Variant, string> = {

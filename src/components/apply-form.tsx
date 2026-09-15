@@ -163,17 +163,47 @@ export function ApplyForm({
           label={words.company}
           error={errors.company}
         >
-          <input
-            id={ids.company}
-            name="company"
-            placeholder={fieldHint(words.company)}
-            type="text"
-            autoComplete={path === "brand" ? "organization" : "off"}
-            disabled={pending}
-            aria-invalid={errors.company ? true : undefined}
-            aria-describedby={errors.company ? `${ids.company}-error` : undefined}
-            className={fieldClass("company")}
-          />
+          {/* A CREATOR PICKS ONE PLATFORM; A BRAND TYPES A COMPANY NAME. Both
+              answers land in the same column, which is what the labels have
+              always implied: where people find you, or where you work. The
+              list is in src/content/site.ts and deliberately runs past
+              Instagram and TikTok. */}
+          {path === "creator" ? (
+            <select
+              id={ids.company}
+              name="company"
+              defaultValue=""
+              disabled={pending}
+              aria-invalid={errors.company ? true : undefined}
+              aria-describedby={
+                errors.company ? `${ids.company}-error` : undefined
+              }
+              className={fieldClass("company")}
+            >
+              <option value="" disabled>
+                {APPLY.chooseOne}
+              </option>
+              {APPLY.fields.creator.platforms.map((platform) => (
+                <option key={platform} value={platform}>
+                  {platform}
+                </option>
+              ))}
+            </select>
+          ) : (
+            <input
+              id={ids.company}
+              name="company"
+              placeholder={fieldHint(words.company)}
+              type="text"
+              autoComplete="organization"
+              disabled={pending}
+              aria-invalid={errors.company ? true : undefined}
+              aria-describedby={
+                errors.company ? `${ids.company}-error` : undefined
+              }
+              className={fieldClass("company")}
+            />
+          )}
         </Field>
 
         {/* The group question runs across both columns. It is a question

@@ -599,8 +599,26 @@ export const APPLY = {
     creator: {
       heading: "apply, as a creator",
       role: "what you make",
-      company: "where people find you",
-      linkLabel: "your biggest platform",
+      /**
+       * ONE PLATFORM, NOT TWO. The Typeform this replaced required an
+       * Instagram handle AND a TikTok handle, which bounced anybody whose
+       * audience is on YouTube, LinkedIn, Substack or in a podcast feed
+       * (15 September 2026). This asks where the audience actually is, once.
+       *
+       * It writes to the same `company` column a brand's company name does:
+       * for a creator, where people find you is the equivalent answer.
+       */
+      company: "your main platform",
+      platforms: [
+        "Instagram",
+        "TikTok",
+        "YouTube",
+        "LinkedIn",
+        "Substack",
+        "Podcast",
+        "Somewhere else",
+      ],
+      linkLabel: "a link to where people find you",
     },
     brand: {
       heading: "apply",

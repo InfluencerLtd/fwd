@@ -3,12 +3,21 @@
 import { useState } from "react";
 import { ApplyForm, type ApplyPath } from "@/components/apply-form";
 import { HubspotForm } from "@/components/hubspot-form";
-import { TypeformEmbed } from "@/components/typeform-embed";
 import { areHubspotFormsConfigured } from "@/lib/hubspot-forms";
 import { APPLY } from "@/content/site";
 
-/** The creator application lives in Typeform. The brand one is unchanged. */
-const CREATOR_TYPEFORM_ID = "01M25VECYTDKJP4AHS58KNBPWE";
+/*
+ * THE CREATOR APPLICATION IS OURS AGAIN. It was a Typeform embed
+ * (01M25VECYTDKJP4AHS58KNBPWE) from 11 September 2026 and came back in house
+ * on 15 September: the form required both an Instagram handle and a TikTok
+ * handle, which turned away creators on YouTube, LinkedIn, Substack or in a
+ * podcast feed, and that requirement can only be changed inside Typeform.
+ * Our own form asks for one main platform instead, and looks like the site.
+ *
+ * Creator submissions therefore land where a brand's do rather than in
+ * Typeform. The teaser page's waiting list is still a Typeform; this is only
+ * the application.
+ */
 import { MarkedText } from "@/components/marked";
 
 /**
@@ -47,9 +56,7 @@ export function ApplyPanel() {
         <div className="mt-8">
           {/* Keyed on the path, so switching starts a clean form rather than
               carrying the other one's answers across. */}
-          {path === "creator" ? (
-            <TypeformEmbed id={CREATOR_TYPEFORM_ID} />
-          ) : areHubspotFormsConfigured() ? (
+          {areHubspotFormsConfigured() ? (
             <HubspotForm key={path} path={path} />
           ) : (
             <ApplyForm key={path} path={path} />
