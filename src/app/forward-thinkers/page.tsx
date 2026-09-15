@@ -4,6 +4,7 @@ import { FORWARD_THINKERS_PUBLIC } from "@/lib/site-config";
 import { PageShell } from "@/components/page-shell";
 import { PageClose } from "@/components/page-close";
 import { MarkedText } from "@/components/marked";
+import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { FORWARD_THINKERS } from "@/content/pages";
 import { IMAGERY, NOT_FOUND } from "@/content/site";
 
@@ -96,15 +97,19 @@ export default function ForwardThinkersPage() {
       </section>
 
       {/* ---- The list ------------------------------------------------------
-           THE NAMES, IN TWO COLUMNS, HAIRLINE SEPARATED. Set on the grey so
-           the list reads as its own page within the page, and each name in the
-           display face at the standfirst size: thirty names at heading size
-           would be a wall, and thirty names at body size would be a phone
-           book.
+           A WALL OF FACES. A small portrait each, the name under it, the job
+           title under that, and one sentence about why they are on the list
+           which comes up over the photograph on hover.
 
-           WHILE THE NAMES ARE OUT WITH THE CURATORS the section says so in one
-           line instead of showing thirty empty rows. Filling `list.people` in
-           src/content/pages.ts is the whole of publishing it. */}
+           THE SENTENCE IS NOT HOVER-ONLY. A hover is not available on a phone
+           and not reachable from a keyboard, so it also shows on focus, and on
+           any device without hover it is simply always there. The card is a
+           button-less <li> with tabIndex so a keyboard can reach it: nothing
+           happens on click, the sentence is the whole interaction.
+
+           WHILE THE NAMES ARE OUT WITH THE CURATORS the section draws
+           `list.slots` blank portraits, so the shape is visible and no name is
+           invented. See the note over `list` in src/content/pages.ts. */}
       <section className="fwd-section bg-surface-alt px-6">
         <div className="mx-auto max-w-6xl">
           <h2 className="fwd-reveal fwd-h2 max-w-3xl normal-case!">
@@ -112,21 +117,64 @@ export default function ForwardThinkersPage() {
           </h2>
 
           {FORWARD_THINKERS.list.people.length > 0 ? (
-            <ul className="fwd-stagger mt-12 grid gap-x-16 sm:grid-cols-2">
+            <ul className="fwd-stagger mt-12 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-5">
               {FORWARD_THINKERS.list.people.map((person) => (
-                <li
-                  key={person.name}
-                  className="fwd-reveal border-t border-ink/15 py-6"
-                >
-                  <p className="fwd-standfirst text-ink">{person.name}</p>
-                  <p className="fwd-body mt-1 text-ink-muted">{person.line}</p>
+                <li key={person.name} className="fwd-reveal group">
+                  <div
+                    tabIndex={0}
+                    className="fwd-photo relative overflow-hidden rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                  >
+                    <PhotoPlaceholder
+                      label={FORWARD_THINKERS.list.photoBrief}
+                      name={person.photo}
+                      ratio="portrait"
+                      showLabel={false}
+                      sizes="(min-width: 1024px) 18vw, (min-width: 640px) 30vw, 44vw"
+                      washClassName="bg-photo-ground/25"
+                      className="rounded-2xl"
+                    />
+                    {/* The reason, over the picture. Hidden until hover or
+                        focus, and always on where there is no hover. */}
+                    <p className="pointer-events-none absolute inset-0 z-2 flex items-end bg-photo-ground/80 p-4 font-body text-[13px] leading-snug text-photo-ink opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100 [@media(hover:none)]:opacity-100">
+                      {person.why}
+                    </p>
+                  </div>
+                  <p className="mt-4 font-display text-[21px] leading-[1.1] text-ink">
+                    {person.name}
+                  </p>
+                  <p className="mt-1 font-body text-[13px] leading-snug text-ink-muted">
+                    {person.title}
+                  </p>
                 </li>
               ))}
             </ul>
           ) : (
-            <p className="fwd-reveal fwd-standfirst mt-8 max-w-2xl text-ink-muted">
-              {FORWARD_THINKERS.list.empty}
-            </p>
+            <>
+              <p className="fwd-reveal fwd-standfirst mt-8 max-w-2xl text-ink-muted">
+                {FORWARD_THINKERS.list.empty}
+              </p>
+              <ul
+                aria-hidden="true"
+                className="fwd-stagger mt-12 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-5"
+              >
+                {Array.from({ length: FORWARD_THINKERS.list.slots }).map(
+                  (_, index) => (
+                    <li key={index} className="fwd-reveal">
+                      <PhotoPlaceholder
+                        label={FORWARD_THINKERS.list.photoBrief}
+                        ratio="portrait"
+                        showLabel={false}
+                        washClassName="bg-photo-ground/25"
+                        className="rounded-2xl"
+                      />
+                      <p className="mt-4 font-body text-[13px] tracking-[0.14em] text-ink-muted uppercase">
+                        {FORWARD_THINKERS.list.slotLabel}
+                      </p>
+                    </li>
+                  ),
+                )}
+              </ul>
+            </>
           )}
         </div>
       </section>

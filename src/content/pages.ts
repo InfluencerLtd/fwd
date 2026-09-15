@@ -421,15 +421,42 @@ export const FORWARD_THINKERS = {
   },
 
   /**
-   * THE THIRTY. The names are not in yet: the curators were asked for around
-   * ten each on 15 September 2026. Until they arrive `people` stays empty and
-   * the page says so in one line rather than showing empty slots. Filling the
-   * array is the only change needed to publish the list.
+   * THE THIRTY, AS A WALL OF FACES. Asked for on 15 September 2026: a small
+   * portrait, the name, the job title, and one sentence on hover saying why
+   * they are a Forward Thinker.
+   *
+   * THE NAMES ARE NOT IN. The curators were asked for around ten each on
+   * 15 September, so `people` is empty and the page draws `slots` blank
+   * portraits instead, labelled, which shows the shape of the finished section
+   * without anybody inventing a Forward Thinker.
+   *
+   * Filling it is the whole job. Each entry takes:
+   *
+   *   name   as they would write it themselves
+   *   title  role and company, one line, their wording
+   *   why    ONE sentence, what they did that earned the place. This is the
+   *          line on hover, and it is the only editorial judgment on the page,
+   *          so it says what somebody did rather than how good they are
+   *   photo  optional: a file name in public/photography, no extension. A
+   *          missing file draws the warm placeholder rather than breaking
+   *
+   * PORTRAITS, NOT LOGOS. The shot brief for each is a head and shoulders in
+   * the same low warm light as the rest of the site, so thirty of them sit
+   * together as one wall rather than thirty different photographers.
    */
   list: {
     heading: "The first thirty",
     empty: "The names are with the curators. The list is published at launch.",
-    people: [] as readonly { name: string; line: string }[],
+    /** How many blank portraits to draw while the names are out. */
+    slots: 10,
+    slotLabel: "To be announced",
+    photoBrief: "Head and shoulders, low warm light, the room behind them",
+    people: [] as readonly {
+      name: string;
+      title: string;
+      why: string;
+      photo?: string;
+    }[],
   },
 
   /**
