@@ -1,6 +1,13 @@
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { IMAGERY } from "@/content/site";
 
+/*
+ * NOT ON THE SITE AT THE MOMENT. The home page stopped rendering this on
+ * 15 September 2026 and kept it for future reference: see the note where it
+ * used to sit, section 4 of src/components/public-site.tsx. Everything it
+ * needs is still here and still in src/content/site.ts.
+ */
+
 /**
  * A full-width band of photographs that drifts slowly sideways.
  *

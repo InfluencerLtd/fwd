@@ -3,7 +3,6 @@ import { SiteMenu } from "@/components/site-menu";
 import { SiteHeader } from "@/components/site-header";
 import { Section } from "@/components/section";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
-import { PhotoBand } from "@/components/photo-band";
 import { ApplyLink } from "@/components/apply-link";
 import { MarkedText } from "@/components/marked";
 import { TheCase } from "@/components/the-case";
@@ -115,8 +114,23 @@ export function PublicSite() {
           </div>
         </section>
 
-        {/* ---- 4. The band of photographs. Left exactly as it was. ------- */}
-        <PhotoBand />
+        {/* ---- 4. THE BAND OF PHOTOGRAPHS IS OFF THE PAGE ----------------
+             Taken off on 15 September 2026, kept rather than deleted: it is
+             the drifting row of eight photographs with "Briefings",
+             "Roundtables", "Introductions", "Dinners", "Guest lists",
+             "Connections", "Small rooms" and "People worth meeting" along the
+             bottom of each.
+
+             Nothing about it has been dismantled. The component is still
+             src/components/photo-band.tsx, its captions are still
+             IMAGERY.bandCaptions and IMAGERY.bandLabel in
+             src/content/site.ts, and the photographs are still band-1 to
+             band-8 in public/photography. Putting it back is this one line:
+
+                 <PhotoBand />
+
+             The page now runs the offer straight into Meeting of Minds, which
+             is one change of ground fewer on the way down. */}
 
         {/* ---- 5. Meeting of Minds --------------------------------------
              Where Soho House puts the festival: the one thing that is theirs
