@@ -253,7 +253,7 @@ export const CASE = {
 
 export const WAY_IN = {
   /** DRAFT. An invitation rather than a description of the process. */
-  heading: "Introduce yourself",
+  heading: "Put your name forward",
   /** DRAFT. */
   /**
    * NOTHING IS DRAWN UNDER THE HEADING NOW. The line here answered the silent
