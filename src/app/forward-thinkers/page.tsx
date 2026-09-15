@@ -166,20 +166,30 @@ export default function ForwardThinkersPage() {
                   ) : null}
                 </div>
 
-                {person ? (
-                  <>
-                    <p className="mt-4 font-display text-[19px] leading-[1.15] text-ink">
-                      {person.name}
+                {/* THREE LINES: name, job title, company. The block keeps its
+                    height whether a card has three lines or one, so a long
+                    title in the second column cannot shove the row below it
+                    out of line, and the blank slots sit at the same height as
+                    a filled one. */}
+                <div className="mt-4 min-h-[5.25rem]">
+                  {person ? (
+                    <>
+                      <p className="font-display text-[19px] leading-[1.15] text-ink">
+                        {person.name}
+                      </p>
+                      <p className="mt-1.5 font-body text-[12.5px] leading-snug text-ink-muted">
+                        {person.role}
+                      </p>
+                      <p className="font-body text-[12.5px] leading-snug text-ink-muted/80">
+                        {person.company}
+                      </p>
+                    </>
+                  ) : (
+                    <p className="font-body text-[12.5px] tracking-[0.14em] text-ink-muted uppercase">
+                      {FORWARD_THINKERS.list.slotLabel}
                     </p>
-                    <p className="mt-1 font-body text-[12.5px] leading-snug text-ink-muted">
-                      {person.title}
-                    </p>
-                  </>
-                ) : (
-                  <p className="mt-4 font-body text-[12.5px] tracking-[0.14em] text-ink-muted uppercase">
-                    {FORWARD_THINKERS.list.slotLabel}
-                  </p>
-                )}
+                  )}
+                </div>
               </li>
             ))}
           </ul>

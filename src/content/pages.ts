@@ -439,8 +439,9 @@ export const FORWARD_THINKERS = {
    *
    * Filling it is the whole job. Each entry takes:
    *
-   *   name   as they would write it themselves
-   *   title  role and company, one line, their wording
+   *   name     as they would write it themselves
+   *   role     their job title, their wording
+   *   company  where they do it
    *   why    ONE sentence, what they did that earned the place. This is the
    *          line on hover, and it is the only editorial judgment on the page,
    *          so it says what somebody did rather than how good they are
@@ -462,7 +463,8 @@ export const FORWARD_THINKERS = {
     photoBrief: "Head and shoulders, low warm light, the room behind them",
     people: [] as readonly {
       name: string;
-      title: string;
+      role: string;
+      company: string;
       why: string;
       photo?: string;
     }[],
