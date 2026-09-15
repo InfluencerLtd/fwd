@@ -7,7 +7,7 @@ import { ApplyDialog } from "@/components/apply-dialog";
 import { SiteMenu } from "@/components/site-menu";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { APPLY, MEMBERSHIP, MEMBERSHIP_PAGE, META } from "@/content/site";
+import { APPLY, MEMBERSHIP_PAGE, META } from "@/content/site";
 
 export const metadata: Metadata = {
   title: `membership · ${META.title}`,
@@ -112,42 +112,11 @@ export default function MembershipPage() {
           {/* ---- 3. The whole offer at a glance -------------------------- */}
           <BenefitTiles />
 
-          {/* ---- 3b. The same list, explained ----------------------------
-               THE TILES SAY NAMES ONLY, AND NAMES ARE NOT ENOUGH. A cold
-               visitor cannot tell what "Ask the room", "Partner rooms" or
-               "The clubhouse" mean from a name drifting past a photograph
-               (first-impression critique, 14 September 2026). The band keeps
-               the names, because a line of copy in motion is too much to
-               read, and every name gets its line here instead. The summaries
-               are the ones in src/content/site.ts, which is where they have
-               always been written. */}
-          <section className="fwd-section-compact px-6">
-            <div className="mx-auto max-w-5xl">
-              <h2 className="fwd-reveal fwd-h3 text-photo-ink normal-case!">
-                {MEMBERSHIP.whatEachIs}
-              </h2>
-              <dl className="mt-10 grid grid-cols-1 gap-x-10 sm:grid-cols-2">
-                {MEMBERSHIP.cards.map((card) => (
-                  <div
-                    key={card.id}
-                    className="fwd-reveal border-t border-photo-ink/15 py-5"
-                  >
-                    <dt className="font-display text-[21px] leading-tight text-photo-ink">
-                      {card.title}
-                      {"comingSoon" in card ? (
-                        <span className="fwd-eyebrow ml-3 align-middle text-accent-on-dark">
-                          {card.comingSoon}
-                        </span>
-                      ) : null}
-                    </dt>
-                    <dd className="mt-2 font-body text-[15px] leading-relaxed text-photo-ink/70">
-                      {card.summary}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-          </section>
+          {/* THE EXPLAINED LIST HAS GONE FROM HERE. It was added on
+               14 September 2026 to answer the critique that the tiles were a
+               word cloud, and on 15 September the tiles themselves took the
+               lines instead. Keeping both would have said every benefit twice
+               on one page. */}
 
           {/* ---- 4. The ask again, after the pictures --------------------- */}
           {/* 15px less top and bottom than the section pattern elsewhere.

@@ -339,13 +339,12 @@ export const MEMBERSHIP = {
     {
       id: "directory",
       title: "The directory",
-      summary: "Who else is in the room, and what they actually do.",
+      summary: "Every member, findable, and introduced through us.",
     },
     {
       id: "ask-the-room",
       title: "Ask the room",
-      summary:
-        "Put a question to the membership and hear from people who have already solved it.",
+      summary: "Put one question to the whole membership.",
     },
     {
       /**

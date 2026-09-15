@@ -64,6 +64,9 @@ function Row({
               // black, reads as something on its way rather than a gap.
               <div className="flex h-full flex-col items-center justify-center gap-2 rounded-2xl bg-accent-on-dark px-6 text-center text-photo-ground">
                 <p className="font-body text-[17px] leading-snug">{card.title}</p>
+                <p className="font-body text-[13px] leading-snug text-photo-ground/75">
+                  {card.summary}
+                </p>
                 <p className="fwd-eyebrow text-photo-ground/70">{card.comingSoon}</p>
               </div>
             ) : (
@@ -80,16 +83,27 @@ function Row({
               washClassName="bg-photo-ground/60"
               className="h-full rounded-2xl"
             >
-              {/* THE HEADLINE, NOT THE LINE UNDER IT. The tiles used to carry
-                  the longer summary and it was too much reading for something
-                  that drifts past: four cards were asked for one at a time to
-                  say their own name instead, which is the whole set. The
-                  summaries stay in the content file — they are still the only
-                  written record of what each benefit is — and putting them
-                  back is this one line. */}
-              <p className="absolute inset-0 z-2 flex items-center justify-center px-6 text-center font-body text-[17px] leading-snug text-photo-ink">
-                {card.title}
-              </p>
+              {/* THE NAME AND THE LINE UNDER IT. The tiles carried names only
+                  for a while, on the argument that copy drifting past is too
+                  much to read. The first-impression critique came back the
+                  other way and it is right: "Ask the room", "Partner rooms"
+                  and "The clubhouse" mean nothing to somebody who has never
+                  been in one, and a wall of names reads as a word cloud.
+                  Asked for on 15 September 2026.
+
+                  The line is 13px against the name's 17px and sits at 80% of
+                  the ink, so it reads as the answer to the name rather than as
+                  a second heading. Both come from the card in
+                  src/content/site.ts, so there is still one place to change a
+                  benefit. */}
+              <div className="absolute inset-0 z-2 flex flex-col items-center justify-center gap-1.5 px-6 text-center">
+                <p className="font-body text-[17px] leading-snug text-photo-ink">
+                  {card.title}
+                </p>
+                <p className="font-body text-[13px] leading-snug text-photo-ink/80">
+                  {card.summary}
+                </p>
+              </div>
             </PhotoPlaceholder>
             )}
           </li>
