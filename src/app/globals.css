@@ -1196,6 +1196,18 @@ select.fwd-field {
    date held: same top margin at every breakpoint, centred like the date was.
    :has() rather than lifted React state, so the page stays a server component
    and the form does not need to know what page it is on. */
+/*
+ * THE GROUND GOES ALL THE WAY DOWN ON THE HOLDING PAGE. The page is one
+ * near-black screen, and body is the warm off-white everywhere else, so any
+ * space past the end of the page — an overscroll on a phone, a viewport
+ * taller than the content — showed a pale strip under it. It became visible
+ * on 15 September 2026, when the Typeform embed made the page taller than one
+ * screen. Keyed on the page's own wrapper, so only the holding page is dark.
+ */
+body:has(.fwd-holding) {
+  background-color: var(--fwd-photo-ground);
+}
+
 .fwd-holding:has([data-signup-done]) .fwd-holding-lede {
   display: none;
 }

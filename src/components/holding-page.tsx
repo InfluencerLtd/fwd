@@ -1,5 +1,5 @@
 import { Wordmark } from "@/components/wordmark";
-import { SignupForm } from "@/components/signup-form";
+import { TypeformEmbed } from "@/components/typeform-embed";
 import { HOLDING } from "@/content/site";
 
 /**
@@ -28,6 +28,9 @@ import { HOLDING } from "@/content/site";
  *
  * It is dark throughout, and there is no light/dark toggle.
  */
+/** The waiting list form, as set up in Typeform. Asked for on 15 September 2026. */
+const HOLDING_TYPEFORM_ID = "01M2J2Z4KH37M3DYMJBY1QHFJS";
+
 export function HoldingPage() {
   return (
     <main className="fwd-on-dark flex min-h-screen flex-col bg-photo-ground">
@@ -78,14 +81,25 @@ export function HoldingPage() {
               the page not listening. Done in CSS off the success message rather
               than by lifting the form's state up here, so this stays a server
               component; see .fwd-holding in globals.css. */}
-          {/* THE FIELD AND THE BUTTON, AND NOTHING UNDER THEM. The consent line
-              and its box have gone — see signUpForUpdates in app/actions.ts
-              for what that changes about what these addresses may be used for.
+          {/* THE TYPEFORM, NOT OUR OWN FIELD. Asked for on 15 September 2026.
+              It replaces SignupForm, which wrote addresses to our own database
+              through signUpForUpdates in app/actions.ts: anybody who signs up
+              from here now lands in Typeform instead, so that is where the
+              list lives.
 
-              The block is centred and the form inside it keeps its own left
-              edge, so an error message still has somewhere to start from. */}
-          <div className="fwd-holding-form fwd-enter mx-auto mt-14 w-full max-w-md text-left sm:mt-16">
-            <SignupForm source="holding" />
+              Two knock-on effects, both in globals.css: .fwd-holding-form
+              styled our field, and .fwd-holding:has([data-signup-done]) used
+              the form's own success marker to clear the date and the line and
+              stop the mark's full stop blinking. Typeform has no such marker,
+              so the page now stays as it is after somebody applies and the
+              dot keeps blinking.
+
+              Clipped and rounded, with a ground of its own, so a white form on
+              a near-black page reads as a panel rather than a hole. */}
+          <div className="fwd-enter mx-auto mt-14 w-full max-w-xl text-left sm:mt-16">
+            <div className="overflow-hidden rounded-2xl">
+              <TypeformEmbed id={HOLDING_TYPEFORM_ID} />
+            </div>
           </div>
         </div>
 
