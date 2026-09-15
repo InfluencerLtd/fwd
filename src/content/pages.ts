@@ -298,7 +298,7 @@ export const ROOMS = {
    */
   heading: "There is [[no|circle]] fixed program.",
   lead: [
-    "A dinner in London one month. A closed conversation in New York the next. Drinks in Cannes because the whole industry has gathered there. Cocktail hour in Texas, a conversation in Los Angeles, or an unexpected gathering wherever our members happen to be.",
+    "A dinner in London one month. A closed conversation in New York the next. Drinks in Cannes because the whole industry has gathered there. Cocktail hour in Texas, a conversation in LA, or an unexpected gathering wherever our members happen to be.",
     "Forward goes where the members are, and happens when and where there is reason.",
   ],
   /** The big line, set like the case on the home page. */
