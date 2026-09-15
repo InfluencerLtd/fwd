@@ -167,11 +167,10 @@ export const HERO = {
    * too many words; this one says what Forward is and who it is for, and the
    * first half is the part nobody else on this list could write.
    *
-   * Two sentences, so it is set as two lines rather than a paragraph: the
-   * hero holds four things now and none of them should look like body copy.
+   * ONE SENTENCE. The second half named the three groups again, which the
+   * line directly above it already does, so it came off on 15 September 2026.
    */
-  plain:
-    "Where the creator economy speaks freely. A private community for the brands, creators and platforms shaping what comes next.",
+  plain: "Where the creator economy speaks freely.",
 
   /*
    * AN EARLIER, PLAINER SENTENCE SAT HERE AND CAME OFF. It was added on 14 September
