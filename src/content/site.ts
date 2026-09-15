@@ -440,7 +440,7 @@ export const BRIEFING_SUBMIT = {
   // Starts at "Built" rather than "The briefing is built": the heading above
   // is now the name, so the sentence under it no longer has to say it again.
   body: "Built from what is actually changing in the creator economy, from the people in a position to know it rather than the people quickest to write about it.\nFour issues released throughout the year, to members only. Written by Jenny Penich, Influencer’s chief revenue officer.",
-  send: "If it is worth forwarding, forward it to us",
+  send: "If it is worth including, forward it to us",
   /**
    * THE SAME SECTION, ON THE BRIEFING PAGE. There it sat under an h1 already
    * reading "the briefing", with a paragraph restating the page's own lead,
