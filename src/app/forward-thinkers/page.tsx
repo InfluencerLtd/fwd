@@ -2,11 +2,10 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { FORWARD_THINKERS_PUBLIC } from "@/lib/site-config";
 import { PageShell } from "@/components/page-shell";
-import { PageClose } from "@/components/page-close";
 import { MarkedText } from "@/components/marked";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { FORWARD_THINKERS } from "@/content/pages";
-import { IMAGERY, NOT_FOUND } from "@/content/site";
+import { NOT_FOUND } from "@/content/site";
 
 // While the page is private it answers as the 404 page, name and all, so a
 // browser tab cannot give away what is behind it. Same handling as the class
@@ -179,12 +178,12 @@ export default function ForwardThinkersPage() {
         </div>
       </section>
 
-      <PageClose
-        heading={FORWARD_THINKERS.closing.heading}
-        sentence
-        photo="closing"
-        photoBrief={IMAGERY.statement}
-      />
+      {/* NO CLOSE ON THIS PAGE. Every other page ends on the photograph and
+          the apply button; this one came off on 15 September 2026. The page is
+          about people who are chosen rather than people who apply, so asking
+          the reader to apply underneath the list was the wrong ask in the
+          wrong place. FORWARD_THINKERS.closing is still in the content file if
+          it comes back. */}
     </PageShell>
   );
 }

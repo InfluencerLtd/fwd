@@ -487,6 +487,7 @@ export const FORWARD_THINKERS = {
     ],
   },
 
+  /** NOTHING RENDERS THIS. The close came off the page on 15 September 2026. */
   closing: { heading: "Put yourself forward" },
 } as const;
 
