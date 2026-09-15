@@ -245,10 +245,12 @@ export const WAY_IN = {
   heading: "Introduce yourself",
   /** DRAFT. */
   /**
-   * IT ANSWERS THE SILENT QUESTION. "Reviewed personally" said how we work;
-   * this says what happens to the person reading it (first-impression
-   * critique, 14 September 2026). The last clause is a promise: somebody has
-   * to reply to every application for it to stay true.
+   * NOTHING IS DRAWN UNDER THE HEADING NOW. The line here answered the silent
+   * question an applicant has — is this read, and will anybody reply
+   * (first-impression critique, 14 September 2026) — and it came off the page
+   * on 15 September. Kept, unrendered, because it is the plainest description
+   * of how applications are handled that exists in this file, and the
+   * membership page is where it would go if it goes anywhere.
    */
   note: "Every application is read by a person. We keep the room balanced, so not everyone gets in, and we answer either way.",
 } as const;

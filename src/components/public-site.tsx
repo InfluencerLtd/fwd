@@ -171,10 +171,14 @@ export function PublicSite() {
              The same component every other page closes on, at the larger
              scale. It used to be a component of its own, which is how it
              ended up with a mask two revisions behind everyone else's. */}
+        {/* NO LINE UNDER THE HEADING. It carried the application promise
+            ("read by a person... we answer either way") for a day and came
+            out on 15 September 2026: the close is an invitation, and the
+            process belongs on the membership page rather than in front of the
+            button. */}
         <PageClose
           heading={WAY_IN.heading}
           sentence
-          note={WAY_IN.note}
           photo="closing"
           photoBrief={IMAGERY.statement}
         />
