@@ -168,7 +168,7 @@ export const ABOUT_PAGE = {
     // under three words at this size is a rule rather than a pen line. Gone
     // over twice, which is the heaviest of the four shapes and the only one
     // that reads at the end of a sentence this size.
-    "This is where the creator economy [[comes together|circle]] to shape\u00a0what happens [[next|double]]",
+    "This is where the creator economy [[comes together|circle]] to shape\u00a0what happens next",
   how: {
     heading: "How it works",
     /** DRAFT. */

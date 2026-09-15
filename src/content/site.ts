@@ -510,7 +510,7 @@ export const NAME_STORY = {
   heading: "Why Forward",
   body: [
     "You see something good and you forward it. Not to everyone, just to a handful of people whose opinion you genuinely value.",
-    "That is the idea behind Forward: the right people, in one place, sharing what matters.",
+    "That is the idea: the right people, in one place, sharing what matters.",
   ],
 } as const;
 

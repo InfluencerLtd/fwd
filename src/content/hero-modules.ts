@@ -41,7 +41,7 @@ export const HEADER_NAV: readonly { label: string; href: string | null }[] = [
   // briefing because it is the launch moment, and after the rooms because
   // somebody has to know what Forward is before a list of its people means
   // anything.
-  { label: "Forward Thinkers", href: "/forward-thinkers" },
+  { label: "ForwardThinkers", href: "/forward-thinkers" },
   { label: "The briefing", href: "/briefing" },
 ];
 
