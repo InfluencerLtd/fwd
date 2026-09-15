@@ -403,6 +403,7 @@ export const FORWARD_THINKERS = {
    */
   curators: {
     heading: "Curated by",
+    /** NOTHING RENDERS THIS. Taken off the page on 15 September 2026. */
     lead: "The list is not ours alone. Three people who know the industry put the names forward, market by market.",
     /** The shot each portrait wants, for whoever asks them for one. */
     photoBrief: "A portrait they already have. Head and shoulders, plain background",
@@ -452,6 +453,7 @@ export const FORWARD_THINKERS = {
    */
   list: {
     heading: "The first thirty",
+    /** NOTHING RENDERS THIS. Taken off the page on 15 September 2026. */
     empty: "The names are with the curators. The list is published at launch.",
     /** How many blank portraits to draw while the names are out. */
     slots: 5,

@@ -67,23 +67,25 @@ export default function ForwardThinkersPage() {
       </section>
 
       {/* ---- Who chooses --------------------------------------------------
-           THREE NAMES, SET LIKE A CREDIT. Big in the display face, the market
-           each one curates underneath, hairline above each. The people are the
-           credibility here, so they are the largest thing in the section
-           after the heading. */}
+           CENTRED, WHICH THE REST OF THE SITE IS NOT. Asked for on
+           15 September 2026. Three names with a portrait each sit on the page
+           axis rather than against the left margin: it is a credit, and a
+           credit reads as a credit when it is centred under the thing it is
+           crediting. The class page takes the same posture for the same
+           reason.
+
+           The lead line that was under the heading has gone with the same
+           request. It is still in the content file. */}
       <section className="fwd-section px-6">
-        <div className="mx-auto max-w-6xl">
-          <h2 className="fwd-reveal fwd-h2 max-w-3xl normal-case!">
+        <div className="mx-auto max-w-5xl text-center">
+          <h2 className="fwd-reveal fwd-h2 normal-case!">
             {FORWARD_THINKERS.curators.heading}
           </h2>
-          <p className="fwd-reveal fwd-standfirst mt-7 max-w-2xl text-ink-muted">
-            {FORWARD_THINKERS.curators.lead}
-          </p>
-          <ul className="fwd-stagger mt-14 grid gap-x-16 gap-y-12 sm:grid-cols-3">
+          <ul className="fwd-stagger mx-auto mt-14 flex flex-col items-center gap-12 sm:flex-row sm:items-start sm:justify-center sm:gap-16">
             {FORWARD_THINKERS.curators.people.map((person) => (
               <li
                 key={person.name}
-                className="fwd-reveal border-t border-ink/15 pt-7"
+                className="fwd-reveal flex w-full max-w-[16rem] flex-col items-center"
               >
                 {/* Small, and the same shape as the portraits in the list
                     below, so the two sections read as one family. A missing
@@ -162,9 +164,8 @@ export default function ForwardThinkersPage() {
             </ul>
           ) : (
             <>
-              <p className="fwd-reveal fwd-standfirst mt-8 max-w-2xl text-ink-muted">
-                {FORWARD_THINKERS.list.empty}
-              </p>
+              {/* The line that said the names were with the curators has gone
+                  (15 September 2026). The blank portraits say it. */}
               <ul
                 aria-hidden="true"
                 className="fwd-stagger mt-12 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-5"
