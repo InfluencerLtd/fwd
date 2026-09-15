@@ -23,7 +23,7 @@
  */
 
 export const HEADER_NAV: readonly { label: string; href: string | null }[] = [
-  { label: "What it is", href: "/about" },
+  { label: "About", href: "/about" },
   { label: "Membership", href: "/membership" },
   // The label says "what\u2019s on" and the page it opens still calls itself
   // the rooms, top to bottom — "the events" at the top, then "a seat in the
@@ -32,7 +32,7 @@ export const HEADER_NAV: readonly { label: string; href: string | null }[] = [
   // "What\u2019s on" promised listings and the page opens by saying there is no
   // fixed programme, which deflates on arrival (first-impression critique,
   // 14 September 2026). The label now matches what the page is about.
-  { label: "About", href: "/rooms" },
+  { label: "The rooms", href: "/rooms" },
   // REMOVED FROM THE NAVIGATION, NOT DELETED. /class-of-2026 still exists and
   // still works for anybody sent the link; it is off the bar until the cohort
   // is ready to be talked about publicly. Put this line back to restore it:
