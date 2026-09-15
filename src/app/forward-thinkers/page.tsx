@@ -44,10 +44,6 @@ export default function ForwardThinkersPage() {
         className="fwd-dark fwd-on-dark fwd-grain fwd-section px-6 pt-36 sm:pt-40"
       >
         <div className="relative z-1 mx-auto grid max-w-6xl gap-x-16 gap-y-10 lg:grid-cols-12">
-          <p className="fwd-eyebrow col-span-full text-accent-on-dark">
-            {FORWARD_THINKERS.eyebrow}
-          </p>
-
           {/* The page's one main heading. normal-case! because the unlayered
               h1 rule in globals.css would otherwise lowercase it. */}
           <h1 className="fwd-rise fwd-statement col-span-full text-photo-ink normal-case! lg:col-span-9">

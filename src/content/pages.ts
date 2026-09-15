@@ -369,6 +369,7 @@ export const FORWARD_THINKERS = {
   title: "forward thinkers",
   description:
     "The inaugural Forward Thinkers: around thirty people driving the creator economy forward, across platforms, brands and creators.",
+  /** NOTHING RENDERS THIS. Taken off the page on 15 September 2026. */
   eyebrow: "The inaugural list",
   heading: "The people moving the industry [[forward]].",
   /**
