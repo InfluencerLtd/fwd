@@ -454,7 +454,7 @@ export const FORWARD_THINKERS = {
     heading: "The first thirty",
     empty: "The names are with the curators. The list is published at launch.",
     /** How many blank portraits to draw while the names are out. */
-    slots: 10,
+    slots: 5,
     slotLabel: "To be announced",
     photoBrief: "Head and shoulders, low warm light, the room behind them",
     people: [] as readonly {
