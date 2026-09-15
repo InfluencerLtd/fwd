@@ -4,7 +4,6 @@ import { SiteHeader } from "@/components/site-header";
 import { ApplyLink } from "@/components/apply-link";
 import { MarkedText } from "@/components/marked";
 import { TheCase } from "@/components/the-case";
-import { BriefingSubmit } from "@/components/briefing-submit";
 import { PageClose } from "@/components/page-close";
 import { SiteFooter } from "@/components/site-footer";
 import {
@@ -146,8 +145,17 @@ export function PublicSite() {
              about bringing people together at all, which Sophie wants said
              somewhere: see the note in the same file's section 3. */}
 
-        {/* ---- 6. Most of it comes from the room ------------------------- */}
-        <BriefingSubmit />
+        {/* ---- 6. THE BRIEFING SECTION IS OFF THE HOME PAGE ---------------
+             Taken off on 15 September 2026, kept rather than deleted: the
+             heading, the paragraph about where the writing comes from, and
+             the button that opens "send something in".
+
+             It is still a component and still in use: /briefing renders the
+             same <BriefingSubmit /> with its own heading and copy, so the
+             form and everything behind it are untouched. Putting it back here
+             is one line.
+
+             The home page now has one ask on it, which is to apply. */}
 
         {/* ---- 7. The close ---------------------------------------------
              The same component every other page closes on, at the larger
