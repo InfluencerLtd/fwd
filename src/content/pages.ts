@@ -174,7 +174,7 @@ export const ABOUT_PAGE = {
     /** DRAFT. */
     items: [
       {
-        name: "The guest list is balanced by hand",
+        name: "The guest list is curated by hand",
         line: "Membership is by application. For every event we bring together a mix of brands, creators and platforms, so the conversation is useful for everyone there.",
       },
       {
