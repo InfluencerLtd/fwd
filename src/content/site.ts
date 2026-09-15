@@ -161,16 +161,15 @@ export const HERO = {
    * here rather than left for marketing to find.
    */
   headline: "Brands. Creators. Platforms.",
-  /**
-   * WHAT IT IS, IN PLAIN WORDS. The site never said, and a first-time visitor
-   * had to assemble it from four pages (first-impression critique,
-   * 14 September 2026). It sits under the three nouns, small, so the mood the
-   * hero is built on survives being explained.
-   *
-   * NOT "CLUB". The naming rule in src/lib/brand.ts keeps that word for The
-   * clubhouse and nowhere a visitor can read it, so this says membership.
+  /*
+   * THE PLAIN SENTENCE HAS GONE FROM THE HERO. It was added on 14 September
+   * 2026 for the first-impression critique — "the site never says what this
+   * is" — and taken out again on 15 September: under the three nouns it made
+   * the hero explain itself, which is not what this photograph is for. The
+   * critique's point still stands and is unanswered on this page; if it comes
+   * back it wants somewhere other than here, most likely the first band under
+   * the fold.
    */
-  plain: "Forward is Influencer\u2019s private community for the creator economy.",
   /**
    * The hero has ONE button and its label lives in APPLY.cta, because the same
    * button appears three times down the page and they must not drift apart.

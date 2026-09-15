@@ -90,14 +90,6 @@ export function Hero() {
               {HERO.headline}
             </p>
 
-            {/* The plain sentence, under the three nouns and above the
-                button. Smaller and quieter than the line over it: the mood is
-                the headline's job, and this one is only here so nobody has to
-                guess what they are looking at. */}
-            <p className="mx-auto mt-5 max-w-[34ch] font-body text-[15px] leading-relaxed text-photo-ink/70 sm:max-w-none sm:text-base">
-              {HERO.plain}
-            </p>
-
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
               <ApplyLink variant="onDark" />
             </div>
