@@ -85,10 +85,23 @@ export default function ForwardThinkersPage() {
                 key={person.name}
                 className="fwd-reveal border-t border-ink/15 pt-7"
               >
-                <p className="font-display text-[32px] leading-[1.05] text-ink">
+                {/* Small, and the same shape as the portraits in the list
+                    below, so the two sections read as one family. A missing
+                    file draws the warm placeholder rather than a hole. */}
+                <div className="w-28 overflow-hidden rounded-2xl sm:w-32">
+                  <PhotoPlaceholder
+                    label={FORWARD_THINKERS.curators.photoBrief}
+                    name={person.photo}
+                    ratio="portrait"
+                    showLabel={false}
+                    sizes="128px"
+                    washClassName="bg-photo-ground/20"
+                  />
+                </div>
+                <p className="mt-6 font-display text-[32px] leading-[1.05] text-ink">
                   {person.name}
                 </p>
-                <p className="fwd-body mt-4 text-ink-muted">{person.line}</p>
+                <p className="fwd-body mt-3 text-ink-muted">{person.line}</p>
               </li>
             ))}
           </ul>

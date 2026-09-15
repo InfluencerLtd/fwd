@@ -404,18 +404,24 @@ export const FORWARD_THINKERS = {
   curators: {
     heading: "Curated by",
     lead: "The list is not ours alone. Three people who know the industry put the names forward, market by market.",
+    /** The shot each portrait wants, for whoever asks them for one. */
+    photoBrief: "A portrait they already have. Head and shoulders, plain background",
     people: [
       {
         name: "Caspar Lee",
         line: "Co-founder and CVO of Influencer.",
+        /** public/photography/curator-caspar-lee.jpg, when it arrives. */
+        photo: "curator-caspar-lee",
       },
       {
         name: "Stuart Flint",
         line: "Curating the United Kingdom and Europe.",
+        photo: "curator-stuart-flint",
       },
       {
         name: "Tara Walpert Levy",
         line: "Curating the United States.",
+        photo: "curator-tara-walpert-levy",
       },
     ],
   },
