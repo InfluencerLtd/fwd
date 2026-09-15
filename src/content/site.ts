@@ -225,9 +225,9 @@ export const CASE = {
   heading: "Everyone sees a [[different]] part of the same picture.",
   /** DRAFT. */
   body: [
-    "Brands have agencies. Platforms have roadmaps. Creators have audiences. All three are building the same industry, and they rarely sit in the same room.",
-    "When they do meet it is on a stage, on a panel, or at a conference with four thousand other people in it. Those are the worst possible conditions for the conversation that actually matters.",
-    "So we make the room instead. Small, off the record, and a curated guest list put together by hand.",
+    "Brands have KPIs. Platforms have roadmaps. Creators have audiences. All three are building the same industry, and they rarely sit in the same room.",
+    "When they do, it\u2019s a stage, a panel, or a conference with four thousand other people in it. The worst possible conditions for the conversation that actually matters.",
+    "So we make the room instead. Small, off the record, guest list put together by hand.",
   ],
 } as const;
 
