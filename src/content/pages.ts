@@ -175,15 +175,15 @@ export const ABOUT_PAGE = {
     items: [
       {
         name: "The guest list is curated by hand",
-        line: "Membership is by application. For every event we bring together a mix of brands, creators and platforms, so the conversation is useful for everyone there.",
+        line: "Membership is by application. For every event, we bring together a considered mix of people from brands, creator businesses and platforms.",
       },
       {
-        name: "The introductions are made for you",
-        line: "Ask to meet any member and we make the introduction properly, with a reason attached for both sides. Never a name passed along.",
+        name: "Each room starts with a clear topic",
+        line: "We build every event around a question that matters to the industry, bringing together people with different experience and perspectives.",
       },
       {
         name: "It does not stop when dinner does",
-        line: "Members can stay connected through the member directory, regular editions of The Briefing and the online members' area.",
+        line: "Members can keep in touch through the directory, receive introductions where useful and read regular editions of The briefing.",
       },
     ],
   },
