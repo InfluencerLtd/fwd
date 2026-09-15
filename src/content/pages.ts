@@ -225,12 +225,17 @@ export const ABOUT_PAGE = {
    * WHO IS BEHIND IT, IN ONE LINE. "by Influencer" was a wordmark and nothing
    * else, so the agency's credibility was doing no work for a visitor who has
    * never heard of either name (first-impression critique, 14 September 2026).
-   * The claim is Influencer's own, from the expansion brief.
+   * IT USES INFLUENCER.COM'S OWN WORDING, not the expansion brief's. The
+   * brief called them "the biggest independent creator marketing specialist";
+   * their own site says "a global marketing agency with creators at its
+   * core" and claims no superlative anywhere, and two sites making different
+   * claims about the same company is the kind of thing a competitor notices.
+   * What survives is the part a creator actually weighs: founded by creators.
    *
    * `madeByLink` is the word that carries the link out to influencer.com.
    */
     madeBy:
-      "Forward is made by Influencer, the largest independent creator marketing specialist, and the only one founded by creators.",
+      "Forward is made by Influencer, a global marketing agency founded by creators.",
     madeByLink: "Influencer",
 
     /** The three it is built around. From the document. */
