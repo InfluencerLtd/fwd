@@ -407,7 +407,7 @@ export const FORWARD_THINKERS = {
     people: [
       {
         name: "Caspar Lee",
-        line: "Co-founder of Influencer.",
+        line: "Co-founder and CVO of Influencer.",
       },
       {
         name: "Stuart Flint",
