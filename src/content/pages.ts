@@ -456,8 +456,11 @@ export const FORWARD_THINKERS = {
     /** NOTHING RENDERS THIS. Taken off the page on 15 September 2026. */
     empty: "The names are with the curators. The list is published at launch.",
     /** How many blank portraits to draw while the names are out. */
-    slots: 5,
+    /** Thirty places, blank until the names come in. */
+    slots: 30,
     slotLabel: "To be announced",
+    previous: "Previous Forward Thinkers",
+    next: "More Forward Thinkers",
     photoBrief: "Head and shoulders, low warm light, the room behind them",
     people: [] as readonly {
       name: string;

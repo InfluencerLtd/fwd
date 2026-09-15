@@ -4,6 +4,7 @@ import { FORWARD_THINKERS_PUBLIC } from "@/lib/site-config";
 import { PageShell } from "@/components/page-shell";
 import { MarkedText } from "@/components/marked";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
+import { ThinkersCarousel } from "@/components/thinkers-carousel";
 import { FORWARD_THINKERS } from "@/content/pages";
 import { NOT_FOUND } from "@/content/site";
 
@@ -130,17 +131,35 @@ export default function ForwardThinkersPage() {
             {FORWARD_THINKERS.list.heading}
           </h2>
 
-          {FORWARD_THINKERS.list.people.length > 0 ? (
-            <ul className="fwd-stagger mt-12 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-5">
-              {FORWARD_THINKERS.list.people.map((person) => (
-                <li key={person.name} className="fwd-reveal group">
+          {/* THIRTY PLACES, BLANK UNTIL THE NAMES ARRIVE. The row takes the
+              same shape either way, so it looks like the finished row rather
+              than a section waiting to be built. Filling list.people in
+              src/content/pages.ts is the whole job.
+
+              The cards are rendered here, on the server, and handed to the
+              carousel: the photographs are drawn by PhotoPlaceholder, which
+              reads the photography folder to decide whether a real picture
+              exists, and that cannot happen inside a client component. */}
+          <div className="mt-12">
+            <ThinkersCarousel
+              previousLabel={FORWARD_THINKERS.list.previous}
+              nextLabel={FORWARD_THINKERS.list.next}
+            >
+              {(FORWARD_THINKERS.list.people.length > 0
+                ? FORWARD_THINKERS.list.people
+                : Array.from({ length: FORWARD_THINKERS.list.slots }, () => null)
+              ).map((person, index) => (
+                <li
+                  key={person ? person.name : index}
+                  className="group w-[44vw] shrink-0 snap-start sm:w-[30vw] lg:w-[18%]"
+                >
                   <div
-                    tabIndex={0}
-                    className="fwd-photo relative overflow-hidden rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                    tabIndex={person ? 0 : -1}
+                    className="relative overflow-hidden rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                   >
                     <PhotoPlaceholder
                       label={FORWARD_THINKERS.list.photoBrief}
-                      name={person.photo}
+                      name={person?.photo}
                       ratio="portrait"
                       showLabel={false}
                       sizes="(min-width: 1024px) 18vw, (min-width: 640px) 30vw, 44vw"
@@ -148,47 +167,33 @@ export default function ForwardThinkersPage() {
                       className="rounded-2xl"
                     />
                     {/* The reason, over the picture. Hidden until hover or
-                        focus, and always on where there is no hover. */}
-                    <p className="pointer-events-none absolute inset-0 z-2 flex items-end bg-photo-ground/80 p-4 font-body text-[13px] leading-snug text-photo-ink opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100 [@media(hover:none)]:opacity-100">
-                      {person.why}
-                    </p>
+                        focus, and always on where there is no hover, so the
+                        sentence is never only available to a mouse. */}
+                    {person ? (
+                      <p className="pointer-events-none absolute inset-0 z-2 flex items-end bg-photo-ground/80 p-4 font-body text-[13px] leading-snug text-photo-ink opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100 [@media(hover:none)]:opacity-100">
+                        {person.why}
+                      </p>
+                    ) : null}
                   </div>
-                  <p className="mt-4 font-display text-[21px] leading-[1.1] text-ink">
-                    {person.name}
-                  </p>
-                  <p className="mt-1 font-body text-[13px] leading-snug text-ink-muted">
-                    {person.title}
-                  </p>
+
+                  {person ? (
+                    <>
+                      <p className="mt-4 font-display text-[21px] leading-[1.1] text-ink">
+                        {person.name}
+                      </p>
+                      <p className="mt-1 font-body text-[13px] leading-snug text-ink-muted">
+                        {person.title}
+                      </p>
+                    </>
+                  ) : (
+                    <p className="mt-4 font-body text-[13px] tracking-[0.14em] text-ink-muted uppercase">
+                      {FORWARD_THINKERS.list.slotLabel}
+                    </p>
+                  )}
                 </li>
               ))}
-            </ul>
-          ) : (
-            <>
-              {/* The line that said the names were with the curators has gone
-                  (15 September 2026). The blank portraits say it. */}
-              <ul
-                aria-hidden="true"
-                className="fwd-stagger mt-12 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-5"
-              >
-                {Array.from({ length: FORWARD_THINKERS.list.slots }).map(
-                  (_, index) => (
-                    <li key={index} className="fwd-reveal">
-                      <PhotoPlaceholder
-                        label={FORWARD_THINKERS.list.photoBrief}
-                        ratio="portrait"
-                        showLabel={false}
-                        washClassName="bg-photo-ground/25"
-                        className="rounded-2xl"
-                      />
-                      <p className="mt-4 font-body text-[13px] tracking-[0.14em] text-ink-muted uppercase">
-                        {FORWARD_THINKERS.list.slotLabel}
-                      </p>
-                    </li>
-                  ),
-                )}
-              </ul>
-            </>
-          )}
+            </ThinkersCarousel>
+          </div>
         </div>
       </section>
 

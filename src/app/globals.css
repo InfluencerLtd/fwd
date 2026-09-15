@@ -1204,6 +1204,27 @@ select.fwd-field {
  * on 15 September 2026, when the Typeform embed made the page taller than one
  * screen. Keyed on the page's own wrapper, so only the holding page is dark.
  */
+/*
+ * A ROW YOU MOVE ALONG: the thirty Forward Thinkers, and anything else set as
+ * one horizontal line of cards.
+ *
+ * NO SCROLLBAR, BECAUSE THERE ARE ARROWS. A native bar under a row of
+ * photographs is the one piece of browser furniture on the page, and the two
+ * buttons under the row already say it moves. The row is still a plain
+ * scroller: a trackpad, a swipe and shift-wheel all work.
+ *
+ * `overscroll-behavior-x: contain` keeps a swipe inside the row. Without it,
+ * swiping past the last card triggers the browser's own back gesture, which
+ * takes somebody off the page when they meant to see one more face.
+ */
+.fwd-scroll-row {
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+.fwd-scroll-row::-webkit-scrollbar {
+  display: none;
+}
+
 body:has(.fwd-holding) {
   background-color: var(--fwd-photo-ground);
 }
