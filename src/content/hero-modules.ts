@@ -37,6 +37,11 @@ export const HEADER_NAV: readonly { label: string; href: string | null }[] = [
   // still works for anybody sent the link; it is off the bar until the cohort
   // is ready to be talked about publicly. Put this line back to restore it:
   //   { label: "the class of 2026", href: "/class-of-2026" },
+  // The inaugural list, live from 15 September 2026. It sits before the
+  // briefing because it is the launch moment, and after the rooms because
+  // somebody has to know what Forward is before a list of its people means
+  // anything.
+  { label: "Forward Thinkers", href: "/forward-thinkers" },
   { label: "The briefing", href: "/briefing" },
 ];
 

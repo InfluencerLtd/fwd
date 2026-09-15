@@ -77,7 +77,7 @@ export const ADMIN_COOKIE = "fwd-admin";
  * page, so neither the concept nor the wording can be read before the names
  * are agreed. One word here puts it live.
  */
-export const FORWARD_THINKERS_PUBLIC = false;
+export const FORWARD_THINKERS_PUBLIC = true;
 
 /**
  * THE CLASS OF 2026 PAGE IS PRIVATE UNTIL IT IS REVEALED.
