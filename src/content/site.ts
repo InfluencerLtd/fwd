@@ -1,4 +1,4 @@
-import { BENEFITS, BRAND } from "@/lib/brand";
+import { BENEFITS } from "@/lib/brand";
 
 /**
  * site.ts
@@ -324,6 +324,29 @@ export const MEMBERSHIP = {
    * nobody would read, and the cards now come as a headline and a line rather
    * than as three levels.
    */
+  /*
+   * THE BRIEFING TILE CAME OUT ON 15 SEPTEMBER 2026. It was the pale blue
+   * "coming soon" tile in the drifting band, and it read as the one thing on
+   * the page that is not ready. The newsletter itself is untouched: it has its
+   * own page, its own section there, and its name still comes from
+   * BENEFITS.newsletterName.
+   *
+   * The entry, if it goes back:
+   *
+   *   { id: "newsletter", title: "The briefing",
+   *     summary: "Quarterly, members only. What is actually changing, from
+   *               people in a position to know.",
+   *     comingSoon: "Coming soon" }
+   *
+   * THE CLUBHOUSE TILE WENT THE SAME WAY, minutes later, for the same reason:
+   * two pale blue "coming soon" tiles in a band of photographs read as the
+   * things that are not built yet. The members' area itself is unaffected, and
+   * its name still comes from BRAND.memberArea.
+   *
+   *   { id: "the-house", title: BRAND.memberArea,
+   *     summary: "The members\u2019 area. Private, online, always open.",
+   *     comingSoon: "Coming soon" }
+   */
   cards: [
     {
       id: "meeting-of-minds",
@@ -358,17 +381,6 @@ export const MEMBERSHIP = {
       summary: "Put one question to the whole membership.",
     },
     {
-      /**
-       * The members' area, named once in src/lib/brand.ts: The clubhouse,
-       * from 11 September 2026 (it was The House). One name everywhere.
-       */
-      id: "the-house",
-      title: BRAND.memberArea,
-      summary: "The members\u2019 area. Private, online, always open.",
-      /** Not built yet: the tile is pale blue with this on it, no photograph. */
-      comingSoon: "Coming soon",
-    },
-    {
       id: "founding-members",
       /** PLACEHOLDER. The sheet had a headline and no line under it. */
       summary: "The first people in the room, chosen before the doors opened.",
@@ -378,16 +390,6 @@ export const MEMBERSHIP = {
       id: "digital-rooms",
       title: "Digital rooms",
       summary: "Webinars and small breakout sessions, wherever members are.",
-    },
-    {
-      id: "newsletter",
-      // Capitalised here to sit beside "The clubhouse"; the name stays
-      // lowercase in the navigation and headings.
-      title: "The briefing",
-      summary:
-        "Quarterly, members only. What is actually changing, from people in a position to know.",
-      /** Not out yet: a pale blue tile like The clubhouse, no photograph. */
-      comingSoon: "Coming soon",
     },
     {
       id: "merch",

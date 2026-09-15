@@ -58,18 +58,13 @@ function Row({
             aria-hidden={index >= cards.length || undefined}
             className={`shrink-0 ${TILE_HEIGHT} ${WIDTHS[index % WIDTHS.length]}`}
           >
-            {"comingSoon" in card ? (
-              // NOT BUILT YET, SO NO PHOTOGRAPH. A pale blue tile in the
-              // brand's own colour, its name and "coming soon" in the near-
-              // black, reads as something on its way rather than a gap.
-              <div className="flex h-full flex-col items-center justify-center gap-2 rounded-2xl bg-accent-on-dark px-6 text-center text-photo-ground">
-                <p className="font-body text-[17px] leading-snug">{card.title}</p>
-                <p className="font-body text-[13px] leading-snug text-photo-ground/75">
-                  {card.summary}
-                </p>
-                <p className="fwd-eyebrow text-photo-ground/70">{card.comingSoon}</p>
-              </div>
-            ) : (
+            {/* NO "COMING SOON" TILES ANY MORE. Two of these were pale blue
+                panels with no photograph, for The clubhouse and The briefing,
+                and both came off on 15 September 2026: in a band of
+                photographs they read as the two things that are not finished.
+                The copy for both is recorded over `cards` in
+                src/content/site.ts, and this is where the branch that drew
+                them used to be. */}
             <PhotoPlaceholder
               label={IMAGERY.benefits[card.id as keyof typeof IMAGERY.benefits]}
               name={`benefit-${card.id}`}
@@ -105,7 +100,6 @@ function Row({
                 </p>
               </div>
             </PhotoPlaceholder>
-            )}
           </li>
         ))}
       </ul>
