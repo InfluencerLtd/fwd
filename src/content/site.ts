@@ -400,10 +400,12 @@ export const MEETING_OF_MINDS = {
   heading: "Meeting of minds",
   /** DRAFT. */
   standfirst: "The right introduction can [[change everything]].",
+  // TWO PARAGRAPHS, NOT THREE. The middle one said what the third one says
+  // better, so the promise and the mechanism now sit in one sentence each
+  // (first-impression critique, 14 September 2026).
   body: [
-    "Most networks hand you a list and leave the rest to you. This one works the other way around.",
-    "We make the introduction ourselves, and we tell both sides why it is worth making.",
-    "Ask for an introduction to any member. No contact details are shared until you both say yes.",
+    "Most networks hand you a directory and leave the rest to you. We work the other way around.",
+    "Ask to meet any member and we make the introduction ourselves, with a reason attached for both sides. No contact details are shared until you both say yes.",
   ],
 } as const;
 
