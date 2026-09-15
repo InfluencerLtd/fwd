@@ -97,31 +97,10 @@ export default function BriefingPage() {
       </section>
 
       {/* ---- The contents ----------------------------------------------- */}
-      <section className="fwd-section bg-surface-alt px-6">
-        <div className="mx-auto max-w-6xl">
-          <h2 className="fwd-reveal fwd-h2 normal-case!">{BRIEFING.inside.heading}</h2>
+      {/* WHAT IS IN IT IS OFF THE PAGE. The four-part index of the
+          newsletter's sections came off on 15 September 2026; the copy is
+          still BRIEFING.inside in src/content/pages.ts. */}
 
-          <ol className="fwd-stagger mt-14 sm:mt-20">
-            {BRIEFING.inside.items.map((item, index) => (
-              <li
-                key={item.name}
-                className="fwd-reveal grid items-baseline gap-x-10 gap-y-2 border-t border-ink/15 py-8 md:grid-cols-12"
-              >
-                <span className="fwd-eyebrow col-span-full text-ink-muted md:col-span-1">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                {/* Not a heading: these keep their capitals. */}
-                <p className="fwd-standfirst col-span-full text-ink md:col-span-5">
-                  {item.name}
-                </p>
-                <p className="fwd-body col-span-full text-ink-muted md:col-span-5 md:col-start-8">
-                  {item.line}
-                </p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
 
       <BriefingSubmit
         heading={BRIEFING_SUBMIT.onBriefingPage.heading}

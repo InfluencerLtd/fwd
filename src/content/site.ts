@@ -343,6 +343,12 @@ export const MEMBERSHIP = {
    * things that are not built yet. The members' area itself is unaffected, and
    * its name still comes from BRAND.memberArea.
    *
+   * FOUNDING MEMBERS WENT TOO, on the same afternoon:
+   *
+   *   { id: "founding-members", title: "Founding members",
+   *     summary: "The first people in the room, chosen before the doors
+   *               opened." }
+   *
    *   { id: "the-house", title: BRAND.memberArea,
    *     summary: "The members\u2019 area. Private, online, always open.",
    *     comingSoon: "Coming soon" }
@@ -379,12 +385,6 @@ export const MEMBERSHIP = {
       id: "ask-the-room",
       title: "Ask the room",
       summary: "Put one question to the whole membership.",
-    },
-    {
-      id: "founding-members",
-      /** PLACEHOLDER. The sheet had a headline and no line under it. */
-      summary: "The first people in the room, chosen before the doors opened.",
-      title: "Founding members",
     },
     {
       id: "digital-rooms",

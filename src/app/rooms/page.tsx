@@ -105,15 +105,10 @@ export default function RoomsPage() {
         </div>
       </section>
 
-      {/* Where this started. The one piece of evidence the page can stand
-          behind today: Cannes 2026 happened. Quiet, near the end, so it reads
-          as a note rather than as a claim the page is built on. */}
-      <section className="fwd-section-compact px-6">
-        <div className="mx-auto max-w-3xl">
-          <h2 className="fwd-reveal fwd-h3 normal-case!">{ROOMS.origin.heading}</h2>
-          <p className="fwd-reveal fwd-body mt-5 text-ink-muted">{ROOMS.origin.body}</p>
-        </div>
-      </section>
+      {/* WHERE THIS STARTED IS OFF THE PAGE. The Cannes Lions 2026 note
+          was added on 14 September 2026 to answer "is any of this real" and
+          came off on the 15th. The copy is still ROOMS.origin in
+          src/content/pages.ts. */}
 
       <PageClose
         heading={ROOMS.closing.heading}
