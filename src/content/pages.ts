@@ -183,7 +183,7 @@ export const ABOUT_PAGE = {
       },
       {
         name: "It does not stop when dinner does",
-        line: "A members' area, The Briefing four times a year, and a directory of everyone else in the room. Membership runs all year, not around one date in the diary.",
+        line: "A members' area, The briefing four times a year, and a directory of everyone else in the room. Membership runs all year, not around one date in the diary.",
       },
     ],
   },
