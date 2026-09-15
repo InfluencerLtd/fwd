@@ -4,7 +4,6 @@ import { FORWARD_THINKERS_PUBLIC } from "@/lib/site-config";
 import { PageShell } from "@/components/page-shell";
 import { MarkedText } from "@/components/marked";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
-import { ThinkersCarousel } from "@/components/thinkers-carousel";
 import { FORWARD_THINKERS } from "@/content/pages";
 import { NOT_FOUND } from "@/content/site";
 
@@ -131,69 +130,59 @@ export default function ForwardThinkersPage() {
             {FORWARD_THINKERS.list.heading}
           </h2>
 
-          {/* THIRTY PLACES, BLANK UNTIL THE NAMES ARRIVE. The row takes the
-              same shape either way, so it looks like the finished row rather
-              than a section waiting to be built. Filling list.people in
-              src/content/pages.ts is the whole job.
+          {/* THIRTY PLACES, SIX ACROSS AND FIVE DOWN. It was a carousel for
+              an hour on 15 September 2026 and is a grid again by request: the
+              whole list is in one frame, which is what a list of thirty people
+              is for. Two across on a phone, three on a tablet, six on a
+              desktop, so the rows stay whole at every width.
 
-              The cards are rendered here, on the server, and handed to the
-              carousel: the photographs are drawn by PhotoPlaceholder, which
-              reads the photography folder to decide whether a real picture
-              exists, and that cannot happen inside a client component. */}
-          <div className="mt-12">
-            <ThinkersCarousel
-              previousLabel={FORWARD_THINKERS.list.previous}
-              nextLabel={FORWARD_THINKERS.list.next}
-            >
-              {(FORWARD_THINKERS.list.people.length > 0
-                ? FORWARD_THINKERS.list.people
-                : Array.from({ length: FORWARD_THINKERS.list.slots }, () => null)
-              ).map((person, index) => (
-                <li
-                  key={person ? person.name : index}
-                  className="group w-[44vw] shrink-0 snap-start sm:w-[30vw] lg:w-[18%]"
+              Blank until the names arrive, so the shape is the finished shape.
+              Filling list.people in src/content/pages.ts is the whole job. */}
+          <ul className="fwd-stagger mt-12 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-6">
+            {(FORWARD_THINKERS.list.people.length > 0
+              ? FORWARD_THINKERS.list.people
+              : Array.from({ length: FORWARD_THINKERS.list.slots }, () => null)
+            ).map((person, index) => (
+              <li key={person ? person.name : index} className="fwd-reveal group">
+                <div
+                  tabIndex={person ? 0 : -1}
+                  className="relative overflow-hidden rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                 >
-                  <div
-                    tabIndex={person ? 0 : -1}
-                    className="relative overflow-hidden rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-                  >
-                    <PhotoPlaceholder
-                      label={FORWARD_THINKERS.list.photoBrief}
-                      name={person?.photo}
-                      ratio="portrait"
-                      showLabel={false}
-                      sizes="(min-width: 1024px) 18vw, (min-width: 640px) 30vw, 44vw"
-                      washClassName="bg-photo-ground/25"
-                      className="rounded-2xl"
-                    />
-                    {/* The reason, over the picture. Hidden until hover or
-                        focus, and always on where there is no hover, so the
-                        sentence is never only available to a mouse. */}
-                    {person ? (
-                      <p className="pointer-events-none absolute inset-0 z-2 flex items-end bg-photo-ground/80 p-4 font-body text-[13px] leading-snug text-photo-ink opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100 [@media(hover:none)]:opacity-100">
-                        {person.why}
-                      </p>
-                    ) : null}
-                  </div>
-
+                  <PhotoPlaceholder
+                    label={FORWARD_THINKERS.list.photoBrief}
+                    name={person?.photo}
+                    ratio="portrait"
+                    showLabel={false}
+                    sizes="(min-width: 1024px) 15vw, (min-width: 640px) 30vw, 44vw"
+                    washClassName="bg-photo-ground/25"
+                    className="rounded-2xl"
+                  />
+                  {/* The reason, over the picture: on hover, on keyboard focus,
+                      and always where there is no hover to be had. */}
                   {person ? (
-                    <>
-                      <p className="mt-4 font-display text-[21px] leading-[1.1] text-ink">
-                        {person.name}
-                      </p>
-                      <p className="mt-1 font-body text-[13px] leading-snug text-ink-muted">
-                        {person.title}
-                      </p>
-                    </>
-                  ) : (
-                    <p className="mt-4 font-body text-[13px] tracking-[0.14em] text-ink-muted uppercase">
-                      {FORWARD_THINKERS.list.slotLabel}
+                    <p className="pointer-events-none absolute inset-0 z-2 flex items-end bg-photo-ground/80 p-4 font-body text-[13px] leading-snug text-photo-ink opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100 [@media(hover:none)]:opacity-100">
+                      {person.why}
                     </p>
-                  )}
-                </li>
-              ))}
-            </ThinkersCarousel>
-          </div>
+                  ) : null}
+                </div>
+
+                {person ? (
+                  <>
+                    <p className="mt-4 font-display text-[19px] leading-[1.15] text-ink">
+                      {person.name}
+                    </p>
+                    <p className="mt-1 font-body text-[12.5px] leading-snug text-ink-muted">
+                      {person.title}
+                    </p>
+                  </>
+                ) : (
+                  <p className="mt-4 font-body text-[12.5px] tracking-[0.14em] text-ink-muted uppercase">
+                    {FORWARD_THINKERS.list.slotLabel}
+                  </p>
+                )}
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

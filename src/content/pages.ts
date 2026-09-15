@@ -459,8 +459,6 @@ export const FORWARD_THINKERS = {
     /** Thirty places, blank until the names come in. */
     slots: 30,
     slotLabel: "To be announced",
-    previous: "Previous Forward Thinkers",
-    next: "More Forward Thinkers",
     photoBrief: "Head and shoulders, low warm light, the room behind them",
     people: [] as readonly {
       name: string;
