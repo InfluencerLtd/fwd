@@ -66,54 +66,68 @@ export default function ForwardThinkersPage() {
         </div>
       </section>
 
-      {/* ---- How the list is made ---------------------------------------
-           A numbered index, like the formats on /rooms: these are rules rather
-           than benefits, and a rule reads better with a number on it. */}
+      {/* ---- Who chooses --------------------------------------------------
+           THREE NAMES, SET LIKE A CREDIT. Big in the display face, the market
+           each one curates underneath, hairline above each. The people are the
+           credibility here, so they are the largest thing in the section
+           after the heading. */}
       <section className="fwd-section px-6">
         <div className="mx-auto max-w-6xl">
           <h2 className="fwd-reveal fwd-h2 max-w-3xl normal-case!">
-            {FORWARD_THINKERS.made.heading}
+            {FORWARD_THINKERS.curators.heading}
           </h2>
-          <ol className="fwd-stagger mt-12 grid gap-x-16">
-            {FORWARD_THINKERS.made.items.map((item, index) => (
+          <p className="fwd-reveal fwd-standfirst mt-7 max-w-2xl text-ink-muted">
+            {FORWARD_THINKERS.curators.lead}
+          </p>
+          <ul className="fwd-stagger mt-14 grid gap-x-16 gap-y-12 sm:grid-cols-3">
+            {FORWARD_THINKERS.curators.people.map((person) => (
               <li
-                key={item.name}
-                className="fwd-reveal grid gap-x-16 gap-y-3 border-t border-ink/15 py-7 md:grid-cols-12"
+                key={person.name}
+                className="fwd-reveal border-t border-ink/15 pt-7"
               >
-                <p className="font-body text-[13px] tracking-[0.18em] text-ink-muted uppercase md:col-span-1">
-                  {`0${index + 1}`}
+                <p className="font-display text-[32px] leading-[1.05] text-ink">
+                  {person.name}
                 </p>
-                <p className="fwd-standfirst text-ink md:col-span-5">
-                  {item.name}
-                </p>
-                <p className="fwd-body text-ink-muted md:col-span-6">
-                  {item.line}
-                </p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      {/* ---- What it comes with ------------------------------------------ */}
-      <section className="fwd-section bg-surface-alt px-6">
-        <div className="mx-auto max-w-6xl">
-          <h2 className="fwd-reveal fwd-h2 max-w-3xl normal-case!">
-            {FORWARD_THINKERS.comes.heading}
-          </h2>
-          <ul className="fwd-stagger mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
-            {FORWARD_THINKERS.comes.items.map((item) => (
-              <li
-                key={item.name}
-                className="fwd-reveal border-t border-ink/15 pt-6"
-              >
-                <p className="font-display text-[26px] leading-[1.1] text-ink">
-                  {item.name}
-                </p>
-                <p className="fwd-body mt-3 text-ink-muted">{item.line}</p>
+                <p className="fwd-body mt-4 text-ink-muted">{person.line}</p>
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      {/* ---- The list ------------------------------------------------------
+           THE NAMES, IN TWO COLUMNS, HAIRLINE SEPARATED. Set on the grey so
+           the list reads as its own page within the page, and each name in the
+           display face at the standfirst size: thirty names at heading size
+           would be a wall, and thirty names at body size would be a phone
+           book.
+
+           WHILE THE NAMES ARE OUT WITH THE CURATORS the section says so in one
+           line instead of showing thirty empty rows. Filling `list.people` in
+           src/content/pages.ts is the whole of publishing it. */}
+      <section className="fwd-section bg-surface-alt px-6">
+        <div className="mx-auto max-w-6xl">
+          <h2 className="fwd-reveal fwd-h2 max-w-3xl normal-case!">
+            {FORWARD_THINKERS.list.heading}
+          </h2>
+
+          {FORWARD_THINKERS.list.people.length > 0 ? (
+            <ul className="fwd-stagger mt-12 grid gap-x-16 sm:grid-cols-2">
+              {FORWARD_THINKERS.list.people.map((person) => (
+                <li
+                  key={person.name}
+                  className="fwd-reveal border-t border-ink/15 py-6"
+                >
+                  <p className="fwd-standfirst text-ink">{person.name}</p>
+                  <p className="fwd-body mt-1 text-ink-muted">{person.line}</p>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="fwd-reveal fwd-standfirst mt-8 max-w-2xl text-ink-muted">
+              {FORWARD_THINKERS.list.empty}
+            </p>
+          )}
         </div>
       </section>
 

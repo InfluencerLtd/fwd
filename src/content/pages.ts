@@ -383,30 +383,61 @@ export const FORWARD_THINKERS = {
     "Forward Thinkers is the first list: around thirty people driving the creator economy forward, across platforms, brands and creators.",
   ],
 
-  /** How somebody gets on it, which is the part that protects its value. */
-  made: {
-    heading: "How the list is made",
-    items: [
+  /**
+   * WHO CHOOSES. Asked for on 15 September 2026: the section that was "how the
+   * list is made" is now the three people curating it.
+   *
+   * >>> THIS NAMES THREE REAL PEOPLE. <<< Sophie asked for them by name. The
+   * rule the rest of this file follows is that nobody appears on the public
+   * site until they have agreed to it, and the note asking Stuart and Tara to
+   * curate went out on 15 September, so their yes may not be in writing yet.
+   *
+   * NO EMPLOYER TITLES ON TWO OF THEM. The expansion deck has Stuart at
+   * DoubleVerify and Tara formerly at Google, and the meeting notes instead
+   * associate Stuart with YouTube and Tara with TikTok. Two sources disagree,
+   * so neither is published: what is here is the market each one is curating,
+   * which is the only part that matters to a reader. Caspar's line is his
+   * public role at Influencer.
+   *
+   * Spelling: "Tara Walpert Levy", no hyphen, as in the expansion deck.
+   */
+  curators: {
+    heading: "Curated by",
+    lead: "The list is not ours alone. Three people who know the industry put the names forward, market by market.",
+    people: [
       {
-        name: "Suggested, not submitted",
-        line: "Names come from people who know the industry, market by market, across the United States, the United Kingdom and Europe.",
+        name: "Caspar Lee",
+        line: "Co-founder of Influencer.",
       },
       {
-        name: "Balanced by hand",
-        line: "Across platforms, brands and creators, so that no one side of the table sets the tone.",
+        name: "Stuart Flint",
+        line: "Curating the United Kingdom and Europe.",
       },
       {
-        name: "For what was done",
-        line: "Chosen for what somebody did this year, not for what they spend or how many people follow them.",
-      },
-      {
-        name: "Never for sale",
-        line: "Nobody applies, and no place on the list is bought.",
+        name: "Tara Walpert Levy",
+        line: "Curating the United States.",
       },
     ],
   },
 
-  /** What the people on it actually get, in the order it matters to them. */
+  /**
+   * THE THIRTY. The names are not in yet: the curators were asked for around
+   * ten each on 15 September 2026. Until they arrive `people` stays empty and
+   * the page says so in one line rather than showing empty slots. Filling the
+   * array is the only change needed to publish the list.
+   */
+  list: {
+    heading: "The first thirty",
+    empty: "The names are with the curators. The list is published at launch.",
+    people: [] as readonly { name: string; line: string }[],
+  },
+
+  /**
+   * WHAT THINKERS GET. Nothing renders this: the section it filled is now the
+   * list itself (15 September 2026). Kept because it is the only written
+   * record of what somebody on the list is actually offered, and it is what
+   * the invitation will have to say.
+   */
   comes: {
     heading: "What it comes with",
     items: [
