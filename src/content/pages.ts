@@ -337,4 +337,92 @@ export const ROOMS = {
     /** A sentence, so the close keeps its capital: see `sentence` on PageClose. */
     heading: "The format follows the conversation, not the other way around.",
   },
+} as const;/* ===========================================================================
+   FORWARD THINKERS
+   ---------------------------------------------------------------------------
+   THE INAUGURAL LIST. Written 15 September 2026 from the note that went to the
+   two people being asked to curate it, which is the newest and most reliable
+   account of the idea:
+
+     - around thirty people driving the industry forward, across platforms,
+       brands and creators
+     - the list launches at the beginning of October, with fwd. itself
+     - the people chosen are invited to take a Forward membership and are
+       named in the launch announcement
+     - recognition only: no commitment is asked of them, and they can be as
+       involved as they want to be
+     - suggestions come from industry figures, weighted by market, roughly ten
+       names each
+
+   NOBODY IS NAMED HERE, AND THAT IS THE RULE. The two curators had not said
+   yes when this was written, and no Thinker has accepted. The same rule the
+   class page follows: no real person appears on the public site until they
+   have agreed to it.
+
+   IT SUPERSEDES THE CLASS OF 2026. That earlier version of the same idea said
+   around fifty people, curated by two named markets, revealed in January 2027.
+   Every one of those numbers has moved. See CLASS_OF_2026 below, which is
+   still in this file and still behind its own flag.
+   =========================================================================== */
+
+export const FORWARD_THINKERS = {
+  title: "forward thinkers",
+  description:
+    "The inaugural Forward Thinkers: around thirty people driving the creator economy forward, across platforms, brands and creators.",
+  eyebrow: "The inaugural list",
+  heading: "The people moving this [[forward]].",
+  lead: [
+    "Forward Thinkers is the first list: around thirty people driving the creator economy forward, across platforms, brands and creators.",
+    "It is published when Forward launches, at the beginning of October.",
+  ],
+
+  /** How somebody gets on it, which is the part that protects its value. */
+  made: {
+    heading: "How the list is made",
+    items: [
+      {
+        name: "Suggested, not submitted",
+        line: "Names come from people who know the industry, market by market, across the United States, the United Kingdom and Europe.",
+      },
+      {
+        name: "Balanced by hand",
+        line: "Across platforms, brands and creators, so that no one side of the table sets the tone.",
+      },
+      {
+        name: "For what was done",
+        line: "Chosen for what somebody did this year, not for what they spend or how many people follow them.",
+      },
+      {
+        name: "Never for sale",
+        line: "Nobody applies, and no place on the list is bought.",
+      },
+    ],
+  },
+
+  /** What the people on it actually get, in the order it matters to them. */
+  comes: {
+    heading: "What it comes with",
+    items: [
+      {
+        name: "The recognition",
+        line: "Named in the launch announcement as a Forward Thinker in the creator economy.",
+      },
+      {
+        name: "A membership",
+        line: "An invitation to Forward, with the rooms, the introductions and The Briefing that come with it.",
+      },
+      {
+        name: "Something to share",
+        line: "Assets for anybody who wants to say so publicly.",
+      },
+      {
+        name: "No commitment",
+        line: "Thinkers can be as involved as they like, including not at all.",
+      },
+    ],
+  },
+
+  closing: { heading: "Put yourself forward" },
 } as const;
+
+

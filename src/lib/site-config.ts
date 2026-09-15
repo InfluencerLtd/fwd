@@ -70,6 +70,16 @@ export const ADMIN_ENABLED = Boolean(process.env.ADMIN_PASSWORD);
 export const ADMIN_COOKIE = "fwd-admin";
 
 /**
+ * THE FORWARD THINKERS PAGE IS PRIVATE UNTIL THE LIST IS ANNOUNCED.
+ *
+ * The list is curated, not applied for, and it goes out with the launch at the
+ * beginning of October 2026. Until then /forward-thinkers answers with the 404
+ * page, so neither the concept nor the wording can be read before the names
+ * are agreed. One word here puts it live.
+ */
+export const FORWARD_THINKERS_PUBLIC = false;
+
+/**
  * THE CLASS OF 2026 PAGE IS PRIVATE UNTIL IT IS REVEALED.
  *
  * The founding group is curated, not applied for, and it is announced as its
