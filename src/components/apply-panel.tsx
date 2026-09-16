@@ -3,21 +3,26 @@
 import { useState } from "react";
 import { ApplyForm, type ApplyPath } from "@/components/apply-form";
 import { HubspotForm } from "@/components/hubspot-form";
+import { TypeformEmbed } from "@/components/typeform-embed";
 import { areHubspotFormsConfigured } from "@/lib/hubspot-forms";
 import { APPLY } from "@/content/site";
 
 /*
- * THE CREATOR APPLICATION IS OURS AGAIN. It was a Typeform embed
- * (01M25VECYTDKJP4AHS58KNBPWE) from 11 September 2026 and came back in house
- * on 15 September: the form required both an Instagram handle and a TikTok
- * handle, which turned away creators on YouTube, LinkedIn, Substack or in a
- * podcast feed, and that requirement can only be changed inside Typeform.
- * Our own form asks for one main platform instead, and looks like the site.
+ * THE CREATOR PATH IS THE TYPEFORM AGAIN. Asked for on 16 September 2026.
  *
- * Creator submissions therefore land where a brand's do rather than in
- * Typeform. The teaser page's waiting list is still a Typeform; this is only
- * the application.
+ * It has been three things in five days: this Typeform, then our own form
+ * (because the Typeform requires both an Instagram and a TikTok handle, which
+ * turns away creators on YouTube, LinkedIn, Substack or in a podcast feed),
+ * then HubSpot's creator form (which requires all three handles). Back here.
+ *
+ * The handle requirement lives inside Typeform, so if it needs relaxing it is
+ * changed there rather than in this file.
+ *
+ * The brand path is unaffected: it is HubSpot's form when the two forms are
+ * configured, which they now are, and ours if they ever are not.
  */
+const CREATOR_TYPEFORM_ID = "01M25VECYTDKJP4AHS58KNBPWE";
+
 import { MarkedText } from "@/components/marked";
 
 /**
@@ -56,7 +61,9 @@ export function ApplyPanel() {
         <div className="mt-8">
           {/* Keyed on the path, so switching starts a clean form rather than
               carrying the other one's answers across. */}
-          {areHubspotFormsConfigured() ? (
+          {path === "creator" ? (
+            <TypeformEmbed id={CREATOR_TYPEFORM_ID} />
+          ) : areHubspotFormsConfigured() ? (
             <HubspotForm key={path} path={path} />
           ) : (
             <ApplyForm key={path} path={path} />
