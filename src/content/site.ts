@@ -583,7 +583,7 @@ export const APPLY = {
       label: "a [[creator]]",
     },
     brand: {
-      label: "a [[brand]] or a [[platform]]",
+      label: "a [[brand]] or [[platform]]",
     },
   },
   back: "back",
