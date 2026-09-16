@@ -1,10 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { ApplyForm, type ApplyPath } from "@/components/apply-form";
-import { HubspotForm } from "@/components/hubspot-form";
+import { type ApplyPath } from "@/components/apply-form";
 import { TypeformEmbed } from "@/components/typeform-embed";
-import { areHubspotFormsConfigured } from "@/lib/hubspot-forms";
 import { APPLY } from "@/content/site";
 
 /*
@@ -22,6 +20,18 @@ import { APPLY } from "@/content/site";
  * configured, which they now are, and ours if they ever are not.
  */
 const CREATOR_TYPEFORM_ID = "01M25VECYTDKJP4AHS58KNBPWE";
+
+/*
+ * AND THE BRAND PATH IS A TYPEFORM TOO, from 16 September 2026. It was
+ * HubSpot's own embedded form for a few hours this morning.
+ *
+ * SO BOTH APPLICATIONS NOW LIVE IN TYPEFORM. Nothing is written to our own
+ * database any more, which means the admin at /admin and the accept and
+ * decline emails do not see applications: they are read in Typeform instead.
+ * HubspotForm and its configuration are untouched in the repo, and swapping
+ * either path back is one line here.
+ */
+const BRAND_TYPEFORM_ID = "01M2MWYZQVW19E0R443CJGVS3Y";
 
 import { MarkedText } from "@/components/marked";
 
@@ -61,13 +71,9 @@ export function ApplyPanel() {
         <div className="mt-8">
           {/* Keyed on the path, so switching starts a clean form rather than
               carrying the other one's answers across. */}
-          {path === "creator" ? (
-            <TypeformEmbed id={CREATOR_TYPEFORM_ID} />
-          ) : areHubspotFormsConfigured() ? (
-            <HubspotForm key={path} path={path} />
-          ) : (
-            <ApplyForm key={path} path={path} />
-          )}
+          <TypeformEmbed
+            id={path === "creator" ? CREATOR_TYPEFORM_ID : BRAND_TYPEFORM_ID}
+          />
         </div>
       </div>
     );
