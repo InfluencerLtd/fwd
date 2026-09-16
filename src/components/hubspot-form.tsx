@@ -17,19 +17,21 @@ import { APPLY } from "@/content/site";
  * on its way past so the admin and the accept and decline emails carry on
  * working. See mirrorHubspotApplication in actions.ts for why that matters.
  *
+ * THE NEW EMBED, NOT hbspt.forms.create. This used the v2 script and built the
+ * form in JavaScript; on 16 September 2026 it moved to the embed HubSpot now
+ * hands out, which is a per-portal script plus a div it finds by itself:
+ *
+ *   <script src="https://js.hsforms.net/forms/embed/8236210.js" defer></script>
+ *   <div class="hs-form-frame" data-region data-form-id data-portal-id></div>
+ *
+ * That matters because forms built in HubSpot's current editor do not reliably
+ * render through the old API, and both of these were built there.
+ *
  * THE SCRIPT IS ONLY FETCHED WHEN SOMEBODY CHOOSES A PATH. It is a third party
- * script on the critical path of a page that has to stay fast, so nothing is
- * requested until an applicant has actually asked for a form. Somebody who
- * reads the membership page and leaves never loads it at all.
+ * script on a page that has to stay fast, so nothing is requested until an
+ * applicant has actually asked for a form. Somebody who reads the membership
+ * page and leaves never loads it at all.
  */
-
-type HubspotWindow = Window & {
-  hbspt?: {
-    forms: {
-      create(options: Record<string, unknown>): void;
-    };
-  };
-};
 
 /** Reads one of our fields out of a HubSpot submission, trying each alias. */
 function pick(values: Record<string, unknown>, key: string): string {
@@ -41,131 +43,103 @@ function pick(values: Record<string, unknown>, key: string): string {
   return "";
 }
 
-/** Everything the form holds, by field name, however HubSpot hands it over. */
-function readSubmission(
-  form: HTMLFormElement | null,
-  data: unknown,
-): Record<string, unknown> {
-  const values: Record<string, unknown> = {};
-
-  // Newer embeds pass the values straight to the callback.
-  const submitted = (data as { submissionValues?: Record<string, unknown> })
-    ?.submissionValues;
-  if (submitted && typeof submitted === "object") Object.assign(values, submitted);
-
-  // Older ones do not, so the form itself is read instead. Anything already
-  // found above wins, because it is the value HubSpot itself reported.
-  if (form) {
-    for (const el of Array.from(form.elements)) {
-      const field = el as HTMLInputElement;
-      if (!field.name || field.name in values) continue;
-      if (field.type === "checkbox") values[field.name] = field.checked;
-      else if (field.type === "radio") {
-        if (field.checked) values[field.name] = field.value;
-      } else values[field.name] = field.value;
-    }
-  }
-
-  return values;
-}
+/**
+ * What HubSpot posts up when somebody finishes a form.
+ *
+ * The new embed runs the form in an iframe and reports back with
+ * window.postMessage rather than a callback, so this is the only place a copy
+ * can be taken from. The shape has been stable for years: a message whose type
+ * is "hsFormCallback", an eventName, and the submitted values keyed by field
+ * name.
+ */
+type HubspotMessage = {
+  type?: string;
+  eventName?: string;
+  id?: string;
+  data?: {
+    formGuid?: string;
+    submissionValues?: Record<string, unknown>;
+  };
+};
 
 export function HubspotForm({ path }: { path: ApplyPath }) {
   const config = hubspotFormConfig(path);
-  const target = useRef<HTMLDivElement>(null);
+  const host = useRef<HTMLDivElement>(null);
   const [failed, setFailed] = useState(false);
 
+  // The form itself: one script per portal, and a div it fills in.
   useEffect(() => {
-    if (!config || !target.current) return;
-    const el = target.current;
-    let cancelled = false;
-
-    const create = () => {
-      const w = window as HubspotWindow;
-      if (cancelled || !w.hbspt) return;
-      w.hbspt.forms.create({
-        portalId: config.portalId,
-        formId: config.formId,
-        region: config.region,
-        target: `#${el.id}`,
-        // HubSpot's own stylesheet is not loaded. The form inherits the page,
-        // which is the only way it can look like the rest of the site. See
-        // .fwd-hs-form in globals.css for what dresses it.
-        cssRequired: "",
-        cssClass: "fwd-hs-form",
-
-        /**
-         * Runs once HubSpot has accepted the submission, so a copy is only
-         * ever taken of something that really was submitted.
-         *
-         * Nothing here can fail in a way the applicant sees. HubSpot has
-         * already told them they are done, and they are: their answers are in
-         * HubSpot whatever happens next.
-         */
-        onFormSubmitted: (form: HTMLFormElement, data: unknown) => {
-          try {
-            const values = readSubmission(form, data);
-            const first = pick(values, "firstName");
-            const last = pick(values, "lastName");
-            const consent = pick(values, "consent");
-
-            void mirrorHubspotApplication({
-              // HubSpot usually splits the name in two. Either shape works.
-              name: pick(values, "name") || [first, last].filter(Boolean).join(" "),
-              email: pick(values, "email"),
-              role: pick(values, "role"),
-              company: pick(values, "company"),
-              // The creator form has one answer and does not ask. The other
-              // one covers three groups, so it has to.
-              group: path === "creator" ? "creator" : pick(values, "group"),
-              market: pick(values, "market"),
-              link: pick(values, "link"),
-              reason: pick(values, "reason"),
-              // Only true if the HubSpot form actually asked and they agreed.
-              // Never assumed: this column is the proof of consent.
-              consented: consent === "true",
-            });
-          } catch {
-            // Swallowed on purpose. A copy failing is not the applicant's
-            // problem and must not turn their finished application into an
-            // error on screen.
-          }
-        },
-      });
-    };
-
-    const w = window as HubspotWindow;
-    if (w.hbspt) {
-      create();
-      return () => {
-        cancelled = true;
-      };
-    }
-
-    const SRC = "https://js.hsforms.net/forms/embed/v2.js";
-    let script = document.querySelector<HTMLScriptElement>(
-      `script[src="${SRC}"]`,
+    if (!config) return;
+    const src = `https://js.hsforms.net/forms/embed/${config.portalId}.js`;
+    const existing = document.querySelector<HTMLScriptElement>(
+      `script[src="${src}"]`,
     );
-    if (!script) {
-      script = document.createElement("script");
-      script.src = SRC;
-      script.async = true;
-      document.body.appendChild(script);
-    }
-    script.addEventListener("load", create);
+    if (existing) return;
+    const script = document.createElement("script");
+    script.src = src;
+    script.defer = true;
     script.addEventListener("error", () => setFailed(true));
+    document.body.appendChild(script);
+  }, [config]);
 
-    return () => {
-      cancelled = true;
-      script?.removeEventListener("load", create);
+  // The copy of the submission. Only ever taken for a message that names this
+  // form, so the creator path cannot record a brand's answers or the reverse.
+  useEffect(() => {
+    if (!config) return;
+    const onMessage = (event: MessageEvent) => {
+      const message = event.data as HubspotMessage;
+      if (!message || message.type !== "hsFormCallback") return;
+      if (message.eventName !== "onFormSubmitted") return;
+      const guid = message.data?.formGuid ?? message.id;
+      if (guid && guid !== config.formId) return;
+
+      const values = message.data?.submissionValues ?? {};
+      try {
+        const first = pick(values, "firstName");
+        const last = pick(values, "lastName");
+        const consent = pick(values, "consent");
+
+        void mirrorHubspotApplication({
+          // HubSpot usually splits the name in two. Either shape works.
+          name: pick(values, "name") || [first, last].filter(Boolean).join(" "),
+          email: pick(values, "email"),
+          role: pick(values, "role"),
+          company: pick(values, "company"),
+          // The creator form has one answer and does not ask. The other one
+          // covers three groups, so it has to.
+          group: path === "creator" ? "creator" : pick(values, "group"),
+          market: pick(values, "market"),
+          link: pick(values, "link"),
+          reason: pick(values, "reason"),
+          // Only true if the HubSpot form actually asked and they agreed.
+          // Never assumed: this column is the proof of consent.
+          consented: consent === "true",
+        });
+      } catch {
+        // Swallowed on purpose. A copy failing is not the applicant's problem
+        // and must not turn their finished application into an error on
+        // screen: HubSpot has already told them they are done, and they are.
+      }
     };
+
+    window.addEventListener("message", onMessage);
+    return () => window.removeEventListener("message", onMessage);
   }, [config, path]);
 
   if (!config) return null;
 
   return (
     <div>
-      {/* An id, because HubSpot takes a selector rather than an element. */}
-      <div id={`fwd-hs-${path}`} ref={target} className="fwd-hs-form-host" />
+      {/* HubSpot finds this by class and fills it in. The wrapper carries our
+          own class so globals.css can dress whatever arrives. */}
+      <div ref={host} className="fwd-hs-form-host fwd-hs-form">
+        <div
+          className="hs-form-frame"
+          data-region={config.region}
+          data-form-id={config.formId}
+          data-portal-id={config.portalId}
+        />
+      </div>
       {failed ? (
         <p
           role="status"

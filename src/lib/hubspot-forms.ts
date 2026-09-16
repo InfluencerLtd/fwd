@@ -24,11 +24,27 @@
 
 export type ApplyPath = "creator" | "brand";
 
-const PORTAL_ID = process.env.NEXT_PUBLIC_HUBSPOT_PORTAL_ID;
+/**
+ * THE REAL IDS, IN THE CODE. Given on 16 September 2026.
+ *
+ * They are written here rather than left to environment variables because a
+ * portal id and a form id are not secrets: they are visible in the page source
+ * of every HubSpot embed on the internet, and the two forms are the same on
+ * every deployment. Writing them down means the forms work on a preview, in
+ * production and on anybody's laptop with nothing to set up.
+ *
+ * The environment variables still win if they are set, so a different portal
+ * can be pointed at for a test without touching this file.
+ */
+const PORTAL_ID = process.env.NEXT_PUBLIC_HUBSPOT_PORTAL_ID ?? "8236210";
 
 const FORM_IDS: Record<ApplyPath, string | undefined> = {
-  creator: process.env.NEXT_PUBLIC_HUBSPOT_FORM_CREATOR,
-  brand: process.env.NEXT_PUBLIC_HUBSPOT_FORM_BRAND,
+  creator:
+    process.env.NEXT_PUBLIC_HUBSPOT_FORM_CREATOR ??
+    "7f88f35a-60a9-4cc7-bfd4-f72e31a315d1",
+  brand:
+    process.env.NEXT_PUBLIC_HUBSPOT_FORM_BRAND ??
+    "f5f2c148-ecea-4439-a0e1-4b389b62fc78",
 };
 
 /**
