@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { PhotoScrim } from "@/components/photo-scrim";
 import { MarkedText } from "@/components/marked";
-import { BenefitTiles } from "@/components/benefit-tiles";
+// BenefitTiles is not rendered at the moment: see section 2 below, which is
+// where to put it back.
 import { ApplyDialog } from "@/components/apply-dialog";
 import { SiteMenu } from "@/components/site-menu";
 import { SiteHeader } from "@/components/site-header";
@@ -82,13 +83,26 @@ export default function MembershipPage() {
              the tiles, and the ask at the end. The blue button is unchanged —
              it is 13.4:1 on this ground, which is where it is strongest. */}
         <div className="fwd-dark fwd-on-dark">
-          {/* ---- 2. THE BENEFITS, DIRECTLY UNDER THE HERO ----------------
-               The review of 17 September 2026 asked for this order: hero, the
-               horizontal benefits, then the ask with the short paragraph. The
-               intro and the button used to come first, which meant somebody
-               arriving from the home page read the proposition a third time
-               before seeing anything they would get. */}
-          <BenefitTiles />
+          {/* ---- 2. THE BENEFITS BAND IS OFF THE PAGE --------------------
+               Taken off on 17 September 2026, kept rather than deleted: the
+               two rows of photographic tiles that drifted in opposite
+               directions, one per benefit, with the name of each over the
+               picture. Thirteen of them: Meeting of Minds, A seat in the room,
+               Partner rooms, Guest passes, The directory, Ask the room,
+               Digital rooms, Members' merch, Nominate a member, Global access,
+               The briefing, The clubhouse and the rest.
+
+               NOTHING IS DISMANTLED. The component is still
+               src/components/benefit-tiles.tsx, the names are still
+               MEMBERSHIP.cards in src/content/site.ts, the photography briefs
+               are still IMAGERY.benefits, and every picture is still
+               benefit-*.jpg in public/photography. Putting the band back is
+               this one line:
+
+                   <BenefitTiles />
+
+               It sat directly under the hero, which is the order the review of
+               17 September 2026 asked for, so that is where it goes back. */}
 
           <section className="fwd-section px-6">
             <div className="mx-auto max-w-4xl text-center">
