@@ -159,6 +159,25 @@ export default function MembershipPage() {
                 </p>
               ))}
 
+              {/* THE ROOMS PHOTOGRAPH, WHICH CAME WITH THE COPY. It was the
+                  letterbox at the top of /rooms; that page has gone and the
+                  words are up there, so the picture is here rather than
+                  orphaned in public/photography. A band rather than a hero:
+                  nothing is set over it, so it needs no scrim.
+
+                  The file is `rooms`, and it is the long table from the
+                  Tashca shoot as of 17 September 2026. */}
+              <div className="fwd-reveal mt-20 sm:mt-24">
+                <PhotoPlaceholder
+                  label={`${ROOMS.formatsHeading}. Photograph to come`}
+                  name="rooms"
+                  showLabel={false}
+                  sizes="(min-width: 1152px) 1088px, 100vw"
+                  ratio="wide"
+                  className="overflow-hidden rounded-2xl"
+                />
+              </div>
+
               <h3 className="fwd-reveal fwd-h3 mt-20 text-photo-ink normal-case! sm:mt-24">
                 {ROOMS.formatsHeading}
               </h3>

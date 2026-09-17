@@ -781,8 +781,11 @@ export const IMAGERY = {
     "meeting-of-minds": "Two people mid-introduction, a third half out of frame",
     seats: "A long table at its fullest, shot down the length of it",
     "partner-rooms": "A small closed room, screen glow, a handful of chairs",
-    "guest-passes": "A door held open, one person arriving behind another",
-    directory: "A room from above, groups forming and re-forming",
+    // SHOT AND IN. Two members meeting on the pavement outside, one in a
+    // white polo, a glass still in hand (Tashca shoot, 17 September 2026).
+    "guest-passes": "Two people meeting outside, mid-greeting, drinks in hand",
+    // SHOT AND IN. The long table down the room, everybody seated.
+    directory: "The long table down the room, full, mid-conversation",
     "ask-the-room": "Two people leaning in over one phone, mid-answer",
     "the-house": "A phone on a table at a dinner, screen lit, nobody looking at it",
     "founding-members": "Waiting on what this card says. A first table, early, half laid",
@@ -790,7 +793,10 @@ export const IMAGERY = {
     newsletter: "Print on a table. Paper, a glass, a hand at the edge",
     merch: "One piece, folded, on a dark surface. No model",
     nominate: "Two people talking, one gesturing off to somebody else",
-    "global-access": "Waiting on what this card says. A city at night from a window",
+    // SHOT AND IN, and no longer waiting: it is the restaurant frontage in
+    // New York with the doors open and a trio playing on the pavement, which
+    // says "wherever members are" better than a skyline would.
+    "global-access": "A restaurant front on the street, doors open, a trio playing outside",
   },
 
   /**

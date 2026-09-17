@@ -8,7 +8,14 @@ broken one, but not something to ship.
 
 The brief for every shot is in `IMAGERY` in `src/content/site.ts`.
 
-## What is here (9 September 2026)
+## What is here (9 September 2026, four files replaced on 17 September)
+
+FOUR SWAPS FROM THE TASHCA SHOOT, 17 September 2026: `benefit-directory`,
+`benefit-guest-passes`, `benefit-global-access` and `rooms`. The source folder
+is Marketing & Events / (0) Private Dinners and Roundtables on the shared
+drive, and the file numbers are in the table below. Benefit tiles are 1600px
+wide at 3:2 and `rooms` is 2400px, all at quality 82, which is what everything
+else in here is.
 
 From the shared Drive folder. Portrait sources for the membership band are cut to 3:2 at the faces. The evening set is 900px and the four DSC files
 were 4240px originals, resized to 2400 and re-encoded at quality 82.
@@ -18,7 +25,7 @@ were 4240px originals, resized to 2400 and re-encoded at quality 82.
 | `hero` | earlier | home page hero, holding page |
 | `about` | DSC01100 | /about opening — the long table, guests gathering |
 | `membership` | DSC01119 | /membership opening — the dinner in progress |
-| `rooms` | DSC01068 | /rooms letterbox — standing conversation |
+| `rooms` | `OG_Edited_Taschca_-66` (the Tashca shoot, the table mid-speech) | /membership, the band inside the rooms section. Was the /rooms letterbox until that page went |
 | `closing` | DSC01064 | home page close — the place setting |
 | `about-close` | 2026-06-10_11-51-16_0087 (the DJ behind the TikTok logo) | /about close — "Put yourself forward" |
 | `rooms-close` | DSC01119 again | /rooms close |
@@ -35,8 +42,8 @@ were 4240px originals, resized to 2400 and re-encoded at quality 82.
 | `benefit-meeting-of-minds` | influencer-tiktok-dinner78 | membership band — "Meeting of Minds" |
 | `benefit-seats` | influencer-tiktok-dinner125 | membership band — "A seat in the room" |
 | `benefit-partner-rooms` | 2026-06-10_11-51-16_0087 (the full-size original) | membership band — "Partner rooms" |
-| `benefit-guest-passes` | influencer-tiktok-dinner51 | membership band — "Guest passes" |
-| `benefit-directory` | influencer-tiktok-dinner109 | membership band — "The directory" |
+| `benefit-guest-passes` | `OG_Edited_Taschca_-22`, the portrait cut 3:2 at the two faces (window 1300-4448 of 7080) | membership band — "Guest passes" |
+| `benefit-directory` | `OG_Edited_Taschca_-69` (the long table, down the room) | membership band — "The directory" |
 | `benefit-ask-the-room` | 2026-06-10_17-37-37_2225 (the full-size original, cut 3:2 at the face) | membership band — "Ask the room" |
 | `benefit-the-house` | 4F0A1403 | not shown: "The House" is a pale blue "coming soon" tile for now |
 | `benefit-founding-members` | 2026-06-11_12-32-57_2991 (the 4000px original) | membership band — "Founding members" |
@@ -44,7 +51,7 @@ were 4240px originals, resized to 2400 and re-encoded at quality 82.
 | `benefit-newsletter` | 4F0A0962 | not shown: "the briefing" is a pale blue "coming soon" tile for now |
 | `benefit-merch` | 2026-06-11_17-41-50_5104 (full-size original, cut 3:2 from face to chest) | membership band — "Members' merch" |
 | `benefit-nominate` | pexels-bertellifotografia-18999568 | membership band — "Nominate a member" |
-| `benefit-global-access` | 07347340 (the toast on the terrace, Cannes; only a 768px copy exists) | membership band — "Global access" |
+| `benefit-global-access` | `OG_Edited_Taschca_-45` (the frontage, doors open, the trio on the pavement) | membership band — "Global access" |
 | `curator-caspar-lee` | needed | /forward-thinkers — curator portrait |
 | `curator-stuart-flint` | needed | /forward-thinkers — curator portrait |
 | `curator-tara-walpert-levy` | needed | /forward-thinkers — curator portrait |
