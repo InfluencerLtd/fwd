@@ -553,6 +553,25 @@ export const NAME_STORY = {
    * `definition` and renders between the headword and the senses.
    */
   headword: "forward",
+  /**
+   * THE ENTRY'S FURNITURE: the syllable break, how it is said, and what part
+   * of speech it is. Asked for on 17 September 2026 to make the section read
+   * as an actual dictionary entry rather than as a big word with sentences
+   * under it.
+   *
+   * NONE OF THIS IS INVENTED COPY. They are facts about the English word:
+   * "forward" breaks for-ward, the American pronunciation is respelled
+   * fawr-werd (American English is the house rule, see the top of this file),
+   * and both senses below describe the act of forwarding something, so it is
+   * the verb. The sentence that says what Forward the community means is
+   * still nobody's to write but the review's.
+   *
+   * \u00b7 is the middle dot dictionaries set syllable breaks with, written as
+   * an escape because typed it is easily mistaken for a full stop and lost.
+   */
+  syllables: "for\u00b7ward",
+  pronunciation: "[fawr-werd]",
+  partOfSpeech: "verb",
   body: [
     "You see something good and you forward it. Not to everyone, just to a handful of people whose opinion you genuinely value.",
     "That is the idea: the right people, in one place, sharing what matters.",

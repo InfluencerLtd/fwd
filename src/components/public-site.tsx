@@ -68,57 +68,59 @@ export function PublicSite() {
              14 September 2026): the name is what makes this stick, and it was
              on the second page.
 
-             A DICTIONARY ENTRY, from 17 September 2026 (the review's own
-             direction for this section). The word is the headword, the two
-             sentences are its numbered senses, and it is left-aligned on a
-             single measure because that is how an entry is set. It was a
-             centred stack with a heading over it, which made the section look
-             like every other short centred section on the page.
+             A REAL ENTRY, not a big word with sentences under it. Asked for
+             on 17 September 2026 against a printed-dictionary reference, so
+             the section is now built the way an entry is set: the headword
+             broken at its syllable, how it is said and what part of speech it
+             is underneath, one hairline rule, then the senses in italic.
+             Centred, because that is what the reference does and because the
+             entry is an object on the page rather than a column of reading.
 
-             NO DEFINITION AND NO PART OF SPEECH, on purpose. See the note on
-             NAME_STORY in src/content/site.ts: the sentence that defines
-             Forward is the review's to write, not ours to invent, and the
-             entry stands up without it. */}
+             WHAT IS NOT HERE. No definition line and no numbered senses. The
+             sentence that defines Forward is the review's to write (see the
+             note on NAME_STORY in src/content/site.ts), and 1/2 markers over
+             two sentences made it look like a contract rather than an entry.
+
+             THE HEADING IS FOR SCREEN READERS ONLY. "Why Forward" was printed
+             as an eyebrow above the word, and a label over a dictionary entry
+             is the one thing a dictionary never has. It is still an h2 in the
+             document, so the page's outline and anybody jumping by heading
+             are unaffected. Take `sr-only` off to print it again. */}
         <section className="fwd-dark fwd-on-dark fwd-grain fwd-section-compact px-6">
-          <div className="relative z-1 mx-auto max-w-3xl">
-            <h2 className="fwd-eyebrow fwd-reveal text-photo-ink/60">
-              {NAME_STORY.heading}
-            </h2>
+          <div className="relative z-1 mx-auto max-w-2xl text-center">
+            <h2 className="sr-only">{NAME_STORY.heading}</h2>
 
-            {/* The headword. Lowercase, and the full stop the mark carries is
-                not here: this is the word, not the wordmark. */}
-            <p className="fwd-reveal mt-6 font-display text-[clamp(3rem,10vw,5.5rem)] leading-[0.95] text-photo-ink">
-              {NAME_STORY.headword}
+            {/* The headword, broken at the syllable. Lowercase, and without
+                the full stop the mark carries: this is the word, not the
+                wordmark. */}
+            <p className="fwd-reveal font-display text-[clamp(2.75rem,9vw,4.5rem)] leading-[1] tracking-[0.01em] text-photo-ink">
+              {NAME_STORY.syllables}
             </p>
 
-            {/* The senses. The rule under the headword is the entry's own
-                hairline, which is why it is on the list rather than on the
-                word: the numbers hang in their own column beside the text, so
-                the sentences stay on one measure. */}
-            <ol className="fwd-stagger mt-8 border-t border-photo-ink/15">
-              {NAME_STORY.body.map((line, index) => (
-                <li
-                  key={line}
-                  className="fwd-reveal flex gap-5 border-b border-photo-ink/15 py-6"
-                >
-                  <span
-                    aria-hidden="true"
-                    className="shrink-0 font-body text-sm leading-[1.7] text-accent-on-dark tabular-nums"
-                  >
-                    {index + 1}
-                  </span>
-                  <p
-                    className={
-                      index === 0
-                        ? "fwd-standfirst text-photo-ink"
-                        : "fwd-body text-photo-ink/70"
-                    }
-                  >
-                    {line}
-                  </p>
-                </li>
-              ))}
-            </ol>
+            {/* How it is said, and what it is. One line, small, in the body
+                face, because that is the one part of an entry that is not set
+                in the book's display face. */}
+            <p className="fwd-reveal mt-3 font-body text-sm text-photo-ink/55">
+              {NAME_STORY.pronunciation}
+              <span className="px-2 text-photo-ink/35">:</span>
+              <span className="italic">{NAME_STORY.partOfSpeech}</span>
+            </p>
+
+            {/* THE RULE. One hairline across the measure, which is the whole
+                structure of an entry: everything above it names the word,
+                everything below it is what the word means. */}
+            <hr className="fwd-reveal mx-auto mt-10 w-full border-0 border-t border-photo-ink/20" />
+
+            {/* The senses, italic, the way a definition is set. The first is
+                the definition proper and the second is the gloss on it, so
+                the second is quieter and a size down rather than an equal
+                sibling. */}
+            <p className="fwd-reveal mt-10 font-display text-[22px] italic leading-[1.45] text-photo-ink sm:text-[26px]">
+              {NAME_STORY.body[0]}
+            </p>
+            <p className="fwd-reveal mt-6 font-display text-[19px] italic leading-[1.5] text-photo-ink/60 sm:text-[21px]">
+              {NAME_STORY.body[1]}
+            </p>
           </div>
         </section>
 
