@@ -170,7 +170,8 @@ export const HERO = {
    * ONE SENTENCE. The second half named the three groups again, which the
    * line directly above it already does, so it came off on 15 September 2026.
    */
-  plain: "Where the creator economy speaks freely.",
+  plain:
+    "Where the creator economy comes together to shape what happens\u00a0next.",
 
   /*
    * AN EARLIER, PLAINER SENTENCE SAT HERE AND CAME OFF. It was added on 14 September
@@ -236,9 +237,20 @@ export const CASE = {
   heading: "Everyone sees a [[different]] part of the same picture.",
   /** DRAFT. */
   body: [
-    "Brands have KPIs. Platforms have roadmaps. Creators have audiences. All three are building the same industry, and they rarely sit in the same room.",
-    "When they do, it\u2019s a stage, a panel, or a conference with four thousand other people in it. The worst possible conditions for the conversation that actually matters.",
-    "So we make the room instead. Small, off the record, guest list put together by hand.",
+    /*
+     * DIRECTIONAL WORKING COPY, from the consolidated review of
+     * 17 September 2026. The three openings are the review's own positive
+     * framing: brands create opportunity, platforms enable distribution,
+     * creators inspire action.
+     *
+     * THE ENDING IS DELIBERATELY MISSING. The review's copy runs "That is
+     * what Forward is for: [ending still to be written]" and says not to
+     * invent it, so the paragraph stops on the full stop. When the ending
+     * arrives it goes on the end of this line.
+     */
+    "Brands create opportunity. Platforms enable distribution. Creators inspire action.",
+    "All three are building the industry, but they don\u2019t spend enough time together outside stages, panels and conferences with thousands of people watching.",
+    "Those are not exactly the ideal conditions for candid conversations, debate and meaningful connections. That is what Forward is for.",
   ],
 } as const;
 
@@ -275,6 +287,11 @@ export const MEMBERSHIP = {
    *
    * This one names the only two things membership actually is.
    */
+  /**
+   * NOTHING RENDERS THIS. The large heading came off on 17 September 2026 at
+   * the review's request: the section is the benefit list and the two lines
+   * under it now.
+   */
   heading: "A year of rooms, and the people in\u00a0them",
 
   /**
@@ -292,9 +309,20 @@ export const MEMBERSHIP = {
    * ask for an application. What is left is the only part that was ever about
    * membership rather than about fwd.
    */
+  /*
+   * THE MEMBER BENEFITS, DIRECTLY. The review asked for the heading to go and
+   * a direct benefit line in its place, covering dinners, roundtables, closed
+   * briefings, one-off experiences, the network, sporting access and
+   * merchandise. Directional, not the final list: "and more to come" carries
+   * the benefits nobody has settled yet.
+   *
+   * THE SECOND LINE IS KEPT WORD FOR WORD, both sentences, which the review
+   * asked for explicitly. "Meet someone you have wanted to meet" was the
+   * third sentence and it has gone.
+   */
   lead: [
-    "Members get a year of small rooms: dinners, roundtables, closed briefings and one-off experiences, plus the network around them.",
-    "Meet someone you’ve wanted to meet. Hear what’s coming before it becomes obvious. Share an idea with the person who can act on it.",
+    "Dinners, roundtables, closed briefings and one-off experiences, the network around them, access to sporting events, members\u2019 merchandise, and more to come.",
+    "Hear what\u2019s coming before it becomes obvious. Share an idea with the person who can act on it.",
   ],
 
   /** Still used on the membership page, above the cards. */
@@ -510,6 +538,21 @@ export const BRIEFING_SUBMIT = {
 
 export const NAME_STORY = {
   heading: "Why Forward",
+  /**
+   * THE HEADWORD, because this section is set as a dictionary entry from
+   * 17 September 2026 (the review's design direction for it). The word itself
+   * is the thing being defined, so it is the largest thing in the section and
+   * it is the lowercase word rather than the brand's name.
+   *
+   * >>> THERE IS NO DEFINITION LINE AND NO PART OF SPEECH. <<< A dictionary
+   * entry normally opens with both, and writing either would mean inventing
+   * the one sentence that says what Forward means, which the review explicitly
+   * left to be written rather than generated. The two sentences below are
+   * numbered as the senses instead, which is the entry's structure without any
+   * words nobody has approved. When the definition arrives it goes here as
+   * `definition` and renders between the headword and the senses.
+   */
+  headword: "forward",
   body: [
     "You see something good and you forward it. Not to everyone, just to a handful of people whose opinion you genuinely value.",
     "That is the idea: the right people, in one place, sharing what matters.",
@@ -564,15 +607,27 @@ export const APPLY = {
     "The application form could not load, which is usually a blocker or a work network rather than anything you have done. Write to us and we will send it to you directly.",
 
   /**
-   * Applying starts by saying which of the two you are, because the questions
-   * worth asking a creator are not the questions worth asking somebody at a
-   * brand. There are two forms behind this, not one form with a dropdown.
+   * THREE APPLICANTS, NOT TWO. Applying starts by saying which one you are.
+   *
+   * Brands, creators and platforms are the three groups Forward exists to put
+   * in the same room, and they are the three groups the whole site names, so
+   * the application asks the same way (review, 17 September 2026). Brand and
+   * platform were one card reading "a brand or platform" until then, which
+   * made a platform an afterthought on the one screen where somebody is
+   * putting their name forward.
+   *
+   * WHAT SITS BEHIND EACH CARD IS NOT SETTLED. Typeform holds two forms, one
+   * for creators and one for everybody else, so brand and platform open the
+   * same form for now and arrive carrying which card was pressed (see
+   * `type` in apply-panel.tsx). A form of its own for platforms, or a hidden
+   * field named `type` on the existing one, is a change in Typeform rather
+   * than in here.
    */
   choose: {
     /**
      * DRAFT. Cut to its last sentence. It used to explain that the questions
      * worth asking a creator are not the ones worth asking somebody at a
-     * brand, which is true and is not the reader's problem: the two cards
+     * brand, which is true and is not the reader's problem: the cards
      * underneath say what the choice is far faster than a sentence about why
      * the choice exists.
      */
@@ -581,9 +636,15 @@ export const APPLY = {
       // [[brackets]] mark the words that carry the blue underline. One mark
       // per word, so a label that wraps on a phone still underlines cleanly.
       label: "a [[creator]]",
+      heading: "apply, as a creator",
     },
     brand: {
-      label: "a [[brand]] or [[platform]]",
+      label: "a [[brand]]",
+      heading: "apply, as a brand",
+    },
+    platform: {
+      label: "a [[platform]]",
+      heading: "apply, as a platform",
     },
   },
   back: "back",
@@ -829,12 +890,19 @@ export const MEMBERSHIP_PAGE = {
    */
   about: {
     /** DRAFT. */
-    heading: "fwd. membership",
+    /** Spelled out, from the review: "Forward membership", not the mark. */
+    heading: "Forward membership",
     /** DRAFT. */
     // Three marks, and the first is the odd one out on purpose: the swoosh
     // opens the list, the two plain underlines follow it. Naming the shape per
     // phrase rather than on the component is what lets one sentence do that.
-    note: "Members get access to the rooms, people, and ideas shaping the creator economy. Connect through moments such as [[invite-only dinners]], [[private conversations|underline]], and [[industry briefings|underline]] with a network that extends far beyond the room.",
+    /*
+     * ONE SENTENCE SHORTER. "Members get access to the rooms, people, and
+     * ideas shaping the creator economy" came off on 17 September 2026: it is
+     * the proposition again, and Home makes that argument. What is left is
+     * retained for review rather than signed off.
+     */
+    note: "Connect through moments such as [[invite-only dinners]], [[private conversations|underline]], and [[industry briefings|underline]] with a network that extends far beyond the room.",
   },
 
   /** Shown instead of the form when applications are closed. */

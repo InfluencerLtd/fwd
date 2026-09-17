@@ -83,54 +83,53 @@ export function SiteHeader({
   }, [overHero]);
 
   return (
+    /* A PILL, NOT A STRIP (review, 17 September 2026).
+       ------------------------------------------------------------------------
+       WHAT CAME OFF. Two full-width layers used to sit behind this row: a
+       gradient over the hero, and a tinted, blurred panel that faded out at
+       its bottom edge past the hero (.fwd-header-veil in globals.css, still
+       there and now unused). Together they were a band across the top of every
+       page whose job was to make white type legible on whatever was behind it.
+
+       WHAT IT IS NOW. One floating pill that carries its own ground, so the
+       bar is an object on the page rather than a layer over it, and nothing
+       depends on what it happens to be sitting on. That is what makes it work
+       over the dark hero and over the off-white briefing page alike: the pill
+       is near-black in both cases, and the type inside it never changes.
+
+       It still has two states and the logo still must not move between them.
+       Only the pill's opacity changes: translucent over the photograph, so the
+       picture reads through it, and near-solid once the picture has gone. */
     <header className="fwd-on-dark fixed inset-x-0 top-0 z-40">
-      {/* The scrim, and the bar, in the same place. Only their opacity
-          changes, so the row above them never moves. */}
-      <div
-        aria-hidden="true"
-        className={`pointer-events-none absolute inset-x-0 top-0 h-[180px] bg-gradient-to-b from-black/[0.62] to-transparent transition-opacity duration-200 ${
-          scrolled ? "opacity-0" : "opacity-100"
-        }`}
-      />
-      {/* NO RULE ALONG THE BOTTOM. The panel is drawn past the row and faded
-          out instead, so the tint and the blur end without an edge — see
-          .fwd-header-veil in globals.css. -bottom-[10px] is the distance the
-          mask fades across; the two numbers have to agree. */}
-      <div
-        aria-hidden="true"
-        className={`fwd-header-veil absolute inset-x-0 -bottom-[10px] top-0 bg-photo-ground/[0.92] backdrop-blur-md transition-opacity duration-200 ${
-          scrolled ? "opacity-100" : "opacity-0"
-        }`}
-      />
-
-      <div className="relative mx-auto flex max-w-6xl items-center gap-6 px-6 py-4">
-        {/* THE SLOT IS THE HEIGHT OF THE FULL LOCKUP WHATEVER IS IN IT — the
-            artwork's own ratio at the bar width, so it is one number to
-            change, and it has to be the same number as `size="small"` in
-            wordmark.tsx.
-            Without it the homepage bar is eleven pixels shorter than every
-            other page's, and the nav beside it, which is centred against this,
-            moves half of that up the screen when you leave the homepage. The
-            mark is top-aligned in the slot, so it stays where it has always
-            been and only the empty space below it comes and goes. */}
-        <Link
-          href="/"
-          aria-label={META.title}
-          className="inline-block h-[calc(78px*214.87/355.96)] shrink-0"
+      {/* THE PILL HUGS THE MARK ON A PHONE AND SPANS THE MEASURE ABOVE 900px,
+          which is where the navigation itself appears. A full-width pill with
+          nothing in it but the logo is a strip again by another name. */}
+      <div className="mx-auto flex max-w-6xl px-4 pt-3 sm:px-6 sm:pt-4">
+        <div
+          className={`relative flex items-center gap-6 rounded-full border px-5 py-2.5 transition-colors sm:py-3 duration-300 min-[900px]:flex-1 ${
+            scrolled
+              ? "border-photo-ink/10 bg-photo-ground/95"
+              : "border-photo-ink/15 bg-photo-ground/50"
+          }`}
         >
-          <Wordmark size="small" signature={signature} />
-        </Link>
+          <Link
+            href="/"
+            aria-label={META.title}
+            className="inline-block h-[calc(78px*214.87/355.96)] shrink-0"
+          >
+            <Wordmark size="small" signature={signature} />
+          </Link>
 
-        <nav
-          aria-label={NAV.menu}
-          className="ml-auto hidden items-center gap-4 font-body text-sm min-[900px]:flex"
-        >
-          {HEADER_NAV.map((item) =>
-            item.href ? (
-              <Link
-                key={item.label}
-                href={item.href}
-                /* A LOZENGE ON HOVER, NOT THE SITE'S USUAL UNDERLINE. The
+          <nav
+            aria-label={NAV.menu}
+            className="ml-auto hidden items-center gap-4 font-body text-sm min-[900px]:flex"
+          >
+            {HEADER_NAV.map((item) =>
+              item.href ? (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  /* A LOZENGE ON HOVER, NOT THE SITE'S USUAL UNDERLINE. The
                    underline is the quiet treatment for links inside running
                    text; up here the items are already a row of controls, and
                    a filled pill is what the apply button beside them is. The
@@ -138,22 +137,26 @@ export function SiteHeader({
                    colours, not the mode-dependent ones, because this sits over
                    photography that stays dark in light and dark mode alike —
                    13.42:1 either way. */
-                className="inline-block rounded-full px-3 py-1.5 text-photo-ink/75 transition-colors duration-200 hover:bg-photo-ink hover:text-photo-ground"
-              >
-                {item.label}
-              </Link>
-            ) : (
-              // Not a link, on purpose. See the note in hero-modules.ts.
-              <span key={item.label} className="px-3 py-1.5 text-photo-ink/75">
-                {item.label}
-              </span>
-            ),
-          )}
+                  className="inline-block rounded-full px-3 py-1.5 text-photo-ink/75 transition-colors duration-200 hover:bg-photo-ink hover:text-photo-ground"
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                // Not a link, on purpose. See the note in hero-modules.ts.
+                <span
+                  key={item.label}
+                  className="px-3 py-1.5 text-photo-ink/75"
+                >
+                  {item.label}
+                </span>
+              ),
+            )}
 
-          {/* Opens the chooser rather than going to the membership page: see
+            {/* Opens the chooser rather than going to the membership page: see
               the note in apply-link.tsx. */}
-          <ApplyLink variant="onDark" size="sm" />
-        </nav>
+            <ApplyLink variant="onDark" size="sm" />
+          </nav>
+        </div>
       </div>
     </header>
   );

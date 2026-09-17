@@ -15,13 +15,31 @@ const nextConfig: NextConfig = {
   devIndicators: false,
 
   /**
-   * /club was the page now at /about. The word club has gone from the site —
-   * brand.ts forbids it anywhere a visitor can read — but the old address may
-   * already be in an email or a message, and a permanent redirect costs
-   * nothing and keeps whatever link equity the page has.
+   * ADDRESSES THAT NO LONGER HAVE A PAGE BEHIND THEM.
+   *
+   * Two pages were folded into others on 17 September 2026 at the review's
+   * request, and both had been linked to from the navigation for weeks, so
+   * every old address still has to land somewhere sensible rather than on the
+   * 404.
+   *
+   *   /about   the statement, the three groups and How it works are a section
+   *            of the home page now, so this goes to that section
+   *   /rooms   where the rooms happen and the shapes they take are a section
+   *            of the membership page now
+   *   /club    the page that became /about, kept from an earlier round: the
+   *            word club is forbidden anywhere a visitor can read it (see
+   *            src/lib/brand.ts), and this points at the same place /about
+   *            does rather than through it, so it is one hop not two
+   *
+   * Permanent, so a search engine moves the ranking across rather than keeping
+   * a page that is not there.
    */
   async redirects() {
-    return [{ source: "/club", destination: "/about", permanent: true }];
+    return [
+      { source: "/about", destination: "/#about", permanent: true },
+      { source: "/club", destination: "/#about", permanent: true },
+      { source: "/rooms", destination: "/membership#rooms", permanent: true },
+    ];
   },
 };
 

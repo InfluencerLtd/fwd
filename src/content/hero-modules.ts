@@ -23,16 +23,18 @@
  */
 
 export const HEADER_NAV: readonly { label: string; href: string | null }[] = [
-  { label: "About", href: "/about" },
+  // AN ANCHOR, NOT A PAGE. /about has gone (review, 17 September 2026): its
+  // statement, the three groups and How it works are a section of the home
+  // page now, and this scrolls to it. /about itself redirects to the same
+  // place, so every link anybody has ever sent still works.
+  { label: "About", href: "/#about" },
   { label: "Membership", href: "/membership" },
-  // The label says "what\u2019s on" and the page it opens still calls itself
-  // the rooms, top to bottom — "the events" at the top, then "a seat in the
-  // room", "five kinds of room". Asked for as a label change only. If what\u2019s
-  // on is the word, the page and the route want to follow it.
-  // "What\u2019s on" promised listings and the page opens by saying there is no
-  // fixed programme, which deflates on arrival (first-impression critique,
-  // 14 September 2026). The label now matches what the page is about.
-  { label: "The rooms", href: "/rooms" },
+  // THE ROOMS IS OFF THE BAR, AND THE PAGE HAS GONE WITH IT (review,
+  // 17 September 2026). Four items is the nav now: About, Membership,
+  // ForwardThinkers, The briefing. What the page was actually for — where the
+  // rooms happen and the shapes they take — is a section of /membership at
+  // #rooms, and /rooms redirects there. Put it back as a fifth item with:
+  //   { label: "The rooms", href: "/membership#rooms" },
   // REMOVED FROM THE NAVIGATION, NOT DELETED. /class-of-2026 still exists and
   // still works for anybody sent the link; it is off the bar until the cohort
   // is ready to be talked about publicly. Put this line back to restore it:

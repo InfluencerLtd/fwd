@@ -74,13 +74,16 @@ export function SiteMenu() {
         onClick={show}
         aria-label={NAV.menu}
         aria-expanded={open}
+        // top-6 rather than top-5 from 17 September 2026: the header is a
+        // floating pill now, and this is the object beside it, so the two are
+        // centred on the same line.
         // A dark pill with light lines, which reads as a control on the dark
         // photograph and on the off-white page alike, so it needs no knowledge
         // of what is behind it.
         // Phones only, now that the header carries a full navigation above
         // 900px. Both on screen at once is two ways to do the same thing,
         // sitting a centimetre apart.
-        className="fixed right-5 top-5 z-50 flex h-11 w-11 items-center justify-center rounded-full border border-photo-ink/20 bg-photo-ground/70 backdrop-blur-sm transition-colors duration-300 hover:border-photo-ink/40 min-[900px]:hidden"
+        className="fixed right-5 top-6 z-50 sm:top-[30px] flex h-11 w-11 items-center justify-center rounded-full border border-photo-ink/15 bg-photo-ground/90 transition-colors duration-300 hover:border-photo-ink/40 min-[900px]:hidden"
       >
         <span aria-hidden="true" className="flex w-5 flex-col gap-[5px]">
           <span className="h-px w-full bg-photo-ink" />

@@ -1,6 +1,4 @@
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
-import { Wordmark } from "@/components/wordmark";
-import { PhotoScrim } from "@/components/photo-scrim";
 import { ApplyLink } from "@/components/apply-link";
 import { HERO, IMAGERY } from "@/content/site";
 
@@ -58,25 +56,17 @@ export function Hero() {
               button ends up against the rule. Padding is not negotiable in the
               same way, so the gap holds at every height. */}
           <div className="my-auto flex flex-col items-center pb-[10px]">
-            {/* A soft radial scrim under the lockup, from the placement rules.
-                The wash over the whole photograph has gone, so this is what
-                keeps the mark holding its shape wherever the picture is
-                busiest, without darkening the frame the way a flat overlay
-                did. It is behind the lockup only: -z-1 puts it under the text,
-                and the padding is what gives it something to fade across. */}
-            <div className="relative">
-              <PhotoScrim size="lockup" />
-              {/* THE SIGNATURE IS HERE, and only here, on this page. The bar
-                  at the top of the homepage is the mark on its own; every
-                  other page keeps the endorsement up there in the corner
-                  because it has nothing this size to put it on. See the
-                  `signature` prop in wordmark.tsx.
+            {/* THE BIG CENTRAL LOCKUP HAS GONE. It was the mark at hero
+                size with "by Influencer" under it, over a radial scrim. The
+                review of 17 September 2026 called it redundant against the
+                mark in the top left corner, and it was: two lockups on one
+                screen, one of them four times the size of the other.
 
-                  The width is unchanged, so the "fwd." is exactly the size it
-                  was — the lockup adds its height underneath rather than
-                  shrinking the mark to make room. */}
-              <Wordmark size="heroLarge" heading align="center" />
-            </div>
+                What it leaves behind is room. The three nouns, the line and
+                the button now sit in the middle of the photograph rather than
+                below the middle, which is the other thing the review asked
+                for. The header keeps the endorsement on this page now, so the
+                signature is not lost: see `signature` in site-header.tsx. */}
 
             {/* Clear space: at least the height of the "d" before anything
                 else starts. That ascender in Instrument Serif is about three
@@ -86,7 +76,7 @@ export function Hero() {
             {/* ONE LINE. It was two — "Brands. Creators. Platforms." and then
                 "One table." in the pale blue as the answer to it. The answer
                 went; the three nouns stand on their own. */}
-            <p className="mt-12 font-body text-lg leading-[1.5] text-photo-ink sm:mt-16 sm:text-[22px] lg:mt-[104px] lg:text-[27px]">
+            <p className="font-body text-xl leading-[1.5] text-photo-ink sm:text-[26px] lg:text-[32px]">
               {HERO.headline}
             </p>
 

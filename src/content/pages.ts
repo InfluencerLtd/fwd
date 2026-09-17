@@ -269,19 +269,29 @@ export const ABOUT_PAGE = {
    * DRAFT lines. Each says what that third of the room actually does, in one
    * sentence, without telling any of them how important they are.
    */
+  /*
+   * REWRITTEN POSITIVELY, 17 September 2026. The review asked for all three
+   * to feel inspiring rather than dutiful, gave the direction (brands create
+   * opportunity, platforms enable distribution, creators inspire action) and
+   * said explicitly to lose "spending the budget, and answering for where it
+   * went". Distribution is now named for the platforms.
+   *
+   * FINAL CARD COPY IS STILL OPEN: these follow the direction closely and are
+   * the shortest honest version of it.
+   */
   forWhom: [
     {
       name: "The\u00a0brands.",
-      line: "The people spending the budget, and answering for where it went.",
+      line: "They create the opportunity, and decide where the industry\u2019s money goes next.",
     },
     // The creators in the middle, with the other two either side of them.
     {
       name: "The\u00a0creators.",
-      line: "The people who built the audience, and decide what gets made for it.",
+      line: "They make the work that moves people, and inspire the action that follows.",
     },
     {
       name: "The\u00a0platforms.",
-      line: "The people who set the rules the other two work inside.",
+      line: "They carry the work to an audience, and set how distribution works.",
     },
   ],
   /** The close at the foot of the page. A sentence, so it keeps its capital. */
@@ -404,7 +414,16 @@ export const FORWARD_THINKERS = {
   curators: {
     heading: "Curated by",
     /** NOTHING RENDERS THIS. Taken off the page on 15 September 2026. */
+    /** NOTHING RENDERS THIS. Taken off the page on 15 September 2026. */
     lead: "The list is not ours alone. Three people who know the industry put the names forward, market by market.",
+    /**
+     * WHO CHOOSES, AND HOW MANY. The review asked for this to be explicit:
+     * a judging panel selects thirty people a year. The criteria and the
+     * categories are an open decision for the Forward team, so nothing here
+     * says what qualifies somebody.
+     */
+    panel:
+      "A judging panel selects thirty people each year. Nobody applies, and no place on the list is bought.",
     /** The shot each portrait wants, for whoever asks them for one. */
     photoBrief: "A portrait they already have. Head and shoulders, plain background",
     people: [

@@ -2,7 +2,7 @@ import { Hero } from "@/components/hero";
 import { SiteMenu } from "@/components/site-menu";
 import { SiteHeader } from "@/components/site-header";
 import { ApplyLink } from "@/components/apply-link";
-import { MarkedText } from "@/components/marked";
+import { Circled, MarkedText } from "@/components/marked";
 import { TheCase } from "@/components/the-case";
 import { PageClose } from "@/components/page-close";
 import { SiteFooter } from "@/components/site-footer";
@@ -13,6 +13,7 @@ import {
   NAME_STORY,
   WAY_IN,
 } from "@/content/site";
+import { ABOUT_PAGE } from "@/content/pages";
 
 /**
  * The public site: one page, scrolling.
@@ -60,23 +61,64 @@ export function PublicSite() {
         {/* ---- 2. The case ---------------------------------------------- */}
         <TheCase />
 
-        {/* ---- 2b. Why the name -----------------------------------------
+        {/* ---- 2b. Why the name, set as a dictionary entry -------------
              NEAR-BLACK, BETWEEN TWO LIGHT SECTIONS, so it reads as its own
              beat rather than as more of the argument above it. The words are
              the ones that were on /about (first-impression critique,
              14 September 2026): the name is what makes this stick, and it was
-             on the second page. Short section, one idea, no button. */}
+             on the second page.
+
+             A DICTIONARY ENTRY, from 17 September 2026 (the review's own
+             direction for this section). The word is the headword, the two
+             sentences are its numbered senses, and it is left-aligned on a
+             single measure because that is how an entry is set. It was a
+             centred stack with a heading over it, which made the section look
+             like every other short centred section on the page.
+
+             NO DEFINITION AND NO PART OF SPEECH, on purpose. See the note on
+             NAME_STORY in src/content/site.ts: the sentence that defines
+             Forward is the review's to write, not ours to invent, and the
+             entry stands up without it. */}
         <section className="fwd-dark fwd-on-dark fwd-grain fwd-section-compact px-6">
-          <div className="relative z-1 mx-auto max-w-3xl text-center">
-            <h2 className="fwd-reveal fwd-h2 text-photo-ink normal-case!">
-              <MarkedText text={`${NAME_STORY.heading}.`} dot />
+          <div className="relative z-1 mx-auto max-w-3xl">
+            <h2 className="fwd-eyebrow fwd-reveal text-photo-ink/60">
+              {NAME_STORY.heading}
             </h2>
-            <p className="fwd-reveal fwd-standfirst mt-7 text-photo-ink">
-              {NAME_STORY.body[0]}
+
+            {/* The headword. Lowercase, and the full stop the mark carries is
+                not here: this is the word, not the wordmark. */}
+            <p className="fwd-reveal mt-6 font-display text-[clamp(3rem,10vw,5.5rem)] leading-[0.95] text-photo-ink">
+              {NAME_STORY.headword}
             </p>
-            <p className="fwd-reveal fwd-body mt-5 text-photo-ink/70">
-              {NAME_STORY.body[1]}
-            </p>
+
+            {/* The senses. The rule under the headword is the entry's own
+                hairline, which is why it is on the list rather than on the
+                word: the numbers hang in their own column beside the text, so
+                the sentences stay on one measure. */}
+            <ol className="fwd-stagger mt-8 border-t border-photo-ink/15">
+              {NAME_STORY.body.map((line, index) => (
+                <li
+                  key={line}
+                  className="fwd-reveal flex gap-5 border-b border-photo-ink/15 py-6"
+                >
+                  <span
+                    aria-hidden="true"
+                    className="shrink-0 font-body text-sm leading-[1.7] text-accent-on-dark tabular-nums"
+                  >
+                    {index + 1}
+                  </span>
+                  <p
+                    className={
+                      index === 0
+                        ? "fwd-standfirst text-photo-ink"
+                        : "fwd-body text-photo-ink/70"
+                    }
+                  >
+                    {line}
+                  </p>
+                </li>
+              ))}
+            </ol>
           </div>
         </section>
 
@@ -89,8 +131,10 @@ export function PublicSite() {
              line and the reading happens underneath it. */}
         <section id="membership" className="fwd-section scroll-mt-20 px-6">
           <div className="mx-auto max-w-6xl">
-            <h2 className="fwd-reveal fwd-h2 max-w-4xl normal-case!">{MEMBERSHIP.heading}</h2>
-
+            {/* NO HEADING. "A year of rooms, and the people in them" came off
+                on 17 September 2026 at the review's request: the benefit line
+                is the section now, and the page had three big headings in a
+                row before it. */}
             <div className="mt-12 grid gap-x-16 gap-y-6 sm:mt-16 md:grid-cols-2">
               {/* whitespace-pre-line so a newline in the content file is a
                   line break here, and spaces still collapse. */}
@@ -107,6 +151,66 @@ export function PublicSite() {
             <div className="fwd-reveal mt-14">
               <ApplyLink />
             </div>
+          </div>
+        </section>
+
+        {/* ---- 3b. About, folded in from its own page --------------------
+             THE STANDALONE /about PAGE HAS GONE (review, 17 September 2026).
+             Its two strongest parts are here: the claim with the three groups
+             under it, and How it works as one numbered sequence. /about now
+             redirects to this section, and the nav item scrolls to it, so
+             every link anybody has ever sent still lands in the right place.
+
+             WHAT WAS LEFT BEHIND, on purpose: the year-round membership
+             paragraph and the benefit copy, which Home already says one
+             section above, and "What it is for", which the review asked to
+             remove as explained enough. All three are still in
+             src/content/pages.ts. */}
+        <section id="about" className="fwd-section scroll-mt-24 bg-surface-alt px-6">
+          <div className="mx-auto max-w-6xl">
+            <h2 className="fwd-rise fwd-statement max-w-4xl text-ink normal-case!">
+              <MarkedText text={ABOUT_PAGE.statement} />
+            </h2>
+
+            {/* Who is in the room, in three. The circles are the review's
+                one visual keeper from this page, a size up on what they
+                were. */}
+            <ul className="fwd-stagger mx-auto mt-16 grid max-w-5xl gap-x-12 gap-y-14 sm:mt-20 sm:grid-cols-3">
+              {ABOUT_PAGE.forWhom.map((item) => (
+                <li key={item.name} className="fwd-reveal">
+                  <p className="fwd-h3 text-ink">
+                    <Circled>{item.name}</Circled>
+                  </p>
+                  <p className="mt-6 max-w-[30ch] font-body text-base leading-relaxed text-ink-muted">
+                    {item.line}
+                  </p>
+                </li>
+              ))}
+            </ul>
+
+            {/* How it works, as one clean 1-2-3, which is how the review
+                asked for it rather than three separate cards. */}
+            <h3 className="fwd-reveal fwd-h3 mt-24 normal-case! sm:mt-32">
+              {ABOUT_PAGE.how.heading}
+            </h3>
+            <ol className="fwd-stagger mt-10">
+              {ABOUT_PAGE.how.items.map((item, index) => (
+                <li
+                  key={item.name}
+                  className="fwd-reveal grid gap-x-10 gap-y-3 border-t border-ink/15 py-8 md:grid-cols-12"
+                >
+                  <span className="fwd-eyebrow col-span-full text-ink-muted md:col-span-1">
+                    {index + 1}
+                  </span>
+                  <p className="fwd-standfirst col-span-full text-ink md:col-span-5">
+                    {item.name}
+                  </p>
+                  <p className="fwd-body col-span-full text-ink-muted md:col-span-5 md:col-start-8">
+                    {item.line}
+                  </p>
+                </li>
+              ))}
+            </ol>
           </div>
         </section>
 

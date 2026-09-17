@@ -8,6 +8,7 @@ import { SiteMenu } from "@/components/site-menu";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { APPLY, MEMBERSHIP_PAGE, META } from "@/content/site";
+import { ROOMS } from "@/content/pages";
 
 export const metadata: Metadata = {
   title: `membership · ${META.title}`,
@@ -81,6 +82,14 @@ export default function MembershipPage() {
              the tiles, and the ask at the end. The blue button is unchanged —
              it is 13.4:1 on this ground, which is where it is strongest. */}
         <div className="fwd-dark fwd-on-dark">
+          {/* ---- 2. THE BENEFITS, DIRECTLY UNDER THE HERO ----------------
+               The review of 17 September 2026 asked for this order: hero, the
+               horizontal benefits, then the ask with the short paragraph. The
+               intro and the button used to come first, which meant somebody
+               arriving from the home page read the proposition a third time
+               before seeing anything they would get. */}
+          <BenefitTiles />
+
           <section className="fwd-section px-6">
             <div className="mx-auto max-w-4xl text-center">
               {/* NOT THE h1 ANY MORE. The name over the photograph is now,
@@ -109,14 +118,67 @@ export default function MembershipPage() {
             </div>
           </section>
 
-          {/* ---- 3. The whole offer at a glance -------------------------- */}
-          <BenefitTiles />
+
 
           {/* THE EXPLAINED LIST HAS GONE FROM HERE. It was added on
                14 September 2026 to answer the critique that the tiles were a
                word cloud, and on 15 September the tiles themselves took the
                lines instead. Keeping both would have said every benefit twice
                on one page. */}
+
+          {/* ---- 3. THE ROOMS, MERGED IN FROM THEIR OWN PAGE -------------
+               /rooms has gone (review, 17 September 2026) and this is what
+               was worth keeping: where the rooms happen, and the shapes they
+               take. The proposition copy that page opened with is not here,
+               because Home says it and the intro above says it.
+
+               The anchor is #rooms, so /rooms redirects to it and a nav item
+               can still point at it if the team decides to keep one. */}
+          <section id="rooms" className="fwd-section scroll-mt-24 px-6">
+            <div className="mx-auto max-w-6xl">
+              {/* THE HEADING IS "there is no fixed program", NOT ROOMS.claim.
+                  The claim was "every gathering is curated by hand", which is
+                  word for word the first of the three steps in How it works on
+                  the home page. The review asked for the proposition copy that
+                  repeats Home or the intro above to come off, and that was it;
+                  ROOMS.claim is still in src/content/pages.ts, unrendered. */}
+              <h2 className="fwd-reveal fwd-h2 max-w-3xl text-photo-ink normal-case!">
+                <MarkedText text={ROOMS.heading} dot />
+              </h2>
+
+              {ROOMS.lead.map((line, index) => (
+                <p
+                  key={line}
+                  className={
+                    index === 0
+                      ? "fwd-reveal fwd-standfirst mt-8 max-w-3xl text-photo-ink/80"
+                      : "fwd-reveal fwd-body mt-6 max-w-3xl text-photo-ink/70"
+                  }
+                >
+                  {line}
+                </p>
+              ))}
+
+              <h3 className="fwd-reveal fwd-h3 mt-20 text-photo-ink normal-case! sm:mt-24">
+                {ROOMS.formatsHeading}
+              </h3>
+              <ul className="fwd-stagger mt-10 grid gap-x-10 sm:grid-cols-2 lg:grid-cols-4">
+                {ROOMS.formats.map((format) => (
+                  <li
+                    key={format.name}
+                    className="fwd-reveal border-t border-photo-ink/15 pb-10 pt-6"
+                  >
+                    <p className="font-display text-[26px] leading-[1.1] text-photo-ink">
+                      {format.name}
+                    </p>
+                    <p className="fwd-body mt-3 text-photo-ink/70">
+                      {format.line}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
 
           {/* ---- 4. The ask again, after the pictures --------------------- */}
           {/* 15px less top and bottom than the section pattern elsewhere.

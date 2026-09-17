@@ -41,14 +41,18 @@ export default function BriefingPage() {
     <PageShell overHero={false}>
       {/* ---- The masthead ----------------------------------------------- */}
       <section className="px-6 pb-16 pt-36 sm:pb-20 sm:pt-44">
-        <div className="mx-auto max-w-6xl">
+        <div className="mx-auto max-w-4xl">
           {/* No eyebrow. It said "the briefing" directly above a heading that
               says "the briefing", which is a label for something already
               named. The heading leads on its own, so it also loses the delay
               it was given to arrive after the eyebrow. */}
           {/* A capital T here only: the name is lowercase in the navigation, so
               the heading capitalises it rather than the name changing. */}
-          <h1 className="fwd-enter fwd-statement normal-case!">
+          {/* CENTRED, WITH THE ROW UNDER IT (review, 17 September 2026). The
+              name was left-aligned over a masthead row that was already
+              centred, so the two were arguing: a masthead is a symmetrical
+              object or it is not one. */}
+          <h1 className="fwd-enter fwd-statement text-center normal-case!">
             {BRIEFING.heading.charAt(0).toUpperCase() + BRIEFING.heading.slice(1)}
             {/* The logo's full stop, in the deep blue on this light ground. */}
             <span className="fwd-dot">.</span>
@@ -77,22 +81,21 @@ export default function BriefingPage() {
         </div>
       </section>
 
-      {/* ---- What it is, held to one column ----------------------------- */}
+      {/* ---- What it is, one centred column -----------------------------
+           IT WAS A TWELVE-COLUMN SPLIT, the opening line on the left and the
+           rest dropped down the right-hand side. Under a centred masthead that
+           read as the page changing its mind about where its axis is, so the
+           whole top of the page is now one measure down the middle (review,
+           17 September 2026). */}
       <section className="fwd-section px-6 pt-8">
-        <div className="mx-auto grid max-w-6xl gap-x-16 gap-y-6 lg:grid-cols-12">
-          <p className="fwd-reveal fwd-standfirst col-span-full text-ink lg:col-span-6">
-            {opening}
-          </p>
+        <div className="mx-auto max-w-3xl space-y-6 text-center">
+          <p className="fwd-reveal fwd-standfirst text-ink">{opening}</p>
           {/* Only when there is more than the opening line. */}
-          {rest.length > 0 && (
-            <div className="col-span-full space-y-6 lg:col-span-5 lg:col-start-8 lg:self-end">
-              {rest.map((paragraph) => (
-                <p key={paragraph} className="fwd-reveal fwd-body text-ink-muted">
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-          )}
+          {rest.map((paragraph) => (
+            <p key={paragraph} className="fwd-reveal fwd-body text-ink-muted">
+              {paragraph}
+            </p>
+          ))}
         </div>
       </section>
 
