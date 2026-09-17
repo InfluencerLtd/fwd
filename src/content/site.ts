@@ -635,12 +635,10 @@ export const APPLY = {
    * made a platform an afterthought on the one screen where somebody is
    * putting their name forward.
    *
-   * WHAT SITS BEHIND EACH CARD IS NOT SETTLED. Typeform holds two forms, one
-   * for creators and one for everybody else, so brand and platform open the
-   * same form for now and arrive carrying which card was pressed (see
-   * `type` in apply-panel.tsx). A form of its own for platforms, or a hidden
-   * field named `type` on the existing one, is a change in Typeform rather
-   * than in here.
+   * ONE FORM EACH, from 17 September 2026. Typeform now holds three: the
+   * questions worth asking a creator are not the ones worth asking somebody
+   * at a brand, and neither set is what you would ask a platform. The three
+   * ids are in apply-panel.tsx.
    */
   choose: {
     /**

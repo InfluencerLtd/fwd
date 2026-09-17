@@ -30,6 +30,16 @@ const CREATOR_TYPEFORM_ID = "01M25VECYTDKJP4AHS58KNBPWE";
  */
 const BRAND_TYPEFORM_ID = "01M2MWYZQVW19E0R443CJGVS3Y";
 
+/*
+ * AND PLATFORMS HAVE A FORM OF THEIR OWN, from 17 September 2026.
+ *
+ * This is what the three cards were waiting for. Brand and platform shared
+ * the brand form for a few hours this afternoon, told apart only by a hidden
+ * field, which was the honest stopgap rather than the answer. Now each of the
+ * three applicant types opens the questions written for it.
+ */
+const PLATFORM_TYPEFORM_ID = "01M2QZ6MQFBJFDVDVZB7XFVZDT";
+
 /**
  * The three kinds of applicant, in the order the whole site names them.
  *
@@ -41,17 +51,11 @@ const BRAND_TYPEFORM_ID = "01M2MWYZQVW19E0R443CJGVS3Y";
 type ApplicantType = "creator" | "brand" | "platform";
 
 /**
- * WHICH FORM EACH TYPE OPENS, AND WHAT IT ARRIVES CARRYING.
+ * WHICH FORM EACH TYPE OPENS. One form each, and nothing shared.
  *
- * Typeform holds two forms, so brand and platform open the same one. What
- * keeps them apart is `type`, passed in as a Typeform hidden field, so a
- * platform's application is identifiable in Typeform without anybody having
- * to guess from the company name.
- *
- * >>> THE HIDDEN FIELD HAS TO EXIST IN TYPEFORM TO BE RECORDED. <<< A hidden
- * field the form does not declare is ignored rather than an error, so this is
- * safe as it stands and does nothing until a field named `type` is added to
- * the form (or a third form is built for platforms, which is one line here).
+ * The hidden `type` field that used to keep brand and platform apart on one
+ * form has gone with the reason for it: three cards, three form ids, and an
+ * application arrives in the Typeform written for that kind of applicant.
  */
 const FORMS: Record<
   ApplicantType,
@@ -68,7 +72,7 @@ const FORMS: Record<
     heading: APPLY.choose.brand.heading,
   },
   platform: {
-    id: BRAND_TYPEFORM_ID,
+    id: PLATFORM_TYPEFORM_ID,
     label: APPLY.choose.platform.label,
     heading: APPLY.choose.platform.heading,
   },
@@ -102,9 +106,8 @@ export function ApplyPanel() {
         <h3 className="mt-4 text-3xl">{form.heading}</h3>
         <div className="mt-8">
           {/* Keyed on the type, so switching starts a clean form rather than
-              carrying the other one's answers across. Brand and platform share
-              a form id, so the key is the type and not the id. */}
-          <TypeformEmbed key={type} id={form.id} hidden={{ type }} />
+              carrying the other one's answers across. */}
+          <TypeformEmbed key={type} id={form.id} />
         </div>
       </div>
     );

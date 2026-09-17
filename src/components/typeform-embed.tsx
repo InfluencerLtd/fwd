@@ -22,24 +22,7 @@ declare global {
  * Submissions go to Typeform, not to our database: this path has no copy of
  * its own the way the HubSpot one does.
  */
-export function TypeformEmbed({
-  id,
-  hidden,
-}: {
-  id: string;
-  /**
-   * Typeform hidden fields, as name and value pairs.
-   *
-   * WHAT THEY ARE FOR HERE: brand and platform applicants share one form, so
-   * the form is told which card was pressed. Typeform reads these off
-   * `data-tf-hidden` and ignores any name the form itself has not declared, so
-   * passing one costs nothing until somebody adds the field in Typeform.
-   *
-   * Nothing personal goes in here. It is a word describing which button was
-   * pressed, and it is visible in the page source like any other attribute.
-   */
-  hidden?: Record<string, string>;
-}) {
+export function TypeformEmbed({ id }: { id: string }) {
   useEffect(() => {
     const existing = document.querySelector<HTMLScriptElement>(
       `script[src="${SRC}"]`,
@@ -66,17 +49,13 @@ export function TypeformEmbed({
   // slow load can now do is show an empty rounded panel.
   return (
     <div className="relative isolate min-h-[560px] overflow-hidden rounded-2xl" >
-      <div
-        data-tf-live={id}
-        data-tf-hidden={
-          hidden
-            ? Object.entries(hidden)
-                .map(([name, value]) => `${name}=${value}`)
-                .join(",")
-            : undefined
-        }
-        className="min-h-[560px]"
-      />
+      {/* THE HIDDEN-FIELD PROP HAS GONE. It existed so brand and platform
+          applicants could be told apart inside one shared form; each of the
+          three types has a form of its own from 17 September 2026, so there is
+          nothing left to pass. Typeform reads hidden fields off
+          `data-tf-hidden` as comma-separated name=value pairs if this ever
+          needs to come back. */}
+      <div data-tf-live={id} className="min-h-[560px]" />
     </div>
   );
 }
