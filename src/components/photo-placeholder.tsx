@@ -32,6 +32,7 @@ export function PhotoPlaceholder({
   label,
   name,
   ratio = "landscape",
+  objectPosition,
   className = "",
   labelPosition = "left-5 top-5",
   showLabel = true,
@@ -46,6 +47,22 @@ export function PhotoPlaceholder({
   /** The file name to look for in public/photography, without the extension. */
   name?: string;
   ratio?: PhotoRatio;
+  /**
+   * Where the crop is taken from, as a CSS object-position.
+   *
+   * WHY IT IS SOMETIMES NEEDED. Every photograph here is `object-cover` in a
+   * box whose shape is set by the layout rather than by the picture, so the
+   * two rarely match and something is always cut off. Centred is right almost
+   * always, and wrong the moment the thing that matters is not in the middle:
+   * a face at the top of the frame loses the top of its head on a short wide
+   * window, and a figure at one side disappears entirely on a phone, where a
+   * landscape photograph is cropped to a portrait slot.
+   *
+   * Given as a percentage pair, and read as "the point in the photograph that
+   * stays in view": "50% 0%" keeps the top edge, "20% 0%" keeps the top and
+   * the left-hand third.
+   */
+  objectPosition?: string;
   className?: string;
   labelPosition?: string;
   showLabel?: boolean;
@@ -115,6 +132,7 @@ export function PhotoPlaceholder({
           // information a screen reader needs, and the alt above is empty on
           // purpose so it is skipped rather than described badly.
           className="object-cover"
+          style={objectPosition ? { objectPosition } : undefined}
         />
       ) : showLabel ? (
         <p

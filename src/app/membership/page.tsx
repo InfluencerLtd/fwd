@@ -112,7 +112,10 @@ export default function MembershipPage() {
                   a screen reader jumping by heading would land in the middle
                   of it. Its size and weight are unchanged: this is what it is,
                   not how it looks. */}
-              <h2 className="fwd-reveal fwd-h2 text-photo-ink">
+              {/* normal-case! because it is a name: the h2 rule lowercases
+                  headings across the site, and "Forward" keeps its capital
+                  wherever it appears (see the naming rules in brand.ts). */}
+              <h2 className="fwd-reveal fwd-h2 text-photo-ink normal-case!">
                 {MEMBERSHIP_PAGE.about.heading}
               </h2>
 

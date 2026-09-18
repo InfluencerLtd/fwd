@@ -24,6 +24,7 @@ export function PageClose({
   tone = "light",
   photo,
   photoBrief,
+  photoPosition,
   scale = "heading",
   sentence = false,
 }: {
@@ -49,6 +50,14 @@ export function PageClose({
   photo?: string;
   /** What the shot should be. Lives in IMAGERY, passed in so it stays there. */
   photoBrief?: string;
+  /**
+   * Where to crop this particular photograph from, when centred is wrong.
+   *
+   * The close band is as wide as the window and 68vh tall, so its shape
+   * changes with every screen and the crop changes with it. A photograph whose
+   * subject is near an edge needs telling which edge to keep.
+   */
+  photoPosition?: string;
 }) {
   const dark = tone === "dark";
   const ground =
@@ -96,6 +105,7 @@ export function PageClose({
           showLabel={false}
           sizes="100vw"
           ratio="fill"
+          objectPosition={photoPosition}
           /* The placeholder's own wash is off: the scrim above does the
              darkening, in the one place it is needed, as on the hero. */
           scrim={false}

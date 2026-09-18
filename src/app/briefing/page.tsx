@@ -115,6 +115,13 @@ export default function BriefingPage() {
         sentence
         photo="briefing"
         photoBrief={IMAGERY.briefingClose}
+        /* KEEP THE TOP OF THE FRAME, AND THE LEFT OF IT. The speaker stands at
+           the left of this photograph with her head near the top edge, and the
+           band is as wide as the window and only 68vh tall: centred, a short
+           wide screen cut the top of her head off, and a phone — where a
+           landscape photograph is squeezed into a portrait slot — cut her out
+           of the picture altogether. */
+        photoPosition="20% 0%"
       />
     </PageShell>
   );
