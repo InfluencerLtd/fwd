@@ -153,11 +153,20 @@ export function PhotoPlaceholder({
           {label}
         </p>
       ) : null}
+      {src && wash ? (
+        <div
+          aria-hidden="true"
+          className={`absolute inset-0 z-1 ${washClassName}`}
+        />
+      ) : null}
       {/* THE TWINKLE LAYER: the same photograph again, brighter and harder,
-          blended so only its own highlights lift. Under the wash on purpose,
-          so the darkening still applies to it — see globals.css. */}
+          blended so only its own highlights lift.
+          AFTER THE WASH, AND AT THE SAME z-1, so it paints over it. It was
+          under the wash, which meant the hero's 58% black took 58% of it and
+          the whole thing was invisible — measured, 0.01% of the page moved.
+          Still below the words at z-2, so nothing is drawn over the type. */}
       {src && twinkle ? (
-        <div aria-hidden="true" className="fwd-photo-twinkle absolute inset-0">
+        <div aria-hidden="true" className="fwd-photo-twinkle absolute inset-0 z-1">
           <Image
             src={src}
             alt=""
@@ -174,12 +183,6 @@ export function PhotoPlaceholder({
             style={objectPosition ? { objectPosition } : undefined}
           />
         </div>
-      ) : null}
-      {src && wash ? (
-        <div
-          aria-hidden="true"
-          className={`absolute inset-0 z-1 ${washClassName}`}
-        />
       ) : null}
       {children}
     </div>

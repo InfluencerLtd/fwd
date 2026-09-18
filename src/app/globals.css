@@ -661,8 +661,9 @@ h1, h2, h3, h4 {
    per cent rather than on the fours. An even cycle reads as a pulse, and a
    pulse reads as a loading indicator; uneven stops read as lights.
 
-   FOURTEEN SECONDS, AND NEVER ABOVE 38% OPACITY. It should be caught out of
-   the corner of an eye rather than watched.
+   FOURTEEN SECONDS. It should be caught out of the corner of an eye rather
+   than watched, but it does have to be caught: see the note on the filter
+   below for the version of this that was too faint to see at all.
 
    THE SECOND COPY IS CHEAP. It is requested at 480px because it contributes
    blooms rather than detail, and it is lazy, so it is a few tens of kilobytes
@@ -672,37 +673,93 @@ h1, h2, h3, h4 {
    Reduced motion gets the still photograph and no second layer drawn at all. */
 @keyframes fwd-photo-twinkle {
   0% {
-    opacity: 0.1;
+    opacity: 0.18;
   }
-  17% {
-    opacity: 0.32;
+  9% {
+    opacity: 0.7;
   }
-  29% {
-    opacity: 0.14;
-  }
-  46% {
-    opacity: 0.38;
-  }
-  58% {
-    opacity: 0.2;
-  }
-  73% {
+  16% {
     opacity: 0.3;
   }
+  27% {
+    opacity: 0.24;
+  }
+  35% {
+    opacity: 0.85;
+  }
+  43% {
+    opacity: 0.36;
+  }
+  57% {
+    opacity: 0.62;
+  }
+  65% {
+    opacity: 0.22;
+  }
+  79% {
+    opacity: 0.76;
+  }
   88% {
-    opacity: 0.12;
+    opacity: 0.34;
   }
   100% {
-    opacity: 0.1;
+    opacity: 0.18;
   }
 }
 
 .fwd-photo-twinkle {
-  /* Only the highlights survive this. See the note above. */
-  filter: brightness(1.35) contrast(1.9) saturate(0.9);
+  /* ONLY THE HIGHLIGHTS SURVIVE THIS, and the order matters.
+     ------------------------------------------------------------------
+     Darken first so most of the frame falls below contrast's pivot, crush the
+     contrast so the mid-tones go to black, then brighten what survived.
+     Measured against the actual values in this photograph:
+
+         130, 150, 170 -> 0.00      the crowd, the walls, the lit floor
+         190           -> 0.30
+         210           -> 0.75
+         230 and up    -> 1.00      the lights themselves
+
+     THE THRESHOLD IS HIGH ON PURPOSE, and it was briefly not. Bringing it
+     down to 150 pulled the lit wall and the glow off the window in, and at
+     the peak that whole region went near-white — measured, the contrast
+     behind the headline fell to 0.88:1, which is to say the picture had
+     become brighter than the type on it. Only things that are actually
+     lights belong in here.
+
+     THE FIRST VERSION OF THIS WAS brightness(1.35) contrast(1.9), which
+     lifted everything — a dark pixel at 60 still contributed 0.15 and the
+     mid-tones came out at 0.84. That is not a twinkle, it is a grey veil over
+     the whole photograph, and a veil changing by a fifth is invisible:
+     measured, the peak-to-trough difference was 13 of 255.
+
+     AND IT USED TO SIT UNDER THE HERO'S OWN 58% BLACK WASH, which took 58%
+     of whatever it contributed. Between that and the veil above, the first
+     two versions of this were invisible on the page while looking correct in
+     every measurement of the layer itself. It is painted over the wash now
+     and still under the words, so what it adds is what you see. */
+  filter: brightness(0.55) contrast(4.2) brightness(2.3) saturate(0.85);
   mix-blend-mode: screen;
   opacity: 0;
   pointer-events: none;
+
+  /* AND IT IS HELD OFF THE MIDDLE OF THE FRAME, which is where the words are.
+     A radial hole: nothing at all for the first 40% out from the centre,
+     fading up to full by 78%. So the lights around the edges and across the
+     top of the room flicker and the ground directly behind the headline never
+     changes brightness at all — which is the only way this can be visible and
+     leave the type's contrast exactly where it was measured. */
+  -webkit-mask-image: radial-gradient(
+    ellipse 62% 46% at 50% 52%,
+    transparent 0%,
+    transparent 40%,
+    #000 78%
+  );
+  mask-image: radial-gradient(
+    ellipse 62% 46% at 50% 52%,
+    transparent 0%,
+    transparent 40%,
+    #000 78%
+  );
 }
 
 @media (prefers-reduced-motion: no-preference) {

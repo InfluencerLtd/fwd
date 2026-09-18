@@ -56,9 +56,13 @@ export function Hero() {
             0.45 cleared the numbers at 6.98 and 4.90. This is 0.58, which is
             not about clearing them: the type reads as sitting on the picture
             rather than fighting it. Mark 8.80:1, tagline 7.12:1. */}
+        {/* z-0 RATHER THAN z-1, so the twinkle layer above it at z-1 is not
+            being darkened by it. It is still above the photograph, which is
+            first in the DOM and unpositioned in the stack, and still under the
+            words at z-2 — which is all this wash needs to be. */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 z-1 bg-black/[0.58]"
+          className="pointer-events-none absolute inset-0 z-0 bg-black/[0.58]"
         />
         <div className="relative z-2 flex w-full flex-1 flex-col items-center px-6 pb-0 pt-28 text-center">
           {/* The 10px is padding rather than a margin: the block is centred
