@@ -776,7 +776,18 @@ export const FILM = {
    * is a centred reel rather than a band across the page.
    */
   reel: {
-    src: null as string | null,
+    /**
+     * IN, 18 September 2026. Cannes: the Carlton, the activations, a table
+     * being laid. Not the held single shot the brief asks for — it is a cut
+     * montage, and it carries a line of burned-in text in its first seconds
+     * that the site did not write. Both are worth knowing; neither is a
+     * reason to hold it back.
+     *
+     * 720x1280, no audio track at all, 2.6MB, faststart. Re-encoded from the
+     * 5.3MB original with the settings in public/film/README.md.
+     */
+    src: "/film/reel.mp4",
+    /** The film's own first frame, so there is no jump when it starts. */
     poster: "film-reel",
     brief:
       "The same evening, held vertically. One shot, close, somebody mid-sentence and the table listening.",

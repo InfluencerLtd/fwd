@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 /**
  * A short film of a room, playing silently on a loop.
@@ -47,7 +47,6 @@ export function SilentLoop({
   className?: string;
 }) {
   const video = useRef<HTMLVideoElement>(null);
-  const [wanted, setWanted] = useState(false);
 
   useEffect(() => {
     const element = video.current;
@@ -58,8 +57,20 @@ export function SilentLoop({
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          // First sight: this is when the file is actually asked for.
-          setWanted(true);
+          /* FIRST SIGHT IS WHEN THE FILE IS ASKED FOR. The src is set here
+             rather than in the markup, which is what makes preload="none"
+             mean anything: somebody who never scrolls this far never fetches
+             it at all.
+
+             src AND THEN load(). A <video> that has never had a source sits
+             in NETWORK_EMPTY, and giving it one is not enough on its own —
+             without load() it will happily stay empty and never play. This
+             was a <source> child added by React on first sight, and it did
+             exactly that: rendered, and then nothing. */
+          if (!element.currentSrc) {
+            element.src = src;
+            element.load();
+          }
           // play() rejects on its own if the browser is not ready or the tab
           // is hidden. Nothing to recover from, and nothing to report.
           void element.play().catch(() => {});
@@ -93,9 +104,7 @@ export function SilentLoop({
           // Decorative, like the photography: the words carry the meaning.
           aria-hidden="true"
           tabIndex={-1}
-        >
-          {wanted ? <source src={src} type="video/mp4" /> : null}
-        </video>
+        />
       ) : (
         // No film yet. The poster is the slot, and nothing about the page
         // says a video is missing.
