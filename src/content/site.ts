@@ -871,6 +871,8 @@ export const IMAGERY = {
     "A wide room mid-conversation, shot from the edge of it. Warm, low light, nobody looking at the camera. For the top of the what it is page",
   briefingClose:
     "Someone reading, alone, after the room has emptied. Low light, close crop, face optional. For the foot of the briefing page",
+  membershipClose:
+    "The table at its fullest, wide, from the end of the room. Every other page closes on a photograph and this one closed on a plain dark band. For the foot of the membership page",
   why: "Detail shot. A gesture mid-sentence, or a table after dinner",
   membership: "A room mid-conversation. Low light, faces optional. For the top of the membership page",
   /**

@@ -7,10 +7,11 @@ import { MarkedText } from "@/components/marked";
 // BenefitTiles is not rendered at the moment: see section 2 below, which is
 // where to put it back.
 import { ApplyDialog } from "@/components/apply-dialog";
+import { PageClose } from "@/components/page-close";
 import { SiteMenu } from "@/components/site-menu";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { APPLY, FILM, MEMBERSHIP_PAGE, META } from "@/content/site";
+import { APPLY, FILM, IMAGERY, MEMBERSHIP_PAGE, META } from "@/content/site";
 import { ROOMS } from "@/content/pages";
 
 export const metadata: Metadata = {
@@ -236,19 +237,23 @@ export default function MembershipPage() {
           {/* 15px less top and bottom than the section pattern elsewhere.
               Now the compact section token — 64 / 72 / 96 — which keeps the 97
               asked for at desktop. */}
-          <section className="fwd-section-compact px-6">
-            <div className="mx-auto max-w-4xl text-center">
-              <h2 className="fwd-reveal fwd-h2 text-photo-ink normal-case!">
-                {MEMBERSHIP_PAGE.closing.heading}
-              </h2>
-              {/* The same dialog the header opens, not a second form.
-                  Somebody persuaded by the pictures should not have to scroll
-                  back up to act on it. */}
-              <div className="fwd-reveal mt-9">
-                <ApplyDialog label={APPLY.cta} />
-              </div>
-            </div>
-          </section>
+          {/* IT CLOSES ON A PHOTOGRAPH NOW, like every other page does. This
+              was a plain dark band with the heading and the button on it, and
+              on a page that is otherwise one dark screen from the hero down it
+              read as the page running out rather than ending.
+
+              PageClose is the same component /briefing and the home page close
+              on, so the heading, the button and the scrim behind them are one
+              thing in one place rather than a fourth copy of them. `sentence`
+              keeps the capital on "Ready to apply?" against the lowercase h2
+              rule, and the dialog it opens is the same dialog the header
+              opens — nobody persuaded by the pictures has to scroll back up. */}
+          <PageClose
+            heading={MEMBERSHIP_PAGE.closing.heading}
+            sentence
+            photo="membership-close"
+            photoBrief={IMAGERY.membershipClose}
+          />
         </div>
       </main>
 
