@@ -472,7 +472,19 @@ export const FORWARD_THINKERS = {
    * together as one wall rather than thirty different photographers.
    */
   list: {
-    heading: "The first thirty",
+    /**
+     * NAMED AND DATED, 18 September 2026. It was "The first thirty", which
+     * says how many and that it is the first time; this says what they are
+     * called and which year's list it is, which is what a list somebody wants
+     * to be on next year needs to say.
+     *
+     * THE YEAR IS A COMMITMENT. It implies a 2027 list, and it dates the page
+     * the moment one exists. Both are almost certainly the intention — the
+     * curator copy already says "a judging panel selects thirty people each
+     * year" — but it is worth being said out loud rather than discovered next
+     * January.
+     */
+    heading: "ForwardThinkers of 2026",
     /** NOTHING RENDERS THIS. Taken off the page on 15 September 2026. */
     empty: "The names are with the curators. The list is published at launch.",
     /** How many blank portraits to draw while the names are out. */
