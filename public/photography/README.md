@@ -44,6 +44,7 @@ were 4240px originals, resized to 2400 and re-encoded at quality 82.
 | `benefit-partner-rooms` | 2026-06-10_11-51-16_0087 (the full-size original) | membership band — "Partner rooms" |
 | `benefit-guest-passes` | `OG_Edited_Taschca_-22`, the portrait cut 3:2 at the two faces (window 1300-4448 of 7080) | membership band — "Guest passes" |
 | `benefit-directory` | `OG_Edited_Taschca_-69` (the long table, down the room) | membership band — "The directory" |
+| `thinker-ben-jeffries` | `Jeffries_Ben_554-0328-Blue` from My Drive / Sophie / Headshots 17.07 - Influencer, cut 3:4 at the head | the ForwardThinkers grid — Ben Jeffries. A bright studio shot on pale blue, which is not the warm low light the rest of this folder is: see IMAGERY.forwardThinkers |
 | `membership-close` | the same `OG_Edited_Taschca_-69` frame | /membership close — "Ready to apply?". A 1600px copy; a wider cut from the 7866px original would be better on a large screen |
 | `benefit-ask-the-room` | 2026-06-10_17-37-37_2225 (the full-size original, cut 3:2 at the face) | membership band — "Ask the room" |
 | `benefit-the-house` | 4F0A1403 | not shown: "The House" is a pale blue "coming soon" tile for now |

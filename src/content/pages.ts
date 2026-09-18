@@ -515,6 +515,7 @@ export const FORWARD_THINKERS = {
         role: "CEO and Co-founder",
         company: "Influencer",
         why: "A pioneering entrepreneur, driving innovation and connecting creators with major brands worldwide.",
+        photo: "thinker-ben-jeffries",
       },
     ] as readonly {
       name: string;
