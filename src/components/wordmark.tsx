@@ -135,8 +135,9 @@ export function Wordmark({
                  *
                  * THE DELIVERED LOCKUP SETS IT MUCH LARGER (18 September
                  * 2026), so the same argument now lands somewhere else. At
-                 * 84px the lockup is 52.5px tall and the signature reads,
-                 * which it could not at the old artwork's size.
+                 * 84px the lockup is 55.6px tall and the signature's cap
+                 * height is about 9px: small, which an endorsement should be,
+                 * and properly readable, which it could not be before.
                  *
                  * The bar is built around this number. Change it and the pill
                  * in site-header.tsx and the menu button in site-menu.tsx both

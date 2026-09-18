@@ -1210,13 +1210,18 @@ select.fwd-field {
    rather than the old frame. The mark alone is the shape it always was, 2.168
    against 2.173, because it is the same drawing of the word.
 
+   TWO VERSIONS OF THE FILE ARRIVED THAT DAY. A second one, with the signature
+   set smaller, was in for an hour at 392.5 by 245.5 and then this first one
+   was chosen. If the numbers here ever disagree with the artwork, the artwork
+   in public/brand is the answer: they are its own bounding box.
+
    These numbers are the ink's own bounding box, measured off the delivered
    file rather than its artboard, which is why they are not round. Anything
    that sizes a lockup reads them: see site-header.tsx and opengraph-image.tsx. */
 .fwd-logo-lockup {
   -webkit-mask-image: url("/brand/fwd-lockup.svg");
   mask-image: url("/brand/fwd-lockup.svg");
-  aspect-ratio: 392.5 / 245.5;
+  aspect-ratio: 392.5 / 259.75;
 }
 
 .fwd-logo-mark {
@@ -1285,7 +1290,7 @@ body:has(.fwd-holding) {
 .fwd-logo-lockup-nodot {
   -webkit-mask-image: url("/brand/fwd-lockup-nodot.svg");
   mask-image: url("/brand/fwd-lockup-nodot.svg");
-  aspect-ratio: 392.5 / 245.5;
+  aspect-ratio: 392.5 / 259.75;
 }
 .fwd-logo-dot {
   -webkit-mask-image: url("/brand/fwd-lockup-dot.svg");
