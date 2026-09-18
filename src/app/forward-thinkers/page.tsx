@@ -144,10 +144,24 @@ export default function ForwardThinkersPage() {
               Blank until the names arrive, so the shape is the finished shape.
               Filling list.people in src/content/pages.ts is the whole job. */}
           <ul className="fwd-stagger mt-12 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-6">
-            {(hasPeople
-              ? FORWARD_THINKERS.list.people
-              : Array.from({ length: FORWARD_THINKERS.list.slots }, () => null)
-            ).map((person, index) => (
+            {/* THE NAMED ONES FIRST, THEN BLANKS UP TO THIRTY. It used to be
+                one or the other — all thirty blank, or only the people named —
+                so the first real name would have turned a wall of thirty into
+                a single card on its own. The grid is always thirty places, and
+                how many are still to come is visible. */}
+            {[
+              ...FORWARD_THINKERS.list.people,
+              ...Array.from(
+                {
+                  length: Math.max(
+                    0,
+                    FORWARD_THINKERS.list.slots -
+                      FORWARD_THINKERS.list.people.length,
+                  ),
+                },
+                () => null,
+              ),
+            ].map((person, index) => (
               <li key={person ? person.name : index} className="fwd-reveal group">
                 <div
                   tabIndex={person ? 0 : -1}

@@ -492,7 +492,31 @@ export const FORWARD_THINKERS = {
     slots: 30,
     slotLabel: "To be announced",
     photoBrief: "Head and shoulders, low warm light, the room behind them",
-    people: [] as readonly {
+    /**
+     * THE NAMED ONES, AND THE BLANKS FILL IN BEHIND THEM.
+     *
+     * Add a person here and their card takes the next place on the grid; the
+     * remaining places stay blank up to `slots`, so the list always shows
+     * thirty and it is obvious how many are still to come. Adding all thirty
+     * is the whole job — nothing in the page needs changing for it.
+     *
+     * `why` is the sentence that appears over the portrait on hover, on
+     * keyboard focus, and permanently on a touch screen where there is no
+     * hover to be had. One sentence: it is the reason they are on the list,
+     * not a biography.
+     *
+     * `photo` is the file name in public/photography, without its extension.
+     * Left off until a portrait exists, and the card shows the warm
+     * placeholder rather than an empty box.
+     */
+    people: [
+      {
+        name: "Ben Jeffries",
+        role: "CEO and Co-founder",
+        company: "Influencer",
+        why: "A pioneering entrepreneur, driving innovation and connecting creators with major brands worldwide.",
+      },
+    ] as readonly {
       name: string;
       role: string;
       company: string;
