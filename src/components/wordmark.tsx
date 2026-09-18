@@ -135,15 +135,20 @@ export function Wordmark({
                  *
                  * THE DELIVERED LOCKUP SETS IT MUCH LARGER (18 September
                  * 2026), so the same argument now lands somewhere else. At
-                 * 84px the lockup is 55.6px tall and the signature's cap
-                 * height is about 9px: small, which an endorsement should be,
-                 * and properly readable, which it could not be before.
+                 * 84px the lockup was 55.6px tall and the signature's cap
+                 * height about 9px — readable, which it could not be before,
+                 * and big enough in the bar that it was asked to come down.
+                 *
+                 * IT IS 67px NOW, a fifth off, which puts the lockup at 44.3px
+                 * and the cap height near 7. Still read rather than
+                 * recognised, which was the whole point of going up, and a
+                 * quieter object in the bar than it was.
                  *
                  * The bar is built around this number. Change it and the pill
                  * in site-header.tsx and the menu button in site-menu.tsx both
                  * want re-measuring, because both are centred against it.
                  */
-                "w-[84px]";
+                "w-[67px]";
 
   const inkClass =
     tone === "onDark"

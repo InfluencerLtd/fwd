@@ -76,17 +76,18 @@ export function SiteMenu() {
         aria-label={NAV.menu}
         aria-expanded={open}
         // CENTRED ON THE PILL BESIDE IT, not on the top of the screen. The
-        // header is a floating pill 78px tall sitting 12px down (16px from
-        // 640px up), so its middle is at 51px and 55px; a 44px button centres
-        // on those at 29px and 33px. Measured rather than guessed, and worth
-        // re-measuring whenever the lockup's own proportions change.
+        // header is a floating pill 66.3px tall sitting 12px down (16px from
+        // 640px up), so its middle is at 45.2px and 49.2px; a 44px button
+        // centres on those at 23px and 27px. Measured rather than guessed, and
+        // worth re-measuring whenever the lockup's size or shape changes — it
+        // has now changed three times in a day.
         // A dark pill with light lines, which reads as a control on the dark
         // photograph and on the off-white page alike, so it needs no knowledge
         // of what is behind it.
         // Phones only, now that the header carries a full navigation above
         // 900px. Both on screen at once is two ways to do the same thing,
         // sitting a centimetre apart.
-        className="fixed right-5 top-[29px] z-50 sm:top-[33px] flex h-11 w-11 items-center justify-center rounded-full border border-photo-ink/15 bg-photo-ground/90 transition-colors duration-300 hover:border-photo-ink/40 min-[900px]:hidden"
+        className="fixed right-5 top-[23px] z-50 sm:top-[27px] flex h-11 w-11 items-center justify-center rounded-full border border-photo-ink/15 bg-photo-ground/90 transition-colors duration-300 hover:border-photo-ink/40 min-[900px]:hidden"
       >
         <span aria-hidden="true" className="flex w-5 flex-col gap-[5px]">
           <span className="h-px w-full bg-photo-ink" />
