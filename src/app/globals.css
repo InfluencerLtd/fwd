@@ -112,6 +112,11 @@
   --font-display: var(--fwd-font-display);
   --font-body: var(--fwd-font-body);
   --font-endorsement: var(--fwd-font-endorsement);
+  /* DM Sans. A third face, asked for on 18 September 2026 and not in the brand
+     guidelines — see the note over it in src/lib/fonts.ts. Declared here so it
+     is `font-alt` in a class list like the other two, rather than a typeface
+     named inline somewhere. */
+  --font-alt: var(--fwd-font-alt);
 }
 
 /* ===========================================================================
@@ -196,7 +201,28 @@ h1, h2, h3, h4 {
    */
   .fwd-statement {
     font-family: var(--fwd-font-display), ui-serif, Georgia, serif;
-    font-size: clamp(46px, 9.5vw, 148px);
+    /* SCALED DOWN AND GIVEN A SHALLOWER SLOPE, 18 September 2026.
+       ------------------------------------------------------------------
+       It was clamp(46px, 9.5vw, 148px), which is a straight percentage of
+       the window with a floor under it. Two things were wrong with that.
+
+       ON A LAPTOP IT WAS TOO BIG: 121.6px at 1280 and 136.8px at 1440, so
+       the statement on the home page ran to five lines and read as a poster
+       rather than as a sentence. It is about fifteen per cent down now,
+       which keeps the scale without the shouting.
+
+       ON A PHONE IT NEVER SCALED AT ALL. 9.5vw at 390px is 37px, so every
+       phone sat on the 46px floor: the same size on a 320px screen as on a
+       430px one, and the long statement ran to five lines there too. The
+       middle term now carries a constant, so the line keeps moving all the
+       way down instead of hitting the floor at the top of the range.
+
+         390px   38px      1280px  104px
+         768px   66px      1440px  116px
+
+       The cap is only reached past 1600px, so the two sizes anybody
+       actually uses are on the slope rather than pinned to an end of it. */
+    font-size: clamp(36px, calc(7.43vw + 9px), 128px);
     line-height: 0.95; /* was 0.9: 123px lines at 137px left p/g/y no clearance */
     letter-spacing: -0.02em;
     font-weight: 400;

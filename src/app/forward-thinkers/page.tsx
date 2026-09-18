@@ -32,6 +32,11 @@ export const metadata: Metadata = FORWARD_THINKERS_PUBLIC
  * so it comes before the perks rather than after them.
  */
 export default function ForwardThinkersPage() {
+  /* Whether the thirty have been named yet. The page is the same page either
+     way; what changes is that nothing is held open for words that do not
+     exist. */
+  const hasPeople = FORWARD_THINKERS.list.people.length > 0;
+
   if (!FORWARD_THINKERS_PUBLIC) notFound();
 
   const [opening, ...rest] = FORWARD_THINKERS.lead;
@@ -139,7 +144,7 @@ export default function ForwardThinkersPage() {
               Blank until the names arrive, so the shape is the finished shape.
               Filling list.people in src/content/pages.ts is the whole job. */}
           <ul className="fwd-stagger mt-12 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-6">
-            {(FORWARD_THINKERS.list.people.length > 0
+            {(hasPeople
               ? FORWARD_THINKERS.list.people
               : Array.from({ length: FORWARD_THINKERS.list.slots }, () => null)
             ).map((person, index) => (
@@ -169,9 +174,14 @@ export default function ForwardThinkersPage() {
                 {/* THREE LINES: name, job title, company. The block keeps its
                     height whether a card has three lines or one, so a long
                     title in the second column cannot shove the row below it
-                    out of line, and the blank slots sit at the same height as
-                    a filled one. */}
-                <div className="mt-4 min-h-[5.25rem]">
+                    out of line.
+
+                    ONLY WHILE THERE ARE NAMES, though. Reserving three lines
+                    under thirty blank cards left a hand's depth of empty page
+                    under every one of them, which on a phone is fifteen rows
+                    of it and reads as something broken rather than as
+                    something waiting. */}
+                <div className={hasPeople ? "mt-4 min-h-[5.25rem]" : "mt-4"}>
                   {person ? (
                     <>
                       <p className="font-display text-[19px] leading-[1.15] text-ink">

@@ -120,7 +120,14 @@ export function PublicSite() {
             <p className="fwd-reveal mt-10 font-display text-[22px] italic leading-[1.45] text-photo-ink sm:text-[26px]">
               {NAME_STORY.body[0]}
             </p>
-            <p className="fwd-reveal mt-6 font-display text-[19px] italic leading-[1.5] text-photo-ink/60 sm:text-[21px]">
+            {/* THE GLOSS, IN DM SANS. Asked for on 18 September 2026. It is
+                the one line on the site in a third face, and it is upright
+                rather than italic: the sense above it is the definition and
+                carries the italic a dictionary sets a definition in, so a
+                second italic line in a different face read as a mistake
+                rather than as a distinction. `font-alt` is DM Sans — see
+                src/lib/fonts.ts. */}
+            <p className="fwd-reveal font-alt mt-6 text-[16px] leading-[1.6] text-photo-ink/60 sm:text-[17px]">
               {NAME_STORY.body[1]}
             </p>
           </div>
@@ -199,17 +206,27 @@ export function PublicSite() {
             </h3>
             <ol className="fwd-stagger mt-10">
               {ABOUT_PAGE.how.items.map((item, index) => (
+                /* THE THREE COLUMNS ARRIVE AT 1024px, NOT 768px. They used to
+                   split at md, which on a tablet left the step's name in a
+                   285px column with a hand's width of empty page beside it and
+                   the sentence opposite running five short lines. There is not
+                   enough width for three tracks until lg, so below that the
+                   number, the name and the line simply stack.
+
+                   5 and 6 of twelve, with the number in the first: that uses
+                   the whole grid, and it keeps the step's name off three lines
+                   at 1024px, which a narrower track did not. */
                 <li
                   key={item.name}
-                  className="fwd-reveal grid gap-x-10 gap-y-3 border-t border-ink/15 py-8 md:grid-cols-12"
+                  className="fwd-reveal grid gap-x-10 gap-y-3 border-t border-ink/15 py-8 lg:grid-cols-12"
                 >
-                  <span className="fwd-eyebrow col-span-full text-ink-muted md:col-span-1">
+                  <span className="fwd-eyebrow col-span-full text-ink-muted lg:col-span-1">
                     {index + 1}
                   </span>
-                  <p className="fwd-standfirst col-span-full text-ink md:col-span-5">
+                  <p className="fwd-standfirst col-span-full text-ink lg:col-span-5">
                     {item.name}
                   </p>
-                  <p className="fwd-body col-span-full text-ink-muted md:col-span-5 md:col-start-8">
+                  <p className="fwd-body col-span-full text-ink-muted lg:col-span-6 lg:col-start-7">
                     {item.line}
                   </p>
                 </li>
