@@ -105,17 +105,29 @@ export function SiteHeader({
           which is where the navigation itself appears. A full-width pill with
           nothing in it but the logo is a strip again by another name. */}
       <div className="mx-auto flex max-w-6xl px-4 pt-3 sm:px-6 sm:pt-4">
+        {/* THE PILL IS BUILT AROUND THE LOCKUP. py-2.5 at every width, so its
+            height is the artwork's 55.6px plus 20px of air — 75.6px, with the
+            same 10px above and below the mark. It was py-2.5 rising to py-3 at
+            640px, which made the bar two different heights either side of a
+            breakpoint for no reason the eye could name. */}
         <div
-          className={`relative flex items-center gap-6 rounded-full border px-5 py-2.5 transition-colors sm:py-3 duration-300 min-[900px]:flex-1 ${
+          className={`relative flex items-center gap-6 rounded-full border px-5 py-2.5 transition-colors duration-300 min-[900px]:flex-1 ${
             scrolled
               ? "border-photo-ink/10 bg-photo-ground/95"
               : "border-photo-ink/15 bg-photo-ground/50"
           }`}
         >
+          {/* THE SLOT IS THE HEIGHT OF THE FULL LOCKUP WHATEVER IS IN IT —
+              the artwork's own ratio at the bar width, so it is one number to
+              change, and it has to be the same number as `size="small"` in
+              wordmark.tsx. 84px wide at 392.5:259.75 is 55.6px tall.
+              Without it, a page whose bar carried the mark alone would have a
+              shorter bar than every other page and the mark would move up the
+              screen as you left it. */}
           <Link
             href="/"
             aria-label={META.title}
-            className="inline-block h-[calc(78px*214.87/355.96)] shrink-0"
+            className="inline-block h-[calc(84px*259.75/392.5)] shrink-0"
           >
             <Wordmark size="small" signature={signature} />
           </Link>

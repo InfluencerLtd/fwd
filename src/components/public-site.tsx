@@ -52,9 +52,11 @@ export function PublicSite() {
       </a>
 
       <SiteMenu />
-      {/* The mark alone up here: the hero below carries the endorsement on
-          this page. */}
-      <SiteHeader overHero signature={false} />
+      {/* THE FULL LOCKUP, LIKE EVERY OTHER PAGE. The bar carried the mark
+          alone here because the hero below it carried the endorsement; the
+          hero's lockup came off on 17 September 2026, which left "by
+          Influencer" nowhere on the home page at all. */}
+      <SiteHeader overHero />
       <Hero />
 
       <main id="main">

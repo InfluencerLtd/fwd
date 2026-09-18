@@ -126,27 +126,24 @@ export function Wordmark({
               : /*
                  * THE BAR LOCKUP IS SIZED BY ITS SIGNATURE, NOT BY ITS MARK.
                  *
-                 * At 68px wide — which is all the "fwd." needs to read
-                 * comfortably — the lockup is 41px tall and "by Influencer"
-                 * lands around 5px with a cap height near 3. Legible only if
-                 * you already know what it says.
+                 * This was 78px against the old artwork, where the lockup was
+                 * 47px tall and "by Influencer" landed at a cap height near
+                 * 3.6px — past the point where it is read, and recognised by
+                 * its shape instead. That was a decision rather than an
+                 * accident, and it was taken because the stand-in artwork set
+                 * the signature tiny.
                  *
-                 * The signature is about a thirteenth of the lockup's height,
-                 * so a cap height worth having sets the width, and the width
-                 * sets the bar. 108px put the lockup at 65px and the cap
-                 * height near 5 — small, which an endorsement should be, and
-                 * readable, which it has to be.
+                 * THE DELIVERED LOCKUP SETS IT MUCH LARGER (18 September
+                 * 2026), so the same argument now lands somewhere else. At
+                 * 84px the lockup is 55.6px tall and the signature's cap
+                 * height is about 9px: small, which an endorsement should be,
+                 * and properly readable, which it could not be before.
                  *
-                 * IT IS 78px NOW — fifteen per cent off twice, 108 to 92 to 78.
-                 * The lockup is 47px tall and the signature's cap height is
-                 * about 3.6px, which is past the point where "by Influencer"
-                 * is read: at this size it is recognised by its shape. That is
-                 * a decision, not an accident — the mark is the thing the bar
-                 * is for. If the endorsement has to be legible in the bar, the
-                 * width goes back up; setting it smaller again would make the
-                 * signature a smudge.
+                 * The bar is built around this number. Change it and the pill
+                 * in site-header.tsx and the menu button in site-menu.tsx both
+                 * want re-measuring, because both are centred against it.
                  */
-                "w-[78px]";
+                "w-[84px]";
 
   const inkClass =
     tone === "onDark"

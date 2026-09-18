@@ -33,7 +33,7 @@ export default async function OpengraphImage() {
   );
   // The lockup's own proportions, from its viewBox.
   const width = 560;
-  const height = Math.round((width * 214.87) / 355.96);
+  const height = Math.round((width * 259.75) / 392.5);
 
   return new ImageResponse(
     (

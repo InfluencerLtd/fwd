@@ -1178,16 +1178,25 @@ select.fwd-field {
   mask-size: contain;
 }
 
+/* THE ARTWORK CHANGED ON 18 SEPTEMBER 2026 and the ratios with it. The
+   delivered lockup sets "by Influencer" far larger under the mark than the
+   stand-in did, so the lockup is taller for the same width: 392.5 by 259.75
+   rather than the old frame. The mark alone is the shape it always was, 2.168
+   against 2.173, because it is the same drawing of the word.
+
+   These numbers are the ink's own bounding box, measured off the delivered
+   file rather than its artboard, which is why they are not round. Anything
+   that sizes a lockup reads them: see site-header.tsx and opengraph-image.tsx. */
 .fwd-logo-lockup {
   -webkit-mask-image: url("/brand/fwd-lockup.svg");
   mask-image: url("/brand/fwd-lockup.svg");
-  aspect-ratio: 355.96 / 214.87;
+  aspect-ratio: 392.5 / 259.75;
 }
 
 .fwd-logo-mark {
   -webkit-mask-image: url("/brand/fwd-mark.svg");
   mask-image: url("/brand/fwd-mark.svg");
-  aspect-ratio: 355.96 / 163.78;
+  aspect-ratio: 392.5 / 181;
 }
 
 /* THE HOLDING PAGE, ONCE SOMEBODY HAS SIGNED UP.
@@ -1250,7 +1259,7 @@ body:has(.fwd-holding) {
 .fwd-logo-lockup-nodot {
   -webkit-mask-image: url("/brand/fwd-lockup-nodot.svg");
   mask-image: url("/brand/fwd-lockup-nodot.svg");
-  aspect-ratio: 355.96 / 214.87;
+  aspect-ratio: 392.5 / 259.75;
 }
 .fwd-logo-dot {
   -webkit-mask-image: url("/brand/fwd-lockup-dot.svg");
