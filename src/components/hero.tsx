@@ -23,7 +23,12 @@ export function Hero() {
            shot it needs is still written down, in IMAGERY in content/site.ts. */
         showLabel={false}
         scrim={false}
-        className="flex min-h-[92vh] flex-col"
+        /* fwd-photo-breathe scales the photograph from 1 to 1.06 and back
+           across forty seconds — see the note over the keyframes in
+           globals.css. It is the one thing moving at the top of the page, it
+           is slower than anything else on the site, and it does not move at
+           all for somebody who has asked for reduced motion. */
+        className="fwd-photo-breathe flex min-h-[92vh] flex-col"
       >
         {/* Centred over the photograph, following the approved artwork, rather
             than sitting in the bottom left corner.

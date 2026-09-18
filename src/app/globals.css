@@ -596,6 +596,48 @@ h1, h2, h3, h4 {
   }
 }
 
+/* ===========================================================================
+   A PHOTOGRAPH THAT BREATHES
+   ---------------------------------------------------------------------------
+   The hero photograph, scaling up and back down again over forty seconds.
+
+   HOW SUBTLE: six per cent across forty seconds is about a seventh of a per
+   cent a second. Nothing moves visibly from one frame to the next. What it
+   does is stop the top of the page being a flat plate — look away and back and
+   the room has shifted slightly, which is the only thing a still photograph
+   of a room cannot do.
+
+   It is exactly the restraint the rest of the motion follows: "nothing so fast
+   a viewer notices the speed instead of the words".
+
+   IT ONLY EVER SCALES UP. 1 to 1.06 and back, never below 1, because the image
+   is object-cover at exactly the size of its box — scaling below 1 would pull
+   its edges into the frame. `.fwd-photo` already clips, so the extra six per
+   cent goes behind the frame rather than over the page.
+
+   TRANSFORM ONLY, so it runs on the compositor and costs no layout work, and
+   it is declared inside prefers-reduced-motion: no-preference rather than
+   relying on the global duration override further up — somebody who has asked
+   for less movement gets a photograph that simply does not move.
+
+   Put it on the .fwd-photo wrapper and it finds the image inside; there is no
+   prop to thread through PhotoPlaceholder for it. */
+@keyframes fwd-photo-breathe {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.06);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .fwd-photo-breathe img {
+    animation: fwd-photo-breathe 40s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+}
+
 /* Photographs lift very slightly under the cursor. Nothing jumps. */
 .fwd-zoom .fwd-zoom-inner {
   transition: transform 900ms cubic-bezier(0.2, 0, 0, 1);
