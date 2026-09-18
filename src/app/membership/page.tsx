@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
+import { SilentLoop } from "@/components/silent-loop";
+import { photoSrc } from "@/lib/photography";
 import { PhotoScrim } from "@/components/photo-scrim";
 import { MarkedText } from "@/components/marked";
 // BenefitTiles is not rendered at the moment: see section 2 below, which is
@@ -8,7 +10,7 @@ import { ApplyDialog } from "@/components/apply-dialog";
 import { SiteMenu } from "@/components/site-menu";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { APPLY, MEMBERSHIP_PAGE, META } from "@/content/site";
+import { APPLY, FILM, MEMBERSHIP_PAGE, META } from "@/content/site";
 import { ROOMS } from "@/content/pages";
 
 export const metadata: Metadata = {
@@ -153,46 +155,60 @@ export default function MembershipPage() {
                can still point at it if the team decides to keep one. */}
           <section id="rooms" className="fwd-section scroll-mt-24 px-6">
             <div className="mx-auto max-w-6xl">
-              {/* THE HEADING IS "there is no fixed program", NOT ROOMS.claim.
-                  The claim was "every gathering is curated by hand", which is
-                  word for word the first of the three steps in How it works on
-                  the home page. The review asked for the proposition copy that
-                  repeats Home or the intro above to come off, and that was it;
-                  ROOMS.claim is still in src/content/pages.ts, unrendered. */}
-              <h2 className="fwd-reveal fwd-h2 max-w-3xl text-photo-ink normal-case!">
-                <MarkedText text={ROOMS.heading} dot />
-              </h2>
+              {/* THE COPY ON THE LEFT AND A REEL BESIDE IT, from 18 September
+                  2026. The wide photograph that used to sit under this copy is
+                  now the reel's slot instead of a second picture in the same
+                  section: the shape changed from a letterbox to a phone,
+                  because that is the shape this industry films in, and because
+                  it gives the paragraph something to sit against rather than
+                  something to sit above.
 
-              {ROOMS.lead.map((line, index) => (
-                <p
-                  key={line}
-                  className={
-                    index === 0
-                      ? "fwd-reveal fwd-standfirst mt-8 max-w-3xl text-photo-ink/80"
-                      : "fwd-reveal fwd-body mt-6 max-w-3xl text-photo-ink/70"
-                  }
-                >
-                  {line}
-                </p>
-              ))}
+                  Stacked below 1024px, where there is no room for two tracks,
+                  and the reel goes second so the words are still read first. */}
+              <div className="grid gap-x-16 gap-y-14 lg:grid-cols-12 lg:items-center">
+                <div className="lg:col-span-7">
+                  {/* THE HEADING IS "there is no fixed program", NOT
+                      ROOMS.claim. The claim was "every gathering is curated by
+                      hand", which is word for word the first of the three
+                      steps in How it works on the home page. The review asked
+                      for the proposition copy that repeats Home or the intro
+                      above to come off, and that was it; ROOMS.claim is still
+                      in src/content/pages.ts, unrendered. */}
+                  <h2 className="fwd-reveal fwd-h2 text-photo-ink normal-case!">
+                    <MarkedText text={ROOMS.heading} dot />
+                  </h2>
 
-              {/* THE ROOMS PHOTOGRAPH, WHICH CAME WITH THE COPY. It was the
-                  letterbox at the top of /rooms; that page has gone and the
-                  words are up there, so the picture is here rather than
-                  orphaned in public/photography. A band rather than a hero:
-                  nothing is set over it, so it needs no scrim.
+                  {ROOMS.lead.map((line, index) => (
+                    <p
+                      key={line}
+                      className={
+                        index === 0
+                          ? "fwd-reveal fwd-standfirst mt-8 text-photo-ink/80"
+                          : "fwd-reveal fwd-body mt-6 text-photo-ink/70"
+                      }
+                    >
+                      {line}
+                    </p>
+                  ))}
+                </div>
 
-                  The file is `rooms`, and it is the long table from the
-                  Tashca shoot as of 17 September 2026. */}
-              <div className="fwd-reveal mt-20 sm:mt-24">
-                <PhotoPlaceholder
-                  label={`${ROOMS.formatsHeading}. Photograph to come`}
-                  name="rooms"
-                  showLabel={false}
-                  sizes="(min-width: 1152px) 1088px, 100vw"
-                  ratio="wide"
-                  className="overflow-hidden rounded-2xl"
-                />
+                {/* THE REEL. Silent, looping, no controls — see the note over
+                    SilentLoop. Its poster is a phone-shaped cut of the same
+                    dinner, so the slot is finished before the film exists. */}
+                <div className="fwd-reveal lg:col-span-5">
+                  <SilentLoop
+                    src={FILM.reel.src}
+                    poster={photoSrc(FILM.reel.poster) ?? ""}
+                    ratioClass="aspect-[9/16]"
+                    /* Capped rather than filling its column: a 9:16 film in
+                       a five-column track is 790px tall against 350px of
+                       copy, and the section reads as a picture with a caption
+                       rather than as a paragraph with a film beside it.
+                       Centred on the copy block, so the empty space is shared
+                       rather than all under the words. */
+                    className="mx-auto w-full max-w-[340px] rounded-2xl lg:mr-0"
+                  />
+                </div>
               </div>
 
               <h3 className="fwd-reveal fwd-h3 mt-20 text-photo-ink normal-case! sm:mt-24">

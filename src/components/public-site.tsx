@@ -4,6 +4,8 @@ import { SiteHeader } from "@/components/site-header";
 import { ApplyLink } from "@/components/apply-link";
 import { Circled, MarkedText } from "@/components/marked";
 import { TheCase } from "@/components/the-case";
+import { SilentLoop } from "@/components/silent-loop";
+import { photoSrc } from "@/lib/photography";
 import { PageClose } from "@/components/page-close";
 import { SiteFooter } from "@/components/site-footer";
 import {
@@ -12,6 +14,7 @@ import {
   IMAGERY,
   NAME_STORY,
   WAY_IN,
+  FILM,
 } from "@/content/site";
 import { ABOUT_PAGE } from "@/content/pages";
 
@@ -62,6 +65,40 @@ export function PublicSite() {
       <main id="main">
         {/* ---- 2. The case ---------------------------------------------- */}
         <TheCase />
+
+        {/* ---- 2a. PROOF THAT A ROOM HAS HAPPENED ----------------------
+             Directly after the case, which ends on "That is what Forward is
+             for" — the sentence somebody either believes or does not. Every
+             other word on the site describes rooms in the future tense. This
+             is one that took place.
+
+             VERTICAL, AND HELD SMALL. Both films are 9:16, so this is a
+             centred reel rather than a band across the page: run edge to edge
+             on a laptop a 9:16 film would be two and a half screens tall. On
+             its own on the near-black, between two pieces of writing, it reads
+             as a held beat rather than as decoration.
+
+             SILENT, LOOPING, NO CONTROLS. Not something anybody is asked to
+             watch; something they notice on the way past. Until the film
+             exists the slot is its poster frame, so the page is not waiting on
+             a shoot: see FILM in src/content/site.ts and the brief in
+             public/film/README.md.
+
+             NO CAPTION UNDER IT, on purpose. A line naming the night — where,
+             and when — would make it evidence rather than atmosphere, and the
+             only wording on the record for that is ROOMS.origin in
+             src/content/pages.ts, which is written and deliberately unused.
+             Nothing here is invented to fill the space. */}
+        <section className="fwd-dark fwd-on-dark fwd-grain fwd-section-compact px-6">
+          <div className="relative z-1 mx-auto w-full max-w-[300px] sm:max-w-[340px]">
+            <SilentLoop
+              src={FILM.room.src}
+              poster={photoSrc(FILM.room.poster) ?? ""}
+              ratioClass="aspect-[9/16]"
+              className="rounded-2xl"
+            />
+          </div>
+        </section>
 
         {/* ---- 2b. Why the name, set as a dictionary entry -------------
              NEAR-BLACK, BETWEEN TWO LIGHT SECTIONS, so it reads as its own

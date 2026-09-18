@@ -737,6 +737,52 @@ export const APPLY = {
     "I am happy to receive occasional email about Forward. You can unsubscribe at any time.",
 } as const;
 
+/* ===========================================================================
+   FILM
+   ---------------------------------------------------------------------------
+   Two short, silent, looping films, and the frames standing in for them.
+
+   ONE FILE EACH, AND NEITHER EXISTS YET. Set `src` to the path once the file
+   is in public/film and the slot plays it; until then it shows the poster and
+   the page looks finished rather than unfinished. The full brief — what to
+   shoot, how to export it, what the safe areas are — is in
+   public/film/README.md, which is written for whoever holds the camera.
+
+   WHY ONLY TWO. The reference for this (mvemanagement.com, 18 September 2026)
+   carries exactly one film on a five-thousand-pixel page: vertical, silent,
+   no controls, beside a piece of copy about an event they threw. Restraint is
+   the whole effect. Three would make this a showreel.
+   =========================================================================== */
+
+export const FILM = {
+  /**
+   * THE PROOF. It sits on the home page immediately after the case ends on
+   * "That is what Forward is for", which is the moment somebody decides
+   * whether to believe any of it. Everything else on the site describes rooms
+   * in the future tense; this is one that happened.
+   */
+  room: {
+    src: null as string | null,
+    poster: "film-room",
+    /** Standing in: the long table from the Tashca dinner, down the room. */
+    brief:
+      "A dinner in progress. The table, hands, a glass going up. Warm, low light, one shot. Held vertically.",
+  },
+  /**
+   * THE REEL, beside the rooms copy on the membership page.
+   *
+   * BOTH FILMS ARE 9:16. Phone-shaped is not a compromise here: it is the
+   * shape this industry actually films in, and it is why the home page's slot
+   * is a centred reel rather than a band across the page.
+   */
+  reel: {
+    src: null as string | null,
+    poster: "film-reel",
+    brief:
+      "The same evening, held vertically. One shot, close, somebody mid-sentence and the table listening.",
+  },
+} as const;
+
 export const NAV = {
   /**
    * The first thing a keyboard or screen reader user reaches, letting them jump
