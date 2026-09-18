@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Wordmark } from "@/components/wordmark";
 import { HEADER_NAV } from "@/content/hero-modules";
 import { ApplyLink } from "@/components/apply-link";
+import { HashLink } from "@/components/hash-link";
 import { META, NAV } from "@/content/site";
 
 /**
@@ -106,8 +107,8 @@ export function SiteHeader({
           nothing in it but the logo is a strip again by another name. */}
       <div className="mx-auto flex max-w-6xl px-4 pt-3 sm:px-6 sm:pt-4">
         {/* THE PILL IS BUILT AROUND THE LOCKUP. py-2.5 at every width, so its
-            height is the artwork's 55.6px plus 20px of air — 75.6px, with the
-            same 10px above and below the mark. It was py-2.5 rising to py-3 at
+            height is the artwork's 52.5px plus 20px of air, with the same
+            10px above and below the mark. It was py-2.5 rising to py-3 at
             640px, which made the bar two different heights either side of a
             breakpoint for no reason the eye could name. */}
         <div
@@ -120,14 +121,14 @@ export function SiteHeader({
           {/* THE SLOT IS THE HEIGHT OF THE FULL LOCKUP WHATEVER IS IN IT —
               the artwork's own ratio at the bar width, so it is one number to
               change, and it has to be the same number as `size="small"` in
-              wordmark.tsx. 84px wide at 392.5:259.75 is 55.6px tall.
+              wordmark.tsx. 84px wide at 392.5:245.5 is 52.5px tall.
               Without it, a page whose bar carried the mark alone would have a
               shorter bar than every other page and the mark would move up the
               screen as you left it. */}
           <Link
             href="/"
             aria-label={META.title}
-            className="inline-block h-[calc(84px*259.75/392.5)] shrink-0"
+            className="inline-block h-[calc(84px*245.5/392.5)] shrink-0"
           >
             <Wordmark size="small" signature={signature} />
           </Link>
@@ -136,33 +137,40 @@ export function SiteHeader({
             aria-label={NAV.menu}
             className="ml-auto hidden items-center gap-4 font-body text-sm min-[900px]:flex"
           >
-            {HEADER_NAV.map((item) =>
-              item.href ? (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  /* A LOZENGE ON HOVER, NOT THE SITE'S USUAL UNDERLINE. The
-                   underline is the quiet treatment for links inside running
-                   text; up here the items are already a row of controls, and
-                   a filled pill is what the apply button beside them is. The
-                   near-white fill and near-black label are the two fixed
-                   colours, not the mode-dependent ones, because this sits over
-                   photography that stays dark in light and dark mode alike —
-                   13.42:1 either way. */
-                  className="inline-block rounded-full px-3 py-1.5 text-photo-ink/75 transition-colors duration-200 hover:bg-photo-ink hover:text-photo-ground"
-                >
+            {HEADER_NAV.map((item) => {
+              /* THE LOZENGE ON HOVER, NOT THE SITE'S USUAL UNDERLINE. The
+                 underline is the quiet treatment for links inside running
+                 text; up here the items are already a row of controls, and a
+                 filled pill is what the apply button beside them is. The
+                 near-white fill and near-black label are the two fixed
+                 colours, not the mode-dependent ones, because this sits over
+                 photography that stays dark in light and dark mode alike —
+                 13.42:1 either way. */
+              const className =
+                "inline-block rounded-full px-3 py-1.5 text-photo-ink/75 transition-colors duration-200 hover:bg-photo-ink hover:text-photo-ground";
+
+              if (!item.href) {
+                // Not a link, on purpose. See the note in hero-modules.ts.
+                return (
+                  <span key={item.label} className="px-3 py-1.5 text-photo-ink/75">
+                    {item.label}
+                  </span>
+                );
+              }
+
+              /* An item pointing at a section rather than a page gets the link
+                 that guarantees the scroll: see hash-link.tsx for the two ways
+                 a plain hash link quietly does nothing. */
+              return item.href.includes("#") ? (
+                <HashLink key={item.label} href={item.href} className={className}>
+                  {item.label}
+                </HashLink>
+              ) : (
+                <Link key={item.label} href={item.href} className={className}>
                   {item.label}
                 </Link>
-              ) : (
-                // Not a link, on purpose. See the note in hero-modules.ts.
-                <span
-                  key={item.label}
-                  className="px-3 py-1.5 text-photo-ink/75"
-                >
-                  {item.label}
-                </span>
-              ),
-            )}
+              );
+            })}
 
             {/* Opens the chooser rather than going to the membership page: see
               the note in apply-link.tsx. */}

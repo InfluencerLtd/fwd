@@ -1216,7 +1216,7 @@ select.fwd-field {
 .fwd-logo-lockup {
   -webkit-mask-image: url("/brand/fwd-lockup.svg");
   mask-image: url("/brand/fwd-lockup.svg");
-  aspect-ratio: 392.5 / 259.75;
+  aspect-ratio: 392.5 / 245.5;
 }
 
 .fwd-logo-mark {
@@ -1285,7 +1285,7 @@ body:has(.fwd-holding) {
 .fwd-logo-lockup-nodot {
   -webkit-mask-image: url("/brand/fwd-lockup-nodot.svg");
   mask-image: url("/brand/fwd-lockup-nodot.svg");
-  aspect-ratio: 392.5 / 259.75;
+  aspect-ratio: 392.5 / 245.5;
 }
 .fwd-logo-dot {
   -webkit-mask-image: url("/brand/fwd-lockup-dot.svg");

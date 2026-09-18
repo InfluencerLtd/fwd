@@ -7,6 +7,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { Wordmark } from "@/components/wordmark";
 import { NAV } from "@/content/site";
 import { HEADER_NAV } from "@/content/hero-modules";
+import { HashLink } from "@/components/hash-link";
 
 /**
  * The three-line menu.
@@ -75,17 +76,17 @@ export function SiteMenu() {
         aria-label={NAV.menu}
         aria-expanded={open}
         // CENTRED ON THE PILL BESIDE IT, not on the top of the screen. The
-        // header is a floating pill 78px tall sitting 12px down (16px from
-        // 640px up), so its middle is at 51px and 55px; a 44px button centres
-        // on those at 29px and 33px. Measured rather than guessed, and worth
-        // re-measuring if the lockup width in wordmark.tsx changes.
+        // header is a floating pill 74.5px tall sitting 12px down (16px from
+        // 640px up), so its middle is at 49.25px and 53.25px; a 44px button
+        // centres on those at 27px and 31px. Measured rather than guessed, and
+        // worth re-measuring whenever the lockup's own proportions change.
         // A dark pill with light lines, which reads as a control on the dark
         // photograph and on the off-white page alike, so it needs no knowledge
         // of what is behind it.
         // Phones only, now that the header carries a full navigation above
         // 900px. Both on screen at once is two ways to do the same thing,
         // sitting a centimetre apart.
-        className="fixed right-5 top-[29px] z-50 sm:top-[33px] flex h-11 w-11 items-center justify-center rounded-full border border-photo-ink/15 bg-photo-ground/90 transition-colors duration-300 hover:border-photo-ink/40 min-[900px]:hidden"
+        className="fixed right-5 top-[27px] z-50 sm:top-[31px] flex h-11 w-11 items-center justify-center rounded-full border border-photo-ink/15 bg-photo-ground/90 transition-colors duration-300 hover:border-photo-ink/40 min-[900px]:hidden"
       >
         <span aria-hidden="true" className="flex w-5 flex-col gap-[5px]">
           <span className="h-px w-full bg-photo-ink" />
@@ -126,17 +127,32 @@ export function SiteMenu() {
 
           <nav aria-label={NAV.menu} className="mt-6">
             <ul className="space-y-0.5">
-              {links.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    onClick={hide}
-                    className="block rounded-lg px-3 py-2.5 font-display text-xl text-ink transition-colors duration-300 hover:bg-surface-alt"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+              {links.map((link) => {
+                const className =
+                  "block rounded-lg px-3 py-2.5 font-display text-xl text-ink transition-colors duration-300 hover:bg-surface-alt";
+                /* Same as the bar: an item that points at a section uses the
+                   link that actually scrolls to it, and closing the menu is
+                   part of the same press. Written as two branches rather than
+                   one component in a variable, because the two take different
+                   props and a union of them is a type nobody can read. */
+                return (
+                  <li key={link.href}>
+                    {link.href.includes("#") ? (
+                      <HashLink
+                        href={link.href}
+                        onNavigate={hide}
+                        className={className}
+                      >
+                        {link.label}
+                      </HashLink>
+                    ) : (
+                      <Link href={link.href} onClick={hide} className={className}>
+                        {link.label}
+                      </Link>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </nav>
 
