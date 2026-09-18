@@ -66,107 +66,96 @@ export function PublicSite() {
         {/* ---- 2. The case ---------------------------------------------- */}
         <TheCase />
 
-        {/* ---- 2a. PROOF THAT A ROOM HAS HAPPENED ----------------------
-             Directly after the case, which ends on "That is what Forward is
-             for" — the sentence somebody either believes or does not. Every
-             other word on the site describes rooms in the future tense. This
-             is one that took place.
+        {/* ---- 2a. Why the name, and a room it happened in --------------
+             ONE SECTION, TWO THINGS. The entry explains the name; the film
+             beside it is a room the name was used in. They were two sections
+             stacked, the film centred on its own with nothing to sit against,
+             which read as decoration dropped between two pieces of writing
+             (18 September 2026). Set as a pair they explain each other.
 
-             VERTICAL, AND HELD SMALL. Both films are 9:16, so this is a
-             centred reel rather than a band across the page: run edge to edge
-             on a laptop a 9:16 film would be two and a half screens tall. On
-             its own on the near-black, between two pieces of writing, it reads
-             as a held beat rather than as decoration.
+             THE COMPOSITION IS THE REFERENCE'S. mvemanagement.com runs its one
+             film exactly this way: copy on the left, a phone-shaped reel on
+             the right, nothing written over it.
 
-             SILENT, LOOPING, NO CONTROLS. Not something anybody is asked to
-             watch; something they notice on the way past. Until the film
-             exists the slot is its poster frame, so the page is not waiting on
-             a shoot: see FILM in src/content/site.ts and the brief in
-             public/film/README.md.
-
-             NO CAPTION UNDER IT, on purpose. A line naming the night — where,
-             and when — would make it evidence rather than atmosphere, and the
-             only wording on the record for that is ROOMS.origin in
-             src/content/pages.ts, which is written and deliberately unused.
-             Nothing here is invented to fill the space. */}
-        <section className="fwd-dark fwd-on-dark fwd-grain fwd-section-compact px-6">
-          <div className="relative z-1 mx-auto w-full max-w-[300px] sm:max-w-[340px]">
-            <SilentLoop
-              src={FILM.room.src}
-              poster={photoSrc(FILM.room.poster) ?? ""}
-              ratioClass="aspect-[9/16]"
-              className="rounded-2xl"
-            />
-          </div>
-        </section>
-
-        {/* ---- 2b. Why the name, set as a dictionary entry -------------
              NEAR-BLACK, BETWEEN TWO LIGHT SECTIONS, so it reads as its own
              beat rather than as more of the argument above it. The words are
              the ones that were on /about (first-impression critique,
              14 September 2026): the name is what makes this stick, and it was
              on the second page.
 
-             A REAL ENTRY, not a big word with sentences under it. Asked for
-             on 17 September 2026 against a printed-dictionary reference, so
-             the section is now built the way an entry is set: the headword
-             broken at its syllable, how it is said and what part of speech it
-             is underneath, one hairline rule, then the senses in italic.
-             Centred, because that is what the reference does and because the
-             entry is an object on the page rather than a column of reading.
+             A DICTIONARY ENTRY, from 17 September 2026 (the review's own
+             direction for this section): the word as the headword, its
+             syllable break, how it is said and what part of speech it is, one
+             hairline rule, then the senses in italic. Left-aligned, which is
+             how an entry is set and which the column it now sits in wanted
+             anyway — it was centred while it had the page to itself.
 
-             WHAT IS NOT HERE. No definition line and no numbered senses. The
-             sentence that defines Forward is the review's to write (see the
-             note on NAME_STORY in src/content/site.ts), and 1/2 markers over
-             two sentences made it look like a contract rather than an entry.
+             NO DEFINITION AND NO PART OF SPEECH BEYOND THE FACTS. See the note
+             on NAME_STORY in src/content/site.ts: the sentence that defines
+             Forward is the review's to write, not ours to invent, and the
+             entry stands up without it.
 
-             THE HEADING IS FOR SCREEN READERS ONLY. "Why Forward" was printed
-             as an eyebrow above the word, and a label over a dictionary entry
-             is the one thing a dictionary never has. It is still an h2 in the
-             document, so the page's outline and anybody jumping by heading
-             are unaffected. Take `sr-only` off to print it again. */}
-        <section className="fwd-dark fwd-on-dark fwd-grain fwd-section-compact px-6">
-          <div className="relative z-1 mx-auto max-w-2xl text-center">
-            <h2 className="sr-only">{NAME_STORY.heading}</h2>
+             AND NO CAPTION UNDER THE FILM. A line naming the night would make
+             it evidence rather than atmosphere, and the only wording on the
+             record for that is ROOMS.origin in src/content/pages.ts, which is
+             written and deliberately unused. */}
+        <section className="fwd-dark fwd-on-dark fwd-grain fwd-section px-6">
+          <div className="relative z-1 mx-auto grid max-w-6xl gap-x-16 gap-y-16 lg:grid-cols-12 lg:items-center">
+            <div className="lg:col-span-7">
+              <h2 className="sr-only">{NAME_STORY.heading}</h2>
 
-            {/* The headword, broken at the syllable. Lowercase, and without
-                the full stop the mark carries: this is the word, not the
-                wordmark. */}
-            <p className="fwd-reveal font-display text-[clamp(2.75rem,9vw,4.5rem)] leading-[1] tracking-[0.01em] text-photo-ink">
-              {NAME_STORY.syllables}
-            </p>
+              {/* The headword, broken at the syllable. Lowercase, and without
+                  the full stop the mark carries: this is the word, not the
+                  wordmark. */}
+              <p className="fwd-reveal font-display text-[clamp(2.75rem,8vw,4.5rem)] leading-[1] tracking-[0.01em] text-photo-ink">
+                {NAME_STORY.syllables}
+              </p>
 
-            {/* How it is said, and what it is. One line, small, in the body
-                face, because that is the one part of an entry that is not set
-                in the book's display face. */}
-            <p className="fwd-reveal mt-3 font-body text-sm text-photo-ink/55">
-              {NAME_STORY.pronunciation}
-              <span className="px-2 text-photo-ink/35">:</span>
-              <span className="italic">{NAME_STORY.partOfSpeech}</span>
-            </p>
+              {/* How it is said, and what it is. One line, small, in the body
+                  face, because that is the one part of an entry that is not
+                  set in the book's display face. */}
+              <p className="fwd-reveal mt-3 font-body text-sm text-photo-ink/55">
+                {NAME_STORY.pronunciation}
+                <span className="px-2 text-photo-ink/35">:</span>
+                <span className="italic">{NAME_STORY.partOfSpeech}</span>
+              </p>
 
-            {/* THE RULE. One hairline across the measure, which is the whole
-                structure of an entry: everything above it names the word,
-                everything below it is what the word means. */}
-            <hr className="fwd-reveal mx-auto mt-10 w-full border-0 border-t border-photo-ink/20" />
+              {/* THE RULE. One hairline across the measure, which is the whole
+                  structure of an entry: everything above it names the word,
+                  everything below it is what the word means. */}
+              <hr className="fwd-reveal mt-10 w-full border-0 border-t border-photo-ink/20" />
 
-            {/* The senses, italic, the way a definition is set. The first is
-                the definition proper and the second is the gloss on it, so
-                the second is quieter and a size down rather than an equal
-                sibling. */}
-            <p className="fwd-reveal mt-10 font-display text-[22px] italic leading-[1.45] text-photo-ink sm:text-[26px]">
-              {NAME_STORY.body[0]}
-            </p>
-            {/* THE GLOSS, IN DM SANS. Asked for on 18 September 2026. It is
-                the one line on the site in a third face, and it is upright
-                rather than italic: the sense above it is the definition and
-                carries the italic a dictionary sets a definition in, so a
-                second italic line in a different face read as a mistake
-                rather than as a distinction. `font-alt` is DM Sans — see
-                src/lib/fonts.ts. */}
-            <p className="fwd-reveal font-alt mt-6 text-[16px] leading-[1.6] text-photo-ink/60 sm:text-[17px]">
-              {NAME_STORY.body[1]}
-            </p>
+              {/* The senses, italic, the way a definition is set. The first is
+                  the definition proper and the second is the gloss on it, so
+                  the second is quieter and a size down rather than an equal
+                  sibling. */}
+              <p className="fwd-reveal mt-10 font-display text-[22px] italic leading-[1.45] text-photo-ink sm:text-[26px]">
+                {NAME_STORY.body[0]}
+              </p>
+              {/* THE GLOSS, IN DM SANS. Asked for on 18 September 2026. It is
+                  the one line on the site in a third face, and it is upright
+                  rather than italic: the sense above it is the definition and
+                  carries the italic a dictionary sets a definition in, so a
+                  second italic line in a different face read as a mistake
+                  rather than as a distinction. `font-alt` is DM Sans — see
+                  src/lib/fonts.ts. */}
+              <p className="fwd-reveal font-alt mt-6 text-[16px] leading-[1.6] text-photo-ink/60 sm:text-[17px]">
+                {NAME_STORY.body[1]}
+              </p>
+            </div>
+
+            {/* THE FILM. Silent, looping, no controls — see the note over
+                SilentLoop. Until it exists the slot is its poster frame, so
+                the page is not waiting on a shoot: see FILM in
+                src/content/site.ts and the brief in public/film/README.md. */}
+            <div className="fwd-reveal lg:col-span-5">
+              <SilentLoop
+                src={FILM.room.src}
+                poster={photoSrc(FILM.room.poster) ?? ""}
+                ratioClass="aspect-[9/16]"
+                className="mx-auto w-full max-w-[340px] rounded-2xl lg:mr-0"
+              />
+            </div>
           </div>
         </section>
 
