@@ -762,7 +762,28 @@ export const FILM = {
    * in the future tense; this is one that happened.
    */
   room: {
-    src: null as string | null,
+    /**
+     * IN, 18 September 2026. A day at Cannes as a four-way split: 8:00 in a
+     * hotel bed, 11:00 on a panel, 15:00 on the seafront, 23:00 at a gig.
+     * 6.8 seconds, which loops well.
+     *
+     * >>> TWO THINGS TO KNOW ABOUT IT. <<<
+     *
+     * IT HAS WHITE TEXT IN EVERY FRAME, and unlike the membership reel that
+     * cannot be trimmed off: the four timestamps are the idea of the edit
+     * rather than a title over it. Trimming would leave the quad without its
+     * point, and nothing else would remove them.
+     *
+     * AND IT PLAYS AT 340px WIDE, which gives each of the four quadrants
+     * about 170px. Whatever is happening inside them is small at that size.
+     * Cropping to a single quadrant is one filter in the encode and one line
+     * here if that reads better; the whole quad is what was asked for.
+     *
+     * 720x1280, no audio track at all, under 2MB, faststart. Re-encoded from
+     * the 1.5MB original with the settings in public/film/README.md.
+     */
+    src: "/film/room.mp4",
+    /** The film's own first frame, so there is no jump when it starts. */
     poster: "film-room",
     /** Standing in: the long table from the Tashca dinner, down the room. */
     brief:
