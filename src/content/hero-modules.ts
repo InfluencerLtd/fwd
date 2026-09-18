@@ -43,7 +43,12 @@ export const HEADER_NAV: readonly { label: string; href: string | null }[] = [
   // briefing because it is the launch moment, and after the rooms because
   // somebody has to know what Forward is before a list of its people means
   // anything.
-  { label: "ForwardThinkers", href: "/forward-thinkers" },
+  // THE LABEL IS "Awards" FROM 18 SEPTEMBER 2026. The route, the page and its
+  // own copy are unchanged: it is still /forward-thinkers, still headed "The
+  // people moving the industry forward" and still "The first thirty" inside.
+  // Only the word in the bar changed, so the nav and the page it opens now
+  // call the same thing two different things — worth settling.
+  { label: "Awards", href: "/forward-thinkers" },
   { label: "The briefing", href: "/briefing" },
 ];
 
