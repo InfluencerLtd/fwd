@@ -777,17 +777,27 @@ export const FILM = {
    */
   reel: {
     /**
-     * IN, 18 September 2026. Cannes: the Carlton, the activations, a table
-     * being laid. Not the held single shot the brief asks for — it is a cut
-     * montage, and it carries a line of burned-in text in its first seconds
-     * that the site did not write. Both are worth knowing; neither is a
-     * reason to hold it back.
+     * IN, 18 September 2026. Cannes: the Carlton, the activations, the
+     * dinners. A cut montage rather than the held single shot the brief asks
+     * for, so the loop jumps from its last frame back to its first.
      *
-     * 720x1280, no audio track at all, 2.6MB, faststart. Re-encoded from the
-     * 5.3MB original with the settings in public/film/README.md.
+     * TRIMMED TO TAKE THE BURNED-IN TEXT OFF. The original opened on "this is
+     * where the creator economy summers..." across its first three and a half
+     * seconds, and closed on an "influencer CANNES LIONS 2026" end card from
+     * 17.7s to the end. Neither is wording this site wrote, and both sat over
+     * a film that plays silently with no controls, where anything written on
+     * the picture reads as the page's own voice. The cut is 3.6s to 17.6s of
+     * the original: fourteen seconds with nothing written over it.
+     *
+     * What is left is text inside the rooms themselves — stage graphics, a
+     * TikTok sign, a Canva screen. That is the environment rather than an
+     * overlay, and taking it out would mean taking the footage out.
+     *
+     * 720x1280, no audio track at all, 2.4MB, faststart. Cut and re-encoded
+     * from the 5.3MB original with the settings in public/film/README.md.
      */
     src: "/film/reel.mp4",
-    /** The film's own first frame, so there is no jump when it starts. */
+    /** The cut's own first frame, so there is no jump when it starts. */
     poster: "film-reel",
     brief:
       "The same evening, held vertically. One shot, close, somebody mid-sentence and the table listening.",
