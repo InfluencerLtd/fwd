@@ -33,6 +33,7 @@ export function PhotoPlaceholder({
   name,
   ratio = "landscape",
   objectPosition,
+  twinkle = false,
   className = "",
   labelPosition = "left-5 top-5",
   showLabel = true,
@@ -114,6 +115,17 @@ export function PhotoPlaceholder({
    * Change this and the page it belongs to has to be measured again.
    */
   washClassName?: string;
+  /**
+   * Lay a second, brighter copy of the same photograph over it, blended so
+   * that only the bright parts of the picture lift, and fade that copy in and
+   * out on an irregular rhythm. On a photograph with lights in it, the lights
+   * twinkle and nothing else visibly moves.
+   *
+   * IT IS A SECOND COPY OF THE PICTURE, deliberately requested small — see
+   * the note over .fwd-photo-twinkle in globals.css for why that is cheap and
+   * what it costs.
+   */
+  twinkle?: boolean;
   children?: React.ReactNode;
 }) {
   const src = photoSrc(name);
@@ -140,6 +152,28 @@ export function PhotoPlaceholder({
         >
           {label}
         </p>
+      ) : null}
+      {/* THE TWINKLE LAYER: the same photograph again, brighter and harder,
+          blended so only its own highlights lift. Under the wash on purpose,
+          so the darkening still applies to it — see globals.css. */}
+      {src && twinkle ? (
+        <div aria-hidden="true" className="fwd-photo-twinkle absolute inset-0">
+          <Image
+            src={src}
+            alt=""
+            fill
+            /* SMALL ON PURPOSE. It contributes blooms rather than detail, so a
+               480px copy is indistinguishable from the full one once it is
+               blurred by the blend and held under 40% opacity — and it is a
+               few tens of kilobytes rather than a second hero-sized download.
+               Lazy, so it never competes with the real one for the first
+               paint. */
+            sizes="480px"
+            loading="lazy"
+            className="object-cover"
+            style={objectPosition ? { objectPosition } : undefined}
+          />
+        </div>
       ) : null}
       {src && wash ? (
         <div

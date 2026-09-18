@@ -23,6 +23,12 @@ export function Hero() {
            shot it needs is still written down, in IMAGERY in content/site.ts. */
         showLabel={false}
         scrim={false}
+        /* The lights in this photograph flicker: a second, brighter copy of it
+           blended so only its own highlights lift, fading in and out on an
+           uneven fourteen-second rhythm. See .fwd-photo-twinkle in
+           globals.css — it follows whatever photograph is here rather than
+           being placed against this one. */
+        twinkle
         /* fwd-photo-breathe scales the photograph from 1 to 1.06 and back
            across forty seconds — see the note over the keyframes in
            globals.css. It is the one thing moving at the top of the page, it
