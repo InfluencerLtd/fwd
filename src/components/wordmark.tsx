@@ -139,16 +139,21 @@ export function Wordmark({
                  * height about 9px — readable, which it could not be before,
                  * and big enough in the bar that it was asked to come down.
                  *
-                 * IT IS 67px NOW, a fifth off, which puts the lockup at 44.3px
-                 * and the cap height near 7. Still read rather than
-                 * recognised, which was the whole point of going up, and a
-                 * quieter object in the bar than it was.
+                 * IT IS 60px NOW — 84 to 67 to 60 across one afternoon,
+                 * each step asked for after seeing the last one. The lockup is
+                 * 39.7px tall and the signature's cap height is near 6.
+                 *
+                 * THAT IS ABOUT AS SMALL AS IT GOES while "by Influencer" is
+                 * still read rather than recognised by its shape, which was
+                 * the whole point of going up from 78px this morning. Below
+                 * this the signature becomes a texture under the word again
+                 * and the width should come back up instead.
                  *
                  * The bar is built around this number. Change it and the pill
                  * in site-header.tsx and the menu button in site-menu.tsx both
                  * want re-measuring, because both are centred against it.
                  */
-                "w-[67px]";
+                "w-[60px]";
 
   const inkClass =
     tone === "onDark"
