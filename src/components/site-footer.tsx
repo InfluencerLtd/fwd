@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CONTACT } from "@/lib/brand";
 import { FOOTER } from "@/content/site";
+import { HostedBy } from "@/components/hosted-by";
 
 /**
  * The footer.
@@ -121,13 +122,22 @@ export function SiteFooter() {
               It leaves the site, so it opens in its own tab and carries
               rel="noreferrer", which is what every outbound link here does. */}
           <div className="flex items-baseline gap-8">
+            {/* HOSTED BY INFLUENCER, where somebody leaves, on every page.
+                It was the words "Influencer.com" (FOOTER.parent.label, kept in
+                the content file); from 21 September 2026 it is Influencer's own
+                logo after "Hosted by", still linking to influencer.com. See
+                `hostedBy` in src/lib/brand.ts.
+
+                No underline on hover: an underline drawn under a logo reads as
+                a mistake. It brightens instead, the way the rest of the row's
+                links reach full strength. */}
             <a
               href={FOOTER.parent.href}
               target="_blank"
               rel="noreferrer"
-              className={`${LINK} ${MUTED}`}
+              className={`relative -my-1 inline-block py-1 ${MUTED} transition-colors duration-200 hover:text-photo-ink after:absolute after:inset-x-0 after:-inset-y-[11px] after:content-['']`}
             >
-              {FOOTER.parent.label}
+              <HostedBy size="sm" />
             </a>
 
             <nav aria-label={FOOTER.legalHeading}>

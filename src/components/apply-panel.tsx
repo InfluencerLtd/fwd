@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { TypeformEmbed } from "@/components/typeform-embed";
 import { MarkedText } from "@/components/marked";
+import { HostedBy } from "@/components/hosted-by";
 import { APPLY } from "@/content/site";
 
 /*
@@ -157,6 +158,12 @@ export function ApplyPanel() {
           </button>
         ))}
       </div>
+
+      {/* WHO IS ASKING, at the moment somebody hands over their details.
+          Influencer runs the applications and is the data controller in the
+          privacy policy, so this is where "who is behind this?" matters most
+          (21 September 2026). See `hostedBy` in src/lib/brand.ts. */}
+      <HostedBy size="sm" className="mt-7 text-ink-muted" />
     </div>
   );
 }

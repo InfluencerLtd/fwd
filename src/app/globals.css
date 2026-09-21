@@ -1396,6 +1396,16 @@ select.fwd-field {
   aspect-ratio: 392.5 / 259.75;
 }
 
+/* INFLUENCER'S OWN LOGO, for the hosted line (see hosted-by.tsx). A mask like
+   ours, so it takes the colour of the text beside it: light on the hero and in
+   the footer, muted ink in the apply dialog. The file is the logo Influencer
+   supplied, trimmed to its ink, and 960 by 162 is that trimmed shape. */
+.fwd-host-logo {
+  -webkit-mask-image: url("/brand/influencer-logo.png");
+  mask-image: url("/brand/influencer-logo.png");
+  aspect-ratio: 960 / 162;
+}
+
 .fwd-logo-mark {
   -webkit-mask-image: url("/brand/fwd-mark.svg");
   mask-image: url("/brand/fwd-mark.svg");

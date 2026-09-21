@@ -48,6 +48,23 @@ export const BRAND = {
    * the word, and spells Influencer with a capital.
    */
   endorsement: "by Influencer",
+  /**
+   * THE HOSTED LINE: "Hosted by" followed by Influencer's own logo.
+   *
+   * Added on 21 September 2026, after feedback that Influencer's ownership of
+   * Forward should be more prominent without Forward losing its own identity.
+   * The model is Sport Beach at Cannes, "hosted by Stagwell": the property
+   * keeps its name, mark and look, and the parent signs underneath in its own
+   * logo rather than in the property's type.
+   *
+   * It is a different thing from `endorsement` above. That is the signature
+   * inside the fwd. lockup, in our sans; this is Influencer appearing as
+   * Influencer. It appears where somebody arrives (under the hero's button),
+   * where they leave (the footer, on every page) and where they commit (the
+   * apply dialog), and never twice on one screen. See hosted-by.tsx.
+   */
+  hostedBy: "Hosted by",
+  host: "Influencer",
   /** The gated member area. */
   memberArea: "The clubhouse",
 } as const;

@@ -1,5 +1,6 @@
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { ApplyLink } from "@/components/apply-link";
+import { HostedBy } from "@/components/hosted-by";
 import { HERO, IMAGERY } from "@/content/site";
 
 /**
@@ -105,6 +106,13 @@ export function Hero() {
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
               <ApplyLink variant="onDark" />
             </div>
+
+            {/* WHO IS BEHIND IT, where somebody arrives. The subtle version of
+                the Sport Beach model, chosen on 21 September 2026 over putting
+                a full hosted lockup above the headline: the hero keeps its
+                own composition and Influencer still appears, as itself, on the
+                first screen. See `hostedBy` in src/lib/brand.ts. */}
+            <HostedBy size="md" className="mt-8 text-photo-ink/80" />
 
             {/* NO MEMBERS' DOOR HERE EITHER. The mock puts one under the
                 button and it is left out for the same reason it is left out of
