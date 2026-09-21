@@ -73,7 +73,12 @@ export const BRIEFING = {
   masthead: [
     { label: "issues", value: "Four times a year" },
     { label: "who gets it", value: "Members only" },
-    { label: "who features", value: "You" },
+    /* "DRAWN FROM: THE ROOM", from 21 September 2026. It was "who
+       features: You", and the feedback was that it read less premium than
+       the rest of the language: a second-person wink sitting between two
+       facts. This is a fact, and it is the same claim the contribute section
+       on this page makes in its heading, "Most of it comes from the room". */
+    { label: "drawn from", value: "The room" },
   ],
   /** DRAFT. */
   lead: [
@@ -304,12 +309,25 @@ export const ROOMS = {
   title: "rooms",
   /**
    * A sentence now, not a name, so it keeps its capital and its full stop (the
-   * page sets it normal-case). "no" carries the circle — see marked.tsx.
+   * page sets it normal-case).
+   *
+   * "FORWARD GOES WHERE THE MEMBERS ARE", FROM 21 SEPTEMBER 2026. It was
+   * "There is no fixed program", and the feedback on it was that it made the
+   * membership sound less intentional rather than more flexible: it described
+   * the rooms by what they lack. This makes the members the plan, which is
+   * the same flexibility framed as a choice. It was already on the page, as
+   * the second paragraph under the heading; it has been promoted, and that
+   * paragraph has come out rather than say it twice.
+   *
+   * "members" carries the italic, the site's one form of emphasis: it is the
+   * word the sentence turns on.
    */
-  heading: "There is [[no|circle]] fixed program.",
+  heading: "Forward goes where the [[members]] are.",
   lead: [
     "A dinner in London one month. A closed conversation in New York the next. Drinks in Cannes because the whole industry has gathered there. Cocktail hour in Texas, a conversation in LA, or an unexpected gathering wherever our members happen to be.",
-    "Forward goes where the members are, and happens when and where there is reason.",
+    /* THE SECOND PARAGRAPH CAME OFF on 21 September 2026 when its first half
+       became the heading above. For the record it read: "Forward goes where
+       the members are, and happens when and where there is reason." */
   ],
   /** The big line, set like the case on the home page. */
   claim: "Every gathering is curated [[by hand]].",
