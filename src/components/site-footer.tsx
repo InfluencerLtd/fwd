@@ -79,7 +79,11 @@ const LINK =
  */
 const GROUND = "fwd-dark fwd-on-dark";
 const TEXT = "text-photo-ink";
-const MUTED = "text-photo-ink/60";
+/* NOT MUTED ANY MORE, from 21 September 2026. The right-hand group (Hosted by
+   Influencer, privacy, cookies) was the off-white at 60%, and it was asked to
+   be white like the address on the left. The constant keeps its name so every
+   place that uses it follows; it now matches TEXT. */
+const MUTED = "text-photo-ink";
 
 export function SiteFooter() {
   return (
@@ -129,13 +133,13 @@ export function SiteFooter() {
                 `hostedBy` in src/lib/brand.ts.
 
                 No underline on hover: an underline drawn under a logo reads as
-                a mistake. It brightens instead, the way the rest of the row's
-                links reach full strength. */}
+                a mistake. It dims slightly instead, since it is already at full
+                white. */}
             <a
               href={FOOTER.parent.href}
               target="_blank"
               rel="noreferrer"
-              className={`relative -my-1 inline-block py-1 ${MUTED} transition-colors duration-200 hover:text-photo-ink after:absolute after:inset-x-0 after:-inset-y-[11px] after:content-['']`}
+              className={`relative -my-1 inline-block py-1 ${MUTED} transition-opacity duration-200 hover:opacity-75 after:absolute after:inset-x-0 after:-inset-y-[11px] after:content-['']`}
             >
               <HostedBy size="sm" />
             </a>
