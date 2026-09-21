@@ -113,8 +113,13 @@ export function Hero() {
           </div>
 
           {/* WHO IS BEHIND IT, where somebody arrives. See `hostedBy` in
-              src/lib/brand.ts. */}
-          <HostedBy size="md" className="mt-12 self-start text-photo-ink/60" />
+              src/lib/brand.ts.
+
+              WHITE, NOT A FADED ONE (21 September 2026). It was the off-white
+              at 60%, and over the busy lower half of this photograph that was
+              hard to read. The off-white at full strength is the same colour
+              the headline is set in, so the two read as one voice. */}
+          <HostedBy size="md" className="mt-12 self-start text-photo-ink" />
         </div>
       </PhotoPlaceholder>
     </div>
