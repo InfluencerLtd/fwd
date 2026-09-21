@@ -65,62 +65,56 @@ export function Hero() {
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 z-0 bg-black/[0.58]"
         />
-        <div className="relative z-2 flex w-full flex-1 flex-col items-center px-6 pb-0 pt-28 text-center">
+        {/* LEFT-ALIGNED AND LARGE, from 21 September 2026, after a reference
+            layout: the three nouns stacked one to a line at statement size,
+            the line under them, the button, and "Hosted by" at the foot of
+            the frame on its own. It was one centred line at 32px with
+            everything stacked under it in the middle of the photograph.
+
+            THE LEFT EDGE IS THE MARK'S. 37px on a phone and 45px from 640px
+            up, inside the same 1152px measure as the bar, which is exactly
+            where the "fwd." in the pill above starts — so the headline hangs
+            off the logo rather than off an arbitrary margin.
+
+            THE HOSTED LINE SITS AT THE FOOT, pinned there by the main block's
+            my-auto taking the space above it. It is still where somebody
+            arrives; it just no longer competes with the button for the same
+            spot. Influencer's own logo stays in it: see hosted-by.tsx. */}
+        <div className="relative z-2 mx-auto flex w-full max-w-6xl flex-1 flex-col px-[37px] pb-10 pt-32 sm:px-[45px] sm:pb-14">
           {/* The 10px is padding rather than a margin: the block is centred
               with `my-auto`, and an auto margin has no room left to give once
-              the content nearly fills the screen — which is exactly when the
-              button ends up against the rule. Padding is not negotiable in the
-              same way, so the gap holds at every height. */}
-          <div className="my-auto flex flex-col items-center pb-[10px]">
-            {/* THE BIG CENTRAL LOCKUP HAS GONE. It was the mark at hero
-                size with "by Influencer" under it, over a radial scrim. The
-                review of 17 September 2026 called it redundant against the
-                mark in the top left corner, and it was: two lockups on one
-                screen, one of them four times the size of the other.
-
-                What it leaves behind is room. The three nouns, the line and
-                the button now sit in the middle of the photograph rather than
-                below the middle, which is the other thing the review asked
-                for. The header keeps the endorsement on this page now, so the
-                signature is not lost: see `signature` in site-header.tsx. */}
-
-            {/* Clear space: at least the height of the "d" before anything
-                else starts. That ascender in Instrument Serif is about three
-                quarters of the font size, so at the desktop lockup it is a
-                little over a hundred pixels rather than the fifty-six this
-                used to be. */}
-            {/* ONE LINE. It was two — "Brands. Creators. Platforms." and then
-                "One table." in the pale blue as the answer to it. The answer
-                went; the three nouns stand on their own. */}
-            <p className="font-body text-xl leading-[1.5] text-photo-ink sm:text-[26px] lg:text-[32px]">
-              {HERO.headline}
+              the content nearly fills the screen. Padding holds at every
+              height. */}
+          <div className="my-auto flex flex-col items-start pb-[10px] text-left">
+            {/* One noun to a line. The content is still the one sentence in
+                HERO.headline; it is only split here, on its spaces, so the
+                words stay editable in one place. The size is the site's
+                statement scale with a higher floor, because three short words
+                on a phone can carry more than a long sentence can. */}
+            <p className="font-body text-[clamp(44px,calc(7.4vw+10px),128px)] leading-[0.98] tracking-[-0.025em] text-photo-ink">
+              {HERO.headline.split(" ").map((word) => (
+                <span key={word} className="block">
+                  {word}
+                </span>
+              ))}
             </p>
 
-            {/* What it is, under the three nouns and over the button. Smaller
-                and quieter than the line above it: the mood is the headline's
-                job and this is here so nobody has to guess. */}
-            <p className="mx-auto mt-3 max-w-[46ch] font-body text-[15px] leading-relaxed text-photo-ink/70 sm:text-base">
+            {/* What it is, under the three nouns and over the button. */}
+            <p className="mt-8 max-w-[34ch] font-body text-lg leading-snug text-photo-ink/80 sm:text-[22px] lg:text-[26px]">
               {HERO.plain}
             </p>
 
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+            <div className="mt-10">
               <ApplyLink variant="onDark" />
             </div>
 
-            {/* WHO IS BEHIND IT, where somebody arrives. The subtle version of
-                the Sport Beach model, chosen on 21 September 2026 over putting
-                a full hosted lockup above the headline: the hero keeps its
-                own composition and Influencer still appears, as itself, on the
-                first screen. See `hostedBy` in src/lib/brand.ts. */}
-            <HostedBy size="md" className="mt-8 text-photo-ink/80" />
-
-            {/* NO MEMBERS' DOOR HERE EITHER. The mock puts one under the
-                button and it is left out for the same reason it is left out of
-                the header: the member area is not a feature of the website.
-                Nothing on a public page says it exists. */}
-
+            {/* NO MEMBERS' DOOR HERE. The member area is not a feature of the
+                website; nothing on a public page says it exists. */}
           </div>
 
+          {/* WHO IS BEHIND IT, where somebody arrives. See `hostedBy` in
+              src/lib/brand.ts. */}
+          <HostedBy size="md" className="mt-12 self-start text-photo-ink/60" />
         </div>
       </PhotoPlaceholder>
     </div>
