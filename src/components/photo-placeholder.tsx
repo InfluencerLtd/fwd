@@ -67,7 +67,19 @@ export function PhotoPlaceholder({
   className?: string;
   labelPosition?: string;
   showLabel?: boolean;
-  /** True for the hero only. Tells the browser to fetch it first. */
+  /**
+   * True for the hero only. Tells the browser to fetch it first.
+   *
+   * THE NAME IS OURS, NOT NEXT'S ANY MORE. Next 16 deprecated the Image
+   * component's own `priority` prop, and passing it through had quietly
+   * stopped doing anything: the hero rendered with no fetchpriority and no
+   * eager loading, and the dev server flagged it as a Largest Contentful Paint
+   * image loaded like any other (21 September 2026). The prop keeps its name
+   * here so nothing calling this component changes; underneath it now sets
+   * what the Next 16 docs recommend for an image that is always the LCP —
+   * loading="eager" and fetchPriority="high" — rather than `preload`, which
+   * the same docs say not to combine with either.
+   */
   priority?: boolean;
   /** Roughly how wide this appears, so the right size is sent to each screen. */
   sizes?: string;
@@ -138,7 +150,8 @@ export function PhotoPlaceholder({
           src={src}
           alt=""
           fill
-          priority={priority}
+          loading={priority ? "eager" : undefined}
+          fetchPriority={priority ? "high" : undefined}
           sizes={sizes}
           // The photograph is decoration behind the words. It carries no
           // information a screen reader needs, and the alt above is empty on
@@ -166,20 +179,27 @@ export function PhotoPlaceholder({
           the whole thing was invisible — measured, 0.01% of the page moved.
           Still below the words at z-2, so nothing is drawn over the type. */}
       {src && twinkle ? (
-        <div aria-hidden="true" className="fwd-photo-twinkle absolute inset-0 z-1">
-          <Image
-            src={src}
+        <div aria-hidden="true" className="fwd-photo-twinkle absolute inset-0">
+          {/* A PLAIN <img>, NOT next/image, and on purpose.
+              It asks Next's optimizer for the 640px copy directly, which is
+              the small file this layer wants: it contributes blooms rather
+              than detail, and at under 40% opacity through a screen blend a
+              640px copy is indistinguishable from the full one.
+
+              It is not an <Image> because Next's dev-mode check for the
+              Largest Contentful Paint keys every image by its URL, and this
+              copy has the same source as the hero it sits over. Registered
+              second and lazy, it overwrote the hero's record and made the
+              check report the hero as lazily loaded when it was not
+              (21 September 2026). Outside next/image it is never registered,
+              and the check sees the real hero. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={`/_next/image?url=${encodeURIComponent(src)}&w=640&q=75`}
             alt=""
-            fill
-            /* SMALL ON PURPOSE. It contributes blooms rather than detail, so a
-               480px copy is indistinguishable from the full one once it is
-               blurred by the blend and held under 40% opacity — and it is a
-               few tens of kilobytes rather than a second hero-sized download.
-               Lazy, so it never competes with the real one for the first
-               paint. */
-            sizes="480px"
             loading="lazy"
-            className="object-cover"
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover"
             style={objectPosition ? { objectPosition } : undefined}
           />
         </div>
