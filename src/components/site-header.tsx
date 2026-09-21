@@ -47,21 +47,8 @@ export function SiteHeader({
    * frame of the wrong header.
    */
   overHero = false,
-  /**
-   * Whether the bar's lockup carries "by Influencer".
-   *
-   * On everywhere but the homepage, where the hero's mark carries it instead.
-   * See the `signature` prop in wordmark.tsx for why it is one or the other
-   * and never both.
-   *
-   * The width is the same either way, so the "fwd." is the same size on every
-   * page and only the bar's height changes — the signature is what the extra
-   * eleven pixels are for.
-   */
-  signature = true,
 }: {
   overHero?: boolean;
-  signature?: boolean;
 } = {}) {
   const [scrolled, setScrolled] = useState(!overHero);
 
@@ -118,19 +105,24 @@ export function SiteHeader({
               : "border-photo-ink/15 bg-photo-ground/50"
           }`}
         >
-          {/* THE SLOT IS THE HEIGHT OF THE FULL LOCKUP WHATEVER IS IN IT —
-              the artwork's own ratio at the bar width, so it is one number to
-              change, and it has to be the same number as `size="small"` in
-              wordmark.tsx. 60px wide at 392.5:259.75 is 39.7px tall.
-              Without it, a page whose bar carried the mark alone would have a
-              shorter bar than every other page and the mark would move up the
-              screen as you left it. */}
+          {/* THE MARK ALONE, NO "by Influencer", from 21 September 2026.
+              The bar was the last place the signature appeared set in our own
+              type. Influencer's ownership is carried by the hosted line now —
+              under the hero's button, in the footer and in the apply dialog,
+              in Influencer's own logo — so the bar can be just the name. The
+              link's accessible name still says "Forward (fwd.) by Influencer".
+
+              The "fwd." is the same size it was: the mark and the lockup share
+              a width, so at 60px only the signature under it has gone. The
+              slot is the mark's own ratio at that width, 392.5:181, which is
+              27.7px tall; the bar's height is now set by the navigation
+              beside it rather than by the logo. */}
           <Link
             href="/"
             aria-label={META.title}
-            className="inline-block h-[calc(60px*259.75/392.5)] shrink-0"
+            className="inline-block h-[calc(60px*181/392.5)] shrink-0"
           >
-            <Wordmark size="small" signature={signature} />
+            <Wordmark size="small" signature={false} />
           </Link>
 
           <nav
