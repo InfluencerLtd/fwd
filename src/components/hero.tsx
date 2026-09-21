@@ -86,21 +86,44 @@ export function Hero() {
               the content nearly fills the screen. Padding holds at every
               height. */}
           <div className="my-auto flex flex-col items-start pb-[10px] text-left">
-            {/* One noun to a line. The content is still the one sentence in
-                HERO.headline; it is only split here, on its spaces, so the
-                words stay editable in one place. The size is the site's
-                statement scale with a higher floor, because three short words
-                on a phone can carry more than a long sentence can. */}
-            <p className="font-body text-[clamp(44px,calc(7.4vw+10px),128px)] leading-[0.98] tracking-[-0.025em] text-photo-ink">
-              {HERO.headline.split(" ").map((word) => (
-                <span key={word} className="block">
-                  {word}
-                </span>
-              ))}
-            </p>
+            {/* THE SITE'S STATEMENT TYPE, from 21 September 2026. For a day this
+                was set in the sans, after a reference layout, and it was the
+                one opening statement on the site that was not in the serif:
+                every other page opens on .fwd-statement in Instrument Serif,
+                which is what the brand guidelines reserve headlines for. It
+                takes the same class now, so the size, leading and tracking are
+                the ones "Behind closed doors" and "The briefing" use.
 
-            {/* What it is, under the three nouns and over the button. */}
-            <p className="mt-8 max-w-[34ch] font-body text-lg leading-snug text-photo-ink/80 sm:text-[22px] lg:text-[26px]">
+                AND IT IS THE PAGE'S h1. The home page had none; every other
+                page's opening statement is one. normal-case! because the
+                unlayered h1 rule would otherwise lowercase it.
+
+                One noun to a line, as the reference had it. The content is
+                still the one sentence in HERO.headline, split on its spaces
+                here so the words stay editable in one place. The last full
+                stop is the brand's, in the pale blue, as it is at the end of
+                every other statement on a dark ground. */}
+            <h1 className="fwd-statement normal-case! text-photo-ink">
+              {HERO.headline.split(" ").map((word, index, words) =>
+                index === words.length - 1 && word.endsWith(".") ? (
+                  <span key={word} className="block">
+                    {word.slice(0, -1)}
+                    <span className="fwd-dot">.</span>
+                  </span>
+                ) : (
+                  <span key={word} className="block">
+                    {/* The trailing space is never drawn, since it falls at
+                        the end of a line, but a screen reader needs it or it
+                        reads "Brands.Creators.Platforms." as one word. */}
+                    {`${word} `}
+                  </span>
+                ),
+              )}
+            </h1>
+
+            {/* What it is, in the standfirst every other page opening uses
+                under its statement: the serif, a size down. */}
+            <p className="fwd-standfirst mt-8 max-w-[34ch] text-photo-ink/80">
               {HERO.plain}
             </p>
 
