@@ -89,7 +89,9 @@ export default function ForwardThinkersPage() {
           <ul className="fwd-stagger mx-auto mt-14 flex flex-col items-center gap-12 sm:flex-row sm:items-start sm:justify-center sm:gap-16">
             {FORWARD_THINKERS.curators.people.map((person) => (
               <li
-                key={person.name}
+                /* Keyed on the photo slot, not the name: two of the three
+                   read "To be announced" until they are. */
+                key={person.photo}
                 className="fwd-reveal flex w-full max-w-[16rem] flex-col items-center"
               >
                 {/* Small, and the same shape as the portraits in the list

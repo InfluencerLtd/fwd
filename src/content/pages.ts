@@ -415,10 +415,10 @@ export const FORWARD_THINKERS = {
    * WHO CHOOSES. Asked for on 15 September 2026: the section that was "how the
    * list is made" is now the three people curating it.
    *
-   * >>> THIS NAMES THREE REAL PEOPLE. <<< Sophie asked for them by name. The
-   * rule the rest of this file follows is that nobody appears on the public
-   * site until they have agreed to it, and the note asking Stuart and Tara to
-   * curate went out on 15 September, so their yes may not be in writing yet.
+   * >>> IT NAMES ONE REAL PERSON. <<< Caspar Lee, whose role at Influencer is
+   * already public. The other two seats read "To be announced" from
+   * 23 September 2026, which is the rule the rest of this file follows:
+   * nobody appears on the public site until they have agreed to it.
    *
    * NO EMPLOYER TITLES ON TWO OF THEM. The expansion deck has Stuart at
    * DoubleVerify and Tara formerly at Google, and the meeting notes instead
@@ -451,15 +451,27 @@ export const FORWARD_THINKERS = {
         /** public/photography/curator-caspar-lee.jpg, when it arrives. */
         photo: "curator-caspar-lee",
       },
+      /*
+       * THE OTHER TWO ARE UNNAMED, from 23 September 2026. Asked for
+       * directly: the page says "To be announced" and the market each one
+       * covers instead of the name.
+       *
+       * Which is where this started. Stuart Flint and Tara Walpert Levy were
+       * put here on 15 September, the same day the note asking them to curate
+       * went out, so the page was naming two people whose yes was not in
+       * writing. The names are in the git history and the slots below are
+       * keyed by market rather than by person, so putting either one back is
+       * a `name` here and a file named after the market.
+       */
       {
-        name: "Stuart Flint",
+        name: "To be announced",
         line: "Curating the United Kingdom and Europe.",
-        photo: "curator-stuart-flint",
+        photo: "curator-uk",
       },
       {
-        name: "Tara Walpert Levy",
+        name: "To be announced",
         line: "Curating the United States.",
-        photo: "curator-tara-walpert-levy",
+        photo: "curator-us",
       },
     ],
   },

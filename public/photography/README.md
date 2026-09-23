@@ -55,8 +55,8 @@ were 4240px originals, resized to 2400 and re-encoded at quality 82.
 | `benefit-nominate` | pexels-bertellifotografia-18999568 | membership band — "Nominate a member" |
 | `benefit-global-access` | `OG_Edited_Taschca_-45` (the frontage, doors open, the trio on the pavement) | membership band — "Global access" |
 | `curator-caspar-lee` | needed | /forward-thinkers — curator portrait |
-| `curator-stuart-flint` | needed | /forward-thinkers — curator portrait |
-| `curator-tara-walpert-levy` | needed | /forward-thinkers — curator portrait |
+| `curator-uk` | needed | /forward-thinkers — the UK and Europe curator, unnamed on the page until announced |
+| `curator-us` | needed | /forward-thinkers — the US curator, unnamed on the page until announced |
 
 ## Still missing
 
