@@ -131,18 +131,25 @@ export function Hero() {
               <ApplyLink variant="onDark" />
             </div>
 
+            {/* WHO IS BEHIND IT, where somebody arrives. See `hostedBy` in
+                src/lib/brand.ts.
+
+                WHITE, NOT A FADED ONE (21 September 2026). It was the off-white
+                at 60%, and over the busy lower half of this photograph that was
+                hard to read. The off-white at full strength is the same colour
+                the headline is set in, so the two read as one voice.
+
+                UNDER THE BUTTON, NOT AT THE FOOT OF THE SCREEN (23 September
+                2026). It used to sit outside this block, pinned near the bottom
+                of the photograph, which put most of a screen between the ask
+                and who is behind it and left it reading as small print. It is
+                part of the opening statement now: the same left edge, a step
+                larger, and close enough to the button to be read with it. */}
+            <HostedBy size="lg" className="mt-7 text-photo-ink" />
+
             {/* NO MEMBERS' DOOR HERE. The member area is not a feature of the
                 website; nothing on a public page says it exists. */}
           </div>
-
-          {/* WHO IS BEHIND IT, where somebody arrives. See `hostedBy` in
-              src/lib/brand.ts.
-
-              WHITE, NOT A FADED ONE (21 September 2026). It was the off-white
-              at 60%, and over the busy lower half of this photograph that was
-              hard to read. The off-white at full strength is the same colour
-              the headline is set in, so the two read as one voice. */}
-          <HostedBy size="md" className="mt-12 self-start text-photo-ink" />
         </div>
       </PhotoPlaceholder>
     </div>

@@ -12,23 +12,31 @@ import { BRAND } from "@/lib/brand";
  * for a screen reader, so the whole line reads "Hosted by Influencer" aloud.
  * The logo is a CSS mask, so it takes whatever colour the line is given.
  *
- * Two sizes: `md` under the hero's button, `sm` in the footer and the dialog.
+ * Three sizes: `lg` under the hero's button, `md` where it needs to be a step
+ * quieter, `sm` in the footer and the dialog.
  */
 export function HostedBy({
   size = "sm",
   className = "",
 }: {
-  size?: "sm" | "md";
+  size?: "sm" | "md" | "lg";
   className?: string;
 }) {
-  const text = size === "md" ? "text-[12px]" : "text-[11px]";
+  const text =
+    size === "lg" ? "text-[14px]" : size === "md" ? "text-[12px]" : "text-[11px]";
   // The logo is set a little taller than the capitals beside it, because its
   // lowercase letters sit lower than a cap height and would look small at an
-  // equal size. These were matched by eye against the mockups.
-  const logo = size === "md" ? "h-[19px]" : "h-[15px]";
+  // equal size. It is 1.6 times the type size, which is the ratio the brand
+  // guidelines set for the hosted line and what these were matched to by eye.
+  const logo =
+    size === "lg" ? "h-[22px]" : size === "md" ? "h-[19px]" : "h-[15px]";
 
   return (
-    <span className={`inline-flex items-center gap-[0.75em] ${className}`}>
+    // whitespace-nowrap because the footer's row is tight on a small phone and
+    // was breaking the line into "HOSTED" over "BY" beside the logo.
+    <span
+      className={`inline-flex items-center gap-[0.75em] whitespace-nowrap ${className}`}
+    >
       <span className={`fwd-eyebrow ${text}`}>{BRAND.hostedBy}</span>
       <span aria-hidden="true" className={`fwd-logo fwd-host-logo ${logo}`} />
       {/* The space is inside the hidden span on purpose: a flex container
