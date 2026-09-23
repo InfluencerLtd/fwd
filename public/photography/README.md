@@ -26,7 +26,7 @@ were 4240px originals, resized to 2400 and re-encoded at quality 82.
 | `about` | DSC01100 | /about opening — the long table, guests gathering |
 | `membership` | DSC01119 | /membership opening — the dinner in progress |
 | `rooms` | `OG_Edited_Taschca_-66` (the Tashca shoot, the table mid-speech) | /membership, the band inside the rooms section. Was the /rooms letterbox until that page went |
-| `closing` | DSC01064 | home page close — the place setting |
+| `closing` | supplied 23 September 2026 (the street tables outside Cafe Integral, with the band playing) | home page close — "Put your name forward". 2000px wide, which is under the 2400px the rest of this folder is: the file came as an attachment rather than off the Drive, so swap in the original if it turns up |
 | `about-close` | 2026-06-10_11-51-16_0087 (the DJ behind the TikTok logo) | /about close — "Put yourself forward" |
 | `rooms-close` | DSC01119 again | /rooms close |
 | `briefing` | influencer-tiktok-dinner108, the whole frame | /briefing close — "members only" |
