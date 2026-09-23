@@ -1,8 +1,21 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { BriefingSubmitForm } from "@/components/briefing-submit-form";
+import { TypeformEmbed } from "@/components/typeform-embed";
 import { BRIEFING_SUBMIT, NAV } from "@/content/site";
+
+/*
+ * THE CONTRIBUTION FORM IS A TYPEFORM, from 23 September 2026, as the two
+ * application paths already are. Asked for directly.
+ *
+ * BriefingSubmitForm — our own form, which wrote to the database and asked
+ * about attribution in its own words — is untouched in the repo, so swapping
+ * back is one line here. Note what moves with the form: submissions land in
+ * Typeform, not in our database, and the attribution question is whatever
+ * Typeform asks, so the promise this section makes on the page ("nothing is
+ * attributed without asking you first") has to be kept inside the Typeform.
+ */
+const BRIEFING_TYPEFORM_ID = "01M343KCYV8MYNB2PRRYNG19FN";
 
 /**
  * "send something in", and the panel it opens.
@@ -81,7 +94,13 @@ export function BriefingSubmitDialog({ className }: { className: string }) {
           </div>
 
           <div className="overflow-y-auto px-6 py-7 sm:px-8">
-            {open ? <BriefingSubmitForm onDone={hide} /> : null}
+            {/* Keyed on `open` so the embed is built fresh each time the panel
+                opens, the way the application panel keys its embed on the type:
+                Typeform scans for `data-tf-live` when its script loads, and a
+                div that was already there from last time is not scanned again. */}
+            {open ? (
+              <TypeformEmbed key="briefing" id={BRIEFING_TYPEFORM_ID} />
+            ) : null}
           </div>
         </div>
       </dialog>
