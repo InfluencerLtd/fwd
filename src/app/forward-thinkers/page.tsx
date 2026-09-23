@@ -110,7 +110,11 @@ export default function ForwardThinkersPage() {
                 <p className="mt-6 font-display text-[32px] leading-[1.05] text-ink">
                   {person.name}
                 </p>
-                <p className="fwd-body mt-3 text-ink-muted">{person.line}</p>
+                {/* Nothing where there is no line, rather than an empty
+                    paragraph holding space under a name. */}
+                {person.line ? (
+                  <p className="fwd-body mt-3 text-ink-muted">{person.line}</p>
+                ) : null}
               </li>
             ))}
           </ul>

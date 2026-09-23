@@ -463,14 +463,20 @@ export const FORWARD_THINKERS = {
        * keyed by market rather than by person, so putting either one back is
        * a `name` here and a file named after the market.
        */
+      /*
+       * AND THE MARKETS CAME OFF TOO, later the same day. "Curating the
+       * United Kingdom and Europe." and "Curating the United States." were
+       * under these two: the page draws nothing where `line` is empty, so
+       * putting either back is a string here.
+       */
       {
         name: "To be announced",
-        line: "Curating the United Kingdom and Europe.",
+        line: "",
         photo: "curator-uk",
       },
       {
         name: "To be announced",
-        line: "Curating the United States.",
+        line: "",
         photo: "curator-us",
       },
     ],
