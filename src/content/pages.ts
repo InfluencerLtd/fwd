@@ -395,8 +395,15 @@ export const ROOMS = {
 
 export const FORWARD_THINKERS = {
   title: "forward thinkers",
+  /*
+   * WHAT A SEARCH RESULT AND A LINK PREVIEW SHOW. It follows the lead below
+   * rather than restating it: the page's own opening cannot say the name of
+   * the list, because the heading above it does, and this is read without
+   * either of them. It no longer says "around thirty", which is a number the
+   * page itself does not print.
+   */
   description:
-    "The inaugural Forward Thinkers: around thirty people driving the creator economy forward, across platforms, brands and creators.",
+    "The ForwardThinkers 2026: the people shaping, challenging and driving the creator economy forward. Across brands, platforms and creators.",
   /** NOTHING RENDERS THIS. Taken off the page on 15 September 2026. */
   eyebrow: "The inaugural list",
   /*
