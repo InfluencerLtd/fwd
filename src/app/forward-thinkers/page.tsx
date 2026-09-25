@@ -182,10 +182,17 @@ export default function ForwardThinkersPage() {
                     washClassName="bg-photo-ground/25"
                     className="rounded-2xl"
                   />
-                  {/* The reason, over the picture: on hover, on keyboard focus,
-                      and always where there is no hover to be had. */}
+                  {/* The reason, over the picture, on hover and on keyboard
+                      focus.
+
+                      NOT ON A PHONE ANY MORE (25 September 2026). Where there
+                      is no hover it was simply always on, which meant a
+                      portrait permanently behind an 80% scrim: the one thing
+                      a list of faces is for was the one thing a phone could
+                      not see. On touch the sentence sits under the name
+                      instead, below. */}
                   {person ? (
-                    <p className="pointer-events-none absolute inset-0 z-2 flex items-end bg-photo-ground/80 p-4 font-body text-[13px] leading-snug text-photo-ink opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100 [@media(hover:none)]:opacity-100">
+                    <p className="pointer-events-none absolute inset-0 z-2 flex items-end bg-photo-ground/80 p-4 font-body text-[13px] leading-snug text-photo-ink opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100">
                       {person.why}
                     </p>
                   ) : null}
@@ -212,6 +219,12 @@ export default function ForwardThinkersPage() {
                       </p>
                       <p className="font-body text-[12.5px] leading-snug text-ink-muted/80">
                         {person.company}
+                      </p>
+                      {/* The same sentence, in the open, for a device with no
+                          hover. Hidden everywhere else, where it is the layer
+                          over the photograph. */}
+                      <p className="mt-2 hidden font-body text-[12.5px] leading-snug text-ink-muted [@media(hover:none)]:block">
+                        {person.why}
                       </p>
                     </>
                   ) : (

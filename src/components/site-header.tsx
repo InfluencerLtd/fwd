@@ -117,10 +117,16 @@ export function SiteHeader({
               slot is the mark's own ratio at that width, 392.5:181, which is
               27.7px tall; the bar's height is now set by the navigation
               beside it rather than by the logo. */}
+          {/* THE TAP TARGET REACHES PAST THE ARTWORK (25 September 2026). The
+              mark's own box is 27.7px tall, which is small for a thumb, and it
+              cannot simply be padded without changing the height the bar is
+              built around. An invisible ::after reaches 8px above and below
+              instead, taking the target to 44px inside the pill, exactly as
+              the footer links do. */}
           <Link
             href="/"
             aria-label={META.title}
-            className="inline-block h-[calc(60px*181/392.5)] shrink-0"
+            className="relative inline-block h-[calc(60px*181/392.5)] shrink-0 after:absolute after:inset-x-0 after:-inset-y-2 after:content-['']"
           >
             <Wordmark size="small" signature={false} />
           </Link>

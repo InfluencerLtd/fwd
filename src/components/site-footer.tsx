@@ -125,7 +125,12 @@ export function SiteFooter() {
 
               It leaves the site, so it opens in its own tab and carries
               rel="noreferrer", which is what every outbound link here does. */}
-          <div className="flex items-baseline gap-8">
+          {/* IT STACKS ON A PHONE TOO (25 September 2026). All three sat on
+              one line at every width, and at 375px they measured 346px against
+              327px of column: "cookies" ran past the gutter and finished 5px
+              from the edge of the screen. The hosted line takes its own row
+              below 640px and the legal pair keeps theirs. */}
+          <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-baseline sm:gap-8">
             {/* HOSTED BY INFLUENCER, where somebody leaves, on every page.
                 It was the words "Influencer.com" (FOOTER.parent.label, kept in
                 the content file); from 21 September 2026 it is Influencer's own
