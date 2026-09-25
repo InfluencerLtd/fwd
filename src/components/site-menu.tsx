@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ApplyLink } from "@/components/apply-link";
+import { HostedBy } from "@/components/hosted-by";
 import { Wordmark } from "@/components/wordmark";
 import { NAV } from "@/content/site";
 import { HEADER_NAV } from "@/content/hero-modules";
@@ -168,6 +169,16 @@ export function SiteMenu() {
               page. */}
           <div className="mt-6 border-t border-border pt-5">
             <ApplyLink className="w-full justify-center" />
+
+            {/* WHO IS BEHIND IT, at the foot of the panel (25 September 2026).
+                The mark at the top of this panel lost its "by Influencer" the
+                same day, and this is what signs instead: the hosted line, the
+                smallest of the three sizes, centered under the button because
+                the button is the full width of the panel. Not a link — the
+                footer's copy of this line is the one that goes to
+                influencer.com, and a panel this small does not need two ways
+                off the site. */}
+            <HostedBy size="sm" className="mt-5 w-full justify-center text-ink-muted" />
           </div>
 
           {/* NO LIGHT OR DARK SWITCH. It sat here under a rule, a round button
