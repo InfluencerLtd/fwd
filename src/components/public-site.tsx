@@ -4,8 +4,7 @@ import { SiteHeader } from "@/components/site-header";
 import { ApplyLink } from "@/components/apply-link";
 import { Circled, MarkedText } from "@/components/marked";
 import { TheCase } from "@/components/the-case";
-import { SilentLoop } from "@/components/silent-loop";
-import { photoSrc } from "@/lib/photography";
+import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { PageClose } from "@/components/page-close";
 import { SiteFooter } from "@/components/site-footer";
 import {
@@ -144,16 +143,19 @@ export function PublicSite() {
               </p>
             </div>
 
-            {/* THE FILM. Silent, looping, no controls — see the note over
-                SilentLoop. Until it exists the slot is its poster frame, so
-                the page is not waiting on a shoot: see FILM in
-                src/content/site.ts and the brief in public/film/README.md. */}
+            {/* A PHOTOGRAPH FOR NOW, from 25 September 2026. This was a silent
+                looping film (public/film/room.mp4) and a film goes back in when
+                the right one is cut: the slot keeps the 9:16 shape it was built
+                at, so that swap is this block returning to SilentLoop with
+                FILM.room and nothing else moving. The film and its brief are
+                still in public/film/. */}
             <div className="fwd-reveal lg:col-span-5">
-              <SilentLoop
-                src={FILM.room.src}
-                poster={photoSrc(FILM.room.poster) ?? ""}
-                ratioClass="aspect-[9/16]"
-                className="mx-auto w-full max-w-[340px] rounded-2xl lg:mr-0"
+              <PhotoPlaceholder
+                label={IMAGERY.roomStill}
+                name="room-still"
+                ratio="fill"
+                sizes="(min-width: 1024px) 340px, 100vw"
+                className="mx-auto aspect-[9/16] w-full max-w-[340px] rounded-2xl lg:mr-0"
               />
             </div>
           </div>

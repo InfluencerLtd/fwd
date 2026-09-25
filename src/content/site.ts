@@ -873,6 +873,13 @@ export const IMAGERY = {
     "Someone reading, alone, after the room has emptied. Low light, close crop, face optional. For the foot of the briefing page",
   membershipClose:
     "The table at its fullest, wide, from the end of the room. Every other page closes on a photograph and this one closed on a plain dark band. For the foot of the membership page",
+  /**
+   * The 9:16 slot beside the dictionary entry on the home page. It held a
+   * silent film until 25 September 2026 and will again; this is the brief for
+   * the still standing in for it.
+   */
+  roomStill:
+    "A table mid-dinner, shot down its length in portrait. Warm light, faces in conversation, nobody looking at the camera. For the tall slot beside the definition on the home page",
   why: "Detail shot. A gesture mid-sentence, or a table after dinner",
   membership: "A room mid-conversation. Low light, faces optional. For the top of the membership page",
   /**

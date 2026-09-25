@@ -47,3 +47,10 @@ Both sit in a rounded box with nothing written over them — one centred on the
 home page, one beside the copy on the membership page — so the whole frame is
 usable. Keep the subject clear of the outer 8% on every side anyway: the box
 is a different width on a phone than on a laptop, and the corners are rounded.
+
+## room.mp4 is off the page (25 September 2026)
+
+The home page slot beside the definition shows `photography/room-still.jpg`
+instead, until the right film is cut. The file stays here and the slot keeps
+its 9:16 shape, so putting a film back is the `PhotoPlaceholder` in
+src/components/public-site.tsx returning to `SilentLoop`.
