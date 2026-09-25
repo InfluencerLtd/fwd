@@ -111,7 +111,13 @@ export function SiteMenu() {
                 removes the reason for the box, and the mark sits on the panel
                 like everything else in it rather than in a badge of its own. */}
             <Link href="/" onClick={hide} aria-label={NAV.home} className="inline-block">
-              <Wordmark size="small" tone="ink" />
+              {/* THE MARK ALONE, from 25 September 2026. It was the lockup,
+                  with "by Influencer" tucked under it, and that is the one
+                  place on the site where the old endorsement still appeared:
+                  everywhere else Influencer signs with the hosted line, and
+                  the guidelines say never both. The panel is small, so it
+                  signs nowhere rather than twice. */}
+              <Wordmark size="small" tone="ink" signature={false} />
             </Link>
 
             <button

@@ -174,8 +174,14 @@ export function Wordmark({
           rules in src/lib/brand.ts, which allow it in the lock-up and forbid
           it in running text. */}
       <Tag className={`${widthClass} ${inkClass}`}>
+        {/* The name, for a screen reader, and only as much of it as is
+            drawn: with the signature off this is the mark on its own, so
+            saying "by Influencer" would describe artwork that is not
+            there. */}
         <span className="sr-only">
-          {`${BRAND.markShort} ${BRAND.endorsement}`}
+          {signature
+            ? `${BRAND.markShort} ${BRAND.endorsement}`
+            : BRAND.markShort}
         </span>
         {blinkDot && signature ? (
           <span aria-hidden="true" className="relative block w-full">
