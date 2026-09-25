@@ -399,7 +399,14 @@ export const FORWARD_THINKERS = {
     "The inaugural Forward Thinkers: around thirty people driving the creator economy forward, across platforms, brands and creators.",
   /** NOTHING RENDERS THIS. Taken off the page on 15 September 2026. */
   eyebrow: "The inaugural list",
-  heading: "The people moving the industry [[forward]].",
+  /*
+   * "Meet the ForwardThinkers 2026", from 25 September 2026. It was "The
+   * people moving the industry [[forward]]." — the brackets set a word in the
+   * serif italic — and this one has no word to lift: the name is the heading.
+   * The full stop is the brand's, as it is at the end of every other statement
+   * on a dark ground.
+   */
+  heading: "Meet the ForwardThinkers 2026.",
   /**
    * ONE PARAGRAPH. The second line said when the list is published, "at the
    * beginning of October", and came off on 15 September 2026: the page does
