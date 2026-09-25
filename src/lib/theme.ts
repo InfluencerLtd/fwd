@@ -1,7 +1,12 @@
 /**
  * theme.ts - shared constants for light/dark mode.
  *
- * How it works, in plain language:
+ * THE SWITCH IS OFF THE SITE from 25 September 2026: the menu no longer
+ * carries it, so every visitor gets the light palette and nothing is
+ * remembered. Everything here still works and /review still renders the
+ * toggle; see the script below for the two lines that bring it back.
+ *
+ * How it worked, in plain language:
  *   - LIGHT is the default. A first-time visitor sees the warm off-white page.
  *   - The moment they use the switch, their choice is remembered in their own
  *     browser and it wins from then on.
@@ -26,13 +31,15 @@ export type Theme = "light" | "dark";
 export const THEME_INIT_SCRIPT = `
 (function () {
   try {
-    /* The page is served light, so light is what arrives even if this script
-       never runs or JavaScript is switched off. All this does is switch it to
-       dark for somebody who chose dark. */
-    var saved = localStorage.getItem('${THEME_STORAGE_KEY}');
-    var theme = saved === 'dark' ? 'dark' : 'light';
-    if (theme === 'dark') document.documentElement.classList.add('dark');
-    document.documentElement.dataset.theme = theme;
+    /* THE SWITCH HAS GONE FROM THE MENU (25 September 2026), so this no
+       longer reads a saved choice: it clears it. Anybody who chose dark
+       while the switch existed would otherwise have been left in it with
+       nothing on the page to change it back. Restoring the switch means
+       putting the two lines under this one back — they are right here. */
+    localStorage.removeItem('${THEME_STORAGE_KEY}');
+    document.documentElement.dataset.theme = 'light';
+    /* var saved = localStorage.getItem('${THEME_STORAGE_KEY}');
+       if (saved === 'dark') document.documentElement.classList.add('dark'); */
   } catch (e) {
     /* Private browsing can block storage. The light default is already applied. */
   }

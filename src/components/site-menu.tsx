@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ApplyLink } from "@/components/apply-link";
-import { ThemeToggle } from "@/components/theme-toggle";
 import { Wordmark } from "@/components/wordmark";
 import { NAV } from "@/content/site";
 import { HEADER_NAV } from "@/content/hero-modules";
@@ -165,12 +164,12 @@ export function SiteMenu() {
             <ApplyLink className="w-full justify-center" />
           </div>
 
-          <div className="mt-6 flex items-center gap-3 border-t border-border pt-4">
-            <ThemeToggle />
-            <span className="font-body text-[12px] text-ink-muted">
-              {NAV.appearance}
-            </span>
-          </div>
+          {/* NO LIGHT OR DARK SWITCH. It sat here under a rule, a round button
+              and the words "light or dark", and it came off on 25 September
+              2026 by request. The site is the light palette, which is what it
+              was always served as. ThemeToggle, src/lib/theme.ts and the dark
+              rules in globals.css are all untouched in the repo, and the only
+              thing still rendering the switch is /review. */}
         </div>
       </dialog>
     </>
