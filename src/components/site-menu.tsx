@@ -177,8 +177,12 @@ export function SiteMenu() {
                 the button is the full width of the panel. Not a link — the
                 footer's copy of this line is the one that goes to
                 influencer.com, and a panel this small does not need two ways
-                off the site. */}
-            <HostedBy size="sm" className="mt-5 w-full justify-center text-ink-muted" />
+                off the site.
+
+                IN THE NEAR-BLACK, not the muted blue-grey it arrived in: the
+                logo is a mask taking the line's own colour, and in #5A6472 it
+                read as a washed-out blue rather than as a logo. */}
+            <HostedBy size="sm" className="mt-5 w-full justify-center text-ink" />
           </div>
 
           {/* NO LIGHT OR DARK SWITCH. It sat here under a rule, a round button
