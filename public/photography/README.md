@@ -30,7 +30,7 @@ were 4240px originals, resized to 2400 and re-encoded at quality 82.
 | `about-close` | 2026-06-10_11-51-16_0087 (the DJ behind the TikTok logo) | /about close — "Put yourself forward" |
 | `rooms-close` | DSC01119 again | /rooms close |
 | `briefing` | influencer-tiktok-dinner108, the whole frame | /briefing close — "members only" |
-| `room-still` | supplied 25 September 2026 (the dinner shot down the table) | home page, the 9:16 slot beside the definition. Stands in for the film that was there, so it is cut to 9:16 in the page rather than in the file |
+| `room-still` | supplied 25 September 2026 (mid-conversation at the long table, the second of two sent that day) | home page, the 9:16 slot beside the definition. Stands in for the film that was there. The source is landscape, so the file is already cut to 9:16, 749px wide, around the speaker |
 | `meeting-of-minds` | earlier | the square tile on the home page |
 | `band-1` | 2026-06-11_12-32-57_2991, the 4000px original cropped to the speaker | the drifting band — the "Briefings" tile |
 | `band-2` | influencer-tiktok-dinner108, cropped to the standing figure | the drifting band — the "Roundtables" tile |
