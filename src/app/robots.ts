@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { SITE_MODE } from "@/lib/site-config";
+import { CONTACT } from "@/lib/brand";
 
 /**
  * What search engines are allowed to do with the site.
@@ -32,7 +33,14 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
       // Belt and braces alongside the noindex each of these already sets.
-      disallow: ["/clubhouse/", "/admin/", "/early-access", "/review/"],
+      // /early-access is not in this list any more: the password was deleted
+      // on 29 September 2026, so that route is a 404 and there is nothing to
+      // ask a crawler to stay away from.
+      disallow: ["/clubhouse/", "/admin/", "/review/"],
     },
+    // Where the list of pages is. Nothing links to this site from anywhere
+    // else yet, so this is how a crawler finds anything past the home page.
+    // See src/app/sitemap.ts.
+    sitemap: `${CONTACT.siteUrl.replace(/\/$/, "")}/sitemap.xml`,
   };
 }

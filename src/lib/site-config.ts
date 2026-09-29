@@ -55,7 +55,13 @@ export const SITE_MODE: SiteMode =
  * The password for the early access route, used by the team to preview the
  * real site while the holding page is up. Set EARLY_ACCESS_PASSWORD in the
  * environment. If it is not set, early access is switched off entirely rather
- * than falling back to a guessable default.
+ * than falling back to a guessable default: /early-access answers with the
+ * 404 page and there is no gate to find.
+ *
+ * THAT IS THE STATE NOW. The site went live on 29 September 2026, which left
+ * nothing for the gate to protect, and the password was deleted from Vercel
+ * the same day. Setting EARLY_ACCESS_PASSWORD again — a new value, since the
+ * old one is gone — brings the route back on its own.
  */
 export const EARLY_ACCESS_ENABLED = Boolean(process.env.EARLY_ACCESS_PASSWORD);
 export const EARLY_ACCESS_COOKIE = "fwd-early-access";
