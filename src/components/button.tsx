@@ -18,15 +18,21 @@ const VARIANTS: Record<Variant, string> = {
   /**
    * Filled with the pale ice blue, dark text, for LIGHT grounds.
    *
-   * The border is not decoration. The pale blue measures 1.10:1 against the
-   * warm grey band and 1.27:1 against the off-white page, so a filled button
-   * with no edge has no visible shape at all: it reads as dark text floating on
-   * the page. The border is the near-black at 60%, measuring 3.73:1 on the grey
-   * and 4.81:1 on off-white, which clears the 3:1 minimum a control's outline
-   * has to meet. The label was never the problem, at 13.74:1.
+   * NO EDGE, from 29 September 2026. Asked for directly: the near-black line
+   * around it was seen as a black outline on the lozenge, and it is off.
    *
-   * This is the pale-blue-on-light trap in a different hat: the colour is fine
-   * as a fill under dark text, and invisible as an edge.
+   * WHAT THAT COSTS, WRITTEN DOWN SO NOBODY HAS TO MEASURE IT AGAIN. The pale
+   * blue is 1.10:1 against the warm grey band and 1.27:1 against the off-white
+   * page, so on a light ground the fill on its own is very nearly invisible and
+   * the button reads as dark text floating on the page. The border was the
+   * near-black at 60%, 3.73:1 on the grey and 4.81:1 on off-white, which is
+   * what cleared the 3:1 a control's outline is meant to meet. The label was
+   * never the problem, at 13.74:1, so the words are as readable as they were;
+   * it is the shape around them that has gone quiet.
+   *
+   * If the shape is wanted back without a line, the two ways that do not
+   * involve one are the `brand` variant, which is the dark blue and is 6.61:1
+   * on its own, or a soft shadow under this one.
    *
    * EVERY COLOUR HERE IS A FIXED ONE, and that is the important part. The fill
    * does not change between light and dark mode, so the label must not either.
@@ -35,12 +41,11 @@ const VARIANTS: Record<Variant, string> = {
    * white and was worse, at 1.38:1. `photo-ground` is the same warm near-black
    * in both modes and measures 13.42:1 on the fill.
    *
-   * In dark mode the border does nothing, because the fill alone is 13.67:1
-   * against the dark page and the shape is already obvious. It is harmless
-   * there, and it is doing the work on every light ground.
+   * On a dark ground and over photography the fill alone is 13.67:1, so the
+   * shape was always obvious there and nothing changes.
    */
   primary:
-    "border border-photo-ground/60 bg-accent-on-dark text-photo-ground hover:border-photo-ground hover:bg-photo-ground hover:text-accent-on-dark",
+    "bg-accent-on-dark text-photo-ground hover:bg-photo-ground hover:text-accent-on-dark",
   /**
    * Filled with the brand dark blue, for LIGHT grounds.
    *
