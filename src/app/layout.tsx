@@ -23,6 +23,18 @@ export const metadata: Metadata = {
     title: META.title,
     description: META.description,
   },
+  /*
+   * PROVING TO GOOGLE THAT THE SITE IS OURS. Search Console asks for a token
+   * in a meta tag on the home page; it reads it as GOOGLE_SITE_VERIFICATION
+   * from the environment, so claiming the site is pasting one value into
+   * Vercel rather than an edit here. With nothing set, no tag is written.
+   *
+   * It is not a secret. It says nothing except that whoever added it can
+   * publish to this address, which is the whole point of it.
+   */
+  verification: process.env.GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+    : undefined,
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
