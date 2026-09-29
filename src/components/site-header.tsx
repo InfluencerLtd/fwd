@@ -144,13 +144,18 @@ export function SiteHeader({
                  colours, not the mode-dependent ones, because this sits over
                  photography that stays dark in light and dark mode alike —
                  13.42:1 either way. */
+              /* FULL WHITE, NOT 75% OF IT (29 September 2026). The row was
+                 the off-white at 75%, which over the lighter parts of a
+                 photograph was hard to read; asked for as white, and it is the
+                 same off-white the hero and the footer are set in, so the bar
+                 reads as one voice with them. */
               const className =
-                "inline-block rounded-full px-3 py-1.5 text-photo-ink/75 transition-colors duration-200 hover:bg-photo-ink hover:text-photo-ground";
+                "inline-block rounded-full px-3 py-1.5 text-photo-ink transition-colors duration-200 hover:bg-photo-ink hover:text-photo-ground";
 
               if (!item.href) {
                 // Not a link, on purpose. See the note in hero-modules.ts.
                 return (
-                  <span key={item.label} className="px-3 py-1.5 text-photo-ink/75">
+                  <span key={item.label} className="px-3 py-1.5 text-photo-ink">
                     {item.label}
                   </span>
                 );
