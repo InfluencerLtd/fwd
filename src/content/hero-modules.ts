@@ -49,7 +49,11 @@ export const HEADER_NAV: readonly { label: string; href: string | null }[] = [
   // the industry forward", still "ForwardThinkers of 2026" over the grid — so
   // the bar and the page it opens still call the same thing two different
   // things. Worth settling.
-  { label: "The list", href: "/forward-thinkers" },
+  // OFF THE BAR AGAIN, 29 September 2026, and the page is private with it:
+  // FORWARD_THINKERS_PUBLIC in src/lib/site-config.ts is false, so
+  // /forward-thinkers answers 404. Nothing is deleted. Put this line back and
+  // flip that flag and the list returns exactly as it was:
+  //   { label: "The list", href: "/forward-thinkers" },
   { label: "The briefing", href: "/briefing" },
 ];
 

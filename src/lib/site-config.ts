@@ -12,24 +12,27 @@ type SiteMode = "holding" | "live";
  * WHAT THE PUBLIC SEES AT THE ADDRESS.
  *
  *   "holding" - the pre-launch page: the wordmark, one line, and an email
- *               capture. This is what should be live from the moment the
- *               domain is registered.
+ *               capture.
  *   "live"    - the full public site.
  *
- * The holding page is never deleted when the site launches. Switch back to
- * "holding" at any point and it returns exactly as it was.
+ * IT IS LIVE FROM 29 SEPTEMBER 2026. fwd.influencer.com answers with the home
+ * page, and search engines are allowed in for the first time — see
+ * src/app/robots.ts, which reads this same word.
  *
- * This is the setting the real website uses. Leave it as "holding" until
- * launch day.
+ * The holding page is not deleted by that. It is still at
+ * src/components/holding-page.tsx and still whole; changing this word back to
+ * "holding" puts it in front of the site again, along with the early access
+ * gate at /early-access for anybody who needs to see past it.
  */
-const DEFAULT_SITE_MODE: SiteMode = "holding";
+const DEFAULT_SITE_MODE: SiteMode = "live";
 
 /**
  * A way to look at the full site without changing the line above.
  *
- * Put NEXT_PUBLIC_SITE_MODE="live" in `.env.local` and the site on your own
- * computer shows the full page, while the real website carries on showing the
- * holding page. Delete that line to go back.
+ * NEXT_PUBLIC_SITE_MODE in `.env.local` (or in Vercel) overrides the line
+ * above for one place without changing it for everywhere else. Now that the
+ * default is "live", the useful direction is the other one: set it to
+ * "holding" to see the pre-launch page again.
  *
  * This is also how it will work once the site is online: the real address can
  * be showing the holding page while a preview address shows the full site, with
@@ -72,12 +75,18 @@ export const ADMIN_COOKIE = "fwd-admin";
 /**
  * THE FORWARD THINKERS PAGE IS PRIVATE UNTIL THE LIST IS ANNOUNCED.
  *
- * The list is curated, not applied for, and it goes out with the launch at the
- * beginning of October 2026. Until then /forward-thinkers answers with the 404
- * page, so neither the concept nor the wording can be read before the names
- * are agreed. One word here puts it live.
+ * The list is curated, not applied for. While this is false /forward-thinkers
+ * answers with the 404 page, so neither the concept nor the wording can be
+ * read before the names are agreed. One word here puts it live.
+ *
+ * IT WAS PUBLIC FROM 15 TO 29 SEPTEMBER 2026 and is private again by request,
+ * to come back another day. Everything it needs is still here: the page at
+ * src/app/forward-thinkers, its copy in FORWARD_THINKERS in
+ * src/content/pages.ts (Ben Jeffries and the curators included), and the
+ * navigation line, commented out in src/content/hero-modules.ts. Bringing it
+ * back is this word and that line.
  */
-export const FORWARD_THINKERS_PUBLIC = true;
+export const FORWARD_THINKERS_PUBLIC = false;
 
 /**
  * THE CLASS OF 2026 PAGE IS PRIVATE UNTIL IT IS REVEALED.
